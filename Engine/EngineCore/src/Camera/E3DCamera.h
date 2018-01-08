@@ -81,14 +81,10 @@ namespace E3DEngine
 		const mat4f& GetViewInverseMatrix() {return m_mViewInverse;}
 		const mat4f& GetProjectInverseMatrix() {return m_mProjectInverse;}
 		
+		void TransformChange() override;
+
 		/** return the view matrix  ( this is extracted from the quaternion*/
 		const mat4f& GetViewMatrix();
-		
-		/** return the quaternion representation of the camera*/
-		const Quatf& GetQuaternionRepresentation();
-		
-		/** get camera position*/
-		vec3f GetPosition();
 		
 		/** forward vector*/
 		vec3f GetForwardVector();
@@ -103,17 +99,7 @@ namespace E3DEngine
 		
 		/** set a new projection matrix for the camera ( ortho, frustum, todo: add helper for creating ortho frustum)*/
 		void SetProjectionMatrix(const mat4f& projection);
-		
-		/** set camera position*/
-		void SetPosition(const vec3f& position);
-		
-		/** set new quaternion for the camera*/
-		void SetQuaternion(Quatf new_quat);
-		
-		void SetRotateByMat(mat4f new_mat,bool isCameraFront);
-		
-		void SetRotate(float x,float y,float z);
-		
+	
 		float GetPitch(){return m_pitch;}
 		float GetYaw(){return m_yaw;}
 		float GetRoll(){return m_roll;}
@@ -133,19 +119,10 @@ namespace E3DEngine
 		void render(float deltaTime);
 		//int GetFacePos(vec3f v1,vec3f v2,vec3f v3);
 	private:
-		
-		/** quaternion representation*/
-		Quatf m_qQuatuernion;
-
 		/** view matrix*/
 		mat4f m_mView;
-		
-		mat4f m_mWorld;
 		/** projection*/
 		mat4f m_mProjection;
-		
-		/** camera position*/
-		vec3f m_vPosition;
 		
 		mat4f m_mViewInverse;
 		mat4f m_mProjectInverse;

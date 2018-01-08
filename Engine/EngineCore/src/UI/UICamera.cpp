@@ -35,16 +35,6 @@ const mat4f& E3DEngine::UI::UICamera::GetViewMatrix()
 	return m_pCamera->GetViewMatrix();
 }
 
-const Quatf& E3DEngine::UI::UICamera::GetQuaternionRepresentation()
-{
-	return m_pCamera->GetQuaternionRepresentation();
-}
-
-vec3f E3DEngine::UI::UICamera::GetPosition()
-{
-	return GetPosition();
-}
-
 vec3f E3DEngine::UI::UICamera::GetForwardVector()
 {
 	return GetForwardVector();
@@ -72,22 +62,17 @@ void E3DEngine::UI::UICamera::SetProjectionMatrix(const mat4f& projection)
 
 void E3DEngine::UI::UICamera::SetPosition(const vec3f& position)
 {
-	m_pCamera->SetPosition(position);
+	m_pCamera->Transform->SetPosition(position);
 }
 
 void E3DEngine::UI::UICamera::SetQuaternion(Quatf new_quat)
 {
-	m_pCamera->SetQuaternion(new_quat);
-}
-
-void E3DEngine::UI::UICamera::SetRotateByMat(mat4f new_mat, bool isCameraFront)
-{
-	m_pCamera->SetRotateByMat(new_mat, isCameraFront);
+	m_pCamera->Transform->SetRotation(new_quat);
 }
 
 void E3DEngine::UI::UICamera::SetRotate(float x, float y, float z)
 {
-	m_pCamera->SetRotate(x, y, z);
+	m_pCamera->Transform->SetRotation(x, y, z);
 }
 
 float E3DEngine::UI::UICamera::GetFaceArea()

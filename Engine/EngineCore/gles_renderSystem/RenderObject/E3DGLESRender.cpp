@@ -95,7 +95,7 @@ namespace E3DEngine
 		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
 		if ( pCamera != nullptr)
 		{
-			vec3f &pos = pCamera->GetPosition();
+			vec3f &pos = pCamera->Transform->Position;
 			pMaterial->pShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
 		}
 

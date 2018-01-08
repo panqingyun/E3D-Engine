@@ -69,19 +69,9 @@ VOID _4_PARAM_FUNCTION(Transform, getPosition, CS_OBJECT, obj, float&, x, float&
 	{
 		return;
 	}
-	if (transform->gameObject->NodeType == eT_Camera)
-	{
-		vec3f pos = static_cast<Camera*>(transform->gameObject)->GetPosition();
-		x = pos.x;
-		y = pos.y;
-		z = pos.z;
-	}
-	else
-	{
-		x = transform->Position.x;
-		y = transform->Position.y;
-		z = transform->Position.z;
-	}
+	x = transform->Position.x;
+	y = transform->Position.y;
+	z = transform->Position.z;
 }
 
 VOID _4_PARAM_FUNCTION(Transform, setPosition, CS_OBJECT, obj, float, x, float, y, float, z)
@@ -91,14 +81,7 @@ VOID _4_PARAM_FUNCTION(Transform, setPosition, CS_OBJECT, obj, float, x, float, 
 	{
 		return;
 	}
-	if (transform->gameObject->NodeType == eT_Camera)
-	{
-		static_cast<Camera*>(transform->gameObject)->SetPosition(vec3f(x, y, z));
-	}
-	else
-	{
-		transform->SetPosition(x, y, z);
-	}
+	transform->SetPosition(x, y, z);
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getScale, CS_OBJECT, obj, float&, x, float&, y, float&, z)
@@ -132,20 +115,10 @@ VOID _4_PARAM_FUNCTION(Transform, getRotation, CS_OBJECT, obj, float&, x, float&
 	{
 		return;
 	}
-	if (transform->gameObject->NodeType == eT_Camera)
-	{
-		Camera* camera = static_cast<Camera*>(transform->gameObject);
-		x = camera->GetPitch();
-		y = camera->GetYaw();
-		z = camera->GetRoll();
-	}
-	else
-	{
-		vec3f rotation = transform->Rotation.toEulerAngles();
-		x = rotation.x;
-		y = rotation.y;
-		z = rotation.z;
-	}
+	vec3f rotation = transform->Rotation.toEulerAngles();
+	x = rotation.x;
+	y = rotation.y;
+	z = rotation.z;
 }
 
 VOID _4_PARAM_FUNCTION(Transform, setRotation, CS_OBJECT, obj, float, x, float, y, float, z)
@@ -155,14 +128,7 @@ VOID _4_PARAM_FUNCTION(Transform, setRotation, CS_OBJECT, obj, float, x, float, 
 	{
 		return;
 	}
-	if (transform->gameObject->NodeType == eT_Camera)
-	{
-		static_cast<Camera*>(transform->gameObject)->SetRotate(x, y, z);
-	}
-	else
-	{
-		transform->SetRotation(x, y, z);
-	}
+	transform->SetRotation(x, y, z);
 }
 
 VOID _1_PARAM_FUNCTION(Debug, log_error, CS_STRING, err)

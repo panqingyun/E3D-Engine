@@ -127,7 +127,7 @@ namespace E3DEngine
 
 	void CTransform::SetBillBoardNormal(vec3f pos, vec3f scale)
     {
-        vec3f cameraPos = gameObject->pCamera->GetPosition();
+		vec3f cameraPos = gameObject->pCamera->Transform->Position;
         
         vec3f forward = pos - cameraPos;
         forward.normalize();

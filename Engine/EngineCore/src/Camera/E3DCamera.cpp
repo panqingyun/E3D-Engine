@@ -16,7 +16,7 @@
 
 namespace E3DEngine
 {
-	Camera::Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect):m_vPosition(position)
+	Camera::Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect)
 	{
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size() ;i++)
@@ -25,8 +25,9 @@ namespace E3DEngine
 		}
 		isPerspective = true;
 		m_mProjection = mat4f::createPerspective(fov, aspect, zNear, zFar);
-		m_mView = mat4f::createLookAt(m_vPosition, target, up);
-		m_qQuatuernion = Quatf::frommat(m_mView);
+		m_mView = mat4f::createLookAt(Transform->Position, target, up);
+		Transform->Rotation = Quatf::frommat(m_mView);
+		Transform->Position = position;
 		m_near = zNear;
 		m_far = zFar;
 		m_aspect = aspect;
@@ -41,9 +42,10 @@ namespace E3DEngine
 		NodeType = eT_Camera;
 		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
+		Transform->SetNeedUpdate(false);
 	}
 	
-	Camera::Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar):m_vPosition(position)
+	Camera::Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar)
 	{
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size(); i++)
@@ -52,9 +54,9 @@ namespace E3DEngine
 		}
 		isPerspective = false;
 		m_mProjection = mat4f::createOrtho(left, right, bottom, top, zNear, zFar);
-		m_mView = mat4f::createLookAt(m_vPosition, target, up);
-		m_qQuatuernion = Quatf::frommat(m_mView);
-		
+		m_mView = mat4f::createLookAt(Transform->Position, target, up);
+		Transform->Rotation = Quatf::frommat(m_mView);
+		Transform->Position = position;
 		m_mViewInverse = m_mView.inverse();
 		m_mProjectInverse = m_mProjection.inverse();
 		m_RenderQueue = new RenderQueue;
@@ -65,6 +67,7 @@ namespace E3DEngine
 		NodeType = eT_Camera;
 		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
+		Transform->SetNeedUpdate(false);
 	}
 
 
@@ -154,81 +157,31 @@ namespace E3DEngine
 		RTTs.push_back(rtt);
 	}
 
-	const Quatf& Camera::GetQuaternionRepresentation()
+	void Camera::TransformChange()
 	{
-		return m_qQuatuernion;
-	}
-
-	void Camera::SetQuaternion(Quatf new_quat)
-	{
-		//set the new quaternion
-		m_qQuatuernion = new_quat;
-		
 		//extract view matrix from quaternion
-		m_mView = m_qQuatuernion.transform();
-		
+		m_mView = Transform->Rotation.transform();
+
 		//update world view matrix
-		m_mWorld = m_mView.inverse();
-		m_mWorld[12] = m_vPosition.x;
-		m_mWorld[13] = m_vPosition.y;
-		m_mWorld[14] = m_vPosition.z;
-		m_mView = m_mWorld.inverse();
-		
+		Transform->WorldMatrix = m_mView.inverse();
+		Transform->WorldMatrix[12] = Transform->Position.x;
+		Transform->WorldMatrix[13] = Transform->Position.y;
+		Transform->WorldMatrix[14] = Transform->Position.z;
+		m_mView = Transform->WorldMatrix.inverse();
+
 		m_mViewInverse = m_mView.inverse();
 	}
 
-	void Camera::SetRotateByMat(mat4f new_mat,bool isCameraFront)
-	{
-		
-		m_mView = new_mat;
-		if(isCameraFront)
-		{
-			m_mView[2] = -m_mView[2];
-			m_mView[6] = -m_mView[6];
-			m_mView[8] = -m_mView[8];
-			m_mView[9] = -m_mView[9];
-		}
-		
-		m_qQuatuernion = Quatf::frommat(m_mView);
-		
-		m_mWorld = m_mView.inverse();
-		m_mWorld[12] = m_vPosition.x;
-		m_mWorld[13] = m_vPosition.y;
-		m_mWorld[14] = m_vPosition.z;
-		m_mView = m_mWorld.inverse();
-		
-		m_mViewInverse = m_mView.inverse();
-	}
-
-	void Camera::SetRotate(float x,float y,float z)
-	{
-		float pitch = x*180.f/M_PI;
-		float yaw = y*180.f/M_PI;
-		float roll = z*180.f/M_PI;
-		m_pitch = x;
-		m_yaw = y;
-		m_roll = z;
-		m_mView = mat4f::createRotationAroundAxis(pitch,yaw,roll);
-		m_qQuatuernion = Quatf::frommat(m_mView);
-		
-		m_mWorld = m_mView.inverse();
-		m_mWorld[12] = m_vPosition.x;
-		m_mWorld[13] = m_vPosition.y;
-		m_mWorld[14] = m_vPosition.z;
-		m_mView = m_mWorld.inverse();
-		
-		m_mViewInverse = m_mView.inverse();
-	}
 
 	const mat4f& Camera::GetViewMatrix()
 	{
 		//get the view matrix of the camera
-		m_mView = m_qQuatuernion.transform();
-		m_mWorld = m_mView.inverse();
-		m_mWorld[12] = m_vPosition.x;
-		m_mWorld[13] = m_vPosition.y;
-		m_mWorld[14] = m_vPosition.z;
-		m_mView = m_mWorld.inverse();
+		m_mView = Transform->Rotation.transform();
+		Transform->WorldMatrix = m_mView.inverse();
+		Transform->WorldMatrix[12] = Transform->Position.x;
+		Transform->WorldMatrix[13] = Transform->Position.y;
+		Transform->WorldMatrix[14] = Transform->Position.z;
+		m_mView = Transform->WorldMatrix.inverse();
 		
 		m_mViewInverse = m_mView.inverse();
 		
@@ -256,12 +209,6 @@ namespace E3DEngine
 		return world;
 	}
 
-
-	void Camera::SetPosition(const vec3f& position)
-	{
-		m_vPosition = position;
-	}
-
 	void Camera::SetProjectionMatrix(const mat4f& projection)
 	{
 		m_mProjection = projection;
@@ -269,28 +216,22 @@ namespace E3DEngine
 		m_mProjectInverse = m_mProjection.inverse();
 	}
 
-	vec3f Camera::GetPosition()
-	{
-		m_mWorld = m_mView.inverse();
-		return vec3f(m_mWorld[12], m_mWorld[13], m_mWorld[14]);
-	}
-
 	vec3f Camera::GetForwardVector()
 	{
-		m_mWorld = m_mView.inverse();
-		return vec3f(-m_mWorld[8], -m_mWorld[9], -m_mWorld[10]);
+		Transform->WorldMatrix = m_mView.inverse();
+		return vec3f(-Transform->WorldMatrix[8], -Transform->WorldMatrix[9], -Transform->WorldMatrix[10]);
 	}
 
 	vec3f Camera::GetUpVector()
 	{
-		m_mWorld = m_mView.inverse();
-		return vec3f(m_mWorld[4], m_mWorld[5], m_mWorld[6]);
+		Transform->WorldMatrix = m_mView.inverse();
+		return vec3f(Transform->WorldMatrix[4], Transform->WorldMatrix[5], Transform->WorldMatrix[6]);
 	}
 
 	vec3f Camera::GetRigthVector()
 	{
-		m_mWorld = m_mView.inverse();
-		return vec3f(m_mWorld[0], m_mWorld[1], m_mWorld[2]);
+		Transform->WorldMatrix = m_mView.inverse();
+		return vec3f(Transform->WorldMatrix[0], Transform->WorldMatrix[1], Transform->WorldMatrix[2]);
 	}
 
 	vec3f Camera::GetThirdPoint(vec3f p1,vec3f p2,float z3)

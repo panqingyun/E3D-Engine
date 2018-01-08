@@ -21,10 +21,8 @@ namespace E3DEngine
 			const mat4f& GetViewInverseMatrix();
 			const mat4f& GetProjectInverseMatrix();
 			const mat4f& GetViewMatrix();
-			const Quatf& GetQuaternionRepresentation();
 		
 		public:
-			vec3f GetPosition();
 			vec3f GetForwardVector();			
 			vec3f GetUpVector();
 			vec4f GetWorldPointWithX(float x, float y, float z);
@@ -35,7 +33,6 @@ namespace E3DEngine
 			void SetProjectionMatrix(const mat4f& projection);
 			void SetPosition(const vec3f& position);
 			void SetQuaternion(Quatf new_quat);
-			void SetRotateByMat(mat4f new_mat, bool isCameraFront);
 			void SetRotate(float x, float y, float z);
 		
 		public:

@@ -40,7 +40,7 @@ namespace Game
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.4f, 0.4f, 0.4f, 0));
             MainCamera.Transform.Position = new Vector3(0, 0, 200);
-            MainCamera.Transform.Rotation = new Vector3(0.2f, 0, 0);
+            MainCamera.Transform.Rotation = new Vector3(-10f, 0, 0);
             Material material = Material.CreateMaterial("Resource/Scene/MainEntry/Material/CubeMaterial.material");
             Debug.Log(material.ID.ToString());
             float xStart = -80;

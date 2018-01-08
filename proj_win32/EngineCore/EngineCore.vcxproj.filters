@@ -1,0 +1,3524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="EngineCore">
+      <UniqueIdentifier>{3cbb2a75-e461-4b39-a63a-f57560f0db9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\include">
+      <UniqueIdentifier>{ecdf0e65-bd17-4424-9df2-9f66c0a11f74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src">
+      <UniqueIdentifier>{26922a62-3580-4a19-b762-44c850569f6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Animation">
+      <UniqueIdentifier>{3afb2f22-d792-42cc-aaad-c937ed1520e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Camera">
+      <UniqueIdentifier>{efa54bcc-1e46-43a2-ae8f-2ed7b0d34a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Config">
+      <UniqueIdentifier>{80f110d5-af52-411c-a885-26577680e324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Effect">
+      <UniqueIdentifier>{bad3d090-c67e-4777-8012-0fbdc0119569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Light">
+      <UniqueIdentifier>{807fe9c2-5bba-43af-bc89-39106ba511b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Mesh">
+      <UniqueIdentifier>{b36b2763-2675-4ed5-97f1-8e6b1957ed74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Object">
+      <UniqueIdentifier>{d36f0dea-f646-439e-967c-042d973612f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\ParticleSystem">
+      <UniqueIdentifier>{54769581-cbd5-4f6b-b4c2-42faa8b30eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Scene">
+      <UniqueIdentifier>{e779e713-4f18-4838-b53d-f1a51e7ecb93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Source">
+      <UniqueIdentifier>{b00cc315-b396-4cf3-bce7-16b61f35e955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Utils">
+      <UniqueIdentifier>{638851e2-da5a-43fb-9536-15fea4db7969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd">
+      <UniqueIdentifier>{88980474-17cc-42dc-9017-aa95d9166ba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\header">
+      <UniqueIdentifier>{43f0ad63-c988-45a7-a3d2-fd17ab62d579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\code">
+      <UniqueIdentifier>{0281620b-3221-460e-8936-f01611d48bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\UI">
+      <UniqueIdentifier>{50a0d3c3-7346-4a5b-af55-5590f373b4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\UI\UIBase">
+      <UniqueIdentifier>{73d32f34-47da-4f55-91a4-6c7d0016b0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\UI\Widget">
+      <UniqueIdentifier>{60fca01e-ce24-4c7c-86d1-afcdcb1216d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics">
+      <UniqueIdentifier>{a78a33f5-093c-4fd5-a1b4-d52dfeac51f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Collision">
+      <UniqueIdentifier>{21ddbadc-af33-41a7-bea2-0151931e3139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Common">
+      <UniqueIdentifier>{9a682b6e-21b0-4c70-9d4c-43f7dd9f465a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Dynamics">
+      <UniqueIdentifier>{e0e6f3bd-e640-49ca-9f75-ac77dd34efd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Geometry">
+      <UniqueIdentifier>{96cfd413-c3f5-4785-87d3-7475c7f9d9d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL">
+      <UniqueIdentifier>{e72d5d46-8cad-417f-a97f-cb533cc2abc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Serialize">
+      <UniqueIdentifier>{a02d9a8b-dbe0-437c-a4b2-569c5c3769c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision">
+      <UniqueIdentifier>{d5bb63fb-450e-486b-ba12-b2c00ddd00e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics">
+      <UniqueIdentifier>{3551a00d-339a-4d26-b055-48f6e9763b3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletInverseDynamics">
+      <UniqueIdentifier>{d07d9493-428b-41db-a31d-c1ed707fcba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletSoftBody">
+      <UniqueIdentifier>{b2efb71d-5865-44e5-bb8c-fd75e24ff15b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\clew">
+      <UniqueIdentifier>{2a1a7eed-6ea0-49bb-b394-916635dc9400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\LinearMath">
+      <UniqueIdentifier>{0878df81-da7b-4e8d-8ff6-2ea91a70173f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Collision\BroadPhaseCollision">
+      <UniqueIdentifier>{bf633910-84b4-48cb-a053-a419d8a62548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Collision\NarrowPhaseCollision">
+      <UniqueIdentifier>{58db710e-842a-49ea-ae8f-70a1cc524abf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Collision\BroadPhaseCollision\shared">
+      <UniqueIdentifier>{6037ecf3-9013-4a0d-b8aa-d6ccce5ac4e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared">
+      <UniqueIdentifier>{15c3b761-2489-4e4c-a56b-c8332df18710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Common\shared">
+      <UniqueIdentifier>{5ab78159-babe-4a14-9f51-317d11e49a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Dynamics\shared">
+      <UniqueIdentifier>{ade32263-4268-4956-8711-399d6a2e8254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Dynamics\ConstraintSolver">
+      <UniqueIdentifier>{b2285542-23cd-4dfe-8941-6b4eac935083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Geometry\Bullet3Geometry">
+      <UniqueIdentifier>{6960c749-b063-493f-8c72-c76981d188a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\BroadphaseCollision">
+      <UniqueIdentifier>{ef443647-7c51-4d6f-84d6-220a767f0d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\NarrowphaseCollision">
+      <UniqueIdentifier>{0b6c2d9d-8979-4b9b-b215-3d7bb37b9630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\ParallelPrimitives">
+      <UniqueIdentifier>{a31f4eed-559a-4754-ad88-3227b09ce9d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\Raycast">
+      <UniqueIdentifier>{46943dc1-935f-41ba-bba4-7a4711d8a56a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\RigidBody">
+      <UniqueIdentifier>{ddf050ea-e09d-4d6b-983d-1b343e87e40f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\BroadphaseCollision\kernels">
+      <UniqueIdentifier>{f0351b37-4b17-430a-bc05-2bfa40f154ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels">
+      <UniqueIdentifier>{cfd87f54-1735-435d-83b7-689ba08ef9be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\RigidBody\kernels">
+      <UniqueIdentifier>{1f5deb08-8a4c-4312-96e5-32de4c045b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\Raycast\kernels">
+      <UniqueIdentifier>{04529ed9-88bb-4b5d-8ef9-75e14a91bb46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels">
+      <UniqueIdentifier>{47a7a295-e92d-434f-9e95-5b99cd34f2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Serialize\Bullet2FileLoader">
+      <UniqueIdentifier>{9455f00c-da95-413d-807d-c22c3b62e57c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3Serialize\Bullet2FileLoader\autogenerated">
+      <UniqueIdentifier>{becee555-3c85-4f50-8b15-d387a379a8f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision\BroadphaseCollision">
+      <UniqueIdentifier>{c4b31ff3-ad3e-4a70-a568-c203df7c5bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision\CollisionDispatch">
+      <UniqueIdentifier>{aa0ec984-bb6a-4fee-897f-011abf3135f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision\CollisionShapes">
+      <UniqueIdentifier>{13f28b90-bbff-40f9-9854-7f0365876115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision\Gimpact">
+      <UniqueIdentifier>{4ee58c38-8715-496b-ab26-1088fa66281c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletCollision\NarrowPhaseCollision">
+      <UniqueIdentifier>{54cbdd66-067c-48b8-8ea4-900c2fd2eb20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\Character">
+      <UniqueIdentifier>{ef12b9c4-af88-47bf-bd5b-e10d23fada45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\ConstraintSolver">
+      <UniqueIdentifier>{2fe8b465-f80f-4f3f-bba2-d484da0deae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\Dynamics">
+      <UniqueIdentifier>{345247e9-b6b1-4e64-93ba-45677292a37b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\Featherstone">
+      <UniqueIdentifier>{8d29ea78-e85f-41f2-b639-f54dd3c516d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\MLCPSolvers">
+      <UniqueIdentifier>{c3e3d391-6548-446e-b90e-f6c66e00b264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletDynamics\Vehicle">
+      <UniqueIdentifier>{5fda7d3d-0d56-45c0-b42b-d7030f477e8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\BulletInverseDynamics\details">
+      <UniqueIdentifier>{8d6c1e13-3702-4eb5-83fc-de957adc8642}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\physics\Bullet3OpenCL\Initialize">
+      <UniqueIdentifier>{a6489db0-f2db-4519-bb1f-3b1b5fd171e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Physics">
+      <UniqueIdentifier>{b88bac2d-3779-4408-ba0e-8e93571db415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern">
+      <UniqueIdentifier>{f806271e-3039-44a0-bf02-b5866b3dd0a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extern\WindowsSocket">
+      <UniqueIdentifier>{1c791a7b-0524-4cca-9327-8f87da698764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Mono">
+      <UniqueIdentifier>{38e4a4a1-f471-4251-bc11-8810de2e0ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\RenderSystem">
+      <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\assbin_chunks.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Bitmap.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BlobIOSystem.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ByteSwapper.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultProgressHandler.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Defines.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Exceptional.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXCompileConfig.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImportSettings.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXParser.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileLogStream.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileSystemFilter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenericProperty.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\HalfLifeFileData.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Hash.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Importer.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\IOStreamBuffer.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LineSplitter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LogAux.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Macros.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MathFunctions.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MemoryIOWrapper.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ParsingUtils.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PolyTools.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Profiler.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePrivate.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StdOStreamLogStream.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StepExporter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFile.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamReader.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamWriter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringComparison.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringUtils.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Subdivision.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TinyFormatter.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Vertex.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\XMLTools.h">
+      <Filter>3rd\code</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\poppack1.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pstdint.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pushpack1.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ai_assert.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\anim.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\camera.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cexport.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cfileio.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cimport.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\config.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\DefaultLogger.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\defs.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Exporter.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Importer.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\importerdesc.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOStream.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOSystem.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\light.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Logger.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\LogStream.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\material.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\mesh.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\metadata.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\NullLogger.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\postprocess.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ProgressHandler.hpp">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\scene.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\texture.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\types.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\version.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\egl.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\eglplatform.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2ext.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2platform.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\autolink.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\config.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\features.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\forwards.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\json.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\reader.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\value.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\writer.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kd.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kdplatform.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\KHR_thread_storage.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\DDLNode.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLCommon.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLExport.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParser.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParserUtils.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\Value.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\en.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\error.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\biginteger.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\diyfp.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\dtoa.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\ieee754.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\itoa.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\meta.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\pow10.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\stack.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strfunc.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strtod.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\swap.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\inttypes.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\stdint.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\allocators.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\document.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodedstream.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodings.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filereadstream.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filewritestream.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorybuffer.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorystream.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\pointer.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\prettywriter.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\rapidjson.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\reader.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\stringbuffer.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\writer.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\ConvertUTF.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\deflate.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\gzguts.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffast.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffixed.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inflate.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inftrees.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\png.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngconf.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngdebug.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnginfo.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnglibconf.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngpriv.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngstruct.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\revision.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Singleton.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinystr.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyutil.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyxml.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\trees.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\types.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Utils.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vmath.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vvision.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.in.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zlib.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zutil.h">
+      <Filter>3rd\header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
+      <Filter>EngineCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\include\Include.h">
+      <Filter>EngineCore\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimationClip.hpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DSkinAnimation.hpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Config\Table.h">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableBase.h">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableManager.h">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableRegister.h">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DEffect.hpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DEffectFactory.hpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.hpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Light\E3DLight.hpp">
+      <Filter>EngineCore\src\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.h">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.hpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.hpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTransform.hpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticle.h">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleAffector.hpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleEmitter.hpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleFactory.hpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.hpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DScene.hpp">
+      <Filter>EngineCore\src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\ClassFactory.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDelegate.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DEncoding.hpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Utils\E3DUtil.hpp">
+      <Filter>EngineCore\src\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.hpp">
+      <Filter>EngineCore\src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDebug.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.h">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\UI\Widget\UIWidget.h">
+      <Filter>EngineCore\src\UI\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\UI\UICamera.h">
+      <Filter>EngineCore\src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.h">
+      <Filter>EngineCore\src\UI\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\UI\UISystem.h">
+      <Filter>EngineCore\src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.h">
+      <Filter>EngineCore\src\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\btBulletCollisionCommon.h">
+      <Filter>3rd\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\btBulletDynamicsCommon.h">
+      <Filter>3rd\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3BroadphaseCallback.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3OverlappingPair.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\shared\b3Aabb.h">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3Config.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3Contact4.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3RaycastInfo.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3RigidBodyCL.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhSubtreeInfoData.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhTraversal.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3ClipFaces.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3Collidable.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3Contact4Data.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactConvexConvexSAT.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactSphereSphere.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3ConvexPolyhedronData.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3FindConcaveSatAxis.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3FindSeparatingAxis.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3MprPenetration.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3NewContactReduction.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3QuantizedBvhNodeData.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3ReduceContacts.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3RigidBodyData.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\shared\b3UpdateAabbs.h">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3AlignedAllocator.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3AlignedObjectArray.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3CommandLineArgs.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3FileUtils.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3HashMap.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Logging.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Matrix3x3.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3MinMax.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3PoolAllocator.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3QuadWord.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Quaternion.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Random.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3ResizablePool.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Scalar.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3StackAlloc.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Transform.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3TransformUtil.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Vector3.h">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3Float4.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3Int2.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3Int4.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3Mat3x3.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3PlatformDefinitions.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\shared\b3Quat.h">
+      <Filter>3rd\physics\Bullet3Common\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3ContactSolverInfo.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3FixedConstraint.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3Generic6DofConstraint.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3JacobianEntry.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3PgsJacobiSolver.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3Point2PointConstraint.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3SolverBody.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3SolverConstraint.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3TypedConstraint.h">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\b3CpuRigidBodyPipeline.h">
+      <Filter>3rd\physics\Bullet3Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\shared\b3ContactConstraint4.h">
+      <Filter>3rd\physics\Bullet3Dynamics\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\shared\b3ConvertConstraint4.h">
+      <Filter>3rd\physics\Bullet3Dynamics\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\shared\b3Inertia.h">
+      <Filter>3rd\physics\Bullet3Dynamics\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\shared\b3IntegrateTransforms.h">
+      <Filter>3rd\physics\Bullet3Dynamics\shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3AabbUtil.h">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3ConvexHullComputer.h">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3GeometryUtil.h">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3GrahamScan2dConvexHull.h">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\kernels\gridBroadphaseKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\kernels\parallelLinearBvhKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\kernels\sapKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuBroadphaseInterface.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuGridBroadphase.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuParallelLinearBvh.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuParallelLinearBvhBroadphase.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuSapBroadphase.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3SapAabb.h">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\bvhTraversal.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\mprKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\primitiveContacts.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\satClipHullContacts.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\satConcaveKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\kernels\satKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3BvhInfo.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3ContactCache.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3ConvexHullContact.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3ConvexPolyhedronCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3GjkEpa.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3OptimizedBvh.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3QuantizedBvh.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3StridingMeshInterface.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3SupportMappings.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3TriangleCallback.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3TriangleIndexVertexArray.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3VectorFloat4.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3VoronoiSimplexSolver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\batchingKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\batchingKernelsNew.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\integrateKernel.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\jointSolver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\solveContact.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\solveFriction.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\solverSetup.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\solverSetup2.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\solverUtils.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\kernels\updateAabbsKernel.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuConstraint4.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuGenericConstraint.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuJacobiContactSolver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuNarrowPhase.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuNarrowPhaseInternalData.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuPgsConstraintSolver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuPgsContactSolver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuRigidBodyPipeline.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuRigidBodyPipelineInternalData.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuSolverBody.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuSolverConstraint.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3Solver.h">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Raycast\kernels\rayCastKernels.h">
+      <Filter>3rd\physics\Bullet3OpenCL\Raycast\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Raycast\b3GpuRaycast.h">
+      <Filter>3rd\physics\Bullet3OpenCL\Raycast</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\BoundSearchKernelsCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\CopyKernelsCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\FillKernelsCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\PrefixScanKernelsCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\PrefixScanKernelsFloat4CL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\kernels\RadixSort32KernelsCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives\kernels</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3BoundSearchCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3BufferInfoCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3FillCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3LauncherCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3OpenCLArray.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3PrefixScanCL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3PrefixScanFloat4CL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3RadixSort32CL.h">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\autogenerated\bullet2.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader\autogenerated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3BulletFile.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Chunk.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Common.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Defines.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3DNA.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3File.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Serializer.h">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btAxisSweep3.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDbvt.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDispatcher.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btQuantizedBvh.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBoxBoxDetector.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionConfiguration.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionDispatcher.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionObject.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionWorld.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionWorldImporter.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btGhostObject.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btManifoldResult.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSimulationIslandManager.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btUnionFind.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\SphereTriangleDetector.h">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBox2dShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBoxShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCapsuleShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCollisionMargin.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCollisionShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCompoundShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConcaveShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConeShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvex2dShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexHullShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexInternalShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexPointCloudShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexPolyhedron.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCylinderShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btEmptyShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMaterial.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMinkowskiSumShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMultiSphereShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btOptimizedBvh.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btShapeHull.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btSphereShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btStaticPlaneShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btStridingMeshInterface.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTetrahedronShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleBuffer.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleCallback.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleInfoMap.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleMesh.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleMeshShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btUniformScalingShape.h">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btBoxCollision.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btClipPolygon.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btCompoundFromGimpact.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btContactProcessing.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btContactProcessingStructs.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGenericPoolAllocator.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGeometryOperations.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactBvh.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactBvhStructs.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactMassUtil.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactQuantizedBvh.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactQuantizedBvhStructs.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactShape.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btQuantization.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btTriangleShapeEx.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_array.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_basic_geometry_operations.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_bitset.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_box_collision.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_box_set.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_clip_polygon.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_contact.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_geom_types.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_geometry.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_hash_table.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_linear_math.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_math.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_memory.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_radixsort.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_tri_collision.h">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btComputeGjkEpaPenetration.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btConvexCast.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkCollisionDescription.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkEpa3.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btMprPenetration.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btPointCollector.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Character\btCharacterControllerInterface.h">
+      <Filter>3rd\physics\BulletDynamics\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Character\btKinematicCharacterController.h">
+      <Filter>3rd\physics\BulletDynamics\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btConeTwistConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btConstraintSolver.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btContactConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btContactSolverInfo.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btFixedConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGearConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btHinge2Constraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btHingeConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btJacobianEntry.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSliderConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSolverBody.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSolverConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btTypedConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btUniversalConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btActionInterface.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btDynamicsWorld.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btRigidBody.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btSimpleDynamicsWorld.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btSimulationIslandManagerMt.h">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBody.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyGearConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyJointFeedback.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyJointMotor.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyLink.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyLinkCollider.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyPoint2Point.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodySliderConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodySolverConstraint.h">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btDantzigLCP.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btDantzigSolver.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btLemkeSolver.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btMLCPSolver.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btMLCPSolverInterface.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btPATHSolver.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btSolveProjectedGaussSeidel.h">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Vehicle\btRaycastVehicle.h">
+      <Filter>3rd\physics\BulletDynamics\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Vehicle\btVehicleRaycaster.h">
+      <Filter>3rd\physics\BulletDynamics\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Vehicle\btWheelInfo.h">
+      <Filter>3rd\physics\BulletDynamics\Vehicle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\IDEigenInterface.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\IDLinearMathInterface.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\IDMatVec.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\MultiBodyTreeImpl.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\MultiBodyTreeInitCache.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDConfig.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDConfigBuiltin.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDConfigEigen.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDErrorMessages.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDMath.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\MultiBodyTree.hpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btDefaultSoftBodySolver.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBody.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyData.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyHelpers.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyInternals.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodySolvers.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodySolverVertexBuffer.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftMultiBodyDynamicsWorld.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftRigidCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftRigidDynamicsWorld.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftSoftCollisionAlgorithm.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSparseSDF.h">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\clew\clew.h">
+      <Filter>3rd\physics\clew</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btAabbUtil2.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btAlignedAllocator.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btAlignedObjectArray.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btConvexHull.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btConvexHullComputer.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btCpuFeatureUtility.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btDefaultMotionState.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btGeometryUtil.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btGrahamScan2dConvexHull.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btHashMap.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btIDebugDraw.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btList.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btMatrix3x3.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btMatrixX.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btMinMax.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btMotionState.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btPolarDecomposition.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btPoolAllocator.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btQuadWord.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btQuaternion.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btQuickprof.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btRandom.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btScalar.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btSerializer.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btSpatialAlgebra.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btStackAlloc.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btThreads.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btTransform.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btTransformUtil.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btVector3.h">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Initialize\b3OpenCLInclude.h">
+      <Filter>3rd\physics\Bullet3OpenCL\Initialize</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Initialize\b3OpenCLUtils.h">
+      <Filter>3rd\physics\Bullet3OpenCL\Initialize</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.hpp">
+      <Filter>EngineCore\src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.h">
+      <Filter>EngineCore\src\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetCommand.h">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetService.h">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.h">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\RenderSystem\Texture\E3DCubeMapTexture.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSphere.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.h">
+      <Filter>EngineCore\src\Mono</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h">
+      <Filter>EngineCore\src\Mono</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.h">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\adler32.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Assimp.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssimpCExport.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Bitmap.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\compress.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertUTF.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\crc32.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DDLNode.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultLogger.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\deflate.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\example.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Exporter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXAnimation.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXBinaryTokenizer.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDeformer.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMaterial.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXModel.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXNodeAttribute.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXParser.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzclose.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzlib.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzread.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzwrite.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Importer.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImporterRegistry.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\infback.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inffast.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inflate.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inftrees.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_reader.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_value.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_writer.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLCommon.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLExport.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLParser.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\png.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngerror.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngget.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngmem.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngpread.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngread.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrio.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrtran.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrutil.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngset.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngtrans.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwio.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwrite.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwtran.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwutil.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PostStepRegistry.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\scene.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StepExporter.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Subdivision.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyutil.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxml.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlerror.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\trees.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\uncompr.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Value.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Version.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\zutil.c">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimationClip.cpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DSkinAnimation.cpp">
+      <Filter>EngineCore\src\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Config\Table.cpp">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Config\TableBase.cpp">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Config\TableManager.cpp">
+      <Filter>EngineCore\src\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DEffect.cpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DEffectFactory.cpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.cpp">
+      <Filter>EngineCore\src\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Light\E3DLight.cpp">
+      <Filter>EngineCore\src\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTransform.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticle.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleAffector.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleEmitter.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleFactory.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DScene.cpp">
+      <Filter>EngineCore\src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Utils\E3DUtil.cpp">
+      <Filter>EngineCore\src\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.cpp">
+      <Filter>EngineCore\src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.cpp">
+      <Filter>EngineCore\src\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\UI\Widget\UIWidget.cpp">
+      <Filter>EngineCore\src\UI\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\UI\UICamera.cpp">
+      <Filter>EngineCore\src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.cpp">
+      <Filter>EngineCore\src\UI\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\UI\UISystem.cpp">
+      <Filter>EngineCore\src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.cpp">
+      <Filter>EngineCore\src\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.cpp">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.cpp">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.cpp">
+      <Filter>3rd\physics\Bullet3Collision\BroadPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.cpp">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.cpp">
+      <Filter>3rd\physics\Bullet3Collision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3AlignedAllocator.cpp">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Logging.cpp">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Common\b3Vector3.cpp">
+      <Filter>3rd\physics\Bullet3Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3FixedConstraint.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3Generic6DofConstraint.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3PgsJacobiSolver.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3Point2PointConstraint.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\ConstraintSolver\b3TypedConstraint.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Dynamics\b3CpuRigidBodyPipeline.cpp">
+      <Filter>3rd\physics\Bullet3Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3ConvexHullComputer.cpp">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Geometry\b3GeometryUtil.cpp">
+      <Filter>3rd\physics\Bullet3Geometry\Bullet3Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuGridBroadphase.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuParallelLinearBvh.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuParallelLinearBvhBroadphase.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\BroadphaseCollision\b3GpuSapBroadphase.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3ContactCache.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3ConvexHullContact.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3GjkEpa.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3OptimizedBvh.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3QuantizedBvh.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3StridingMeshInterface.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3TriangleCallback.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3TriangleIndexVertexArray.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\NarrowphaseCollision\b3VoronoiSimplexSolver.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\NarrowphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuGenericConstraint.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuJacobiContactSolver.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuNarrowPhase.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuPgsConstraintSolver.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuPgsContactSolver.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3GpuRigidBodyPipeline.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\RigidBody\b3Solver.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Raycast\b3GpuRaycast.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\Raycast</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3BoundSearchCL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3FillCL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3LauncherCL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3PrefixScanCL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3PrefixScanFloat4CL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\ParallelPrimitives\b3RadixSort32CL.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\ParallelPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3BulletFile.cpp">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Chunk.cpp">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3DNA.cpp">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3File.cpp">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\b3Serializer.cpp">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDbvt.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btDispatcher.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp">
+      <Filter>3rd\physics\BulletCollision\BroadphaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionObject.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionWorld.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCollisionWorldImporter.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btGhostObject.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btManifoldResult.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\btUnionFind.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionDispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBox2dShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBoxShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCapsuleShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCollisionShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCompoundShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConcaveShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConeShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvex2dShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexHullShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexInternalShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexPointCloudShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btCylinderShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btEmptyShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMinkowskiSumShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btMultiSphereShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btOptimizedBvh.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btShapeHull.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btSphereShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTetrahedronShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleBuffer.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleCallback.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleMesh.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\CollisionShapes\btUniformScalingShape.cpp">
+      <Filter>3rd\physics\BulletCollision\CollisionShapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btContactProcessing.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGenericPoolAllocator.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactBvh.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactQuantizedBvh.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btGImpactShape.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\btTriangleShapeEx.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_box_set.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_contact.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_memory.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\Gimpact\gim_tri_collision.cpp">
+      <Filter>3rd\physics\BulletCollision\Gimpact</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp">
+      <Filter>3rd\physics\BulletCollision\NarrowPhaseCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Character\btKinematicCharacterController.cpp">
+      <Filter>3rd\physics\BulletDynamics\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btConeTwistConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btContactConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btFixedConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGearConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btHinge2Constraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btHingeConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSliderConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btTypedConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\ConstraintSolver\btUniversalConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\ConstraintSolver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.cpp">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.cpp">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btRigidBody.cpp">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btSimpleDynamicsWorld.cpp">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Dynamics\btSimulationIslandManagerMt.cpp">
+      <Filter>3rd\physics\BulletDynamics\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBody.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyGearConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyJointMotor.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodyPoint2Point.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Featherstone\btMultiBodySliderConstraint.cpp">
+      <Filter>3rd\physics\BulletDynamics\Featherstone</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btDantzigLCP.cpp">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.cpp">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\MLCPSolvers\btMLCPSolver.cpp">
+      <Filter>3rd\physics\BulletDynamics\MLCPSolvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Vehicle\btRaycastVehicle.cpp">
+      <Filter>3rd\physics\BulletDynamics\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletDynamics\Vehicle\btWheelInfo.cpp">
+      <Filter>3rd\physics\BulletDynamics\Vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\MultiBodyTreeImpl.cpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\details\MultiBodyTreeInitCache.cpp">
+      <Filter>3rd\physics\BulletInverseDynamics\details</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\IDMath.cpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletInverseDynamics\MultiBodyTree.cpp">
+      <Filter>3rd\physics\BulletInverseDynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btDefaultSoftBodySolver.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBody.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyHelpers.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftMultiBodyDynamicsWorld.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftRigidCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftRigidDynamicsWorld.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\BulletSoftBody\btSoftSoftCollisionAlgorithm.cpp">
+      <Filter>3rd\physics\BulletSoftBody</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\clew\clew.c">
+      <Filter>3rd\physics\clew</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btAlignedAllocator.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btConvexHull.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btConvexHullComputer.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btGeometryUtil.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btPolarDecomposition.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btQuickprof.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btSerializer.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btSerializer64.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btThreads.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\btVector3.cpp">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3OpenCL\Initialize\b3OpenCLUtils.cpp">
+      <Filter>3rd\physics\Bullet3OpenCL\Initialize</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.cpp">
+      <Filter>EngineCore\src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.cpp">
+      <Filter>EngineCore\src\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\NetService.cpp">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\TCPClient.cpp">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.cpp">
+      <Filter>extern\WindowsSocket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSphere.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.cpp">
+      <Filter>EngineCore\src\Mono</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp">
+      <Filter>EngineCore\src\Mono</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Engine\EngineCore\3rd\code\.editorconfig">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalarray.inl">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalmap.inl">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\code\json_valueiterator.inl">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\code\sconscript">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.inl">
+      <Filter>3rd\code</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\.editorconfig">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\README">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\zconf.h.cmakein">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\zlib.pc.cmakein">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\material.inl">
+      <Filter>3rd\header</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\premake4.lua">
+      <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
+    </None>
+    <None Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\premake4.lua">
+      <Filter>3rd\physics\LinearMath</Filter>
+    </None>
+  </ItemGroup>
+</Project>

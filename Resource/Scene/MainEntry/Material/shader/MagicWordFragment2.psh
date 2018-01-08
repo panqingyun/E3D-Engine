@@ -1,0 +1,29 @@
+precision highp float;
+varying lowp vec4 DestinationColor; // 1
+varying lowp vec2 v_coord;
+uniform sampler2D myTexture0;
+uniform float blur;
+
+void main(void) { // 2
+    vec4 u_textColor = vec4(1.0,1.0,1.0,1.0);
+    vec4 u_effectColor  = vec4(0.0,0.0,0.0,1.0);
+    
+    vec4 c = texture2D(myTexture0, v_coord);
+    float fontAlpha = c.r;
+    float outlineAlpha = c.g;
+    if ((fontAlpha + outlineAlpha) > 0.0){
+        vec4 color = u_textColor * fontAlpha + u_effectColor * (1.0 - fontAlpha);
+        if (color.r < 0.3) {
+            //a = 0.2;
+            gl_FragColor = vec4(0.0,0.0,0.0,max(fontAlpha,outlineAlpha)*0.6);
+        }
+        else
+        {
+            gl_FragColor = vec4( color.rgb,max(fontAlpha,outlineAlpha)*color.a)*DestinationColor;
+        }
+        
+    }
+    else {
+        discard;
+    }
+}

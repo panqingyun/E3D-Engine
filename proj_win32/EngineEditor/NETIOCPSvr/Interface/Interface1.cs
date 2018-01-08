@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace AsyncSocketServer
+{
+    public interface IServer
+    {
+        void Init();
+        void Tick(float deltaTime);
+        void ShutDown();
+    }
+}

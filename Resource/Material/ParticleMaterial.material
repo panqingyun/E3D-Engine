@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-      	<ConfigItem ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 1/>
-		<ConfigItem ID=2 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
+      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 1/>
+		<Item ID=2 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -30,7 +30,7 @@
 			BONEWEIGHT		骨骼权重
 			TEXTURECOORD   纹理坐标
 		--> 
-		<ConfigItem 
+		<Item 
 					ID				= 1 
 					VertexShader	= "shader/ParticleVertex.vsh" 
 					FragmentShader	= "shader/ParticleFragment.fsh" 	

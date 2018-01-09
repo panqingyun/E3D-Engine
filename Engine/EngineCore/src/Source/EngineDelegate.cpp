@@ -60,7 +60,7 @@ namespace E3DEngine
 	{
 		if (m_mapTableManager.find(id) == m_mapTableManager.end())
 		{
-			return  nullptr;
+			m_mapTableManager[id] = TableRegister::RegisterAllTable(id.c_str());
 		}
 		return m_mapTableManager[id];
 	}	
@@ -97,8 +97,6 @@ namespace E3DEngine
 		Physics::GetInstance().InitPhysics();
 		Timer::Init();
 		Debug::Init();
-		m_pParticleSystem = new ParticleSystem;
-		m_pParticleSystem->Initilize();
 		m_bIsInited = true;
 	}
 
@@ -113,7 +111,6 @@ namespace E3DEngine
 			RootTransform->Update();
 		}
 
-		m_pParticleSystem->Update(deltaTime);
 		AutoreleasePool::GetInstance().Update();
 		Application::UpdateApp(deltaTime);
 	}
@@ -199,8 +196,6 @@ namespace E3DEngine
 		{
 			RootTransform->Destory();
 		}
-		
-		m_pParticleSystem->Destory();
 		
 		for(std::map<std::string, TableManager*>::iterator it = m_mapTableManager.begin();
 			it != m_mapTableManager.end(); ++it)

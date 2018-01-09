@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<!--
-         1.泡泡粒子材质  3.下雨粒子材质 7.爱心粒子材质  8.萤火虫粒子材质  9.星星粒子材质  11.荧光粒子材质   12.拖尾火焰粒子材质 
-         -->
-		   <!--
-         2.蝴蝶粒子材质 5.花瓣粒子材质 6.音符粒子材质
-         -->
-		  <!--
-         4.蓝色火焰粒子材质  10.红色火焰粒子材质
-         -->
       	<ConfigItem ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 1/>
 		<ConfigItem ID=2 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
 	</MaterialConfig>

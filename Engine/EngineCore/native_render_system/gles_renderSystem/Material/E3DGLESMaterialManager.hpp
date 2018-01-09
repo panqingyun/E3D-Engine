@@ -17,8 +17,9 @@ namespace E3DEngine
 		~GLES_MaterialManager()= default;
 
 	public:
-		Material * GetMaterial(int id);
-		Material * CreateMaterial(std::string path);
+		virtual Material * GetMaterial(int id) override;
+		virtual Material * GetMaterial(string path) override;
+		Material * CreateMaterial(std::string path) override;
 	};
 }
 

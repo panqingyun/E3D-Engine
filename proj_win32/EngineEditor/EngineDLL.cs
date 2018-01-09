@@ -32,7 +32,7 @@ namespace EngineEditor
         /// 初始化
         /// </summary>
         [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void SetupGLESRenderSystem(IntPtr hWnd, int width, int height);
+        public static extern void SetupRenderSystem(IntPtr hWnd, int width, int height);
 
         /// <summary>
         /// 开始

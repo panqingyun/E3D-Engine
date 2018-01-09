@@ -126,7 +126,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
+      <ImportLibrary>..\..\..\..\..\proj_win32\lib\$(TargetName).lib</ImportLibrary>
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>

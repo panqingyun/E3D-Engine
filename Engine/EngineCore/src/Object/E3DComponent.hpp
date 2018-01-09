@@ -55,7 +55,6 @@ namespace E3DEngine
 		virtual void OnCollisionEnter(GameObject* go);
     public:
         GameObject *	gameObject;
-		std::string		_TypeName;
 		std::string 	_Tag;
 		CTransform *    Transform;
     };

@@ -21,6 +21,11 @@ namespace E3DEngine
 	class ParticleSystem implement ISystem
 	{
 	public:		
+		static ParticleSystem& GetInstance()
+		{
+			static ParticleSystem _ins;
+			return _ins;
+		}
 		ParticleSystem() = default;
 		virtual ~ParticleSystem() override;
 		virtual void Initilize() override;
@@ -32,17 +37,14 @@ namespace E3DEngine
 		virtual std::string GetName() override;
 		virtual void ClearParticle();
 		virtual void CameraRotate(mat4f rotate);
-		std::vector<Component*> * ActiveParticle(QWORD particleID, std::string cfgName, vec3f position = vec3f(0, 0, 0), bool bActive = true);
+		std::vector<ParticleGroup*> * ActiveParticle( std::string cfgName);
 
 	protected:
 		void createParticleAffector(ParticleConfig *config, std::string cfgName, ParticleGroup * particle);
-		void createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle, vec3f position);
-		void initParticleLayer(ParticleConfig *config, ParticleGroup * particle, bool bActive);
-		void initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config, QWORD particleID);
+		void createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle);
+		void initParticleLayer(ParticleConfig *config, ParticleGroup * particle);
+		void initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config);
 
-	private:
-		std::map<QWORD, std::vector<ParticleEmitter*>> m_ParticleEmitters;
-		std::map<QWORD, std::vector<ParticleAffector*>> m_ParticleAffectors;
 	};
 }
 #endif /* ParticleSystem_hpp */

@@ -319,6 +319,7 @@ namespace E3DEngine
 		std::vector<Component*> * GetComponents(std::string type_name);
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
+		void RemoveComponent(UINT id);
 		void RemoveComponent(Component *com);
 		virtual void SetMaterial(Material *material);
 		virtual Material * GetMaterial();
@@ -355,6 +356,7 @@ namespace E3DEngine
 		virtual void ComponentAdded(Component * component);
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue();
+		virtual bool removeComponentFromListByID(std::vector<Component*> &comList, UINT id);
 	public:
 		object			Tag;
 		bool			IsActive;

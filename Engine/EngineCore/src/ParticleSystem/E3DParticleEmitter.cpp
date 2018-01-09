@@ -127,7 +127,7 @@ namespace E3DEngine
             // 随机粒子的Textures
             if (m_pParent->m_pMaterial == nullptr)
             {
-                m_pParent->m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_pParent->m_MaterialID);
+                m_pParent->m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_pParent->m_MaterialName);
             }
             /*size_t num = m_pParent->m_pMaterial->Textures.size();
              int _n = rand() % num;

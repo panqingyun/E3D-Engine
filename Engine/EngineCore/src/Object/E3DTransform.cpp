@@ -14,7 +14,10 @@ namespace E3DEngine
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
 		Position = position;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
     }
 	
 	void CTransform::SetPosition(float x, float y, float z)
@@ -23,7 +26,10 @@ namespace E3DEngine
 		vec3f position(x, y, z);
 		m_bStateChange = true;
 		Position = position;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
 	}
 	
     void CTransform::SetRotation(Quatf rotation)
@@ -32,7 +38,10 @@ namespace E3DEngine
 		m_bStateChange = true;
 		Rotation = rotation; 
 		RotationEuler = Rotation.toEulerAngles();
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
     }
     
     void CTransform::SetRotation(float x, float y,float z)
@@ -42,7 +51,10 @@ namespace E3DEngine
 		m_bStateChange = true;
 		RotationEuler = vec3f(x, y, z);
 		Rotation = rotate;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
     }
     
     void CTransform::SetRotation(mat4f rotateMatrix)
@@ -52,7 +64,10 @@ namespace E3DEngine
 		m_bStateChange = true;
 		Rotation = rotate;
 		RotationEuler = Rotation.toEulerAngles();
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
     }
     
 	void CTransform::SetRotation(float x, float y, float z, float w)
@@ -69,7 +84,10 @@ namespace E3DEngine
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
 		Scale = scale;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
     }
 	
 	void CTransform::SetScale(float x, float y, float z)
@@ -79,7 +97,10 @@ namespace E3DEngine
 		Scale.x = x;
 		Scale.y = y;
 		Scale.z = z;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
 	}
 
 	void CTransform::AddChild(QWORD objID, E3DEngine::CTransform *child)
@@ -215,7 +236,10 @@ namespace E3DEngine
 		Rotation = Quatf::frommat(matrix);
 		// TODO scale
 		m_bStateChange = true;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
 	}
 
 	void CTransform::SetRotation(vec3f rotate)
@@ -225,7 +249,10 @@ namespace E3DEngine
 		m_bStateChange = true;
 		RotationEuler = rotate;
 		Rotation = rotateQuat;
-		gameObject->TransformChange();
+		if (gameObject != nullptr)
+		{
+			gameObject->TransformChange();
+		}
 	}
 	
 	void CTransform::translation()

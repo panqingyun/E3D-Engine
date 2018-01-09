@@ -12,6 +12,9 @@ namespace E3DEngine
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Component addComponent(string comName);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        protected extern void removeComponent(Component com);
         
         public bool Active
         {
@@ -44,6 +47,15 @@ namespace E3DEngine
         public GameObject()
         {
             
+        }
+
+        public void RemoveComponent(Component com)
+        {
+            if(component_dic.ContainsKey(com.GetType()))
+            {
+                removeComponent(com);
+                component_dic.Remove(com.GetType());
+            }
         }
 
         public T GetComponent<T>() where T : Component

@@ -109,6 +109,8 @@ void E3DEngine::Box::Create(float l, float w, float h)
 void E3DEngine::Box::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
+	m_pRenderer->EnableDepthTest = true;
+
 	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 	{
 		// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer

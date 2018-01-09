@@ -75,6 +75,8 @@ namespace E3DEngine
 
 		void SetRenderTexture(Render2Texture * rtt);
 
+		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
+
 		/** return the projection matrix of the camera*/
 		const mat4f& GetProjectionMatrix() {return m_mProjection;}
 		

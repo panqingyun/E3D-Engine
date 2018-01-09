@@ -357,7 +357,7 @@ namespace E3DEngine
 			Name = "ParticleConfig";
 		}
 		DECLARE_MEMBER(ParticleConfig, int		, ID);
-		DECLARE_MEMBER(ParticleConfig, int		, Material);
+		DECLARE_MEMBER(ParticleConfig, string	, Material);
 		DECLARE_MEMBER(ParticleConfig, string	, Affector);
 		DECLARE_MEMBER(ParticleConfig, string	, Emitter);
 		DECLARE_MEMBER(ParticleConfig, string	, ElementClassName);
@@ -371,7 +371,7 @@ namespace E3DEngine
 		virtual void registProperty() override
 		{
 			SAVE_MEMBER(ID				, int);
-			SAVE_MEMBER(Material		, int);
+			SAVE_MEMBER(Material		, string);
 			SAVE_MEMBER(DisplayCamera	, int);
 			SAVE_MEMBER(LockEmitterMove	, int);
 			SAVE_MEMBER(fShaderIndex	, int);

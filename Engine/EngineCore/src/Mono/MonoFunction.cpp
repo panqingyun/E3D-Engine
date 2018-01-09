@@ -17,6 +17,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	set_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
+	REGISTER_INTERNAL_CALL(GameObject,  removeComponent);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
@@ -32,29 +33,12 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
 	REGISTER_INTERNAL_CALL(Box,			createBox);
 	REGISTER_INTERNAL_CALL(RigidBody,	addRigidBody);
-}
-
-inline void * getCppObject(CS_OBJECT obj)
-{
-	if (obj == nullptr)
-	{
-		return nullptr;
-	}
-	MonoClass *klass = mono_object_get_class(obj);
-	MonoClassField *  field = mono_class_get_field_from_name(klass, CPP_OBJ_PTR_NAME);
-
-	if (field == nullptr)
-	{
-		return nullptr;
-	}
-	void * value = nullptr;
-	mono_field_get_value(obj, field, &value);
-	return value;
+	REGISTER_INTERNAL_CALL(ParticleSystem	, createParticle);
 }
 
 VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
 {
-	Camera * camera = static_cast<Camera*>(getCppObject(cs_obj));
+	Camera * camera = getCppObject<Camera>(cs_obj);
 	if (camera == nullptr)
 	{
 		return;
@@ -64,7 +48,7 @@ VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
 
 VOID _4_PARAM_FUNCTION(Transform, getPosition, CS_OBJECT, obj, float&, x, float&, y, float&, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -76,7 +60,7 @@ VOID _4_PARAM_FUNCTION(Transform, getPosition, CS_OBJECT, obj, float&, x, float&
 
 VOID _4_PARAM_FUNCTION(Transform, setPosition, CS_OBJECT, obj, float, x, float, y, float, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -86,7 +70,7 @@ VOID _4_PARAM_FUNCTION(Transform, setPosition, CS_OBJECT, obj, float, x, float, 
 
 VOID _4_PARAM_FUNCTION(Transform, getScale, CS_OBJECT, obj, float&, x, float&, y, float&, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -99,7 +83,7 @@ VOID _4_PARAM_FUNCTION(Transform, getScale, CS_OBJECT, obj, float&, x, float&, y
 
 VOID _4_PARAM_FUNCTION(Transform, setScale, CS_OBJECT, obj, float, x, float, y, float, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -110,7 +94,7 @@ VOID _4_PARAM_FUNCTION(Transform, setScale, CS_OBJECT, obj, float, x, float, y, 
 
 VOID _4_PARAM_FUNCTION(Transform, getRotation, CS_OBJECT, obj, float&, x, float&, y, float&, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -123,7 +107,7 @@ VOID _4_PARAM_FUNCTION(Transform, getRotation, CS_OBJECT, obj, float&, x, float&
 
 VOID _4_PARAM_FUNCTION(Transform, setRotation, CS_OBJECT, obj, float, x, float, y, float, z)
 {
-	CTransform* transform = static_cast<CTransform*>(getCppObject(obj));
+	CTransform* transform = getCppObject<CTransform>(obj);
 	if (transform == nullptr)
 	{
 		return;
@@ -166,7 +150,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera, CS_STRING, name)
 
 VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float, g, float, b, float, a)
 {
-	Camera * camera = static_cast<Camera*>(getCppObject(cs_boj));
+	Camera * camera = getCppObject<Camera>(cs_boj);
 	if (camera == nullptr)
 	{
 		return;
@@ -205,7 +189,7 @@ VOID _1_PARAM_FUNCTION(Scene, destoryScene, UINT, sceneId)
 
 VOID _2_PARAM_FUNCTION(RigidBody, addRigidBody, CS_OBJECT, rigibody, CS_OBJECT, _collider)
 {
-	Collider * collider = static_cast<Collider*>(getCppObject(_collider));
+	Collider * collider = getCppObject<Collider>(_collider);
 
 	if (collider == nullptr || rigibody == nullptr)
 	{
@@ -262,29 +246,40 @@ CS_OBJECT _3_PARAM_FUNCTION(Box, createBox, float, l, float, w, float, h)
 	return box->GetMonoBehaviour()->GetMonoObject();
 }
 
+VOID _1_PARAM_FUNCTION(GameObject, removeComponent, CS_OBJECT, cs_obj)
+{
+	Component *com = getCppObject<Component>(cs_obj);
+
+	if (com == nullptr)
+	{
+		return;
+	}
+
+	com->gameObject->RemoveComponent(com);
+}
 
 CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING, class_name)
 {
-	GameObject *go = static_cast<GameObject*>(getCppObject(obj));
+	GameObject *go = getCppObject<GameObject>(obj);
 
 	if (go == nullptr)
 	{
 		return nullptr;
 	}
-
-	std::string cName = Convert::ToString(class_name);
+	std::string full_name = Convert::ToString(class_name);
+	std::string cName = "";
 	std::string sName = "";
-	std::vector<std::string> nameSpaceClassName = StringBuilder::Split(cName, ".");
+	int dotPos = full_name.find_last_of(".");
 
 	Component * component = nullptr;
-	if (nameSpaceClassName.size() == 0)
+	if (dotPos == std::string::npos)
 	{
-		return nullptr;
+		cName = full_name;
 	}
-	else if (nameSpaceClassName.size() == 2)
+	else
 	{
-		cName = nameSpaceClassName[1];
-		sName = nameSpaceClassName[0];
+		cName = full_name.substr(dotPos + 1);
+		sName = full_name.substr(0, dotPos);
 	}
 	string kName = ClassFactory::GetInstance().getTypeNameByClassName(cName);
 	if (kName != "NAN")
@@ -294,12 +289,11 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 	else
 	{
 		// 不是引擎类
-		component = go->AddComponent<Component>();
-		component->m_pBehaviour = new MonoBehaviour;
+		component = new Component;
+		component->TypeName = full_name;
 		component->m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
 		component->m_pBehaviour->Create(sName.c_str(), cName.c_str());
-		component->Awake();
-		component->Start();
+		go->AddComponent(component);
 	}
 
 	if (component == nullptr)
@@ -312,12 +306,12 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 
 VOID _2_PARAM_FUNCTION(GameObject, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, material)
 {
-	Material *m = static_cast<Material*>(getCppObject(material));
+	Material *m = getCppObject<Material>(material);
 	if (m == nullptr)
 	{
 		return;
 	}
-	GameObject * obj = static_cast<GameObject*>(getCppObject(cs_boj));
+	GameObject * obj = getCppObject<GameObject>(cs_boj);
 	if (obj == nullptr)
 	{
 		return;
@@ -328,7 +322,7 @@ VOID _2_PARAM_FUNCTION(GameObject, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, m
 
 CS_OBJECT _1_PARAM_FUNCTION(GameObject, get_Material, CS_OBJECT, cs_boj)
 {
-	GameObject * obj = static_cast<GameObject*>(getCppObject(cs_boj));
+	GameObject * obj = getCppObject<GameObject>(cs_boj);
 	if (obj == nullptr)
 	{
 		return nullptr;
@@ -344,42 +338,42 @@ CS_OBJECT _1_PARAM_FUNCTION(GameObject, get_Material, CS_OBJECT, cs_boj)
 
 VOID _2_PARAM_FUNCTION(GameObject, set_Active, CS_OBJECT, cs_boj, CS_BOOL, isActive)
 {
-	void * node = getCppObject(cs_boj);
-	if (node == nullptr)
+	GameObject * go = getCppObject<GameObject>(cs_boj);
+	if (go == nullptr)
 	{
 		return;
 	}
 
-	static_cast<GameObject*>(node)->SetActive(isActive);
+	go->SetActive(isActive);
 }
 
 
 CS_BOOL _1_PARAM_FUNCTION(GameObject, get_Active, CS_OBJECT, cs_boj)
 {
-	void * node = getCppObject(cs_boj);
-	if (node == nullptr)
+	GameObject * go = getCppObject<GameObject>(cs_boj);
+	if (go == nullptr)
 	{
 		return 0;
 	}
 
-	return static_cast<GameObject*>(node)->IsActive == true ? 1 : 0;
+	return go->IsActive == true ? 1 : 0;
 }
 
 UINT _1_PARAM_FUNCTION(GameObject, get_LayerMask, CS_OBJECT, cs_boj)
 {
-	void * node = getCppObject(cs_boj);
-	if (node == nullptr)
+	GameObject * go = getCppObject<GameObject>(cs_boj);
+	if (go == nullptr)
 	{
 		return 0;
 	}
 
-	return static_cast<GameObject*>(node)->GetLayerMask();
+	return go->GetLayerMask();
 }
 
 
 UINT _1_PARAM_FUNCTION(Object, get_ID, CS_OBJECT, cs_boj)
 {
-	Object * obj = static_cast<Object*>(getCppObject(cs_boj));
+	Object * obj = getCppObject<Object>(cs_boj);
 	if (obj == nullptr)
 	{
 		return 0;
@@ -389,12 +383,91 @@ UINT _1_PARAM_FUNCTION(Object, get_ID, CS_OBJECT, cs_boj)
 
 VOID _2_PARAM_FUNCTION(GameObject, set_LayerMask, CS_OBJECT, cs_boj, UINT, mask)
 {
-	void * node = getCppObject(cs_boj);
+	GameObject * go = getCppObject<GameObject>(cs_boj);
 
-	if (node == nullptr)
+	if (go == nullptr)
 	{
 		return;
 	}
 
-	static_cast<GameObject*>(node)->SetLayerMask(mask);
+	go->SetLayerMask(mask);
+}
+
+CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem, createParticle, CS_OBJECT, cs_obj , CS_STRING, path)
+{
+	std::string particle_path = Convert::ToString(path);
+	std::vector<ParticleGroup*> *pG = ParticleSystem::GetInstance().ActiveParticle(particle_path);
+
+	MonoClass *klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(),
+		NAME_SPACE,__STRINGIFY(ParticleGroup));
+	MonoArray * particleGroups = mono_array_new(MonoScriptManager::GetInstance().GetEngineDomain(), klass, pG->size());
+	int index = 0;
+	for (auto &group : *pG)
+	{
+		klass = group->GetMonoBehaviour()->GetClass();
+		MonoType *type = mono_class_get_type(klass);
+		mono_array_setref(particleGroups, index, group->GetMonoBehaviour()->GetMonoObject());
+	}
+	SAFE_DELETE(pG);
+	return particleGroups;
+}
+
+VOID _2_PARAM_FUNCTION(ParticleGroup, SetEmitterEnable, CS_OBJECT, cs_obj, CS_BOOL, enable)
+{
+	ParticleGroup * group = getCppObject<ParticleGroup>(cs_obj);
+
+	if (group == nullptr)
+	{
+		return;
+	}
+
+	group->SetEmitterEnable(enable == 1);
+}
+
+VOID _4_PARAM_FUNCTION(ParticleGroup, moveEmitter, CS_OBJECT, cs_obj, float, x, float, y, float, z)
+{
+	ParticleGroup * group = getCppObject<ParticleGroup>(cs_obj);
+
+	if (group == nullptr)
+	{
+		return;
+	}
+	vec3f newPos = vec3f(x, y, z);
+	std::vector<ParticleEmitter*> *emitters = group->GetEmitter();
+	for (auto & emitter : *emitters)
+	{
+		vec3f pos = emitter->GetEmitterPosition();
+		emitter->SetEmitterPosition(newPos);
+	}
+}
+
+CS_OBJECT _2_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, CS_OBJECT, pos)
+{
+	Camera * camera = getCppObject<Camera>(cs_obj);
+
+	if (camera == nullptr)
+	{
+		return nullptr;
+	}
+
+	vec3f newPos;
+	MonoClass *klass = mono_object_get_class(pos);
+	MonoClassField *  field = mono_class_get_field_from_name(klass, "x");
+	mono_field_get_value(pos, field, &newPos.x);
+	field = mono_class_get_field_from_name(klass, "y");
+	mono_field_get_value(pos, field, &newPos.y);
+	field = mono_class_get_field_from_name(klass, "z");
+	mono_field_get_value(pos, field, &newPos.z);
+
+	newPos.x = newPos.x / GetRenderSystem()->getFrameWidth() - 0.5;
+	newPos.y = -1 * (newPos.y / GetRenderSystem()->getFrameHeight() - 0.5);
+
+	newPos = camera->GetWorldPointWithScreenPoint(newPos.x, newPos.y, newPos.z);
+	klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(), NAME_SPACE, __STRINGIFY(Vector3));
+	MonoObject * obj = mono_object_new(MonoScriptManager::GetInstance().GetEngineDomain(), klass);
+	if (obj == nullptr)
+	{
+		return nullptr;
+	}
+
 }

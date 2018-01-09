@@ -56,23 +56,7 @@ namespace E3DEngine
 
 	void ParticleSystem::ClearParticle()
 	{
-		for (auto & m_ParticleEmitter : m_ParticleEmitters)
-		{
-			for (auto pEmitter : m_ParticleEmitter.second)
-			{
-					SAFE_DELETE(pEmitter);
-			}
-		}
-		m_ParticleEmitters.clear();
-		for (auto & m_ParticleAffector : m_ParticleAffectors)
-		{
-			for (auto pAffector : m_ParticleAffector.second)
-			{
-					SAFE_DELETE(pAffector);
-			}
-		}
-		m_ParticleAffectors.clear();
-		TableRegister::DeleteAllTable();
+
 	}
 
 	void ParticleSystem::Destory()
@@ -85,9 +69,9 @@ namespace E3DEngine
 		ParticleFactory::GetInstance().Update(deltaTime);
 	}
 
-	std::vector<Component*> * ParticleSystem::ActiveParticle(QWORD particleID, std::string cfgName, vec3f position, bool bActive)
+	std::vector<ParticleGroup*> * ParticleSystem::ActiveParticle(std::string cfgName)
 	{
-		auto activeParticle = new std::vector<Component *>();
+		auto activeParticle = new std::vector<ParticleGroup *>();
 		auto tblManager		= EngineDelegate::GetInstance().GetTableManager(cfgName);
 		std::vector<ParticleConfig*> * config = nullptr;
 		if (tblManager != nullptr)
@@ -104,17 +88,14 @@ namespace E3DEngine
 					continue;
 				}
 				// 初始化粒子团属性
-				initParticleGroup(particle, cfgName, it, particleID);
+				initParticleGroup(particle, cfgName, it);
 				// 初始化粒子团所在层属性
-				initParticleLayer(it, particle, bActive);
+				initParticleLayer(it, particle);
 				// 创建发射器
-				createParticleEmitter(it, cfgName, particle, position);
+				createParticleEmitter(it, cfgName, particle);
 				// 创建影响器
 				createParticleAffector(it, cfgName, particle);
-				// 挂载处理单元
-				std::string type_name = ClassFactory::GetInstance().getTypeNameByClassName(it->ElementClassName.c_str());
-				Component * component = (Component*)particle->AddComponent(type_name.c_str());
-				activeParticle->push_back(component);
+				activeParticle->push_back(particle);
 			}
 			config->clear();
 			SAFE_DELETE(config);
@@ -139,14 +120,12 @@ namespace E3DEngine
 
 	}
 
-	void ParticleSystem::initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config, QWORD particleID)
+	void ParticleSystem::initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config)
 	{
-		particle->ConfigName	= cfgName;
-		particle->Tag			= config->ID;
-		particle->m_isLock		= config->LockEmitterMove;
-		particle->m_MaterialID	= config->Material;
-		particle->ParticleID	= particleID;
-
+		particle->ConfigName			= cfgName;
+		particle->Tag				= config->ID;
+		particle->m_isLock			= config->LockEmitterMove;
+		particle->m_MaterialName		= config->Material;
 		particle->ParticleConfigID	= config->ID;
 		particle->m_DirOffset		= config->DirectionOffset;
 
@@ -154,7 +133,7 @@ namespace E3DEngine
 		particle->SetfShaderIndex(config->fShaderIndex);
 	}
 
-	void ParticleSystem::initParticleLayer(ParticleConfig *config, ParticleGroup * particle, bool bActive)
+	void ParticleSystem::initParticleLayer(ParticleConfig *config, ParticleGroup * particle)
 	{
 		auto layerConfig = EngineDelegate::GetInstance().GetTableManager(LAYER_CONFIAG_NAME)->Select<LayerConfig>(config->LayerID);
 		if (layerConfig == nullptr)
@@ -164,17 +143,19 @@ namespace E3DEngine
 		std::string layerName = layerConfig->Name;
 		particle->SetLayerMask(1 << layerConfig->ID);
 		SceneManager::GetInstance().GetCurrentScene()->AddChild(particle);
-		Renderer * render =GetRenderSystem()->GetRenderManager()->GetRenderer(config->Material);
-
+		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(particle->m_MaterialName);
+		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
+		render->EnableDepthTest = false;
+		render->SetMaterial(mMaterial);
 		particle->SetRenderer(render);
-		particle->SetActive(bActive);
+		particle->SetActive(true);
 
 		/*
 				rtt->AddChild(particle);
 				rtt->SetRenderIndex(eRI_TopMost);*/
 	}
 
-	void ParticleSystem::createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle, vec3f position)
+	void ParticleSystem::createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle)
 	{
 		auto emitters = StringBuilder::Split(config->Emitter, ";"); // name1:ID1,ID2;name2:ID1,ID2
 		int emitterID = 0;
@@ -187,7 +168,7 @@ namespace E3DEngine
 			for (auto & id : ids)
 			{
 				emitterID = Convert::ToInt(StringBuilder::Trim(id));
-				CreateParticleEmitter(cfgName, config->ID, particle, name.c_str(), emitterID, position);
+				CreateParticleEmitter(cfgName, config->ID, particle, name.c_str(), emitterID);
 			}
 
 		}

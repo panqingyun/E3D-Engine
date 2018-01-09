@@ -49,7 +49,7 @@ void MonoScriptManager::Initialize()
 
 	mono_set_assemblies_path("Library");
 	mono_config_parse(NULL);
-	m_pDomain = mono_jit_init("Library");
+	m_pDomain = mono_jit_init(code_dll_file.c_str());
 	// The soft debugger needs this
 	mono_thread_set_main(mono_thread_current());
 
@@ -275,4 +275,9 @@ void MonoBehaviour::constructor()
 MonoBehaviour::~MonoBehaviour()
 {
 	mono_free(m_pMonoObject);
+}
+
+MonoClass * MonoBehaviour::GetClass()
+{
+	return m_pClass;
 }

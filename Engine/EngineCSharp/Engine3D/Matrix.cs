@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace E3DEngine
 {
-    public class Matrix3
+    public class Matrix3x3
     {
         public float[] data = new float[9];
 
-        public Matrix3()
+        public Matrix3x3()
         {
             for (int i = 0; i < 9; i++)
                 data[i] = i % 4 == 0 ? 0 : 1;
@@ -40,7 +40,7 @@ namespace E3DEngine
             }
         }
 
-        public Matrix3(Matrix3 mat)
+        public Matrix3x3(Matrix3x3 mat)
         {
             data[0] = mat[0];
             data[1] = mat[1];
@@ -55,7 +55,7 @@ namespace E3DEngine
             data[8] = mat[10];
         }
 
-        public Matrix3(float[] dt)
+        public Matrix3x3(float[] dt)
         {
             if(dt.Length != 9)
             {
@@ -70,13 +70,13 @@ namespace E3DEngine
                 data[i] = i % 4 == 0 ? 0 : 1;
         }
 
-        static Matrix3 CreateRotationAroundAxis(float xDeg, float yDeg, float zDeg)
+        static Matrix3x3 CreateRotationAroundAxis(float xDeg, float yDeg, float zDeg)
         {
             float xRads = (float)EMath.Deg2Rad(xDeg);
             float yRads = (float)EMath.Deg2Rad(yDeg);
             float zRads = (float)EMath.Deg2Rad(zDeg);
 
-            Matrix3 ma = new Matrix3(), mb = new Matrix3(), mc = new Matrix3();
+            Matrix3x3 ma = new Matrix3x3(), mb = new Matrix3x3(), mc = new Matrix3x3();
             float aC = (float)Math.Cos(xRads);
             float aS = (float)Math.Sin(xRads);
             float bC = (float)Math.Cos(yRads);
@@ -99,7 +99,7 @@ namespace E3DEngine
             mc[0, 1] = -cS;
             mc[1, 1] = cC;
 
-            Matrix3 ret = ma * mb * mc;
+            Matrix3x3 ret = ma * mb * mc;
             return ret;
         }
 
@@ -113,7 +113,7 @@ namespace E3DEngine
             return base.Equals(obj);
         }
 
-        public static bool operator ==(Matrix3 lhs, Matrix3 rhs)
+        public static bool operator ==(Matrix3x3 lhs, Matrix3x3 rhs)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -123,14 +123,14 @@ namespace E3DEngine
             return true;
         }
 
-        public static bool operator !=(Matrix3 lhs, Matrix3 rhs)
+        public static bool operator !=(Matrix3x3 lhs, Matrix3x3 rhs)
         {
             return !(lhs == rhs);
         }
 
-        public static Matrix3 operator +(Matrix3 lhs, Matrix3 rhs)
+        public static Matrix3x3 operator +(Matrix3x3 lhs, Matrix3x3 rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i ++)
             {
@@ -140,9 +140,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix3 operator +(Matrix3 lhs, float rhs)
+        public static Matrix3x3 operator +(Matrix3x3 lhs, float rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i++)
             {
@@ -152,9 +152,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix3 operator -(Matrix3 lhs, Matrix3 rhs)
+        public static Matrix3x3 operator -(Matrix3x3 lhs, Matrix3x3 rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i++)
             {
@@ -164,9 +164,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix3 operator -(Matrix3 lhs, float rhs)
+        public static Matrix3x3 operator -(Matrix3x3 lhs, float rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i++)
             {
@@ -176,9 +176,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
+        public static Matrix3x3 operator *(Matrix3x3 lhs, Matrix3x3 rhs)
         {
-            Matrix3 w = new Matrix3();
+            Matrix3x3 w = new Matrix3x3();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -192,9 +192,9 @@ namespace E3DEngine
             return w;
         }
         
-        public static Matrix3 operator *(Matrix3 lhs, float rhs)
+        public static Matrix3x3 operator *(Matrix3x3 lhs, float rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i++)
             {
@@ -204,9 +204,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix3 operator /(Matrix3 lhs, float rhs)
+        public static Matrix3x3 operator /(Matrix3x3 lhs, float rhs)
         {
-            Matrix3 mat = new Matrix3();
+            Matrix3x3 mat = new Matrix3x3();
 
             for (int i = 0; i < 9; i++)
             {
@@ -216,7 +216,7 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
+        public static Vector3 operator *(Matrix3x3 lhs, Vector3 rhs)
         {
             return new Vector3(lhs[0] * rhs.x + lhs[3] * rhs.y + lhs[6] * rhs.z,
                 lhs[1] * rhs.x + lhs[4] * rhs.y + lhs[7] * rhs.z,
@@ -227,9 +227,9 @@ namespace E3DEngine
         /// 转置矩阵
         /// </summary>
         /// <returns></returns>
-        public Matrix3 Transpose()
+        public Matrix3x3 Transpose()
         {
-            Matrix3 ret = new Matrix3();
+            Matrix3x3 ret = new Matrix3x3();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -254,9 +254,9 @@ namespace E3DEngine
         /// 逆矩阵
         /// </summary>
         /// <returns></returns>
-        public Matrix3 Inverse()
+        public Matrix3x3 Inverse()
         {
-            Matrix3 ret = new Matrix3();
+            Matrix3x3 ret = new Matrix3x3();
             ret[0, 0] = this[1, 1] * this[2, 2] - this[2, 1] * this[1, 2];
             ret[0, 1] = this[2, 1] * this[0, 2] - this[0, 1] * this[2, 2];
             ret[0, 2] = this[0, 1] * this[1, 2] - this[1, 1] * this[0, 2];
@@ -275,22 +275,22 @@ namespace E3DEngine
         }
     }
 
-    public class Matrix4
+    public class Matrix4x4
     {
         public float[] data = new float[16];
 
-        public Matrix4()
+        public Matrix4x4()
         {
             for (int i = 0; i < 16; i++)
                 data[i] = (i % 5 == 0) ? 0 : 1;
         }
 
-        public Matrix4(Matrix4 mat)
+        public Matrix4x4(Matrix4x4 mat)
         {
             data = mat.data;
         }
 
-        public Matrix4(float[] dt)
+        public Matrix4x4(float[] dt)
         {
             data = dt;
         }
@@ -325,9 +325,9 @@ namespace E3DEngine
                 data[i] = (i % 5 == 0) ? 0 : 1;
         }
 
-        public static Matrix4 CreateScaleMatrix(float xScale, float yScale, float zScale)
+        public static Matrix4x4 CreateScaleMatrix(float xScale, float yScale, float zScale)
         {
-            Matrix4 matScale = new Matrix4();
+            Matrix4x4 matScale = new Matrix4x4();
             matScale.Identity();
             matScale[0, 0] = xScale;
             matScale[1, 1] = yScale;
@@ -336,13 +336,13 @@ namespace E3DEngine
             return matScale;
         }
 
-        public static Matrix4 CreateRotationAroundAxis(float xDeg, float yDeg, float zDeg)
+        public static Matrix4x4 CreateRotationAroundAxis(float xDeg, float yDeg, float zDeg)
         {
             float xRads=(float)EMath.Deg2Rad(xDeg);
             float yRads=(float)EMath.Deg2Rad(yDeg);
             float zRads=(float)EMath.Deg2Rad(zDeg);
 
-            Matrix4 ma = new Matrix4(), mb = new Matrix4(), mc = new Matrix4();
+            Matrix4x4 ma = new Matrix4x4(), mb = new Matrix4x4(), mc = new Matrix4x4();
             float aC = (float)Math.Cos(xRads);
             float aS = (float)Math.Sin(xRads);
             float bC = (float)Math.Cos(yRads);
@@ -365,14 +365,14 @@ namespace E3DEngine
             mc[0, 1] = -cS;
             mc[1, 1] = cC;
 
-            Matrix4 ret = ma * mb * mc;
+            Matrix4x4 ret = ma * mb * mc;
 
             return ret;
         }
 
-        public static Matrix4 CreateTranslation(float x, float y, float z, float w = 1)
+        public static Matrix4x4 CreateTranslation(float x, float y, float z, float w = 1)
         {
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
             ret[3, 0] = x;
             ret[3, 1] = y;
             ret[3, 2] = z;
@@ -388,10 +388,10 @@ namespace E3DEngine
 	     * @param upDir Direction of up vec
 	     * @return Resulting view mat that looks from and at specific position.
 	     */
-        public static Matrix4 CreateLookAt(Vector3 eyePos, Vector3 centerPos, Vector3 upDir)
+        public static Matrix4x4 CreateLookAt(Vector3 eyePos, Vector3 centerPos, Vector3 upDir)
 	    {
             Vector3 forward, side, up;
-            Matrix4 m = new Matrix4();
+            Matrix4x4 m = new Matrix4x4();
 
             forward = centerPos - eyePos;
 		    up = upDir;
@@ -417,7 +417,7 @@ namespace E3DEngine
 		    m[1, 2] = -forward.y;
 		    m[2, 2] = -forward.z;
 
-		    m = m* Matrix4.CreateTranslation(-eyePos.x, -eyePos.y, -eyePos.z);
+		    m = m* Matrix4x4.CreateTranslation(-eyePos.x, -eyePos.y, -eyePos.z);
 		    return m;
 	    }
 
@@ -433,7 +433,7 @@ namespace E3DEngine
         *
         * @return Projection mat for specified frustum.
         */
-        public static Matrix4 CreateFrustum(float left, float right, float bottom, float top, float zNear, float zFar)
+        public static Matrix4x4 CreateFrustum(float left, float right, float bottom, float top, float zNear, float zFar)
         {
             /*
              *
@@ -460,7 +460,7 @@ namespace E3DEngine
                 D = - (2 zFar zNear) / (zFar - zNear)
              *
              */
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
 
             float invWidth = 1.0f / (right - left);
             float invHeight = 1.0f / (top - bottom);
@@ -489,7 +489,7 @@ namespace E3DEngine
         /// <param name="zNear">近面</param>
         /// <param name="zFar">远面</param>
         /// <returns></returns>
-        public static Matrix4 CreatePerspective(float fov, float aspect, float zNear, float zFar)
+        public static Matrix4x4 CreatePerspective(float fov, float aspect, float zNear, float zFar)
         {
             /*
 		     *
@@ -516,7 +516,7 @@ namespace E3DEngine
 		 *
 		 */
 
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
             float y = (float)Math.Tan(fov * EMath.M_PI / 360.0f);
             float x = y * aspect;
 
@@ -538,7 +538,7 @@ namespace E3DEngine
         /// <param name="zNear">近裁剪面</param>
         /// <param name="zFar">远裁剪面</param>
         /// <returns></returns>
-        public static Matrix4 CreateOrtho(float left, float right, float bottom, float top, float zNear, float zFar)
+        public static Matrix4x4 CreateOrtho(float left, float right, float bottom, float top, float zNear, float zFar)
         {
             /*
                    2
@@ -569,7 +569,7 @@ namespace E3DEngine
             float invHeight = 1.0f / (top - bottom);
             float invDepth = 1.0f / (zFar - zNear);
 
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
 
             ret[0, 0] = 2 * invWidth;
             ret[1, 1] = 2 * invHeight;
@@ -582,7 +582,7 @@ namespace E3DEngine
             return ret;
         }
 
-        public static bool operator ==(Matrix4 lhs, Matrix4 rhs)
+        public static bool operator ==(Matrix4x4 lhs, Matrix4x4 rhs)
         {
             for (int i = 0; i < 16; i++)
             {
@@ -592,7 +592,7 @@ namespace E3DEngine
             return true;
         }
 
-        public static bool operator !=(Matrix4 lhs, Matrix4 rhs)
+        public static bool operator !=(Matrix4x4 lhs, Matrix4x4 rhs)
         {
             return !(lhs == rhs);
         }
@@ -611,7 +611,7 @@ namespace E3DEngine
             return new Vector3(this[3, 0], this[3, 1], this[3, 2]);
         }
 
-        public void SetRotation(Matrix3 m)
+        public void SetRotation(Matrix3x3 m)
 	    {
 		    for (int i = 0; i< 3; i++)
 		    {
@@ -623,9 +623,9 @@ namespace E3DEngine
             }
 	    }
 
-        public static Matrix4 operator +(Matrix4 lhs, float rhs)
+        public static Matrix4x4 operator +(Matrix4x4 lhs, float rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for(int i =0; i < 16 ; i++ )
             {
                 mat[i] = lhs[i] + rhs;
@@ -633,9 +633,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix4 operator +(Matrix4 lhs, Matrix4 rhs)
+        public static Matrix4x4 operator +(Matrix4x4 lhs, Matrix4x4 rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for (int i = 0; i < 16; i++)
             {
                 mat[i] = lhs[i] + rhs[i];
@@ -643,9 +643,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix4 operator -(Matrix4 lhs, float rhs)
+        public static Matrix4x4 operator -(Matrix4x4 lhs, float rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for (int i = 0; i < 16; i++)
             {
                 mat[i] = lhs[i] - rhs;
@@ -653,9 +653,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix4 operator -(Matrix4 lhs, Matrix4 rhs)
+        public static Matrix4x4 operator -(Matrix4x4 lhs, Matrix4x4 rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for (int i = 0; i < 16; i++)
             {
                 mat[i] = lhs[i] - rhs[i];
@@ -663,9 +663,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix4 operator *(Matrix4 lhs, float rhs)
+        public static Matrix4x4 operator *(Matrix4x4 lhs, float rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for (int i = 0; i < 16; i++)
             {
                 mat[i] = lhs[i] * rhs;
@@ -673,9 +673,9 @@ namespace E3DEngine
             return mat;
         }
 
-        public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
+        public static Matrix4x4 operator *(Matrix4x4 lhs, Matrix4x4 rhs)
         {
-            Matrix4 w = new Matrix4();
+            Matrix4x4 w = new Matrix4x4();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -689,7 +689,7 @@ namespace E3DEngine
             return w;
         }
 
-        public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
+        public static Vector4 operator *(Matrix4x4 lhs, Vector4 rhs)
         {
             return new Vector4(lhs[0] * rhs.x + lhs[4] * rhs.y + lhs[8] * rhs.z + lhs[12] * rhs.w,
                 lhs[1] * rhs.x + lhs[5] * rhs.y + lhs[9] * rhs.z + lhs[13] * rhs.w,
@@ -697,16 +697,16 @@ namespace E3DEngine
                 lhs[3] * rhs.x + lhs[7] * rhs.y + lhs[11] * rhs.z + lhs[15] * rhs.w);
         }
 
-        public static Vector3 operator *(Matrix4 lhs, Vector3 rhs)
+        public static Vector3 operator *(Matrix4x4 lhs, Vector3 rhs)
         {
             return new Vector3(lhs[0] * rhs.x + lhs[4] * rhs.y + lhs[8] * rhs.z,
                 lhs[1] * rhs.x + lhs[5] * rhs.y + lhs[9] * rhs.z,
                 lhs[2] * rhs.x + lhs[6] * rhs.y + lhs[10] * rhs.z);
         }
 
-        public static Matrix4 operator /(Matrix4 lhs, float rhs)
+        public static Matrix4x4 operator /(Matrix4x4 lhs, float rhs)
         {
-            Matrix4 mat = new Matrix4();
+            Matrix4x4 mat = new Matrix4x4();
             for (int i = 0; i < 16; i++)
             {
                 mat[i] = lhs[i] / rhs;
@@ -739,9 +739,9 @@ namespace E3DEngine
         /// 逆矩阵
         /// </summary>
         /// <returns></returns>
-        public Matrix4 Inverse()
+        public Matrix4x4 Inverse()
         {
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
 
             ret[0, 0] = +this[2, 1] *this[3, 2] * this[1, 3] - this[3, 1] * this[2, 2] * this[1, 3] + this[3, 1] * this[1, 2] * this[2, 3]
                     -this[1, 1] *this[3, 2] *this[2, 3] - this[2, 1] * this[1, 2] * this[3, 3] + this[1, 1] * this[2, 2] * this[3, 3];
@@ -798,9 +798,9 @@ namespace E3DEngine
         /// 转置矩阵
         /// </summary>
         /// <returns></returns>
-        public Matrix4 Transpose()
+        public Matrix4x4 Transpose()
         {
-            Matrix4 ret = new Matrix4();
+            Matrix4x4 ret = new Matrix4x4();
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)

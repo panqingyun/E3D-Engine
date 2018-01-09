@@ -12,14 +12,32 @@
 #define CS_OBJECT MonoObject*
 #define CPP_OBJECT void*
 #define CS_BOOL	MonoBoolean
-#define CS_ARRAY MonoArray
+#define CS_ARRAY MonoArray*
 
 #define VOID void
 
-void * getCppObject(CS_OBJECT obj);
+#define CPP_OBJ_PTR_NAME "CppObject"
+
+template<typename T> inline T * getCppObject(CS_OBJECT obj)
+{
+	if (obj == nullptr)
+	{
+		return nullptr;
+	}
+	MonoClass *klass = mono_object_get_class(obj);
+	MonoClassField *  field = mono_class_get_field_from_name(klass, CPP_OBJ_PTR_NAME);
+
+	if (field == nullptr)
+	{
+		return nullptr;
+	}
+	void * value = nullptr;
+	mono_field_get_value(obj, field, &value);
+	return static_cast<T*>(value);
+}
+
 void RegisterMonoFunction();
 
-#define CPP_OBJ_PTR_NAME "CppObject"
 
 #define TRANSFER_PROPERTY(_property)\
 	m_pBehaviour->SetPropertyValue(#_property, &_property);
@@ -71,7 +89,7 @@ void RegisterMonoFunction();
 #define REGISTER_INTERNAL_CALL(className, funcName)\
 	mono_add_internal_call(__STRINGIFY( E3DEngine##.##className##:##:##funcName), className##_##funcName);
 
-VOID _1_PARAM_FUNCTION(Camera			,renderCamera		, CS_OBJECT		, cs_obj);
+VOID _1_PARAM_FUNCTION(Camera			, renderCamera		, CS_OBJECT		, cs_obj);
 VOID _1_PARAM_FUNCTION(Debug			, log_error			, CS_STRING		, err);
 VOID _1_PARAM_FUNCTION(Debug			, log_warning		, CS_STRING		, warning);
 VOID _1_PARAM_FUNCTION(Debug			, log_info			, CS_STRING		, info);
@@ -101,3 +119,9 @@ CS_OBJECT _1_PARAM_FUNCTION(Camera		, createCamera		, CS_STRING		, name);
 CS_OBJECT _0_PARAM_FUNCTION(Render		, createRendererWithoutParam);
 VOID _0_PARAM_FUNCTION(Application		, exitApplication);
 CS_OBJECT _0_PARAM_FUNCTION(Scene		, createScene);
+VOID _1_PARAM_FUNCTION(GameObject		, removeComponent	, CS_OBJECT		, cs_obj);
+
+CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem	, createParticle	, CS_OBJECT		, cs_obj, CS_STRING		, path);
+VOID _2_PARAM_FUNCTION(ParticleGroup		, SetEmitterEnable	, CS_OBJECT		, cs_obj, CS_BOOL		, enable);
+VOID _4_PARAM_FUNCTION(ParticleGroup		, moveEmitter		, CS_OBJECT		, cs_obj, float			, x		, float, y, float, z);
+CS_OBJECT _2_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, CS_OBJECT		, pos);

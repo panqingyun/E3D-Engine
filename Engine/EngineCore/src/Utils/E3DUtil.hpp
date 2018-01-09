@@ -22,6 +22,7 @@ typedef unsigned int		uint
 #define Interface struct
 #define PI 180
 #define NO_POS 9999,9999,9999
+#define FAR_AWAY vec3f(NO_POS)
 
 #define MATERIAL_CONFIG_ID   0xFFFFFFFFFFFFFFFF
 #define MAGIC_WORD_CONFIG_ID 0xFFFFFFFFEEEEEEEE

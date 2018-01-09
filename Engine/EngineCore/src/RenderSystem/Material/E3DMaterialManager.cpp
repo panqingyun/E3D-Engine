@@ -18,6 +18,11 @@ namespace E3DEngine
 		return nullptr;
 	}
 
+	Material * MaterialManager::GetMaterial(string path)
+	{
+		return nullptr;
+	}
+
 	Material* MaterialManager::CreateMaterial(std::string path)
 	{
 		return nullptr;

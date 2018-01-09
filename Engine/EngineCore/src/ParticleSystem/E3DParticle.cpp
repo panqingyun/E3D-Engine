@@ -502,14 +502,23 @@ namespace E3DEngine
 
 	ParticleGroup::ParticleGroup()
 	{
-		m_particleIndex = 0;
-		m_pMaterial = nullptr;
-		m_bIsPause = false;
-		m_nColor = 0xffffffff;
-		NodeType = eT_Particle;
-		beGetFromLocalPool = false;
-		bIsEnable = true;
-		bLockEnable = false;
+		m_particleIndex		= 0;
+		m_pMaterial			= nullptr;
+		m_bIsPause			= false;
+		m_nColor			= 0xffffffff;
+		NodeType			= eT_Particle;
+		beGetFromLocalPool	= false;
+		bIsEnable			= true;
+		bLockEnable			= false;
+		CreateBehaviour();
+	}
+
+	void ParticleGroup::CreateBehaviour()
+	{
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(ParticleGroup);
+		m_pBehaviour->Awake();
+		GameObject::setBehaviourDefaultValue();
 	}
 
 	ParticleGroup::~ParticleGroup()
@@ -530,9 +539,9 @@ namespace E3DEngine
 	
 	void ParticleGroup::CleaParticle()
 	{
-		if (m_pRender != nullptr)
+		if (m_pRenderer != nullptr)
 		{
-			m_pRender->RemoveInRenderer(ID);
+			static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		}
 	}
 	
@@ -578,11 +587,11 @@ namespace E3DEngine
 		}
 		if (!beDelete)
 		{
-			if (m_pRender == nullptr)
+			if (m_pRenderer == nullptr)
 			{
 				return;
 			}
-			m_pRender->RemoveInRenderer(ID);
+			static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		}
 		ParticlePool::GetInstance().DeleteParticleToDeathPool(m_ParticlePool);
 		m_ParticlePool.clear();
@@ -603,9 +612,9 @@ namespace E3DEngine
 		}
 		else
 		{
-			if (m_pRender != nullptr)
+			if (m_pRenderer != nullptr)
 			{
-				m_pRender->RemoveInRenderer(ID);
+				static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
 			}
 		}
 		GameObject::SetActive(isActive);
@@ -623,21 +632,22 @@ namespace E3DEngine
 
 	void ParticleGroup::SetRenderer(Renderer * buffer)
 	{
-		m_pRender = buffer;
+		m_pRenderer = buffer;
 		m_pMaterial = buffer->pMaterial;
+		m_pRenderer->SetTransform(Transform);
 	}
 	
 	void ParticleGroup::SetCamera(Camera * camera)
 	{
 		pCamera = camera;
-		m_pRender->SetCamera(camera);
+		m_pRenderer->SetCamera(camera);
 	}
 	
 	void ParticleGroup::CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID,vec3f bornEmitterPos, bool isFirstCreate)
 	{
 		if (m_pMaterial == nullptr)
 		{
-			m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_MaterialID);
+			m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_MaterialName);
 		}
 		
 		if (beGetFromLocalPool && !m_ParticlePool.empty())
@@ -707,16 +717,17 @@ namespace E3DEngine
 	
 	void ParticleGroup::createVetexIndex()
 	{
-		if (m_pRender == nullptr)
+		if (m_pRenderer == nullptr)
 		{
 			return;
 		}
-		m_pRender->RemoveInRenderer(ID);
+		static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		// 初始化粒子团内的所有粒子
 		int ivertexTotal = 0;
 		int iindexTotal = 0;
-		m_pRender->RecordCurrentVextexStartIndex(ID);
-		m_pRender->RecordCurrentIndexStartIndex(ID);
+		Renderer * render = static_cast<Renderer*>(m_pRenderer);;
+		render->RecordCurrentVextexStartIndex(ID);
+		render->RecordCurrentIndexStartIndex(ID);
 		
 		for (share_pointer<Particle> &it : m_ParticlePool)
 		{
@@ -728,7 +739,7 @@ namespace E3DEngine
 			for (int vi = 0; vi < 4; vi++)
 			{
 				// TODO
-				m_pRender->FillVertex(vertex[vi]);
+				render->FillVertex(vertex[vi]);
 			}
 			// 4 个顶点有 6个索引,
 			uint * index = it.get_ptr()->getIndices();
@@ -736,23 +747,29 @@ namespace E3DEngine
 			{
 				uint idx = index[ii] + ivertexTotal;
 				// TODO
-				m_pRender->FillIndex(idx);
+				render->FillIndex(idx);
 				iindexTotal++;
 			}
 			ivertexTotal += 4;
 		}
-		m_pRender->FillEnd();
-		m_pRender->VertexCountAdd(ID, (DWORD)ivertexTotal);
-		m_pRender->IndexCountAdd(ID, (DWORD)iindexTotal);
+		render->FillEnd();
+		render->VertexCountAdd(ID, (DWORD)ivertexTotal);
+		render->IndexCountAdd(ID, (DWORD)iindexTotal);
 	}
 	
+	void ParticleGroup::TransformChange()
+	{
+		m_pRenderer->SetTransform(Transform);
+		m_pRenderer->TransformChange();
+	}
+
 	void ParticleGroup::UpdateParticles(float deltaTime)
 	{
-		if (m_pRender->GetRendererBuffer(ID) == nullptr)
+		if (static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID) == nullptr)
 		{
 			return;
 		}
-		vertexStartIndex = m_pRender->GetRendererBuffer(ID)->VertextStartIndex;
+		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		for (particleListIterator it = m_ActiveParticles.begin(); it != m_ActiveParticles.end();)
 		{
 			share_pointer<Particle> particle = *it;
@@ -785,7 +802,7 @@ namespace E3DEngine
 			
 			if (livetime <= 0)
 			{
-				particle.get_ptr()->Transform->Position = vec3f(NO_POS);
+				particle.get_ptr()->Transform->Position = FAR_AWAY;
 				it = deleteParticle(it);
 			}
 			else
@@ -793,10 +810,10 @@ namespace E3DEngine
 				it ++;
 			}
 			p->Update(deltaTime);
-			m_pRender->Vertices[vertexStartIndex + p->Index * 4 + 0] = p->getVertex()[0];
-			m_pRender->Vertices[vertexStartIndex + p->Index * 4 + 1] = p->getVertex()[1];
-			m_pRender->Vertices[vertexStartIndex + p->Index * 4 + 2] = p->getVertex()[2];
-			m_pRender->Vertices[vertexStartIndex + p->Index * 4 + 3] = p->getVertex()[3];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 0] = p->getVertex()[0];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 1] = p->getVertex()[1];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 2] = p->getVertex()[2];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 3] = p->getVertex()[3];
 		}
 	}
 	
@@ -806,7 +823,7 @@ namespace E3DEngine
 		{
 			m_particleEmitter->Update(deltaTime);
 		}
-		vertexStartIndex = m_pRender->GetRendererBuffer(ID)->VertextStartIndex;
+		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		//Debug::Log(ell_Error, "Particle Number is %d", m_ActiveParticles.size());
 		for (particleListIterator itr = m_ActiveParticles.begin(); itr != m_ActiveParticles.end();)
 		{
@@ -834,7 +851,7 @@ namespace E3DEngine
 			
 			if (livetime <= 0)
 			{
-				particle.get_ptr()->Transform->Position = vec3f(NO_POS);
+				particle.get_ptr()->Transform->Position = FAR_AWAY;
 				deleteParticle(itr);
 			}
 			else
@@ -843,10 +860,10 @@ namespace E3DEngine
 			}
 			
 			particle.get_ptr()->Update(deltaTime);
-			m_pRender->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = particle.get_ptr()->getVertex()[0];
-			m_pRender->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = particle.get_ptr()->getVertex()[1];
-			m_pRender->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = particle.get_ptr()->getVertex()[2];
-			m_pRender->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = particle.get_ptr()->getVertex()[3];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = particle.get_ptr()->getVertex()[0];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = particle.get_ptr()->getVertex()[1];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = particle.get_ptr()->getVertex()[2];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = particle.get_ptr()->getVertex()[3];
 		}
 		if (m_ActiveParticles.empty() && !bIsEnable )
 		{
@@ -911,6 +928,7 @@ namespace E3DEngine
 		if (IsActive && !m_ParticlePool.empty())
 		{
 			checkParticleState(deltaTime);
+			TransformChange();
 		}
 	}
 	

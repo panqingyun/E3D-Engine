@@ -70,7 +70,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\Engine\EngineCore\3rd\Mono\lib\;..\..\Engine\EngineCore\gles_renderSystem\Lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>..\bin</OutDir>
   </PropertyGroup>

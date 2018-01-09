@@ -11,14 +11,9 @@ namespace E3DEngine
 {
 	Renderer * GLES_RendererManager::CreateVertexRender(int materialID)
 	{
-		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
-		{
-			GLES_Renderer * buffer = new GLES_Renderer;
-			m_mapVertexBuffers[materialID] = buffer;
-			buffer->pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID);
-			return buffer;
-		}
-		return m_mapVertexBuffers[materialID];
+		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(materialID);	
+		buffer->pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID);
+		return buffer;
 	}
 
 	Renderer * GLES_RendererManager::GetRenderer(int materialID)

@@ -173,7 +173,9 @@ namespace E3DEngine
         void SetTextureIndex(int index);
 		void SetfShaderIndex(int index);
 		void CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false);
-
+		
+		virtual void TransformChange() override;
+		virtual void CreateBehaviour() override;
 		std::list<share_pointer<Particle>> *GetActiveParticles();
 	public:
         void	AddParticleEmitter(ParticleEmitter * emitter);
@@ -197,7 +199,7 @@ namespace E3DEngine
         int				m_isLock;
         Material		* m_pMaterial;
         uint			ParticleID; // 唯一的ID
-        int				m_MaterialID;
+        string			m_MaterialName;
         int				ParticleConfigID;
         vec3f           m_ParticleDir;
         float           m_DirOffset;
@@ -238,7 +240,6 @@ namespace E3DEngine
 		bool			beGetFromLocalPool;
 		bool			bIsEnable;
 		bool			bLockEnable;
-		Renderer*		m_pRender;
 
     };
     

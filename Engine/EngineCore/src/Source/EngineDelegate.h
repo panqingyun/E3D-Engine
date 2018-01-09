@@ -41,7 +41,7 @@
 #define MainCameraName "main_camera"
 #define MeshCamera "mesh_camera"
 #define HL_VIDEO_CAMERA "HL_VIDEO_CAMERA"
-#define LAYER_CONFIAG_NAME "LayerConfig.xml"
+#define LAYER_CONFIAG_NAME "Resource/LayerConfig.xml"
 
 namespace E3DEngine
 {
@@ -90,7 +90,6 @@ namespace E3DEngine
 		bool									m_bPause;
 		std::map<QWORD, GameObject*>			m_mapDoNotDestoryObject;
 		Scene		*							m_pLastScene;
-		ParticleSystem *						m_pParticleSystem;
 		
 	public:
 		mat4f RotateMatrix;

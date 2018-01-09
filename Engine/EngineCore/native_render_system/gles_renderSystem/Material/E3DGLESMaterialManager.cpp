@@ -21,6 +21,15 @@ namespace E3DEngine
 		return m_mapIDMaterials[id];
 	}
 
+	E3DEngine::Material * GLES_MaterialManager::GetMaterial(string path)
+	{
+		if (m_mapMaterials.find(path) == m_mapMaterials.end())
+		{
+			return nullptr;
+		}
+		return m_mapMaterials[path];
+	}
+
 	Material* GLES_MaterialManager::CreateMaterial(std::string path)
 	{
 		if (m_mapMaterials.find(path) != m_mapMaterials.end())
@@ -43,6 +52,7 @@ namespace E3DEngine
 		StringManipulator::SplitFileName(path, folder, file);
 		MaterialConfig *config = (*materialConfigs)[0];
 		GLES_Material * material = new GLES_Material;
+		material->blendType = (eBlendType)config->IsBlend;
 		material->filePath = folder + "/";
 		m_mapMaterials[path] = material;
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);

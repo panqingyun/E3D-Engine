@@ -27,7 +27,7 @@ public:
 	void *GetFieldValue(const char * fieldName);
 	void *GetPropertyValue(const char * name);
 	void CallMethod(const char * name, void ** param = nullptr);
-
+	MonoClass * GetClass();
 	MonoObject * GetMonoObject();
 private:
 	void constructor();

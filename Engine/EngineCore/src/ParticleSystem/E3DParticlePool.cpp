@@ -21,7 +21,6 @@ namespace E3DEngine
 		{
 			m_nMaxParticleNumber = particleNumber;
 		}
-		Debug::Log(ell_Warning, "particle pool size = %d", m_ParticleList.size());
 	}
 
 	share_pointer<Particle>  ParticlePool::ActiveParticleFromPool()
@@ -59,7 +58,6 @@ namespace E3DEngine
 	void ParticlePool::DeleteParticleToDeathPool(std::list<share_pointer<Particle>>& particlePools)
 	{
 		m_ParticleList.splice(m_ParticleList.end(), particlePools);
-		Debug::Log(ell_Warning, "==>particle pool size = %d", m_ParticleList.size());
 	}
 }
 

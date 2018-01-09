@@ -49,7 +49,7 @@ namespace E3DEngine
 		}
 		component->Awake();
 		(component)->gameObject = this;
-		(component)->_TypeName = type_name;
+		(component)->TypeName = type_name;
 		(component)->Transform = Transform;
 		component->Start();
 		m_listComponents[type_name].push_back((Component*)component);
@@ -66,13 +66,13 @@ namespace E3DEngine
 		(component)->gameObject	= this;
 		(component)->Transform  = Transform;
 		component->Start();
-		m_listComponents[(component)->_TypeName].push_back(component);
+		m_listComponents[(component)->TypeName].push_back(component);
 		return component;
 	}
 	
 	void GameObject::RemoveComponent(Component *com)
 	{
-		std::string type_name = com->_TypeName;
+		std::string type_name = com->TypeName;
 		std::map<std::string, std::vector<Component*>>::iterator itr = m_listComponents.find(type_name);
 		if (itr != m_listComponents.end())
 		{
@@ -391,6 +391,32 @@ namespace E3DEngine
 		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
 	}
 
+	void GameObject::RemoveComponent(UINT id)
+	{
+		for (auto &comList : m_listComponents)
+		{
+			if (removeComponentFromListByID(comList.second, id))
+			{
+				break;
+			}
+		}
+	}
+
+	bool GameObject::removeComponentFromListByID(std::vector<Component*> &comList, UINT id)
+	{
+		bool isRemove = false;
+		for (std::vector<Component*>::iterator itr = comList.begin();
+			itr != comList.end() ;++itr)
+		{
+			if ((*itr)->ID == id)
+			{
+				comList.erase(itr);
+				isRemove = true;
+				break;
+			}
+		}
+		return isRemove;
+	}
 
 	E3DEngine::RenderObject * GameObject::GetRenderer()
 	{

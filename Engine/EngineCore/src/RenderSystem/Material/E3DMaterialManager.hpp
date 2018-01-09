@@ -27,7 +27,7 @@ namespace E3DEngine
 		// @param 材质ID
 		//-----------------------------------------------
 		virtual Material * GetMaterial(int id);
-
+		virtual Material * GetMaterial(string path);
 		// -----------------------------------------------
 		// 创建材质
 		// @param 材质配置的路径

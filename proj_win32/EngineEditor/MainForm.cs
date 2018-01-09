@@ -50,7 +50,7 @@ namespace EngineEditor
         void EffectEditor_Load(object sender, EventArgs e)
         {
             EngineDLL.InitilizeEngine();
-            EngineDLL.SetupGLESRenderSystem(EngineContener.Handle, EngineContener.Width, EngineContener.Height);
+            EngineDLL.SetupRenderSystem(EngineContener.Handle, EngineContener.Width, EngineContener.Height);
             EngineDLL.StartAppliaction();
             isLoaded = true;
         }

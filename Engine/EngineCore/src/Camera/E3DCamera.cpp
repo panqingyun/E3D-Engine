@@ -104,6 +104,26 @@ namespace E3DEngine
 		GetRenderSystem()->BindDefaultBackbuffer();
 	}
 
+	vec3f Camera::GetWorldPointWithScreenPoint(float x, float y, float z)
+	{
+		vec4f zViewVec = GetViewMatrix() * vec4f(0.0, 0.0, z, 1.0);
+		float zView = zViewVec.z;
+		float zProj = zView * GetProjectionMatrix()[10] + GetProjectionMatrix()[14];
+		float wView = -zView;
+
+		vec4f projNormal = vec4f();
+		vec4f proj;
+		projNormal.x = x;
+		projNormal.y = y;
+		projNormal.z = zProj / wView;
+		projNormal.w = 1.0;
+		proj = vec4f(projNormal.x*wView, projNormal.y*wView, zProj, projNormal.w*wView);
+		vec4f view = GetProjectInverseMatrix() * proj;
+		vec4f world = GetViewInverseMatrix() * view;
+
+		return Convert::Vec4ToVec3(world);
+	}
+
 	void Camera::Clear()
 	{
 		GetRenderSystem()->Clear(m_clearColor, m_clearType);

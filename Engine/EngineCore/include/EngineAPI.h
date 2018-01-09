@@ -65,7 +65,6 @@ extern "C"
 	/// 初始化OpenGLES IOS 创建默认的fbo
 	/// </summary>
 	__api_function_ void SetupGLBuffer();
-#ifdef WIN32
 	/// <summary>
 	/// 创建EGL
 	/// </summary>
@@ -74,7 +73,7 @@ extern "C"
 	/// 日志输出
 	__api_function_ void setDebugLogOutFunc(void * func);
 	///------------------------------------------------------
-#endif
+
 	/// <summary>
 	/// 更新
 	/// </summary>

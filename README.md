@@ -1,9 +1,8 @@
 # E3DEngine
-使用OpenGL ES开发3D引擎
-使用到的开源代码包括 Mono，Assimp，Bullet，Libpng，tinyxml，visual vision等。 
-引擎使用C#作为逻辑开发脚本，使用fbx格式的模型。 遵从GPL-2.0协议。
-
+3D引擎
 目前完成基本渲染，摄像机，粒子系统，文理序列帧，材质，RenderToTexture，多FBO，渲染合批等，Mono和Bullet已接入，功能尚未完善。
+
+渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。
 
 光照尚未完成
 

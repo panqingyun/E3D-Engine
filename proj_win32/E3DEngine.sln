@@ -52,7 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{367C8BDC-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClient.CSharp", "..\GameClient.CSharp\GameClient.CSharp.csproj", "{CAEDC07F-1B36-401B-B7E4-F8A59489F81B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RenderSystem", "RenderSystem\RenderSystem.vcxproj", "{473D4787-A6EA-4947-B629-84DC720793C5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RenderSystem", "RenderSystem\gles_renderSystem\RenderSystem.vcxproj", "{473D4787-A6EA-4947-B629-84DC720793C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

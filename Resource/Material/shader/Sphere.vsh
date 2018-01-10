@@ -1,10 +1,6 @@
 attribute vec3 position;
 attribute vec4 color;
-attribute vec3 transformPosition;
-attribute vec3 transformRotate;
-attribute vec3 transformScale;
 attribute vec3 attr_normal;
-
 varying vec4 DestinationColor;
 
 vec3 lightposition;//光源位置
@@ -15,33 +11,7 @@ float attenuation;//光线的衰减系数
 
 void main(void)
 {	
-	mat4 transMatrix	= mat4(1.0,				0.0,					0.0,					0.0,
-						   0.0,					1.0,					0.0,					0.0,
-						   0.0,					0.0,					1.0,					0.0,
-						   transformPosition.x,	transformPosition.y,	transformPosition.z,	1.0);
-	
-	mat4 roateMatX	= mat4(1.0, 0.0,						0.0,					0.0,
-						   0.0, cos(transformRotate.x),	sin(transformRotate.x),		0.0,
-						   0.0, -sin(transformRotate.x),	cos(transformRotate.x),	0.0,
-						   0.0, 0.0,						0.0, 1.0);
-	
-	mat4 roateMatY	= mat4(cos(transformRotate.y),	0.0, -sin(transformRotate.y),	0.0,
-						   0.0,						1.0, 0.0,						0.0,
-						   sin(transformRotate.y),	0.0, cos(transformRotate.y),	0.0,
-						   0.0,						0.0, 0.0,						1.0);
-	
-	mat4 roateMatZ	= mat4(cos(transformRotate.z) ,	sin(transformRotate.z),	0.0, 0.0,
-						   -sin(transformRotate.z),	cos(transformRotate.z),	0.0, 0.0,
-						   0.0,						0.0,					1.0, 0.0,
-						   0.0,						0.0,					0.0, 1.0);
-	mat4 scaleMatatrix	= mat4(transformScale.x	, 0.0			  ,		0.0				,	0.0,
-								0.0				, transformScale.y,		0.0				,	0.0,
-								0.0				, 0.0			  ,		transformScale.z,	0.0,
-								0.0				, 0.0			  ,		0.0				,	1.0
-							);
-	
-	mat4 roateMatrix = roateMatX * roateMatY * roateMatZ;	
-	vec4 interpolatedPosition = transMatrix * roateMatrix * scaleMatatrix * vec4(position ,1.0);
+	vec4 interpolatedPosition = vec4(position ,1.0);
 	
 	//--------------------------------------------------------------
 	//--- 光照
@@ -54,7 +24,7 @@ void main(void)
 	// 其他自动生成的变量还有 
 	// _e3d_matModel 表示世界矩阵（对于合批的物体这一矩阵始终是单位矩阵，此时物体的世界矩阵可以由 transMatrix * roateMatrix * scaleMatatrix 表示）
 	// _e3d_matProj表示投影矩阵 _e3d_matView 表示视图矩阵，这些变量都可以直接使用
-	vec3 N = normalize(( roateMatrix * vec4(attr_normal, 1.0)).xyz);
+	vec3 N = normalize((vec4(attr_normal, 1.0)).xyz);
 	vec3 L = normalize(lightposition - interpolatedPosition.xyz);
 	vec3 V = normalize(_e3d_cameraPos - interpolatedPosition.xyz);
 	vec3 H = normalize(V + L);

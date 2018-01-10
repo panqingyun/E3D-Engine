@@ -8,7 +8,6 @@
 		 EmitterName		发射器名字
 		 EmitterID			发射器内ID
 		 Material			材质的ID
-		 DisplayCamera		0 前置摄像头绘制， 1 后置摄像头绘制， 2 前后都绘制
 		 -->
 		<Item
 			ID = 1
@@ -19,7 +18,6 @@
                                 LinnerColorAffectorConfig:1"
 			Emitter				= "BallEmitterConfig : 1"
 			Material			= "Resource/Material/ParticleMaterial.material"
-			DisplayCamera		= 2			
 			TextureUV 			= "1"
             fShaderIndex 		= 2
 			LayerID				= 1
@@ -32,8 +30,7 @@
                                    SelfRotateAffectorConfig:1;
                                    LinnerColorAffectorConfig:2,3"
             Emitter				= "BallEmitterConfig : 2"
-            Material			= "Resource/Material/ParticleMaterial.material"
-            DisplayCamera		= 2			
+            Material			= "Resource/Material/ParticleMaterial.material"	
 			TextureUV 			= "2"
             fShaderIndex 		= 2
 			LayerID				= 1
@@ -99,10 +96,7 @@
          -->
         <Item ID = 1 StartColor="ffffffff" EndColor = "ffffff20" StartTime=0.0 EndTime=1.0/>
         <Item ID = 2 StartColor="ffffffff" EndColor = "ffffffff" StartTime=0.0 EndTime=0.3/>
-        <Item ID = 3 StartColor="ffffffff
-        
-        
-        " EndColor = "ffffff66" StartTime=0.3 EndTime=1.0/>
+        <Item ID = 3 StartColor="ffffffff" EndColor = "ffffff66" StartTime=0.3 EndTime=1.0/>
         <Item ID = 4 StartColor="ffffffff" EndColor = "ffffff00" StartTime=0.35 EndTime=1.0/>
     </LinnerColorAffectorConfig>
 	<RandomForceAffectorConfig>
@@ -140,7 +134,6 @@
 		 type					拼图类别  0:表示行列都是规则的序列
 		 isReverse				是否倒序 1 是 0 否 ，即正序播放，然后倒序播放
 		 leftRightMirror		左右对称，1表示正常；-1表示左右对称
-		 leftRightMirror;		左右对称，1表示正常；-1表示左右对称
 		 topBottomMirror;		上下对称，1表示正常；-1表示上下对称
 		 widthTexture;			纹理宽度，即大图宽度
 		 heightTexture;			纹理高度，即大图高度

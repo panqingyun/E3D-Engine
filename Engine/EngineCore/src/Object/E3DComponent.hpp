@@ -22,6 +22,7 @@ namespace E3DEngine
 		{
 			gameObject = nullptr;
 			Transform = nullptr;
+			NotStart = true;
 		}
 
 		virtual void Awake()
@@ -45,6 +46,13 @@ namespace E3DEngine
 				m_pBehaviour->Update(deltaTime);
 			}
         }
+		virtual void LateUpdate(float deltaTime)
+		{
+			if (m_pBehaviour != nullptr)
+			{
+				m_pBehaviour->LateUpdate(deltaTime);
+			}
+		}
         virtual void Destory()
         {
 			if (m_pBehaviour != nullptr)
@@ -52,11 +60,26 @@ namespace E3DEngine
 				m_pBehaviour->Destory();
 			}
         }
+		virtual void OnEnable()
+		{
+			if (m_pBehaviour != nullptr)
+			{
+				m_pBehaviour->OnEnable();
+			}
+		}
+		virtual void OnDisable()
+		{
+			if (m_pBehaviour != nullptr)
+			{
+				m_pBehaviour->OnDisable();
+			}
+		}
 		virtual void OnCollisionEnter(GameObject* go);
     public:
         GameObject *	gameObject;
 		std::string 	_Tag;
 		CTransform *    Transform;
+		bool			NotStart;
     };
 }
 

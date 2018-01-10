@@ -121,18 +121,13 @@ void E3DEngine::Box::SetMaterial(Material * material)
 	SetActive(true);
 }
 
-vec3f E3DEngine::Box::GetBounds()
-{
-	return size;
-}
-
 void E3DEngine::Box::SetActive(bool isActive)
 {
 	if (isActive == IsActive)
 	{
 		return;
 	}
-	IsActive = isActive;
+	GameObject::SetActive(isActive);
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)

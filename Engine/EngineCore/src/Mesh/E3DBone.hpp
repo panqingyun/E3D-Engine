@@ -13,14 +13,8 @@
 using namespace vvision;
 namespace E3DEngine
 {
-	struct KeyPoint
-	{
-		int		KeyIndex;//自身的关键点序号，匹配二维人脸
-		vec4f   Pos;
-	};
-	
 	// 骨骼
-	class Bone extends GameObject
+	class Bone extends Object
 	{
 	public:
 		Bone();
@@ -49,9 +43,9 @@ namespace E3DEngine
 		//是否是关键点
 		int			BoneIndex;
 		bool		IsImpoint;
-		KeyPoint	KeyP;
 		float		tranScaleX;
 		float		tranScaleY;
+		CTransform*	Transform;
 	public:
 		Bone*		GetChild(std::string name);
 		void		AddVertexAndWeight(int vertexID, float weight);

@@ -29,14 +29,14 @@ namespace E3DEngine
 		void SetScale(vec3f scale);
 		void SetScale(float x, float y, float z);
         void GenBillBoard(vec3f center, vec3f cameraForward);
-		void RemoveChild(QWORD objID);
+		void RemoveChild(UINT objID);
 		void Identity();
         void SetBillBoardNormal(vec3f pos,vec3f scale);
         void SetIsBillBoard(bool bill);
 		void SetNeedUpdate(bool bIsNeed);
         
         vec3f GetPosition();
-		void AddChild(QWORD objID ,CTransform * child);
+		void AddChild(UINT objID ,CTransform * child);
 		mat4f GetParentMatrix();
 		void Destory();
 	public:
@@ -61,7 +61,7 @@ namespace E3DEngine
 		vec3f RotationEuler;
 		bool  IsTransPosFirst;
 		CTransform * Parent;
-		std::map<QWORD, CTransform*> Childs;
+		std::map<UINT, CTransform*> Childs;
 	private:
 		bool  m_bStateChange;
         bool    m_IsBillBoard;

@@ -4,8 +4,8 @@
 		layer 最多32个 ID最大只能到31
 	-->
 	<LayerConfig>
-		<ConfigItem ID = 0 Name="defaultLayer" 	BlendType=0/>
-		<ConfigItem ID = 1 Name="notBlendLayer" BlendType=3/>
-		<ConfigItem ID = 2 Name="backLayer" 	BlendType=4/>
+		<Item ID = 0 Name="defaultLayer" 	BlendType=0/>
+		<Item ID = 1 Name="notBlendLayer" BlendType=3/>
+		<Item ID = 2 Name="backLayer" 	BlendType=4/>
 	</LayerConfig>
 </ConfigSystem>

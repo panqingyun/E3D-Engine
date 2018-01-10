@@ -34,10 +34,7 @@
 					ID				= 1 
 					VertexShader	= "shader/ParticleVertex.vsh" 
 					FragmentShader	= "shader/ParticleFragment.fsh" 	
-					UniformVariable	= "mat4:matProj;
-									   mat4:matView;
-									   mat4:matModel;
-									   sampler2D:myTexture0-texture/particleTexture.png;" 
+					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

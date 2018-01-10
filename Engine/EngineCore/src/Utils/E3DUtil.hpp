@@ -15,7 +15,6 @@ using WORD = unsigned short;
 #endif
 using UINT = unsigned int;
 using ULONG = unsigned long;
-using QWORD = unsigned long long;
 #ifdef _WIN32
 typedef unsigned int		uint
 #endif

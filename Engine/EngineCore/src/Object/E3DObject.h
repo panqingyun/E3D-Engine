@@ -12,16 +12,11 @@ namespace E3DEngine
 {
 	typedef enum
 	{
-		eT_Mesh,
-		eT_Bone,
-		eT_Particle,
-		eT_MagicWord,
-		eT_NormalRenderObject,
 		eT_GameObject,
 		eT_Scene,
-		eT_RTT,
 		eT_Object,
 		eT_Camera,
+		eT_RenderObject
 	} ObjectType;
 
 #define ADD_IN_SCENE(obj)\

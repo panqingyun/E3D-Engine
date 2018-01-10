@@ -13,11 +13,6 @@
 
 using namespace std;
 
-#define PROPERTY_IS_IMPOINT "isimpoint"
-#define PROPERTY_INDEX_IMPOINT "imindex"
-#define PROPERTY_TRANSFORMSCALEX "transformscaleX"
-#define PROPERTY_TRANSFORMSCALEY "transformscaleY"
-
 namespace E3DEngine
 {
 	struct MeshEntry

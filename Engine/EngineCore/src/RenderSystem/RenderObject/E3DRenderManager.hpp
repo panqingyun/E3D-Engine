@@ -14,7 +14,7 @@ namespace E3DEngine
 {
 	struct RendererBuffer
 	{
-		QWORD ObjectID;
+		UINT ObjectID;
 		uint VertextStartIndex;
 		uint VertextNumber;
 		uint IndexStartIndex;
@@ -31,14 +31,14 @@ namespace E3DEngine
 		virtual void FillVertex(Vertex vb);
 		virtual void FillIndex(uint ib);
 		virtual void FillEnd();
-		virtual DWORD RecordCurrentVextexStartIndex(QWORD objId);
+		virtual DWORD RecordCurrentVextexStartIndex(UINT objId);
 
-		virtual DWORD RecordCurrentIndexStartIndex(QWORD objId);
-		virtual void VertexCountAdd(QWORD objId, uint vertexCount);
-		virtual void IndexCountAdd(QWORD objId, uint indexCount);
+		virtual DWORD RecordCurrentIndexStartIndex(UINT objId);
+		virtual void VertexCountAdd(UINT objId, uint vertexCount);
+		virtual void IndexCountAdd(UINT objId, uint indexCount);
 		virtual void SetBlendType(DWORD blendType);
-		virtual void RemoveInRenderer(QWORD objId);
-		virtual RendererBuffer* GetRendererBuffer(QWORD objID);
+		virtual void RemoveInRenderer(UINT objId);
+		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 
 		virtual void TransformChange() override;
 	protected:
@@ -49,7 +49,7 @@ namespace E3DEngine
 		DWORD glBlendType;
 		DWORD m_vertexCount;
 		DWORD m_indexCount;
-		std::map<QWORD, RendererBuffer> m_objRendererBuffers;
+		std::map<UINT, RendererBuffer> m_objRendererBuffers;
 		bool	bLock;
 	};
 

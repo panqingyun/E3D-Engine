@@ -29,6 +29,7 @@
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "E3DAutoreleasePool.h"
 #include "../Object/E3DBox.h"
+#include "../Object/E3DSphere.h"
 #include "../Physics/E3DPhysics.h"
 #include "NativeSystem.h"
 #include "Application.h"
@@ -68,7 +69,7 @@ namespace E3DEngine
 		void Destory();
 		
 	public:
-		QWORD GenObjectID();
+		UINT GenObjectID();
 		void DestoryObject(GameObject* obj);
 		void ChangeScene(Scene* scene);
 		void ChangeScene(uint sceneID);
@@ -86,9 +87,9 @@ namespace E3DEngine
 		std::map<std::string, ISystem*>			m_mapSystems;
 		const char *							m_strResourcePath;
 		bool									m_bIsInited;
-		QWORD									m_nObjectID;
+		UINT									m_nObjectID;
 		bool									m_bPause;
-		std::map<QWORD, GameObject*>			m_mapDoNotDestoryObject;
+		std::map<UINT, GameObject*>			m_mapDoNotDestoryObject;
 		Scene		*							m_pLastScene;
 		
 	public:

@@ -70,7 +70,7 @@ namespace E3DEngine
 		Application::ResourcePath = path;
 	}
 
-	QWORD EngineDelegate::GenObjectID()
+	UINT EngineDelegate::GenObjectID()
 	{
 		return  ++m_nObjectID;
 	}
@@ -81,7 +81,7 @@ namespace E3DEngine
 		{
 			m_mapDoNotDestoryObject.erase(obj->ID);
 		}
-		SAFE_DELETE(obj);
+		SceneManager::GetInstance().GetCurrentScene()->RemoveChild(obj);
 	}
 	
 	EngineDelegate::~EngineDelegate() = default;
@@ -150,10 +150,6 @@ namespace E3DEngine
 		for (auto & it : m_mapDoNotDestoryObject)
 		{
 			pScene->AddChild(it.second);
-			if (it.second->NodeType != eT_Bone)
-			{
-				RootTransform->AddChild(it.first, it.second->Transform);
-			}
 		}
 	}
 

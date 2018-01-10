@@ -62,7 +62,7 @@ namespace E3DEngine
 		m_nColor = 0xffffffff;
         nMaterialID = 0;
 		m_bIsBufferData = false;
-		NodeType = eT_NormalRenderObject;
+		NodeType = eT_RenderObject;
 		RenderIndex = eRI_Normal;
 		EnableDepthTest = true;
 		IsStaticDraw = true;
@@ -74,7 +74,7 @@ namespace E3DEngine
 		Indices.clear();		
 	}
     
-	void RenderObject::setDrawModule(DWORD module)
+	void RenderObject::SetDrawModule(DWORD module)
 	{
 		m_nDrawModule = module;
 	}

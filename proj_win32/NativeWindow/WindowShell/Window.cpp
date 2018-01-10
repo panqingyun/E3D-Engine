@@ -38,7 +38,7 @@ bool				MButtonDown = false;
 
 #define ONE_INSTANCE 1
 
-void InitGLES(HWND hWnd)
+void InitEngine(HWND hWnd)
 {
 	MainWindowHwnd = hWnd;
 
@@ -46,7 +46,14 @@ void InitGLES(HWND hWnd)
 	::GetClientRect(hWnd, &rect);
 	int width = rect.right - rect.left;
 	int height = rect.bottom - rect.top;
+	std::string strPath = "";
 
+	char exeFullPath[MAX_PATH]; 
+	GetModuleFileName(NULL, exeFullPath, MAX_PATH);
+
+	strPath = exeFullPath;  
+	int pos = strPath.find_last_of('\\', strPath.length());
+	::SetAppDataPath(strPath.substr(0, pos).c_str()); 
 	::InitilizeEngine();
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
@@ -200,7 +207,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
-   InitGLES(hWnd);
+   InitEngine(hWnd);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

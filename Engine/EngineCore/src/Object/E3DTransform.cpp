@@ -103,7 +103,7 @@ namespace E3DEngine
 		}
 	}
 
-	void CTransform::AddChild(QWORD objID, E3DEngine::CTransform *child)
+	void CTransform::AddChild(UINT objID, E3DEngine::CTransform *child)
 	{
 		if (Childs.find(objID) != Childs.end())
 		{
@@ -129,7 +129,7 @@ namespace E3DEngine
 		Rotation		= q;
     }
 
-	void CTransform::RemoveChild(QWORD objID)
+	void CTransform::RemoveChild(UINT objID)
 	{
 		if (Childs.find(objID) == Childs.end())
 		{

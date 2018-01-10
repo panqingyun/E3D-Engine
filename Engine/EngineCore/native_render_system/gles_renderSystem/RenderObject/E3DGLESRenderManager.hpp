@@ -17,7 +17,7 @@ namespace E3DEngine
 	public:
 		GLES_Renderer()
 		{
-			setDrawModule(GL_TRIANGLES);
+			SetDrawModule(GL_TRIANGLES);
 			m_VertexBuffer = 0;
 			m_IndexBuffer = 0;
 			setVBOs();

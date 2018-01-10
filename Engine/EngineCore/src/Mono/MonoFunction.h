@@ -38,7 +38,6 @@ template<typename T> inline T * getCppObject(CS_OBJECT obj)
 
 void RegisterMonoFunction();
 
-
 #define TRANSFER_PROPERTY(_property)\
 	m_pBehaviour->SetPropertyValue(#_property, &_property);
 
@@ -123,5 +122,10 @@ VOID _1_PARAM_FUNCTION(GameObject		, removeComponent	, CS_OBJECT		, cs_obj);
 
 CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem	, createParticle	, CS_OBJECT		, cs_obj, CS_STRING		, path);
 VOID _2_PARAM_FUNCTION(ParticleGroup		, SetEmitterEnable	, CS_OBJECT		, cs_obj, CS_BOOL		, enable);
-VOID _4_PARAM_FUNCTION(ParticleGroup		, moveEmitter		, CS_OBJECT		, cs_obj, float			, x		, float, y, float, z);
-CS_OBJECT _2_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, CS_OBJECT		, pos);
+CS_OBJECT _4_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, float&		, x		, float&, y, float&	, z);
+VOID _1_PARAM_FUNCTION(GameObject			, destory			, CS_OBJECT		, cs_obj);
+CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithName , CS_OBJECT		, cs_obj, CS_STRING		, name);
+CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithID	, CS_OBJECT		, cs_obj, UINT			, id);
+VOID _2_PARAM_FUNCTION(GameObject			, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		, name);
+CS_STRING _1_PARAM_FUNCTION(GameObject		, get_Name			, CS_OBJECT		, cs_obj);
+CS_OBJECT _1_PARAM_FUNCTION(Sphere			, CreateSphere		, float			, r);

@@ -20,7 +20,6 @@ namespace E3DEngine
 		void Create(float l, float w, float h);
 		virtual void SetMaterial(Material * material);
 
-		virtual vec3f GetBounds() override;
 		virtual void SetActive(bool isActive) override;
 		virtual void AfterUpdate(float deltaTime) override;
 		virtual void TransformChange() override;
@@ -30,6 +29,5 @@ namespace E3DEngine
 	private:
 		std::vector<Vertex> m_vecVertex;
 		std::vector<uint> m_vecIndex;
-		vec3f size;
 	};
 }

@@ -56,6 +56,7 @@
     <Compile Include="Engine3D\Render.cs" />
     <Compile Include="Engine3D\RigidBody.cs" />
     <Compile Include="Engine3D\Scene.cs" />
+    <Compile Include="Engine3D\Sphere.cs" />
     <Compile Include="Engine3D\Transform.cs" />
     <Compile Include="Engine3D\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

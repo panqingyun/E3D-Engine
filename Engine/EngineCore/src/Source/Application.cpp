@@ -19,7 +19,7 @@ namespace E3DEngine
 		m_bIsStop = false;
 		MonoScriptManager::GetInstance().Initialize();
 		CreatScript();
-		std::string startApp = "app.config";
+		std::string startApp = AppDataPath + "/app.config";
 		std::string fileContent = vvision::getContentFromPath(startApp);
 		if (fileContent != empty_string)
 		{
@@ -89,24 +89,18 @@ namespace E3DEngine
 
 	Application::Application()
 	{
-		string strPath = "";
-#ifdef WIN32
-		char exeFullPath[MAX_PATH]; // Full path
-		GetModuleFileName(NULL, exeFullPath, MAX_PATH);
-#endif
-		strPath = (string)exeFullPath;    // Get full path of the file
-		int pos = strPath.find_last_of('\\', strPath.length());
-		AppDataPath = strPath.substr(0, pos);  // Return the directory without the file name
-		ResourcePath = AppDataPath + "/Resource";		
+		
 	}
 
 	Application::~Application()
 	{
 	}
+
 	MonoString* Application::getAppDataPath()
 	{
 		return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), AppDataPath.c_str());
 	}
+
 	MonoString* Application::getResourcePath()
 	{
 		return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), ResourcePath.c_str());

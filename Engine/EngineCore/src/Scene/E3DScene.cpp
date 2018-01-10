@@ -31,6 +31,13 @@ namespace E3DEngine
 		GetRenderSystem()->BeginFrame();
 		RenderScene(deltaTime);
 		GetRenderSystem()->EndFrame();
+		for (auto &node : m_vecObjList)
+		{
+			if (node.second->NodeType == eT_GameObject)
+			{
+				static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
+			}
+		}
 
 	}
 	
@@ -102,7 +109,7 @@ namespace E3DEngine
 		}
 	}
 
-	void Scene::ChangeRenderIndex(QWORD id, eRenderIndex index)
+	void Scene::ChangeRenderIndex(UINT id, eRenderIndex index)
 	{
 		for (Camera *camera : m_vecCamera)
 		{
@@ -147,7 +154,7 @@ namespace E3DEngine
 	}
 
 
-	Camera* Scene::GetCamera(QWORD cameraID)
+	Camera* Scene::GetCamera(UINT cameraID)
 	{
 		for (Camera * camera : m_vecCamera)
 		{
@@ -191,10 +198,14 @@ namespace E3DEngine
 						camera->GetRenderQueue()->Add(static_cast<GameObject*>(node));
 					}
 				}
+				Transform->AddChild(node->ID, static_cast<GameObject*>(node)->Transform);
 			}
 			return;
 		}
-
+		if (node->NodeType == eT_GameObject)
+		{
+			Transform->AddChild(node->ID, static_cast<GameObject*>(node)->Transform);
+		}
 		m_vecObjList[node->ID] = node;
 		
 	}
@@ -226,7 +237,7 @@ namespace E3DEngine
 		SAFE_DELETE(node);
 	}
 
-	void Scene::RemoveChild(QWORD ID)
+	void Scene::RemoveChild(UINT ID)
 	{
 		if (m_vecObjList.find(ID) == m_vecObjList.end())
 		{

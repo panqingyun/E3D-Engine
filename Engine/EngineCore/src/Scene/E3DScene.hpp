@@ -41,16 +41,16 @@ namespace E3DEngine
 		void SetSceneType(eSceneType type);
 		eSceneType GetSceneType();
 		void RenderScene(float deltaTime);
-		void ChangeRenderIndex(QWORD id, eRenderIndex index);
+		void ChangeRenderIndex(UINT id, eRenderIndex index);
 		void AddCamera(Camera * pCamera);
 		void SortCamera();
-		Camera * GetCamera(QWORD cameraID);
+		Camera * GetCamera(UINT cameraID);
 		void ChangeFrameSize(float w, float h);
 
 	public:
 		virtual void AddChild(Object * node);
 		virtual void RemoveChild(Object * node);
-		virtual void RemoveChild(QWORD ID);
+		virtual void RemoveChild(UINT ID);
 
 	protected:
 		virtual void CreateBehaviour() override;

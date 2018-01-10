@@ -42,13 +42,14 @@ namespace Game
         {
             MainScene = Scene.LoadScene("Resource/Scene/MainEntry.scene");
             MainCamera = Camera.CreateCamera("MainCamera");
-            MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
+            MainCamera.SetClearColor(new Vector4(0.3f, 0.3f, 0.5f, 1));
             MainCamera.Transform.Position = new Vector3(0, 0, 200);
             MainCamera.Transform.Rotation = new Vector3(-10f, 0, 0);
             Material material = Material.CreateMaterial("Resource/Material/CubeMaterial.material");
             //Debug.Log(material.ID.ToString());
             particle = new ParticleSystem();
             particle.CreateParticle("Resource/Particle/ParticleFire.particle");
+
             float xStart = -80;
             float yStart = 300;
             for (int i = 0; i < 3; i++)
@@ -60,7 +61,7 @@ namespace Game
                     box.Material = material;
                     box.Transform.Position = new Vector3(xStart + 20 * j, yStart - i * 20, 0);
                     BoxCollider collider = box.AddComponent<BoxCollider>();
-                    collider.CreateRigiBody(50);
+                    collider.CreateRigiBody(150);
                 }
                 xStart += 16;
             }
@@ -71,6 +72,13 @@ namespace Game
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
             collider3.CreateRigiBody(0);
+            Material materialS = Material.CreateMaterial("Resource/Material/SphereMaterial.material");
+            Sphere sphere = Sphere.CreateSphere(20);
+            sphere.Material = materialS;
+            sphere.Transform.Position = new Vector3(0, 150, 0);
+            SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
+            sCollider.CreateRigiBody(100);
+            //sphere.Active = true;
         }
 
         private Vector3 rotate1 = new Vector3();

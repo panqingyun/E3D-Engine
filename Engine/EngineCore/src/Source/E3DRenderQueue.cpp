@@ -152,7 +152,7 @@ namespace E3DEngine
 		return bFind;
 	}
 
-	bool RenderQueue::ChangeRenderQueue(QWORD id, eRenderIndex index)
+	bool RenderQueue::ChangeRenderQueue(UINT id, eRenderIndex index)
 	{
 		int renderIndex = -1;
 		bool retValue  = true;

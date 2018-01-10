@@ -506,7 +506,6 @@ namespace E3DEngine
 		m_pMaterial			= nullptr;
 		m_bIsPause			= false;
 		m_nColor			= 0xffffffff;
-		NodeType			= eT_Particle;
 		beGetFromLocalPool	= false;
 		bIsEnable			= true;
 		bLockEnable			= false;
@@ -760,6 +759,10 @@ namespace E3DEngine
 	void ParticleGroup::TransformChange()
 	{
 		m_pRenderer->SetTransform(Transform);
+		for (auto & emitter : m_particleEmitters)
+		{
+			emitter->SetEmitterPosition(Transform->Position);
+		}
 		m_pRenderer->TransformChange();
 	}
 
@@ -928,7 +931,7 @@ namespace E3DEngine
 		if (IsActive && !m_ParticlePool.empty())
 		{
 			checkParticleState(deltaTime);
-			TransformChange();
+			m_pRenderer->TransformChange();
 		}
 	}
 	

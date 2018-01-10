@@ -73,7 +73,10 @@ extern "C"
 	/// 日志输出
 	__api_function_ void setDebugLogOutFunc(void * func);
 	///------------------------------------------------------
-
+	/// <summary>
+	/// 设置运行，目录
+	/// </summary>
+	__api_function_ void SetAppDataPath(const char * path);
 	/// <summary>
 	/// 更新
 	/// </summary>

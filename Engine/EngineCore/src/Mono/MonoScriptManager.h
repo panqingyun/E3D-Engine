@@ -7,6 +7,9 @@
 #define START_FUNC "Start"
 #define UPDATE_FUNC "Update"
 #define DESTORY_FUNC "Destory"
+#define ENABLE_FUNC "OnEnable"
+#define DISABLE_FUN "OnDisable"
+#define LATEUP_FUNC "LateUpdate"
 #define COLLISION_ENTER_FUNC "OnCollisionEnter"
 
 
@@ -21,6 +24,9 @@ public:
 	void Start();
 	void Update(float deltaTime);
 	void Destory();
+	void OnEnable();
+	void OnDisable();
+	void LateUpdate(float deltaTime);
 	void OnCollisionEnter(btCollisionObject* collision);
 	void SetFieldValue(const char *fieldName, void *value);
 	void SetPropertyValue(const char *name, void *value);

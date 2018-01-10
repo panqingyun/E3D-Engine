@@ -13,15 +13,31 @@
 		<Item
 			ID = 1
 			ElementClassName	= "Effect3DParticleElement"
-			Affector			= "RandomForceAffectorConfig : 1;
-                                SelfScalAffectorConfig : 1,2"
+			Affector			= "RandomForceAffectorConfig : 1,2;
+                                SelfScalAffectorConfig : 1,2;
+                                SelfRotateAffectorConfig:1;
+                                LinnerColorAffectorConfig:1"
 			Emitter				= "BallEmitterConfig : 1"
 			Material			= "Resource/Material/ParticleMaterial.material"
-			DisplayCamera		= 2
-			TextureUV 			= "1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"
+			DisplayCamera		= 2			
+			TextureUV 			= "1"
             fShaderIndex 		= 2
 			LayerID				= 1
 		/>
+        <Item
+            ID = 2
+            ElementClassName	= "Effect3DParticleElement"
+            Affector			= "RandomForceAffectorConfig : 1,2;
+                                   SelfScalAffectorConfig : 3;
+                                   SelfRotateAffectorConfig:1;
+                                   LinnerColorAffectorConfig:2,3"
+            Emitter				= "BallEmitterConfig : 2"
+            Material			= "Resource/Material/ParticleMaterial.material"
+            DisplayCamera		= 2			
+			TextureUV 			= "2"
+            fShaderIndex 		= 2
+			LayerID				= 1
+        />
 	</ParticleConfig>
 	<BallEmitterConfig>
 		<!--
@@ -40,20 +56,39 @@
 			ID					= 1
 			Name				= "球面发射器"
 			Type				= 2
-			Radius				= 1
-			ParticleWidth		= 15
-			ParticleHeight		= 15
+			Radius				= 2
+			ParticleWidth		= 19
+			ParticleHeight		= 19
 			BlankTime			= 0
-			MaxParticleNumber	= 400
+			MaxParticleNumber	= 180
 			TotalParticleNumber	= 10000
 			ParticleLiveTime	= 0.75
-            LiveTimeRandom      = 0.25
-            CreateParticleOnce  = 2
+            LiveTimeRandom      = 0.4
+            CreateParticleOnce  = 3
 			ParticlePosition	= "0,0,0"
-            ScaleRange          = "0.5,1.0"
+            ScaleRange          = "0.6,1.0"
 			IsLoop				= 0
 			IsBillboard			= 1
 		/>
+        <Item
+        ID					= 2
+        Name				= "球面发射器"
+        Type				= 2
+        Radius				= 2
+        ParticleWidth		= 30
+        ParticleHeight		= 30
+        BlankTime			= 0
+        MaxParticleNumber	= 180
+        TotalParticleNumber	= 10000
+        ParticleLiveTime	= 1.75
+        LiveTimeRandom      = 0.75
+        CreateParticleOnce  = 2
+        BornInterval        = 0.05
+        ParticlePosition	= "0,0,0"
+        ScaleRange          = "0.8,1.2"
+        IsLoop				= 0
+        IsBillboard			= 1
+        />
 	</BallEmitterConfig>
     <LinnerColorAffectorConfig>
         <!--
@@ -62,7 +97,13 @@
          StartTime	起始时间 以粒子存活时间长度为 1 计算 ，取值从 0 到 1
          EndTime	结束时间 以粒子存活时间长度为 1 计算 ，取值从 0 到 1
          -->
-        <Item ID = 1 StartColor="ffffffff" EndColor = "ffffff00" StartTime=0 EndTime=1.0/>
+        <Item ID = 1 StartColor="ffffffff" EndColor = "ffffff20" StartTime=0.0 EndTime=1.0/>
+        <Item ID = 2 StartColor="ffffffff" EndColor = "ffffffff" StartTime=0.0 EndTime=0.3/>
+        <Item ID = 3 StartColor="ffffffff
+        
+        
+        " EndColor = "ffffff66" StartTime=0.3 EndTime=1.0/>
+        <Item ID = 4 StartColor="ffffffff" EndColor = "ffffff00" StartTime=0.35 EndTime=1.0/>
     </LinnerColorAffectorConfig>
 	<RandomForceAffectorConfig>
 		<!--
@@ -70,15 +111,27 @@
 		 yRandom  y方向随机范围 [-1,1]
 		 zRandom  z方向随机范围 [-1,1]
 		 -->
-		<Item ID = 1 Force=23 xRandom="-1,1" yRandom="-1,1" zRandom="0,0" rotateByDir=1/>
+		<Item ID = 1 Force=15 ForceRange ="5,10" xRandom="-0.3,0.3" yRandom="1,1" zRandom="0,0" rotateByDir=0 StartTime=0.0 EndTime=0.45/>
+        <Item ID = 2 Force=25 ForceRange ="10,40" xRandom="-0.3,0.3" yRandom="1,1" zRandom="0,0" rotateByDir=0 StartTime=0.45 EndTime=1.0/>
 	</RandomForceAffectorConfig>
+    <SelfRotateAffectorConfig>
+        <!--
+         RoteteSpeed 旋转角速度
+         RotateAxis 旋转轴向量 xmin,xmax,ymin,ymax,zmin,zmax
+         
+         -->
+        <Item ID = 1 RoteteSpeed=0.01 StartRandom=1 RotateSpeedRange="-7.0,7.0" RotateAxis="0,0,1"/>
+    </SelfRotateAffectorConfig>
 	<SelfScalAffectorConfig>
 		<!--
 		 StartScale 起始缩放
 		 EndScale 终止缩放
 		 -->
         <Item ID = 1 StartScale=1.0 EndScale=1.0 StartTime=0.0 EndTime=0.2/>
-        <Item ID = 2 StartScale=1.0 EndScale=0.0 StartTime=0.2 EndTime=1.0/>
+        <Item ID = 2 StartScale=1.0 EndScale=0.3 StartTime=0.2 EndTime=1.0/>
+        <Item ID = 3 StartScale=0.0 EndScale=1.5 StartTime=0.0 EndTime=1.0/>
+        <Item ID = 4 StartScale=0.3 EndScale=1.5 StartTime=0.3 EndTime=0.4/>
+        <Item ID = 4 StartScale=1.5 EndScale=1.8 StartTime=0.4 EndTime=1.0/>
 	</SelfScalAffectorConfig>
 	<TextureUVConfig>
 		<!--
@@ -96,24 +149,8 @@
 		 startX;				开始UV的X(像素)，不规则拼图时必填
 		 startY;				开始UV的Y(像素)，不规则拼图时必填
 		 framePos				序列帧数组
-		 -->
-		<Item ID=1 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "3.0,2.0"/>
-        <Item ID=2 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "4.0,2.0"/>
-        <Item ID=3 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "5.0,2.0"/>
-        <Item ID=4 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 52 startX = 0  startY = 0 framePos = "6.0,2.0"/>
-        <Item ID=5 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "7.0,2.0"/>
-        <Item ID=6 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "8.0,2.0"/>
-        <Item ID=7 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "9.0,2.0"/>
-        <Item ID=8 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "10.0,2.0"/>
-        <Item ID=9 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "11.0,2.0"/>
-        <Item ID=10 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "12.0,2.0"/>
-        <Item ID=11 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "13.0,2.0"/>
-        <Item ID=12 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "14.0,2.0"/>
-        <Item ID=13 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "15.0,2.0"/>
-        <Item ID=14 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "16.0,2.0"/>
-        <Item ID=15 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "17.0,2.0"/>
-        <Item ID=16 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "18.0,2.0"/>
-        <Item ID=17 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "19.0,2.0"/>
-        <Item ID=18 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 66 startX = 0  startY = 0 framePos = "20.0,2.0"/>
+		 -->		
+        <Item ID=1 speed=1 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "21.0,2.0"/>
+        <Item ID=2 speed=1 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "22.0,2.0"/>
 	</TextureUVConfig>
 </ConfigSystem>

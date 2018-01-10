@@ -93,7 +93,7 @@ namespace E3DEngine
 
 	class SphereCollider extends Collider
 	{
-		DECLARE_CLASS(BoxCollider)
+		DECLARE_CLASS(SphereCollider)
 	public:
 		virtual void Awake() override;
 		virtual void Start() override;

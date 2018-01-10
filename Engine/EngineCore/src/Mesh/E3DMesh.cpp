@@ -24,19 +24,6 @@ namespace E3DEngine
 		}
 	}
 
-	Bone * MeshRender::HasBoneWithKeyP(int imPointIndex)
-	{
-		for (map<string, Bone*>::iterator it = BoneMapping.begin(); it != BoneMapping.end(); ++it)
-		{
-			if(it->second->IsImpoint && it->second->KeyP.KeyIndex == imPointIndex)
-			{
-				return it->second;
-			}
-		}
-		
-		return nullptr;
-	}
-	
 	MeshRender::MeshRender(MeshBuffer * buffer)
 	{
 		m_pMeshBuffer	= buffer;
@@ -44,7 +31,6 @@ namespace E3DEngine
 		m_nIndexSize	= (DWORD)buffer->Indices.size();
 		initBoneMatrix();
 		//setDrawModule(GL_TRIANGLES);
-		NodeType = eT_Mesh;
 	}
 
 	MeshRender::~MeshRender()
@@ -58,11 +44,4 @@ namespace E3DEngine
 		m_pMeshBuffer->BindBufferData();
 	}
 	
-	void MeshRender::SetDontDestory(bool dontDestory)
-	{
-		for (map<string,Bone*>::iterator it = BoneMapping.begin(); it != BoneMapping.end(); ++it)
-		{
-			EngineDelegate::GetInstance().AddDonotDestory(it->second);
-		}
-	}
 }

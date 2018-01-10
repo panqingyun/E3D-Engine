@@ -279,12 +279,12 @@ namespace E3DEngine
 		{
 			std::string type_id = GetClassName<T>();
 			T *_t = new T();
-			((Component*)_t)->Awake();
 			((Component*)_t)->gameObject = this;
+			((Component*)_t)->Awake();
 			((Component*)_t)->Start();
 			((Component*)_t)->_TypeName = type_id;
 			((Component*)_t)->Transform = Transform;
-
+			((Component*)_t)->OnEnable();
 			m_listComponents[type_id].push_back((Component*)_t);
 			ComponentAdded((Component*)_t);
 			return _t;
@@ -315,7 +315,7 @@ namespace E3DEngine
 			return retVector;
 		}
 		// 获取长宽高
-		virtual vec3f GetBounds() { return vec3f(1, 1, 1); }
+		virtual vec3f GetBounds() { return size; }
 		std::vector<Component*> * GetComponents(std::string type_name);
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
@@ -332,7 +332,7 @@ namespace E3DEngine
 		virtual ~GameObject() override;
 		virtual void SetParent(GameObject * parent);
 
-		virtual GameObject * FindChild(QWORD id);
+		virtual GameObject * FindChild(UINT id);
 		virtual GameObject * FindChild(std::string name);
 
 		DWORD GetLayerMask();
@@ -346,7 +346,7 @@ namespace E3DEngine
 		static bool IsRenderObject(GameObject * node);
 		virtual void AddChild(GameObject * node);
 		virtual void RemoveChild(GameObject * node);
-		virtual void RemoveChild(QWORD ID);
+		virtual void RemoveChild(UINT ID);
 		virtual void DestoryAllChild();
 
 		virtual void Render(float deltaTime);
@@ -371,9 +371,10 @@ namespace E3DEngine
 	protected:
 		std::map<std::string, std::vector<Component*>> m_listComponents;
 	protected:
-		std::map<QWORD, GameObject *> childNode;
+		std::map<UINT, GameObject *> childNode;
 		DWORD m_layerMask;
 		RenderObject * m_pRenderer;
+		vec3f		size;
 	};
 
 	

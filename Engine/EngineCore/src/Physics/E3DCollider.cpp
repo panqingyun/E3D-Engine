@@ -54,17 +54,17 @@ namespace E3DEngine
 
 	void BoxCollider::Start()
 	{
+	}
+
+	void BoxCollider::Awake()
+	{
+		CreateBehaviour();
 		vec3f lwh;
 		lwh = gameObject->GetBounds();
 		m_pMotionState = nullptr;
 		m_pShape = createBoxShape(btVector3(btScalar(lwh.x / 2), btScalar(lwh.z / 2), btScalar(lwh.y / 2)));
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Start();
-	}
-
-	void BoxCollider::Awake()
-	{
-		CreateBehaviour();
 	}
 
 	void BoxCollider::Update(float deltaTime)
@@ -131,15 +131,15 @@ namespace E3DEngine
 	void SphereCollider::Awake()
 	{
 		CreateBehaviour();
-	}
-
-	void SphereCollider::Start()
-	{
 		float l = gameObject->GetBounds().x;
 		m_pMotionState = nullptr;
 		m_pShape = createSphereShape(l);
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Start();
+	}
+
+	void SphereCollider::Start()
+	{
 
 	}
 

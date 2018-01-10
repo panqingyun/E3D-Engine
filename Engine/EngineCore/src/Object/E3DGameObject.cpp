@@ -26,6 +26,20 @@ namespace E3DEngine
 		{
 			ActiveChangeEvent(this,nullptr);
 		}
+		for (auto & m_listComponent : m_listComponents)
+		{
+			for (auto & itr : m_listComponent.second)
+			{
+				if (isActive)
+				{
+					itr->OnEnable();
+				}
+				else
+				{
+					itr->OnDisable();
+				}
+			}
+		}
 		for(auto & Child : Transform->Childs)
 		{
 			if(Child.second->gameObject != nullptr)
@@ -47,11 +61,11 @@ namespace E3DEngine
 		{
 			return nullptr;
 		}
+		component->gameObject = this;
+		component->TypeName = type_name;
+		component->Transform = Transform;
 		component->Awake();
-		(component)->gameObject = this;
-		(component)->TypeName = type_name;
-		(component)->Transform = Transform;
-		component->Start();
+		component->OnEnable();
 		m_listComponents[type_name].push_back((Component*)component);
 		return component;
 	}
@@ -62,10 +76,10 @@ namespace E3DEngine
 		{
 			return nullptr;
 		}
+		component->gameObject	= this;
+		component->Transform = Transform;
 		component->Awake();
-		(component)->gameObject	= this;
-		(component)->Transform  = Transform;
-		component->Start();
+		component->OnEnable();
 		m_listComponents[(component)->TypeName].push_back(component);
 		return component;
 	}
@@ -87,7 +101,21 @@ namespace E3DEngine
 
 	void GameObject::AfterUpdate(float deltaTime)
 	{
-
+		for (auto & m_listComponent : m_listComponents)
+		{
+			for (auto & itr : m_listComponent.second)
+			{
+				itr->LateUpdate(deltaTime);
+			}
+		}
+		for (auto &node : childNode)
+		{
+			if (!node.second->IsActive)
+			{
+				continue;
+			}
+			node.second->AfterUpdate(deltaTime);
+		}
 	}
 
 	void GameObject::Create(Object * parentNode)
@@ -107,10 +135,14 @@ namespace E3DEngine
 			{
 				for (auto & itr : m_listComponent.second)
 				{
+					if (itr->NotStart)
+					{
+						itr->Start();
+						itr->NotStart = true;
+					}
 					itr->Update(deltaTime);
 				}
 			}
-			AfterUpdate(deltaTime);
 			for (auto &node : childNode)
 			{
 				if (!node.second->IsActive)
@@ -160,7 +192,7 @@ namespace E3DEngine
 	}
 
 
-	E3DEngine::GameObject * GameObject::FindChild(QWORD id)
+	E3DEngine::GameObject * GameObject::FindChild(UINT id)
 	{
 		if (childNode.find(id) == childNode.end())
 		{
@@ -276,9 +308,9 @@ namespace E3DEngine
 		}
 	}
 
-	bool GameObject::IsRenderObject(GameObject * node)
+	bool GameObject::IsRenderObject(GameObject * go)
 	{
-		if (node->NodeType == eT_NormalRenderObject)
+		if (go->GetRenderer() != nullptr)
 		{
 			return true;
 		}
@@ -342,7 +374,7 @@ namespace E3DEngine
 	}
 
 
-	void GameObject::RemoveChild(QWORD ID)
+	void GameObject::RemoveChild(UINT ID)
 	{
 		Transform->RemoveChild(ID);
 		if (childNode.find(ID) == childNode.end())

@@ -125,6 +125,22 @@ void MonoBehaviour::Start()
 	CallMethod(START_FUNC);
 }
 
+void MonoBehaviour::OnEnable()
+{
+	CallMethod(ENABLE_FUNC);
+}
+
+void MonoBehaviour::OnDisable()
+{
+	CallMethod(DISABLE_FUN);
+}
+
+void MonoBehaviour::LateUpdate(float deltaTime)
+{
+	void * arg = &deltaTime;
+	CallMethod(LATEUP_FUNC, &arg);
+}
+
 void MonoBehaviour::Update(float deltaTime)
 {
 	void * arg = &deltaTime;

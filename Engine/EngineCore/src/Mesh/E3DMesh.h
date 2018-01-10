@@ -19,12 +19,10 @@ namespace E3DEngine
 	public:
 		MeshRender(MeshBuffer * buffer);
 		~MeshRender();
-		Bone * HasBoneWithKeyP(int imPointIndex);
 		
 	private:
 		virtual void prepareRender(float deltaTime);		
 		virtual void update(float deltaTime) { }		
-		virtual void SetDontDestory(bool dontDestory);
 		void		 initBoneMatrix();
 		
 	public:

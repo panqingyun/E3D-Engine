@@ -28,4 +28,9 @@ namespace E3DEngine
             get; set;
         }
     }
+
+    public class SphereCollider : Collider
+    {
+
+    }
 }

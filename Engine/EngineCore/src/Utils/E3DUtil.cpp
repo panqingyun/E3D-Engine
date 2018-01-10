@@ -76,6 +76,12 @@ extern "C"
 		E3DEngine::EngineDelegate::GetInstance().Destory();
 	}
 
+	__api_function_ void SetAppDataPath(const char * path)
+	{
+		Application::AppDataPath = path;
+		Application::ResourcePath = Application::AppDataPath + "/Resource";
+	}
+
 	__api_function_ void PauseEngine(bool bPause)
 	{
 		E3DEngine::EngineDelegate::GetInstance().SetEnginePause(bPause);

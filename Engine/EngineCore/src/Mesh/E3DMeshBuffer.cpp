@@ -79,12 +79,8 @@ namespace E3DEngine
 		float scaleY		= 0;
 		float impointValue	= 0;
 		float indexValue	= 0;
-		pNode->mMetaData->Get<float>(PROPERTY_IS_IMPOINT, impointValue);
-		pNode->mMetaData->Get<float>(PROPERTY_INDEX_IMPOINT, indexValue);
-		pNode->mMetaData->Get<float>(PROPERTY_TRANSFORMSCALEX, scaleX);
-		pNode->mMetaData->Get<float>(PROPERTY_TRANSFORMSCALEY, scaleY);
 		impointValue == 1 ? pBone->IsImpoint = true : pBone->IsImpoint = false;
-		pBone->KeyP.KeyIndex = indexValue;
+		
 		pBone->tranScaleX	 = scaleX;
 		pBone->tranScaleY	 = scaleY;
 		for (int i = 0; i < pNode->mNumChildren; ++i)

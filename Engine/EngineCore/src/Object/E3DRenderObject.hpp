@@ -91,7 +91,6 @@ namespace E3DEngine
 		int		nMaterialID;
 		
 	protected:
-		virtual void setDrawModule(DWORD module);
 		virtual void prepareRender(float deltaTime);
 		virtual void afterRender(float deltaTime);
 
@@ -109,6 +108,7 @@ namespace E3DEngine
 		virtual void TransformChange() { }
 		virtual void SetCamera(Camera * camera);
 
+		virtual void SetDrawModule(DWORD module);
         void SetColor(long color);
         void SetIsBillborad(bool isBillboard);
         bool GetIsBillBoard();

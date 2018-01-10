@@ -47,25 +47,25 @@ namespace E3DEngine
 		m_objRendererBuffers.clear();
 	}
 
-	DWORD Renderer::RecordCurrentVextexStartIndex(QWORD objId)
+	DWORD Renderer::RecordCurrentVextexStartIndex(UINT objId)
 	{
 		m_objRendererBuffers[objId].VertextStartIndex = m_vertexCount;
 		return m_vertexCount;
 	}
 
-	DWORD Renderer::RecordCurrentIndexStartIndex(QWORD objId)
+	DWORD Renderer::RecordCurrentIndexStartIndex(UINT objId)
 	{
 		m_objRendererBuffers[objId].IndexStartIndex = m_indexCount;
 		return m_indexCount;
 	}
 
-	void Renderer::VertexCountAdd(QWORD objId, uint vertexCount)
+	void Renderer::VertexCountAdd(UINT objId, uint vertexCount)
 	{
 		m_objRendererBuffers[objId].VertextNumber = vertexCount;
 		m_vertexCount += vertexCount;
 	}
 
-	void Renderer::IndexCountAdd(QWORD objId, uint indexCount)
+	void Renderer::IndexCountAdd(UINT objId, uint indexCount)
 	{
 		m_objRendererBuffers[objId].IndexNumber = indexCount;
 		m_indexCount += indexCount;
@@ -76,9 +76,9 @@ namespace E3DEngine
 		glBlendType = blendType;
 	}
 
-	void Renderer::RemoveInRenderer(QWORD objId)
+	void Renderer::RemoveInRenderer(UINT objId)
 	{
-		std::map<QWORD , RendererBuffer>::iterator vbuffer = m_objRendererBuffers.find(objId);
+		std::map<UINT , RendererBuffer>::iterator vbuffer = m_objRendererBuffers.find(objId);
 		if (vbuffer ==  m_objRendererBuffers.end())
 		{
 			return;
@@ -111,7 +111,7 @@ namespace E3DEngine
 
 	}
 	
-	RendererBuffer* Renderer::GetRendererBuffer(QWORD objID)
+	RendererBuffer* Renderer::GetRendererBuffer(UINT objID)
 	{
 		if (m_objRendererBuffers.find(objID) == m_objRendererBuffers.end())
 		{

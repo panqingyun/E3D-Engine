@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace E3DEngine
 {
-    public class ParticleSystem : GameObject
+    public class ParticleSystem : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern ParticleGroup[] createParticle(string path);
@@ -21,17 +21,10 @@ namespace E3DEngine
 
     }
 
-    public class ParticleGroup : Object
+    public class ParticleGroup : GameObject
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
         public extern void SetEmitterEnable(bool isEnable);
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private extern void moveEmitter(float x, float y, float z);
-
-        public void MoveEmitter(Vector3 newPos)
-        {
-            moveEmitter(newPos.x, newPos.y, newPos.z);
-        }
+    
     }
 }

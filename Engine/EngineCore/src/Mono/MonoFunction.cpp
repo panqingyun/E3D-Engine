@@ -17,10 +17,15 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	set_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
-	REGISTER_INTERNAL_CALL(GameObject,  removeComponent);
+	REGISTER_INTERNAL_CALL(GameObject,	removeComponent);
+	REGISTER_INTERNAL_CALL(GameObject,	get_Name);
+	REGISTER_INTERNAL_CALL(GameObject,	set_Name);
+	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
+	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
+	REGISTER_INTERNAL_CALL(Camera,		screen2WorldPoint);
 	REGISTER_INTERNAL_CALL(Debug,		log_error);
 	REGISTER_INTERNAL_CALL(Debug,		log_warning);
 	REGISTER_INTERNAL_CALL(Debug,		log_info);
@@ -33,7 +38,9 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
 	REGISTER_INTERNAL_CALL(Box,			createBox);
 	REGISTER_INTERNAL_CALL(RigidBody,	addRigidBody);
-	REGISTER_INTERNAL_CALL(ParticleSystem	, createParticle);
+	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
+	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
+	REGISTER_INTERNAL_CALL(Sphere,			CreateSphere);
 }
 
 VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
@@ -258,6 +265,30 @@ VOID _1_PARAM_FUNCTION(GameObject, removeComponent, CS_OBJECT, cs_obj)
 	com->gameObject->RemoveComponent(com);
 }
 
+VOID _2_PARAM_FUNCTION(GameObject, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+
+	if (go == nullptr)
+	{
+		return;
+	}
+
+	go->Name = Convert::ToString(name);
+}
+
+CS_STRING _1_PARAM_FUNCTION(GameObject, get_Name, CS_OBJECT, cs_obj)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+
+	if (go == nullptr)
+	{
+		return mono_string_empty(MonoScriptManager::GetInstance().GetEngineDomain());
+	}
+
+	return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), go->Name.c_str());
+}
+
 CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING, class_name)
 {
 	GameObject *go = getCppObject<GameObject>(obj);
@@ -424,24 +455,7 @@ VOID _2_PARAM_FUNCTION(ParticleGroup, SetEmitterEnable, CS_OBJECT, cs_obj, CS_BO
 	group->SetEmitterEnable(enable == 1);
 }
 
-VOID _4_PARAM_FUNCTION(ParticleGroup, moveEmitter, CS_OBJECT, cs_obj, float, x, float, y, float, z)
-{
-	ParticleGroup * group = getCppObject<ParticleGroup>(cs_obj);
-
-	if (group == nullptr)
-	{
-		return;
-	}
-	vec3f newPos = vec3f(x, y, z);
-	std::vector<ParticleEmitter*> *emitters = group->GetEmitter();
-	for (auto & emitter : *emitters)
-	{
-		vec3f pos = emitter->GetEmitterPosition();
-		emitter->SetEmitterPosition(newPos);
-	}
-}
-
-CS_OBJECT _2_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, CS_OBJECT, pos)
+CS_OBJECT _4_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, float&, x, float&, y, float&, z)
 {
 	Camera * camera = getCppObject<Camera>(cs_obj);
 
@@ -449,25 +463,69 @@ CS_OBJECT _2_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, CS_OBJ
 	{
 		return nullptr;
 	}
+	vec3f newPos(x, y, z);
 
-	vec3f newPos;
-	MonoClass *klass = mono_object_get_class(pos);
-	MonoClassField *  field = mono_class_get_field_from_name(klass, "x");
-	mono_field_get_value(pos, field, &newPos.x);
-	field = mono_class_get_field_from_name(klass, "y");
-	mono_field_get_value(pos, field, &newPos.y);
-	field = mono_class_get_field_from_name(klass, "z");
-	mono_field_get_value(pos, field, &newPos.z);
+	newPos.x	= newPos.x / GetRenderSystem()->getFrameWidth() - 0.5;
+	newPos.y	= -1 * (newPos.y / GetRenderSystem()->getFrameHeight() - 0.5);
+	newPos		= camera->GetWorldPointWithScreenPoint(newPos.x, newPos.y, newPos.z);
+	
+	x = newPos.x;
+	y = newPos.y;
+	z = newPos.z;
+}
 
-	newPos.x = newPos.x / GetRenderSystem()->getFrameWidth() - 0.5;
-	newPos.y = -1 * (newPos.y / GetRenderSystem()->getFrameHeight() - 0.5);
+VOID _1_PARAM_FUNCTION(GameObject, destory, CS_OBJECT, cs_obj)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+	if (go == nullptr)
+	{
+		return;
+	}
 
-	newPos = camera->GetWorldPointWithScreenPoint(newPos.x, newPos.y, newPos.z);
-	klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(), NAME_SPACE, __STRINGIFY(Vector3));
-	MonoObject * obj = mono_object_new(MonoScriptManager::GetInstance().GetEngineDomain(), klass);
-	if (obj == nullptr)
+	EngineDelegate::GetInstance().DestoryObject(go);
+}
+
+CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithName, CS_OBJECT, cs_obj, CS_STRING, name)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+
+	if (go == nullptr)
+	{
+		return nullptr;
+	}
+	std::string cName = Convert::ToString(name);
+	GameObject * child = go->FindChild(cName);
+	if (child == nullptr)
 	{
 		return nullptr;
 	}
 
+	return child->GetMonoBehaviour()->GetMonoObject();
+}
+
+CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithID, CS_OBJECT, cs_obj, UINT, id)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+
+	if (go == nullptr)
+	{
+		return nullptr;
+	}
+
+	GameObject * child = go->FindChild(id);
+	if (child == nullptr)
+	{
+		return nullptr;
+	}
+
+	return child->GetMonoBehaviour()->GetMonoObject();
+}
+
+CS_OBJECT _1_PARAM_FUNCTION(Sphere, CreateSphere, float, r)
+{
+	Sphere *sphere = new Sphere();
+	sphere->Create(r);
+	ADD_IN_SCENE(sphere);
+
+	return sphere->GetMonoBehaviour()->GetMonoObject();
 }

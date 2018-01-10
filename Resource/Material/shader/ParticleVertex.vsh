@@ -1,16 +1,10 @@
-attribute vec3 position;
-attribute vec4 color;
-attribute vec2 inputTextureCoordinate;
-attribute vec3 transformPosition;
-attribute vec3 transformRotate;
-attribute vec3 transformScale;
-attribute float fShaderIndex;
 varying vec4 DestinationColor;
 
 varying lowp vec2 v_coord;
 uniform vec3 worldCameraPosition;
 uniform vec3 worldCameraUp;
 varying float shaderIndex;
+
 mat4 BillboardMatrix()
 {
     vec3 forward = normalize(position - worldCameraPosition);

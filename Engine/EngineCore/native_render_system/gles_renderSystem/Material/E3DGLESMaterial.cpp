@@ -11,6 +11,35 @@
 
 namespace E3DEngine
 {
+	const char * lightShader = GLES_STRING(
+	vec3 lightposition;//光源位置
+	vec4 ambient;//环境光颜色
+	vec4 lightcolor;//光源颜色
+	float Ns;//高光系数
+	float attenuation;//光线的衰减系数
+
+	vec4 _e3d_getLightColor()
+	{
+		//--------------------------------------------------------------
+		//--- 光照
+		lightposition = vec3(50.0, 50.0, 50.0);
+		ambient = vec4(0.5, 0.5, 0.5, 1.0);
+		lightcolor = vec4(1.0, 1.0, 1.0, 1.0);
+		Ns = 10.0;
+		attenuation = 0.1;
+		vec4 interpolatedPosition = vec4($POS, 1.0);
+		vec3 N = normalize((vec4($NORMAL, 1.0)).xyz);
+		vec3 L = normalize(lightposition - interpolatedPosition.xyz);
+		vec3 V = normalize(_e3d_cameraPos - interpolatedPosition.xyz);
+		vec3 H = normalize(V + L);
+		vec3 diffuse = vec3((lightcolor * max(dot(N, L), 0.0)).xyz);
+		vec3 specular = vec3((lightcolor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
+		vec4 _des_color = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
+		return (_des_color + ambient);
+	}
+
+	);
+
 	GLES_Material::GLES_Material()
 	{
 		
@@ -234,16 +263,29 @@ namespace E3DEngine
 			return;
 		}
 
-		std::string path = Application::AppDataPath + "/" + filePath;
-		std::string vertexShaderString = processVS().append(vvision::getContentFromPath(path + "/" + cfg->VertexShader));
-		std::string fragmentShaderString = vvision::getContentFromPath(path + "/" + cfg->FragmentShader);
-
 		processUniformVar(cfg);
 		processAttribVar(cfg);
+
+		std::string path = Application::AppDataPath + "/" + filePath;
+		std::string shaderContent = vvision::getContentFromPath(path + "/" + cfg->VertexShader);
+		std::string vertexShaderString = processVS().append(shaderContent);
+		std::string fragmentShaderString = vvision::getContentFromPath(path + "/" + cfg->FragmentShader);
 
 		LoadShader(vertexShaderString.c_str(), fragmentShaderString.c_str());
 	}
 
+	void string_replace(std::string &strBig, const std::string &strsrc, const std::string &strdst)
+	{
+		std::string::size_type pos = 0;
+		std::string::size_type srclen = strsrc.size();
+		std::string::size_type dstlen = strdst.size();
+
+		while ((pos = strBig.find(strsrc, pos)) != std::string::npos)
+		{
+			strBig.replace(pos, srclen, strdst);
+			pos += dstlen;
+		}
+	}
 
 	std::string GLES_Material::processVS()
 	{
@@ -261,6 +303,17 @@ namespace E3DEngine
 		priveVs.append("{\n");
 		priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
 		priveVs.append("}\n");
+		for (auto &attri : attributeMap)
+		{
+			if (attri.second.VarName == "")
+			{
+				continue;
+			}
+			priveVs.append("attribute ").append(attri.second.AttribType).append(" ").append(attri.second.VarName).append(";\n");
+		}
+		priveVs.append(lightShader);
+		string_replace(priveVs, "$POS", attributeMap["POSITION"].VarName);
+		string_replace(priveVs, "$NORMAL", attributeMap["NORMAL"].VarName);
 		return priveVs;
 	}
 
@@ -275,17 +328,17 @@ namespace E3DEngine
 
 	void GLES_Material::InitShaderVar()
 	{
-		createAttribute("POSITION"		, 0	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_VERTEX);
-		createAttribute("NORMAL"		, 3	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL);
-		createAttribute("COLOR"			, 6	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_COLOR);
-		createAttribute("TEXTURECOORD"	, 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0);
-		createAttribute("TANGENT"		, 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT);
-		createAttribute("BONEINDEX"		, 15, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES);
-		createAttribute("BONEWEIGHT"	, 19, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS);
-		createAttribute("TRANSPOSITION"	, 23, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION);
-		createAttribute("TRANSSCALE"	, 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE);
-		createAttribute("TRANSROTATE"	, 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION);
-		createAttribute("SHADERINDEX"	, 32, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_FRAGMENT_INDEX);
+		createAttribute("POSITION"		, 0	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_VERTEX				, "vec3");
+		createAttribute("NORMAL"		, 3	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL				, "vec3");
+		createAttribute("COLOR"			, 6	, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_COLOR				, "vec4");
+		createAttribute("TEXTURECOORD"	, 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0			, "vec2");
+		createAttribute("TANGENT"		, 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT			, "vec3");
+		createAttribute("BONEINDEX"		, 15, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES		, "vec4");
+		createAttribute("BONEWEIGHT"	, 19, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS		, "vec4");
+		createAttribute("TRANSPOSITION"	, 23, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION	, "vec3");
+		createAttribute("TRANSSCALE"	, 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE	, "vec3");
+		createAttribute("TRANSROTATE"	, 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION	, "vec3");
+		createAttribute("SHADERINDEX"	, 32, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX		, "float");
 		uniformSetFunc["float"]		= &Material::createFloat1Uniform;
 		uniformSetFunc["vec2"]		= &Material::createFloat2Uniform;
 		uniformSetFunc["vec3"]		= &Material::createFloat3Uniform;

@@ -178,7 +178,7 @@ namespace E3DEngine
 		samplerNameValue[varName] = defValue;
 	}
 
-	void Material::createAttribute(std::string typeName,int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation)
+	void Material::createAttribute(std::string typeName,int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation,std::string attrType)
 	{
 		Attribute attribute;
 		attribute.AttributeSize = AttributeSize;
@@ -187,6 +187,7 @@ namespace E3DEngine
 		attribute.StartPosition = StartPosition;
 		attribute.VarName		= "";
 		attribute.VarType		= VarType;
+		attribute.AttribType	= attrType;
 
 		attribute.VertexStructSize = VertexStructSize;
 		attributeMap[typeName] = attribute;
@@ -234,7 +235,8 @@ namespace E3DEngine
 			}
 			int typeSize = attributeMap[attribTypeName].AttributeSize;
 			Attribute attr = attributeMap[attribTypeName];
-			attr.VarName = attribVarName.c_str();
+			attributeMap[attribTypeName].VarName = attribVarName;
+			attr.VarName = attribVarName;
 			attr.TypeName = attribTypeName;
 			pShader->AttributeList.emplace_back(attr);
 		}

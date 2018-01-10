@@ -81,8 +81,8 @@ namespace Game
             //sphere.Active = true;
         }
 
-        private Vector3 rotate1 = new Vector3();
-        private Vector3 rotate2 = new Vector3();
+        //private Vector3 rotate1 = new Vector3();
+        //private Vector3 rotate2 = new Vector3();
         public void Update(float deltaTime)
         {          
             //rotate1.y += 0.05f;

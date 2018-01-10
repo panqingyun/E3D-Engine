@@ -148,7 +148,8 @@ namespace E3DEngine
 											BOOL		Normalized,
 											uint		VertexStructSize,
 											uint		AttributeSize,
-											uint		BindLocation);
+											uint		BindLocation,
+											std::string attrType);
 		virtual void CreateShaderUniform(std::string varName);
 
 	protected:

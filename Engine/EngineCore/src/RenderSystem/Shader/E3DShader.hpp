@@ -63,6 +63,7 @@ namespace E3DEngine
 
 	struct Attribute  
 	{
+		std::string  AttribType;		// 如 vec3
 		std::string  TypeName;			// 语义 如 POSITION 代表这个属性是用来做什么的
 		std::string  VarName;			// Shader里面的变量名
 		uint		 AttributeName;		// 变量的位置，使用glGetAttribLocation获取到的值

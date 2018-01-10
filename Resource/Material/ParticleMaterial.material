@@ -42,7 +42,8 @@
 									   TRANSPOSITION:transformPosition;
 									   TRANSSCALE:transformScale;
 									   TRANSROTATE:transformRotate;
-									   SHADERINDEX:fShaderIndex;"
+									   SHADERINDEX:fShaderIndex; 
+									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>
 </ConfigSystem>

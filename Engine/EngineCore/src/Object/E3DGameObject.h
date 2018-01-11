@@ -272,6 +272,7 @@ namespace E3DEngine
 	class CTransform;
 	class Material;
 	class RenderObject;
+	class Renderer;
 	class GameObject extends Object
 	{
 	public:
@@ -352,6 +353,10 @@ namespace E3DEngine
 		virtual void Render(float deltaTime);
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
+		std::map<UINT, GameObject *> &GetChilds()
+		{
+			return childNode;
+		}
 	protected:
 		virtual void ComponentAdded(Component * component);
 		virtual void CreateBehaviour() override;
@@ -373,7 +378,7 @@ namespace E3DEngine
 	protected:
 		std::map<UINT, GameObject *> childNode;
 		DWORD m_layerMask;
-		RenderObject * m_pRenderer;
+		Renderer * m_pRenderer;
 		vec3f		size;
 	};
 
@@ -387,6 +392,13 @@ namespace E3DEngine
 		static std::vector<std::string> Split(std::string str, std::string pattern);
 		static std::string Format(const char* format, ...);
 		static std::string Trim(std::string & str);
+		static bool IsText(std::string& str);
+		static void Replace(std::string &str, std::string src, std::string dest);
+		static void ReplaceAll(std::string &str, std::string src, std::string dest);
+		static bool IsNumber(std::string str);
+		static std::string RemoveTab(std::string &str);
+		static std::string RemoveLastStr(std::string &str, std::string removeStr);
+		static std::string RemoveFirstStr(std::string &str, std::string removeStr);
 	private:
 		
 	};

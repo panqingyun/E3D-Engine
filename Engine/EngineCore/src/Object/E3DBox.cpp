@@ -109,6 +109,7 @@ void E3DEngine::Box::Create(float l, float w, float h)
 void E3DEngine::Box::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
+	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 	m_pRenderer->EnableDepthTest = true;
 
 	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
@@ -121,6 +122,12 @@ void E3DEngine::Box::SetMaterial(Material * material)
 	SetActive(true);
 }
 
+
+void E3DEngine::Box::PrepareUpdate(float deltaTime)
+{
+
+}
+
 void E3DEngine::Box::SetActive(bool isActive)
 {
 	if (isActive == IsActive)
@@ -129,6 +136,7 @@ void E3DEngine::Box::SetActive(bool isActive)
 	}
 	GameObject::SetActive(isActive);
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
+	m_pRenderer->CreateNewTransform();
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
@@ -153,7 +161,7 @@ void E3DEngine::Box::SetActive(bool isActive)
 
 void E3DEngine::Box::AfterUpdate(float deltaTime)
 {
-	
+
 }
 
 void E3DEngine::Box::TransformChange()
@@ -162,7 +170,6 @@ void E3DEngine::Box::TransformChange()
 	{
 		return;
 	}
-	m_pRenderer->SetTransform(Transform);
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
 	int vertexStartIndex = mRenderer->GetRendererBuffer(ID)->VertextStartIndex;
 	std::vector<Vertex>::iterator it = m_vecVertex.begin();

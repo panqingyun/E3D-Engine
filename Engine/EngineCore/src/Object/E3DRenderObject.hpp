@@ -115,6 +115,7 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() { }
 		CTransform * GetTransform();
 		void SetTransform(CTransform *_transform);
+		void CreateNewTransform();
 		MinMaxAABB GetBounds()
 		{
 			return m_AABB;

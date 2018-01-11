@@ -126,6 +126,7 @@ CS_OBJECT _4_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, 
 VOID _1_PARAM_FUNCTION(GameObject			, destory			, CS_OBJECT		, cs_obj);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithName , CS_OBJECT		, cs_obj, CS_STRING		, name);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithID	, CS_OBJECT		, cs_obj, UINT			, id);
-VOID _2_PARAM_FUNCTION(GameObject			, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		, name);
-CS_STRING _1_PARAM_FUNCTION(GameObject		, get_Name			, CS_OBJECT		, cs_obj);
+VOID _2_PARAM_FUNCTION(Object				, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		, name);
+CS_STRING _1_PARAM_FUNCTION(Object			, get_Name			, CS_OBJECT		, cs_obj);
 CS_OBJECT _1_PARAM_FUNCTION(Sphere			, CreateSphere		, float			, r);
+VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJECT		,child);

@@ -12,8 +12,8 @@ namespace E3DEngine
 		RenderQueue();
 		RenderQueue * CreateSubQueue(uint id);
 	public:
-		void Add(GameObject * go);
-		bool Remove(GameObject * go);
+		void Add(RenderObject * rb);
+		bool Remove(RenderObject * rb);
 		void AddSubQueue(unsigned int id, RenderQueue * sub);
 		void Clear();
 		void SetCamera(Camera * pCamera);
@@ -22,14 +22,14 @@ namespace E3DEngine
 		void Render(float deltaTime);
 
 		unsigned int GetID();
-		bool FindInRenderQueue(GameObject *go);
+		bool FindInRenderQueue(RenderObject *rb);
 
 	private:
-		void changeNormalQueue(GameObject * go);
-		void changeTransparentQueue(GameObject * go);
+		void changeNormalQueue(RenderObject * rb);
+		void changeTransparentQueue(RenderObject * rb);
 
 	private:
-		std::vector<GameObject*> _renderQueue;
+		std::vector<RenderObject*> _renderQueue;
 		std::map<unsigned int, RenderQueue*> mapRenderQueue; // 场景子渲染队列 其他RenderTarget 需要FBO
 		unsigned int queueId;
 		Camera * m_pCamera;

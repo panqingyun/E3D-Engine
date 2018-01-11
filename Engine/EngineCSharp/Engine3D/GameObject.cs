@@ -19,6 +19,9 @@ namespace E3DEngine
         protected extern void removeComponent(Component com);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
+        public extern void AddChild(GameObject go);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern GameObject findChildWithName(string name);
 
         [MethodImpl(MethodImplOptions.InternalCall)]

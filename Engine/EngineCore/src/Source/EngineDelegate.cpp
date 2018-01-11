@@ -17,7 +17,6 @@ namespace E3DEngine
 		m_nObjectID = 0;
 		m_bIsInited = false;
 		m_bPause = false;
-		RootTransform = nullptr;
 	}
 	
 	void EngineDelegate::InitConfig(const char *path)
@@ -82,6 +81,7 @@ namespace E3DEngine
 			m_mapDoNotDestoryObject.erase(obj->ID);
 		}
 		SceneManager::GetInstance().GetCurrentScene()->RemoveChild(obj);
+		SAFE_DELETE(obj);
 	}
 	
 	EngineDelegate::~EngineDelegate() = default;
@@ -105,10 +105,9 @@ namespace E3DEngine
 		Timer::Update(deltaTime);
 		Physics::GetInstance().Update(deltaTime);
 		Scene * pCurScene = SceneManager::GetInstance().GetCurrentScene();
-		if (pCurScene != nullptr && RootTransform != nullptr)
-		{	
+		if (pCurScene != nullptr )
+		{
 			SceneManager::GetInstance().GetCurrentScene()->Update(deltaTime);
-			RootTransform->Update();
 		}
 
 		AutoreleasePool::GetInstance().Update();
@@ -128,7 +127,6 @@ namespace E3DEngine
 	{
 		if (sceneID == NULL_SCENE)
 		{
-			RootTransform = nullptr;
 			return;
 		}
 		if (!SceneClearEvent.empty())
@@ -141,7 +139,6 @@ namespace E3DEngine
 		}
 
 		Scene * pScene = SceneManager::GetInstance().GetCurrentScene();
-		RootTransform = pScene->Transform;
 
 		if (pScene->dontDestoryScene)
 		{
@@ -188,10 +185,6 @@ namespace E3DEngine
 		EffectFactory::GetInstance().Destory();
 		MeshFactory::GetInstance().Destory();
 		Timer::Destory();
-		if (RootTransform != nullptr)
-		{
-			RootTransform->Destory();
-		}
 		
 		for(std::map<std::string, TableManager*>::iterator it = m_mapTableManager.begin();
 			it != m_mapTableManager.end(); ++it)

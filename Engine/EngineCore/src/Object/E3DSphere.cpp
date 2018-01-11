@@ -3,11 +3,12 @@
 #include "E3DTransform.hpp"
 #include "../Camera/E3DCamera.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
+#include "../Scene/E3DSceneManager.hpp"
 
 void E3DEngine::Sphere::Create(float R)
 {
-	int rowNumber = 360;
-	int colNumber = 360;
+	int rowNumber = 180;
+	int colNumber = 180;
 	m_vecVertex.resize(rowNumber * colNumber);
 	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
 	m_vecIndex.resize(indexSize);
@@ -16,12 +17,12 @@ void E3DEngine::Sphere::Create(float R)
 	float dAlpha = 0, dBeta = 0;
 	for (int alpha = 0; alpha < rowNumber; alpha ++)
 	{
-		dAlpha = DEG2RAD(alpha);
+		dAlpha = DEG2RAD(alpha * 2);
 		float sinAplha = sin(dAlpha);
 		float cosAlpha = cos(dAlpha);
 		for (int beta = 0; beta < colNumber; beta++)
 		{
-			dBeta = DEG2RAD(beta);
+			dBeta = DEG2RAD(beta * 2);
 			float x = R * cosAlpha * sin(dBeta);
 			float y = R * sinAplha * sin(dBeta);
 			float z = R * cos(dBeta);
@@ -50,6 +51,7 @@ void E3DEngine::Sphere::Create(float R)
 void E3DEngine::Sphere::SetMaterial(Material *material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
+	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 	m_pRenderer->EnableDepthTest = true;
 
 	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)

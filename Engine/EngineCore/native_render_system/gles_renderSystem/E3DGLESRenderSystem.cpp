@@ -9,7 +9,7 @@
 #include "Material/E3DGLESMaterialManager.hpp"
 #include "Texture/E3DGLESRender2Texture.h"
 #include "RenderObject/E3DGLESRenderManager.hpp"
-#include "../include/EngineAPI.h"
+#include <include/EngineAPI.h>
 
 namespace E3DEngine
 {

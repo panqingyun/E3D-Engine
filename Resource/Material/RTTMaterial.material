@@ -31,8 +31,8 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/RTT.vsh" 
-					FragmentShader	= "shader/RTT.fsh" 	
+					VertexShader	= "shader/RTTVS.shader" 
+					FragmentShader	= "shader/RTTFS.shader" 	
 					UniformVariable	= "mat4:matProj;
 									   mat4:matView;
 									   mat4:matModel;

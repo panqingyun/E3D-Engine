@@ -10,6 +10,7 @@
 #include "E3DTransform.hpp"
 #include <stdarg.h>
 #include "E3DRenderObject.hpp"
+#include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 
 namespace E3DEngine
 {
@@ -177,6 +178,10 @@ namespace E3DEngine
 			SAFE_DELETE(node);
 		}
 		m_listComponents.clear();
+		if (m_pRenderer != nullptr)
+		{
+			m_pRenderer->RemoveInRenderer(ID);
+		}
 	}
 	
 	void GameObject::SetParent(GameObject * parent)
@@ -265,11 +270,6 @@ namespace E3DEngine
 		IsActive = true;
 		m_pRenderer = nullptr;
 		ParentNode = nullptr;
-		Scene * pScene = SceneManager::GetInstance().GetCurrentScene();
-		if (pScene != nullptr)
-		{
-			pScene->AddChild(this);
-		}
 		m_layerMask = -1;
 	}
 	
@@ -363,14 +363,9 @@ namespace E3DEngine
 		{
 			return;
 		}
-		childNode.erase(childNode.find(node->ID));
-		if (pCamera != nullptr)
-		{
-			pCamera->GetRenderQueue()->Remove(node);
-		}
-		
+		childNode.erase(childNode.find(node->ID));		
 		node->ParentNode = nullptr;
-		SAFE_DELETE(node);
+		//SAFE_DELETE(node);
 	}
 
 
@@ -381,14 +376,10 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (pCamera != nullptr)
-		{
-			pCamera->GetRenderQueue()->Remove(childNode[ID]);
-		}			
-
+		
 		childNode[ID]->ParentNode = nullptr;
 		childNode.erase(childNode.find(ID));
-		SAFE_DELETE(childNode[ID]);
+		//SAFE_DELETE(childNode[ID]);
 	}
 
 
@@ -564,6 +555,152 @@ namespace E3DEngine
 		return str;
 	}
 
+
+	bool StringBuilder::IsText(std::string &cStrName)
+	{
+		const char *str = cStrName.c_str();
+		char ch = *str++;
+		int i = 1;
+		if (!(ch == '_' || ((ch & 0x80) && (*str & 0x80)) || isalpha(ch)))
+		{
+			return false;
+		}
+		if ((ch & 0xff) == 0xA1 && (*str & 0x80) >= 0x3F)
+		{
+			return false;
+		}
+		else if ((ch & 0xff) > 0xA1 && (ch & 0xff) < 0xAA)
+		{
+			return false;
+		}
+		else if ((ch & 0xff) == 0xAA && (*str & 0x80) <= 0x40)
+		{
+			return false;
+		}
+		if (ch < 0)
+		{
+			*str++;
+			i++;
+		}
+		int len = (int)strlen(str);
+		for (i; i < len; i++)
+		{
+			ch = *str++;
+			if (!(ch == '_' || ch == '-' || (ch & 0x80) || isalpha(ch) || isdigit(ch)))
+			{
+				return false;
+			}
+			if (i < len - 1)
+			{
+				if ((ch & 0xff) == 0xA1 && (*str & 0x80) >= 0x3F)
+				{
+					return false;
+				}
+				else if ((ch & 0xff) > 0xA1 && (ch & 0xff) < 0xAA)
+				{
+					return false;
+				}
+				else if ((ch & 0xff) == 0xAA && (*str & 0x80) <= 0x40)
+				{
+					return false;
+				}
+			}
+			if (ch < 0)
+			{
+				*str++;
+				i++;
+			}
+		}
+		return true;
+	}
+
+	void StringBuilder::Replace(std::string & str, std::string src, std::string dest)
+	{
+		size_t pos = str.find(src);
+		if (pos != std::string::npos)
+		{
+			size_t length = src.length();
+			str.replace(pos, length, dest);
+		}
+	}
+
+	void StringBuilder::ReplaceAll(std::string & str, std::string src, std::string dest)
+	{
+		size_t pos = str.find(src);
+		if (pos != std::string::npos)
+		{
+			size_t length = src.length();
+			str = str.replace(pos, length, dest);
+			ReplaceAll(str, src, dest);
+		}
+	}
+
+	bool StringBuilder::IsNumber(std::string str)
+	{
+		std::stringstream sin(str);
+		double d;
+		char c;
+		if (!(sin >> d))
+		{
+			return false;
+		}
+		if (sin >> c)
+		{
+			return false;
+		}
+		return true;
+	}
+
+	std::string StringBuilder::RemoveTab(std::string & str)
+	{
+		if (str.empty())
+		{
+			return str;
+		}
+		size_t n = str.find_last_not_of(" \r\n\t");
+		if (n != std::string::npos)
+		{
+			str.erase(n + 1, str.size() - n);
+		}
+
+		n = str.find_first_not_of(" \r\n\t");
+		if (n != std::string::npos)
+		{
+			str.erase(0, n);
+		}
+		return str;
+	}
+
+	std::string StringBuilder::RemoveLastStr(std::string & str, std::string removeStr)
+	{
+		if (str.empty())
+		{
+			return str;
+		}
+		size_t n = str.find_last_not_of(removeStr);
+		if (n != std::string::npos)
+		{
+			str.erase(n + 1, str.size() - n);
+		}
+		return str;
+	}
+
+	std::string StringBuilder::RemoveFirstStr(std::string & str, std::string removeStr)
+	{
+		if (str.empty())
+		{
+			return str;
+		}
+		size_t pos = str.find(removeStr);
+		if (pos != std::string::npos)
+		{
+			size_t length = removeStr.length();
+			std::string::iterator begin = str.begin() + pos;
+			std::string::iterator end = str.begin() + pos + length;
+			str.erase(begin, end);
+		}
+		return str;
+	}
 }
 
 int Convert::ToInt(std::string source)

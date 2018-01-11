@@ -17,42 +17,42 @@ namespace E3DEngine
 		return queue;
 	}
 
-	void RenderQueue::Add(GameObject * go)
+	void RenderQueue::Add(RenderObject * rb)
 	{
-		if (go == nullptr)
+		if (rb == nullptr)
 		{
 			return;
 		}
-		if (FindInRenderQueue(go))
+		if (FindInRenderQueue(rb))
 		{
 			return;
 		}
 		if (_renderQueue.empty())
 		{
-			_renderQueue.push_back(static_cast<GameObject*>(go));
+			_renderQueue.push_back(rb);
 			return;
 		}
 		for (int i = _renderQueue.size() - 1; i >= 0; i--)
 		{
 			if (_renderQueue[i]->RenderIndex >= eRI_Normal || i == 0)
 			{
-				_renderQueue.insert(_renderQueue.begin() + i + 1, go);
+				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				return;
 			}
 		}
-		_renderQueue.emplace_back(go);
+		_renderQueue.emplace_back(rb);
 	}
 
-	bool RenderQueue::Remove(GameObject * go)
+	bool RenderQueue::Remove(RenderObject * rb)
 	{
-		if (go == nullptr)
+		if (rb == nullptr)
 		{
 			return false;
 		}
 		int renderIndex = -1;
 		for (int i = 0; i < _renderQueue.size(); i++)
 		{
-			if (_renderQueue[i]->ID == go->ID)
+			if (_renderQueue[i]->ID == rb->ID)
 			{
 				renderIndex = i;
 				break;
@@ -64,7 +64,7 @@ namespace E3DEngine
 			bool bRemove = false;
 			for (auto &rederQueue : mapRenderQueue )
 			{
-				if (rederQueue.second->Remove(go))
+				if (rederQueue.second->Remove(rb))
 				{
 					bRemove = true;
 					break;
@@ -87,15 +87,15 @@ namespace E3DEngine
 		mapRenderQueue[id] = sub;
 	}
 
-	void RenderQueue::changeTransparentQueue(GameObject * go)
+	void RenderQueue::changeTransparentQueue(RenderObject * rb)
 	{
 		bool bInsert = false;
 		for (int i = _renderQueue.size() - 1; i >= 0;)
 		{
-			go = static_cast<GameObject*>(_renderQueue[i]);
-			if (go->RenderIndex != eRI_TopMost || i == 0)
+			rb = _renderQueue[i];
+			if (rb->RenderIndex != eRI_TopMost || i == 0)
 			{
-				_renderQueue.insert(_renderQueue.begin() + i + 1, go);
+				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				bInsert = true;
 				break;
 			}
@@ -106,19 +106,19 @@ namespace E3DEngine
 		}
 		if (!bInsert)
 		{
-			_renderQueue.push_back(go);
+			_renderQueue.push_back(rb);
 		}
 	}
 
-	void RenderQueue::changeNormalQueue(GameObject * go)
+	void RenderQueue::changeNormalQueue(RenderObject * rb)
 	{
 		bool bInsert = false;
 		for (int i = _renderQueue.size() - 1; i >= 0;)
 		{
-			go = static_cast<GameObject*>(_renderQueue[i]);
-			if (go->RenderIndex == eRI_Normal || go->RenderIndex == eRI_LowMost || i == 0)
+			rb = _renderQueue[i];
+			if (rb->RenderIndex == eRI_Normal || rb->RenderIndex == eRI_LowMost || i == 0)
 			{
-				_renderQueue.insert(_renderQueue.begin() + i + 1, go);
+				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				bInsert = true;
 				break;
 			}
@@ -129,21 +129,16 @@ namespace E3DEngine
 		}
 		if (!bInsert)
 		{
-			_renderQueue.push_back(go);
+			_renderQueue.push_back(rb);
 		}
 	}
 
-	bool RenderQueue::FindInRenderQueue(GameObject *go)
+	bool RenderQueue::FindInRenderQueue(RenderObject *rb)
 	{
 		bool bFind = false;
 		for (auto & render : _renderQueue)
 		{
-			if (render->ID == go->ID)
-			{
-				bFind = true;
-				break;
-			}
-			else if (render->GetRenderer() == go->GetRenderer())
+			if (render->ID == rb->ID)
 			{
 				bFind = true;
 				break;
@@ -178,7 +173,7 @@ namespace E3DEngine
 			}
 			return retValue;
 		}
-		GameObject * render = static_cast<GameObject*>(_renderQueue[renderIndex]);
+		RenderObject * render = _renderQueue[renderIndex];
 		_renderQueue.erase(_renderQueue.begin() + renderIndex);
 		if (render->RenderIndex == eRI_LowMost)
 		{
@@ -206,10 +201,6 @@ namespace E3DEngine
 			if (render == nullptr)
 			{
 				Debug::Log(ell_Error, " Not render object in renderQueue ");
-				continue;
-			}
-			if (!render->IsActive)
-			{
 				continue;
 			}
 			render->SetCamera(m_pCamera);

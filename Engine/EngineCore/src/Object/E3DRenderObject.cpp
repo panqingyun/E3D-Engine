@@ -88,10 +88,10 @@ namespace E3DEngine
 	void RenderObject::SetMaterial(Material *material)
 	{
 		pMaterial = material;
-		for (auto & attr : pMaterial->pShader->AttributeList)
-		{// TODO 根据材质需要的顶点数据重新分配顶点数组
+		//for (auto & attr : pMaterial->pShader->AttributeList)
+		//{// TODO 根据材质需要的顶点数据重新分配顶点数组
 
-		}
+		//}
 	}
 
 	void RenderObject::prepareRender(float deltaTime)
@@ -139,6 +139,14 @@ namespace E3DEngine
 	void RenderObject::SetTransform(CTransform * _transform)
 	{
 		transform = _transform;
+	}
+
+	void RenderObject::CreateNewTransform()
+	{
+		if (transform == nullptr)
+		{
+			transform = new CTransform;
+		}
 	}
 
 	E3DEngine::CTransform * RenderObject::GetTransform()

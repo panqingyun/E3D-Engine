@@ -84,7 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>E:\Old\E3DEngine\Engine\EngineCore;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\bin</OutDir>
     <TargetExt>.exe</TargetExt>

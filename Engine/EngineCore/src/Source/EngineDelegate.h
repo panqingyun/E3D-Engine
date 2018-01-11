@@ -94,7 +94,6 @@ namespace E3DEngine
 		
 	public:
 		mat4f RotateMatrix;
-		CTransform * RootTransform;
 		event EventDelegates SceneClearEvent;
 		void Update(float deltaTime, bool selfClear = true);
 	};

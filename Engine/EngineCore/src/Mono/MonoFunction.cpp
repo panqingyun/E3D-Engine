@@ -3,6 +3,8 @@
 
 void RegisterMonoFunction()
 {
+	REGISTER_INTERNAL_CALL(Object,		get_Name);
+	REGISTER_INTERNAL_CALL(Object,		set_Name);
 	REGISTER_INTERNAL_CALL(Object,		get_ID);
 	REGISTER_INTERNAL_CALL(Transform,	getPosition);
 	REGISTER_INTERNAL_CALL(Transform,	setPosition);
@@ -18,10 +20,9 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	removeComponent);
-	REGISTER_INTERNAL_CALL(GameObject,	get_Name);
-	REGISTER_INTERNAL_CALL(GameObject,	set_Name);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
+	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
@@ -265,9 +266,9 @@ VOID _1_PARAM_FUNCTION(GameObject, removeComponent, CS_OBJECT, cs_obj)
 	com->gameObject->RemoveComponent(com);
 }
 
-VOID _2_PARAM_FUNCTION(GameObject, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
+VOID _2_PARAM_FUNCTION(Object, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
 {
-	GameObject *go = getCppObject<GameObject>(cs_obj);
+	Object *go = getCppObject<Object>(cs_obj);
 
 	if (go == nullptr)
 	{
@@ -277,9 +278,9 @@ VOID _2_PARAM_FUNCTION(GameObject, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
 	go->Name = Convert::ToString(name);
 }
 
-CS_STRING _1_PARAM_FUNCTION(GameObject, get_Name, CS_OBJECT, cs_obj)
+CS_STRING _1_PARAM_FUNCTION(Object, get_Name, CS_OBJECT, cs_obj)
 {
-	GameObject *go = getCppObject<GameObject>(cs_obj);
+	Object *go = getCppObject<Object>(cs_obj);
 
 	if (go == nullptr)
 	{
@@ -435,9 +436,11 @@ CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem, createParticle, CS_OBJECT, cs_obj , C
 	int index = 0;
 	for (auto &group : *pG)
 	{
+		ADD_IN_SCENE(group);
 		klass = group->GetMonoBehaviour()->GetClass();
 		MonoType *type = mono_class_get_type(klass);
 		mono_array_setref(particleGroups, index, group->GetMonoBehaviour()->GetMonoObject());
+		index++;
 	}
 	SAFE_DELETE(pG);
 	return particleGroups;
@@ -528,4 +531,21 @@ CS_OBJECT _1_PARAM_FUNCTION(Sphere, CreateSphere, float, r)
 	ADD_IN_SCENE(sphere);
 
 	return sphere->GetMonoBehaviour()->GetMonoObject();
+}
+
+VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child)
+{
+	GameObject *go = getCppObject<GameObject>(cs_obj);
+	if (go == nullptr)
+	{
+		return;
+	}
+
+	GameObject *_child = getCppObject<GameObject>(child);
+	if (_child == nullptr)
+	{
+		return;
+	}
+
+	go->AddChild(_child);
 }

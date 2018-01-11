@@ -5,7 +5,7 @@
 //
 
 #include "E3DGLESRenderManager.hpp"
-#include <RenderSystem/E3DRenderSystem.hpp>
+#include <src/RenderSystem/E3DRenderSystem.hpp>
 
 namespace E3DEngine
 {

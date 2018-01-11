@@ -177,8 +177,16 @@ namespace E3DEngine
 	}
 
 
-	Vertex * Particle::getVertex()
+	Vertex * Particle::getVertex(mat4f worldMatrix)
 	{
+		vec4f pos0 = worldMatrix * vec4f(Vertes[0].Position[0], Vertes[0].Position[1], Vertes[0].Position[2], 1.0);
+		vec4f pos1 = worldMatrix * vec4f(Vertes[1].Position[0], Vertes[1].Position[1], Vertes[1].Position[2], 1.0);
+		vec4f pos2 = worldMatrix * vec4f(Vertes[2].Position[0], Vertes[2].Position[1], Vertes[2].Position[2], 1.0);
+		vec4f pos3 = worldMatrix * vec4f(Vertes[3].Position[0], Vertes[3].Position[1], Vertes[3].Position[2], 1.0);
+		Vertes[0].SetPosition(pos0.x, pos0.y, pos0.z);
+		Vertes[1].SetPosition(pos1.x, pos1.y, pos1.z);
+		Vertes[2].SetPosition(pos2.x, pos2.y, pos2.z);
+		Vertes[3].SetPosition(pos3.x, pos3.y, pos3.z);
 		return Vertes;
 	}
 
@@ -633,7 +641,9 @@ namespace E3DEngine
 	{
 		m_pRenderer = buffer;
 		m_pMaterial = buffer->pMaterial;
-		m_pRenderer->SetTransform(Transform);
+		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+		m_pRenderer->CreateNewTransform();
+		SetRenderIndex(eRI_TopMost);
 	}
 	
 	void ParticleGroup::SetCamera(Camera * camera)
@@ -734,7 +744,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			Vertex *vertex = it.get_ptr()->getVertex();
+			Vertex *vertex = it.get_ptr()->getVertex(Transform->WorldMatrix);
 			for (int vi = 0; vi < 4; vi++)
 			{
 				// TODO
@@ -813,10 +823,11 @@ namespace E3DEngine
 				it ++;
 			}
 			p->Update(deltaTime);
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 0] = p->getVertex()[0];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 1] = p->getVertex()[1];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 2] = p->getVertex()[2];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 3] = p->getVertex()[3];
+			Vertex * vertex = p->getVertex(Transform->WorldMatrix);
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 3] = vertex[3];
 		}
 	}
 	
@@ -863,10 +874,11 @@ namespace E3DEngine
 			}
 			
 			particle.get_ptr()->Update(deltaTime);
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = particle.get_ptr()->getVertex()[0];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = particle.get_ptr()->getVertex()[1];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = particle.get_ptr()->getVertex()[2];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = particle.get_ptr()->getVertex()[3];
+			Vertex * vertex = particle.get_ptr()->getVertex(Transform->WorldMatrix);
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = vertex[1];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = vertex[2];
+			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = vertex[3];
 		}
 		if (m_ActiveParticles.empty() && !bIsEnable )
 		{

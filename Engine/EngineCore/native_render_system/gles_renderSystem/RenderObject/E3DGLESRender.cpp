@@ -93,6 +93,7 @@ namespace E3DEngine
 		pMaterial->pShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
 		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
+		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x, GetTransform()->RotationEuler.y, GetTransform()->RotationEuler.z);
 		if ( pCamera != nullptr)
 		{
 			vec3f &pos = pCamera->Transform->Position;

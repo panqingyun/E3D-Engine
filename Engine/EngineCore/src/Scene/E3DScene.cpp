@@ -16,7 +16,8 @@ namespace E3DEngine
 		dontDestoryScene	= false;
 		m_SceneType		= eSceneType_defult;
 		NodeType		= eT_Scene;
-		Transform		= new CTransform;
+		rootObject		= new GameObject;
+		m_vecObjList[rootObject->ID] = rootObject;
 		CreateBehaviour();
 	}
 
@@ -26,7 +27,7 @@ namespace E3DEngine
 		{
 			node.second->Update(deltaTime);
 		}
-
+		rootObject->Transform->Update();
 		// 渲染场景
 		GetRenderSystem()->BeginFrame();
 		RenderScene(deltaTime);
@@ -56,10 +57,6 @@ namespace E3DEngine
 				continue;
 			}
 			m_vecObjList.erase(node->ID);
-			for (Camera * camera : m_vecCamera)
-			{
-				camera->GetRenderQueue()->Remove(static_cast<GameObject*>(node));
-			}
 			SAFE_DELETE(node);
 		}
 		for (Camera * camera : m_vecCamera)
@@ -67,6 +64,7 @@ namespace E3DEngine
 			SAFE_DELETE(camera);
 		}
 		GetRenderSystem()->Cleanup();
+		m_mapRenders.clear();
 		m_vecObjList.clear();
 	}
 	
@@ -84,7 +82,7 @@ namespace E3DEngine
 		{
 			for (Camera * camera : m_vecCamera)
 			{
-				camera->GetRenderQueue()->Remove(static_cast<GameObject*>(it.second));
+				//camera->GetRenderQueue()->Remove(static_cast<GameObject*>(it.second));
 			}
 			SAFE_DELETE(it.second);
 		}
@@ -130,15 +128,11 @@ namespace E3DEngine
 		if (isCanInsert)
 		{
 			m_vecCamera.emplace_back(pCamera);
-			for (auto &obj : m_vecObjList)
+			for (auto &obj : m_mapRenders)
 			{
-				if (obj.second->NodeType != eT_GameObject)
+				if (!pCamera->GetRenderQueue()->FindInRenderQueue(obj.second))
 				{
-					continue;
-				}
-				if (!pCamera->GetRenderQueue()->FindInRenderQueue(static_cast<GameObject*>(obj.second)))
-				{
-					pCamera->GetRenderQueue()->Add(static_cast<GameObject*>(obj.second));
+					pCamera->GetRenderQueue()->Add(obj.second);
 				}
 			}
 		}
@@ -186,28 +180,45 @@ namespace E3DEngine
 		{
 			return;
 		}
-
-		if (m_vecObjList.find(node->ID) != m_vecObjList.end())
-		{
-			if (node->NodeType == eT_GameObject)
-			{
-				for (Camera * camera : m_vecCamera)
-				{
-					if (camera->GetLayerMask() &static_cast<GameObject*>(node)->GetLayerMask())
-					{
-						camera->GetRenderQueue()->Add(static_cast<GameObject*>(node));
-					}
-				}
-				Transform->AddChild(node->ID, static_cast<GameObject*>(node)->Transform);
-			}
-			return;
-		}
 		if (node->NodeType == eT_GameObject)
-		{
-			Transform->AddChild(node->ID, static_cast<GameObject*>(node)->Transform);
+		{			
+			GameObject *go = static_cast<GameObject*>(node);
+			if (rootObject->FindChild(go->ID))
+			{
+				return;
+			}
+			if (m_vecObjList.find(go->ID) != m_vecObjList.end())
+			{
+				m_vecObjList.erase(go->ID);
+				rootObject->AddChild(go);
+			}
+			
 		}
 		m_vecObjList[node->ID] = node;
 		
+	}
+
+	void Scene::AddRenderObject(RenderObject* rb, UINT layer)
+	{
+		if (rb == nullptr)
+		{
+			return;
+		}
+
+		if (m_mapRenders.find(rb->ID) != m_mapRenders.end())
+		{
+			return;
+		}
+
+		m_mapRenders[rb->ID] = rb;
+
+		for (Camera * camera : m_vecCamera)
+		{
+			if (camera->GetLayerMask() & layer)
+			{
+				camera->GetRenderQueue()->Add(rb);
+			}
+		}
 	}
 
 	void Scene::RemoveChild(Object * node)
@@ -217,46 +228,37 @@ namespace E3DEngine
 			return;
 		}
 		DWORD id = node->ID;
-		if (m_vecObjList.find(id) == m_vecObjList.end())
+
+		if (rootObject->FindChild(id))
 		{
-			return;
+			GameObject * go = static_cast<GameObject*>(node);
+			
+			rootObject->RemoveChild(go);
 		}
-		
-		if (m_vecObjList[id]->NodeType == eT_GameObject)
+		else
 		{
-			GameObject * go = static_cast<GameObject*>(m_vecObjList[id]);
-			for (Camera * camera : m_vecCamera)
+			if (m_vecObjList.find(id) == m_vecObjList.end())
 			{
-				if (camera->GetLayerMask() & go->GetLayerMask())
-				{
-					camera->GetRenderQueue()->Remove(go);
-				}
+				return;
 			}
+			m_vecObjList.erase(node->ID);
 		}
-		m_vecObjList.erase(node->ID);
-		SAFE_DELETE(node);
 	}
 
 	void Scene::RemoveChild(UINT ID)
 	{
-		if (m_vecObjList.find(ID) == m_vecObjList.end())
+		if (rootObject->FindChild(ID))
 		{
-			return;
+			rootObject->RemoveChild(ID);
 		}
-
-		if (m_vecObjList[ID]->NodeType == eT_GameObject)
+		else
 		{
-			GameObject * go = static_cast<GameObject*>(m_vecObjList[ID]);
-			for (Camera * camera : m_vecCamera)
+			if (m_vecObjList.find(ID) == m_vecObjList.end())
 			{
-				if (camera->GetLayerMask() & go->GetLayerMask())
-				{
-					camera->GetRenderQueue()->Remove(go);
-				}
+				return;
 			}
+			m_vecObjList.erase(ID);
 		}
-		m_vecObjList.erase(ID);
-		SAFE_DELETE(m_vecObjList[ID]);
 	}
 
 

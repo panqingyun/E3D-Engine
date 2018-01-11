@@ -15,13 +15,6 @@
 
 namespace E3DEngine
 {
-
-#define  MODEL_MATRIX "_e3d_matModel"
-#define  PROJ_MATRIX "_e3d_matProj"
-#define  VIEW_MATRIX "_e3d_matView"
-#define  CAMERA_POS  "_e3d_cameraPos"
-
-	using setShaderValueFunc = void(Material::*)(std::string varName, std::string defValueFormat);
     enum eBlendType
 	{
         eBlendType_default = 0,
@@ -104,8 +97,6 @@ namespace E3DEngine
 	protected:
 		virtual void parseShaderConfig(ShaderConfig *cfg);
 		virtual void enableStencil();
-		virtual void processAttribVar(ShaderConfig * cfg);
-		virtual void processUniformVar(ShaderConfig * cfg);
 		virtual void beforeUpdate();
 		virtual void afterUpdate();
 		virtual void createTexture(std::string textureName, std::string textureUniform);
@@ -131,32 +122,6 @@ namespace E3DEngine
 		MaterialConfig	  *	pMaterialConfig;
 		std::string filePath;
 
-	public:
-		void createInt1Uniform(std::string varName, std::string defValueFormat);
-		void createFloat1Uniform(std::string varName, std::string defValueFormat);
-		void createFloat2Uniform(std::string varName, std::string defValueFormat);
-		void createFloat3Uniform(std::string varName, std::string defValueFormat);
-		void createFloat4Uniform(std::string varName, std::string defValueFormat);
-		void createMatrix2Uniform(std::string varName, std::string defValueFormat);
-		void createMatrix3Uniform(std::string varName, std::string defValueFormat);
-		void createMatrix4Uniform(std::string varName, std::string defValueFormat);
-		void createSamplerUniform(std::string varName, std::string defValueFormat);
-
-		virtual void createAttribute(std::string		typeName,
-											 int		StartPosition,
-											uint		VarType,
-											BOOL		Normalized,
-											uint		VertexStructSize,
-											uint		AttributeSize,
-											uint		BindLocation,
-											std::string attrType);
-		virtual void CreateShaderUniform(std::string varName);
-
-	protected:
-		std::map<std::string, Attribute> attributeMap;
-		std::map<std::string, setShaderValueFunc> uniformSetFunc;
-		std::map<std::string, std::string> varToTypeMap;
-		std::map<std::string, std::string> samplerNameValue;
 		
 	};
 }

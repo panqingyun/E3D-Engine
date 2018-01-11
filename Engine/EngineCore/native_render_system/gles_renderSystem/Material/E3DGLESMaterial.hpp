@@ -24,30 +24,24 @@ namespace E3DEngine
 		GLES_Material();
 		virtual void UseMaterial();
 		virtual void Destory();
-		virtual void CreateMaterial(MaterialConfig * config, ShaderConfig * sCfg);
 		virtual void SetTexture(Texture * texture, int index);
 		virtual void BindTexture();
 		virtual void UseProgram();		
 		virtual void UseNullProgram();
-		virtual void InitShaderVar();
 		virtual void InvalidMaterial();
 	public:
 		virtual void CreateShader(ShaderConfig *cfg)
 		{
 			pShader = new GLES_Shader;
-			InitShaderVar();
-			parseShaderConfig(cfg);
+			pShader->SetFileRelativeFolder(filePath);
+			static_cast<GLES_Shader*>(pShader)->InitShaderVar();
+			static_cast<GLES_Shader*>(pShader)->LoadShader(cfg);
 		}
 		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
 									   std::string xNName,
 									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
 	protected:
-		virtual void parseShaderConfig(ShaderConfig *cfg)override;
-		virtual void LoadShader(const char * vertexShaderString, const char * fragmentShaderString);
-
-		std::string processVS();
 		void enableStencil()override;
-		virtual void processUniformVar(ShaderConfig * cfg)override;
 		virtual void beforeUpdate()override;
 		virtual void afterUpdate()override;
 		virtual void createTexture(std::string textureName, std::string textureUniform)override;

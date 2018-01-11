@@ -19,7 +19,7 @@ namespace E3DEngine
 		}
 		void Create(float l, float w, float h);
 		virtual void SetMaterial(Material * material);
-
+		virtual void PrepareUpdate(float deltaTime) override;
 		virtual void SetActive(bool isActive) override;
 		virtual void AfterUpdate(float deltaTime) override;
 		virtual void TransformChange() override;

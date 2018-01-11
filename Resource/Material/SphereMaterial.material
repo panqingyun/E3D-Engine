@@ -31,8 +31,8 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/Sphere.vsh" 
-					FragmentShader	= "shader/Box.fsh" 	
+					VertexShader	= "shader/SphereVS.shader" 
+					FragmentShader	= "shader/BoxFS.shader" 	
 					UniformVariable	= "" 
 									   
 					AttribVariable	= "POSITION:position;

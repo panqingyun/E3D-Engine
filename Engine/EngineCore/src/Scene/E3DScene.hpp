@@ -46,6 +46,7 @@ namespace E3DEngine
 		void SortCamera();
 		Camera * GetCamera(UINT cameraID);
 		void ChangeFrameSize(float w, float h);
+		void AddRenderObject(RenderObject* rb, UINT layer);
 
 	public:
 		virtual void AddChild(Object * node);
@@ -57,12 +58,13 @@ namespace E3DEngine
 	public:
 		bool					dontDestoryScene;
 		event EventDelegates	SceneReloadEvent;
-		CTransform * Transform;
 
 	private:
         eSceneType		m_SceneType;
 		std::vector<Camera*> m_vecCamera;
 		std::map<DWORD, Object*> m_vecObjList;
+		GameObject		* rootObject;
+		std::map<DWORD, RenderObject*> m_mapRenders;
 	};
 }
 

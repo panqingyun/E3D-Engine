@@ -51,7 +51,7 @@ namespace E3DEngine
     public:
         eParticleLiveState	getParticleState() const;
         void				setParticleState(eParticleLiveState state);
-        Vertex *			getVertex();
+        Vertex *			getVertex(mat4f worldMatrix);
         uint *				getIndices();
         float				getParticleTimeToLive() const;
         void				SetSize(Vector2 size);

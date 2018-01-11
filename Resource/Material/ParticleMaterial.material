@@ -32,8 +32,8 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/ParticleVertex.vsh" 
-					FragmentShader	= "shader/ParticleFragment.fsh" 	
+					VertexShader	= "shader/ParticleVertex.shader" 
+					FragmentShader	= "shader/ParticleFragment.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;" 
 									   
 					AttribVariable	= "POSITION:position;

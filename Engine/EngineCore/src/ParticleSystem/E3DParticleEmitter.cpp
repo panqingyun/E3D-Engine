@@ -124,21 +124,9 @@ namespace E3DEngine
         if (m_CurrentParticleNumer < m_TotalParticleNumber)
         {
             // 生成粒子
-            // 随机粒子的Textures
-            if (m_pParent->m_pMaterial == nullptr)
+            if (!bIsFirstCreate)
             {
-                m_pParent->m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_pParent->m_MaterialName);
-            }
-            /*size_t num = m_pParent->m_pMaterial->Textures.size();
-             int _n = rand() % num;
-             m_pParent->SetTextureIndex(_n);*/
-            if (bIsFirstCreate)
-            {
-                
-            }
-            else
-            {
-                _GenEmissionPosition();
+				_GenEmissionPosition();
             }
         }
         else

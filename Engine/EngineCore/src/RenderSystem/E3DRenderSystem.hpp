@@ -25,6 +25,15 @@ namespace E3DEngine
 		eCT_Stencil = 1 << 2,
 	};
 
+	enum DrawModule
+	{
+		eDM_TRIANGLE_STRIP,
+		eDM_TRIANGLES,
+		eDM_LINE_STRIP,
+		eDM_LINES,
+		eDM_POINTS,
+	};
+
 	class RenderSystem
 	{
 	public:

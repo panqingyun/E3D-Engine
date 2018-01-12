@@ -36,12 +36,16 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Render,		createRenderer);
 	REGISTER_INTERNAL_CALL(Render,		createRendererWithoutParam);
 	REGISTER_INTERNAL_CALL(Render,		setVertex2Render);
+	REGISTER_INTERNAL_CALL(Render,		setDrawModule);
+	REGISTER_INTERNAL_CALL(Render,		getDrawModule);
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
 	REGISTER_INTERNAL_CALL(Box,			createBox);
 	REGISTER_INTERNAL_CALL(RigidBody,	addRigidBody);
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
 	REGISTER_INTERNAL_CALL(Sphere,			CreateSphere);
+	REGISTER_INTERNAL_CALL(Terrain,			CreateTerrain);
+
 }
 
 VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
@@ -548,4 +552,37 @@ VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child
 	}
 
 	go->AddChild(_child);
+}
+
+CS_OBJECT _1_PARAM_FUNCTION(Terrain, CreateTerrain, CS_STRING, heightMap)
+{
+	Terrain * terrain = new Terrain;
+	terrain->Create(Convert::ToString(heightMap).c_str());
+	ADD_IN_SCENE(terrain);
+
+	return terrain->GetMonoBehaviour()->GetMonoObject();
+}
+
+VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT, cs_obj, UINT, drawModule)
+{
+	RenderObject * rd = getCppObject<RenderObject>(cs_obj);
+
+	if (rd == nullptr)
+	{
+		return;
+	}
+
+	rd->SetDrawModule(drawModule);
+}
+
+UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
+{
+	RenderObject * rd = getCppObject<RenderObject>(cs_obj);
+
+	if (rd == nullptr)
+	{
+		return eDM_TRIANGLES;
+	}
+
+	return rd->GetDrawModule();
 }

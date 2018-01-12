@@ -203,8 +203,11 @@ namespace E3DEngine
 				Debug::Log(ell_Error, " Not render object in renderQueue ");
 				continue;
 			}
-			render->SetCamera(m_pCamera);
-			render->Render(deltaTime);
+			if (render->GetActive())
+			{
+				render->SetCamera(m_pCamera);
+				render->Render(deltaTime);
+			}
 		}
 		for (auto &renderQueue : mapRenderQueue)
 		{

@@ -18,11 +18,6 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	Material * MaterialManager::GetMaterial(string path)
-	{
-		return nullptr;
-	}
-
 	Material* MaterialManager::CreateMaterial(std::string path)
 	{
 		return nullptr;
@@ -30,12 +25,12 @@ namespace E3DEngine
 	
 	void MaterialManager::Cleanup()
 	{
-		for (auto it : m_mapMaterials)
+		for (auto it : m_mapIDMaterials)
 		{			
 			it.second->Destory();
 			SAFE_DELETE(it.second);
 		}
-		m_mapMaterials.clear();
+		m_mapIDMaterials.clear();
 	}
 
 }

@@ -102,7 +102,16 @@ namespace E3DEngine
         }
     }
 
-    public class Render : GameObject
+    public enum eDrawModule
+    {
+        TRIANGLE_STRIP,
+        TRIANGLES,
+        LINE_STRIP,
+        LINES,
+        POINTS,
+    }
+
+    public class Render : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern Render createRenderer(uint materialID);
@@ -112,6 +121,24 @@ namespace E3DEngine
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern void setVertex2Render(Vertex[] vertexs, uint[] indexs);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void setDrawModule(uint module);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern uint getDrawModule();
+
+        public eDrawModule DrawModule
+        {
+            set
+            {
+                setDrawModule((uint)value);
+            }
+            get
+            {
+                return (eDrawModule)getDrawModule();
+            }
+        }
 
         public static Render CreateRenderer(Material material)
         {

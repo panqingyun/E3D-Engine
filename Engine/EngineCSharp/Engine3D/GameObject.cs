@@ -27,6 +27,12 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern GameObject findChildWithID(uint id);
 
+        private Render m_pRenderer;
+
+        public Render GetRenderer()
+        {
+            return m_pRenderer;
+        }
         public bool Active
         {
             [MethodImpl(MethodImplOptions.InternalCall)]

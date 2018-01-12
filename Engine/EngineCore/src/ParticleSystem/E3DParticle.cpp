@@ -654,11 +654,6 @@ namespace E3DEngine
 	
 	void ParticleGroup::CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID,vec3f bornEmitterPos, bool isFirstCreate)
 	{
-		if (m_pMaterial == nullptr)
-		{
-			m_pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(m_MaterialName);
-		}
-		
 		if (beGetFromLocalPool && !m_ParticlePool.empty())
 		{
 			createParticleFromDethPool(particleNumber, time2Live, pos, size, color, groupID, bornEmitterPos, particleNumber);

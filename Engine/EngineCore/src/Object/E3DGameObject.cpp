@@ -22,7 +22,10 @@ namespace E3DEngine
 			return;
 		}
 		IsActive = isActive;
-		
+		if (m_pRenderer != nullptr)
+		{
+			m_pRenderer->SetActive(isActive);
+		}
 		if (ActiveChangeEvent.empty() == false)
 		{
 			ActiveChangeEvent(this,nullptr);
@@ -271,6 +274,7 @@ namespace E3DEngine
 		m_pRenderer = nullptr;
 		ParentNode = nullptr;
 		m_layerMask = -1;
+		m_bIsStatic = false;
 	}
 	
 	void GameObject::SetCamera(E3DEngine::Camera *camera)
@@ -459,6 +463,7 @@ namespace E3DEngine
 		}
 
 		m_pRenderer->pMaterial = material;
+		TRANSFER_FIELD_OBJECT(m_pRenderer);
 	}
 
 	Material * GameObject::GetMaterial()
@@ -479,13 +484,30 @@ namespace E3DEngine
 		setBehaviourDefaultValue();
 	}
 
+	void GameObject::SetIsStatic(bool isStatic)
+	{
+		// TODO
+		if (isStatic == m_bIsStatic)
+		{
+			return;
+		}
+		m_bIsStatic = isStatic;
+		if (m_pRenderer != nullptr)
+		{
+			m_pRenderer->IsStaticDraw = !isStatic;
+			if(!isStatic)
+				m_pRenderer->SetTransform(Transform);
+		}
+		Transform->SetNeedUpdate(!isStatic);
+		Transform->WorldMatrix.identity();
+	}
+
+
 
 	void GameObject::setBehaviourDefaultValue()
 	{
 		Object::setBehaviourDefaultValue();
 		TRANSFER_FIELD_OBJECT(Transform);
-		m_pBehaviour->Awake();
-		m_pBehaviour->Start();
 	}
 
 	StringBuilder::StringBuilder() = default;

@@ -7,6 +7,7 @@
 #include "E3DGLESRenderManager.hpp"
 #include <src/Camera/E3DCamera.h>
 #include <src/Object/E3DTransform.hpp>
+#include <src/RenderSystem/E3DRenderSystem.hpp>
 
 namespace E3DEngine
 {
@@ -77,6 +78,30 @@ namespace E3DEngine
 		}
 	}
 
+
+	void GLES_Renderer::SetDrawModule(DWORD module)
+	{
+		switch (module)
+		{
+		case eDM_LINE_STRIP:
+			m_nDrawModule = GL_LINE_STRIP;
+			break;
+		case eDM_TRIANGLE_STRIP:
+			m_nDrawModule = GL_TRIANGLE_STRIP;
+			break;
+		case eDM_TRIANGLES:
+			m_nDrawModule = GL_TRIANGLES;
+		case  eDM_LINES:
+			m_nDrawModule = GL_LINES;
+		case eDM_POINTS:
+			m_nDrawModule = GL_POINTS;
+			break;
+		default:
+			m_nDrawModule = GL_TRIANGLES;
+			break;
+		}
+	}
+
 	void GLES_Renderer::Render(float deltaTime)
 	{
 		prepareRender(deltaTime);
@@ -93,7 +118,7 @@ namespace E3DEngine
 		pMaterial->pShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
 		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
-		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x, GetTransform()->RotationEuler.y, GetTransform()->RotationEuler.z);
+		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 		if ( pCamera != nullptr)
 		{
 			vec3f &pos = pCamera->Transform->Position;

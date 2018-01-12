@@ -17,7 +17,7 @@ namespace E3DEngine
 	public:
 		GLES_Renderer()
 		{
-			SetDrawModule(GL_TRIANGLES);
+			m_nDrawModule = GL_TRIANGLES;
 			m_VertexBuffer = 0;
 			m_IndexBuffer = 0;
 			setVBOs();
@@ -43,6 +43,8 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() override;
 
 		virtual void Render(float deltaTime) override;
+
+		virtual void SetDrawModule(DWORD module) override;
 
 	protected:
 		virtual void afterRender(float deltaTime) override;

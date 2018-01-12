@@ -16,7 +16,7 @@ namespace E3DEngine
 	public:
 		MaterialManager() 
 		{
-			m_currentMaterialID = 0;
+			
 		}
 		virtual ~MaterialManager()= default;
 		
@@ -27,7 +27,6 @@ namespace E3DEngine
 		// @param 材质ID
 		//-----------------------------------------------
 		virtual Material * GetMaterial(int id);
-		virtual Material * GetMaterial(string path);
 		// -----------------------------------------------
 		// 创建材质
 		// @param 材质配置的路径
@@ -40,9 +39,7 @@ namespace E3DEngine
 		virtual void Cleanup();
 
 	protected:
-		std::map<std::string, Material*> m_mapMaterials;
 		std::map<int, Material*>		 m_mapIDMaterials;
-		int								 m_currentMaterialID;
 	};
 }
 

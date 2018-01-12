@@ -65,6 +65,7 @@ namespace E3DEngine
 		NodeType = eT_RenderObject;
 		RenderIndex = eRI_Normal;
 		EnableDepthTest = true;
+		m_bIsActive = true;
 		IsStaticDraw = true;
     }
 

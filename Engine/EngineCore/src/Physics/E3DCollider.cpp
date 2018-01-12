@@ -124,7 +124,7 @@ namespace E3DEngine
 
 		vec3f rotate;
 		worldTrans.getRotation().getEulerZYX(rotate.z, rotate.y, rotate.x);
-		mObject->Transform->SetRotation(rotate.x, rotate.y, rotate.z);
+		mObject->Transform->SetRotation(rotate.x * 180 / M_PI, rotate.y * 180 / M_PI, rotate.z * 180 / M_PI);
 		mWorldTrans = worldTrans;
 	}
 

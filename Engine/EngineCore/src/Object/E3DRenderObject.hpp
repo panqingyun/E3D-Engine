@@ -107,15 +107,20 @@ namespace E3DEngine
 		virtual void SetMaterial(Material *material);
 		virtual void TransformChange() { }
 		virtual void SetCamera(Camera * camera);
-
+		virtual void SetActive(bool active) { m_bIsActive = active; }
 		virtual void SetDrawModule(DWORD module);
-        void SetColor(long color);
+		virtual void ClearVertexIndexBuffer() { }
+        
+	public:
+		bool GetActive() { return m_bIsActive; }
+		void SetColor(long color);
         void SetIsBillborad(bool isBillboard);
         bool GetIsBillBoard();
-		virtual void ClearVertexIndexBuffer() { }
+		UINT GetDrawModule() { return m_nDrawModule; }
 		CTransform * GetTransform();
 		void SetTransform(CTransform *_transform);
 		void CreateNewTransform();
+		
 		MinMaxAABB GetBounds()
 		{
 			return m_AABB;
@@ -125,6 +130,7 @@ namespace E3DEngine
         bool	m_bIsBillboard;
 		DWORD   m_nDrawModule;
 		bool	m_bIsBufferData;
+		bool	m_bIsActive;
 		std::vector<float*> vertexDatas;
 		CTransform * transform;
 		MinMaxAABB   m_AABB;

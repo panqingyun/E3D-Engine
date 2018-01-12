@@ -5,7 +5,6 @@
 
 void E3DEngine::Box::Create(float l, float w, float h)
 {
-	Transform->SetNeedUpdate(false);
 	IsActive = false;
 	m_vecVertex.resize(24);
 	// 前
@@ -117,8 +116,10 @@ void E3DEngine::Box::SetMaterial(Material * material)
 		// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
 		//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
 	}
-	m_pRenderer->SetMaterial(material);
 	m_pRenderer->IsStaticDraw = false;
+	m_pRenderer->SetTransform(Transform);
+	GameObject::SetMaterial(material);
+	IsActive = false;
 	SetActive(true);
 }
 
@@ -136,7 +137,6 @@ void E3DEngine::Box::SetActive(bool isActive)
 	}
 	GameObject::SetActive(isActive);
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-	m_pRenderer->CreateNewTransform();
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
@@ -144,6 +144,9 @@ void E3DEngine::Box::SetActive(bool isActive)
 		mRenderer->RecordCurrentIndexStartIndex(ID);
 		for (int i = 0; i < m_vecVertex.size(); i ++)
 		{
+			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+			m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
+			m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x * M_PI / 180, Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.z * M_PI / 180);
 			mRenderer->FillVertex(m_vecVertex[i]);
 		}
 
@@ -166,6 +169,10 @@ void E3DEngine::Box::AfterUpdate(float deltaTime)
 
 void E3DEngine::Box::TransformChange()
 {
+	if (!m_bIsStatic)
+	{
+		return;
+	}
 	if (pCamera && !pCamera->boundingBoxFrustum(Transform->Position, 100))
 	{
 		return;

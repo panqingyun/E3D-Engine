@@ -12,6 +12,7 @@
 #include <typeinfo>
 #include "E3DComponent.hpp"
 #include "../Source/E3DDelegate.h"
+#include "../Source/E3DVertex.h"
 
 
 #ifndef _TT_REMOVE_REFERENCE_H_
@@ -322,6 +323,8 @@ namespace E3DEngine
 		Component * AddComponent(Component * component);
 		void RemoveComponent(UINT id);
 		void RemoveComponent(Component *com);
+		void SetIsStatic(bool isStatic);
+		bool GetIsStatic() { return m_bIsStatic; }
 		virtual void SetMaterial(Material *material);
 		virtual Material * GetMaterial();
 	public:
@@ -380,6 +383,9 @@ namespace E3DEngine
 		DWORD m_layerMask;
 		Renderer * m_pRenderer;
 		vec3f		size;
+		std::vector<Vertex> m_vecVertex;
+		std::vector<uint> m_vecIndex;
+		bool	m_bIsStatic;
 	};
 
 	

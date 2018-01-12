@@ -59,7 +59,7 @@ void E3DEngine::Sphere::SetMaterial(Material *material)
 		// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
 		//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
 	}
-	m_pRenderer->SetMaterial(material);
+	GameObject::SetMaterial(material);
 	m_pRenderer->SetTransform(Transform);
 	m_pRenderer->IsStaticDraw = false;
 	SetActive(true);
@@ -85,8 +85,8 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 		for (int i = 0; i < m_vecVertex.size(); i++)
 		{
 			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-			m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
-			m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
+			/*m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
+			m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);*/
 			mRenderer->FillVertex(m_vecVertex[i]);	
 		}
 

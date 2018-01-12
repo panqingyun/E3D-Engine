@@ -26,8 +26,5 @@ namespace E3DEngine
 	protected:
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue() override;
-	private:
-		std::vector<Vertex> m_vecVertex;
-		std::vector<uint> m_vecIndex;
 	};
 }

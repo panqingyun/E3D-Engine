@@ -21,22 +21,8 @@ namespace E3DEngine
 		return m_mapIDMaterials[id];
 	}
 
-	E3DEngine::Material * GLES_MaterialManager::GetMaterial(string path)
-	{
-		if (m_mapMaterials.find(path) == m_mapMaterials.end())
-		{
-			return nullptr;
-		}
-		return m_mapMaterials[path];
-	}
-
 	Material* GLES_MaterialManager::CreateMaterial(std::string path)
 	{
-		if (m_mapMaterials.find(path) != m_mapMaterials.end())
-		{
-			return m_mapMaterials[path];
-		}
-
 		TableManager* tblManager = TableRegister::RegisterAllTable(path.c_str());
 		if (tblManager == nullptr)
 		{
@@ -54,13 +40,10 @@ namespace E3DEngine
 		GLES_Material * material = new GLES_Material;
 		material->blendType = (eBlendType)config->IsBlend;
 		material->filePath = folder + "/";
-		m_mapMaterials[path] = material;
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
 		material->CreateMaterial(config, sCfg);
 		m_mapIDMaterials[material->ID] = material;
 		SAFE_DELETE(tblManager);
 		return material;
 	}
-	
-
 }

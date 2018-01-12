@@ -12,6 +12,7 @@
 #include <png.h>
 #include <pnginfo.h>
 #include <atlimage.h>
+#include <wingdi.h>
 #endif
 
 #ifdef __ANDROID__
@@ -374,6 +375,34 @@ namespace vvision
 		free(row_pointers);
 		return PNG_READ_SUCCESS;
 	}
+
 #endif
+
+	unsigned char * readBmp(const char *bmpName, int &bmpwidth, int &bmpheight)
+	{
+		int linebyte;
+		unsigned char *pBmpBuf;  //存储图像数据  
+		FILE *fp;
+		if ((fp = fopen(bmpName, "rb")) == NULL)  //以二进制的方式打开文件  
+		{
+			cout << "The file " << bmpName << "was not opened" << endl;
+			return nullptr;
+		}
+		if (fseek(fp, sizeof(BITMAPFILEHEADER), 0))  //跳过BITMAPFILEHEADE  
+		{
+			return nullptr;
+		}
+		BITMAPINFOHEADER infoHead;
+		fread(&infoHead, sizeof(BITMAPINFOHEADER), 1, fp);   //从fp中读取BITMAPINFOHEADER信息到infoHead中,同时fp的指针移动  
+		bmpwidth = infoHead.biWidth;
+		bmpheight = infoHead.biHeight;
+		linebyte = (bmpwidth * 24 / 8 + 3) / 4 * 4; //计算每行的字节数，24：该图片是24位的bmp图，3：确保不丢失像素  
+
+													//cout<<bmpwidth<<" "<<bmpheight<<endl;  
+		pBmpBuf = new unsigned char[linebyte*bmpheight];
+		fread(pBmpBuf, sizeof(char), linebyte*bmpheight, fp);
+		fclose(fp);   //关闭文件  
+		return pBmpBuf;
+	}
 
 }

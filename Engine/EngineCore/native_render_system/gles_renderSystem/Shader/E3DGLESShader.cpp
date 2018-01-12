@@ -160,6 +160,7 @@ namespace E3DEngine
 		(this->*uniformSetFunc["mat4"])(VIEW_MATRIX, "");
 		(this->*uniformSetFunc["mat4"])(MODEL_MATRIX, "");
 		(this->*uniformSetFunc["vec3"])(CAMERA_POS, "");
+		(this->*uniformSetFunc["vec3"])(ROTATION_VEC, "");
 	}
 
 

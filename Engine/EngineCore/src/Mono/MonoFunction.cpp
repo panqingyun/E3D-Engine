@@ -591,7 +591,7 @@ UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
 VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
 {
 	SkyBox *skyBox = new SkyBox();
-	skyBox->Create(5, 5, 5);
+	skyBox->Create(50, 50, 50);
 	Material * m = getCppObject<Material>(material);
 	skyBox->SetMaterial(m);
 

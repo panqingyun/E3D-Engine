@@ -8,6 +8,10 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern Material createMaterial(string materialPath);
 
+        private Material()
+        {
+
+        }
         public static Material CreateMaterial(string materialPath)
         {
             return createMaterial(materialPath);

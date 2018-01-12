@@ -12,11 +12,18 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern ParticleGroup[] createParticle(string path);
 
+        private ParticleSystem()
+        {
+
+        }
+
         public ParticleGroup[] Particles;
 
-        public void CreateParticle(string path)
+        public static ParticleSystem CreateParticle(string path)
         {
-            Particles = createParticle(path);
+            ParticleSystem particle = new ParticleSystem();
+            particle.Particles = particle.createParticle(path);
+            return particle;
         }
 
     }

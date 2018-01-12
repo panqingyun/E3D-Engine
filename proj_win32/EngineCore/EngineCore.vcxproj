@@ -812,6 +812,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSphere.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTransform.hpp" />
@@ -1212,6 +1213,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSphere.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTransform.cpp" />

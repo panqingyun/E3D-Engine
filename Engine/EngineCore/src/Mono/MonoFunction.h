@@ -133,3 +133,4 @@ VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJEC
 CS_OBJECT _1_PARAM_FUNCTION(Terrain			, CreateTerrain		, CS_STRING		,heightMap);
 VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT			, cs_obj		, UINT ,drawModule);
 UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT			, cs_obj);
+VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyBox		, CS_OBJECT		, material);

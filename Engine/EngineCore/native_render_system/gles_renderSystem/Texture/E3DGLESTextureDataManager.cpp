@@ -38,7 +38,7 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 #ifdef __ANDROID__
 	// TODO ETC
 #endif
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data->width, data->width, 0, GL_RGBA, GL_UNSIGNED_BYTE, data->data);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data->width, data->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data->data);
 	m_mapTextureBuffer[imageName] = TextureBuffer;
 	glBindTexture(GL_TEXTURE_2D, 0);
 	SAFE_DELETE(data);

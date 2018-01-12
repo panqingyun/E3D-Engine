@@ -2283,6 +2283,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp">
       <Filter>EngineCore\src\RenderSystem</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h">
+      <Filter>EngineCore\src\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -3460,6 +3463,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp">
       <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
+      <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

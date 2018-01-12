@@ -29,6 +29,12 @@ namespace EngineEditor
         public static extern void InitilizeEngine();
 
         /// <summary>
+        /// 设置目录
+        /// </summary>
+        /// <param name="path"></param>
+        [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SetAppDataPath(string path);
+        /// <summary>
         /// 初始化
         /// </summary>
         [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]

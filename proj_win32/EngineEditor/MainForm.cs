@@ -49,6 +49,7 @@ namespace EngineEditor
 
         void EffectEditor_Load(object sender, EventArgs e)
         {
+            EngineDLL.SetAppDataPath(Application.StartupPath);
             EngineDLL.InitilizeEngine();
             EngineDLL.SetupRenderSystem(EngineContener.Handle, EngineContener.Width, EngineContener.Height);
             EngineDLL.StartAppliaction();
@@ -147,7 +148,7 @@ namespace EngineEditor
 
         private void EngineContener_MouseMove(object sender, MouseEventArgs e)
         {
-            //EngineDLL.MouseMove(e.X, e.Y);
+            EngineDLL.MouseMove(e.X, e.Y);
         }
 
         private void EffectEditor_SizeChanged(object sender, EventArgs e)

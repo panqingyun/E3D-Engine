@@ -120,6 +120,7 @@ namespace E3DEngine
 		CTransform * GetTransform();
 		void SetTransform(CTransform *_transform);
 		void CreateNewTransform();
+		void SetRenderIndex(DWORD index);
 		
 		MinMaxAABB GetBounds()
 		{

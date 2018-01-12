@@ -23,6 +23,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
+	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyBox);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
@@ -585,4 +586,14 @@ UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
 	}
 
 	return rd->GetDrawModule();
+}
+
+VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
+{
+	SkyBox *skyBox = new SkyBox();
+	skyBox->Create(5, 5, 5);
+	Material * m = getCppObject<Material>(material);
+	skyBox->SetMaterial(m);
+
+	ADD_IN_SCENE(skyBox);
 }

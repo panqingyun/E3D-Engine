@@ -155,4 +155,15 @@ namespace E3DEngine
 		return transform;
 	}
 
+
+	void RenderObject::SetRenderIndex(DWORD index)
+	{
+		RenderIndex = (eRenderIndex)index;
+		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
+		{
+			return;
+		}
+		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
+	}
+
 }

@@ -27,6 +27,9 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern GameObject findChildWithID(uint id);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern void CreateSkyBox(Material skyMaterial);
+
         private Render m_pRenderer;
 
         public Render GetRenderer()

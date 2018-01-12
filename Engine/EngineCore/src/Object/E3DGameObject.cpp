@@ -410,12 +410,10 @@ namespace E3DEngine
 
 	void GameObject::SetRenderIndex(DWORD index)
 	{
-		RenderIndex = index;
-		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
+		if (m_pRenderer!= nullptr)
 		{
-			return;
+			m_pRenderer->SetRenderIndex(index);
 		}
-		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
 	}
 
 	void GameObject::RemoveComponent(UINT id)

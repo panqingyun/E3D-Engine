@@ -45,11 +45,12 @@ namespace Game
             MainScene = Scene.LoadScene("Resource/Scene/MainEntry.scene");
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(0, 20, 200);
-            MainCamera.Transform.Rotation = new Vector3(-10f, 0, 0);
+            MainCamera.Transform.Position = new Vector3(0, 60, 200);
+            MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
 
+            Material skyMaterial = Material.CreateMaterial("Resource/Material/SkyBox.material");
+            GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
-
 
             float xStart = -80;
             float yStart = 300;
@@ -71,7 +72,7 @@ namespace Game
             boxGround = Box.CreateBox(200, 100, 5);
             Material materialG = Material.CreateMaterial("Resource/Material/CubeMaterial.material");
             boxGround.Material = materialG;
-            boxGround.Transform.Position = new Vector3(0, -50, 0);
+            boxGround.Transform.Position = new Vector3(0, 0, 0);
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
             collider3.CreateRigiBody(0);
@@ -94,7 +95,7 @@ namespace Game
             Terrain terrain = Terrain.CreateTerrain("Resource/Scene/MainEntry/hill.bmp");
             Material materialT = Material.CreateMaterial("Resource/Material/Terrain.material");
             terrain.Material = materialT;
-            terrain.GetRenderer().DrawModule = eDrawModule.LINE_STRIP;
+            terrain.GetRenderer().DrawModule = eDrawModule.POINTS;
             //for(int i = 0; i < particle.Particles.Length; i ++)
             //{
             //    sphere.AddChild(particle.Particles[i]);

@@ -8,6 +8,8 @@
 #include <src/Camera/E3DCamera.h>
 #include <src/Object/E3DTransform.hpp>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
+#include <src/Scene/E3DSceneManager.hpp>
+#include <src/Light/E3DLight.hpp>
 
 namespace E3DEngine
 {
@@ -119,6 +121,12 @@ namespace E3DEngine
 		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
 		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
 		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
+		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		{
+			DirectionLight * light = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
+			pMaterial->pShader->UpdateFloatValue(LIGHT_COLOR, light->Color.r, light->Color.g, light->Color.b, light->Color.a);
+			pMaterial->pShader->UpdateFloatValue(LIGHT_POS, light->Transform->Position.x, light->Transform->Position.y, light->Transform->Position.z);
+		}
 		if ( pCamera != nullptr)
 		{
 			vec3f &pos = pCamera->Transform->Position;

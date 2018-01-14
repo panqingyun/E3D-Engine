@@ -13,7 +13,7 @@
 #define COLLISION_ENTER_FUNC "OnCollisionEnter"
 
 
-class MonoBehaviour extends E3DEngine::IObject
+class MonoBehaviour : public E3DEngine::IObject
 {
 public:
 	MonoBehaviour();

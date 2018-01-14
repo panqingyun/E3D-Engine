@@ -7,7 +7,9 @@ void main(void)
 	
 	mat4 rotateMatrix = getRotateMatrix();
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
-	DestinationColor = getLightColor(position, _normal.xyz) * color;
 	
-    gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;//* BillboardMatrix();* roateMatrix * scaleMat *
+	vec4 _pos = _e3d_matModel * interpolatedPosition;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	
+    gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;
 }

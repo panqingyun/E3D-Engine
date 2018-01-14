@@ -49,6 +49,7 @@
     <Compile Include="Engine3D\Debug.cs" />
     <Compile Include="Engine3D\EMath.cs" />
     <Compile Include="Engine3D\GameObject.cs" />
+    <Compile Include="Engine3D\Light.cs" />
     <Compile Include="Engine3D\Material.cs" />
     <Compile Include="Engine3D\Matrix.cs" />
     <Compile Include="Engine3D\Object.cs" />

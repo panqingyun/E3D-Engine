@@ -40,12 +40,12 @@ namespace Game
         private Scene MainScene = null;
         private Box boxGround = null;
         Sphere sphere = null;
-        string skyBoxMaterialPath = Application.ResourcePath + "/Material/SkyBox.material";
-        string cubeMaterialPath = Application.ResourcePath + "/Material/CubeMaterial.material";
-        string sphereMaterialPath = Application.ResourcePath + "/Material/SphereMaterial.material";
-        string terrainMaterialPath = Application.ResourcePath + "/Material/Terrain.material";
-        string particleFirePath = Application.ResourcePath + "/Particle/ParticleFire.particle";
-        string mainScenePath = Application.ResourcePath + "/Scene/MainEntry.scene";
+        string skyBoxMaterialPath = "Resource/Material/SkyBox.material";
+        string cubeMaterialPath = "Resource/Material/CubeMaterial.material";
+        string sphereMaterialPath = "Resource/Material/SphereMaterial.material";
+        string terrainMaterialPath = "Resource/Material/Terrain.material";
+        string particleFirePath = "Resource/Particle/ParticleFire.particle";
+        string mainScenePath = "Resource/Scene/MainEntry.scene";
 
         public void Main(string[] args)
         {
@@ -54,6 +54,9 @@ namespace Game
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
             MainCamera.Transform.Position = new Vector3(0, 60, 200);
             MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
+            Light light = Light.Create(LightType.eDIRECTION_LIGHT);
+            light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
+            light.Transform.Position = new Vector3(500, 500, 500);
 
             Material skyMaterial = Resource.Load(skyBoxMaterialPath) as Material;
             GameObject.CreateSkyBox(skyMaterial);
@@ -71,7 +74,7 @@ namespace Game
                     box.Material = material;
                     box.Transform.Position = new Vector3(xStart + 20 * j, yStart - i * 20, 0);
                     BoxCollider collider = box.AddComponent<BoxCollider>();
-                    collider.CreateRigiBody(1000);
+                    collider.CreateRigiBody(10000);
                 }
                 xStart += 16;
             }
@@ -88,23 +91,22 @@ namespace Game
             sphere.Material = materialS;
             sphere.Transform.Position = new Vector3(0, 150, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(500);
+            sCollider.CreateRigiBody(5000);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
             Box box1 = Box.CreateBox(30, 30, 30);
             box1.Material = materialB;
             box1.Transform.Position = new Vector3(25, 50, 0);
             BoxCollider collider4 = box1.AddComponent<BoxCollider>();
             collider4.CreateRigiBody(0);
+            //particle = Resource.Load(particleFirePath) as ParticleSystem;
 
-            particle = Resource.Load(particleFirePath) as ParticleSystem;
-
-            Terrain terrain = Terrain.CreateTerrain(Application.ResourcePath + "/Scene/MainEntry/hill.bmp");
+            Terrain terrain = Terrain.Create("Resource/Scene/MainEntry/hill.bmp");
             Material materialT = Resource.Load(terrainMaterialPath) as Material;
             terrain.Material = materialT;
             terrain.GetRenderer().DrawModule = eDrawModule.POINTS;
-            //for(int i = 0; i < particle.Particles.Length; i ++)
+            //for (int i = 0; i < particle.Particles.Length; i++)
             //{
-            //    sphere.AddChild(particle.Particles[i]);
+            //    box1.AddChild(particle.Particles[i]);
             //}
         }
 

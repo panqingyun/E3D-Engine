@@ -130,7 +130,9 @@ VOID _2_PARAM_FUNCTION(Object				, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		
 CS_STRING _1_PARAM_FUNCTION(Object			, get_Name			, CS_OBJECT		, cs_obj);
 CS_OBJECT _1_PARAM_FUNCTION(Sphere			, CreateSphere		, float			, r);
 VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJECT		,child);
-CS_OBJECT _1_PARAM_FUNCTION(Terrain			, CreateTerrain		, CS_STRING		,heightMap);
+CS_OBJECT _1_PARAM_FUNCTION(Terrain			, Create			, CS_STRING		,heightMap);
 VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT			, cs_obj		, UINT ,drawModule);
 UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT			, cs_obj);
 VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyBox		, CS_OBJECT		, material);
+CS_OBJECT _1_PARAM_FUNCTION(Light			, Create			, UINT			, lightType);
+VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float ,r, float, g, float, b,float, a);

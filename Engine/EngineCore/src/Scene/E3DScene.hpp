@@ -1,4 +1,4 @@
-//
+﻿//
 //  E3DScene.hpp
 //
 //  Created by 潘庆云 on 2017/7/11.
@@ -11,6 +11,7 @@
 #include "../Object/E3DRenderObject.hpp"
 #include "../Source/E3DDelegate.h"
 #include "../Source/E3DRenderQueue.h"
+#include "../Light/E3DLight.hpp"
 
 namespace E3DEngine
 {
@@ -27,7 +28,7 @@ namespace E3DEngine
 		eNotBlendOther		= 2,
 	};
     
-	class Scene extends Object
+	class Scene : public Object
 	{
 	public:
 		Scene();
@@ -47,6 +48,8 @@ namespace E3DEngine
 		Camera * GetCamera(UINT cameraID);
 		void ChangeFrameSize(float w, float h);
 		void AddRenderObject(RenderObject* rb, UINT layer);
+		void AddLight(Light * light);
+		Light * GetDirectionalLight();
 
 	public:
 		virtual void AddChild(Object * node);
@@ -65,6 +68,8 @@ namespace E3DEngine
 		std::map<DWORD, Object*> m_vecObjList;
 		GameObject		* rootObject;
 		std::map<DWORD, RenderObject*> m_mapRenders;
+		std::map<UINT ,Light*> m_mapLights;
+		DirectionLight * usedDirectionLight;
 	};
 }
 

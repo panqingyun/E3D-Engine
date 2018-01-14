@@ -45,7 +45,9 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
 	REGISTER_INTERNAL_CALL(Sphere,			CreateSphere);
-	REGISTER_INTERNAL_CALL(Terrain,			CreateTerrain);
+	REGISTER_INTERNAL_CALL(Terrain,			Create);
+	REGISTER_INTERNAL_CALL(Light,			Create);
+	REGISTER_INTERNAL_CALL(Light,			setColor);
 
 }
 
@@ -555,7 +557,7 @@ VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child
 	go->AddChild(_child);
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Terrain, CreateTerrain, CS_STRING, heightMap)
+CS_OBJECT _1_PARAM_FUNCTION(Terrain, Create, CS_STRING, heightMap)
 {
 	Terrain * terrain = new Terrain;
 	terrain->Create(Convert::ToString(heightMap).c_str());
@@ -596,4 +598,22 @@ VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
 	skyBox->SetMaterial(m);
 
 	ADD_IN_SCENE(skyBox);
+}
+
+CS_OBJECT _1_PARAM_FUNCTION(Light, Create, UINT, lightType)
+{
+	Light * light = Light::Create((LightType)lightType);
+	SceneManager::GetInstance().GetCurrentScene()->AddLight(light);
+	return light->GetMonoBehaviour()->GetMonoObject();
+}
+
+VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, float, b,float, a)
+{
+	Light *light = getCppObject<Light>(cs_obj);
+
+	if (light == nullptr)
+	{
+		return;
+	}
+	light->Color = vec4f(r, g, b, a);
 }

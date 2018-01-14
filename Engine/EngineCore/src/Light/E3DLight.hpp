@@ -13,33 +13,57 @@
 
 namespace E3DEngine
 {
-	class Light extends GameObject
+	enum LightType
+	{
+		eDIRECTION_LIGHT = 1,
+		ePOINT_LIGHT,
+		eSPOT_LIGHT,
+	};
+
+	class Light : public GameObject
 	{
 	public:
-		DWORD		LightType;
+		static Light * Create(LightType type);
+	public:
+		LightType   Type;
 		vec4f		Color;				// 颜色
 		float		Intensity;			// 强度
-		vec4f		FadeFactors;
+
+	public:
+		virtual void setBehaviourDefaultValue() override;
 	};
 
 	class PointLight : public Light
 	{
 	public:
+		PointLight();
 		float Range;
+
+	public:
+		virtual void CreateBehaviour() override;
+		virtual void setBehaviourDefaultValue();
 	};
 
 	class DirectionLight : public Light
 	{
 	public:
-		vec3f		Direction;			// 方向
+		DirectionLight();
+
+	public:
+		virtual void CreateBehaviour() override;
+		virtual void setBehaviourDefaultValue();
 	};
 
 	class SpotLight : public Light
 	{
 	public:
+		SpotLight();
 		float Range;
 		int   SpotAngle;
-		vec4f Position;
+
+	public:
+		virtual void CreateBehaviour() override;
+		virtual void setBehaviourDefaultValue();
 	};
 	
 }

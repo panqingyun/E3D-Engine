@@ -17,6 +17,8 @@ namespace E3DEngine
 		m_SceneType		= eSceneType_defult;
 		NodeType		= eT_Scene;
 		rootObject		= new GameObject;
+
+		usedDirectionLight = nullptr;
 		m_vecObjList[rootObject->ID] = rootObject;
 		CreateBehaviour();
 	}
@@ -273,5 +275,21 @@ namespace E3DEngine
 	{
 
 	}
+
+	void Scene::AddLight(Light * light)
+	{
+		if (m_mapLights.find(light->ID) != m_mapLights.end())
+		{
+			return;
+		}
+
+		if (light->Type == eDIRECTION_LIGHT)
+		{
+			usedDirectionLight = (DirectionLight*)light;
+		}
+		m_mapLights[light->ID] = light;
+	}
+
+	Light * Scene::GetDirectionalLight() { return usedDirectionLight; }
 
 }

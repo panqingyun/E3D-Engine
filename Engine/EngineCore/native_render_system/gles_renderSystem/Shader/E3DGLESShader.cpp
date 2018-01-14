@@ -11,6 +11,7 @@
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include <3rd/header/Helpers.h>
 #include <src/Source/E3DVertex.h>
+#include <src/Scene/E3DSceneManager.hpp>
 
 namespace E3DEngine
 {
@@ -26,6 +27,12 @@ namespace E3DEngine
 #ifdef WIN32
 		std::string priveVs = "#define __WIN32__\n";
 #endif
+		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		{
+			priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
+			priveVs.append("uniform vec3 ").append(LIGHT_POS).append(";\n");
+			priveVs.append("uniform vec4 ").append(LIGHT_COLOR).append(";\n");
+		}
 		priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
 		priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
 		priveVs.append("mat4 _e3d_getMVPMatrix()\n");
@@ -161,6 +168,11 @@ namespace E3DEngine
 		(this->*uniformSetFunc["mat4"])(MODEL_MATRIX, "");
 		(this->*uniformSetFunc["vec3"])(CAMERA_POS, "");
 		(this->*uniformSetFunc["vec3"])(ROTATION_VEC, "");
+		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)		
+		{
+			(this->*uniformSetFunc["vec4"])(LIGHT_COLOR, "");
+			(this->*uniformSetFunc["vec3"])(LIGHT_POS, "");
+		}
 	}
 
 

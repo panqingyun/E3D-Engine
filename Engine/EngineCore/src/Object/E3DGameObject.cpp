@@ -867,6 +867,55 @@ vvision::vec4f Convert::ToVec4Color(aiColor3D color)
 	return vec4f(color.r, color.g, color.b, 1);
 }
 
+MonoObject * Convert::ToCSVector4(vec4f vec)
+{
+	MonoClass * klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(), NAME_SPACE, "Vector4");
+	MonoObject * ret = mono_object_new(MonoScriptManager::GetInstance().GetEngineDomain(), klass);
+
+	MonoClassField * fieldX = mono_class_get_field_from_name(klass, "x");
+	MonoClassField * fieldY = mono_class_get_field_from_name(klass, "y");
+	MonoClassField * fieldZ = mono_class_get_field_from_name(klass, "z");
+	MonoClassField * fieldW = mono_class_get_field_from_name(klass, "w");
+	mono_field_set_value(ret, fieldX, &vec.x);
+	mono_field_set_value(ret, fieldY, &vec.y);
+	mono_field_set_value(ret, fieldZ, &vec.z);
+	mono_field_set_value(ret, fieldZ, &vec.w);
+
+	return ret;
+}
+
+MonoObject * Convert::ToCSVector3(vec3f vec)
+{
+	MonoClass * klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(), NAME_SPACE, "Vector3");
+	MonoObject * ret = mono_object_new(MonoScriptManager::GetInstance().GetEngineDomain(), klass);
+
+	MonoClassField * fieldX = mono_class_get_field_from_name(klass, "x");
+	MonoClassField * fieldY = mono_class_get_field_from_name(klass, "y");
+	MonoClassField * fieldZ = mono_class_get_field_from_name(klass, "z");
+	mono_field_set_value(ret, fieldX, &vec.x);
+	mono_field_set_value(ret, fieldY, &vec.y);
+	mono_field_set_value(ret, fieldZ, &vec.z);
+
+	return ret;
+}
+
+vec4f Convert::CSVector4ToVec4(MonoObject * vec)
+{
+	MonoClass * klass = mono_object_get_class(vec);
+	vec4f _vec4;
+
+	MonoClassField * fieldX = mono_class_get_field_from_name(klass, "x");
+	MonoClassField * fieldY = mono_class_get_field_from_name(klass, "y");
+	MonoClassField * fieldZ = mono_class_get_field_from_name(klass, "z");
+	MonoClassField * fieldW = mono_class_get_field_from_name(klass, "w");
+	mono_field_get_value(vec, fieldX, &_vec4.x);
+	mono_field_get_value(vec, fieldY, &_vec4.y);
+	mono_field_get_value(vec, fieldZ, &_vec4.z);
+	mono_field_get_value(vec, fieldW, &_vec4.w);
+
+	return _vec4;
+}
+
 object::object() : content(nullptr)
 {
 

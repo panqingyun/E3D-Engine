@@ -258,6 +258,11 @@ struct Convert
 	{
 		return vec4<T>(vec.x, vec.y, vec.z, 1);
 	}
+
+	static MonoObject * ToCSVector4(vec4f vec);
+	static MonoObject * ToCSVector3(vec3f vec);
+
+	static vec4f CSVector4ToVec4(MonoObject *vec);
 };
 
 namespace E3DEngine
@@ -274,7 +279,7 @@ namespace E3DEngine
 	class Material;
 	class RenderObject;
 	class Renderer;
-	class GameObject extends Object
+	class GameObject : public Object
 	{
 	public:
 		template<typename T> T * AddComponent()

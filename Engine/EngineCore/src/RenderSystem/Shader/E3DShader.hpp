@@ -19,6 +19,8 @@ namespace E3DEngine
 #define  VIEW_MATRIX "_e3d_matView"
 #define  ROTATION_VEC "_e3d_Rotation"
 #define  CAMERA_POS  "_e3d_cameraPos"
+#define  LIGHT_COLOR "_e3d_WorldSpaceLightColor"
+#define  LIGHT_POS "_e3d_WorldSpaceLightPos"
 
 	struct Uniform
 	{

@@ -1,27 +1,26 @@
-vec3 lightposition;	//光源位置
+
 vec4 ambient;		//环境光颜色
-vec4 lightcolor;	//光源颜色
 float Ns;			//高光系数
 float attenuation;	//光线的衰减系数
 
 vec4 getLightColor(vec3 position, vec3 normal)
 {
+	vec4 lightColor = vec4(0.6,0.6,0.6,0.6);
+	ambient = vec4(0.4, 0.4, 0.4, 0.4);
+	Ns = 10.0;
+	attenuation = 1.0;
+#ifdef USING_DIRECTIONAL_LIGHT
 	//--------------------------------------------------------------
 	//--- 光照
-	lightposition = vec3(50.0, 50.0, 50.0);
-	ambient = vec4(0.5, 0.5, 0.5, 1.0);
-	lightcolor = vec4(1.0, 1.0, 1.0, 1.0);
-	Ns = 10.0;
-	attenuation = 0.1;
-	vec4 interpolatedPosition = vec4(position, 1.0);
 	vec3 N = normalize((vec4(normal, 1.0)).xyz);
-	vec3 L = normalize(lightposition - interpolatedPosition.xyz);
-	vec3 V = normalize(_e3d_cameraPos - interpolatedPosition.xyz);
+	vec3 L = normalize(_e3d_WorldSpaceLightPos - position);
+	vec3 V = normalize(_e3d_cameraPos - position);
 	vec3 H = normalize(V + L);
-	vec3 diffuse = vec3((lightcolor * max(dot(N, L), 0.0)).xyz);
-	vec3 specular = vec3((lightcolor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
-	vec4 _des_color = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
-	return (_des_color + ambient);
+	vec3 diffuse = vec3((_e3d_WorldSpaceLightColor * max(dot(N, L), 0.0)).xyz);
+	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
+	lightColor = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
+#endif
+	return (lightColor + ambient);
 }
 
 mat4 getRotateMatrix()

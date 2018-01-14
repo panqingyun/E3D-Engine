@@ -5,9 +5,9 @@ namespace E3DEngine
 {
     public enum LightType : uint
     {
-        eDIRECTION_LIGHT = 1,
-        ePOINT_LIGHT,
-        eSPOT_LIGHT,
+        DIRECTION_LIGHT = 1,
+        POINT_LIGHT,
+        SPOT_LIGHT,
     };
 
     public class Light : GameObject

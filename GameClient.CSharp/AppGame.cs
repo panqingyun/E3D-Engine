@@ -54,9 +54,9 @@ namespace Game
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
             MainCamera.Transform.Position = new Vector3(0, 60, 200);
             MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
-            Light light = Light.Create(LightType.eDIRECTION_LIGHT);
+            Light light = Light.Create(LightType.DIRECTION_LIGHT);
             light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
-            light.Transform.Position = new Vector3(500, 500, 500);
+            light.Transform.Position = new Vector3(500, 500, -500);
 
             Material skyMaterial = Resource.Load(skyBoxMaterialPath) as Material;
             GameObject.CreateSkyBox(skyMaterial);

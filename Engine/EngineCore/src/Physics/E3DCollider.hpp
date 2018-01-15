@@ -106,6 +106,21 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 	};
 
+	class MeshCollider : public Collider
+	{
+		DECLARE_CLASS(MeshCollider)
+	public:
+		virtual void Awake() override;
+		virtual void Start() override;
+		virtual void Update(float deltaTime) override;
+		virtual void Destory() override;
+
+	public:
+		virtual bool CheckClick(vec2d screenPoint);
+		virtual bool CheckPress(vec2d screenPoint);
+		virtual void CreateBehaviour() override;
+	};
+
 	class MotionState extends btDefaultMotionState
 	{
 	public:

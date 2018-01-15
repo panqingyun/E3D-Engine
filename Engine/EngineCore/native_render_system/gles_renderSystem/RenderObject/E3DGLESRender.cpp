@@ -93,8 +93,10 @@ namespace E3DEngine
 			break;
 		case eDM_TRIANGLES:
 			m_nDrawModule = GL_TRIANGLES;
+			break;
 		case  eDM_LINES:
 			m_nDrawModule = GL_LINES;
+			break;
 		case eDM_POINTS:
 			m_nDrawModule = GL_POINTS;
 			break;

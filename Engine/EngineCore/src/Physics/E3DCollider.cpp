@@ -13,10 +13,12 @@ namespace E3DEngine
 	{
 		REGIST_CLASS(BoxCollider);
 		REGIST_CLASS(SphereCollider);
+		REGIST_CLASS(MeshCollider);
 	}
 
 	DECLARE_CLASS_NAME(BoxCollider)
 	DECLARE_CLASS_NAME(SphereCollider)
+	DECLARE_CLASS_NAME(MeshCollider)
 
 	btBoxShape* createBoxShape(const btVector3& halfExtents)
 	{
@@ -54,6 +56,7 @@ namespace E3DEngine
 
 	void BoxCollider::Start()
 	{
+		m_pBehaviour->Start();
 	}
 
 	void BoxCollider::Awake()
@@ -135,12 +138,12 @@ namespace E3DEngine
 		m_pMotionState = nullptr;
 		m_pShape = createSphereShape(l);
 		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Start();
+		m_pBehaviour->Awake();
 	}
 
 	void SphereCollider::Start()
 	{
-
+		m_pBehaviour->Start();
 	}
 
 	void SphereCollider::Update(float deltaTime)
@@ -167,6 +170,70 @@ namespace E3DEngine
 	{
 		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(SphereCollider);
+		m_pBehaviour->Awake();
+		setBehaviourDefaultValue();
+	}
+
+
+	void MeshCollider::Awake()
+	{
+		CreateBehaviour();
+		m_pMotionState = nullptr;
+		std::vector<Vertex> &vertexs = gameObject->GetVertex();
+		std::vector<UINT> &indexs = gameObject->GetIndex();
+		btIndexedMesh part;
+		std::vector<float> vertexBase;
+		for (auto &vertex : vertexs)
+		{
+			vertexBase.push_back(vertex.Position[0]);
+			vertexBase.push_back(vertex.Position[1]);
+			vertexBase.push_back(vertex.Position[2]);
+		}
+		part.m_vertexBase = (const unsigned char*)vertexBase.data();
+		part.m_vertexStride = sizeof(btScalar) * 3;
+		part.m_numVertices = gameObject->GetVertex().size();
+		part.m_triangleIndexBase = (const unsigned char*)indexs.data();
+		part.m_triangleIndexStride = sizeof(UINT) * 3;
+		part.m_numTriangles = vertexs.size() / 3;
+		part.m_indexType = PHY_INTEGER;
+		btTriangleIndexVertexArray * indexVertex = new btTriangleIndexVertexArray();
+		indexVertex->addIndexedMesh(part, PHY_INTEGER);
+		m_pShape = new btBvhTriangleMeshShape(indexVertex,true);
+		m_pShape->setUserPointer(gameObject);
+		m_pBehaviour->Awake();
+	}
+
+	void MeshCollider::Start()
+	{
+		m_pBehaviour->Start();
+	}
+
+	void MeshCollider::Update(float deltaTime)
+	{
+		m_pBehaviour->Update(deltaTime);
+	}
+
+
+	void MeshCollider::Destory()
+	{
+		m_pBehaviour->Destory();
+	}
+
+	bool MeshCollider::CheckClick(vec2d screenPoint)
+	{
+		return false;
+	}
+
+
+	bool MeshCollider::CheckPress(vec2d screenPoint)
+	{
+		return false;
+	}
+
+	void MeshCollider::CreateBehaviour()
+	{
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(MeshCollider);
 		m_pBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}

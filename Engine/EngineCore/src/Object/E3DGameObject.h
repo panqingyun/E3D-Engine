@@ -364,6 +364,9 @@ namespace E3DEngine
 		{
 			return childNode;
 		}
+
+		std::vector<Vertex>& GetVertex() { return m_vecVertex; };
+		std::vector<uint>& GetIndex() { return m_vecIndex; }
 	protected:
 		virtual void ComponentAdded(Component * component);
 		virtual void CreateBehaviour() override;

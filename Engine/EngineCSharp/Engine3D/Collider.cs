@@ -33,4 +33,9 @@ namespace E3DEngine
     {
 
     }
+
+    public class MeshCollider : Collider
+    {
+
+    }
 }

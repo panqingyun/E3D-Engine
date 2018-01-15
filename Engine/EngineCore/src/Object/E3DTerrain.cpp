@@ -20,10 +20,13 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 				x = (float)i - mapWidth / 2.0f;
 				z = -((float)j - mapHeight / 2.0f);
 				// [TODO] 
-				//y = ((float)(*(mapContent + vertexIndex) )) / 10.0;
-				m_vecVertex[vertexIndex].SetPosition(x * 20, y , z * 20);
+				char r = mapContent[i * mapWidth + j + 0];
+				char g = mapContent[i * mapWidth + j + 1];
+				char b = mapContent[i * mapWidth + j + 2];
+				y = 0;// ((r + g + b) / 3.0) / 30;
+				m_vecVertex[vertexIndex].SetPosition(x * 5, y , z * 5);
 				m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
-				m_vecVertex[vertexIndex].SetColor(0.8, 0.8, 0.8, 0.8);
+				m_vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 0.5);
 				m_vecVertex[vertexIndex].SettextureCoord((float)i / (mapWidth - 1), (float)j / (mapHeight - 1));
 				vertexIndex++;
 				if (i < mapWidth - 1 && j < mapWidth - 1)

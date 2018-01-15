@@ -57,7 +57,7 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(0, 60, 200);
+            MainCamera.Transform.Position = new Vector3(0, 6, 40);
             MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
             Light light = Light.Create(LightType.DIRECTION_LIGHT);
             light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
@@ -67,40 +67,40 @@ namespace Game
             GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
 
-            float xStart = -80;
-            float yStart = 300;
-            for (int i = 0; i < 3; i++)
+            float xStart = -18;
+            float yStart = 50;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < 3 - i; j++)
+                for (int j = 0; j < 10 - i; j++)
                 {
-                    Box box = Box.Create(10, 10, 10);
+                    Box box = Box.Create(1, 1, 1);
                     Material material = Resource.Load(cubeMaterialPath) as Material;
                     box.AddComponent<App.CubeComponent>();
                     box.Material = material;
-                    box.Transform.Position = new Vector3(xStart + 20 * j, yStart - i * 20, 0);
+                    box.Transform.Position = new Vector3(xStart + 2 * j, yStart - i * 2, 0);
                     BoxCollider collider = box.AddComponent<BoxCollider>();
-                    collider.CreateRigiBody(10000);
+                    collider.CreateRigiBody(2);
                 }
-                xStart += 16;
+                xStart += 1.6f;
             }
 
-            boxGround = Box.Create(200, 100, 5);
+            boxGround = Box.Create(50, 20, 0.5f);
             Material materialG = Resource.Load(cubeMaterialPath) as Material;
             boxGround.Material = materialG;
             boxGround.Transform.Position = new Vector3(0, 0, 0);
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
-            collider3.CreateRigiBody(0); 
+            collider3.CreateRigiBody(0);
             Material materialS = Resource.Load(sphereMaterialPath) as Material;
-            sphere = Sphere.Create(20);
+            sphere = Sphere.Create(2);
             sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(0, 150, 0);
+            sphere.Transform.Position = new Vector3(0, 15, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(5000);
+            sCollider.CreateRigiBody(50);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
-            Box box1 = Box.Create(30, 30, 30);
+            Box box1 = Box.Create(3, 3, 3);
             box1.Material = materialB;
-            box1.Transform.Position = new Vector3(25, 50, 0);
+            box1.Transform.Position = new Vector3(2.5f, 5, 0);
             BoxCollider collider4 = box1.AddComponent<BoxCollider>();
             collider4.CreateRigiBody(0);
             //particle = Resource.Load(particleFirePath) as ParticleSystem;
@@ -108,7 +108,9 @@ namespace Game
             Terrain terrain = Terrain.Create("Resource/Scene/MainEntry/hill.bmp");
             Material materialT = Resource.Load(terrainMaterialPath) as Material;
             terrain.Material = materialT;
-            terrain.GetRenderer().DrawModule = eDrawModule.POINTS;
+            terrain.GetRenderer().DrawModule = eDrawModule.LINES;
+            MeshCollider mCollider = terrain.AddComponent<MeshCollider>();
+            mCollider.CreateRigiBody(0);
             //for (int i = 0; i < particle.Particles.Length; i++)
             //{
             //    box1.AddChild(particle.Particles[i]);
@@ -164,7 +166,7 @@ namespace Game
 
                 Vector3 dir = MainCamera.GetViewMatrix().Inverse() * curPos;
                 dir.Normalize();
-                Vector3 newPos = MainCamera.Transform.Position + dir * 3;
+                Vector3 newPos = MainCamera.Transform.Position + dir;
                 lastMousePosition = curMousePosition;
                 MainCamera.Transform.Position = newPos;
             }

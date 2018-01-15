@@ -3,14 +3,15 @@
 - [x] 基本渲染
 - [x] 摄像机
 - [x] 粒子系统
+- [x] 天空盒
 - [x] 文理序列帧
 - [x] 材质
 - [x] RenderToTexture
 - [x] 多FBO
 - [x] 渲染合批
-- [x] Mono和Bullet已接入，功能尚未完善。
+- [x] Mono和Bullet已接入。
 
-#### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。光照尚未完成。模型文件读取已完成，但是模型的材质尚未完成，骨骼动画也未完成。模型部分的结构设计也存在问题。Android 和 IOS接入也有待解决。
+#### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。光照尚未完成。模型文件读取已完成，但是模型的材质尚未完成，骨骼动画也未完成。Android和IOS尚未接入。
 
 ## 环境部署
 

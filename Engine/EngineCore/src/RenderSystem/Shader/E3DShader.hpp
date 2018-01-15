@@ -20,7 +20,9 @@ namespace E3DEngine
 #define  ROTATION_VEC "_e3d_Rotation"
 #define  CAMERA_POS  "_e3d_cameraPos"
 #define  LIGHT_COLOR "_e3d_WorldSpaceLightColor"
-#define  LIGHT_POS "_e3d_WorldSpaceLightPos"
+#define  LIGHT_DIR "_e3d_WorldSpaceLightDirection"
+#define  POINT_LIGHT_POS "_e3d_WorldSpacePointLightPos"
+#define	 POINT_LIGHT_COLOR "_e3d_WorldSpacePointLightColor"
 
 	struct Uniform
 	{

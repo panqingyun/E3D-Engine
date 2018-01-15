@@ -287,9 +287,20 @@ namespace E3DEngine
 		{
 			usedDirectionLight = (DirectionLight*)light;
 		}
-		m_mapLights[light->ID] = light;
+		else
+		{
+			m_mapLights[light->ID] = light;
+		}
 	}
 
-	Light * Scene::GetDirectionalLight() { return usedDirectionLight; }
+	Light * Scene::GetDirectionalLight() 
+	{ 
+		return usedDirectionLight; 
+	}
+
+	std::map<UINT, Light*>& Scene::GetPointLights()
+	{
+		return m_mapLights;
+	}
 
 }

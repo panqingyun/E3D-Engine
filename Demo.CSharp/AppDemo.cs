@@ -57,7 +57,7 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(0, 6, 40);
+            MainCamera.Transform.Position = new Vector3(0, 6, 30);
             MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
             Light light = Light.Create(LightType.DIRECTION_LIGHT);
             light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
@@ -69,9 +69,9 @@ namespace Game
 
             float xStart = -18;
             float yStart = 50;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < 10 - i; j++)
+                for (int j = 0; j < 15 - i; j++)
                 {
                     Box box = Box.Create(1, 1, 1);
                     Material material = Resource.Load(cubeMaterialPath) as Material;
@@ -79,12 +79,12 @@ namespace Game
                     box.Material = material;
                     box.Transform.Position = new Vector3(xStart + 2 * j, yStart - i * 2, 0);
                     BoxCollider collider = box.AddComponent<BoxCollider>();
-                    collider.CreateRigiBody(2);
+                    collider.CreateRigiBody(50);
                 }
                 xStart += 1.6f;
             }
 
-            boxGround = Box.Create(50, 20, 0.5f);
+            boxGround = Box.Create(50, 10, 0.5f);
             Material materialG = Resource.Load(cubeMaterialPath) as Material;
             boxGround.Material = materialG;
             boxGround.Transform.Position = new Vector3(0, 0, 0);
@@ -96,7 +96,7 @@ namespace Game
             sphere.Material = materialS;
             sphere.Transform.Position = new Vector3(0, 15, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(50);
+            sCollider.CreateRigiBody(60);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
             Box box1 = Box.Create(3, 3, 3);
             box1.Material = materialB;

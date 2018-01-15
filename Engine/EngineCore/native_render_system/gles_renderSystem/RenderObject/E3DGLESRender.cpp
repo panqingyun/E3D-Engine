@@ -127,7 +127,7 @@ namespace E3DEngine
 		{
 			DirectionLight * light = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
 			pMaterial->pShader->UpdateFloatValue(LIGHT_COLOR, light->Color.r, light->Color.g, light->Color.b, light->Color.a);
-			pMaterial->pShader->UpdateFloatValue(LIGHT_POS, light->Transform->Position.x, light->Transform->Position.y, light->Transform->Position.z);
+			pMaterial->pShader->UpdateFloatValue(LIGHT_DIR, light->Transform->Position.x, light->Transform->Position.y, light->Transform->Position.z);
 		}
 		if ( pCamera != nullptr)
 		{

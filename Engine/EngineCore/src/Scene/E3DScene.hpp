@@ -50,6 +50,7 @@ namespace E3DEngine
 		void AddRenderObject(RenderObject* rb, UINT layer);
 		void AddLight(Light * light);
 		Light * GetDirectionalLight();
+		std::map<UINT, Light*>& GetPointLights();
 
 	public:
 		virtual void AddChild(Object * node);

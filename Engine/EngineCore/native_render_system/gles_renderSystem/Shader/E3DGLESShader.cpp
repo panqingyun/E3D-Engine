@@ -30,8 +30,17 @@ namespace E3DEngine
 		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
 		{
 			priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
-			priveVs.append("uniform vec3 ").append(LIGHT_POS).append(";\n");
+			priveVs.append("uniform vec3 ").append(LIGHT_DIR).append(";\n");
 			priveVs.append("uniform vec4 ").append(LIGHT_COLOR).append(";\n");
+		}
+		std::map<UINT, Light*>& pointLights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		if (pointLights.size() != 0)
+		{
+			std::string lightCount = Convert::ToString((int)pointLights.size());
+			priveVs.append("#define USING_POINT_LIGHT  \n");
+			priveVs.append("const int _e3d_PointLightCount = ").append(lightCount).append(";\n");
+			priveVs.append("uniform vec3 ").append(POINT_LIGHT_POS).append("[").append(lightCount).append("];\n");
+			priveVs.append("uniform vec4 ").append(POINT_LIGHT_COLOR).append("[").append(lightCount).append("];\n");
 		}
 		priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
 		priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
@@ -171,7 +180,7 @@ namespace E3DEngine
 		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)		
 		{
 			(this->*uniformSetFunc["vec4"])(LIGHT_COLOR, "");
-			(this->*uniformSetFunc["vec3"])(LIGHT_POS, "");
+			(this->*uniformSetFunc["vec3"])(LIGHT_DIR, "");
 		}
 	}
 
@@ -235,7 +244,7 @@ namespace E3DEngine
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
 				glGetShaderInfoLog(shaderHandle, logLength, &logLength, log);
-				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s", log);
+				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s", log); 
 			}
 			glDeleteShader(shaderHandle);
 		}

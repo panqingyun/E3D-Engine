@@ -96,7 +96,7 @@ extern "C"
 
 	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 	{
-		CreateRenderSystem(nativeWindow, height, height);
+		CreateRenderSystem(nativeWindow, width, height);
 	}
 
 	__api_function_ void setDebugLogOutFunc(void * func)

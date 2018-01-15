@@ -90,7 +90,7 @@ namespace Game
             boxGround.Transform.Position = new Vector3(0, 0, 0);
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
-            collider3.CreateRigiBody(0);
+            collider3.CreateRigiBody(0); 
             Material materialS = Resource.Load(sphereMaterialPath) as Material;
             sphere = Sphere.Create(20);
             sphere.Material = materialS;

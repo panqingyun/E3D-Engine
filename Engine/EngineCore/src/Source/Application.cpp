@@ -33,7 +33,7 @@ namespace E3DEngine
 				std::vector<std::string> nameSpace_className = StringBuilder::Split(entryClass, ":");
 				std::string entryNameSpce = "";
 				std::string entryClassName = "";
-				if (nameSpace_className.size() == 2)
+				if (nameSpace_className.size() == 2)  
 				{
 					entryNameSpce = StringBuilder::Trim(nameSpace_className[0]);
 					entryClassName = StringBuilder::Trim(nameSpace_className[1]);

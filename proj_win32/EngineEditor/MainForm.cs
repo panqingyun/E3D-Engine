@@ -168,5 +168,10 @@ namespace EngineEditor
                 //EngineDLL.StopAppliaction();
             }
         }
+
+        private void EffectEditor_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

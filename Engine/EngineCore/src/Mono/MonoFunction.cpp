@@ -12,6 +12,9 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Transform,	setScale);
 	REGISTER_INTERNAL_CALL(Transform,	getRotation);
 	REGISTER_INTERNAL_CALL(Transform,	setRotation);
+	REGISTER_INTERNAL_CALL(Transform,	getForward);
+	REGISTER_INTERNAL_CALL(Transform,	getUp);
+	REGISTER_INTERNAL_CALL(Transform,	getRight);
 	REGISTER_INTERNAL_CALL(GameObject,	set_LayerMask);
 	REGISTER_INTERNAL_CALL(GameObject,	get_LayerMask);
 	REGISTER_INTERNAL_CALL(GameObject,	set_Material);
@@ -28,6 +31,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
 	REGISTER_INTERNAL_CALL(Camera,		screen2WorldPoint);
+	REGISTER_INTERNAL_CALL(Camera,		getViewMatrix);
+	REGISTER_INTERNAL_CALL(Camera,		getProjectionMatrix);
 	REGISTER_INTERNAL_CALL(Debug,		log_error);
 	REGISTER_INTERNAL_CALL(Debug,		log_warning);
 	REGISTER_INTERNAL_CALL(Debug,		log_info);
@@ -40,11 +45,11 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Render,		setDrawModule);
 	REGISTER_INTERNAL_CALL(Render,		getDrawModule);
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
-	REGISTER_INTERNAL_CALL(Box,			createBox);
+	REGISTER_INTERNAL_CALL(Box,			Create);
 	REGISTER_INTERNAL_CALL(RigidBody,	addRigidBody);
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
-	REGISTER_INTERNAL_CALL(Sphere,			CreateSphere);
+	REGISTER_INTERNAL_CALL(Sphere,			Create);
 	REGISTER_INTERNAL_CALL(Terrain,			Create);
 	REGISTER_INTERNAL_CALL(Light,			Create);
 	REGISTER_INTERNAL_CALL(Light,			setColor);
@@ -252,7 +257,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Material, createMaterial, CS_STRING, path)
 	return material->GetBehaviour()->GetMonoObject();
 }
 
-CS_OBJECT _3_PARAM_FUNCTION(Box, createBox, float, l, float, w, float, h)
+CS_OBJECT _3_PARAM_FUNCTION(Box, Create, float, l, float, w, float, h)
 {
 	Box *box = new Box;
 	ADD_IN_SCENE(box);
@@ -531,7 +536,7 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithID, CS_OBJECT, cs_obj, UINT
 	return child->GetMonoBehaviour()->GetMonoObject();
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Sphere, CreateSphere, float, r)
+CS_OBJECT _1_PARAM_FUNCTION(Sphere, Create, float, r)
 {
 	Sphere *sphere = new Sphere();
 	sphere->Create(r);
@@ -616,4 +621,76 @@ VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, f
 		return;
 	}
 	light->Color = vec4f(r, g, b, a);
+}
+
+VOID _4_PARAM_FUNCTION(Transform, getForward, CS_OBJECT, obj, float&, x, float&, y, float&, z)
+{
+	CTransform * transform = getCppObject<CTransform>(obj);
+
+	if (transform == nullptr)
+	{
+		return;
+	}
+	vec3f forward = transform->GetForward();
+	x = forward.x;
+	y = forward.y;
+	z = forward.z;
+}
+
+VOID _4_PARAM_FUNCTION(Transform, getUp, CS_OBJECT, obj, float&, x, float&, y, float&, z)
+{
+	CTransform * transform = getCppObject<CTransform>(obj);
+
+	if (transform == nullptr)
+	{
+		return;
+	}
+	vec3f forward = transform->GetUp();
+	x = forward.x;
+	y = forward.y;
+	z = forward.z;
+}
+
+VOID _4_PARAM_FUNCTION(Transform, getRight, CS_OBJECT, obj, float&, x, float&, y, float&, z)
+{
+	CTransform * transform = getCppObject<CTransform>(obj);
+
+	if (transform == nullptr)
+	{
+		return;
+	}
+	vec3f forward = transform->GetRight();
+	x = forward.x;
+	y = forward.y;
+	z = forward.z;
+}
+
+VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data)
+{
+	Camera * camera = getCppObject<Camera>(cs_obj);
+	if (camera == nullptr)
+	{
+		return;
+	}
+	const float *mData = camera->GetViewMatrix().data;
+
+	for (int i = 0; i < 16; i ++)
+	{
+		mono_array_set(data, float, i, mData[i]);
+	}
+}
+
+VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data)
+{
+	Camera * camera = getCppObject<Camera>(cs_obj);
+	if (camera == nullptr)
+	{
+		return;
+	}
+	const float *mData = camera->GetProjectionMatrix().data;
+
+	for (int i = 0; i < 16; i++)
+	{
+		mono_array_set(data, float, i, mData[i]);
+	}
 }

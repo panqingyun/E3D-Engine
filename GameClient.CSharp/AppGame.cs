@@ -33,7 +33,7 @@ namespace Game
         
     }
 
-    public class AppGame
+    public class AppDemo
     {
         ParticleSystem particle = null;
         private Camera MainCamera = null;
@@ -46,6 +46,11 @@ namespace Game
         string terrainMaterialPath = "Resource/Material/Terrain.material";
         string particleFirePath = "Resource/Particle/ParticleFire.particle";
         string mainScenePath = "Resource/Scene/MainEntry.scene";
+        Vector2 curMousePosition;
+        Vector2 lastMousePosition;
+        float cameraRotateX = 0, cameraRotateY = 0;
+        bool mouseRButtonDown = false, mouseMButtonDown = false;
+        Vector3 cameraRotation;
 
         public void Main(string[] args)
         {
@@ -68,7 +73,7 @@ namespace Game
             {
                 for (int j = 0; j < 3 - i; j++)
                 {
-                    Box box = Box.CreateBox(10, 10, 10);
+                    Box box = Box.Create(10, 10, 10);
                     Material material = Resource.Load(cubeMaterialPath) as Material;
                     box.AddComponent<App.CubeComponent>();
                     box.Material = material;
@@ -79,7 +84,7 @@ namespace Game
                 xStart += 16;
             }
 
-            boxGround = Box.CreateBox(200, 100, 5);
+            boxGround = Box.Create(200, 100, 5);
             Material materialG = Resource.Load(cubeMaterialPath) as Material;
             boxGround.Material = materialG;
             boxGround.Transform.Position = new Vector3(0, 0, 0);
@@ -87,13 +92,13 @@ namespace Game
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
             collider3.CreateRigiBody(0);
             Material materialS = Resource.Load(sphereMaterialPath) as Material;
-            sphere = Sphere.CreateSphere(20);
+            sphere = Sphere.Create(20);
             sphere.Material = materialS;
             sphere.Transform.Position = new Vector3(0, 150, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
             sCollider.CreateRigiBody(5000);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
-            Box box1 = Box.CreateBox(30, 30, 30);
+            Box box1 = Box.Create(30, 30, 30);
             box1.Material = materialB;
             box1.Transform.Position = new Vector3(25, 50, 0);
             BoxCollider collider4 = box1.AddComponent<BoxCollider>();
@@ -110,6 +115,60 @@ namespace Game
             //}
         }
 
+        public void MouseButtonDown(MouseButtonInfo mouseInfo)
+        {
+            lastMousePosition.x = mouseInfo.mPositionX;
+            lastMousePosition.y = mouseInfo.mPositionY;
+            if (mouseInfo.mButton == MouseButton.eRightButton)
+            {
+                mouseRButtonDown = true;
+            }
+            else if(mouseInfo.mButton == MouseButton.eMiddleButton)
+            {
+                mouseMButtonDown = true;
+            }
+        }
+
+        public void MouseButtonUp(MouseButtonInfo mouseInfo)
+        {
+            if (mouseInfo.mButton == MouseButton.eRightButton)
+            {
+                mouseRButtonDown = false;
+            }
+            else if(mouseInfo.mButton == MouseButton.eMiddleButton)
+            {
+                mouseMButtonDown = false;
+            }
+        }
+        Vector3 curPos = new Vector3();
+        public void MouseMove(MouseButtonInfo mouseInfo)
+        {
+            curMousePosition.x = mouseInfo.mPositionX;
+            curMousePosition.y = mouseInfo.mPositionY;
+
+            if (mouseRButtonDown)
+            {
+                float rotaX = curMousePosition.y - lastMousePosition.y;
+                float rotaY = curMousePosition.x - lastMousePosition.x;
+
+                lastMousePosition = curMousePosition;
+
+                cameraRotateX += rotaX * 0.2f;
+                cameraRotateY += rotaY * 0.2f;
+                cameraRotation.SetValue(-cameraRotateX, -cameraRotateY, 0);
+                MainCamera.Transform.Rotation = cameraRotation;
+            }
+            else if(mouseMButtonDown)
+            {
+                curPos.SetValue(-curMousePosition.x + lastMousePosition.x, curMousePosition.y - lastMousePosition.y, 0);
+
+                Vector3 dir = MainCamera.GetViewMatrix().Inverse() * curPos;
+                dir.Normalize();
+                Vector3 newPos = MainCamera.Transform.Position + dir * 3;
+                lastMousePosition = curMousePosition;
+                MainCamera.Transform.Position = newPos;
+            }
+        }
         public void Update(float deltaTime)
         {     
             

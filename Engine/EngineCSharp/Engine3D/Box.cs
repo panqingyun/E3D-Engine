@@ -9,14 +9,12 @@ namespace E3DEngine
 {
     public class Box : GameObject
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Box createBox(float l, float w, float h);
-
-        public static Box CreateBox(float l, float w, float h)
+        private Box()
         {
-            Box box = createBox(l, w, h);
-            return box;
-        }
 
+        }
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern Box Create(float l, float w, float h);
+        
     }
 }

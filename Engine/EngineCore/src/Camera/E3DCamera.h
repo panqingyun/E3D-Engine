@@ -146,6 +146,7 @@ namespace E3DEngine
 		int m_nDepth;
 		DWORD m_clearType;
 		std::list<Render2Texture *> RTTs;
+
 	};
 }
 #endif

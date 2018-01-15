@@ -329,6 +329,7 @@
             this.Text = "Engine Windows";
             this.Activated += new System.EventHandler(this.EffectEditor_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EffectEditor_FormClosed);
+            this.Load += new System.EventHandler(this.EffectEditor_Load_1);
             this.SizeChanged += new System.EventHandler(this.EffectEditor_SizeChanged);
             this.file.ResumeLayout(false);
             this.file.PerformLayout();

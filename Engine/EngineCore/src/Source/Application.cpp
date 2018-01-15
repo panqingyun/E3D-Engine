@@ -6,7 +6,9 @@ namespace E3DEngine
 	std::string Application::AppDataPath = "";
 	std::string Application::ResourcePath = "";
 	bool Application::m_bIsStop = false;
+	MonoBehaviour * Application::m_pEntryBehaviour = nullptr;
 	MonoBehaviour * Application::m_pBehaviour = nullptr;
+	MouseButtonInfo * Application::m_pMouseInfo = nullptr;
 	void Application::CreatScript()
 	{
 		mono_add_internal_call("E3DEngine.Application::getAppDataPath", Application::getAppDataPath);
@@ -19,6 +21,7 @@ namespace E3DEngine
 		m_bIsStop = false;
 		MonoScriptManager::GetInstance().Initialize();
 		CreatScript();
+		m_pMouseInfo = new MouseButtonInfo();
 		std::string startApp = AppDataPath + "/app.config";
 		std::string fileContent = vvision::getContentFromPath(startApp);
 		if (fileContent != empty_string)
@@ -39,10 +42,10 @@ namespace E3DEngine
 				{
 					entryClassName = StringBuilder::Trim(nameSpace_className[0]);
 				}
-				m_pBehaviour = new MonoBehaviour;
-				m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
-				m_pBehaviour->Create(entryNameSpce.c_str(), entryClassName.c_str());
-				m_pBehaviour->CallMethod("Main");
+				m_pEntryBehaviour = new MonoBehaviour;
+				m_pEntryBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
+				m_pEntryBehaviour->Create(entryNameSpce.c_str(), entryClassName.c_str());
+				m_pEntryBehaviour->CallMethod("Main");
 			}
 		}
 		else
@@ -64,20 +67,20 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (m_pBehaviour == nullptr)
+		if (m_pEntryBehaviour == nullptr)
 		{
 			return;
 		}
-		m_pBehaviour->Update(deltaTime);
+		m_pEntryBehaviour->Update(deltaTime);
 	}
 
 	void Application::Destory()
 	{
-		if (m_pBehaviour == nullptr)
+		if (m_pEntryBehaviour == nullptr)
 		{
 			return;
 		}
-		m_pBehaviour->Destory();
+		m_pEntryBehaviour->Destory();
 	}
 
 
@@ -105,4 +108,63 @@ namespace E3DEngine
 	{
 		return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), ResourcePath.c_str());
 	}
+
+	void Application::MouseButtonDown(MouseButton btn, vec2f pos)
+	{
+		m_pMouseInfo->Set(btn, pos.x, pos.y);
+		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+		m_pEntryBehaviour->CallMethod("MouseButtonDown", &args);
+	}
+
+	void Application::MouseButtonUp(MouseButton btn, vec2f pos)
+	{
+		m_pMouseInfo->Set(btn, pos.x, pos.y);
+		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+		m_pEntryBehaviour->CallMethod("MouseButtonUp", &args);
+	}
+
+	void Application::MouseMove(vec2f pos)
+	{
+		m_pMouseInfo->Set(eUnKnown, pos.x, pos.y);
+		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+		m_pEntryBehaviour->CallMethod("MouseMove", &args);
+	}
+
+	void Application::KeyDown(char key)
+	{
+		void *keyChar = &key;
+		m_pEntryBehaviour->CallMethod("KeyDown", &keyChar);
+	}
+
+	void Application::KeyUp(char key)
+	{
+		void *keyChar = &key;
+		m_pEntryBehaviour->CallMethod("KeyUp", &keyChar);
+	}
+
+
+	MouseButtonInfo::MouseButtonInfo(UINT mBtn, int posX, int posY)
+	{
+		Set(mBtn, posX, posY);
+	}
+
+	void MouseButtonInfo::CreateBehaviour()
+	{
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(MouseButtonInfo);
+		Object::setBehaviourDefaultValue();
+	}
+
+
+	void MouseButtonInfo::Set(UINT mBtn, int posX, int posY)
+	{
+		CreateBehaviour();
+		mButton = mBtn;
+		mPositionX = posX;
+		mPositionY = posY;
+		TRANSFER_FIELD_VALUE(mButton);
+		TRANSFER_FIELD_VALUE(mPositionX);
+		TRANSFER_FIELD_VALUE(mPositionY);
+	}
+
 }

@@ -180,10 +180,7 @@ namespace E3DEngine
 	void Camera::TransformChange()
 	{
 		//extract view matrix from quaternion
-		m_mView = Transform->Rotation.transform();
-
-		//update world view matrix
-		Transform->WorldMatrix = m_mView.inverse();
+		Transform->WorldMatrix = Transform->Rotation.transform();
 		Transform->WorldMatrix[12] = Transform->Position.x;
 		Transform->WorldMatrix[13] = Transform->Position.y;
 		Transform->WorldMatrix[14] = Transform->Position.z;
@@ -196,8 +193,7 @@ namespace E3DEngine
 	const mat4f& Camera::GetViewMatrix()
 	{
 		//get the view matrix of the camera
-		m_mView = Transform->Rotation.transform();
-		Transform->WorldMatrix = m_mView.inverse();
+		Transform->WorldMatrix = Transform->Rotation.transform();
 		Transform->WorldMatrix[12] = Transform->Position.x;
 		Transform->WorldMatrix[13] = Transform->Position.y;
 		Transform->WorldMatrix[14] = Transform->Position.z;

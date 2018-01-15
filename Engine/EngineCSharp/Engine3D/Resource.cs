@@ -41,7 +41,6 @@ namespace E3DEngine
                 string ext = filePath.Substring(lastPoint + 1);
                 if (fileTypeDic.ContainsKey(ext.ToLower()))
                 {
-                    Debug.LogError(ext.ToLower());
                     ft = fileTypeDic[ext.ToLower()];
                 }
             }

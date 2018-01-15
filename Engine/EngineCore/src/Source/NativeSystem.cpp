@@ -2,7 +2,7 @@
 
 namespace E3DEngine
 {
-	void NativeSystem::OnMouseButtonDown(MouseButton btn, vec2f pos)
+	/*void NativeSystem::OnMouseButtonDown(MouseButton btn, vec2f pos)
 	{
 		if (!Instance().MouseButtonDown.empty())
 		{
@@ -33,6 +33,6 @@ namespace E3DEngine
 	void NativeSystem::OnKeyUp(char key)
 	{
 
-	}
+	}*/
 
 }

@@ -268,7 +268,6 @@ struct Convert
 namespace E3DEngine
 {
 
-#define NAME_SPACE "E3DEngine"
 	template<typename  T> std::string GetClassName()
 	{
 		return typeid(T).name();

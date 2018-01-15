@@ -3,6 +3,21 @@ using System.Runtime.CompilerServices;
 
 namespace E3DEngine
 {
+    public enum MouseButton
+    {
+        eLeftButton = 0,
+        eRightButton,
+        eMiddleButton,
+        eUnKnown
+    };
+
+    public class MouseButtonInfo
+    {
+        public MouseButton mButton;
+        public int mPositionX;
+        public int mPositionY;
+    }
+
 	public class Application
 	{
 		public Application()

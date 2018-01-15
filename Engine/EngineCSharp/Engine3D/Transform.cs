@@ -27,6 +27,15 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern void setRotation(float x, float y, float z);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void getForward(out float x, out float y, out float z);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void getUp(out float x, out float y, out float z);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void getRight(out float x, out float y, out float z);
+
         public GameObject gameObject
         {
             get;set;
@@ -80,6 +89,41 @@ namespace E3DEngine
             {
                 setRotation(value.x, value.y, value.z);
                 rotation = value;
+            }
+        }
+
+        private Vector3 forward;
+        public Vector3 Forward
+        {
+            get
+            {
+                float x, y, z;
+                getForward(out x, out y, out z);
+                forward.SetValue(x, y, z);
+                return forward;
+            }
+        }
+        private Vector3 up;
+        public Vector3 Up
+        {
+            get
+            {
+                float x, y, z;
+                getUp(out x, out y, out z);
+                up.SetValue(x, y, z);
+                return up;
+            }
+        }
+
+        private Vector3 right;
+        public Vector3 Right
+        {
+            get
+            {
+                float x, y, z;
+                getRight(out x, out y, out z);
+                right.SetValue(x, y, z);
+                return right;
             }
         }
     }

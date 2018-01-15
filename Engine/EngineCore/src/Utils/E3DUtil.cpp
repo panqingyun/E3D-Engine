@@ -106,23 +106,23 @@ extern "C"
 
 	__api_function_ void MouseDown(int mouseButtonID, float xPos, float yPos)
 	{
-		NativeSystem::OnMouseButtonDown((MouseButton)mouseButtonID, vec2f(xPos, yPos));
+		Application::MouseButtonDown((MouseButton)mouseButtonID, vec2f(xPos, yPos));
 	}
 	__api_function_ void MouseUp(int mouseButtonID, float xPos, float yPos)
 	{
-		NativeSystem::OnMouseButtonUp((MouseButton)mouseButtonID, vec2f(xPos, yPos));
+		Application::MouseButtonUp((MouseButton)mouseButtonID, vec2f(xPos, yPos));
 	}
 	__api_function_ void MouseMove(float xPos, float yPos)
 	{
-		NativeSystem::OnMouseMove(vec2f(xPos, yPos));
+		Application::MouseMove(vec2f(xPos, yPos));
 	}
 	__api_function_ void KeyDown(char key)
 	{
-		NativeSystem::OnkeyDown(key);
+		Application::KeyDown(key);
 	}
 	__api_function_ void KeyUp(char key)
 	{
-		NativeSystem::OnKeyUp(key);
+		Application::KeyUp(key);
 	}
 
 }

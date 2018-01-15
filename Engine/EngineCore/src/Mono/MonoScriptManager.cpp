@@ -290,7 +290,7 @@ void MonoBehaviour::constructor()
 
 MonoBehaviour::~MonoBehaviour()
 {
-	mono_free(m_pMonoObject);
+	//mono_free(m_pMonoObject);
 }
 
 MonoClass * MonoBehaviour::GetClass()

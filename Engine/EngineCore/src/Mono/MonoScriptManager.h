@@ -12,6 +12,10 @@
 #define LATEUP_FUNC "LateUpdate"
 #define COLLISION_ENTER_FUNC "OnCollisionEnter"
 
+#define NAME_SPACE "E3DEngine"
+#define NEW_INSTANCE(_class)\
+	m_pBehaviour->Create(NAME_SPACE, #_class);
+
 
 class MonoBehaviour : public E3DEngine::IObject
 {

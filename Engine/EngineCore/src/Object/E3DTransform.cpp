@@ -144,6 +144,9 @@ namespace E3DEngine
 		Rotation = Quatf::frommat(WorldMatrix);
 		Position = vec3f(WorldMatrix.at(0, 3), WorldMatrix.at(1, 3), WorldMatrix.at(2, 3));
 		Scale = vec3f(1, 1, 1);
+		m_vForward = vec3f(0, 0, 1);
+		m_vUp = vec3f(0, 1, 0);
+		m_vRight = vec3f(1, 0, 0);
 	}
 
 	void CTransform::SetBillBoardNormal(vec3f pos, vec3f scale)
@@ -187,6 +190,24 @@ namespace E3DEngine
 	void CTransform::SetNeedUpdate(bool bIsNeed)
 	{
 		m_bNeedUpdate = bIsNeed;
+	}
+
+
+	vec3f CTransform::GetForward()
+	{
+		return vec3f(WorldMatrix[8], WorldMatrix[9], WorldMatrix[10]);
+	}
+
+
+	vec3f CTransform::GetUp()
+	{
+		return vec3f(WorldMatrix[4], WorldMatrix[5], WorldMatrix[6]);
+	}
+
+
+	vec3f CTransform::GetRight()
+	{
+		return vec3f(WorldMatrix[0] ,WorldMatrix[1], WorldMatrix[2]);
 	}
 
 	vvision::vec3f CTransform::GetPosition()

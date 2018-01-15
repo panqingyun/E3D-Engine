@@ -279,6 +279,12 @@ namespace E3DEngine
     {
         public float[] data = new float[16];
 
+        public void SetValue(float[] mValue)
+        {
+            Debug.Log(mValue.ToString());
+            data = mValue;
+        }
+
         public Matrix4x4()
         {
             for (int i = 0; i < 16; i++)

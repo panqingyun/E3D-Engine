@@ -2,14 +2,7 @@
 
 #include "Interface.h"
 #include "E3DDelegate.h"
-
-enum MouseButton
-{
-	eLeftButton = 0,
-	eRightButton,
-	eMiddleButton,
-	eUnKnown
-};
+#include "../Mono/MonoScriptManager.h"
 
 enum KeyCode
 {
@@ -22,20 +15,17 @@ enum KeyCode
 
 namespace E3DEngine
 {
-	using MouseEventsDelegates = event Delegates<MouseButton, vec2f>;
+	/*using MouseEventsDelegates = event Delegates<MouseButton, vec2f>;
 	using KeyEventDelegates = event Delegates<KeyCode>;
 	using KeyCharEventDelegates = event Delegates<char>;
 
 	class NativeSystem extends IObject
 	{
-	public: 
-		static void OnMouseButtonDown(MouseButton btn, vec2f pos);
-		static void OnClick(MouseButton btn, vec2f pos);
-		static void OnMouseButtonUp(MouseButton btn, vec2f pos);
+	public:
 		static void OnMouseMove(vec2f pos);
 		static void OnkeyDown(char key);
 		static void OnKeyUp(char key);
-	private: 
+	private:
 		static NativeSystem &Instance()
 		{
 			static NativeSystem _ins;
@@ -49,5 +39,5 @@ namespace E3DEngine
 		KeyEventDelegates KeyDown;
 		KeyEventDelegates KeyUp;
 		KeyCharEventDelegates KeyChar;
-	};
+	};*/
 }

@@ -47,9 +47,6 @@ void RegisterMonoFunction();
 #define TRANSFER_FIELD_OBJECT(_field)\
 	m_pBehaviour->SetFieldValue(#_field, _field->GetMonoBehaviour()->GetMonoObject());
 
-#define NEW_INSTANCE(_class)\
-	m_pBehaviour->Create(NAME_SPACE, #_class);
-
 #define _0_PARAM_FUNCTION(className, funcName)\
 	className##_##funcName()
 
@@ -101,8 +98,11 @@ VOID _4_PARAM_FUNCTION(Transform		, getScale			, CS_OBJECT		, obj		, float&	, x,
 VOID _4_PARAM_FUNCTION(Transform		, setPosition		, CS_OBJECT		, obj		, float		, x, float	, y, float	, z);
 VOID _4_PARAM_FUNCTION(Transform		, setScale			, CS_OBJECT		, obj		, float		, x, float	, y, float	, z);
 VOID _4_PARAM_FUNCTION(Transform		, setRotation		, CS_OBJECT		, obj		, float		, x, float	, y, float	, z);
+VOID _4_PARAM_FUNCTION(Transform		, getForward		, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
+VOID _4_PARAM_FUNCTION(Transform		, getUp				, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
+VOID _4_PARAM_FUNCTION(Transform		, getRight			, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
 VOID _5_PARAM_FUNCTION(Camera			, setClearColor		, CS_OBJECT		, cs_boj	, float		, r, float	, g, float	, b, float, a);
-CS_OBJECT _3_PARAM_FUNCTION(Box			, createBox			, float			, l			, float		, w, float	, h);
+CS_OBJECT _3_PARAM_FUNCTION(Box			, Create			, float			, l			, float		, w, float	, h);
 VOID _2_PARAM_FUNCTION(GameObject		, set_Material		, CS_OBJECT		, cs_boj	, CS_OBJECT	, material);
 VOID _2_PARAM_FUNCTION(GameObject		, set_Active		, CS_OBJECT		, cs_boj	, CS_BOOL	, isActive);
 VOID _2_PARAM_FUNCTION(RigidBody		, addRigidBody		, CS_OBJECT		, rigibody	, CS_OBJECT	, _collider);
@@ -128,11 +128,13 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithName , CS_OBJECT		, cs_ob
 CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithID	, CS_OBJECT		, cs_obj, UINT			, id);
 VOID _2_PARAM_FUNCTION(Object				, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		, name);
 CS_STRING _1_PARAM_FUNCTION(Object			, get_Name			, CS_OBJECT		, cs_obj);
-CS_OBJECT _1_PARAM_FUNCTION(Sphere			, CreateSphere		, float			, r);
+CS_OBJECT _1_PARAM_FUNCTION(Sphere			, Create, float			, r);
 VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJECT		,child);
 CS_OBJECT _1_PARAM_FUNCTION(Terrain			, Create			, CS_STRING		,heightMap);
 VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT			, cs_obj		, UINT ,drawModule);
 UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT			, cs_obj);
 VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyBox		, CS_OBJECT		, material);
 CS_OBJECT _1_PARAM_FUNCTION(Light			, Create			, UINT			, lightType);
-VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float ,r, float, g, float, b,float, a);
+VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, float, b, float, a);
+VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);
+VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);

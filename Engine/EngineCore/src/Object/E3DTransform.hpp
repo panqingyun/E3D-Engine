@@ -13,7 +13,7 @@
 namespace E3DEngine
 {
     class GameObject;
-	class CTransform extends Object
+	class CTransform : public Object
     {
     public:
         CTransform();
@@ -35,6 +35,9 @@ namespace E3DEngine
         void SetIsBillBoard(bool bill);
 		void SetNeedUpdate(bool bIsNeed);
         
+		vec3f GetForward();
+		vec3f GetUp();
+		vec3f GetRight();
         vec3f GetPosition();
 		void AddChild(UINT objID ,CTransform * child);
 		mat4f GetParentMatrix();
@@ -66,6 +69,9 @@ namespace E3DEngine
 		bool  m_bStateChange;
         bool    m_IsBillBoard;
 		bool  m_bNeedUpdate;
+		vec3f m_vForward;
+		vec3f m_vUp;
+		vec3f m_vRight;
     };
 }
 

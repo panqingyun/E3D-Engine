@@ -26,7 +26,7 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 				y = 0;// ((r + g + b) / 3.0) / 30;
 				m_vecVertex[vertexIndex].SetPosition(x * 5, y , z * 5);
 				m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
-				m_vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 0.5);
+				m_vecVertex[vertexIndex].SetColor(1, 1, 1, 1);
 				m_vecVertex[vertexIndex].SettextureCoord((float)i / (mapWidth - 1), (float)j / (mapHeight - 1));
 				vertexIndex++;
 				if (i < mapWidth - 1 && j < mapWidth - 1)

@@ -57,8 +57,10 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(0, 6, 30);
-            MainCamera.Transform.Rotation = new Vector3(0, 0, 0);
+            MainCamera.Transform.Position = new Vector3(-20, 15, 50);
+            MainCamera.Transform.Rotation = new Vector3(0, -30, 0);
+            cameraRotateX = -MainCamera.Transform.Rotation.x;
+            cameraRotateY = -MainCamera.Transform.Rotation.y;
             Light light = Light.Create(LightType.DIRECTION_LIGHT);
             light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
             light.Transform.Position = new Vector3(500, 500, -500);
@@ -96,7 +98,7 @@ namespace Game
             sphere.Material = materialS;
             sphere.Transform.Position = new Vector3(0, 15, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(60);
+            sCollider.CreateRigiBody(100);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
             Box box1 = Box.Create(3, 3, 3);
             box1.Material = materialB;

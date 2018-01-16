@@ -108,6 +108,9 @@ namespace E3DEngine
 			btScalar(Transform->Position.x),
 			btScalar(Transform->Position.y),
 			btScalar(Transform->Position.z)));
+		btQuaternion q;
+		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
+		startTransform.setRotation(q);
 		createRigidBody(mass, startTransform, m_pShape);
 		Physics::GetInstance().GetWorld()->contactTest(m_pRigidBody, mColCallBack);
 		return m_pRigidBody;

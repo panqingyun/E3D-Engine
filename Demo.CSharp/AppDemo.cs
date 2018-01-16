@@ -57,8 +57,8 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.CreateCamera("MainCamera");
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(-20, 15, 50);
-            MainCamera.Transform.Rotation = new Vector3(0, -30, 0);
+            MainCamera.Transform.Position = new Vector3(-20, 30, 50);
+            MainCamera.Transform.Rotation = new Vector3(0, -10, 0);
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
             Light light = Light.Create(LightType.DIRECTION_LIGHT);
@@ -90,6 +90,7 @@ namespace Game
             Material materialG = Resource.Load(cubeMaterialPath) as Material;
             boxGround.Material = materialG;
             boxGround.Transform.Position = new Vector3(0, 0, 0);
+            boxGround.Transform.Rotation = new Vector3(0, 0, 20);
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
             collider3.CreateRigiBody(0);
@@ -105,6 +106,14 @@ namespace Game
             box1.Transform.Position = new Vector3(2.5f, 5, 0);
             BoxCollider collider4 = box1.AddComponent<BoxCollider>();
             collider4.CreateRigiBody(0);
+
+            Material materialB2 = Resource.Load(cubeMaterialPath) as Material;
+            Box box2 = Box.Create(50, 10, 0.5f);
+            box2.Material = materialB2;
+            box2.Transform.Position = new Vector3(-25f, 15, 0);
+            box2.Transform.Rotation = new Vector3(0, 0, -20);
+            BoxCollider collider5 = box2.AddComponent<BoxCollider>();
+            collider5.CreateRigiBody(0);
             particle = Resource.Load(particleFirePath) as ParticleSystem;
 
             Terrain terrain = Terrain.Create("Resource/Scene/MainEntry/hill.bmp");
@@ -184,37 +193,37 @@ namespace Game
         private void KeyDown(char key)
         {
             curCameraPos = MainCamera.Transform.Position;
-            if (key == 'w')
+            if (key == 'w' || key == 'W')
             {
                 curCameraDir = MainCamera.Forward;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
-            else if(key == 's')
+            else if(key == 's' || key == 'S')
             {
                 curCameraDir = MainCamera.Forward * -1;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
-            else if(key == 'a')
+            else if(key == 'a' || key == 'A')
             {
                 curCameraDir = MainCamera.Right * -1;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
-            else if (key == 'd')
+            else if (key == 'd' || key == 'D')
             {
                 curCameraDir = MainCamera.Right;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
-            else if (key == 'e')
+            else if (key == 'e' || key == 'E')
             {
                 curCameraDir = MainCamera.Up;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
-            else if (key == 'q')
+            else if (key == 'q' || key == 'Q')
             {
                 curCameraDir = MainCamera.Up * -1;
                 curCameraDir.Normalize();

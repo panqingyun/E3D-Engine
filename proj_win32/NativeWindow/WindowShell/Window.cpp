@@ -102,8 +102,8 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	std::vector<std::string> cmdLine = Split(lpCmdLine, ",");
 	if (strlen(lpCmdLine) == 0)
 	{
-		WindowWidth = 1000;
-		WindowHeight = 800;
+		WindowWidth = 1800;
+		WindowHeight = 1000;
 		WindowStyle = WS_OVERLAPPEDWINDOW;
 	}
 	else
@@ -207,8 +207,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
+   
    InitEngine(hWnd);
-   ShowWindow(hWnd, nCmdShow);
+   ShowWindow(hWnd, SW_SHOWMAXIMIZED);
    UpdateWindow(hWnd);
 
    return TRUE;

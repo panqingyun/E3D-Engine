@@ -51,13 +51,14 @@ namespace EngineEditor
         {
             EngineDLL.SetAppDataPath(Application.StartupPath);
             EngineDLL.InitilizeEngine();
-            EngineDLL.SetupRenderSystem(EngineContener.Handle, EngineContener.Width, EngineContener.Height);
+            EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
             EngineDLL.StartAppliaction();
             isLoaded = true;
         }
 
         private void EffectEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
+            EngineDLL.StopAppliaction();
             RenderContent.Close();
             srv.ShutDown();
             System.Environment.Exit(0);
@@ -116,7 +117,11 @@ namespace EngineEditor
 
         private void EngineContener_MouseDown(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (!isLoaded)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Left)
             {
                 EngineDLL.MouseDown((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
             }
@@ -132,6 +137,10 @@ namespace EngineEditor
 
         private void EngineContener_MouseUp(object sender, MouseEventArgs e)
         {
+            if (!isLoaded)
+            {
+                return;
+            }
             if (e.Button == MouseButtons.Left)
             {
                 EngineDLL.MouseUp((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
@@ -148,12 +157,20 @@ namespace EngineEditor
 
         private void EngineContener_MouseMove(object sender, MouseEventArgs e)
         {
+            if (!isLoaded)
+            {
+                return;
+            }
             EngineDLL.MouseMove(e.X, e.Y);
         }
 
         private void EffectEditor_SizeChanged(object sender, EventArgs e)
         {
-            EngineDLL.ChageFrameSize(EngineContener.Width, EngineContener.Height);
+            if (!isLoaded)
+            {
+                return;
+            }
+            EngineDLL.ChageFrameSize(sceneContener.Width, sceneContener.Height);
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -172,6 +189,24 @@ namespace EngineEditor
         private void EffectEditor_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void EffectEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isLoaded)
+            {
+                return;
+            }
+            EngineDLL.KeyDown((char)e.KeyValue);
+        }
+
+        private void EffectEditor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (!isLoaded)
+            {
+                return;
+            }
+            EngineDLL.KeyUp((char)e.KeyValue);
         }
     }
 }

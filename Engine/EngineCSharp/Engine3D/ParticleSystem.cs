@@ -26,6 +26,10 @@ namespace E3DEngine
             return particle;
         }
 
+        public void SetPosition(Vector3 pos)
+        {
+
+        }
     }
 
     public class ParticleGroup : GameObject

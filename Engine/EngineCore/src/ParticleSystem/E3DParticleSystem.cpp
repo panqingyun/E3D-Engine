@@ -90,7 +90,7 @@ namespace E3DEngine
 				// 初始化粒子团属性
 				initParticleGroup(particle, cfgName, it);
 				// 初始化粒子团所在层属性
-				initParticleLayer(it, particle);
+				initParticleRenderer(it, particle);
 				// 创建发射器
 				createParticleEmitter(it, cfgName, particle);
 				// 创建影响器
@@ -133,7 +133,7 @@ namespace E3DEngine
 		particle->SetfShaderIndex(config->fShaderIndex);
 	}
 
-	void ParticleSystem::initParticleLayer(ParticleConfig *config, ParticleGroup * particle)
+	void ParticleSystem::initParticleRenderer(ParticleConfig *config, ParticleGroup * particle)
 	{
 		auto layerConfig = EngineDelegate::GetInstance().GetTableManager(LAYER_CONFIAG_NAME)->Select<LayerConfig>(config->LayerID);
 		if (layerConfig == nullptr)
@@ -149,7 +149,7 @@ namespace E3DEngine
 		render->SetMaterial(mMaterial);
 		particle->SetRenderer(render);
 		particle->SetActive(true);
-
+		render->SetRenderIndex(eRI_TopMost);
 		/*
 				rtt->AddChild(particle);
 				rtt->SetRenderIndex(eRI_TopMost);*/

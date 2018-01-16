@@ -21,7 +21,7 @@ namespace E3DEngine
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
 		{
 			GLES_Renderer * buffer = new GLES_Renderer;
-			buffer->RenderIndex = eRI_None;
+			buffer->RenderIndex = eRI_Normal;
 			m_mapVertexBuffers[materialID] = buffer;
 			return buffer;
 		}

@@ -175,14 +175,17 @@ namespace E3DEngine
 	{
 		m_eParticleState = state;
 	}
-
+//worldMatrix * 
+//worldMatrix * 
+//worldMatrix * 	
+//worldMatrix *
 
 	Vertex * Particle::getVertex(mat4f worldMatrix)
 	{
-		vec4f pos0 = worldMatrix * vec4f(Vertes[0].Position[0], Vertes[0].Position[1], Vertes[0].Position[2], 1.0);
-		vec4f pos1 = worldMatrix * vec4f(Vertes[1].Position[0], Vertes[1].Position[1], Vertes[1].Position[2], 1.0);
-		vec4f pos2 = worldMatrix * vec4f(Vertes[2].Position[0], Vertes[2].Position[1], Vertes[2].Position[2], 1.0);
-		vec4f pos3 = worldMatrix * vec4f(Vertes[3].Position[0], Vertes[3].Position[1], Vertes[3].Position[2], 1.0);
+		vec4f pos0 = vec4f(Vertes[0].Position[0], Vertes[0].Position[1], Vertes[0].Position[2], 1.0);
+		vec4f pos1 = vec4f(Vertes[1].Position[0], Vertes[1].Position[1], Vertes[1].Position[2], 1.0);
+		vec4f pos2 = vec4f(Vertes[2].Position[0], Vertes[2].Position[1], Vertes[2].Position[2], 1.0);
+		vec4f pos3 = vec4f(Vertes[3].Position[0], Vertes[3].Position[1], Vertes[3].Position[2], 1.0);
 		Vertes[0].SetPosition(pos0.x, pos0.y, pos0.z);
 		Vertes[1].SetPosition(pos1.x, pos1.y, pos1.z);
 		Vertes[2].SetPosition(pos2.x, pos2.y, pos2.z);
@@ -262,7 +265,15 @@ namespace E3DEngine
 		// |      \  |
 		// |        \|
 		// 2---------3
-		
+		/*if (m_bIsBillBoard && m_MainCamera != nullptr)
+		{
+			vec4f point[4];
+			for (int i =0; i < 4; i++)
+			{
+				point[i] = cumputBillboardCoord(i);
+				m_Point[i] = Convert::Vec4ToVec3(point[i]);
+			}
+		}*/
 		Vertes[0].SetPosition(m_Point[0].x, m_Point[0].y, m_Point[0].z);
 		Vertes[0].SetNormal(0, 0, 1);
 		Vertes[0].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
@@ -867,7 +878,7 @@ namespace E3DEngine
 			{
 				itr ++;
 			}
-			
+			particle.get_ptr()->SetCamera(m_pRenderer->pCamera);
 			particle.get_ptr()->Update(deltaTime);
 			Vertex * vertex = particle.get_ptr()->getVertex(Transform->WorldMatrix);
 			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
@@ -937,6 +948,7 @@ namespace E3DEngine
 		}
 		if (IsActive && !m_ParticlePool.empty())
 		{
+			m_pRenderer->GetTransform()->SetIsBillBoard(true);
 			checkParticleState(deltaTime);
 			m_pRenderer->TransformChange();
 		}
@@ -998,6 +1010,7 @@ namespace E3DEngine
 			int _n = rand() % num;
 			
 			share_pointer<Particle> sp_P = ParticlePool::GetInstance().ActiveParticleFromPool();
+
 			sp_P.get_ptr()->ActiveEffect(m_vecUVConfigs[_n]);
 			sp_P.get_ptr()->Create(size.x, size.y, true, color, pos, fShaderIndex, time2Live);
 			sp_P.get_ptr()->autoRelease();

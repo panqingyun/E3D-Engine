@@ -42,7 +42,7 @@ namespace E3DEngine
 	protected:
 		void createParticleAffector(ParticleConfig *config, std::string cfgName, ParticleGroup * particle);
 		void createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle);
-		void initParticleLayer(ParticleConfig *config, ParticleGroup * particle);
+		void initParticleRenderer(ParticleConfig *config, ParticleGroup * particle);
 		void initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config);
 
 	};

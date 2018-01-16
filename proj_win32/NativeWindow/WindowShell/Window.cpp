@@ -335,7 +335,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_CHAR:
 		{
-			char key = 0;
+			char key = wParam;
 			procecssKey(key);
 		}
 		break;

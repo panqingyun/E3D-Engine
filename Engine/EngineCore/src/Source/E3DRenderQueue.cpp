@@ -34,7 +34,7 @@ namespace E3DEngine
 		}
 		for (int i = _renderQueue.size() - 1; i >= 0; i--)
 		{
-			if (_renderQueue[i]->RenderIndex >= eRI_Normal || i == 0)
+			if (_renderQueue[i]->RenderIndex == rb->RenderIndex || i == 0)
 			{
 				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				return;

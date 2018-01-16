@@ -151,7 +151,11 @@ namespace E3DEngine
 
 	void CTransform::SetBillBoardNormal(vec3f pos, vec3f scale)
     {
-		vec3f cameraPos = gameObject->pCamera->Transform->Position;
+		if (gameObject->GetRenderer() == nullptr || gameObject->GetRenderer()->pCamera == nullptr)
+		{
+			return;
+		}
+		vec3f cameraPos = gameObject->GetRenderer()->pCamera->Transform->Position;
         
         vec3f forward = pos - cameraPos;
         forward.normalize();
@@ -326,6 +330,7 @@ namespace E3DEngine
 		{
             if(m_IsBillBoard)
             {
+				SetBillBoardNormal(Position, Scale);
                 WorldMatrix = billboardMatrix;
             }
             else

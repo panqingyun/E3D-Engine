@@ -14,11 +14,11 @@ namespace E3DEngine
 {
 	typedef enum
 	{
+		eRI_None,
 		eRI_LowMost,
 		eRI_Normal,
 		eRI_Transparent,
 		eRI_TopMost,
-		eRI_None,
 	} eRenderIndex;
 
 

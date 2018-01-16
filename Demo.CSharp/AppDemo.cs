@@ -76,7 +76,7 @@ namespace Game
                     Box box = Box.Create(1, 1, 1);
                     Material material = Resource.Load(cubeMaterialPath) as Material;
                     box.AddComponent<App.CubeComponent>();
-                    box.Material = material;
+                    box.Material = material; 
                     box.Transform.Position = new Vector3(xStart + 2 * j, yStart - i * 2, 0);
                     BoxCollider collider = box.AddComponent<BoxCollider>();
                     collider.CreateRigiBody(50);
@@ -103,7 +103,7 @@ namespace Game
             box1.Transform.Position = new Vector3(2.5f, 5, 0);
             BoxCollider collider4 = box1.AddComponent<BoxCollider>();
             collider4.CreateRigiBody(0);
-            //particle = Resource.Load(particleFirePath) as ParticleSystem;
+            particle = Resource.Load(particleFirePath) as ParticleSystem;
 
             Terrain terrain = Terrain.Create("Resource/Scene/MainEntry/hill.bmp");
             Material materialT = Resource.Load(terrainMaterialPath) as Material;
@@ -111,10 +111,11 @@ namespace Game
             terrain.GetRenderer().DrawModule = eDrawModule.LINES;
             MeshCollider mCollider = terrain.AddComponent<MeshCollider>();
             mCollider.CreateRigiBody(0);
-            //for (int i = 0; i < particle.Particles.Length; i++)
-            //{
-            //    box1.AddChild(particle.Particles[i]);
-            //}
+            Vector3 nwPos = new Vector3(box1.Transform.Position.x - 1, box1.Transform.Position.y - 1.1f, box1.Transform.Position.z);
+            for (int i = 0; i < particle.Particles.Length; i++)
+            {
+                particle.Particles[i].Transform.Position = nwPos;
+            }
         }
 
         public void MouseButtonDown(MouseButtonInfo mouseInfo)
@@ -176,6 +177,48 @@ namespace Game
             
         }
 
+        Vector3 curCameraPos = new Vector3();
+        Vector3 curCameraDir = new Vector3();
+        private void KeyDown(char key)
+        {
+            curCameraPos = MainCamera.Transform.Position;
+            if (key == 'w')
+            {
+                curCameraDir = MainCamera.Forward;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+            else if(key == 's')
+            {
+                curCameraDir = MainCamera.Forward * -1;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+            else if(key == 'a')
+            {
+                curCameraDir = MainCamera.Right * -1;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+            else if (key == 'd')
+            {
+                curCameraDir = MainCamera.Right;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+            else if (key == 'e')
+            {
+                curCameraDir = MainCamera.Up;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+            else if (key == 'q')
+            {
+                curCameraDir = MainCamera.Up * -1;
+                curCameraDir.Normalize();
+                MainCamera.Transform.Position = curCameraPos + curCameraDir;
+            }
+        }
     }
 
 }

@@ -163,7 +163,7 @@ namespace E3DEngine
 		}
 	};
 
-    class ParticleGroup extends GameObject
+    class ParticleGroup : public GameObject
     {
     public:
         ParticleGroup();

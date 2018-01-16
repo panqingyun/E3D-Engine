@@ -43,9 +43,9 @@
         ID					= 1
         Name				= "球面发射器"
         Type				= 2
-        Radius				= 2
-        ParticleWidth		= 17
-        ParticleHeight		= 17
+        Radius				= 1
+        ParticleWidth		= 2
+        ParticleHeight		= 2
         BlankTime			= 0
         MaxParticleNumber	= 50
         TotalParticleNumber	= 10000
@@ -82,7 +82,7 @@
          yRandom  y方向随机范围 [-1,1]
          zRandom  z方向随机范围 [-1,1]
          -->
-        <Item ID = 1 Force=20 ForceRange="60,100" xRandom="-0.2,0.2" yRandom="1,1" zRandom="0,0" rotateByDir=0/>
+        <Item ID = 1 Force=2 ForceRange="6,10" xRandom="-0.2,0.2" yRandom="1,1" zRandom="0,0" rotateByDir=0/>
     </RandomForceAffectorConfig>
 	<TextureUVConfig>
 		<!--

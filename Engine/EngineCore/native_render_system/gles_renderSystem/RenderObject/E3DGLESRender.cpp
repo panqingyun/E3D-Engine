@@ -147,7 +147,6 @@ namespace E3DEngine
 		}
 
 		pMaterial->UseMaterial();
-
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_SHORT, nullptr);
 		int err = glGetError();

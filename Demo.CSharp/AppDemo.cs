@@ -85,20 +85,20 @@ namespace Game
                 xStart += 1.6f;
             }
 
-            boxGround = Box.Create(50, 10, 0.5f);
-            Material materialG = Resource.Load(cubeMaterialPath) as Material;
-            boxGround.Material = materialG;
-            boxGround.Transform.Position = new Vector3(0, 0, 0);
-            boxGround.Transform.Rotation = new Vector3(0, 0, 20);
-            boxGround.Active = true;
-            BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
-            collider3.CreateRigiBody(0);
+            //boxGround = Box.Create(50, 10, 0.5f);
+            //Material materialG = Resource.Load(cubeMaterialPath) as Material;
+            //boxGround.Material = materialG;
+            //boxGround.Transform.Position = new Vector3(0, 0, 0);
+            //boxGround.Transform.Rotation = new Vector3(0, 0, 20);
+            //boxGround.Active = true;
+            //BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
+            //collider3.CreateRigiBody(0);
             Material materialS = Resource.Load(sphereMaterialPath) as Material;
-            sphere = Sphere.Create(2);
+            sphere = Sphere.Create(20);
             sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(0, 15, 0);
+            sphere.Transform.Position = new Vector3(0, -25, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(100);
+            sCollider.CreateRigiBody(0);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
             Box box1 = Box.Create(3, 3, 3);
             box1.Material = materialB;

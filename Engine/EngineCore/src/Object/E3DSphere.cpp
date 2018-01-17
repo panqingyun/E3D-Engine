@@ -7,8 +7,8 @@
 
 void E3DEngine::Sphere::Create(float R)
 {
-	int rowNumber = 180;
-	int colNumber = 180;
+	int rowNumber = 181;
+	int colNumber = 181;
 	m_vecVertex.resize(rowNumber * colNumber);
 	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
 	m_vecIndex.resize(indexSize);
@@ -17,18 +17,22 @@ void E3DEngine::Sphere::Create(float R)
 	float dAlpha = 0, dBeta = 0;
 	for (int alpha = 0; alpha < rowNumber; alpha ++)
 	{
-		dAlpha = DEG2RAD(alpha * 2);
+		dAlpha = DEG2RAD(alpha);
 		float sinAplha = sin(dAlpha);
 		float cosAlpha = cos(dAlpha);
+
 		for (int beta = 0; beta < colNumber; beta++)
 		{
 			dBeta = DEG2RAD(beta * 2);
-			float x = R * cosAlpha * sin(dBeta);
-			float y = R * sinAplha * sin(dBeta);
+			float x = R * sin(dBeta) * cos(dAlpha);
+			float y = R * sin(dBeta) * sin(dAlpha);
 			float z = R * cos(dBeta);
+		/*	x = (float)alpha - rowNumber / 2.0f;
+			z = -((float)beta - rowNumber / 2.0f);*/
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);
+			m_vecVertex[vIndex].SettextureCoord((float)beta / (colNumber - 1), (float)alpha/ (rowNumber - 1));
 			vIndex++;
 			if (alpha < rowNumber - 1 && beta < colNumber - 1)
 			{

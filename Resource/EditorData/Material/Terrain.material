@@ -31,9 +31,9 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/SphereVS.shader" 
-					FragmentShader	= "shader/SphereFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/sky.png;" 
+					VertexShader	= "shader/TerrainVS.shader" 
+					FragmentShader	= "shader/TerrainFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/back.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

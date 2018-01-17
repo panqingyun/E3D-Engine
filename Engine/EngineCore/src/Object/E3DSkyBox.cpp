@@ -128,6 +128,7 @@ void E3DEngine::SkyDome::Create(float R)
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);
+			m_vecVertex[vIndex].SettextureCoord(alpha / (rowNumber - 1), beta / (colNumber - 1));
 			vIndex++;
 			if (alpha < rowNumber - 1 && beta < colNumber - 1)
 			{

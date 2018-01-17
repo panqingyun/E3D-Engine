@@ -117,7 +117,7 @@ namespace E3DEngine
 		bool        enableDoubleSide;
 		bool        turnOnBlend;
 		eBlendType  blendType;
-
+		TableManager * MaterialTableManager;
 		std::map<UINT, Texture*>	Textures; // 纹理
 		MaterialConfig	  *	pMaterialConfig;
 		std::string filePath;

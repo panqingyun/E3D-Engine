@@ -3,54 +3,28 @@
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 #include "E3DTransform.hpp"
 #include "../Camera/E3DCamera.h"
+#include "../Source/EngineDelegate.h"
 
 void E3DEngine::SkyBox::Create(float l, float w, float h)
 {
-	Box::Create(l, w, h);
-	
-	// front
-	m_vecVertex[0].SettextureCoord(1, 0);		
-	m_vecVertex[1].SettextureCoord(1.0, 1.0 / 2.0);				
-	m_vecVertex[2].SettextureCoord(2.0 / 3.0, 1.0 / 2.0);
-	m_vecVertex[3].SettextureCoord(2.0 / 3.0, 0.0);				
-
-	// up
-	m_vecVertex[4].SettextureCoord(1.0 / 3.0, 1.0 / 2.0);
-	m_vecVertex[5].SettextureCoord(2.0 / 3, 1.0 / 2.0);
-	m_vecVertex[6].SettextureCoord(2.0 /3.0, 1.0);
-	m_vecVertex[7].SettextureCoord(1.0 / 3.0, 1.0 );
-
-	// back
-	m_vecVertex[8].SettextureCoord(0, 0);
-	m_vecVertex[9].SettextureCoord(1.0 / 3, 0.0);
-	m_vecVertex[10].SettextureCoord(1.0 / 3, 1.0 / 2.0);
-	m_vecVertex[11].SettextureCoord(0.0, 1.0 / 2.0);
-
-	// down
-	m_vecVertex[12].SettextureCoord(2.0 / 3, 1.0 / 2);
-	m_vecVertex[13].SettextureCoord(1, 1.0 / 2);
-	m_vecVertex[14].SettextureCoord(1, 1);
-	m_vecVertex[15].SettextureCoord(2.0 / 3.0 , 1.0);
-
-	// left
-	m_vecVertex[16].SettextureCoord(0.0, 1.0 / 2.0);
-	m_vecVertex[17].SettextureCoord(1.0 / 3.0, 1.0 / 2.0);
-	m_vecVertex[18].SettextureCoord(1.0 / 3.0, 1.0);
-	m_vecVertex[19].SettextureCoord(0.0, 1.0);
-
-	// right
-	m_vecVertex[20].SettextureCoord(2.0 / 3.0, 0.0);
-	m_vecVertex[21].SettextureCoord(2.0 / 3.0, 1.0 / 2.0);
-	m_vecVertex[22].SettextureCoord(1.0 / 3.0, 1.0 / 2.0);
-	m_vecVertex[23].SettextureCoord(1.0 / 3.0, 0.0);
-
+	Box::Create(l, w, h);	
 }
 
 void E3DEngine::SkyBox::SetMaterial(Material * material)
 {
+	SkyBoxConfig * skyBox = material->MaterialTableManager->Select<SkyBoxConfig>(1);
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
+	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
+
+	setTextureCoord();
 	Box::SetMaterial(material);
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
 	m_pRenderer->EnableDepthTest = false;
+
 }
 
 void E3DEngine::SkyBox::PrepareUpdate(float deltaTime)
@@ -60,5 +34,73 @@ void E3DEngine::SkyBox::PrepareUpdate(float deltaTime)
 		return;
 	}
 	Transform->SetPosition(m_pRenderer->pCamera->Transform->Position);
+}
+
+void E3DEngine::SkyBox::setTextureCoord()
+{
+	vec2f leftTop, rightTop , leftDown, rightDown;
+
+	getCoord(0, leftTop, rightTop, leftDown, rightDown);
+
+	// front
+	m_vecVertex[0].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[1].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[2].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[3].SettextureCoord(leftTop.x, leftTop.y);
+
+
+	getCoord(1, leftTop, rightTop, leftDown, rightDown);
+	// up
+	m_vecVertex[4].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[5].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[6].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[7].SettextureCoord(leftDown.x, leftDown.y);
+
+
+	getCoord(2, leftTop, rightTop, leftDown, rightDown);
+	// back
+	m_vecVertex[8].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[9].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[10].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[11].SettextureCoord(leftDown.x, leftDown.y);
+
+
+	getCoord(3, leftTop, rightTop, leftDown, rightDown);
+	// down
+	m_vecVertex[12].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[13].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[14].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[15].SettextureCoord(leftDown.x, leftDown.y);
+
+
+	getCoord(4, leftTop, rightTop, leftDown, rightDown);
+	// left
+	m_vecVertex[16].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[17].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[18].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[19].SettextureCoord(leftDown.x, leftDown.y);
+
+
+	getCoord(5, leftTop, rightTop, leftDown, rightDown);
+	// right
+	m_vecVertex[20].SettextureCoord(rightTop.x, rightTop.y);
+	m_vecVertex[21].SettextureCoord(rightDown.x, rightDown.y);
+	m_vecVertex[22].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[23].SettextureCoord(leftTop.x, leftTop.y);
+
+}
+
+void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown)
+{
+	TextureAtlas* texture = textures[index];
+
+	leftTop.x = texture->x / texture->width;
+	leftTop.y = texture->y / texture->height;
+	leftDown.x = texture->x / texture->width;
+	leftDown.y = texture->y / texture->height + texture->h / texture->height;
+	rightDown.x = texture->x / texture->width + texture->w / texture->width;
+	rightDown.y = texture->y / texture->height + texture->h / texture->height;
+	rightTop.x = texture->x / texture->width + texture->w / texture->width;
+	rightTop.y = texture->y / texture->height;
 }
 

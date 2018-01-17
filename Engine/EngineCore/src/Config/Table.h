@@ -515,6 +515,58 @@ namespace E3DEngine
 
 		}
 	};
+
+	class TextureAtlas : public TableBase
+	{
+		DECLARE_CLASS(TextureAtlas);
+	public:
+		DECLARE_MEMBER(TextureAtlas, int, ID);
+		DECLARE_MEMBER(TextureAtlas, string, n);
+		DECLARE_MEMBER(TextureAtlas, float, x);
+		DECLARE_MEMBER(TextureAtlas, float, y);
+		DECLARE_MEMBER(TextureAtlas, float, w);
+		DECLARE_MEMBER(TextureAtlas, float, h);
+		DECLARE_MEMBER(TextureAtlas, float, width);
+		DECLARE_MEMBER(TextureAtlas, float, height);
+
+		virtual void registProperty() override
+		{
+			SAVE_MEMBER(ID		, int);
+			SAVE_MEMBER(n		, string);
+			SAVE_MEMBER(x		, float);
+			SAVE_MEMBER(y		, float);
+			SAVE_MEMBER(w		, float);
+			SAVE_MEMBER(h		, float);
+			SAVE_MEMBER(width	, float);
+			SAVE_MEMBER(height	, float);
+		}
+	};
+
+	class SkyBoxConfig : public TableBase
+	{
+		DECLARE_CLASS(SkyBoxConfig)
+	public:
+		DECLARE_MEMBER(SkyBoxConfig, int, ID);
+		DECLARE_MEMBER(SkyBoxConfig, int, Front);
+		DECLARE_MEMBER(SkyBoxConfig, int, Back);
+		DECLARE_MEMBER(SkyBoxConfig, int, Top);
+		DECLARE_MEMBER(SkyBoxConfig, int, Down);
+		DECLARE_MEMBER(SkyBoxConfig, int, Left);
+		DECLARE_MEMBER(SkyBoxConfig, int, Right);
+
+		virtual void registProperty() override
+		{
+			SAVE_MEMBER(ID		, int);
+			SAVE_MEMBER(Front	, int);
+			SAVE_MEMBER(Back	, int);
+			SAVE_MEMBER(Top		, int);
+			SAVE_MEMBER(Down	, int);
+			SAVE_MEMBER(Left	, int);
+			SAVE_MEMBER(Right	, int);
+
+		}
+
+	};
 }
 
 #endif /* Table_hpp */

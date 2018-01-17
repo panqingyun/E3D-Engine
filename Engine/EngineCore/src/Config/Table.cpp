@@ -24,6 +24,8 @@ namespace E3DEngine
 	DECLARE_CLASS_NAME(MagicWordConfig)
 	DECLARE_CLASS_NAME(LayerConfig)
 	DECLARE_CLASS_NAME(ShaderConfig)
+	DECLARE_CLASS_NAME(TextureAtlas)
+	DECLARE_CLASS_NAME(SkyBoxConfig)
 	
     void RegisterTableCreateInstance()
     {
@@ -43,6 +45,8 @@ namespace E3DEngine
 		REGIST_CLASS(SelfRotateAffectorConfig);
 		REGIST_CLASS(MagicWordConfig);
 		REGIST_CLASS(LayerConfig);
-		REGIST_CLASS(ShaderConfig);		
+		REGIST_CLASS(ShaderConfig);
+		REGIST_CLASS(TextureAtlas);
+		REGIST_CLASS(SkyBoxConfig);
     }
 }

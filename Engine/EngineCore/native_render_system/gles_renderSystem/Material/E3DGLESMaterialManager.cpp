@@ -42,8 +42,8 @@ namespace E3DEngine
 		material->filePath = folder + "/";
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
 		material->CreateMaterial(config, sCfg);
+		material->MaterialTableManager = tblManager;
 		m_mapIDMaterials[material->ID] = material;
-		SAFE_DELETE(tblManager);
 		return material;
 	}
 }

@@ -125,6 +125,21 @@ extern "C"
 		Application::KeyUp(key);
 	}
 
+	__api_function_ void CreateEditorGrid()
+	{
+		Terrain * terrain = new Terrain();
+		terrain->Create(128);
+		terrain->SetIsEditorGrid(true);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material");
+		terrain->SetMaterial(m);
+		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
+		ADD_IN_SCENE(terrain);
+	}
+
+	__api_function_ void CreateEditorCamera()
+	{
+
+	}
 }
 
 

@@ -62,21 +62,31 @@ namespace E3DEngine
 
 	void GLES_Renderer::TransformChange()
 	{
+		UINT drawState = GL_STREAM_DRAW;
+		if (IsStaticDraw)
+		{
+			drawState = GL_STATIC_DRAW;
+		}
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 	
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STREAM_DRAW);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort)* Indices.size(), Indices.data(), GL_STREAM_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), drawState);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort)* Indices.size(), Indices.data(), drawState);
 	}
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
 	{
+		UINT drawState = GL_STREAM_DRAW;
+		if (IsStaticDraw)
+		{
+			drawState = GL_STATIC_DRAW;
+		}
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 		if (!m_bIsBufferData)
 		{
-			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STREAM_DRAW);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STREAM_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, drawState);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, drawState);
 		}
 	}
 

@@ -17,4 +17,17 @@ namespace E3DEngine
 	private:
 		std::vector<TextureAtlas*> textures;
 	};
+
+	class SkyDome : public GameObject
+	{
+	public:
+		virtual void Create(float R);
+		virtual void SetMaterial(Material * material) override;
+		virtual void PrepareUpdate(float deltaTime) override;
+	private:
+		void setTextureCoord();
+		void getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown);
+	private:
+		std::vector<TextureAtlas*> textures;
+	};
 }

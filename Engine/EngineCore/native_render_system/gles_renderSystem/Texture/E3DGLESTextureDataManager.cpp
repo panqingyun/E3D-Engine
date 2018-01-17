@@ -5,6 +5,7 @@
 //
 
 #include "E3DGLESTextureDataManager.hpp"
+#include <src/Source/E3DDebug.h>
 
 void E3DEngine::GLES_TextureDataManager::Init()
 {
@@ -25,7 +26,8 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 #endif
 	if (data->data == nullptr)
 	{		
-		return CreateTextureBuffer(DEFAULT_TEXTURE_FILE);
+		Debug::Log(ell_Error, "texture data is null");
+		return 0;// CreateTextureBuffer(DEFAULT_TEXTURE_FILE);
 	}
 	GLuint TextureBuffer = 0;
 	glGenTextures(1, &TextureBuffer);
@@ -64,6 +66,11 @@ E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 
 void E3DEngine::GLES_TextureDataManager::Cleanup()
 {
+	for (auto &imageData : m_mapTextureData)
+	{
+		SAFE_DELETE(imageData.second);
+	}
+	m_mapTextureData.clear();
 	for (std::map<std::string, GLuint>::iterator it = m_mapTextureBuffer.begin();
 		it != m_mapTextureBuffer.end(); ++it)
 	{

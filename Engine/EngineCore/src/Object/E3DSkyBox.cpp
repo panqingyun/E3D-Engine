@@ -104,3 +104,65 @@ void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec
 	rightTop.y = texture->y / texture->height;
 }
 
+void E3DEngine::SkyDome::Create(float R)
+{
+	int rowNumber = 180;
+	int colNumber = 180;
+	m_vecVertex.resize(rowNumber * colNumber);
+	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
+	m_vecIndex.resize(indexSize);
+	int index = 0;
+	int vIndex = 0;
+	float dAlpha = 0, dBeta = 0;
+	for (int alpha = 0; alpha < rowNumber; alpha++)
+	{
+		dAlpha = DEG2RAD(alpha);
+		float sinAplha = sin(dAlpha);
+		float cosAlpha = cos(dAlpha);
+		for (int beta = 0; beta < colNumber; beta++)
+		{
+			dBeta = DEG2RAD(beta);
+			float x = R * cosAlpha * sin(dBeta);
+			float y = R * sinAplha * sin(dBeta);
+			float z = R * cos(dBeta);
+			m_vecVertex[vIndex].SetPosition(x, y, z);
+			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
+			m_vecVertex[vIndex].SetNormal(x, y, z);
+			vIndex++;
+			if (alpha < rowNumber - 1 && beta < colNumber - 1)
+			{
+				m_vecIndex[index++] = (alpha * rowNumber + beta); // 0
+				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta);// 360
+				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
+
+				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
+				m_vecIndex[index++] = (alpha * rowNumber + beta); // 1
+				m_vecIndex[index++] = (alpha * rowNumber + beta + 1);
+			}
+		}
+	}
+	size.x = R;
+	size.y = R;
+	size.z = R;
+	IsActive = false;
+}
+
+void E3DEngine::SkyDome::SetMaterial(Material * material)
+{
+
+}
+
+void E3DEngine::SkyDome::PrepareUpdate(float deltaTime)
+{
+
+}
+
+void E3DEngine::SkyDome::setTextureCoord()
+{
+
+}
+
+void E3DEngine::SkyDome::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown)
+{
+
+}

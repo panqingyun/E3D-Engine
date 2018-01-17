@@ -118,6 +118,14 @@ extern "C"
 	/// </summary>
 	/// <param name = key>按键字符值</param>
 	__api_function_ void KeyUp(char key);	
+	/// <summary>
+	/// 编辑器的地格
+	/// </summary>
+	__api_function_ void CreateEditorGrid();
+	/// <summary>
+	/// 编辑器的摄像机
+	/// </summary>
+	__api_function_ void CreateEditorCamera();
 
 }
 

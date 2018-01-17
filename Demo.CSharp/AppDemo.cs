@@ -43,7 +43,6 @@ namespace Game
         string skyBoxMaterialPath = "Resource/Material/SkyBox.material";
         string cubeMaterialPath = "Resource/Material/CubeMaterial.material";
         string sphereMaterialPath = "Resource/Material/SphereMaterial.material";
-        string terrainMaterialPath = "Resource/Material/Terrain.material";
         string particleFirePath = "Resource/Particle/ParticleFire.particle";
         string mainScenePath = "Resource/Scene/MainEntry.scene";
         Vector2 curMousePosition;
@@ -116,12 +115,6 @@ namespace Game
             collider5.CreateRigiBody(0);
             particle = Resource.Load(particleFirePath) as ParticleSystem;
 
-            Terrain terrain = Terrain.Create("Resource/Scene/MainEntry/hill.bmp");
-            Material materialT = Resource.Load(terrainMaterialPath) as Material;
-            terrain.Material = materialT;
-            terrain.GetRenderer().DrawModule = eDrawModule.LINES;
-            MeshCollider mCollider = terrain.AddComponent<MeshCollider>();
-            mCollider.CreateRigiBody(0);
             Vector3 nwPos = new Vector3(box1.Transform.Position.x - 1, box1.Transform.Position.y - 1.1f, box1.Transform.Position.z);
             for (int i = 0; i < particle.Particles.Length; i++)
             {

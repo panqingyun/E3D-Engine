@@ -20,11 +20,13 @@ namespace E3DEngine
 	
 	void Material::Destory()
 	{
+		SAFE_DELETE(MaterialTableManager);
 		for (std::map<UINT, Texture*>::iterator it = Textures.begin(); it != Textures.end(); ++it)
 		{
 			SAFE_DELETE(it->second);
 		}
 		Textures.clear();
+		SAFE_DELETE(pShader);
 	}
 
 	void Material::CreateMaterial(MaterialConfig * config, ShaderConfig * sCfg)

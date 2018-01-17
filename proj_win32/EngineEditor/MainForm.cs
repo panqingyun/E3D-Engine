@@ -53,6 +53,7 @@ namespace EngineEditor
             EngineDLL.InitilizeEngine();
             EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
             EngineDLL.StartAppliaction();
+            EngineDLL.CreateEditorGrid();
             isLoaded = true;
         }
 

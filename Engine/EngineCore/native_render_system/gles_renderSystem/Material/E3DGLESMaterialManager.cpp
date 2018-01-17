@@ -32,6 +32,7 @@ namespace E3DEngine
 		std::vector<MaterialConfig*> * materialConfigs = tblManager->GetTable<MaterialConfig>();
 		if (materialConfigs->size() == 0)
 		{
+			SAFE_DELETE(tblManager);
 			return nullptr;
 		}
 		std::string folder, file;

@@ -123,5 +123,11 @@ namespace EngineEditor
         /// <param name="func"></param>
         [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
         public static extern void setDebugLogOutFunc(LogOutPutFunc func);
+
+        /// <summary>
+        /// 编辑器的地格
+        /// </summary>
+        [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void CreateEditorGrid();
     }
 }

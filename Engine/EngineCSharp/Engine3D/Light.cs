@@ -18,6 +18,24 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Light setColor(float r, float g, float b, float a);
         
+        public static T Create<T>() where T : Light
+        {
+            Light l = null;
+            if (typeof(T) == typeof(PointLight))
+            {
+                 l = Create(LightType.POINT_LIGHT);
+            }
+            else if(typeof(T) == typeof(DirectionLight))
+            {
+                l = Create(LightType.DIRECTION_LIGHT);
+            }
+            else if (typeof(T) == typeof(SpotLight))
+            {
+                l = Create(LightType.SPOT_LIGHT);
+            }
+            return l as T;
+        }
+
         public Vector4 Color
         {
             set
@@ -46,12 +64,12 @@ namespace E3DEngine
         }
     }
 
-    class DirectionLight : Light
+    public class DirectionLight : Light
 	{
 	
 	}
 
-	class SpotLight : Light
+    public class SpotLight : Light
 	{
 	    public float Range
         {

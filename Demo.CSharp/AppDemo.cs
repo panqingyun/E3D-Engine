@@ -62,11 +62,11 @@ namespace Game
             MainCamera.Transform.Rotation = new Vector3(0, -10, 0);
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
-            Light light = Light.Create(LightType.DIRECTION_LIGHT);
+            Light light = Light.Create<DirectionLight>();
             light.Color = new Vector4(1, 1, 1, 1.0f);
             light.Transform.Position = new Vector3(50, 50,0);
 
-            PointLight pLight = (PointLight)Light.Create(LightType.POINT_LIGHT);
+            PointLight pLight = Light.Create<PointLight>();
             pLight.Range = 100;
             pLight.Color = new Vector4(1, 1, 1, 1.0f);
             pLight.Transform.Position = new Vector3(0, 0, 50);

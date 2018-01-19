@@ -56,7 +56,7 @@ namespace Game
         public void Main(string[] args)
         {
             MainScene = Scene.LoadScene(mainScenePath);
-            MainCamera = Camera.CreateCamera("MainCamera");
+            MainCamera = Camera.Create();
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
             MainCamera.Transform.Position = new Vector3(-20, 30, 50);
             MainCamera.Transform.Rotation = new Vector3(0, -10, 0);

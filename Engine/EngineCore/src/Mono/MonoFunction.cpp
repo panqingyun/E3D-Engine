@@ -156,9 +156,8 @@ VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 	E3DEngine::Debug::Log(ell_Info, _log.c_str());
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera, CS_STRING, name)
+CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera)
 {
-	std::string stdName = Convert::ToString(name);
 	const float32 fov = 60.0f;
 	const vec3f up = vec3f(0.0f, 1.0f, 0.0);
 	const float32 zNear = 1.0f;

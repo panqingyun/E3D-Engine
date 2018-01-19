@@ -13,7 +13,7 @@ namespace E3DEngine
         private extern void renderCamera();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Camera createCamera(string name);
+        private static extern Camera createCamera();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern void setClearColor(float r, float g, float b, float a);
@@ -52,9 +52,9 @@ namespace E3DEngine
         }
         private Matrix4x4 viewMatrix = new Matrix4x4();
         private Matrix4x4 projMatrix = new Matrix4x4();
-        public static Camera CreateCamera(string name)
+        public static Camera Create()
         {
-            return createCamera(name);
+            return createCamera();
         }
 
         public void Render()

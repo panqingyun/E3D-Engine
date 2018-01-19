@@ -68,6 +68,7 @@ namespace E3DEngine
 		GetRenderSystem()->Cleanup();
 		m_mapRenders.clear();
 		m_vecObjList.clear();
+		m_mapLights.clear();
 	}
 	
 	void Scene::SceneReload()
@@ -293,7 +294,29 @@ namespace E3DEngine
 		}
 	}
 
-	Light * Scene::GetDirectionalLight() 
+
+	void Scene::DeleteLight(Light *light)
+	{
+		if (light == nullptr)
+		{
+			return;
+		}
+
+		if (light->Type == eDIRECTION_LIGHT)
+		{
+			SAFE_DELETE(usedDirectionLight);
+		}
+		else if (light->Type == ePOINT_LIGHT)
+		{
+			if (m_mapLights.find(light->ID) != m_mapLights.end())
+			{
+				m_mapLights.erase(light->ID);
+				SAFE_DELETE(light);
+			}
+		}
+	}
+
+	Light * Scene::GetDirectionalLight()
 	{ 
 		return usedDirectionLight; 
 	}

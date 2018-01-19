@@ -40,6 +40,7 @@ namespace E3DEngine
 			priveVs.append("#define USING_POINT_LIGHT  \n");
 			priveVs.append("const int _e3d_PointLightCount = ").append(lightCount).append(";\n");
 			priveVs.append("uniform vec3 ").append(POINT_LIGHT_POS).append("[").append(lightCount).append("];\n");
+			priveVs.append("uniform float ").append(POINT_LIGHT_RANGE).append("[").append(lightCount).append("];\n");
 			priveVs.append("uniform vec4 ").append(POINT_LIGHT_COLOR).append("[").append(lightCount).append("];\n");
 		}
 		priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
@@ -100,7 +101,7 @@ namespace E3DEngine
 		processAttribVar(cfg);
 
 		std::string path = Application::AppDataPath + "/" + filePath;
-		std::string shaderContent = preProcessShader(path + "/" + cfg->VertexShader);
+		std::string shaderContent = preProcessShader(path +  cfg->VertexShader);
 		std::string vertexShaderString = processVS().append(shaderContent);
 		std::string fragmentShaderString = preProcessShader(path + "/" + cfg->FragmentShader);
 
@@ -121,9 +122,13 @@ namespace E3DEngine
 		createAttribute("TRANSROTATE", 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3");
 		createAttribute("SHADERINDEX", 32, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX, "float");
 		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
+		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
 		uniformSetFunc["vec2"] = &Shader::createFloat2Uniform;
 		uniformSetFunc["vec3"] = &Shader::createFloat3Uniform;
 		uniformSetFunc["vec4"] = &Shader::createFloat4Uniform;
+		uniformSetFunc["vec2[]"] = &Shader::createFloat2ArrayUniform;
+		uniformSetFunc["vec3[]"] = &Shader::createFloat3ArrayUniform;
+		uniformSetFunc["vec4[]"] = &Shader::createFloat4ArrayUniform;
 		uniformSetFunc["mat2"] = &Shader::createMatrix2Uniform;
 		uniformSetFunc["mat3"] = &Shader::createMatrix3Uniform;
 		uniformSetFunc["mat4"] = &Shader::createMatrix4Uniform;
@@ -143,7 +148,7 @@ namespace E3DEngine
 				continue;
 			}
 			bool hasDefaultVale = true;
-
+			int size = 1;
 			// 临时只处理一下sampler2D
 			if (uniformKeyValue.find("-") != std::string::npos)
 			{
@@ -157,33 +162,54 @@ namespace E3DEngine
 			std::vector<std::string> uniformKey = StringBuilder::Split(uniformKeyValue, ":");
 			std::string uniformValue = "";
 			std::string defaultVale = "";
+			if (uniformKey[0].find("[") != std::string::npos) //数组
+			{
+				std::vector<std::string> values = StringBuilder::Split(uniformKey[0], "[");
+				uniformKey[0] = values[0] + "[]";
+
+				size_t pos = values[1].find("]");
+				if (pos != std::string::npos)
+				{
+					size = Convert::ToInt(values[1].substr(0, pos));
+				}
+			}
 			if (hasDefaultVale)
 			{
 				std::vector<std::string> values = StringBuilder::Split(uniformKey[1], "-");
 				uniformValue = values[0];
 				defaultVale = values[1];
-				varToTypeMap[uniformValue] = uniformKey[0];
 			}
 			else
 			{
-				varToTypeMap[uniformKey[1]] = uniformKey[0];
 				uniformValue = uniformKey[1];
 			}
-			(this->*uniformSetFunc[uniformKey[0]])(uniformValue.c_str(), defaultVale);
+			(this->*uniformSetFunc[uniformKey[0]])(uniformValue.c_str(), defaultVale, size);
 
 		}
-		(this->*uniformSetFunc["mat4"])(PROJ_MATRIX, "");
-		(this->*uniformSetFunc["mat4"])(VIEW_MATRIX, "");
-		(this->*uniformSetFunc["mat4"])(MODEL_MATRIX, "");
-		(this->*uniformSetFunc["vec3"])(CAMERA_POS, "");
-		(this->*uniformSetFunc["vec3"])(ROTATION_VEC, "");
-		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)		
-		{
-			(this->*uniformSetFunc["vec4"])(LIGHT_COLOR, "");
-			(this->*uniformSetFunc["vec3"])(LIGHT_DIR, "");
-		}
+		processEngineDefineUniform();
+
 	}
 
+	void GLES_Shader::processEngineDefineUniform()
+	{
+		(this->*uniformSetFunc["mat4"])(PROJ_MATRIX, "", 1);
+		(this->*uniformSetFunc["mat4"])(VIEW_MATRIX, "", 1);
+		(this->*uniformSetFunc["mat4"])(MODEL_MATRIX, "", 1);
+		(this->*uniformSetFunc["vec3"])(CAMERA_POS, "", 1);
+		(this->*uniformSetFunc["vec3"])(ROTATION_VEC, "", 1);
+		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		{
+			(this->*uniformSetFunc["vec4"])(LIGHT_COLOR, "", 1);
+			(this->*uniformSetFunc["vec3"])(LIGHT_DIR, "", 1);
+		}
+		std::map<UINT, Light*>& pointLights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		if (pointLights.size() != 0)
+		{
+			(this->*uniformSetFunc["vec4[]"])(POINT_LIGHT_COLOR, "", pointLights.size());
+			(this->*uniformSetFunc["vec3[]"])(POINT_LIGHT_POS, "", pointLights.size());
+			(this->*uniformSetFunc["float[]"])(POINT_LIGHT_RANGE, "", pointLights.size());
+		}
+	}
 
 	void GLES_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
 	{
@@ -283,6 +309,26 @@ namespace E3DEngine
 		for (auto & uniformKeyValue : float2UniformList)
 		{
 			glUniform2f(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
+		}
+
+		for (auto & uniformKeyValue : float1UniformArrayList)
+		{
+			glUniform1fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+		}
+
+		for (auto & uniformKeyValue : float2UniformArrayList)
+		{
+			glUniform2fv(uniformKeyValue.second.UniformName,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
+		}
+
+		for (auto & uniformKeyValue : float3UniformArrayList)
+		{
+			glUniform3fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+		}
+
+		for (auto & uniformKeyValue : float4UniformArrayList)
+		{
+			glUniform4fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformList)
@@ -401,6 +447,26 @@ namespace E3DEngine
 		}
 
 		for (auto & uniformKeyValue : matrix4UniformList)
+		{
+			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+		}
+
+		for (auto & uniformKeyValue : float1UniformArrayList)
+		{
+			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+		}
+
+		for (auto & uniformKeyValue : float2UniformArrayList)
+		{
+			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+		}
+
+		for (auto & uniformKeyValue : float3UniformArrayList)
+		{
+			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+		}
+
+		for (auto & uniformKeyValue : float4UniformArrayList)
 		{
 			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
 		}

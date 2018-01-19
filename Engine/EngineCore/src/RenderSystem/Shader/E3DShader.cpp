@@ -117,68 +117,137 @@ namespace E3DEngine
 	}
 
 
-	void Shader::createInt1Uniform(std::string varName, std::string defValueFormat)
+	void Shader::UpdataFloat1ArrayUniform(std::string name, std::vector<float> value)
+	{
+		if (float1UniformArrayList.find(name) == float1UniformArrayList.end())
+		{
+			return;
+		}
+		float1UniformArrayList[name].Value = value;
+	}
+
+	void Shader::UpdataFloat2ArrayUniform(std::string name, std::vector<float> value)
+	{
+		if (float2UniformArrayList.find(name) == float2UniformArrayList.end())
+		{
+			return;
+		}
+		float2UniformArrayList[name].Value = value;
+	}
+
+	void Shader::UpdataFloat3ArrayUniform(std::string name, std::vector<float> value)
+	{
+		if (float3UniformArrayList.find(name) == float3UniformArrayList.end())
+		{
+			return;
+		}
+		float3UniformArrayList[name].Value = value;
+	}
+
+	void Shader::UpdataFloat4ArrayUniform(std::string name, std::vector<float> value)
+	{
+		if (float4UniformArrayList.find(name) == float4UniformArrayList.end())
+		{
+			return;
+		}
+		float4UniformArrayList[name].Value = value;
+	}
+
+	void Shader::createInt1Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		int1Uniform uni;
 		uni.VarName = varName;
 		int1UniformList[varName] = uni;
 	}
 
-	void Shader::createFloat1Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createFloat1Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		float1Uniform uni;
 		uni.VarName = varName;
 		float1UniformList[varName] = uni;
 	}
 
-	void Shader::createFloat2Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createFloat2Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		float2Uniform uni;
 		uni.VarName = varName;
 		float2UniformList[varName] = uni;
 	}
 
-	void Shader::createFloat3Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createFloat3Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		float3Uniform uni;
 		uni.VarName = varName;
 		float3UniformList[varName] = uni;
 	}
 
-	void Shader::createFloat4Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createFloat4Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		float4Uniform uni;
 		uni.VarName = varName;
 		float4UniformList[varName] = uni;
 	}
 
-	void Shader::createMatrix2Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createMatrix2Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		matrixUniform matrix;
-		matrix.Count = 1;
+		matrix.Count = count;
 		matrix.VarName = varName;
 		matrix2UniformList[varName] = matrix;
 	}
 
-	void Shader::createMatrix3Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createMatrix3Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		matrixUniform matrix;
-		matrix.Count = 1;
+		matrix.Count = count;
 		matrix.VarName = varName;
 		matrix3UniformList[varName] = matrix;
 	}
 
-	void Shader::createMatrix4Uniform(std::string varName, std::string defValueFormat)
+	void Shader::createMatrix4Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		matrixUniform matrix;
-		matrix.Count = 1;
+		matrix.Count = count;
 		matrix.VarName = varName;
 		matrix4UniformList[varName] = matrix;
 	}
 
-	void Shader::createSamplerUniform(std::string varName, std::string defValue)
+	void Shader::createSamplerUniform(std::string varName, std::string defValue, int count)
 	{
 		samplerNameValue[varName] = defValue;
+	}
+
+
+	void Shader::createFloat1ArrayUniform(std::string varName, std::string defValueFormat, int count)
+	{
+		floatUniformArray uni;
+		uni.Count = count;
+		uni.VarName = varName;
+		float1UniformArrayList[varName] = uni;
+	}
+
+	void Shader::createFloat2ArrayUniform(std::string varName, std::string defValueFormat, int count)
+	{
+		floatUniformArray uni;
+		uni.Count = count;
+		uni.VarName = varName;
+		float2UniformArrayList[varName] = uni;
+	}
+
+	void Shader::createFloat3ArrayUniform(std::string varName, std::string defValueFormat, int count)
+	{
+		floatUniformArray uni;
+		uni.Count = count;
+		uni.VarName = varName;
+		float3UniformArrayList[varName] = uni;
+	}
+
+	void Shader::createFloat4ArrayUniform(std::string varName, std::string defValueFormat, int count)
+	{
+		floatUniformArray uni;
+		uni.Count = count;
+		uni.VarName = varName;
+		float4UniformArrayList[varName] = uni;
 	}
 
 	void Shader::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType)
@@ -194,16 +263,6 @@ namespace E3DEngine
 
 		attribute.VertexStructSize = VertexStructSize;
 		attributeMap[typeName] = attribute;
-	}
-
-	void Shader::CreateShaderUniform(std::string varName)
-	{
-		if (varToTypeMap.find(varName) == varToTypeMap.end())
-		{
-			return;
-		}
-		std::string typeName = varToTypeMap[varName];
-		(this->*uniformSetFunc[typeName])(varName.c_str(), "");
 	}
 
 	void Shader::processUniformVar(ShaderConfig * cfg)

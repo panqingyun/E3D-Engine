@@ -131,14 +131,31 @@ namespace vvision
         char8 *ptr = new char8[buf.length()];
         strcpy(ptr, buf.c_str());
         string s(ptr);
+		in.close();
 #ifdef __IOS__
         delete[] ptr;
 #endif
         return s;
-    }
+    } 
     string getContentFromPath(const string& filepath)
     {
-        return getContentFromPath(filepath.c_str());
+		std::string buf("");
+		std::string line("");
+		std::ifstream in(filepath);
+
+		if (in.fail())
+			return "";
+		while (std::getline(in, line))
+		{
+			line += std::string("\n");
+			buf += line;
+		}
+
+		in.close();
+#ifdef __IOS__
+		delete[] ptr;
+#endif
+		return buf;
     }
 
 	unsigned char * getContent(const char * filename)

@@ -49,6 +49,7 @@ namespace E3DEngine
 		void ChangeFrameSize(float w, float h);
 		void AddRenderObject(RenderObject* rb, UINT layer);
 		void AddLight(Light * light);
+		void DeleteLight(Light *light);
 		Light * GetDirectionalLight();
 		std::map<UINT, Light*>& GetPointLights();
 

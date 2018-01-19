@@ -41,6 +41,9 @@ namespace E3DEngine
 		virtual void	LoadShader(ShaderConfig *cfg);
 		std::string		processVS();
 		virtual void	processUniformVar(ShaderConfig * cfg);
+	private:
+		void processEngineDefineUniform();
+
 	protected:
 		virtual GLuint	compileShader(const char*  shaderName, GLenum shaderType);
 		virtual void	compileShaders();

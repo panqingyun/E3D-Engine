@@ -54,6 +54,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Terrain,			Create);
 	REGISTER_INTERNAL_CALL(Light,			Create);
 	REGISTER_INTERNAL_CALL(Light,			setColor);
+	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
+	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
 
 }
 
@@ -608,8 +610,17 @@ VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
 
 CS_OBJECT _1_PARAM_FUNCTION(Light, Create, UINT, lightType)
 {
+	if (lightType == eDIRECTION_LIGHT)
+	{
+		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		{
+			Debug::Log(ell_Warning, "there must be only one direction light in the same scene");
+			return nullptr;
+		}
+	}
 	Light * light = Light::Create((LightType)lightType);
 	SceneManager::GetInstance().GetCurrentScene()->AddLight(light);
+	ADD_IN_SCENE(light);
 	return light->GetMonoBehaviour()->GetMonoObject();
 }
 
@@ -703,4 +714,25 @@ VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material)
 	Material * m = getCppObject<Material>(material);
 	skyDome->SetMaterial(m);
 	ADD_IN_SCENE(skyDome);
+}
+
+VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range)
+{
+	PointLight * pl = getCppObject<PointLight>(light);
+	if (pl == nullptr)
+	{
+		return;
+	}
+	pl->Range = range;
+}
+
+float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
+{
+	PointLight * pl = getCppObject<PointLight>(light);
+	if (pl == nullptr)
+	{
+		return 0;
+	}
+
+	return pl->Range;
 }

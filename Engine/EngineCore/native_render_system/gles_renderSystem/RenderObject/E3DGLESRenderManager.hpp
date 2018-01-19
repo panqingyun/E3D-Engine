@@ -44,6 +44,8 @@ namespace E3DEngine
 
 		virtual void Render(float deltaTime) override;
 
+		void updateEngineDefineShaderValue();
+
 		virtual void SetDrawModule(DWORD module) override;
 
 	protected:

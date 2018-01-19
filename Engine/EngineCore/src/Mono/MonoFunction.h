@@ -139,3 +139,5 @@ VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, f
 VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);
 VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);
 VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material);
+VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range);
+float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light);

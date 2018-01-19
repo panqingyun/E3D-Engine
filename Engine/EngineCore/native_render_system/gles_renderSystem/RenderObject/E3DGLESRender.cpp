@@ -128,29 +128,56 @@ namespace E3DEngine
 		{
 			return;
 		}
-
-		pMaterial->pShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
-		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
-
-		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
-		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
-		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
-		{
-			DirectionLight * light = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
-			pMaterial->pShader->UpdateFloatValue(LIGHT_COLOR, light->Color.r, light->Color.g, light->Color.b, light->Color.a);
-			pMaterial->pShader->UpdateFloatValue(LIGHT_DIR, light->Transform->Position.x, light->Transform->Position.y, light->Transform->Position.z);
-		}
-		if ( pCamera != nullptr)
-		{
-			vec3f &pos = pCamera->Transform->Position;
-			pMaterial->pShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
-		}
+		updateEngineDefineShaderValue();
 
 		pMaterial->UseMaterial();
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_SHORT, nullptr);
 		int err = glGetError();
 		afterRender(deltaTime);
+	}
+
+	void GLES_Renderer::updateEngineDefineShaderValue()
+	{
+		pMaterial->pShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
+		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
+
+		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
+		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
+
+		DirectionLight * dlight = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
+		if (dlight != nullptr)
+		{
+			pMaterial->pShader->UpdateFloatValue(LIGHT_COLOR, dlight->Color.r, dlight->Color.g, dlight->Color.b, dlight->Color.a);
+			pMaterial->pShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
+		}
+
+		std::map<UINT, Light*>& plights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		if (plights.size() != 0)
+		{
+			std::vector<float> lightPos;
+			std::vector<float> lightColor;
+			std::vector<float> lightRange;
+			for (auto & pl : plights)
+			{
+				lightPos.emplace_back(pl.second->Transform->Position.x);
+				lightPos.emplace_back(pl.second->Transform->Position.y);
+				lightPos.emplace_back(pl.second->Transform->Position.z);
+				lightColor.emplace_back(pl.second->Color.r);
+				lightColor.emplace_back(pl.second->Color.g);
+				lightColor.emplace_back(pl.second->Color.b);
+				lightColor.emplace_back(pl.second->Color.a);
+				lightRange.emplace_back(static_cast<PointLight*>(pl.second)->Range);
+			}
+			pMaterial->pShader->UpdataFloat3ArrayUniform(POINT_LIGHT_POS, lightPos);
+			pMaterial->pShader->UpdataFloat4ArrayUniform(POINT_LIGHT_COLOR, lightColor);
+			pMaterial->pShader->UpdataFloat1ArrayUniform(POINT_LIGHT_RANGE, lightRange);
+		}
+		if (pCamera != nullptr)
+		{
+			vec3f &pos = pCamera->Transform->Position;
+			pMaterial->pShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
+		}
 	}
 
 	void GLES_Renderer::afterRender(float deltaTime)

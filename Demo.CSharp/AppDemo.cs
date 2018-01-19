@@ -63,9 +63,13 @@ namespace Game
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
             Light light = Light.Create(LightType.DIRECTION_LIGHT);
-            light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
-            light.Transform.Position = new Vector3(500, 500, -500);
+            light.Color = new Vector4(1, 1, 1, 1.0f);
+            light.Transform.Position = new Vector3(50, 50,0);
 
+            PointLight pLight = (PointLight)Light.Create(LightType.POINT_LIGHT);
+            pLight.Range = 100;
+            pLight.Color = new Vector4(1, 1, 1, 1.0f);
+            pLight.Transform.Position = new Vector3(0, 0, 50);
             //Material skyMaterial = Resource.Load(skyDomeMaterialPath) as Material;
             //GameObject.CreateSkyDome(skyMaterial);
             //GameObject.CreateSkyBox(skyMaterial);

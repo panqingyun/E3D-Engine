@@ -17,18 +17,13 @@ void E3DEngine::Sphere::Create(float R)
 	float dAlpha = 0, dBeta = 0;
 	for (int alpha = 0; alpha < rowNumber; alpha ++)
 	{
-		dAlpha = DEG2RAD(alpha);
-		float sinAplha = sin(dAlpha);
-		float cosAlpha = cos(dAlpha);
-
+		dAlpha = DEG2RAD((90 - alpha));
 		for (int beta = 0; beta < colNumber; beta++)
 		{
 			dBeta = DEG2RAD(beta * 2);
+			float z = R * cos(dBeta) * cos(dAlpha);
 			float x = R * sin(dBeta) * cos(dAlpha);
-			float y = R * sin(dBeta) * sin(dAlpha);
-			float z = R * cos(dBeta);
-		/*	x = (float)alpha - rowNumber / 2.0f;
-			z = -((float)beta - rowNumber / 2.0f);*/
+			float y = R * sin(dAlpha);
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);

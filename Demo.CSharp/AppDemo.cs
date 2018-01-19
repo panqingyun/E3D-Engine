@@ -41,6 +41,7 @@ namespace Game
         private Box boxGround = null;
         Sphere sphere = null;
         string skyBoxMaterialPath = "Resource/Material/SkyBox.material";
+        string skyDomeMaterialPath = "Resource/Material/SkyDome.material";
         string cubeMaterialPath = "Resource/Material/CubeMaterial.material";
         string sphereMaterialPath = "Resource/Material/SphereMaterial.material";
         string particleFirePath = "Resource/Particle/ParticleFire.particle";
@@ -50,6 +51,7 @@ namespace Game
         float cameraRotateX = 0, cameraRotateY = 0;
         bool mouseRButtonDown = false, mouseMButtonDown = false;
         Vector3 cameraRotation;
+        Vector3 rotate = new Vector3();
 
         public void Main(string[] args)
         {
@@ -64,8 +66,9 @@ namespace Game
             light.Color = new Vector4(0.8f, 0.8f, 0.8f, 1.0f);
             light.Transform.Position = new Vector3(500, 500, -500);
 
-            Material skyMaterial = Resource.Load(skyBoxMaterialPath) as Material;
-            GameObject.CreateSkyBox(skyMaterial);
+            //Material skyMaterial = Resource.Load(skyDomeMaterialPath) as Material;
+            //GameObject.CreateSkyDome(skyMaterial);
+            //GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
 
             float xStart = -18;
@@ -96,7 +99,7 @@ namespace Game
             Material materialS = Resource.Load(sphereMaterialPath) as Material;
             sphere = Sphere.Create(20);
             sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(0, -25, 0);
+            sphere.Transform.Position = new Vector3(-30, 40, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
             sCollider.CreateRigiBody(0);
             Material materialB = Resource.Load(cubeMaterialPath) as Material;
@@ -177,8 +180,13 @@ namespace Game
             }
         }
         public void Update(float deltaTime)
-        {     
-            
+        {
+            rotate.y += 1;
+            if(rotate.y == 360)
+            {
+                rotate.y = 0;
+            }
+            sphere.Transform.Rotation = rotate;
         }
 
         Vector3 curCameraPos = new Vector3();

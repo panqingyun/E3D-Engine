@@ -27,8 +27,19 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern GameObject findChildWithID(uint id);
 
+        /// <summary>
+        /// 天空盒
+        /// </summary>
+        /// <param name="skyMaterial"></param>
         [MethodImpl(MethodImplOptions.InternalCall)]
         public static extern void CreateSkyBox(Material skyMaterial);
+
+        /// <summary>
+        /// 天空穹
+        /// </summary>
+        /// <param name="skyMaterial"></param>
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern void CreateSkyDome(Material skyMaterial);
 
         private Render m_pRenderer;
 

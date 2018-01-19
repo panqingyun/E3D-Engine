@@ -90,7 +90,7 @@
     <TargetExt>.exe</TargetExt>
     <CodeAnalysisRuleSet>C:\Program Files (x86)\Microsoft Visual Studio 14.0\Team Tools\Static Analysis Tools\Rule Sets\NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
-    <TargetName>WinClient</TargetName>
+    <TargetName>Client</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt>.exe</TargetExt>
@@ -193,7 +193,7 @@
     <Image Include="Window.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="WindowShell.rc" />
+    <ResourceCompile Include="EditorCore.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

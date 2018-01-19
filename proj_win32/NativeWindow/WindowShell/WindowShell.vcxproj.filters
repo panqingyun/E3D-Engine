@@ -44,7 +44,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="WindowShell.rc">
+    <ResourceCompile Include="EditorCore.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>

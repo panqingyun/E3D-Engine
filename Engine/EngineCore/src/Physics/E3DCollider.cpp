@@ -37,20 +37,20 @@ namespace E3DEngine
 		//rigidbody is dynamic if and only if mass is non zero, otherwise static
 		bool isDynamic = (mass != 0.f);
 
-		btVector3 localInertia(0, 0, 0);
+		btVector3 localInertia(0, 10, 0);
 		if (isDynamic)
 			shape->calculateLocalInertia(mass, localInertia);
 
-		btDefaultMotionState* myMotionState = new MotionState(startTransform, gameObject);
-		btRigidBody::btRigidBodyConstructionInfo cInfo(mass, myMotionState, shape, localInertia);
+		m_pMotionState = new MotionState(startTransform, gameObject);
+		btRigidBody::btRigidBodyConstructionInfo cInfo(mass, m_pMotionState, shape, localInertia);
 
 		m_pRigidBody = new btRigidBody(cInfo);
 		//body->setContactProcessingThreshold(m_defaultContactProcessingThreshold);
 
 		m_pRigidBody->setUserIndex(-1);
-		m_pRigidBody->setFriction(10);
-
+		m_pRigidBody->setFriction(500);
 		m_pRigidBody->setUserPointer(gameObject);
+		m_pRigidBody->setRestitution(0.1);
 		Physics::GetInstance().AddRigidBody(m_pRigidBody);
 	}
 
@@ -102,16 +102,15 @@ namespace E3DEngine
 	btRigidBody* Collider::CreateRigidBody(float mass)
 	{
 		m_fMass = mass;
-		btTransform startTransform;
-		startTransform.setIdentity();
-		startTransform.setOrigin(btVector3(
+		m_StartTransform.setIdentity();
+		m_StartTransform.setOrigin(btVector3(
 			btScalar(Transform->Position.x),
 			btScalar(Transform->Position.y),
 			btScalar(Transform->Position.z)));
 		btQuaternion q;
 		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
-		startTransform.setRotation(q);
-		createRigidBody(mass, startTransform, m_pShape);
+		m_StartTransform.setRotation(q);
+		createRigidBody(mass, m_StartTransform, m_pShape);
 		Physics::GetInstance().GetWorld()->contactTest(m_pRigidBody, mColCallBack);
 		return m_pRigidBody;
 	}
@@ -152,6 +151,24 @@ namespace E3DEngine
 	void SphereCollider::Update(float deltaTime)
 	{
 		m_pBehaviour->Update(deltaTime);
+		if (m_pMotionState == nullptr)
+		{
+			return;
+		}
+		if (m_fMass != 0)
+		{
+			return;
+		}
+		m_StartTransform.setIdentity();
+		m_StartTransform.setOrigin(btVector3(
+			btScalar(Transform->Position.x),
+			btScalar(Transform->Position.y),
+			btScalar(Transform->Position.z)));
+		btQuaternion q;
+		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
+		m_StartTransform.setRotation(q);
+
+		m_pRigidBody->setWorldTransform(m_StartTransform);
 	}
 
 	void SphereCollider::Destory()

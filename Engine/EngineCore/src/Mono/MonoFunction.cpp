@@ -27,6 +27,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
 	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyBox);
+	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyDome);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
@@ -693,4 +694,13 @@ VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY&
 	{
 		mono_array_set(data, float, i, mData[i]);
 	}
+}
+
+VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material)
+{
+	SkyDome * skyDome = new SkyDome;
+	skyDome->Create(50);
+	Material * m = getCppObject<Material>(material);
+	skyDome->SetMaterial(m);
+	ADD_IN_SCENE(skyDome);
 }

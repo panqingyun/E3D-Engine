@@ -21,13 +21,12 @@ namespace E3DEngine
 	class SkyDome : public GameObject
 	{
 	public:
+		SkyDome() { CreateBehaviour(); }
 		virtual void Create(float R);
 		virtual void SetMaterial(Material * material) override;
+		virtual void SetActive(bool isActive) override;
+
 		virtual void PrepareUpdate(float deltaTime) override;
-	private:
-		void setTextureCoord();
-		void getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown);
-	private:
-		std::vector<TextureAtlas*> textures;
+
 	};
 }

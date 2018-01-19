@@ -73,6 +73,7 @@ namespace E3DEngine
 		btRigidBody*		m_pRigidBody;
 		btDefaultMotionState* m_pMotionState;
 		ColCallBack			 mColCallBack;
+		btTransform			m_StartTransform;
 	};
 	
 	class BoxCollider extends Collider

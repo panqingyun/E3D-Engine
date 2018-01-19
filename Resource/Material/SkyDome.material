@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
+      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -31,9 +31,9 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/SphereVS.shader" 
-					FragmentShader	= "shader/SphereFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/earth.png;" 
+					VertexShader	= "shader/SkyDomeVS.shader" 
+					FragmentShader	= "shader/SkyDomeFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/sky.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

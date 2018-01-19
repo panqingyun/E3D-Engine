@@ -106,39 +106,39 @@ void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec
 
 void E3DEngine::SkyDome::Create(float R)
 {
-	int rowNumber = 180;
-	int colNumber = 180;
-	m_vecVertex.resize(rowNumber * colNumber);
+	int rowNumber = 91;
+	int colNumber = 361;
+	m_vecVertex.resize(rowNumber  * colNumber );
 	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
 	m_vecIndex.resize(indexSize);
 	int index = 0;
 	int vIndex = 0;
 	float dAlpha = 0, dBeta = 0;
-	for (int alpha = 0; alpha < rowNumber; alpha++)
+	for (int alpha = rowNumber - 1; alpha >= 0; alpha--)
 	{
-		dAlpha = DEG2RAD(alpha);
+		dAlpha = DEG2RAD((alpha));
 		float sinAplha = sin(dAlpha);
 		float cosAlpha = cos(dAlpha);
 		for (int beta = 0; beta < colNumber; beta++)
 		{
-			dBeta = DEG2RAD(beta);
-			float x = R * cosAlpha * sin(dBeta);
-			float y = R * sinAplha * sin(dBeta);
-			float z = R * cos(dBeta);
+			dBeta = DEG2RAD(( beta));
+			float z = R * cos(dBeta) * cos(dAlpha);
+			float x = R * sin(dBeta) * cos(dAlpha);
+			float y = R * sin(dAlpha);
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);
-			m_vecVertex[vIndex].SettextureCoord(alpha / (rowNumber - 1), beta / (colNumber - 1));
+			m_vecVertex[vIndex].SettextureCoord((float)beta / (colNumber - 1), (float)alpha / (rowNumber - 1));
 			vIndex++;
 			if (alpha < rowNumber - 1 && beta < colNumber - 1)
 			{
-				m_vecIndex[index++] = (alpha * rowNumber + beta); // 0
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta);// 360
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
+				m_vecIndex[index++] = (alpha * colNumber + beta); // 0
+				m_vecIndex[index++] = ((alpha + 1) * colNumber + beta);// 360
+				m_vecIndex[index++] = ((alpha + 1) * colNumber + beta + 1);
 
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
-				m_vecIndex[index++] = (alpha * rowNumber + beta); // 1
-				m_vecIndex[index++] = (alpha * rowNumber + beta + 1);
+				m_vecIndex[index++] = ((alpha + 1) * colNumber + beta + 1);
+				m_vecIndex[index++] = (alpha * colNumber + beta); // 1
+				m_vecIndex[index++] = (alpha * colNumber + beta + 1);
 			}
 		}
 	}
@@ -150,20 +150,58 @@ void E3DEngine::SkyDome::Create(float R)
 
 void E3DEngine::SkyDome::SetMaterial(Material * material)
 {
-
+	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
+	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+	
+	GameObject::SetMaterial(material);
+	m_pRenderer->SetTransform(Transform);
+	m_pRenderer->IsStaticDraw = true;
+	m_pRenderer->EnableDepthTest = false;
+	m_pRenderer->SetRenderIndex(eRI_LowMost);
+	//m_pRenderer->SetDrawModule(eDM_LINES);
+	IsActive = false;
+	SetActive(true);
 }
 
 void E3DEngine::SkyDome::PrepareUpdate(float deltaTime)
 {
-
+	if (m_pRenderer != nullptr && m_pRenderer->pCamera != nullptr)
+	{
+		Transform->SetPosition(m_pRenderer->pCamera->Transform->Position);
+	}
 }
 
-void E3DEngine::SkyDome::setTextureCoord()
+void E3DEngine::SkyDome::SetActive(bool isActive)
 {
+	if (isActive == IsActive)
+	{
+		return;
+	}
+	GameObject::SetActive(isActive);
+	if (m_pRenderer == nullptr)
+	{
+		return;
+	}
+	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
+	mRenderer->RemoveInRenderer(ID);
+	if (isActive)
+	{
+		mRenderer->RecordCurrentVextexStartIndex(ID);
+		mRenderer->RecordCurrentIndexStartIndex(ID);
+		for (int i = 0; i < m_vecVertex.size(); i++)
+		{
+			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+			mRenderer->FillVertex(m_vecVertex[i]);
+		}
 
+		for (int i = 0; i < m_vecIndex.size(); i++)
+		{
+			mRenderer->FillIndex(m_vecIndex[i]);
+		}
+		mRenderer->FillEnd();
+		mRenderer->VertexCountAdd(ID, m_vecVertex.size());
+		mRenderer->IndexCountAdd(ID, m_vecIndex.size());
+	}
+	mRenderer->TransformChange();
 }
 
-void E3DEngine::SkyDome::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown)
-{
-
-}

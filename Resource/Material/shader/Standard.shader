@@ -6,7 +6,7 @@ float attenuation;	//光线的衰减系数
 vec4 getLightColor(vec3 position, vec3 normal)
 {
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
-	ambient = vec4(0.2, 0.2, 0.2, 1.0);
+	ambient = vec4(0.5, 0.5, 0.5, 1.0);
 	Ns = 20.0;
 	attenuation = 1.0;
 #ifdef USING_DIRECTIONAL_LIGHT

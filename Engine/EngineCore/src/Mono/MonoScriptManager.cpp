@@ -32,8 +32,9 @@ void MonoScriptManager::Initialize()
 	// Never insert system breakpoint for IL opcode Break and Debugger.Break () call.
 	mono_set_break_policy(NeverInsertBreakpoint);
 	// TODO ±‡“ÎC#  ‰≥ˆµΩ AssemblyCSharp/effect_engine.dll
-	std::string code_dll_file = E3DEngine::Application::AppDataPath + "/Library/AssemblyCSharp.dll";
-	std::string engine_dll_file = E3DEngine::Application::AppDataPath + "/Library/E3DEngine.dll";
+	std::string mono_dll_path = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly";
+	std::string code_dll_file = E3DEngine::Application::AppDataPath + "../Library/AssemblyCSharp.dll";
+	std::string engine_dll_file = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly/E3DEngine.dll";
 	//g_set_print_handler(outPrint);
 #if _DEBUG_CSHARP
 	//	"--soft-breakpoints",
@@ -47,7 +48,7 @@ void MonoScriptManager::Initialize()
 	mono_debug_init(MONO_DEBUG_FORMAT_MONO);
 #endif
 
-	mono_set_assemblies_path("Library");
+	mono_set_assemblies_path(mono_dll_path.c_str());
 	mono_config_parse(NULL);
 	m_pDomain = mono_jit_init(code_dll_file.c_str());
 	// The soft debugger needs this

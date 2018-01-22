@@ -40,7 +40,19 @@ namespace E3DEngine
         {
             get;set;
         }
+        
+        public void SetRote(Quaternion quat)
+        {
+            rotation = rotation + quat.ToEulerAngles();
+            Rotation = rotation;
+        }
 
+        public Quaternion GetRoate()
+        {
+            Vector3 vec = Rotation;
+            return Quaternion.FromEulerAngles(vec.x, vec.y, vec.z);
+        }
+       
         private Vector3 position;
         public Vector3 Position
         {

@@ -46,7 +46,7 @@ namespace E3DEngine
 	void GLES_Material::createTexture(std::string textureName, std::string textureUniform)
 	{
 		GLES_Texture * texture = new GLES_Texture();
-		std::string path = Application::AppDataPath + "/" + filePath;
+		std::string path = filePath;
 		path = path + textureName;
 		int textureSum = Textures.size();
 		texture->Create(path);

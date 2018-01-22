@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MaterialConfig>
+		<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
+	</MaterialConfig>
+	<ShaderConfig>
+		<!--
+			uniform 类型 
+			mat4 	四阶矩阵
+			mat3 	三阶矩阵
+			mat2 	二阶矩阵
+			vec2 	二维浮点数
+			vec3 	三维浮点数
+			vec4 	四维浮点数
+			float 	浮点数
+			int 	整数
+			sampler2D 纹理
+				
+			attribute 类型 
+			POSITION		顶点坐标
+			NORMAL			法线
+			COLOR			颜色
+			TRANSPOSITION	顶点位移坐标 有批次合并的使用
+			TRANSSCALE		顶点缩放值 有批次合并的使用
+			TRANSROTATE		顶点旋转值 有批次合并的使用
+			SHADERINDEX		使用的片段着色器的序号
+			TANGENT			切线
+			BONEINDEX		骨骼索引
+			BONEWEIGHT		骨骼权重
+			TEXTURECOORD   纹理坐标
+		--> 
+		<Item 
+					ID				= 1 
+					VertexShader	= "shader/RTTVS.shader" 
+					FragmentShader	= "shader/RTTFS.shader" 	
+					UniformVariable	= "mat4:matProj;
+									   mat4:matView;
+									   mat4:matModel;
+									   sampler2D:SamplerRGB;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate;"
+		/>
+	</ShaderConfig>
+</ConfigSystem>

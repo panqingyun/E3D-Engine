@@ -118,6 +118,13 @@ namespace E3DEngine
             z = _z;
         }
 
+        public Vector3(Vector3 vec)
+        {
+            x = vec.x;
+            y = vec.y;
+            z = vec.z;
+        }
+
         public void SetValue(float _x, float _y, float _z)
         {
             x = _x;
@@ -127,6 +134,11 @@ namespace E3DEngine
         public float Length()
         {
             return (float)Math.Sqrt(x * x + y * y + z * z);
+        }
+
+        public float LengthSq()
+        {
+            return x * x + y * y + z * z;
         }
 
         public void Normalize()
@@ -180,6 +192,11 @@ namespace E3DEngine
 
         }
 
+        public Vector3 Lerp(float fact, Vector3 r)
+        {
+            return this + (r - this) * fact;
+        }
+
         public float this[int index]
         {
             get
@@ -204,6 +221,27 @@ namespace E3DEngine
                     throw new IndexOutOfRangeException();
             }
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator ==(Vector3 lhs, Vector3 rhs)
+        {
+            return (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z);
+        }
+
+        public static bool operator !=(Vector3 lhs, Vector3 rhs)
+        {
+            return !(lhs == rhs);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return this == (Vector3)obj;
+        }
+
 
         public static Vector3 operator +(Vector3 lhs, float rhs)
         {

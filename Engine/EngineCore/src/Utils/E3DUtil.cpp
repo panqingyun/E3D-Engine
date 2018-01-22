@@ -79,7 +79,7 @@ extern "C"
 	__api_function_ void SetAppDataPath(const char * path)
 	{
 		Application::AppDataPath = path;
-		Application::ResourcePath = Application::AppDataPath + "/Resource";
+		Application::ResourcePath = Application::AppDataPath + "Resource/";
 	}
 
 	__api_function_ void PauseEngine(bool bPause)

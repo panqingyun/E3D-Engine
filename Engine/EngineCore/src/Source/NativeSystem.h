@@ -6,6 +6,7 @@
 
 enum KeyCode
 {
+	KeyUnKnown,
 	KeyA,KeyB,KeyC,KeyD,KeyE,KeyF,KeyG,KeyH,KeyI,KeyJ,KeyK,KeyL,KeyM,
 	KeyN,KeyO,KeyP,KeyQ,KeyR,KeyS,KeyT,KeyU,KeyV,KeyW,KeyX,KeyY,KeyZ,
 	Key1,Key2,Key3,Key4,Key5,Key6,Key7,Key8,Key9,Key0,
@@ -15,29 +16,28 @@ enum KeyCode
 
 namespace E3DEngine
 {
+
+#define MOUSE_MOVE "MouseMove"
+#define MOUSE_BUTTON_DOWN "MouseButtonDown"
+#define MOUSE_BUTTON_UP "MouseButtonUp"
+#define KEY_DOWN "KeyDown"
+#define KEY_UP "KeyUp"
+
 	/*using MouseEventsDelegates = event Delegates<MouseButton, vec2f>;
 	using KeyEventDelegates = event Delegates<KeyCode>;
 	using KeyCharEventDelegates = event Delegates<char>;
-
-	class NativeSystem extends IObject
+	*/
+	static class NativeSystem : public IObject
 	{
 	public:
-		static void OnMouseMove(vec2f pos);
-		static void OnkeyDown(char key);
-		static void OnKeyUp(char key);
-	private:
+		NativeSystem();
+		static KeyCode GetKeyCode(char key);
+	private: 
 		static NativeSystem &Instance()
 		{
 			static NativeSystem _ins;
 			return _ins;
 		}
-	public:
-		MouseEventsDelegates MouseButtonDown;
-		MouseEventsDelegates MouseButtonUp;
-		MouseEventsDelegates Click;
-		MouseEventsDelegates MouseMove;
-		KeyEventDelegates KeyDown;
-		KeyEventDelegates KeyUp;
-		KeyCharEventDelegates KeyChar;
-	};*/
+		std::map<char, KeyCode> m_keyCodeMap;
+	};
 }

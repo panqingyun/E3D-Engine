@@ -143,7 +143,7 @@ namespace E3DEngine
 		std::string layerName = layerConfig->Name;
 		particle->SetLayerMask(1 << layerConfig->ID);
 		SceneManager::GetInstance().GetCurrentScene()->AddChild(particle);
-		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(particle->m_MaterialName);
+		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + particle->m_MaterialName);
 		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
 		render->EnableDepthTest = false;
 		render->SetMaterial(mMaterial);

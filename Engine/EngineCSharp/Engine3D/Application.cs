@@ -5,10 +5,10 @@ namespace E3DEngine
 {
     public enum MouseButton
     {
-        eLeftButton = 0,
-        eRightButton,
-        eMiddleButton,
-        eUnKnown
+        LeftButton = 0,
+        RightButton,
+        MiddleButton,
+        UnKnown
     };
 
     public class MouseButtonInfo
@@ -17,8 +17,17 @@ namespace E3DEngine
         public int mPositionX;
         public int mPositionY;
     }
+    public enum KeyCode
+    {
+        KeyUnKnown,
+        KeyA, KeyB, KeyC, KeyD, KeyE, KeyF, KeyG, KeyH, KeyI, KeyJ, KeyK, KeyL, KeyM,
+        KeyN, KeyO, KeyP, KeyQ, KeyR, KeyS, KeyT, KeyU, KeyV, KeyW, KeyX, KeyY, KeyZ,
+        Key1, Key2, Key3, Key4, Key5, Key6, Key7, Key8, Key9, Key0,
+        KeySheift, KeyAlt, KeyWin, KeyBack, KeySpace, KeyEnter, KeyDelete,
+        KeyF1, KeyF2, KeyF3, KeyF4, KeyF5, KeyF6, KeyF7, KeyF8, KeyF9, KeyF10, KeyF11, KeyF12,
+    };
 
-	public class Application
+    public class Application
 	{
 		public Application()
 		{

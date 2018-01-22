@@ -100,10 +100,10 @@ namespace E3DEngine
 		processUniformVar(cfg);
 		processAttribVar(cfg);
 
-		std::string path = Application::AppDataPath + "/" + filePath;
+		std::string path = filePath;
 		std::string shaderContent = preProcessShader(path +  cfg->VertexShader);
 		std::string vertexShaderString = processVS().append(shaderContent);
-		std::string fragmentShaderString = preProcessShader(path + "/" + cfg->FragmentShader);
+		std::string fragmentShaderString = preProcessShader(path + cfg->FragmentShader);
 
 		LoadShader(vertexShaderString.c_str(), fragmentShaderString.c_str());
 	}

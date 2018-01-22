@@ -8,53 +8,31 @@ namespace E3DEngine
     public delegate Object CreateDelegate(string str);
 	public class Resource
 	{
-        private enum FileType
-        {
-            NONE,
-            PARTICLE,
-            MATERIAL,
-            TEXTURE,
-            SHADER,
-        }
-        private static Dictionary<string, FileType> fileTypeDic = new Dictionary<string, FileType>();
-        private static Dictionary<FileType, CreateDelegate> createFunDic = new Dictionary<FileType, CreateDelegate>();
+        private static Dictionary<Type, CreateDelegate> createFunDic = new Dictionary<Type, CreateDelegate>();
 
         static Resource()
 		{
-            fileTypeDic["particle"] = FileType.PARTICLE;
-            fileTypeDic["material"] = FileType.MATERIAL;
-            fileTypeDic["texture"] = FileType.TEXTURE;
-            fileTypeDic["shader"] = FileType.SHADER;
-
-            createFunDic[FileType.PARTICLE] = ParticleSystem.CreateParticle;
-            createFunDic[FileType.MATERIAL] = Material.CreateMaterial;
+            createFunDic[typeof(ParticleSystem)] = ParticleSystem.CreateParticle;
+            createFunDic[typeof(Material)] = Material.CreateMaterial;
             // TODO
 
         }
 
-        static private FileType getFileType(string filePath)
+        public static T Load<T>(string filePath) where T : Object
         {
-            FileType ft = FileType.NONE;
-            if (File.Exists(filePath))
+            Type tp = typeof(T);
+            if (createFunDic.ContainsKey(tp))
             {
-                int lastPoint = filePath.LastIndexOf('.');
-                string ext = filePath.Substring(lastPoint + 1);
-                if (fileTypeDic.ContainsKey(ext.ToLower()))
-                {
-                    ft = fileTypeDic[ext.ToLower()];
-                }
+                return createFunDic[tp](Application.ResourcePath + filePath) as T;
             }
-
-            return ft;
+            return null;
         }
 
-        public static Object Load(string filePath)
-        {
-            FileType ft = getFileType(filePath);
-           
-            if(createFunDic.ContainsKey(ft))
+        public static Object Load(string filePath, Type tp)
+        {            
+            if(createFunDic.ContainsKey(tp))
             {
-                return createFunDic[ft](filePath);
+                return createFunDic[tp](filePath);
             }
             return null;
         }

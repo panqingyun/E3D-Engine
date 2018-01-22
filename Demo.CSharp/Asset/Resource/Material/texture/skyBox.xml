@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:7bebf5fb24b37b763f9213f2fc17e72d$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+-->
+<TextureAtlas imagePath="skyBox.png" width="3072" height="2048">
+    <sprite n="a.png" x="0" y="0" w="1024" h="1024"/>
+    <sprite n="b.png" x="1024" y="0" w="1024" h="1024"/>
+    <sprite n="c.png" x="2048" y="0" w="1024" h="1024"/>
+    <sprite n="d.png" x="0" y="1024" w="1024" h="1024"/>
+    <sprite n="e.png" x="1024" y="1024" w="1024" h="1024"/>
+    <sprite n="f.png" x="2048" y="1024" w="1024" h="1024"/>
+</TextureAtlas>

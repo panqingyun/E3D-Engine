@@ -113,33 +113,35 @@ namespace E3DEngine
 	{
 		m_pMouseInfo->Set(btn, pos.x, pos.y);
 		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod("MouseButtonDown", &args);
+		m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_DOWN, &args);
 	}
 
 	void Application::MouseButtonUp(MouseButton btn, vec2f pos)
 	{
 		m_pMouseInfo->Set(btn, pos.x, pos.y);
 		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod("MouseButtonUp", &args);
+		m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_UP, &args);
 	}
 
 	void Application::MouseMove(vec2f pos)
 	{
 		m_pMouseInfo->Set(eUnKnown, pos.x, pos.y);
 		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod("MouseMove", &args);
+		m_pEntryBehaviour->CallMethod(MOUSE_MOVE, &args);
 	}
 
 	void Application::KeyDown(char key)
 	{
-		void *keyChar = &key;
-		m_pEntryBehaviour->CallMethod("KeyDown", &keyChar);
+		KeyCode keyCode = NativeSystem::GetKeyCode(key);
+		void *keyChar = &keyCode;
+		m_pEntryBehaviour->CallMethod(KEY_DOWN, &keyChar);
 	}
 
 	void Application::KeyUp(char key)
 	{
-		void *keyChar = &key;
-		m_pEntryBehaviour->CallMethod("KeyUp", &keyChar);
+		KeyCode keyCode = NativeSystem::GetKeyCode(key);
+		void *keyChar = &keyCode;
+		m_pEntryBehaviour->CallMethod(KEY_UP, &keyChar);
 	}
 
 

@@ -11,7 +11,9 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <iterator> 
-#endif
+#include <windows.h>
+#include <corecrt_io.h>
+#endif // WIN32
 
 #include <stdio.h>
 #include <vector>

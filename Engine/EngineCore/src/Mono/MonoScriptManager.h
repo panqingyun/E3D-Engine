@@ -74,6 +74,7 @@ public:
 
 private:
 	void registerInternalCall();
+	void loadPlugin();
 
 private:
 	MonoImage *m_pCodeImage;
@@ -81,6 +82,7 @@ private:
 	MonoDomain *m_pDomain; 
 	MonoAssembly *m_pCodeAssembly;
 	MonoAssembly *m_pEngineAssembly;
+	std::vector<MonoAssembly *> m_assemblyLists;
 };
 
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using E3DEngine;
+using log4net;
 
 /// <summary>
 /// Entry point

@@ -3,6 +3,7 @@
 #include <mono/utils/mono-logger.h>
 #include "../Source/EngineDelegate.h"
 #include "../Physics/E3DCollider.hpp"
+#include "../Source/E3DResource.h"
 
 #define  _DEBUG_CSHARP 0
 void mono_logger_call(const char *log_domain, const char *log_level, const char *message, mono_bool fatal, void *user_data)
@@ -53,9 +54,10 @@ void MonoScriptManager::Initialize()
 	m_pDomain = mono_jit_init(code_dll_file.c_str());
 	// The soft debugger needs this
 	mono_thread_set_main(mono_thread_current());
-
 	m_pEngineAssembly = mono_domain_assembly_open(m_pDomain, engine_dll_file.c_str());
 	m_pCodeAssembly = mono_domain_assembly_open(m_pDomain, code_dll_file.c_str());
+	// 加载Plugin下所有的dll到domain
+	loadPlugin();
 	if (!m_pEngineAssembly)
 	{
 		E3DEngine::Debug::Log(ell_Error, "CSharp Assembly Wrong !");
@@ -103,6 +105,17 @@ MonoAssembly * MonoScriptManager::GetCodeAssembly()
 void MonoScriptManager::registerInternalCall()
 {
 	RegisterMonoFunction();
+}
+
+void MonoScriptManager::loadPlugin()
+{
+	std::vector<FileInfo> files;
+	Resource::GetFiles(Application::AppDataPath + "Plugin", files, "dll");
+	for (auto &file : files)
+	{
+		MonoAssembly * assembly =  mono_domain_assembly_open(m_pDomain, file.FullName.c_str());
+		m_assemblyLists.emplace_back(assembly);
+	}
 }
 
 MonoBehaviour::MonoBehaviour()

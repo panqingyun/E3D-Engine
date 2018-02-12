@@ -18,7 +18,7 @@
                                    SelfScalAffectorConfig:1,2;
                                    LinnerColorAffectorConfig:1"
 			Emitter				= "BallEmitterConfig : 1"
-			Material			= "Material/ParticleMaterial.material"
+			Material			= "Material/ParticleMaterial.material : 1"
 			DisplayCamera		= 2
             LockEmitterMove     = 0
 			TextureUV 			= "1"

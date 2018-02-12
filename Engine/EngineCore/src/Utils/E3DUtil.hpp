@@ -58,6 +58,9 @@ if (!OBJ->IsActive)\
 #define _Equal_
 #define extends : public
 #define implement : public
+#define foreach for
+#define in :
+#define is ==
 
 #define NULL_SHADER 0
 #define ZERO_MEM(a) memset(a, 0, sizeof(a))

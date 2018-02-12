@@ -112,7 +112,7 @@ CS_OBJECT _1_PARAM_FUNCTION(GameObject	, get_Material		, CS_OBJECT		, cs_boj);
 CS_BOOL _1_PARAM_FUNCTION(GameObject	, get_Active		, CS_OBJECT		, cs_boj);
 UINT _1_PARAM_FUNCTION(Object			, get_ID			, CS_OBJECT		, cs_boj);
 UINT _1_PARAM_FUNCTION(GameObject		, get_LayerMask		, CS_OBJECT		, cs_boj);
-CS_OBJECT _1_PARAM_FUNCTION(Material	, createMaterial	, CS_STRING		, path);
+CS_OBJECT _2_PARAM_FUNCTION(Material	, createMaterial	, CS_STRING		, path		, int ,id);
 CS_OBJECT _1_PARAM_FUNCTION(Render		, createRenderer	, UINT			, materialID);
 CS_OBJECT _1_PARAM_FUNCTION(Camera		, createCamera);
 CS_OBJECT _0_PARAM_FUNCTION(Render		, createRendererWithoutParam);

@@ -18,7 +18,7 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	Material* MaterialManager::CreateMaterial(std::string path)
+	Material* MaterialManager::CreateMaterial(std::string path, int id)
 	{
 		return nullptr;
 	}

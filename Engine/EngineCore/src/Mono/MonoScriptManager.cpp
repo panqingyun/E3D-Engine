@@ -111,7 +111,7 @@ void MonoScriptManager::loadPlugin()
 {
 	std::vector<FileInfo> files;
 	Resource::GetFiles(Application::AppDataPath + "Plugin", files, "dll");
-	for (auto &file : files)
+	foreach (auto &file in files)
 	{
 		MonoAssembly * assembly =  mono_domain_assembly_open(m_pDomain, file.FullName.c_str());
 		m_assemblyLists.emplace_back(assembly);
@@ -269,7 +269,7 @@ void MonoBehaviour::Create(const char * name_space, const char * className)
 	}
 	m_pClass = mono_class_from_name(m_pImage, name_space, className);
 	m_pMonoObject = mono_object_new(MonoScriptManager::GetInstance().GetEngineDomain(), m_pClass);
-	if (m_pMonoObject == nullptr)
+	if (m_pMonoObject is nullptr)
 	{
 		return;
 	}

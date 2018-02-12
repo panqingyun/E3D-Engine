@@ -14,7 +14,7 @@ using namespace std;
 namespace E3DEngine
 {
 	class MeshBuffer;
-	class MeshRender extends RenderObject
+	class MeshRender : public RenderObject
 	{
 	public:
 		MeshRender(MeshBuffer * buffer);

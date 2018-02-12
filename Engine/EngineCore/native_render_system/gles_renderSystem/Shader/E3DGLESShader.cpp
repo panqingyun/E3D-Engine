@@ -79,7 +79,7 @@ namespace E3DEngine
 					assert(false);
 				}
 				std::string file = strLine.substr(startPos + 1, endPos - startPos - 1);
-				shaderContent.append(vvision::getContentFromPath(folder + "/" + file)).append("\n");
+				shaderContent.append(preProcessShader(folder + "/" + file)).append("\n");
 			}
 			else
 			{

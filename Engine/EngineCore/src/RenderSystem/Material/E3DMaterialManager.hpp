@@ -31,7 +31,7 @@ namespace E3DEngine
 		// 创建材质
 		// @param 材质配置的路径
 		//-----------------------------------------------
-		virtual Material * CreateMaterial(std::string path);
+		virtual Material * CreateMaterial(std::string path, int id);
 
 		// -----------------------------------------------
 		// 清理

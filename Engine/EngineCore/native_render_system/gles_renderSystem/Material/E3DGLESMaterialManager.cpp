@@ -21,7 +21,7 @@ namespace E3DEngine
 		return m_mapIDMaterials[id];
 	}
 
-	Material* GLES_MaterialManager::CreateMaterial(std::string path)
+	Material* GLES_MaterialManager::CreateMaterial(std::string path, int id)
 	{
 		TableManager* tblManager = TableRegister::RegisterAllTable(path.c_str());
 		if (tblManager == nullptr)
@@ -29,15 +29,15 @@ namespace E3DEngine
 			return nullptr;
 		}
 
-		std::vector<MaterialConfig*> * materialConfigs = tblManager->GetTable<MaterialConfig>();
-		if (materialConfigs->size() == 0)
+		MaterialConfig * materialConfig = tblManager->Select<MaterialConfig>(id);
+		if (materialConfig is nullptr)
 		{
 			SAFE_DELETE(tblManager);
 			return nullptr;
 		}
 		std::string folder, file;
 		StringManipulator::SplitFileName(path, folder, file);
-		MaterialConfig *config = (*materialConfigs)[0];
+		MaterialConfig *config = materialConfig;
 		GLES_Material * material = new GLES_Material;
 		material->blendType = (eBlendType)config->IsBlend;
 		material->filePath = folder + "/";

@@ -251,11 +251,11 @@ CS_OBJECT _0_PARAM_FUNCTION(Render, createRendererWithoutParam)
 	return render->GetMonoBehaviour()->GetMonoObject();
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Material, createMaterial, CS_STRING, path)
+CS_OBJECT _2_PARAM_FUNCTION(Material, createMaterial, CS_STRING, path, int, id)
 {
 	std::string m_Path = Convert::ToString(path);
 
-	E3DEngine::Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(m_Path);
+	E3DEngine::Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(m_Path, id);
 	return material->GetBehaviour()->GetMonoObject();
 }
 

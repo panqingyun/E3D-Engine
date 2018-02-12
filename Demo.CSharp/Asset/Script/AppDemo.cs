@@ -71,9 +71,9 @@ namespace Game
             pLight.Range = 100;
             pLight.Color = new Vector4(1, 1, 1, 1.0f);
             pLight.Transform.Position = new Vector3(0, 0, 50);
-            //Material skyMaterial = Resource.Load<Material>(skyDomeMaterialPath);
+            Material skyMaterial = Resource.Load<Material>(skyBoxMaterialPath);
             //GameObject.CreateSkyDome(skyMaterial);
-            //GameObject.CreateSkyBox(skyMaterial);
+            GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
 
             float xStart = -18;

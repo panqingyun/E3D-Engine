@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ConfigSystem>
-	<MeshConfig>
-		<Item ID=1 MeshName="Model/c_daoke_001.FBX" Material="3" />
-	</MeshConfig>
-</ConfigSystem>

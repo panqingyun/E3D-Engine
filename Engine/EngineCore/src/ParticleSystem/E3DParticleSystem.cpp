@@ -143,7 +143,20 @@ namespace E3DEngine
 		std::string layerName = layerConfig->Name;
 		particle->SetLayerMask(1 << layerConfig->ID);
 		SceneManager::GetInstance().GetCurrentScene()->AddChild(particle);
-		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + particle->m_MaterialName);
+		std::vector<string> materialCfg = StringBuilder::Split(particle->m_MaterialName, ":");
+		std::string materialPath = "";
+		int materialID = 1;
+		if (materialCfg.size() == 2)
+		{
+			materialPath = materialCfg[0];
+			materialID = Convert::ToInt(materialCfg[1]);
+		}
+		else if(materialCfg.size() == 1)
+		{
+			materialPath = materialCfg[0];
+		}
+
+		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialPath, materialID);
 		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
 		render->EnableDepthTest = false;
 		render->SetMaterial(mMaterial);

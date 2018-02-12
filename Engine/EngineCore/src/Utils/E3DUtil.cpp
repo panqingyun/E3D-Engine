@@ -130,7 +130,7 @@ extern "C"
 		Terrain * terrain = new Terrain();
 		terrain->Create(128);
 		terrain->SetIsEditorGrid(true);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material");
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(terrain);

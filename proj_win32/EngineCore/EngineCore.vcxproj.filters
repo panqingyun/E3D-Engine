@@ -240,412 +240,16 @@
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\assbin_chunks.h">
       <Filter>3rd\code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Bitmap.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BlobIOSystem.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ByteSwapper.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultProgressHandler.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Defines.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Exceptional.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXCompileConfig.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImportSettings.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXParser.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileLogStream.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileSystemFilter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenericProperty.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\HalfLifeFileData.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Hash.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Importer.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\IOStreamBuffer.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.h">
       <Filter>3rd\code</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h">
       <Filter>3rd\code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LineSplitter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LogAux.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Macros.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MathFunctions.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MemoryIOWrapper.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ParsingUtils.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PolyTools.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Profiler.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h">
       <Filter>3rd\code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePrivate.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StdOStreamLogStream.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StepExporter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFile.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamReader.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamWriter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringComparison.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringUtils.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Subdivision.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TinyFormatter.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Vertex.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\XMLTools.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\poppack1.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pstdint.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pushpack1.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ai_assert.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\anim.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\camera.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cexport.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cfileio.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cimport.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\config.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\DefaultLogger.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\defs.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Exporter.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Importer.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\importerdesc.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOStream.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOSystem.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\light.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Logger.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\LogStream.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\material.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\mesh.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\metadata.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\NullLogger.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\postprocess.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ProgressHandler.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\scene.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\texture.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\types.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\version.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\egl.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\eglplatform.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2ext.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2platform.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\autolink.h">
@@ -922,12 +526,6 @@
       <Filter>EngineCore\src\Light</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.h">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.hpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.hpp">
@@ -2232,9 +1830,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.h">
       <Filter>extern\WindowsSocket</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\RenderSystem\Texture\E3DCubeMapTexture.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClInclude>
@@ -2286,6 +1881,12 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h">
       <Filter>EngineCore\src\Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.hpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -2294,136 +1895,16 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\adler32.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Assimp.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssimpCExport.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Bitmap.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\compress.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertUTF.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\crc32.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DDLNode.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultLogger.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\deflate.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\example.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Exporter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXAnimation.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXBinaryTokenizer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDeformer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMaterial.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXModel.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXNodeAttribute.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXParser.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzclose.c">
@@ -2438,15 +1919,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzwrite.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Importer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImporterRegistry.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\infback.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
@@ -2459,9 +1931,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inftrees.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_reader.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
@@ -2469,30 +1938,6 @@
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_writer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLCommon.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLExport.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLParser.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\png.c">
@@ -2540,75 +1985,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwutil.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PostStepRegistry.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\scene.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StepExporter.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Subdivision.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
@@ -2627,25 +2003,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\trees.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\uncompr.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Value.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Version.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp">
@@ -2685,12 +2043,6 @@
       <Filter>EngineCore\src\Light</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.cpp">
@@ -3467,6 +2819,15 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp">
+      <Filter>3rd\code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Engine\EngineCore\3rd\code\.editorconfig">
@@ -3484,30 +2845,6 @@
     <None Include="..\..\Engine\EngineCore\3rd\code\sconscript">
       <Filter>3rd\code</Filter>
     </None>
-    <None Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.inl">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\.editorconfig">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.inl">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.inl">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.inl">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.inl">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.inl">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.inl">
-      <Filter>3rd\header</Filter>
-    </None>
     <None Include="..\..\Engine\EngineCore\3rd\header\README">
       <Filter>3rd\header</Filter>
     </None>
@@ -3515,9 +2852,6 @@
       <Filter>3rd\header</Filter>
     </None>
     <None Include="..\..\Engine\EngineCore\3rd\header\zlib.pc.cmakein">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\material.inl">
       <Filter>3rd\header</Filter>
     </None>
     <None Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\premake4.lua">

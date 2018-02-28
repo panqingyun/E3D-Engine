@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>..\bin</OutDir>
@@ -80,7 +80,7 @@
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin</OutDir>
   </PropertyGroup>
@@ -100,7 +100,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -140,7 +140,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
@@ -177,147 +177,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\assbin_chunks.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Bitmap.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\BlobIOSystem.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ByteSwapper.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\DefaultProgressHandler.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Defines.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Exceptional.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXCompileConfig.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXImportSettings.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXParser.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileLogStream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FileSystemFilter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenericProperty.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\HalfLifeFileData.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Hash.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Importer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\IOStreamBuffer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LineSplitter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\LogAux.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Macros.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MathFunctions.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\MemoryIOWrapper.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ParsingUtils.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PolyTools.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Profiler.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ScenePrivate.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StdOStreamLogStream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StepExporter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFile.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamReader.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StreamWriter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringComparison.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\StringUtils.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Subdivision.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TinyFormatter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\Vertex.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\XMLTools.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ai_assert.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\anim.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\camera.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cexport.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cfileio.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\cimport.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\poppack1.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pstdint.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Compiler\pushpack1.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\config.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\DefaultLogger.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\defs.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Exporter.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Importer.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\importerdesc.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOStream.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\IOSystem.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\light.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Logger.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\LogStream.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\material.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\mesh.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\metadata.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\NullLogger.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\postprocess.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\ProgressHandler.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\scene.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\texture.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\types.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\version.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\ConvertUTF.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\deflate.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\egl.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\EGL\eglplatform.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2ext.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\GLES2\gl2platform.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\gzguts.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffast.h" />
@@ -789,7 +657,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetService.h" />
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h" />
     <ClInclude Include="..\..\Engine\EngineCore\include\Include.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\RenderSystem\Texture\E3DCubeMapTexture.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimationClip.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DSkinAnimation.hpp" />
@@ -803,8 +670,8 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Light\E3DLight.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.hpp" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h" />
@@ -864,73 +731,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\adler32.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Assimp.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssimpCExport.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\AssxmlExporter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseImporter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\BaseProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Bitmap.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CalcTangentsProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CInterfaceIOWrapper.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\compress.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ComputeUVMappingProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertToLHProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ConvertUTF.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\crc32.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\CreateAnimMesh.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DDLNode.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DeboneProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOStream.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultIOSystem.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\DefaultLogger.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\deflate.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\example.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Exporter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXAnimation.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXBinaryTokenizer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXConverter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDeformer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocument.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXDocumentUtil.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXImporter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMaterial.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXMeshGeometry.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXModel.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXNodeAttribute.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXParser.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXProperties.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXTokenizer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FBXUtil.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindDegenerates.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInstancesProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FindInvalidDataProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FixNormalsStep.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenFaceNormalsProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\GenVertexNormalsProcess.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzclose.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzlib.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzread.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzwrite.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Importer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImporterRegistry.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ImproveCacheLocality.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\infback.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inffast.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inflate.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inftrees.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\JoinVerticesProcess.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_reader.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_value.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_writer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\LimitBoneWeightsProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MakeVerboseFormat.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\MaterialSystem.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLCommon.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLExport.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OpenDDLParser.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeGraph.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\OptimizeMeshes.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\png.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngerror.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngget.c" />
@@ -946,42 +762,13 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwrite.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwtran.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwutil.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PostStepRegistry.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\PretransformVertices.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ProcessHelper.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveComments.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveRedundantMaterials.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\RemoveVCProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\scene.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SceneCombiner.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ScenePreprocessor.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SGSpatialSort.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SkeletonMeshBuilder.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SortByPTypeProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SpatialSort.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitByBoneCountProcess.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\SplitLargeMeshes.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StandardShapes.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\StepExporter.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileEncoding.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\STEPFileReader.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Subdivision.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TargetAnimation.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TerragenLoader.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TextureTransform.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyutil.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxml.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\trees.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\TriangulateProcess.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\uncompr.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\UnrealLoader.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\ValidateDataStructure.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Value.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\Version.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\VertexTriangleAdjacency.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\zutil.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.cpp" />
@@ -1204,8 +991,8 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Light\E3DLight.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshBuffer.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp" />
@@ -1268,17 +1055,6 @@
     <None Include="..\..\Engine\EngineCore\3rd\code\json_internalmap.inl" />
     <None Include="..\..\Engine\EngineCore\3rd\code\json_valueiterator.inl" />
     <None Include="..\..\Engine\EngineCore\3rd\code\sconscript" />
-    <None Include="..\..\Engine\EngineCore\3rd\code\SmoothingGroups.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\.editorconfig" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\color4.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\material.inl">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix3x3.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\matrix4x4.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\quaternion.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector2.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\assimp\vector3.inl" />
     <None Include="..\..\Engine\EngineCore\3rd\header\README" />
     <None Include="..\..\Engine\EngineCore\3rd\header\zconf.h.cmakein" />
     <None Include="..\..\Engine\EngineCore\3rd\header\zlib.pc.cmakein" />

@@ -152,7 +152,7 @@ public:
         #undef INDEX
         \endcode
     */
-    GenericPointer(const Token* tokens, size_t tokenCount) : allocator_(), ownAllocator_(), nameBuffer_(), tokens_(const_cast<Token*>(tokens)), tokenCount_(tokenCount), parseErrorOffset_(), parseErrorCode_(kPointerParseErrorNone) {}
+    GenericPointer(Token* tokens, size_t tokenCount) : allocator_(), ownAllocator_(), nameBuffer_(), tokens_(const_cast<Token*>(tokens)), tokenCount_(tokenCount), parseErrorOffset_(), parseErrorCode_(kPointerParseErrorNone) {}
 
     //! Copy constructor.
     GenericPointer(const GenericPointer& rhs) : allocator_(), ownAllocator_(), nameBuffer_(), tokens_(), tokenCount_(), parseErrorOffset_(), parseErrorCode_(kPointerParseErrorNone) {
@@ -198,7 +198,7 @@ public:
         \param allocator Allocator for the newly return Pointer.
         \return A new Pointer with appended token.
     */
-    GenericPointer Append(const Token& token, Allocator* allocator = 0) const {
+    GenericPointer Append(Token& token, Allocator* allocator = 0) const {
         GenericPointer r;
         r.allocator_ = allocator;
         Ch *p = r.CopyFromRaw(*this, 1, token.length + 1);
@@ -303,7 +303,7 @@ public:
     //@{
 
     //! Get the token array (const version only).
-    const Token* GetTokens() const { return tokens_; }
+    Token* GetTokens() const { return tokens_; }
 
     //! Get the number of tokens.
     size_t GetTokenCount() const { return tokenCount_; }
@@ -388,7 +388,7 @@ public:
         RAPIDJSON_ASSERT(IsValid());
         ValueType* v = &root;
         bool exist = true;
-        for (const Token *t = tokens_; t != tokens_ + tokenCount_; ++t) {
+        for (Token *t = tokens_; t != tokens_ + tokenCount_; ++t) {
             if (v->IsArray() && t->name[0] == '-' && t->length == 1) {
                 v->PushBack(Value().Move(), allocator);
                 v = &((*v)[v->Size() - 1]);
@@ -457,7 +457,7 @@ public:
     ValueType* Get(ValueType& root) const {
         RAPIDJSON_ASSERT(IsValid());
         ValueType* v = &root;
-        for (const Token *t = tokens_; t != tokens_ + tokenCount_; ++t) {
+        for (Token *t = tokens_; t != tokens_ + tokenCount_; ++t) {
             switch (v->GetType()) {
             case kObjectType:
                 {
@@ -685,8 +685,8 @@ public:
             return false;
 
         ValueType* v = &root;
-        const Token* last = tokens_ + (tokenCount_ - 1);
-        for (const Token *t = tokens_; t != last; ++t) {
+        Token* last = tokens_ + (tokenCount_ - 1);
+        for (Token *t = tokens_; t != last; ++t) {
             switch (v->GetType()) {
             case kObjectType:
                 {

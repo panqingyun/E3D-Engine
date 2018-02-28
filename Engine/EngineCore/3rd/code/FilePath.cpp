@@ -95,10 +95,10 @@ namespace vvision
         return s;
     }
 
-    string getPath(const string& filename)
-    {
-        return getPath(filename.c_str());
-    }
+	string getPath(const string& filename)
+	{
+		return getPath(filename.c_str());
+	}
 
     char * getFileContent(const char * filePath)
     {
@@ -297,6 +297,13 @@ namespace vvision
         return LoadImage(filename.c_str(), width, height);
     }
 #endif
+
+	std::string GetFolder(std::string fullPath)
+	{
+		string folder, file;
+		StringManipulator::SplitFileName(fullPath, folder, file);
+		return folder;
+	}
 
     char8* LoadImageFromTga(const char8* filename, int32 *width, int32 *height)
     {

@@ -68,6 +68,8 @@ namespace vvision
     char8* LoadImage(const char8* filename, int32 *width, int32 *height);
     char8* LoadImage(const string& filename, int32 *width, int32 *height);
 	
+	std::string GetFolder(std::string fullPath);
+
 	/**
 	 * Get the main bundle path
 	 */

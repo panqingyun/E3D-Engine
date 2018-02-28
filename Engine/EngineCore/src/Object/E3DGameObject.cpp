@@ -725,6 +725,7 @@ namespace E3DEngine
 
 int Convert::ToInt(std::string source)
 {
+	source = StringBuilder::Trim(source);
 	return atoi(source.c_str());
 }
 

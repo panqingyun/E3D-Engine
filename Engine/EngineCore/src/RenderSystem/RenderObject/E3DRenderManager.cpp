@@ -15,7 +15,7 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	Renderer * RendererManager::GetRenderer(int materialID)
+	Renderer * RendererManager::GetRenderer(int materialID, bool isCreate)
 	{
 		return nullptr;
 	}
@@ -24,6 +24,12 @@ namespace E3DEngine
 	E3DEngine::Renderer * RendererManager::GenRender()
 	{
 		return nullptr;
+	}
+
+
+	void RendererManager::AddRenderer(int materialID, Renderer * rd)
+	{
+
 	}
 
 	void RendererManager::Destory()

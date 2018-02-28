@@ -8,7 +8,7 @@
 #define SkinAnimation_hpp
 
 #include "E3DAnimation.hpp"
-#include "../Mesh/E3DMesh.h"
+#include "../Mesh/E3DMeshRender.h"
 
 namespace E3DEngine
 {

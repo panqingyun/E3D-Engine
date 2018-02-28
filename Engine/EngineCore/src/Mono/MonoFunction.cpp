@@ -56,6 +56,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Light,			setColor);
 	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
 	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
+	REGISTER_INTERNAL_CALL(Mesh,			create);
 
 }
 
@@ -734,4 +735,12 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 	}
 
 	return pl->Range;
+}
+
+CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID)
+{
+	std::string filePath = Convert::ToString(path);
+	Mesh * mesh = new Mesh(filePath, cfgID);
+	ADD_IN_SCENE(mesh);
+	return mesh->GetMonoBehaviour()->GetMonoObject();
 }

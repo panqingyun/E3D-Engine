@@ -12,8 +12,9 @@ namespace E3DEngine
 
         static Resource()
 		{
-            createFunDic[typeof(ParticleSystem)] = ParticleSystem.CreateParticle;
-            createFunDic[typeof(Material)] = Material.CreateMaterial;
+            createFunDic[typeof(ParticleSystem)] = ParticleSystem.Create;
+            createFunDic[typeof(Material)] = Material.Create;
+            createFunDic[typeof(Mesh)] = Mesh.Create;
             // TODO
 
         }

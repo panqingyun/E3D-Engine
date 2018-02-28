@@ -8,30 +8,20 @@
 #include "E3DBone.hpp"
 #include "../Object/E3DRenderObject.hpp"
 #include "../Object/E3DComponent.hpp"
+#include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 
 using namespace std;
 
 namespace E3DEngine
 {
-	class MeshBuffer;
-	class MeshRender : public RenderObject
+	class MeshRender : public Renderer
 	{
 	public:
-		MeshRender(MeshBuffer * buffer);
 		~MeshRender();
 		
-	private:
-		virtual void prepareRender(float deltaTime);		
-		virtual void update(float deltaTime) { }		
-		void		 initBoneMatrix();
-		
 	public:
-		vector<mat4f*>				VecBoneMatrix;
 		const aiScene*				pScene;
 		map<string,Bone*>			BoneMapping;
-		
-	private:
-		MeshBuffer * m_pMeshBuffer;
 		
 	};
 

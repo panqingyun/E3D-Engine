@@ -21,7 +21,7 @@ namespace E3DEngine
 	DECLARE_CLASS_NAME(RotationAffectorConfig)
 	DECLARE_CLASS_NAME(SelfScalAffectorConfig)
 	DECLARE_CLASS_NAME(SelfRotateAffectorConfig)
-	DECLARE_CLASS_NAME(MagicWordConfig)
+	DECLARE_CLASS_NAME(MeshConfig)
 	DECLARE_CLASS_NAME(LayerConfig)
 	DECLARE_CLASS_NAME(ShaderConfig)
 	DECLARE_CLASS_NAME(TextureAtlas)
@@ -43,7 +43,7 @@ namespace E3DEngine
         REGIST_CLASS(RotationAffectorConfig);
         REGIST_CLASS(SelfScalAffectorConfig);
 		REGIST_CLASS(SelfRotateAffectorConfig);
-		REGIST_CLASS(MagicWordConfig);
+		REGIST_CLASS(MeshConfig);
 		REGIST_CLASS(LayerConfig);
 		REGIST_CLASS(ShaderConfig);
 		REGIST_CLASS(TextureAtlas);

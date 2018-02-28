@@ -7,7 +7,7 @@
 void E3DEngine::Terrain::Create(const char * heightMapFileName)
 {
 	int mapWidth, mapHeight;
-	unsigned char * mapContent = vvision::readBmp(heightMapFileName, mapWidth, mapHeight);
+	/*unsigned char * mapContent = vvision::readBmp(heightMapFileName, mapWidth, mapHeight);
 
 	if (mapContent != nullptr)
 	{
@@ -43,7 +43,7 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 				}
 			}
 		}
-	}
+	}*/
 }
 
 

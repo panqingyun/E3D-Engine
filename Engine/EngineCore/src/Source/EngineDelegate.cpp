@@ -93,7 +93,6 @@ namespace E3DEngine
 			return;
 		}
 		Application::Initialize();
-		MeshFactory::GetInstance().Initilize();
 		Physics::GetInstance().InitPhysics();
 		Timer::Init();
 		Debug::Init();
@@ -183,7 +182,6 @@ namespace E3DEngine
 	void EngineDelegate::Destory()
 	{
 		EffectFactory::GetInstance().Destory();
-		MeshFactory::GetInstance().Destory();
 		Timer::Destory();
 		
 		for(std::map<std::string, TableManager*>::iterator it = m_mapTableManager.begin();

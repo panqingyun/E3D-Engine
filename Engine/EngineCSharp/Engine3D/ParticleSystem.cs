@@ -19,7 +19,7 @@ namespace E3DEngine
 
         public ParticleGroup[] Particles;
 
-        public static ParticleSystem CreateParticle(string path, int id = 0)
+        public static ParticleSystem Create(string path, int id = 0)
         {
             ParticleSystem particle = new ParticleSystem();
             particle.Particles = particle.createParticle(path);

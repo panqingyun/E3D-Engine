@@ -67,7 +67,8 @@ namespace E3DEngine
 	{
 	public:
 		virtual Renderer * CreateVertexRender(int materialID) override;
-		virtual Renderer * GetRenderer(int materialID) override;
+		virtual Renderer * GetRenderer(int materialID, bool isCreate = true) override;
+		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual Renderer * GenRender() override;
 	private:
 		std::map<int, Renderer*> m_mapVertexBuffers;

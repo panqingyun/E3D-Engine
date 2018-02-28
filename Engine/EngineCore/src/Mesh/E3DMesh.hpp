@@ -15,26 +15,26 @@ using namespace std;
 
 namespace E3DEngine
 {
-	struct MeshEntry
+	struct MeshEntity
 	{
-		MeshEntry();
+		MeshEntity();
 		
 		unsigned int NumIndices;
 		unsigned int BaseVertex;
 		unsigned int BaseIndex;
 		unsigned int MaterialIndex;
 	};
-	class MeshBuffer extends Ref
+	class Mesh : public GameObject
 	{
 	public:
-		MeshBuffer(const char * filePath, const char * filename, bool& bCreateSuccess);
-		void BindBufferData();
-		void UnBindBuffder();
+		Mesh(std::string filePath, int cfgID);
+		virtual void SetMaterial(Material *material) override;
+		virtual void SetActive(bool isActive) override;
 		void Destory();
 	public:
 		Assimp::Importer			pImporter;
 		const aiScene*				pScene;
-		vector<MeshEntry>			Entries;
+		vector<MeshEntity>			Entries;
 		bool						m_bIsBufferData;		
 		
 	private:
@@ -43,14 +43,10 @@ namespace E3DEngine
 		void	loadBones(uint MeshIndex, const aiMesh* paiMesh);
 		void	createBoneTree(aiNode * pNode);
 
-		virtual void setVBOs();
+	protected:
+		virtual void CreateBehaviour() override;
 
-	public:
-		uint		VertexBuffer;
-		uint		IndexBuffer;
-		
-		std::vector<Vertex>			Vertices;
-		std::vector<uint>			Indices;		
+	public:	
 		vector<mat4f*>				VecBoneMatrix;
 		map<string,Bone*>			BoneMapping;
 		uint						NumBones;

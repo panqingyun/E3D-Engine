@@ -7,7 +7,7 @@
 #include <include/EngineAPI.h>
 #include "E3DUtil.hpp"
 #include "../Source/E3DPlatformConfig.h"
-#include "../Mesh/E3DMesh.h"
+#include "../Mesh/E3DMeshRender.h"
 #include "../Source/EngineDelegate.h"
 #include "../../include/Include.h"
 #ifdef __IOS__

@@ -3,6 +3,11 @@
 //  Created by 潘庆云 on 2017/1/19.
 //
 
+/*
+* 对外导出接口  
+* 
+*/
+
 #ifndef GLEngineAPI_h
 #define GLEngineAPI_h
 
@@ -97,12 +102,12 @@ extern "C"
 	/// <summary>
 	/// 鼠标 或手指按下
 	/// </summary>
-	/// <param name = mouseButtonID>鼠标键ID 0 左键 1 右键 2 中键</param>
+	/// <param name = "mouseButtonID">鼠标键ID 0 左键 1 右键 2 中键</param>
 	__api_function_ void MouseDown(int mouseButtonID, float xPos, float yPos);
 	/// <summary>
 	/// 鼠标或手指抬起
 	/// </summary>
-	/// <param name = mouseButtonID>鼠标键ID 0 左键 1 右键 2 中键</param>
+	/// <param name = "mouseButtonID">鼠标键ID 0 左键 1 右键 2 中键</param>
 	__api_function_ void MouseUp(int mouseButtonID, float xPos, float yPos);
 	/// <summary>
 	/// 鼠标或手指移动
@@ -111,12 +116,12 @@ extern "C"
 	/// <summary>
 	/// 按键按下
 	/// </summary>
-	/// <param name = key>按键字符值</param>
+	/// <param name = "key">按键字符值</param>
 	__api_function_ void KeyDown(char key);
 	/// <summary>
 	/// 按键抬起
 	/// </summary>
-	/// <param name = key>按键字符值</param>
+	/// <param name = "key">按键字符值</param>
 	__api_function_ void KeyUp(char key);	
 	/// <summary>
 	/// 编辑器的地格

@@ -57,8 +57,9 @@ namespace E3DEngine
 	{
 	public:
 		virtual Renderer * CreateVertexRender(int materialID);
-		virtual Renderer * GetRenderer(int materialID);
+		virtual Renderer * GetRenderer(int materialID, bool isCreate = true);
 		virtual Renderer * GenRender();
+		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual void Destory();
 	protected:
 		std::map<int, Renderer*> m_mapVertexBuffers;

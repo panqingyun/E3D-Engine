@@ -141,3 +141,4 @@ VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY&
 VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material);
 VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range);
 float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light);
+CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID);

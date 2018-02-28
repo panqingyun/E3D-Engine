@@ -19,7 +19,7 @@
 #include "../Light/E3DLight.hpp"
 #include "../Scene/E3DScene.hpp"
 #include "../Scene/E3DSceneManager.hpp"
-#include "../Mesh/E3DMeshFactory.hpp"
+#include "../Mesh/E3DMesh.hpp"
 #include "../Object/E3DDynamicRectangle.hpp"
 #include "../Object/E3DRectangle.hpp"
 #include "../Object/E3DTransform.hpp"

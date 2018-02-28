@@ -12,7 +12,7 @@ namespace E3DEngine
         {
 
         }
-        public static Material CreateMaterial(string materialPath, int id = 1)
+        public static Material Create(string materialPath, int id = 1)
         {
             return createMaterial(materialPath, id);
         }

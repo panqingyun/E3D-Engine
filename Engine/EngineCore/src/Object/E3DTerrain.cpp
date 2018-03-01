@@ -85,7 +85,6 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
 	m_pRenderer->SetRenderIndex(eRI_Normal);
 	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-	m_pRenderer->EnableDepthTest = true;
 
 	GameObject::SetMaterial(material);
 	m_pRenderer->IsStaticDraw = false;

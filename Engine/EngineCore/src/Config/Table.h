@@ -391,7 +391,9 @@ namespace E3DEngine
 	public:
 		MaterialConfig()
 		{
-			Name = "MaterialConfig";
+			Name			= "MaterialConfig";
+			EnableDepthTest	= 1;
+			CullFace		= 1;
 		}
 		DECLARE_MEMBER(MaterialConfig, int, ID);
 		DECLARE_MEMBER(MaterialConfig, string, Texture);
@@ -399,6 +401,8 @@ namespace E3DEngine
 		DECLARE_MEMBER(MaterialConfig, string, Color);
 		DECLARE_MEMBER(MaterialConfig, string, Textures);
 		DECLARE_MEMBER(MaterialConfig, int, IsBlend);
+		DECLARE_MEMBER(MaterialConfig, int, CullFace);
+		DECLARE_MEMBER(MaterialConfig, int, EnableDepthTest);
 
 		virtual void registProperty() override
 		{
@@ -408,6 +412,8 @@ namespace E3DEngine
 			SAVE_MEMBER(Color, string);
 			SAVE_MEMBER(Textures, string);
 			SAVE_MEMBER(IsBlend, int);
+			SAVE_MEMBER(CullFace, int);
+			SAVE_MEMBER(EnableDepthTest, int);
 		}
 	};
 

@@ -99,6 +99,7 @@ namespace E3DEngine
 	void GLES_Material::UseMaterial()
 	{
 		UseProgram();
+		openState();
 		for(auto & it : Textures)
 		{
 			if (it.second == nullptr)
@@ -114,89 +115,54 @@ namespace E3DEngine
 		}
 	}
 
-    void GLES_Material::beforeUpdate()
+    void GLES_Material::openState()
     {
-  //      //深度测试
-  //      if(enableDepthTest)
-  //      {
-  //          glEnable(GL_DEPTH_TEST);
-  //      }
-  //      else
-  //      {
-  //          glDisable(GL_DEPTH_TEST);
-  //      }
-  //      
-  //      
-  //      if(enablewriteDepth)
-  //      {
-  //          glDepthMask(GL_TRUE);
-  //      }
-  //      else
-  //      {
-  //          glDepthMask(GL_FALSE);
-  //      }
-  //      
-  //      
-  //      if(enableDoubleSide)
-  //      {
-  //         // glDisable(GL_CULL_FACE);
-  //      }
-  //      else
-  //      {
-  //         // glEnable(GL_CULL_FACE);
-  //      }
-  //      
-  //      if (turnOnBlend)
-		//{
-  //          glEnable(GL_BLEND);
-  //          glBlendEquation(GL_FUNC_ADD);
-  //          switch (blendType) 
-		//	{
-  //              case eBlendType_One:
-		//			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		//			break;
-  //              
-  //              default:
-		//			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-		//			break;
-  //          }
-  //      }
-  //      glEnable(GL_STENCIL_TEST);
-  //      glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-  //      
-  //      //暂时关闭这个真实人脸拉伸遮挡 蒙板测试
-  //      if(enableStencilTest)
-  //      {
-  //          enableStencil();
-  //      }
-    }
-
-	void GLES_Material::afterUpdate()
-	{
-		glDisable(GL_STENCIL_TEST);
-		if (enableDepthTest)
-		{
+        //深度测试
+        if(enableDepthTest)
+        {
+            glEnable(GL_DEPTH_TEST); 
+			glDepthMask(GL_TRUE);
+        }
+        else
+        {
 			glDisable(GL_DEPTH_TEST);
-		}
-		else
-		{
-			glEnable(GL_DEPTH_TEST);
-		}
+			glDepthMask(GL_FALSE);
+        }       
 
-		if (enableDoubleSide)
+        if(enableDoubleSide)
+        {
+            glDisable(GL_CULL_FACE);
+        }
+        else
+        {
+            glEnable(GL_CULL_FACE);
+        }
+		
+		if (blendType == eBlendType_One)
 		{
-			glEnable(GL_CULL_FACE);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		}
+		else if (blendType == eBlendType_Text)
+		{
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}
 		else
 		{
-			glDisable(GL_CULL_FACE);
-		}
-		if (turnOnBlend)
-		{
-			glDisable(GL_BLEND);
-		}
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
+#ifdef __IOS__
+			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+#else
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+#endif // __IOS__
+
+		}	
+        glEnable(GL_STENCIL_TEST);
+        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+        
+        if(enableStencilTest)
+        {
+            enableStencil();
+        }
+    }
 
     void GLES_Material::enableStencil()
     {
@@ -219,7 +185,7 @@ namespace E3DEngine
 			it.second->InvalidTexture();
 		}
 		UseNullProgram();
-		afterUpdate();
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 }

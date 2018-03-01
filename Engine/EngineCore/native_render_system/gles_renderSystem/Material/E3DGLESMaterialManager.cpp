@@ -40,6 +40,8 @@ namespace E3DEngine
 		MaterialConfig *config = materialConfig;
 		GLES_Material * material = new GLES_Material;
 		material->blendType = (eBlendType)config->IsBlend;
+		material->enableDepthTest = config->EnableDepthTest == 1;
+		material->enableDoubleSide = config->CullFace == 0;
 		material->filePath = folder + "/";
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
 		material->CreateMaterial(config, sCfg);

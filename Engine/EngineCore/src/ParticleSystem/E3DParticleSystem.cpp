@@ -122,10 +122,10 @@ namespace E3DEngine
 
 	void ParticleSystem::initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config)
 	{
-		particle->ConfigName			= cfgName;
+		particle->ConfigName		= cfgName;
 		particle->Tag				= config->ID;
 		particle->m_isLock			= config->LockEmitterMove;
-		particle->m_MaterialName		= config->Material;
+		particle->m_MaterialName	= config->Material;
 		particle->ParticleConfigID	= config->ID;
 		particle->m_DirOffset		= config->DirectionOffset;
 
@@ -158,7 +158,6 @@ namespace E3DEngine
 
 		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialPath, materialID);
 		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
-		render->EnableDepthTest = false;
 		render->SetMaterial(mMaterial);
 		particle->SetRenderer(render);
 		particle->SetActive(true);

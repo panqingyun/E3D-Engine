@@ -82,7 +82,7 @@ namespace E3DEngine
 
 
     class CTransform;
-    class RenderObject extends Object
+    class RenderObject : public Object
     {
     public:
         RenderObject();
@@ -146,8 +146,6 @@ namespace E3DEngine
 		std::vector<unsigned short>		Indices;
 		// 渲染层级
 		eRenderIndex			RenderIndex;
-		// 开启深度测试
-		bool					EnableDepthTest;
 		// true 1次送入显卡后不再更改， false 每帧都向显卡发送数据
 		bool					IsStaticDraw;
 		Camera *				pCamera;

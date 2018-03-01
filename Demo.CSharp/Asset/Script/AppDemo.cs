@@ -47,7 +47,7 @@ namespace Game
         string sphereMaterialPath = "Material/SphereMaterial.material";
         string particleFirePath = "Particle/ParticleFire.particle";
         string mainScenePath = "Scene/MainEntry.scene";
-        string meshFilePath = "Mesh/Flower.mesh";
+        string meshFilePath = "Mesh/Daoju.mesh";
         Vector2 curMousePosition;
         Vector2 lastMousePosition;
         float cameraRotateX = 0, cameraRotateY = 0;
@@ -77,7 +77,7 @@ namespace Game
             //GameObject.CreateSkyDome(skyMaterial);
             GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
-            mesh = Resource.Load<Mesh>(meshFilePath);
+            mesh = Resource.Load<Mesh>(meshFilePath, 1);
             mesh.Transform.Position = new Vector3(0, 0, -100);
             mesh.Transform.Rotation = new Vector3(-90, 0, 0);
             //float xStart = -18;
@@ -111,12 +111,12 @@ namespace Game
             //sphere.Transform.Position = new Vector3(-30, 40, 0);
             //SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
             //sCollider.CreateRigiBody(0);
-            //Material materialB = Resource.Load<Material>(cubeMaterialPath);
-            //Box box1 = Box.Create(3, 3, 3);
-            //box1.Material = materialB;
-            //box1.Transform.Position = new Vector3(2.5f, 5, 0);
-            //BoxCollider collider4 = box1.AddComponent<BoxCollider>();
-            //collider4.CreateRigiBody(0);
+            Material materialB = Resource.Load<Material>(cubeMaterialPath);
+            Box box1 = Box.Create(3, 3, 3);
+            box1.Material = materialB;
+            box1.Transform.Position = new Vector3(2.5f, 5, 0);
+            BoxCollider collider4 = box1.AddComponent<BoxCollider>();
+            collider4.CreateRigiBody(0);
 
             //Material materialB2 = Resource.Load<Material>(cubeMaterialPath);
             //Box box2 = Box.Create(50, 10, 0.5f);
@@ -125,13 +125,13 @@ namespace Game
             //box2.Transform.Rotation = new Vector3(0, 0, -20);
             //BoxCollider collider5 = box2.AddComponent<BoxCollider>();
             //collider5.CreateRigiBody(0);
-            //particle = Resource.Load<ParticleSystem>(particleFirePath);
+            particle = Resource.Load<ParticleSystem>(particleFirePath);
 
-            //Vector3 nwPos = new Vector3(box1.Transform.Position.x - 1, box1.Transform.Position.y - 1.1f, box1.Transform.Position.z);
-            //for (int i = 0; i < particle.Particles.Length; i++)
-            //{
-            //    particle.Particles[i].Transform.Position = nwPos;
-            //}
+            Vector3 nwPos = new Vector3(box1.Transform.Position.x - 1, box1.Transform.Position.y - 1.1f, box1.Transform.Position.z);
+            for (int i = 0; i < particle.Particles.Length; i++)
+            {
+                particle.Particles[i].Transform.Position = nwPos;
+            }
         }
 
         public void MouseButtonDown(MouseButtonInfo mouseInfo)

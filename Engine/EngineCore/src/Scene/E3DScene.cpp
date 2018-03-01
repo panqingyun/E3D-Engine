@@ -83,10 +83,10 @@ namespace E3DEngine
 	{
 		for(auto & it : m_vecObjList)
 		{
-			for (Camera * camera : m_vecCamera)
-			{
-				//camera->GetRenderQueue()->Remove(static_cast<GameObject*>(it.second));
-			}
+			//for (Camera * camera : m_vecCamera)
+			//{
+			//	camera->GetRenderQueue()->Remove(static_cast<GameObject*>(it.second));
+			//}
 			SAFE_DELETE(it.second);
 		}
 		m_vecObjList.clear();

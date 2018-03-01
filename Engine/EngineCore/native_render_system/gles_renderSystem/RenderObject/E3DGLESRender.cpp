@@ -20,39 +20,10 @@ namespace E3DEngine
 		{
 			return;
 		}
-		pMaterial->UseProgram();
 
 		m_nIndexSize = (uint)Indices.size();
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		
-		if (EnableDepthTest)
-		{
-			glEnable(GL_DEPTH_TEST);
-			glDepthMask(GL_TRUE);
-		}
-		else
-		{
-			glDisable(GL_DEPTH_TEST);
-			glDepthMask(GL_FALSE);
-		}
-		if (pMaterial->blendType == eBlendType_One)
-		{
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		}
-        else if(pMaterial->blendType == eBlendType_Text)
-        {
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        }
-		else
-		{
-#ifdef __IOS__
-			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-#else
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-#endif // __IOS__
-			
-		}
 //
 		glEnable(GL_BLEND);
 		glEnable(GL_TEXTURE_2D);

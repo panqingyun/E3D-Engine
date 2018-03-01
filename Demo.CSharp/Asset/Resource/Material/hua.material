@@ -1,18 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
-	<TextureAtlas>
-		<Item ID="1" n="back" x="0" y="0" w="1024" h="1024" width="3072" height="2048"/>
-		<Item ID="2" n="right" x="1024" y="0" w="1024" h="1024" width="3072" height="2048"/>
-		<Item ID="3" n="front" x="2048" y="0" w="1024" h="1024" width="3072" height="2048"/>
-		<Item ID="4" n="left" x="0" y="1024" w="1024" h="1024" width="3072" height="2048"/>
-		<Item ID="5" n="top" x="1024" y="1024" 	w="1024" h="1024" width="3072" height="2048"/>
-		<Item ID="6" n="down" x="2048" y="1024"	w="1024" h="1024" width="3072" height="2048"/>
-	</TextureAtlas>
-	<SkyBoxConfig>
-		<Item ID="1" Front="3" Back="1" Left="4" Right="2" Top="5" Down="6"/>
-	</SkyBoxConfig>
 	<MaterialConfig>
-      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=0 CullFace = 0/>
+		<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -42,9 +31,9 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/SkyBoxVertex.shader" 
-					FragmentShader	= "shader/SkyBoxFragment.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/skyBox.png;" 
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/Ban.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

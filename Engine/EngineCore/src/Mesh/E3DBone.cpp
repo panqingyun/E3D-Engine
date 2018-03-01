@@ -42,7 +42,7 @@ namespace E3DEngine
 	
 	Bone::Bone()
 	{
-
+		Transform = new CTransform;
 	}
 
 	Bone::Bone(Bone * other)

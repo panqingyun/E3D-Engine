@@ -23,7 +23,6 @@ void E3DEngine::SkyBox::SetMaterial(Material * material)
 	setTextureCoord();
 	Box::SetMaterial(material);
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
-	m_pRenderer->EnableDepthTest = false;
 
 }
 
@@ -156,7 +155,6 @@ void E3DEngine::SkyDome::SetMaterial(Material * material)
 	GameObject::SetMaterial(material);
 	m_pRenderer->SetTransform(Transform);
 	m_pRenderer->IsStaticDraw = true;
-	m_pRenderer->EnableDepthTest = false;
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
 	//m_pRenderer->SetDrawModule(eDM_LINES);
 	IsActive = false;

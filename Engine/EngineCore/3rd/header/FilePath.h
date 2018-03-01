@@ -42,6 +42,7 @@ namespace vvision
         unsigned int width;
         unsigned int height;
         char* data;
+		int pixel_depth;
     }  *png_datap;
 
     /** Get the full path of a file in the filesystem.
@@ -65,8 +66,8 @@ namespace vvision
      * @param widht/height the image width and height
      * @return the data pointer to the image. dont forget to free memory by calling free.
      */
-    char8* LoadImage(const char8* filename, int32 *width, int32 *height);
-    char8* LoadImage(const string& filename, int32 *width, int32 *height);
+    char8* LoadImage(const char8* filename, int32 *width, int32 *height, int &bpp);
+    char8* LoadImage(const string& filename, int32 *width, int32 *height, int &bpp);
 	
 	std::string GetFolder(std::string fullPath);
 
@@ -75,7 +76,7 @@ namespace vvision
 	 */
 	string getMainBundlePath();
 #ifndef __IOS__
-	char8* LoadImageW(const string& filename, int32 *width, int32 *height);
+	char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp);
     int png_read(const char* filename, png_datap data);
 #endif
 

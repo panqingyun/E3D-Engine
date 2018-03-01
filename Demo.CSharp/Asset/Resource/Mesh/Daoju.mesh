@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MeshConfig>
+		<Item ID=1 ModelFilePath="Model/daoju11.FBX" Materials="Material/Daoju.material : 1" />
+		<Item ID=2 ModelFilePath="Model/daoju10.FBX" Materials="Material/Daoju.material : 1" />
+		<Item ID=3 ModelFilePath="Model/daoju9.FBX" Materials="Material/Daoju.material : 1" />
+		<Item ID=4 ModelFilePath="Model/daoju8.FBX" Materials="Material/Daoju.material : 1" />
+		<Item ID=5 ModelFilePath="Model/daoju7.FBX" Materials="Material/Daoju.material : 1" />
+	</MeshConfig>
+</ConfigSystem>

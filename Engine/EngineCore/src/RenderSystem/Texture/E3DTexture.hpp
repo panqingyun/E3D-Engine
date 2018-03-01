@@ -26,8 +26,8 @@ namespace E3DEngine
 		
 	public:
 		virtual void Create(string fileName);
-		virtual void SetTextureData(void * textureData, int width, int height);
-		virtual void Create(void * textureData, int width, int height);
+		virtual void SetTextureData(void * textureData, int width, int height, int imgDepth);
+		virtual void Create(void * textureData, int width, int height, int imgDepth);
 		virtual void SetTextureEnum(uint enumNumber);
 		virtual void ActiveBindTexture();
 		virtual void InvalidTexture();

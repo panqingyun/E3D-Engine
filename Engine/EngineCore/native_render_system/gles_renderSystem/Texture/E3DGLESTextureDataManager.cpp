@@ -19,10 +19,11 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 		return m_mapTextureBuffer[imageName];
 	}
 	stImageData *data = new stImageData();
+	int bpp;
 #ifdef __IOS__
 	data->data = vvision::LoadImage(imageName, &data->width, &data->height);
 #else
-	data->data = vvision::LoadImageW(imageName, &data->width, &data->height);
+	data->data = vvision::LoadImageW(imageName, &data->width, &data->height, bpp);
 #endif
 	if (data->data == nullptr)
 	{		
@@ -40,7 +41,12 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 #ifdef __ANDROID__
 	// TODO ETC
 #endif
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, data->width, data->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data->data);
+	unsigned int COLOR_TYPE = GL_RGBA;
+	if (bpp == 24)
+	{
+		//COLOR_TYPE = GL_RGB;
+	}
+	glTexImage2D(GL_TEXTURE_2D, 0, COLOR_TYPE, data->width, data->height, 0, COLOR_TYPE, GL_UNSIGNED_BYTE, data->data);
 	m_mapTextureBuffer[imageName] = TextureBuffer;
 	glBindTexture(GL_TEXTURE_2D, 0);
 	SAFE_DELETE(data);
@@ -55,10 +61,11 @@ E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 	}
 
 	stImageData *data = new stImageData();
+	int bpp;
 #ifdef __IOS__
 	data->data = vvision::LoadImage(imageName, &data->width, &data->height);
 #else
-	data->data = vvision::LoadImageW(imageName, &data->width, &data->height);
+	data->data = vvision::LoadImageW(imageName, &data->width, &data->height, bpp);
 #endif
 	m_mapTextureData[imageName] = data;
 	return data;

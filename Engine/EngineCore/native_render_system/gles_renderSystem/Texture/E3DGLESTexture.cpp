@@ -22,14 +22,29 @@ namespace E3DEngine
 		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->CreateTextureBuffer(fileName);
 	}
 	
-	void GLES_Texture::SetTextureData(void * textureData, int width, int height)
+	void GLES_Texture::SetTextureData(void * textureData, int width, int height, int imgDepth)
 	{
+		unsigned int eFormat = GL_RGBA;
+		switch (imgDepth)
+		{
+		case 3:     // Most likely case
+			eFormat = GL_RGB;
+			break;
+		case 4:
+			eFormat = GL_RGBA;
+			break;
+		case 1:
+			eFormat = GL_LUMINANCE;
+			break;
+		default:
+			break;
+		}
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
+		glTexImage2D(GL_TEXTURE_2D, 0, eFormat, width, height, 0, eFormat, GL_UNSIGNED_BYTE, textureData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::Create(void *textureData, int width, int height)
+	void GLES_Texture::Create(void *textureData, int width, int height, int imgDepth)
 	{
 		glGenTextures(1, &m_nTextureBuffer);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
@@ -38,8 +53,22 @@ namespace E3DEngine
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
+		unsigned int eFormat = GL_RGBA;
+		switch (imgDepth)
+		{
+		case 3:     // Most likely case
+			eFormat = GL_RGB;
+			break;
+		case 4:
+			eFormat = GL_RGBA;
+			break;
+		case 1:
+			eFormat = GL_LUMINANCE;
+			break;
+		default:
+			break;
+		}
+		glTexImage2D(GL_TEXTURE_2D, 0, eFormat, width, height, 0, eFormat, GL_UNSIGNED_BYTE, textureData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 

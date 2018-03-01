@@ -9,6 +9,7 @@
 - [x] RenderToTexture
 - [x] 多FBO
 - [x] 渲染合批
+- [x] 模型读取和显示
 - [x] Mono和Bullet已接入。
 
 #### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。光照尚未完成。模型文件读取已完成，但是模型的材质尚未完成，骨骼动画也未完成。Android和IOS尚未接入。

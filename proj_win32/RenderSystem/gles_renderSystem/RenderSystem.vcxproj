@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\FrameBufferObject\E3DFrameBufferObject.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterial.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterialManager.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRender.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRenderManager.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShader.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\Include.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterial.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterialManager.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRender.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRenderManager.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShader.hpp" />

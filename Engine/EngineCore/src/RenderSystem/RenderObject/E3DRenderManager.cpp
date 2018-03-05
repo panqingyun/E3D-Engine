@@ -15,7 +15,7 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	Renderer * RendererManager::GetRenderer(int materialID, bool isCreate)
+	Renderer * RendererManager::GetRenderer(int materialID, RENDER_TYPE type)
 	{
 		return nullptr;
 	}

@@ -13,7 +13,7 @@
 
 namespace E3DEngine
 {
-	class Animation : public Component
+	class Animation : public Object
 	{
 	public:
 		Animation();
@@ -33,6 +33,7 @@ namespace E3DEngine
 
 		std::map<std::string, AnimationClip*>	m_mapAnimationClip;
 		std::map<std::string ,aiAnimation*>		m_mapAnimations;
+		aiAnimation *mCurrnetPlayAnimation;
 		
 	public:
 		virtual void Play(std::string name = "", bool isRepeat = false);
@@ -41,13 +42,7 @@ namespace E3DEngine
 		virtual void LoadAnimations();
 		virtual void SetBones(std::map<std::string, Bone *> *p_MapBones);
 	public:
-		virtual void Start() override
-		{
-		}
 		virtual void Update(float deltaTime) override;
-		virtual void Destory() override
-		{
-		}
 		
 	public:
 		bool	IsPlay()
@@ -55,7 +50,7 @@ namespace E3DEngine
 			return m_bIsPlay;
 		}
 	protected:
-		void			BoneTransform(std::string name, float TimeInSeconds);
+		void			BoneTransform(float TimeInSeconds);
 		aiNodeAnim  *	FindNodeAnim(const aiAnimation* pAnimation, const string NodeName) const;
 		void			TransformBone(const char * name, mat4f trans);
 		aiAnimation *	FindAnimationInScene(const char * aniName) const;

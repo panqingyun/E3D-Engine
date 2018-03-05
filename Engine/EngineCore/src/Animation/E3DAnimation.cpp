@@ -39,6 +39,7 @@ namespace E3DEngine
 		m_bIsRepeat = isRepeat;
 		m_bIsPlay	= true;
 		m_strCurrentPlayAnimationName = name;
+		mCurrnetPlayAnimation = m_mapAnimations[name];
 	}
 	
 	void Animation::Update(float deltaTime)
@@ -46,12 +47,12 @@ namespace E3DEngine
 		if (m_bIsPlay)
 		{
 			m_fhasPlayTimeLong += deltaTime;
-			BoneTransform(m_strCurrentPlayAnimationName, m_fhasPlayTimeLong);
-			if (m_fhasPlayTimeLong >= m_mapAnimations[m_strCurrentPlayAnimationName]->mDuration)
-			{ // 播放到结尾了
+			if (mCurrnetPlayAnimation && mCurrnetPlayAnimation->mDuration > 0.0)
+			{
 				if (m_bIsRepeat == true)
 				{
-					m_fhasPlayTimeLong = 0;
+					double tps = mCurrnetPlayAnimation->mTicksPerSecond ? mCurrnetPlayAnimation->mTicksPerSecond : 25.f;
+					m_fhasPlayTimeLong = fmod(m_fhasPlayTimeLong, mCurrnetPlayAnimation->mDuration / tps);
 					if(!AnimationPlayEndEvent.empty())
 					{
 						EventArgs * args = new EventArgs();
@@ -65,6 +66,7 @@ namespace E3DEngine
 					m_bIsPlay = false;
 				}
 			}
+			BoneTransform( m_fhasPlayTimeLong);
 		}
 	}
 	
@@ -199,41 +201,34 @@ namespace E3DEngine
 			return;
 		}
 		string NodeName(pNode->mName.data);
-		mat4f NodeTransformation;
-		NodeTransformation.identity();
+
 		const aiNodeAnim* pNodeAnim = FindNodeAnim(pAnimation, NodeName);
 		
 		if (pNodeAnim)
 		{
-			// 插值缩放
-			aiVector3D Scaling;
-			calcInterpolatedScaling(Scaling, AnimationTime, pNodeAnim);
-			mat4f ScalingM;
-			ScalingM.setTranslation(vec3f(Scaling.x, Scaling.y, Scaling.z));
+			std::map<std::string, Bone *>::iterator it = m_BoneMapping->find(NodeName);
+			if (it != m_BoneMapping->end())
+			{
+				// 插值缩放
+				aiVector3D Scaling;
+				calcInterpolatedScaling(Scaling, AnimationTime, pNodeAnim);
 			
-			// 插值旋转
-			aiQuaternion RotationQ;
-			calcInterpolatedRotation(RotationQ, AnimationTime, pNodeAnim);
-			Quatf q(RotationQ.w, RotationQ.x, RotationQ.y, RotationQ.z);
-			mat4f RotationM = q.transform();
+				// 插值旋转
+				aiQuaternion RotationQ;
+				calcInterpolatedRotation(RotationQ, AnimationTime, pNodeAnim);
+				Quatf q(RotationQ.w, RotationQ.x, RotationQ.y, RotationQ.z);
 			
-			// 插值位移
-			aiVector3D Translation;
-			calcInterpolatedPosition(Translation, AnimationTime, pNodeAnim);
-			mat4f TranslationM;
-			TranslationM.setTranslation(vec3f(Translation.x, Translation.y, Translation.z));
+				// 插值位移
+				aiVector3D Translation;
+				calcInterpolatedPosition(Translation, AnimationTime, pNodeAnim);			
 			
-			// 矩阵乘积
-			NodeTransformation = TranslationM * RotationM * ScalingM;
-		}
-		
-		std::map<std::string , Bone *>::iterator it = m_BoneMapping->find(NodeName);
-		if (it != m_BoneMapping->end())
-		{
-			// 骨骼变换
-			Bone* pBone = it->second;
-			pBone->Transform->WorldMatrix = m_GlobalInverseTransform * NodeTransformation;
-		}
+				// 骨骼变换
+				Bone* pBone = it->second;
+				pBone->Transform->SetPosition(Translation.x, Translation.y, Translation.z);
+				pBone->Transform->SetRotation(q);
+				pBone->Transform->SetScale(Scaling.x, Scaling.y, Scaling.z);
+			}
+		}		
 		
 		for (uint i = 0 ; i < pNode->mNumChildren ; i++)
 		{
@@ -256,28 +251,19 @@ namespace E3DEngine
 		return ani;
 	}
 	
-	void Animation::BoneTransform(std::string name, float TimeInSeconds)
+	void Animation::BoneTransform(float TimeInSeconds)
 	{
-		aiAnimation * animation = nullptr;
-		if (m_mapAnimations.find(name) == m_mapAnimations.end())
-		{
-			animation = m_pScene->mAnimations[0];
-		}
-		else
-		{
-			animation = m_mapAnimations[name];
-		}
-		if (animation == nullptr)
+		if (mCurrnetPlayAnimation == nullptr)
 		{
 			return;
 		}
 		mat4f Identity;
 		Identity.identity();
-		float TicksPerSecond	= (float)(animation->mTicksPerSecond != 0 ? animation->mTicksPerSecond : 25.0f);
+		float TicksPerSecond	= (float)(mCurrnetPlayAnimation->mTicksPerSecond != 0 ? mCurrnetPlayAnimation->mTicksPerSecond : 25.0f);
 		float TimeInTicks		= TimeInSeconds * TicksPerSecond;
-		float AnimationTime		= fmod(TimeInTicks, (float)animation->mDuration);
+		float AnimationTime		= fmod(TimeInTicks, (float)mCurrnetPlayAnimation->mDuration);
 		
-		readNodeHeirarchy(AnimationTime, m_pScene->mRootNode, animation);
+		readNodeHeirarchy(AnimationTime, m_pScene->mRootNode, mCurrnetPlayAnimation);
 		
 	}
 	

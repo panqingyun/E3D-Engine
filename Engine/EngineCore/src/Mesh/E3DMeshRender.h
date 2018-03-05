@@ -18,10 +18,14 @@ namespace E3DEngine
 	{
 	public:
 		~MeshRender();
-		
-	public:
+		virtual void SetAiScene(const aiScene* scene);
+		virtual void SetBoneVector(vector<mat4f*> vecBones);
+		virtual const aiScene *GetAiScene() const;
+		virtual vector<mat4f*> &GetBoneMatrixs();
+
+	private:
 		const aiScene*				pScene;
-		map<string,Bone*>			BoneMapping;
+		vector<mat4f*>				VecBoneMatrix;
 		
 	};
 

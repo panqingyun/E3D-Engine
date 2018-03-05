@@ -651,7 +651,7 @@ namespace E3DEngine
 	void ParticleGroup::SetRenderer(Renderer * buffer)
 	{
 		m_pRenderer = buffer;
-		m_pMaterial = buffer->pMaterial;
+		m_pMaterial = buffer->GetMaterial();
 		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);

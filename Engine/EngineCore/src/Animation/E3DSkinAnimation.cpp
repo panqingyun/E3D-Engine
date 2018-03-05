@@ -9,9 +9,9 @@ namespace E3DEngine
 {
 	void SkinAnimation::Start()
 	{
-		m_pMesh = (MeshRender*)gameObject;
+		/*m_pMesh = (MeshRender*)gameObject;
 		SetScene(m_pMesh->pScene);
-		SetBones(&m_pMesh->BoneMapping);
+		SetBones(&m_pMesh->BoneMapping);*/
 		LoadAnimations();
 	}
 	

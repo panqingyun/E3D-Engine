@@ -6,8 +6,8 @@
 #ifndef E3D_GLES_RENDER_BufferManager_hpp
 #define E3D_GLES_RENDER_BufferManager_hpp
 
-#include "src/Source/Interface.h"
-#include <src/RenderSystem/RenderObject/E3DRenderManager.hpp>
+#include <src/Source/Interface.h>
+#include <src/Mesh/E3DMeshRender.h>
 #include "../Include/Include.h"
 
 namespace E3DEngine
@@ -44,11 +44,10 @@ namespace E3DEngine
 
 		virtual void Render(float deltaTime) override;
 
-		void updateEngineDefineShaderValue();
-
 		virtual void SetDrawModule(DWORD module) override;
 
 	protected:
+		void updateEngineDefineShaderValue();
 		virtual void afterRender(float deltaTime) override;
 
 	private:
@@ -67,7 +66,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual Renderer * CreateVertexRender(int materialID) override;
-		virtual Renderer * GetRenderer(int materialID, bool isCreate = true) override;
+		virtual Renderer * GetRenderer(int materialID, RENDER_TYPE type = NORMAL) override;
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual Renderer * GenRender() override;
 	private:

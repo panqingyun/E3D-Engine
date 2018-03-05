@@ -103,7 +103,7 @@ namespace E3DEngine
 		}
 		virtual void Render(float deltaTime);
 		virtual void Destory(RenderObject *obj);
-        virtual void SetMaterialID(int ID);
+		virtual void SetMaterialID(int ID);
 		virtual void SetMaterial(Material *material);
 		virtual void TransformChange() { }
 		virtual void SetCamera(Camera * camera);
@@ -112,15 +112,16 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() { }
         
 	public:
-		bool GetActive() { return m_bIsActive; }
-		void SetColor(long color);
-        void SetIsBillborad(bool isBillboard);
-        bool GetIsBillBoard();
-		UINT GetDrawModule() { return m_nDrawModule; }
-		CTransform * GetTransform();
-		void SetTransform(CTransform *_transform);
-		void CreateNewTransform();
-		void SetRenderIndex(DWORD index);
+		virtual bool GetActive() { return m_bIsActive; }
+		virtual void SetColor(long color);
+		virtual void SetIsBillborad(bool isBillboard);
+		virtual bool GetIsBillBoard();
+		virtual UINT GetDrawModule() { return m_nDrawModule; }
+		virtual CTransform * GetTransform();
+		virtual void SetTransform(CTransform *_transform);
+		virtual void CreateNewTransform();
+		virtual void SetRenderIndex(DWORD index);
+		virtual Material* GetMaterial() { return pMaterial; }
 		
 		MinMaxAABB GetBounds()
 		{
@@ -135,9 +136,9 @@ namespace E3DEngine
 		std::vector<float*> vertexDatas;
 		CTransform * transform;
 		MinMaxAABB   m_AABB;
-    public:
 		// 材质
         Material	* pMaterial;
+    public:
 		// 索引数目
 		DWORD		  m_nIndexSize;
 		// 顶点数组

@@ -44,7 +44,7 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 	unsigned int COLOR_TYPE = GL_RGBA;
 	if (bpp == 24)
 	{
-		//COLOR_TYPE = GL_RGB;
+		COLOR_TYPE = GL_RGB;
 	}
 	glTexImage2D(GL_TEXTURE_2D, 0, COLOR_TYPE, data->width, data->height, 0, COLOR_TYPE, GL_UNSIGNED_BYTE, data->data);
 	m_mapTextureBuffer[imageName] = TextureBuffer;

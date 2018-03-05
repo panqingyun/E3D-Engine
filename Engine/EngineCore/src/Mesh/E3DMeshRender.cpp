@@ -29,4 +29,27 @@ namespace E3DEngine
 	{
 	}
 
+	void MeshRender::SetAiScene(const aiScene* scene)
+	{
+		pScene = scene;
+	}
+
+
+	void MeshRender::SetBoneVector(vector<mat4f*> vecBones)
+	{
+		VecBoneMatrix = vecBones;
+	}
+
+
+	const aiScene * MeshRender::GetAiScene() const
+	{
+		return pScene;
+	}
+
+
+	std::vector<mat4f*> & MeshRender::GetBoneMatrixs()
+	{
+		return VecBoneMatrix;
+	}
+
 }

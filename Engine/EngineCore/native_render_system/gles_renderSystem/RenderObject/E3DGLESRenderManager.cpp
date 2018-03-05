@@ -6,31 +6,34 @@
 
 #include "E3DGLESRenderManager.hpp"
 #include <src/RenderSystem/E3DRenderSystem.hpp>
+#include "E3DGLESMeshRender.h"
 
 namespace E3DEngine
 {
 	Renderer * GLES_RendererManager::CreateVertexRender(int materialID)
 	{
 		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(materialID);	
-		buffer->pMaterial = GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID);
+		buffer->SetMaterial(GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
 		return buffer;
 	}
 
-	Renderer * GLES_RendererManager::GetRenderer(int materialID, bool isCreate)
+	Renderer * GLES_RendererManager::GetRenderer(int materialID, RENDER_TYPE type)
 	{
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
 		{
-			if (isCreate)
+			Renderer * buffer = nullptr;
+			switch (type)
 			{
-				GLES_Renderer * buffer = new GLES_Renderer;
-				buffer->RenderIndex = eRI_Normal;
-				m_mapVertexBuffers[materialID] = buffer;
-				return buffer;
+			case E3DEngine::MESH:
+				buffer = new GLES_MeshRender;
+				break;
+			default:
+				buffer = new GLES_Renderer;
+				break;
 			}
-			else
-			{
-				return nullptr;
-			}
+			buffer->RenderIndex = eRI_Normal;
+			m_mapVertexBuffers[materialID] = buffer;
+			return buffer;
 		}
 		return m_mapVertexBuffers[materialID];
 	}

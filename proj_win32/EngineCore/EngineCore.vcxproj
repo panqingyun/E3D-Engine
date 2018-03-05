@@ -180,9 +180,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Exporter.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\ConvertUTF.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\deflate.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h" />
@@ -203,12 +201,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kd.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kdplatform.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\KHR_thread_storage.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\DDLNode.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLCommon.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLExport.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParser.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParserUtils.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\Value.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\png.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngconf.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngdebug.h" />
@@ -670,9 +662,8 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Light\E3DLight.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.hpp" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h" />
@@ -991,9 +982,8 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Light\E3DLight.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp" />

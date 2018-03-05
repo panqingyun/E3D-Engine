@@ -193,8 +193,8 @@ namespace E3DEngine
 			if (m_vecObjList.find(go->ID) != m_vecObjList.end())
 			{
 				m_vecObjList.erase(go->ID);
-				rootObject->AddChild(go);
 			}
+			rootObject->AddChild(go);
 			
 		}
 		m_vecObjList[node->ID] = node;

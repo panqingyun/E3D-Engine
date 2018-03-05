@@ -36,8 +36,8 @@ void E3DEngine::Sphere::Create(float R)
 				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
 
 				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
-				m_vecIndex[index++] = (alpha * rowNumber + beta); // 1
 				m_vecIndex[index++] = (alpha * rowNumber + beta + 1);
+				m_vecIndex[index++] = (alpha * rowNumber + beta); // 1
 			}
 		}
 	}

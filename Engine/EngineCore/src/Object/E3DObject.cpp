@@ -8,7 +8,7 @@ namespace E3DEngine
 	{
 		NodeType = eT_Object;
 		ID = EngineDelegate::GetInstance().GenObjectID();
-		ADD_IN_SCENE(this);
+		//ADD_IN_SCENE(this);
 		m_pBehaviour = new MonoBehaviour;
 	}
 

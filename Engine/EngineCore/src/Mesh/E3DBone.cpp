@@ -42,7 +42,7 @@ namespace E3DEngine
 	
 	Bone::Bone()
 	{
-		Transform = new CTransform;
+		
 	}
 
 	Bone::Bone(Bone * other)
@@ -50,9 +50,10 @@ namespace E3DEngine
 		VerterIndex = other->VerterIndex;
 		VertexWeight = other->VertexWeight;
 		BoneIndex = other->BoneIndex;
-		IsImpoint = other->IsImpoint;
-		tranScaleX = other->tranScaleX;
-		tranScaleY = other->tranScaleY;
+		if (Transform == nullptr)
+		{
+			Transform = new CTransform;
+		}
 		for (std::map<std::string, Bone*>::iterator it = Childs.begin(); it != Childs.end(); ++it)
 		{
 			Childs[it->first] = new Bone(it->second);
@@ -63,9 +64,11 @@ namespace E3DEngine
 	{
 		for (std::map<std::string, Bone*>::iterator it = Childs.begin(); it != Childs.end(); ++it)
 		{
+			Transform->RemoveChild(it->second->ID);
 			SAFE_DELETE(it->second);
 		}
 		Childs.clear();
+		SAFE_DELETE(Transform);
 	}
 
 	void Bone::SetMetadata(aiMetadata *data)
@@ -80,5 +83,6 @@ namespace E3DEngine
 			return;
 		}
 		Childs[pBone->Name] = pBone;
+		Transform->AddChild(pBone->ID, pBone->Transform);
 	}
 }

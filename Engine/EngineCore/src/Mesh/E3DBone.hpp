@@ -14,7 +14,7 @@ using namespace vvision;
 namespace E3DEngine
 {
 	// 骨骼
-	class Bone extends Object
+	class Bone : public GameObject
 	{
 	public:
 		Bone();
@@ -29,23 +29,15 @@ namespace E3DEngine
 		
 		virtual void Update(float deltaTime);
 	public:
-		int			ID;
-		std::string Name;
 		mat4f		BoneOffset;
 		aiBone *	data;
-		
+		int			BoneIndex;
 		std::vector<uint>				VerterIndex;
 		std::vector<float>				VertexWeight;
 		std::map<std::string ,Bone*>    Childs;
 		aiMetadata *					Metadata;
 		std::map<const char* ,object>   mapMetadatas;
-	public:
-		//是否是关键点
-		int			BoneIndex;
-		bool		IsImpoint;
-		float		tranScaleX;
-		float		tranScaleY;
-		CTransform*	Transform;
+
 	public:
 		Bone*		GetChild(std::string name);
 		void		AddVertexAndWeight(int vertexID, float weight);

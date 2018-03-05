@@ -17,6 +17,8 @@ namespace E3DEngine
 	{
 		NumBones = 0;
 		m_bIsBufferData = false;
+		m_bIsSkinMesh = false;
+		mAnimation = nullptr;
 		CreateBehaviour();
 		TableManager *tbMgr = TableRegister::RegisterAllTable(filePath.c_str());
 		if (tbMgr == nullptr)
@@ -44,11 +46,20 @@ namespace E3DEngine
 			return;
 		}
 
-		// 构建骨骼树
-		aiNode *rootNode = pScene->mRootNode;
-		for (int i = 0; i < rootNode->mNumChildren; i ++)
+		if (m_bIsSkinMesh)
 		{
-			createBoneTree(rootNode->mChildren[i]);
+			// 构建骨骼树
+			BoneTree = BoneMapping;
+			aiNode *rootNode = pScene->mRootNode;
+			for (int i = 0; i < rootNode->mNumChildren; i++)
+			{
+				createBoneTree(rootNode->mChildren[i]);
+			}
+			for (auto &bone : BoneTree)
+			{
+				Transform->AddChild(bone.second->ID, bone.second->Transform);
+			}
+			createAnimation();
 		}
 
 		std::string materialPath = modelCfg->Materials;
@@ -66,12 +77,10 @@ namespace E3DEngine
 
 	void Mesh::SetMaterial(Material *material)
 	{
-		m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, true);
-		if (m_pRenderer == nullptr)
-		{
-			m_pRenderer = new MeshRender;
-			GetRenderSystem()->GetRenderManager()->AddRenderer(material->ID, m_pRenderer);
-		}
+		m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, MESH);
+		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
+		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
+
 		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
 		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
@@ -154,25 +163,31 @@ namespace E3DEngine
 		Bone *pBone = BoneMapping[pNode->mName.data];
 		//transform->AddChild(pBone->Name, pBone->Transform);
 		pBone->SetMetadata(pNode->mMetaData);
-		float scaleX		= 0;
-		float scaleY		= 0;
-		float impointValue	= 0;
-		float indexValue	= 0;
-		impointValue == 1 ? pBone->IsImpoint = true : pBone->IsImpoint = false;
 		
-		pBone->tranScaleX	 = scaleX;
-		pBone->tranScaleY	 = scaleY;
 		for (int i = 0; i < pNode->mNumChildren; ++i)
 		{
-			if (BoneMapping.find(pNode->mChildren[i]->mName.data) != BoneMapping.end())
+			if (BoneTree.find(pNode->mChildren[i]->mName.data) != BoneTree.end())
 			{// 找到一个节点和Bone重名 这个Bone在子节点中，所以是子骨骼
-				pBone->AddChild(BoneMapping[pNode->mChildren[i]->mName.data]);
+				pBone->AddChild(BoneTree[pNode->mChildren[i]->mName.data]);
+				BoneTree.erase(pNode->mChildren[i]->mName.data);
 			}
 			createBoneTree(pNode->mChildren[i]);
 		}
 		
 	}
 	
+	void Mesh::createAnimation()
+	{
+		if (pScene->HasAnimations())
+		{
+			mAnimation = new Animation();
+			mAnimation->SetBones(&BoneMapping);
+			mAnimation->SetScene(pScene);
+			mAnimation->LoadAnimations();
+			mAnimation->Play("Take 001", true);
+		}
+	}
+
 	void Mesh::CreateBehaviour()
 	{
 		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
@@ -216,6 +231,11 @@ namespace E3DEngine
 	
 	void Mesh::loadBones(uint MeshIndex, const aiMesh* pMesh)
 	{
+		if (!pMesh->HasBones())
+		{
+			return;
+		}
+		m_bIsSkinMesh = true;
 		for (uint i = 0 ; i < pMesh->mNumBones ; i++)
 		{
 			Bone * bone = nullptr;
@@ -224,7 +244,7 @@ namespace E3DEngine
 			{
 				bone = new Bone();
 				bone->BoneOffset		= ConvertAiMatrix4x42Mat4f(pMesh->mBones[i]->mOffsetMatrix);
-				bone->ID				= NumBones;
+				bone->BoneIndex			= NumBones;
 				bone->Name				= BoneName;
 				
 				VecBoneMatrix.push_back(&bone->Transform->WorldMatrix);
@@ -243,7 +263,7 @@ namespace E3DEngine
 				uint VertexID = Entries[MeshIndex].BaseVertex + pMesh->mBones[i]->mWeights[j].mVertexId;
 				float Weight  = pMesh->mBones[i]->mWeights[j].mWeight;
 				bone->AddVertexAndWeight(VertexID, Weight);
-				m_vecVertex[VertexID].SetBoneIndexWeight(bone->ID, Weight);
+				m_vecVertex[VertexID].SetBoneIndexWeight(bone->BoneIndex, Weight);
 			}
 		}
 	}
@@ -255,6 +275,19 @@ namespace E3DEngine
 		m_vecIndex.clear();
 		VecBoneMatrix.clear();
 		BoneMapping.clear();
+	}
+
+
+	void Mesh::Update(float deltaTime)
+	{
+		if (mAnimation != nullptr)
+		{
+			mAnimation->Update(deltaTime);
+		}
+		for (auto & bone : BoneTree)
+		{
+			bone.second->Update(deltaTime);
+		}
 	}
 
 	MeshEntity::MeshEntity()

@@ -460,7 +460,7 @@ namespace E3DEngine
 			return;
 		}
 
-		m_pRenderer->pMaterial = material;
+		m_pRenderer->SetMaterial(material);
 		TRANSFER_FIELD_OBJECT(m_pRenderer);
 	}
 
@@ -471,7 +471,7 @@ namespace E3DEngine
 			return nullptr;
 		}
 
-		return m_pRenderer->pMaterial;
+		return m_pRenderer->GetMaterial();
 	}
 
 

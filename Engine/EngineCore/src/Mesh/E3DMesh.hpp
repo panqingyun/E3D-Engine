@@ -10,6 +10,7 @@
 #include "E3DBone.hpp"
 #include "../Object/E3DRenderObject.hpp"
 #include "../Object/E3DComponent.hpp"
+#include "../Animation/E3DAnimation.hpp"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ namespace E3DEngine
 		virtual void SetMaterial(Material *material) override;
 		virtual void SetActive(bool isActive) override;
 		void Destory();
+		virtual void Update(float deltaTime) override;
 	public:
 		Assimp::Importer			pImporter;
 		const aiScene*				pScene;
@@ -42,14 +44,19 @@ namespace E3DEngine
 		void	initMesh(uint MeshIndex, const aiMesh* paiMesh);
 		void	loadBones(uint MeshIndex, const aiMesh* paiMesh);
 		void	createBoneTree(aiNode * pNode);
+		void	createAnimation();
 
 	protected:
 		virtual void CreateBehaviour() override;
 
+		bool m_bIsSkinMesh;
+
 	public:	
 		vector<mat4f*>				VecBoneMatrix;
-		map<string,Bone*>			BoneMapping;
+		map<string, Bone*>			BoneMapping;
+		map<string, Bone*>			BoneTree;
 		uint						NumBones;
+		Animation *					mAnimation;
 	};
 }
 

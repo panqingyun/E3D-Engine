@@ -249,9 +249,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h">
       <Filter>3rd\code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\assimp\Exporter.hpp">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\autolink.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
@@ -283,24 +280,6 @@
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\KHR_thread_storage.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\DDLNode.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLCommon.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLExport.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParser.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\OpenDDLParserUtils.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\openddlparser\Value.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\en.h">
@@ -391,9 +370,6 @@
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\ConvertUTF.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h">
@@ -526,9 +502,6 @@
       <Filter>EngineCore\src\Light</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.hpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp">
@@ -2045,9 +2018,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshFactory.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
@@ -2819,14 +2789,14 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp">
       <Filter>3rd\code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
+      <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -33,7 +33,7 @@
 					ID				= 1 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/rose2_D.png;" 
+					UniformVariable	= "sampler2D:myTexture0-texture/rose2_D.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

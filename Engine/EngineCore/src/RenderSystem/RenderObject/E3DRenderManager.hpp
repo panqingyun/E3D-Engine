@@ -21,6 +21,12 @@ namespace E3DEngine
 		uint IndexNumber;
 	};
 
+	enum RENDER_TYPE
+	{
+		NORMAL,
+		MESH,
+	};
+
 	class Renderer : public RenderObject
 	{
 	public:
@@ -57,7 +63,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual Renderer * CreateVertexRender(int materialID);
-		virtual Renderer * GetRenderer(int materialID, bool isCreate = true);
+		virtual Renderer * GetRenderer(int materialID, RENDER_TYPE type = NORMAL);
 		virtual Renderer * GenRender();
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual void Destory();

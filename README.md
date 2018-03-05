@@ -18,9 +18,7 @@
 
 ### Win32环境配置
 
-- 1.项目根目录下有``mono\mono``文件夹，需将此文件夹拷贝到proj_win32/bin/Library 中，同时需要拷贝到``proj_win32/bin``中的还有根目录中的``Resourc``e文件夹。 
-- 2.将``proj_win32/RenderSystem/gles_renderSystem/GLES/dll`` 中的两个dll文件拷贝到``proj_win32/bin``中。 
-- 3.完成环境配置
+- 将``proj_win32/RenderSystem/gles_renderSystem/GLES/dll`` 中的两个dll文件拷贝到``proj_win32/bin``中。 
 
 ## 从C#编辑器启动 调试C++代码方法：
 - 在``EngineCore``项目上右键打开属性窗口，选择调试选项页，修改调试类型为混合

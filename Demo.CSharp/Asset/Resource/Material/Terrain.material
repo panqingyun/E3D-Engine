@@ -33,10 +33,11 @@
 					ID				= 1 
 					VertexShader	= "shader/SphereVS.shader" 
 					FragmentShader	= "shader/BoxFS.shader" 	
-					UniformVariable	= "" 
+					UniformVariable	= "sampler2D:myTexture0-texture/earth.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate;
 									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>

@@ -48,8 +48,6 @@ void InitEngine(HWND hWnd)
 	int height = rect.bottom - rect.top;
 	std::string strPath = "";
 #ifdef E3D_EDITOR
-	
-
 	char exeFullPath[MAX_PATH]; 
 	GetModuleFileName(NULL, exeFullPath, MAX_PATH);
 
@@ -57,12 +55,13 @@ void InitEngine(HWND hWnd)
 	int pos = strPath.find_last_of('\\', strPath.length());
 	strPath = strPath.substr(0, pos);
 #else 
-	strPath = "E:/E3D/trunk/Demo.CSharp/Asset/";
+	strPath = "../../Demo.CSharp/Asset/";
 #endif
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine();
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
+	CreateEditorGrid();
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)

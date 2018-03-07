@@ -99,7 +99,7 @@ namespace E3DEngine
 		virtual void enableStencil();
 		virtual void beforeUpdate();
 		virtual void afterUpdate();
-		virtual void createTexture(std::string textureName, std::string textureUniform);
+		virtual void createTexture(TextureData& data);
 		virtual void createTexture(Texture *texture, std::string textureUniform);
 
 	public:

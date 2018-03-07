@@ -111,7 +111,7 @@ void MonoScriptManager::loadPlugin()
 {
 	std::vector<FileInfo> files;
 	Resource::GetFiles(Application::AppDataPath + "Plugin", files, "dll");
-	foreach (auto &file in files)
+	for each (auto &file in files)
 	{
 		MonoAssembly * assembly =  mono_domain_assembly_open(m_pDomain, file.FullName.c_str());
 		m_assemblyLists.emplace_back(assembly);

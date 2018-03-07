@@ -13,6 +13,7 @@
 
 namespace E3DEngine
 {
+
 	class TextureFrameEffect;
 	class Texture
 	{
@@ -27,15 +28,18 @@ namespace E3DEngine
 	public:
 		virtual void Create(string fileName);
 		virtual void SetTextureData(void * textureData, int width, int height, int imgDepth);
-		virtual void Create(void * textureData, int width, int height, int imgDepth);
+		virtual void Create(stImageData &data, TextureData &tData);
 		virtual void SetTextureEnum(uint enumNumber);
 		virtual void ActiveBindTexture();
 		virtual void InvalidTexture();
+		virtual void SetClampType(int tp) { }
+		virtual void SetFilterType(int tp) { }
 
 	protected:
 		uint			m_nTextureEnum;
 		unsigned int	m_nTextureBuffer;
-
+		int				m_nTextureClampType;
+		int				m_nTextureFilterType;
 	};
 }
 

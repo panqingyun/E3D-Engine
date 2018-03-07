@@ -22,7 +22,7 @@ namespace E3DEngine
 		
 	}
 
-	void Texture::Create(void *textureData, int width, int height, int imgDepth)
+	void Texture::Create(stImageData &data, TextureData &tData)
 	{
 		
 	}

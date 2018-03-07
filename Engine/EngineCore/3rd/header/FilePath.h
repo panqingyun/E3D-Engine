@@ -71,9 +71,6 @@ namespace vvision
 	/*char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp);
 	int png_read(const char* filename, png_datap data);*/
 #endif
-
-
-	unsigned char * readBmp(const char *bmpName, int &bmpwidth, int &bmpheight);
 }
 
 #endif

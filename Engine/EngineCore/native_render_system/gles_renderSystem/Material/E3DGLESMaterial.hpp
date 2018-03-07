@@ -43,7 +43,7 @@ namespace E3DEngine
 	protected:
 		void enableStencil()override;
 		virtual void openState();
-		virtual void createTexture(std::string textureName, std::string textureUniform)override;
+		virtual void createTexture(TextureData& data)override;
 		virtual void createTexture(Texture *texture, std::string textureUniform)override;
 		
 	};

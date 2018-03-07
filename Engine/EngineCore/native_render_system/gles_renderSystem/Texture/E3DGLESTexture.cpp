@@ -17,9 +17,9 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Texture::Create(std::string fileName)
+	void GLES_Texture::Create(std::string fileName, TextureData &tData)
 	{
-		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->CreateTextureBuffer(fileName);
+		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->CreateTextureBuffer(fileName, tData);
 	}
 	
 	void GLES_Texture::SetTextureData(void * textureData, int width, int height, int imgDepth)
@@ -44,7 +44,7 @@ namespace E3DEngine
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::Create(void *textureData, int width, int height, int imgDepth)
+	void GLES_Texture::Create(stImageData &data, TextureData &tData)
 	{
 		glGenTextures(1, &m_nTextureBuffer);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
@@ -54,21 +54,8 @@ namespace E3DEngine
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		unsigned int eFormat = GL_RGBA;
-		switch (imgDepth)
-		{
-		case 3:     // Most likely case
-			eFormat = GL_RGB;
-			break;
-		case 4:
-			eFormat = GL_RGBA;
-			break;
-		case 1:
-			eFormat = GL_LUMINANCE;
-			break;
-		default:
-			break;
-		}
-		glTexImage2D(GL_TEXTURE_2D, 0, eFormat, width, height, 0, eFormat, GL_UNSIGNED_BYTE, textureData);
+		
+		glTexImage2D(GL_TEXTURE_2D, 0, data.rgb_mode, data.width, data.height, 0, data.rgb_mode, GL_UNSIGNED_BYTE, data.data);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
@@ -94,6 +81,18 @@ namespace E3DEngine
 	void GLES_Texture::InvalidTexture()
 	{
 		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+
+	void GLES_Texture::SetClampType(int tp)
+	{
+
+	}
+
+
+	void GLES_Texture::SetFilterType(int tp)
+	{
+
 	}
 
 	void GLES_Texture::SetTextureUniformName(std::string name)

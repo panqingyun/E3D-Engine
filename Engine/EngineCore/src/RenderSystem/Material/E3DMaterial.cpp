@@ -43,7 +43,12 @@ namespace E3DEngine
 			
 			for (auto& sp : pShader->GetSamplerNameValue())
 			{
-				createTexture(sp.second, sp.first);
+				TextureData tData;
+				tData.clampType = (CLAMP_TYPE)config->TextureClampType;
+				tData.filterType = (FILTER_TYPE)config->TextureFilterType;
+				tData.fileName = sp.second;
+				tData.uniformName = sp.first;
+				createTexture(tData);
 			}
 		}
 	}
@@ -53,7 +58,7 @@ namespace E3DEngine
 		
 	}
 
-	void Material::createTexture(std::string textureName, std::string textureUniform)
+	void Material::createTexture(TextureData& data)
 	{
 		
 	}

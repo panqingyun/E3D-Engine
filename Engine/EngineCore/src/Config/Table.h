@@ -394,6 +394,8 @@ namespace E3DEngine
 			Name			= "MaterialConfig";
 			EnableDepthTest	= 1;
 			CullFace		= 1;
+			TextureClampType = 0;
+			TextureFilterType = 0;
 		}
 		DECLARE_MEMBER(MaterialConfig, int, ID);
 		DECLARE_MEMBER(MaterialConfig, string, Texture);
@@ -403,6 +405,8 @@ namespace E3DEngine
 		DECLARE_MEMBER(MaterialConfig, int, IsBlend);
 		DECLARE_MEMBER(MaterialConfig, int, CullFace);
 		DECLARE_MEMBER(MaterialConfig, int, EnableDepthTest);
+		DECLARE_MEMBER(MaterialConfig, int, TextureClampType);
+		DECLARE_MEMBER(MaterialConfig, int, TextureFilterType);
 
 		virtual void registProperty() override
 		{
@@ -414,6 +418,8 @@ namespace E3DEngine
 			SAVE_MEMBER(IsBlend, int);
 			SAVE_MEMBER(CullFace, int);
 			SAVE_MEMBER(EnableDepthTest, int);
+			SAVE_MEMBER(TextureClampType, int);
+			SAVE_MEMBER(TextureFilterType, int);
 		}
 	};
 

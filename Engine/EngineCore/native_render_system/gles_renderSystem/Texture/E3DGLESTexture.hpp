@@ -24,13 +24,15 @@ namespace E3DEngine
 
 	public:
 		virtual void SetTextureUniformName(std::string name);
-		virtual void Create(std::string fileName);
+		virtual void Create(std::string fileName, TextureData &tData);
 		virtual void SetTextureUniformLocation(int i, GLuint ProgramHandle);
 		virtual void SetTextureData(void * textureData, int width, int height, int imgDepth)override;
-		virtual void Create(void * textureData, int width, int height, int imgDepth)override;
+		virtual void Create(stImageData &data, TextureData &tData)override;
 		virtual void SetTextureEnum(unsigned int enumNumber);
 		virtual void ActiveBindTexture()override;
 		virtual void InvalidTexture()override;
+		virtual void SetClampType(int tp) override;
+		virtual void SetFilterType(int tp) override;
 
 	public:
 		GLuint			m_nTextureUniform;

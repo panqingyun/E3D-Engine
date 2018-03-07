@@ -47,7 +47,7 @@ namespace Game
         string sphereMaterialPath = "Material/SphereMaterial.material";
         string particleFirePath = "Particle/ParticleFire.particle";
         string mainScenePath = "Scene/MainEntry.scene";
-        string meshFilePath = "Mesh/shengmu.mesh";
+        string meshFilePath = "Mesh/chengqiang.mesh";
         string terrainMaterialPath = "Material/Terrain.material";
         Vector2 curMousePosition;
         Vector2 lastMousePosition;
@@ -62,7 +62,7 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.Create();
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(-20, 30, 50);
+            MainCamera.Transform.Position = new Vector3(-20, 180, 50);
             MainCamera.Transform.Rotation = new Vector3(0, -10, 0);
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
@@ -79,9 +79,10 @@ namespace Game
             GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
             mesh = Resource.Load<Mesh>(meshFilePath, 1);
-            mesh.Transform.Position = new Vector3(0, -80, -260);
+            mesh.Transform.Position = new Vector3(0, 0, 0);
             mesh.Transform.Rotation = new Vector3(-90, 0, 0);
-            float xStart = -18;
+            mesh.Transform.Scale = new Vector3(0.1f, 0.1f, 0.1f);
+           /* float xStart = -18;
             float yStart = 50;
             for (int i = 0; i < 15; i++)
             {
@@ -105,14 +106,14 @@ namespace Game
             boxGround.Transform.Rotation = new Vector3(0, 0, 20);
             boxGround.Active = true;
             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
-            collider3.CreateRigiBody(0);
+            collider3.CreateRigiBody(0);*/
             Material materialS = Resource.Load<Material>(sphereMaterialPath);
             sphere = Sphere.Create(20);
             sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(-30, 40, 0);
+            sphere.Transform.Position = new Vector3(-30, 200, 0);
             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
             sCollider.CreateRigiBody(0);
-            Material materialB = Resource.Load<Material>(cubeMaterialPath);
+           /* Material materialB = Resource.Load<Material>(cubeMaterialPath);
             Box box1 = Box.Create(3, 3, 3);
             box1.Material = materialB;
             box1.Transform.Position = new Vector3(2.5f, 5, 0);
@@ -132,7 +133,7 @@ namespace Game
             for (int i = 0; i < particle.Particles.Length; i++)
             {
                 particle.Particles[i].Transform.Position = nwPos;
-            }
+            }*/
         }
 
         public void MouseButtonDown(MouseButtonInfo mouseInfo)
@@ -203,43 +204,44 @@ namespace Game
 
         Vector3 curCameraPos = new Vector3();
         Vector3 curCameraDir = new Vector3();
+        float speed = 25;
 
         private void KeyDown(KeyCode keyCode)
         {
             curCameraPos = MainCamera.Transform.Position;
             if (keyCode == KeyCode.KeyW)
             {
-                curCameraDir = MainCamera.Forward;
+                curCameraDir = MainCamera.Forward * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
             else if(keyCode == KeyCode.KeyS)
             {
-                curCameraDir = MainCamera.Forward * -1;
+                curCameraDir = MainCamera.Forward * -1 * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
             else if(keyCode == KeyCode.KeyA)
             {
-                curCameraDir = MainCamera.Right * -1;
+                curCameraDir = MainCamera.Right * -1 * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
             else if (keyCode == KeyCode.KeyD)
             {
-                curCameraDir = MainCamera.Right;
+                curCameraDir = MainCamera.Right * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
             else if (keyCode == KeyCode.KeyE)
             {
-                curCameraDir = MainCamera.Up;
+                curCameraDir = MainCamera.Up * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }
             else if (keyCode == KeyCode.KeyQ)
             {
-                curCameraDir = MainCamera.Up * -1;
+                curCameraDir = MainCamera.Up * -1 * speed;
                 curCameraDir.Normalize();
                 MainCamera.Transform.Position = curCameraPos + curCameraDir;
             }

@@ -25,7 +25,7 @@ namespace E3DEngine
 
 	void Scene::Update(float deltaTime)
 	{
-		for (auto &node : m_vecObjList)
+		for each(auto &node in m_vecObjList)
 		{
 			node.second->Update(deltaTime);
 		}
@@ -50,6 +50,7 @@ namespace E3DEngine
 		{
 			return;
 		}
+
 		int childSize = m_vecObjList.size();
 		for (int i = 0; i < childSize; i++)
 		{
@@ -104,7 +105,7 @@ namespace E3DEngine
 
 	void Scene::RenderScene(float deltaTime)
 	{
-		for (Camera * camera : m_vecCamera)
+		for each(Camera * camera in m_vecCamera)
 		{
 			camera->Render(deltaTime);
 		}
@@ -112,7 +113,7 @@ namespace E3DEngine
 
 	void Scene::ChangeRenderIndex(UINT id, eRenderIndex index)
 	{
-		for (Camera *camera : m_vecCamera)
+		for each(Camera *camera in m_vecCamera)
 		{
 			camera->GetRenderQueue()->ChangeRenderQueue(id, index);
 		}
@@ -121,7 +122,7 @@ namespace E3DEngine
 	void Scene::AddCamera(Camera * pCamera)
 	{
 		bool isCanInsert = true;
-		for (Camera * camera : m_vecCamera)
+		for each(Camera * camera in m_vecCamera)
 		{
 			if (pCamera == camera)
 			{
@@ -131,7 +132,7 @@ namespace E3DEngine
 		if (isCanInsert)
 		{
 			m_vecCamera.emplace_back(pCamera);
-			for (auto &obj : m_mapRenders)
+			for each(auto &obj in m_mapRenders)
 			{
 				if (!pCamera->GetRenderQueue()->FindInRenderQueue(obj.second))
 				{
@@ -153,7 +154,7 @@ namespace E3DEngine
 
 	Camera* Scene::GetCamera(UINT cameraID)
 	{
-		for (Camera * camera : m_vecCamera)
+		for each (Camera * camera in m_vecCamera)
 		{
 			if (camera->ID == cameraID)
 			{
@@ -166,7 +167,7 @@ namespace E3DEngine
 
 	void Scene::ChangeFrameSize(float w, float h)
 	{
-		for (Camera * camera : m_vecCamera)
+		for each(Camera * camera in m_vecCamera)
 		{
 			camera->FrameSizeChange(w / h);
 		}
@@ -215,7 +216,7 @@ namespace E3DEngine
 
 		m_mapRenders[rb->ID] = rb;
 
-		for (Camera * camera : m_vecCamera)
+		for each(Camera * camera in m_vecCamera)
 		{
 			if (camera->GetLayerMask() & layer)
 			{

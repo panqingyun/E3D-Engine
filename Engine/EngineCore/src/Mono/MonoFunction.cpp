@@ -162,7 +162,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera)
 	const float32 fov = 60.0f;
 	const vec3f up = vec3f(0.0f, 1.0f, 0.0);
 	const float32 zNear = 1.0f;
-	const float32 zFar = 3000.0f;
+	const float32 zFar = 30000.0f;
 	Vector2 frameSize = GetRenderSystem()->GetFrameSize();
 	const float32 aspect = frameSize.x / frameSize.y;
 	const vec3f position = vec3f(0, 0, 200);

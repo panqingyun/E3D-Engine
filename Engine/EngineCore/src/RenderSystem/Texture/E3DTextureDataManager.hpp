@@ -17,11 +17,34 @@ namespace E3DEngine
 		void *	data;
 		int		width;
 		int		height;
+		int		rgb_mode;
 		~stImageData()
 		{
 			//free(data);
 		}
+	};	
+	
+	enum CLAMP_TYPE
+	{
+		CLAMP_TO_EDGE = 0,
+		REPEAT = 1,
+		MIRRORED_REPEAT = 2,
 	};
+
+	enum FILTER_TYPE
+	{
+		LINEAR = 0,
+		NEAREST = 1,
+	};
+
+	struct TextureData
+	{
+		CLAMP_TYPE clampType;
+		FILTER_TYPE filterType;
+		std::string fileName;
+		std::string uniformName;
+	};
+
 	class TextureDataManager : public IObject
 	{
 	public:
@@ -35,7 +58,7 @@ namespace E3DEngine
 		// @return 纹理缓冲区ID
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual unsigned int CreateTextureBuffer(std::string imageName);
+		virtual unsigned int CreateTextureBuffer(std::string imageName, TextureData &tData);
 
 		// -----------------------------------------------
 		// 创建图像数据
@@ -52,7 +75,6 @@ namespace E3DEngine
 
 	protected:
 		std::map<std::string, unsigned int> m_mapTextureBuffer;
-		std::map<std::string, stImageData*> m_mapTextureData;
 	};
 }
 

@@ -9,7 +9,7 @@
 
 #include "../Utils/E3DUtil.hpp"
 #include "E3DAutoreleasePool.h"
-
+#include <typeinfo>
 namespace E3DEngine
 {
 	Interface IObject
@@ -31,6 +31,7 @@ namespace E3DEngine
 		virtual void EffectEnd(IObject * sender, EventArgs * e) = 0;
 		virtual void PlayDurationEnd(IObject * sender, EventArgs * e) = 0;
 	};
+
 
 	class Ref : public IObject
 	{

@@ -59,7 +59,7 @@ if (!OBJ->IsActive)\
 #define extends : public
 #define implement : public
 #define foreach for
-#define in :
+//#define in :
 #define is ==
 
 #define NULL_SHADER 0

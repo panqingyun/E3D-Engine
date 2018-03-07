@@ -43,15 +43,15 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Material::createTexture(std::string textureName, std::string textureUniform)
+	void GLES_Material::createTexture(TextureData& data)
 	{
 		GLES_Texture * texture = new GLES_Texture();
 		std::string path = filePath;
-		path = path + textureName;
+		path = path + data.fileName;
 		int textureSum = Textures.size();
-		texture->Create(path);
+		texture->Create(path, data);
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
-		texture->SetTextureUniformName(textureUniform);
+		texture->SetTextureUniformName(data.uniformName);
 		texture->SetTextureUniformLocation(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}

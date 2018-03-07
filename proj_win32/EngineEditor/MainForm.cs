@@ -49,7 +49,7 @@ namespace EngineEditor
 
         void EffectEditor_Load(object sender, EventArgs e)
         {
-            EngineDLL.SetAppDataPath(Application.StartupPath);
+            EngineDLL.SetAppDataPath("../../Demo.CSharp/Asset/");
             EngineDLL.InitilizeEngine();
             EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
             EngineDLL.StartAppliaction();

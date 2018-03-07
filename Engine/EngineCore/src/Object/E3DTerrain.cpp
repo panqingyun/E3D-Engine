@@ -7,7 +7,14 @@
 void E3DEngine::Terrain::Create(const char * heightMapFileName)
 {
 	int mapWidth, mapHeight;
-	/*unsigned char * mapContent = vvision::readBmp(heightMapFileName, mapWidth, mapHeight);
+	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(heightMapFileName, 0);
+	FIBITMAP *dib = FreeImage_Load(fifmt, heightMapFileName, 0);
+
+	// 图片是上下颠倒的
+	FreeImage_FlipVertical(dib);
+	unsigned char *mapContent = (unsigned char*)FreeImage_GetBits(dib);
+	mapWidth = FreeImage_GetWidth(dib);
+	mapHeight = FreeImage_GetHeight(dib);
 
 	if (mapContent != nullptr)
 	{
@@ -25,7 +32,7 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 				char r = mapContent[i * mapWidth + j + 0];
 				char g = mapContent[i * mapWidth + j + 1];
 				char b = mapContent[i * mapWidth + j + 2];
-				y = 0;// ((r + g + b) / 3.0) / 30;
+				y =  ((r + g + b) / 3.0) / 10;
 				m_vecVertex[vertexIndex].SetPosition(x * 5, y , z * 5);
 				m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
 				m_vecVertex[vertexIndex].SetColor(1, 1, 1, 1);
@@ -43,7 +50,7 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 				}
 			}
 		}
-	}*/
+	}
 }
 
 
@@ -62,7 +69,7 @@ void E3DEngine::Terrain::Create(int size)
 			y = 0;
 			m_vecVertex[vertexIndex].SetPosition(x * 5, y, z * 5);
 			m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
-			m_vecVertex[vertexIndex].SetColor(0.8, 0.8, 0.8, 1);
+			m_vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 1);
 			m_vecVertex[vertexIndex].SettextureCoord((float)i / (size - 1), (float)j / (size - 1));
 			vertexIndex++;
 			if (i < size - 1 && j < size - 1)

@@ -21,7 +21,6 @@
 #define VVISION_vvision_h
 
 #include "vmath.h"
-#include "BoundingBox.h"
 
 using namespace vvision;
 using namespace std;

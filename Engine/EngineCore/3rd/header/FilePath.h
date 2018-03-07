@@ -37,14 +37,6 @@ namespace vvision
 #define PNG_ERROR_JMP 5
 #define PNG_READ_HEADER 4
 
-    typedef struct png_data_t 
-	{
-        unsigned int width;
-        unsigned int height;
-        char* data;
-		int pixel_depth;
-    }  *png_datap;
-
     /** Get the full path of a file in the filesystem.
      * @param filename the name of the file
      * @return the path to the given file
@@ -66,8 +58,8 @@ namespace vvision
      * @param widht/height the image width and height
      * @return the data pointer to the image. dont forget to free memory by calling free.
      */
-    char8* LoadImage(const char8* filename, int32 *width, int32 *height, int &bpp);
-    char8* LoadImage(const string& filename, int32 *width, int32 *height, int &bpp);
+   /* char8* LoadImage(const char8* filename, int32 *width, int32 *height, int &bpp);
+    char8* LoadImage(const string& filename, int32 *width, int32 *height, int &bpp);*/
 	
 	std::string GetFolder(std::string fullPath);
 
@@ -76,8 +68,8 @@ namespace vvision
 	 */
 	string getMainBundlePath();
 #ifndef __IOS__
-	char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp);
-    int png_read(const char* filename, png_datap data);
+	/*char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp);
+	int png_read(const char* filename, png_datap data);*/
 #endif
 
 

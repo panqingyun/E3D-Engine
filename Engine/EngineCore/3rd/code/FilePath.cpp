@@ -9,15 +9,8 @@
 
 #include "FilePath.h"
 #ifdef WIN32
-#include <png.h>
-#include <pnginfo.h>
 #include <atlimage.h>
 #include <wingdi.h>
-#endif
-
-#ifdef __ANDROID__
-#include <png.h>
-#include <pnginfo.h>
 #endif
 
 #ifdef __IOS__
@@ -181,7 +174,7 @@ namespace vvision
 		fclose(file);
 		return loaded_data;
 	}
-
+	/*
 	typedef struct
 	{
 		unsigned char Header[12];
@@ -279,7 +272,7 @@ namespace vvision
 				else
 					texture->type = GL_RGBA;*/
 
-		tga.bytesPerPixel = (tga.Bpp / 8);
+	/*	tga.bytesPerPixel = (tga.Bpp / 8);
 		tga.imageSize = (tga.bytesPerPixel * tga.Width * tga.Height);
 		char *imageData = (char *)malloc(tga.imageSize);
 
@@ -342,7 +335,7 @@ namespace vvision
 		else
 			texture->type = GL_RGBA;*/
 
-		tga.bytesPerPixel = (tga.Bpp / 8);
+		/*tga.bytesPerPixel = (tga.Bpp / 8);
 		tga.imageSize = (tga.bytesPerPixel * tga.Width * tga.Height);
 		char * imageData = (char *)malloc(tga.imageSize);
 
@@ -497,9 +490,9 @@ namespace vvision
 		} while (currentpixel < pixelcount);
 		return imageData;
 
-	}
+	}*/
 
-    char8* LoadImage(const char8* filename, int32 *width, int32 *height, int &bpp)
+ /*   char8* LoadImage(const char8* filename, int32 *width, int32 *height, int &bpp)
     {
         const char8 *filepath = filename;
 		void *imageData = NULL;
@@ -586,10 +579,10 @@ namespace vvision
 		}
 #endif
 		return (char8*)imageData;
-    }
+    }*/
 #ifndef __IOS__
 
-	char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp)
+	/*char8* LoadImageW(const string& filename, int32 *width, int32 *height, int &bpp)
 	{
 		string extension;
 		StringManipulator::GetExtensitonType(filename, extension);
@@ -622,20 +615,20 @@ namespace vvision
 				*width = etcHeader.getWidth();
 				*height = etcHeader.getHeight();
 			}*/
-		}
+		/*}
 		else if (IsTga)
 		{
 			imageData = LoadTGA(filename.c_str(), *width, *height, bpp);
 		}
 		return (char8*)imageData;
-	}
+	}*/
 #endif
 
 #ifndef WIN32
-    char8* LoadImage(const string& filename, int32 *width, int32 *height, int &bpp)
+    /*char8* LoadImage(const string& filename, int32 *width, int32 *height, int &bpp)
     {
         return LoadImage(filename.c_str(), width, height, bpp);
-    }
+    }*/
 #endif
 
 	std::string GetFolder(std::string fullPath)
@@ -647,7 +640,7 @@ namespace vvision
 
 
 #ifndef __IOS__
-	void readFileCallback(png_structp png_ptr, png_bytep destination, png_size_t bytesToRead)
+	/*void readFileCallback(png_structp png_ptr, png_bytep destination, png_size_t bytesToRead)
 	{
 		png_voidp io_ptr = png_get_io_ptr(png_ptr);
 
@@ -713,14 +706,22 @@ namespace vvision
 		int color_type;
 		png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, NULL, NULL, NULL);
 		// printf("width:%d,height:%d,bit_depth:%d,color_type:%d",width,height,bit_depth,color_type);
-
-		png_bytep raw_data = (png_bytep)malloc(width*height * 4 * sizeof(png_byte));
+		int pix = 4;
+		if (info_ptr->pixel_depth == 24)
+		{
+			pix = 3;
+		}
+		else if (info_ptr->pixel_depth == 32)
+		{
+			pix = 4;
+		}
+		png_bytep raw_data = (png_bytep)malloc(width*height * pix * sizeof(png_byte));
 		// printf("row bytes:%d\n",png_get_rowbytes(png_ptr,info_ptr));
 
 		png_bytep *row_pointers = (png_bytep*)malloc(height*sizeof(png_bytep));
 		for (int i = 0; i<height; i++)
 		{
-			row_pointers[i] = raw_data + i* (width * 4);
+			row_pointers[i] = raw_data + i* (width * pix);
 		}
 
 		png_read_image(png_ptr, row_pointers);
@@ -736,7 +737,7 @@ namespace vvision
 		free(row_pointers);
 		return PNG_READ_SUCCESS;
 	}
-
+	*/
 #endif
 
 	unsigned char * readBmp(const char *bmpName, int &bmpwidth, int &bmpheight)

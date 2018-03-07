@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MeshConfig>
+		<Item ID=1 ModelFilePath="Model/shengmu.FBX" Materials="Material/shengmu.material : 1" />
+	</MeshConfig>
+</ConfigSystem>

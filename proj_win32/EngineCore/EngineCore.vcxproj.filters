@@ -237,190 +237,13 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\assbin_chunks.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h">
-      <Filter>3rd\code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\autolink.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\config.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\features.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\forwards.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\json.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\reader.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\value.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\writer.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kd.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kdplatform.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\KHR_thread_storage.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\en.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\error.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\biginteger.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\diyfp.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\dtoa.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\ieee754.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\itoa.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\meta.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\pow10.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\stack.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strfunc.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strtod.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\swap.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\inttypes.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\stdint.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\allocators.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\document.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodedstream.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodings.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filereadstream.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filewritestream.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorybuffer.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorystream.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\pointer.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\prettywriter.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\rapidjson.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\reader.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\stringbuffer.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\writer.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\deflate.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\gzguts.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffast.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffixed.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inflate.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inftrees.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\png.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngconf.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngdebug.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnginfo.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnglibconf.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngpriv.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngstruct.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\revision.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Singleton.h">
@@ -435,9 +258,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyxml.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\trees.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\types.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
@@ -448,18 +268,6 @@
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vvision.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.in.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zlib.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zutil.h">
       <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
@@ -1865,99 +1673,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\adler32.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\compress.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\crc32.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\deflate.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\example.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzclose.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzlib.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzread.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzwrite.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\infback.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inffast.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inflate.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inftrees.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_reader.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_value.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_writer.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\png.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngerror.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngget.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngmem.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngpread.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngread.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrio.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrtran.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrutil.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngset.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngtrans.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwio.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwrite.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwtran.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwutil.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
@@ -1973,16 +1688,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp">
       <Filter>3rd\code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\trees.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\uncompr.c">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\zutil.c">
       <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -2800,30 +2506,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Engine\EngineCore\3rd\code\.editorconfig">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalarray.inl">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalmap.inl">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_valueiterator.inl">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\code\sconscript">
-      <Filter>3rd\code</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\README">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\zconf.h.cmakein">
-      <Filter>3rd\header</Filter>
-    </None>
-    <None Include="..\..\Engine\EngineCore\3rd\header\zlib.pc.cmakein">
-      <Filter>3rd\header</Filter>
-    </None>
     <None Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\premake4.lua">
       <Filter>3rd\physics\Bullet3Serialize\Bullet2FileLoader</Filter>
     </None>

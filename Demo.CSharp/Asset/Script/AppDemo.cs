@@ -47,7 +47,7 @@ namespace Game
         string sphereMaterialPath = "Material/SphereMaterial.material";
         string particleFirePath = "Particle/ParticleFire.particle";
         string mainScenePath = "Scene/MainEntry.scene";
-        string meshFilePath = "Mesh/Flower.mesh";
+        string meshFilePath = "Mesh/shengmu.mesh";
         Vector2 curMousePosition;
         Vector2 lastMousePosition;
         float cameraRotateX = 0, cameraRotateY = 0;
@@ -105,12 +105,12 @@ namespace Game
             //boxGround.Active = true;
             //BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
             //collider3.CreateRigiBody(0);
-            //Material materialS = Resource.Load<Material>(sphereMaterialPath);
-            //sphere = Sphere.Create(20);
-            //sphere.Material = materialS;
-            //sphere.Transform.Position = new Vector3(-30, 40, 0);
-            //SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            //sCollider.CreateRigiBody(0);
+            Material materialS = Resource.Load<Material>(sphereMaterialPath);
+            sphere = Sphere.Create(20);
+            sphere.Material = materialS;
+            sphere.Transform.Position = new Vector3(-30, 40, 0);
+            SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
+            sCollider.CreateRigiBody(0);
             //Material materialB = Resource.Load<Material>(cubeMaterialPath);
             //Box box1 = Box.Create(3, 3, 3);
             //box1.Material = materialB;

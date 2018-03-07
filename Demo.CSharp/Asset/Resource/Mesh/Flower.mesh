@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MeshConfig>
-		<Item ID=1 ModelFilePath="Model/HUa_Y01_base.fbx" Materials="Material/hua.material : 1" />
+		<Item ID=1 ModelFilePath="Model/hua.fbx" Materials="Material/hua.material : 1" />
 	</MeshConfig>
 </ConfigSystem>

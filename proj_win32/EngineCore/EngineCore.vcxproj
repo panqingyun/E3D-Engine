@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>..\bin</OutDir>
@@ -80,7 +80,7 @@
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin</OutDir>
   </PropertyGroup>
@@ -100,7 +100,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;FreeImage_d.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -140,7 +140,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;FreeImage.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
@@ -176,81 +176,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\assbin_chunks.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\fast_atof.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\json_batchallocator.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\code\qnan.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\BoundingBox.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\crc32.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\deflate.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\gzguts.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffast.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inffixed.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inflate.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\inftrees.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\autolink.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\config.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\features.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\forwards.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\json.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\reader.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\value.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\writer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kd.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\kdplatform.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\KD\KHR_thread_storage.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\png.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngconf.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngdebug.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnginfo.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pnglibconf.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngpriv.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\pngstruct.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\allocators.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\document.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodedstream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\encodings.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\en.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\error\error.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filereadstream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\filewritestream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\biginteger.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\diyfp.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\dtoa.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\ieee754.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\itoa.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\meta.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\pow10.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\stack.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strfunc.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\strtod.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\internal\swap.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorybuffer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\memorystream.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\inttypes.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\msinttypes\stdint.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\pointer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\prettywriter.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\rapidjson.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\reader.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\stringbuffer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\rapidjson\writer.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\revision.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Singleton.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinystr.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyutil.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyxml.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\trees.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\types.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Utils.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vmath.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vvision.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zconf.in.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zlib.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\zutil.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\btBulletCollisionCommon.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\btBulletDynamicsCommon.h" />
     <ClInclude Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3BroadphaseCallback.h" />
@@ -721,47 +657,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\adler32.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\compress.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\crc32.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\deflate.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\example.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzclose.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzlib.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzread.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\gzwrite.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\infback.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inffast.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inflate.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\inftrees.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_reader.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_value.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\json_writer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\png.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngerror.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngget.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngmem.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngpread.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngread.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrio.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrtran.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngrutil.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngset.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngtrans.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwio.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwrite.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwtran.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\pngwutil.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyutil.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxml.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\trees.c" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\uncompr.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\zutil.c" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.cpp" />
@@ -1040,14 +942,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Engine\EngineCore\3rd\code\.editorconfig" />
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalarray.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_internalmap.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\code\json_valueiterator.inl" />
-    <None Include="..\..\Engine\EngineCore\3rd\code\sconscript" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\README" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\zconf.h.cmakein" />
-    <None Include="..\..\Engine\EngineCore\3rd\header\zlib.pc.cmakein" />
     <None Include="..\..\Engine\EngineCore\3rd\Physical\Bullet3Serialize\Bullet2FileLoader\premake4.lua" />
     <None Include="..\..\Engine\EngineCore\3rd\Physical\LinearMath\premake4.lua" />
   </ItemGroup>

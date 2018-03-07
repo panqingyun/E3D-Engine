@@ -71,12 +71,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\..\lib</OutDir>
-    <IncludePath>..\..\..\Engine\EngineCore;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono\eglib\src;GLES\include;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono\eglib\src;GLES\include;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\lib</OutDir>
   </PropertyGroup>

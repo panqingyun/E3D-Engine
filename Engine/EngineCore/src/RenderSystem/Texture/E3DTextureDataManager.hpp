@@ -8,6 +8,7 @@
 #define TextureDataManager_hpp
 
 #include "src/Source/Interface.h"
+#include <FreeImage.h>
 
 namespace E3DEngine
 {
@@ -18,7 +19,7 @@ namespace E3DEngine
 		int		height;
 		~stImageData()
 		{
-			free(data);
+			//free(data);
 		}
 	};
 	class TextureDataManager : public IObject
@@ -47,12 +48,11 @@ namespace E3DEngine
 		// 清理
 		//-----------------------------------------------
 		virtual void Cleanup();
+		std::string DEFAULT_TEXTURE_FILE;
 
 	protected:
 		std::map<std::string, unsigned int> m_mapTextureBuffer;
 		std::map<std::string, stImageData*> m_mapTextureData;
-		std::string DEFAULT_TEXTURE_FILE;
-
 	};
 }
 

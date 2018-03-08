@@ -20,7 +20,7 @@ namespace E3DEngine
 
 		void setTextureParam(TextureData &tData, unsigned int &clampType, unsigned int &filterType);
 
-		virtual stImageData * CreateTextureData(std::string imageName) override;
+		virtual TextureData * CreateTextureData(std::string imageName) override;
 		virtual void Cleanup() override;
 	};
 }

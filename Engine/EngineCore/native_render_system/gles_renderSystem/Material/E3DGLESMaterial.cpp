@@ -116,16 +116,22 @@ namespace E3DEngine
 	}
 
     void GLES_Material::openState()
-    {
+	{
+		if (enableDepthTest)
+		{
+			glEnable(GL_DEPTH_TEST);
+		}
+		else
+		{
+			glDisable(GL_DEPTH_TEST);
+		}
         //深度测试
-        if(enableDepthTest)
-        {
-            glEnable(GL_DEPTH_TEST); 
+        if(enablewriteDepth)
+		{
 			glDepthMask(GL_TRUE);
         }
         else
-        {
-			glDisable(GL_DEPTH_TEST);
+		{
 			glDepthMask(GL_FALSE);
         }       
 
@@ -135,9 +141,9 @@ namespace E3DEngine
         }
         else
         {
-            glEnable(GL_CULL_FACE);
-        }
-		
+			glEnable(GL_CULL_FACE);
+        }		
+
 		if (blendType == eBlendType_One)
 		{
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);

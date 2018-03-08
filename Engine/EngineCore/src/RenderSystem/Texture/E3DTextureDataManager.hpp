@@ -11,19 +11,7 @@
 #include <FreeImage.h>
 
 namespace E3DEngine
-{
-	struct stImageData
-	{
-		void *	data;
-		int		width;
-		int		height;
-		int		rgb_mode;
-		~stImageData()
-		{
-			//free(data);
-		}
-	};	
-	
+{	
 	enum CLAMP_TYPE
 	{
 		CLAMP_TO_EDGE = 0,
@@ -43,6 +31,26 @@ namespace E3DEngine
 		FILTER_TYPE filterType;
 		std::string fileName;
 		std::string uniformName;
+
+		unsigned int rgbModule;
+		void *	imgData;
+		int		width;
+		int		height;
+
+		TextureData()
+		{
+			clampType = CLAMP_TYPE::CLAMP_TO_EDGE;
+			filterType = FILTER_TYPE::LINEAR;
+			imgData = nullptr;
+			width = 0;
+			height = 0;
+			rgbModule = 0;
+		}
+
+		~TextureData()
+		{
+			free(imgData);
+		}
 	};
 
 	class TextureDataManager : public IObject
@@ -65,7 +73,7 @@ namespace E3DEngine
 		// @return 图像内部数据RGB
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual stImageData * CreateTextureData(std::string imageName);
+		virtual TextureData * CreateTextureData(std::string imageName);
 
 		// -----------------------------------------------
 		// 清理

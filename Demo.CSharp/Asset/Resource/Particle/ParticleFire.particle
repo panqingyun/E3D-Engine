@@ -101,6 +101,6 @@
 		 startY;				开始UV的Y(像素)，不规则拼图时必填
 		 framePos				序列帧数组
 		 -->
-		<Item ID=1 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 2048 heightTexture = 2048 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "31.0,2.0"/>
+		<Item ID=1 speed=12 repeatStartFrame=0 type=0 isReverse=0 leftRightMirror=1 topBottomMirror=1  widthTexture = 64 heightTexture = 64 widthPic = 64 heightPic = 64 startX = 0  startY = 0 framePos = "0.0,0.0"/>
 	</TextureUVConfig>
 </ConfigSystem>

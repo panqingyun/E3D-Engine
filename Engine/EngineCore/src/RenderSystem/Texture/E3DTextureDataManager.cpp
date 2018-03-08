@@ -18,7 +18,7 @@ unsigned int E3DEngine::TextureDataManager::CreateTextureBuffer(std::string imag
 	return 0;
 }
 
-E3DEngine::stImageData * E3DEngine::TextureDataManager::CreateTextureData(std::string imageName)
+E3DEngine::TextureData * E3DEngine::TextureDataManager::CreateTextureData(std::string imageName)
 {
 	return nullptr;
 }

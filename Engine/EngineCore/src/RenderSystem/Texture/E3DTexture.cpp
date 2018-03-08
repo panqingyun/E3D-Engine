@@ -17,12 +17,12 @@ namespace E3DEngine
 	{
 	}
 	
-	void Texture::SetTextureData(void * textureData, int width, int height, int imgDepth)
+	void Texture::SetTextureData(TextureData &tData)
 	{
 		
 	}
 
-	void Texture::Create(stImageData &data, TextureData &tData)
+	void Texture::Create(TextureData &tData)
 	{
 		
 	}

@@ -44,8 +44,8 @@ namespace E3DEngine
 		material->enableDoubleSide = config->CullFace == 0;
 		material->filePath = folder + "/";
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
-		material->CreateMaterial(config, sCfg);
 		material->MaterialTableManager = tblManager;
+		material->CreateMaterial(config, sCfg);
 		m_mapIDMaterials[material->ID] = material;
 		return material;
 	}

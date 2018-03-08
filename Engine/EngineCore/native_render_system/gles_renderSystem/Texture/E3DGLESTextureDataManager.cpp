@@ -22,18 +22,15 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 	GLuint TextureBuffer = 0;
 	glGenTextures(1, &TextureBuffer);
 	glBindTexture(GL_TEXTURE_2D, TextureBuffer);
-	
-	stImageData * imgData = CreateTextureData(imageName);
 
 	unsigned int clampType = 0;
 	unsigned int filterType = 0;
 
 	setTextureParam(tData, clampType, filterType);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, imgData->rgb_mode, imgData->width, imgData->height, 0, imgData->rgb_mode, GL_UNSIGNED_BYTE, imgData->data);
+	glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
 	m_mapTextureBuffer[imageName] = TextureBuffer;
 	glBindTexture(GL_TEXTURE_2D, 0);
-	SAFE_DELETE(imgData);
 	return TextureBuffer;
 }
 
@@ -65,7 +62,6 @@ void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData, uns
 		break;
 	default:
 		assert(false);
-		break;
 	}
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
@@ -74,9 +70,9 @@ void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData, uns
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 }
 
-E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(std::string imageName)
+E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::CreateTextureData(std::string imageName)
 {
-	E3DEngine::stImageData * imgData = new E3DEngine::stImageData();
+	E3DEngine::TextureData * imgData = new E3DEngine::TextureData();
 	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(imageName.c_str(), 0);
 	FIBITMAP *dib = FreeImage_Load(fifmt, imageName.c_str(), 0);
 	//dib = FreeImage_ConvertTo32Bits(dib);
@@ -93,11 +89,11 @@ E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 	{
 		for (size_t i = 0; i < width*height * 3; i += 3)
 		{
-			BYTE temp = bits[i];
+			char temp = bits[i];
 			bits[i] = bits[i + 2];
 			bits[i + 2] = temp;
 		}
-		imgData->rgb_mode = GL_RGB;
+		imgData->rgbModule = GL_RGB;
 		outByte = (char*)malloc(width * height * 3);
 		memcpy(outByte, bits, width*height * 3);
 	}
@@ -105,11 +101,11 @@ E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 	{
 		for (size_t i = 0; i < width*height * 4; i += 4)
 		{
-			BYTE temp = bits[i];
+			char temp = bits[i];
 			bits[i] = bits[i + 2];
 			bits[i + 2] = temp;
 		}
-		imgData->rgb_mode = GL_RGBA;
+		imgData->rgbModule = GL_RGBA;
 		outByte = (char*)malloc(width * height * 4);
 		memcpy(outByte, bits, width*height * 4);
 	}
@@ -119,7 +115,7 @@ E3DEngine::stImageData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 		Debug::Log(ell_Error, "bpp is not in support format!");
 		assert(false);
 	}
-	imgData->data = outByte;
+	imgData->imgData = outByte;
 	imgData->height = height;
 	imgData->width = width;
 	FreeImage_Unload(dib);

@@ -66,6 +66,7 @@ namespace E3DEngine
 		RenderIndex = eRI_Normal;
 		m_bIsActive = true;
 		IsStaticDraw = true;
+		m_bNeedSortVertex = false;
     }
 
 	RenderObject::~RenderObject()

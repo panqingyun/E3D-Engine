@@ -62,14 +62,14 @@ namespace Game
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.Create();
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(-20, 180, 50);
-            MainCamera.Transform.Rotation = new Vector3(0, -10, 0);
+            MainCamera.Transform.Position = new Vector3(-30, 165, 40);
+            MainCamera.Transform.Rotation = new Vector3(0, -45, 0);
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
             Light light = Light.Create<DirectionLight>();
             light.Color = new Vector4(1, 1, 1, 1.0f);
             light.Transform.Position = new Vector3(50, 50, 0);
-
+            
             // PointLight pLight = Light.Create<PointLight>();
             // pLight.Range = 100;
             // pLight.Color = new Vector4(1, 1, 1, 1.0f);
@@ -82,58 +82,58 @@ namespace Game
             mesh.Transform.Position = new Vector3(0, 0, 0);
             mesh.Transform.Rotation = new Vector3(-90, 0, 0);
             mesh.Transform.Scale = new Vector3(0.1f, 0.1f, 0.1f);
-           /* float xStart = -18;
-            float yStart = 50;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int j = 0; j < 15 - i; j++)
-                {
-                    Box box = Box.Create(1, 1, 1);
-                    Material material = Resource.Load<Material>(cubeMaterialPath);
-                    box.AddComponent<App.CubeComponent>();
-                    box.Material = material;
-                    box.Transform.Position = new Vector3(xStart + 2 * j, yStart - i * 2, 0);
-                    BoxCollider collider = box.AddComponent<BoxCollider>();
-                    collider.CreateRigiBody(50);
-                }
-                xStart += 1.6f;
-            }
+            /* float xStart = -18;
+             float yStart = 50;
+             for (int i = 0; i < 15; i++)
+             {
+                 for (int j = 0; j < 15 - i; j++)
+                 {
+                     Box box = Box.Create(1, 1, 1);
+                     Material material = Resource.Load<Material>(cubeMaterialPath);
+                     box.AddComponent<App.CubeComponent>();
+                     box.Material = material;
+                     box.Transform.Position = new Vector3(xStart + 2 * j, yStart - i * 2, 0);
+                     BoxCollider collider = box.AddComponent<BoxCollider>();
+                     collider.CreateRigiBody(50);
+                 }
+                 xStart += 1.6f;
+             }
 
-            boxGround = Box.Create(50, 10, 0.5f);
-            Material materialG = Resource.Load<Material>(cubeMaterialPath);
-            boxGround.Material = materialG;
-            boxGround.Transform.Position = new Vector3(0, 0, 0);
-            boxGround.Transform.Rotation = new Vector3(0, 0, 20);
-            boxGround.Active = true;
-            BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
-            collider3.CreateRigiBody(0);*/
-            Material materialS = Resource.Load<Material>(sphereMaterialPath);
-            sphere = Sphere.Create(20);
-            sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(-30, 200, 0);
-            SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(0);
-           /* Material materialB = Resource.Load<Material>(cubeMaterialPath);
-            Box box1 = Box.Create(3, 3, 3);
-            box1.Material = materialB;
-            box1.Transform.Position = new Vector3(2.5f, 5, 0);
-            BoxCollider collider4 = box1.AddComponent<BoxCollider>();
-            collider4.CreateRigiBody(0);
+             boxGround = Box.Create(50, 10, 0.5f);
+             Material materialG = Resource.Load<Material>(cubeMaterialPath);
+             boxGround.Material = materialG;
+             boxGround.Transform.Position = new Vector3(0, 0, 0);
+             boxGround.Transform.Rotation = new Vector3(0, 0, 20);
+             boxGround.Active = true;
+             BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
+             collider3.CreateRigiBody(0);*/
+            //Material materialS = Resource.Load<Material>(sphereMaterialPath);
+            //sphere = Sphere.Create(20);
+            //sphere.Material = materialS;
+            //sphere.Transform.Position = new Vector3(-30, 200, 0);
+            //SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
+            //sCollider.CreateRigiBody(0);
+            //Material materialB = Resource.Load<Material>(cubeMaterialPath);
+            //Box box1 = Box.Create(3, 3, 3);
+            //box1.Material = materialB;
+            //box1.Transform.Position = new Vector3(2.5f, 150, 0);
+            //BoxCollider collider4 = box1.AddComponent<BoxCollider>();
+            //collider4.CreateRigiBody(0);
 
-            Material materialB2 = Resource.Load<Material>(cubeMaterialPath);
-            Box box2 = Box.Create(50, 10, 0.5f);
-            box2.Material = materialB2;
-            box2.Transform.Position = new Vector3(-25f, 15, 0);
-            box2.Transform.Rotation = new Vector3(0, 0, -20);
-            BoxCollider collider5 = box2.AddComponent<BoxCollider>();
-            collider5.CreateRigiBody(0);
+            //Material materialB2 = Resource.Load<Material>(cubeMaterialPath);
+            //Box box2 = Box.Create(50, 10, 0.5f);
+            //box2.Material = materialB2;
+            //box2.Transform.Position = new Vector3(-25f, 15, 0);
+            //box2.Transform.Rotation = new Vector3(0, 0, -20);
+            //BoxCollider collider5 = box2.AddComponent<BoxCollider>();
+            //collider5.CreateRigiBody(0);
             particle = Resource.Load<ParticleSystem>(particleFirePath);
 
-            Vector3 nwPos = new Vector3(box1.Transform.Position.x - 1, box1.Transform.Position.y - 1.1f, box1.Transform.Position.z);
+            Vector3 nwPos = new Vector3(2.5f, 150, 0);
             for (int i = 0; i < particle.Particles.Length; i++)
             {
                 particle.Particles[i].Transform.Position = nwPos;
-            }*/
+            }
         }
 
         public void MouseButtonDown(MouseButtonInfo mouseInfo)
@@ -194,12 +194,12 @@ namespace Game
 
         public void Update(float deltaTime)
         {
-            rotate.y += 1;
+           /* rotate.y += 1;
             if (rotate.y == 360)
             {
                 rotate.y = 0;
             }
-            sphere.Transform.Rotation = rotate;
+            sphere.Transform.Rotation = rotate;*/
         }
 
         Vector3 curCameraPos = new Vector3();

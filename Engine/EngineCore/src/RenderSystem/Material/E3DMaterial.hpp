@@ -73,6 +73,7 @@ namespace E3DEngine
 		//-----------------------------------------------
 		virtual void UseNullProgram() { }
 
+		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
 	public:
 
 		// -----------------------------------------------

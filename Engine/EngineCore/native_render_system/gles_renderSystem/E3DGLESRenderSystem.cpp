@@ -55,6 +55,7 @@ namespace E3DEngine
 	void GLES_RenderSystem::BeginFrame()
 	{
 		m_pEGL_Context_Ex->UseContext();
+		glCullFace(GL_BACK);
 #ifdef WIN32
 		//m_pEGL_Context->UseContext();
 #endif

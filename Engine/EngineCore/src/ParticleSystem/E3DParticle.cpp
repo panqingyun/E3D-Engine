@@ -652,9 +652,11 @@ namespace E3DEngine
 	{
 		m_pRenderer = buffer;
 		m_pMaterial = buffer->GetMaterial();
+		m_pMaterial->SetEnableDepthWrite(false);
 		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);
+		m_pRenderer->GetTransform()->SetIsBillBoard(true);
 	}
 	
 	void ParticleGroup::SetCamera(Camera * camera)
@@ -744,6 +746,7 @@ namespace E3DEngine
 		render->RecordCurrentVextexStartIndex(ID);
 		render->RecordCurrentIndexStartIndex(ID);
 		
+
 		for (share_pointer<Particle> &it : m_ParticlePool)
 		{
 			if (it.getReferenceCount() == 0)
@@ -774,7 +777,7 @@ namespace E3DEngine
 	
 	void ParticleGroup::TransformChange()
 	{
-		m_pRenderer->SetTransform(Transform);
+		//m_pRenderer->SetTransform(Transform);		
 		for (auto & emitter : m_particleEmitters)
 		{
 			emitter->SetEmitterPosition(Transform->Position);
@@ -788,6 +791,14 @@ namespace E3DEngine
 		{
 			return;
 		}
+
+		m_ActiveParticles.sort([=] (share_pointer<Particle> &p1, share_pointer<Particle>&p2)
+		{
+			float dis1 = abs(m_pRenderer->pCamera->Transform->Position.Distance(p1.get_ptr()->Transform->Position));
+			float dis2 = abs(m_pRenderer->pCamera->Transform->Position.Distance(p2.get_ptr()->Transform->Position));
+			return dis1 > dis2;
+		});
+
 		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		for (particleListIterator it = m_ActiveParticles.begin(); it != m_ActiveParticles.end();)
 		{
@@ -842,7 +853,15 @@ namespace E3DEngine
 		for (auto & m_particleEmitter : m_particleEmitters)
 		{
 			m_particleEmitter->Update(deltaTime);
-		}
+		}		
+		
+		m_ActiveParticles.sort([=](share_pointer<Particle> &p1, share_pointer<Particle>&p2)
+		{
+			float dis1 = abs(m_pRenderer->pCamera->Transform->Position.Distance(p1.get_ptr()->Transform->Position));
+			float dis2 = abs(m_pRenderer->pCamera->Transform->Position.Distance(p2.get_ptr()->Transform->Position));
+			return dis1 > dis2;
+		});
+
 		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		//Debug::Log(ell_Error, "Particle Number is %d", m_ActiveParticles.size());
 		for (particleListIterator itr = m_ActiveParticles.begin(); itr != m_ActiveParticles.end();)
@@ -948,12 +967,56 @@ namespace E3DEngine
 		}
 		if (IsActive && !m_ParticlePool.empty())
 		{
-			m_pRenderer->GetTransform()->SetIsBillBoard(true);
+			makeBillboard();
+			/*Camera * pCamera = m_pRenderer->pCamera;
+			if (pCamera == nullptr)
+			{
+				return;
+			}
+			vec3f cameraPos = pCamera->Transform->Position;
+			mat4f view = pCamera->GetViewMatrix();
+			view.at(3, 0) = 0;
+			view.at(3, 1) = 0;
+			view.at(3, 2) = 0;
+			view = view.inverse();
+			m_pRenderer->GetTransform()->WorldMatrix = view;*/
 			checkParticleState(deltaTime);
 			m_pRenderer->TransformChange();
 		}
 	}
 	
+	void ParticleGroup::makeBillboard()
+	{
+		Camera * pCamera = m_pRenderer->pCamera;
+		if (pCamera == nullptr)
+		{
+			return;
+		}
+		vec3f pos = m_pRenderer->GetTransform()->Position;
+		vec3f cameraPos = pCamera->Transform->Position;
+
+		vec3f forward = pos - cameraPos;
+		forward.normalize();
+
+		vec3f up = vec3f(0.0, 1.0, 0.0);
+		up.normalize();
+
+		vec3f side = forward.crossProduct(up);
+		side.normalize();
+
+
+		m_pRenderer->GetTransform()->WorldMatrix.identity();
+
+		m_pRenderer->GetTransform()->WorldMatrix.data[0] = side.x; m_pRenderer->GetTransform()->WorldMatrix.data[1] = side.y; m_pRenderer->GetTransform()->WorldMatrix.data[2] = side.z;
+		m_pRenderer->GetTransform()->WorldMatrix.data[4] = up.x;  m_pRenderer->GetTransform()->WorldMatrix.data[5] = up.y;  m_pRenderer->GetTransform()->WorldMatrix.data[6] = up.z;
+		m_pRenderer->GetTransform()->WorldMatrix.data[8] = forward.x; m_pRenderer->GetTransform()->WorldMatrix.data[9] = 0; m_pRenderer->GetTransform()->WorldMatrix.data[10] = forward.z;
+
+		mat4f tranM = mat4f::createTranslation(pos.x, pos.y, pos.z);
+
+		mat4f result = m_pRenderer->GetTransform()->WorldMatrix;
+		m_pRenderer->GetTransform()->WorldMatrix = tranM * result;
+	}
+
 	void ParticleGroup::SetParticleDir(vec3f TouchPos, vec3f EmitterPos)
 	{
 		if(m_isLock > 0)

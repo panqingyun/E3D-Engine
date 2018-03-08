@@ -11,10 +11,10 @@ namespace E3DEngine
 {
 	void * CubeMapTexture::createImageData(std::string imageName, int *width, int *height)
 	{
-		stImageData * data = GetRenderSystem()->GetTextureDataManager()->CreateTextureData(imageName);
+		TextureData * data = GetRenderSystem()->GetTextureDataManager()->CreateTextureData(imageName);
 		*width	= data->width;
 		*height = data->height;
-		return data->data;
+		return data->imgData;
 	}
 	
 	void CubeMapTexture::CreateCubeMapTexture(int textureEnum,

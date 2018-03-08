@@ -28,7 +28,7 @@ namespace E3DEngine
 		glEnable(GL_BLEND);
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_ALPHA);
-
+		Renderer::prepareRender(deltaTime);
 	}
 
 	void GLES_Renderer::TransformChange()

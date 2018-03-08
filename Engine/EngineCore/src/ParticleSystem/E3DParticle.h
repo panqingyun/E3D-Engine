@@ -190,6 +190,9 @@ namespace E3DEngine
 		virtual void	SetMaxParticleNumber(UINT number);
 		virtual void	SetCamera(Camera * camera) override;
 		virtual void	AfterUpdate(float deltaTime) override;
+
+		void makeBillboard();
+
 		virtual void	SetDontDestory(bool dontDestory) override;
 		virtual void	SetActive(bool isActive) override;
 

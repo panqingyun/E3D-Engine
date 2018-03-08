@@ -122,6 +122,7 @@ namespace E3DEngine
 		virtual void CreateNewTransform();
 		virtual void SetRenderIndex(DWORD index);
 		virtual Material* GetMaterial() { return pMaterial; }
+		virtual void SetNeedSortVertex(bool bNeed) { m_bNeedSortVertex = bNeed; }
 		
 		MinMaxAABB GetBounds()
 		{
@@ -137,7 +138,8 @@ namespace E3DEngine
 		CTransform * transform;
 		MinMaxAABB   m_AABB;
 		// 材质
-        Material	* pMaterial;
+		Material	* pMaterial;
+		bool		m_bNeedSortVertex;
     public:
 		// 索引数目
 		DWORD		  m_nIndexSize;

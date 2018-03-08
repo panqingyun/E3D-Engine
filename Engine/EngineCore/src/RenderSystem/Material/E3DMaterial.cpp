@@ -16,6 +16,7 @@ namespace E3DEngine
 		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Material);
 		Object::setBehaviourDefaultValue();
+		enablewriteDepth = true;
 	}
 	
 	void Material::Destory()
@@ -43,12 +44,13 @@ namespace E3DEngine
 			
 			for (auto& sp : pShader->GetSamplerNameValue())
 			{
-				TextureData tData;
-				tData.clampType = (CLAMP_TYPE)config->TextureClampType;
-				tData.filterType = (FILTER_TYPE)config->TextureFilterType;
-				tData.fileName = sp.second;
-				tData.uniformName = sp.first;
-				createTexture(tData);
+				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->CreateTextureData(filePath + sp.second);
+				tData->clampType = (CLAMP_TYPE)config->TextureClampType;
+				tData->filterType = (FILTER_TYPE)config->TextureFilterType;
+				tData->fileName = sp.second;
+				tData->uniformName = sp.first;
+				createTexture(*tData);
+				SAFE_DELETE(tData);
 			}
 		}
 	}

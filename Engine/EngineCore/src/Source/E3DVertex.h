@@ -12,7 +12,13 @@ struct Vertex
 		BoneIndex[3] = MaxBoneNumber;
 		ShaderIndex = 0;
 
-		memset(UV, 0, sizeof(float) * 2);
+		memset(UV1, 0, sizeof(float) * 2);
+		memset(UV2, 0, sizeof(float) * 2);
+		memset(UV3, 0, sizeof(float) * 2);
+		memset(UV4, 0, sizeof(float) * 2);
+		memset(UV5, 0, sizeof(float) * 2);
+		memset(UV6, 0, sizeof(float) * 2);
+		memset(UV7, 0, sizeof(float) * 2);
 		memset(Color, 0, sizeof(float) * 4);
 		memset(BoneWeight, 0, sizeof(float) * 4);
 		memset(Position, 0, sizeof(float) * 3);
@@ -29,10 +35,45 @@ struct Vertex
 		Position[1] = y;
 		Position[2] = z;
 	}
-	void SettextureCoord(float u, float v)
+	void SettextureCoord1(float u, float v)
 	{
-		UV[0] = u;
-		UV[1] = v;
+		UV1[0] = u;
+		UV1[1] = v;
+	}
+	void SettextureCoord2(float u, float v)
+	{
+		UV2[0] = u;
+		UV2[1] = v;
+	}
+	void SettextureCoord3(float u, float v)
+	{
+		UV3[0] = u;
+		UV3[1] = v;
+	}
+	void SettextureCoord4(float u, float v)
+	{
+		UV4[0] = u;
+		UV4[1] = v;
+	}
+	void SettextureCoord5(float u, float v)
+	{
+		UV5[0] = u;
+		UV5[1] = v;
+	}
+	void SettextureCoord6(float u, float v)
+	{
+		UV6[0] = u;
+		UV6[1] = v;
+	}
+	void SettextureCoord7(float u, float v)
+	{
+		UV7[0] = u;
+		UV7[1] = v;
+	}
+	void SettextureCoord8(float u, float v)
+	{
+		UV8[0] = u;
+		UV8[1] = v;
 	}
 	void SetNormal(float x, float y, float z)
 	{
@@ -90,7 +131,14 @@ struct Vertex
 	float Position[3];
 	float Normals[3];
 	float Color[4];
-	float UV[2];
+	float UV1[2];
+	float UV2[2];
+	float UV3[2];
+	float UV4[2];
+	float UV5[2];
+	float UV6[2];
+	float UV7[2];
+	float UV8[2];
 	float Tangent[3];
 	float BoneIndex[4];
 	float BoneWeight[4];

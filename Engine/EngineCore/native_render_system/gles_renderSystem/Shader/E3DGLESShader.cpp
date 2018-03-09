@@ -16,7 +16,7 @@
 namespace E3DEngine
 {
 
-	std::string GLES_Shader::processVS()
+	std::string GLES_Shader::processVShader()
 	{
 #ifdef __IOS__
 		std::string priveVs = "#define __IOS__\n";
@@ -102,8 +102,9 @@ namespace E3DEngine
 
 		std::string path = filePath;
 		std::string shaderContent = preProcessShader(path +  cfg->VertexShader);
-		std::string vertexShaderString = processVS().append(shaderContent);
-		std::string fragmentShaderString = preProcessShader(path + cfg->FragmentShader);
+		std::string vertexShaderString = processVShader().append(shaderContent);
+		shaderContent = preProcessShader(path + cfg->FragmentShader);
+		std::string fragmentShaderString = shaderContent;
 
 		LoadShader(vertexShaderString.c_str(), fragmentShaderString.c_str());
 	}
@@ -114,13 +115,21 @@ namespace E3DEngine
 		createAttribute("NORMAL", 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL, "vec3");
 		createAttribute("COLOR", 6, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_COLOR, "vec4");
 		createAttribute("TEXTURECOORD", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2");
-		createAttribute("TANGENT", 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT, "vec3");
-		createAttribute("BONEINDEX", 15, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES, "vec4");
-		createAttribute("BONEWEIGHT", 19, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS, "vec4");
-		createAttribute("TRANSPOSITION", 23, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION, "vec3");
-		createAttribute("TRANSSCALE", 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE, "vec3");
-		createAttribute("TRANSROTATE", 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3");
-		createAttribute("SHADERINDEX", 32, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX, "float");
+		createAttribute("TEXTURECOORD0", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2");
+		createAttribute("TEXTURECOORD1", 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE1, "vec2");
+		createAttribute("TEXTURECOORD2", 14, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE2, "vec2");
+		createAttribute("TEXTURECOORD3", 16, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE3, "vec2");
+		createAttribute("TEXTURECOORD4", 18, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE4, "vec2");
+		createAttribute("TEXTURECOORD5", 20, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE5, "vec2");
+		createAttribute("TEXTURECOORD6", 22, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE6, "vec2");
+		createAttribute("TEXTURECOORD7", 24, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE7, "vec2");
+		createAttribute("TANGENT", 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT, "vec3");
+		createAttribute("BONEINDEX", 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES, "vec4");
+		createAttribute("BONEWEIGHT", 33, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS, "vec4");
+		createAttribute("TRANSPOSITION", 37, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION, "vec3");
+		createAttribute("TRANSSCALE", 40, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE, "vec3");
+		createAttribute("TRANSROTATE", 43, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3");
+		createAttribute("SHADERINDEX", 46, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX, "float");
 		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
 		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
 		uniformSetFunc["vec2"] = &Shader::createFloat2Uniform;
@@ -259,7 +268,7 @@ namespace E3DEngine
 		GLuint shaderHandle = glCreateShader(shaderType);
 		glShaderSource(shaderHandle, 1, &shaderContent, &shaderStringLength);
 		glCompileShader(shaderHandle);
-
+		
 		GLint status;
 		glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &status);
 		if (status != GL_TRUE)

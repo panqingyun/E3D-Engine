@@ -27,7 +27,7 @@ void E3DEngine::Sphere::Create(float R)
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);
-			m_vecVertex[vIndex].SettextureCoord((float)beta / (colNumber - 1), (float)alpha/ (rowNumber - 1));
+			m_vecVertex[vIndex].SettextureCoord1((float)beta / (colNumber - 1), (float)alpha/ (rowNumber - 1));
 			vIndex++;
 			if (alpha < rowNumber - 1 && beta < colNumber - 1)
 			{

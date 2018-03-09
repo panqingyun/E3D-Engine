@@ -277,7 +277,7 @@ namespace E3DEngine
 		Vertes[0].SetPosition(m_Point[0].x, m_Point[0].y, m_Point[0].z);
 		Vertes[0].SetNormal(0, 0, 1);
 		Vertes[0].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
-		Vertes[0].SettextureCoord(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
+		Vertes[0].SettextureCoord1(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
 		Vertes[0].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		Vertes[0].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
 		Vertes[0].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
@@ -286,7 +286,7 @@ namespace E3DEngine
 		Vertes[1].SetPosition(m_Point[1].x, m_Point[1].y, m_Point[1].z);
 		Vertes[1].SetNormal(0, 0, 1);
 		Vertes[1].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
-		Vertes[1].SettextureCoord(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
+		Vertes[1].SettextureCoord1(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
 		Vertes[1].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		Vertes[1].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
 		Vertes[1].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
@@ -295,7 +295,7 @@ namespace E3DEngine
 		Vertes[2].SetPosition(m_Point[2].x, m_Point[2].y, m_Point[2].z);
 		Vertes[2].SetNormal(0, 0, 1);
 		Vertes[2].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
-		Vertes[2].SettextureCoord(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
+		Vertes[2].SettextureCoord1(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
 		Vertes[2].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		Vertes[2].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
 		Vertes[2].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
@@ -304,7 +304,7 @@ namespace E3DEngine
 		Vertes[3].SetPosition(m_Point[3].x, m_Point[3].y, m_Point[3].z);
 		Vertes[3].SetNormal(0, 0, 1);
 		Vertes[3].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
-		Vertes[3].SettextureCoord(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
+		Vertes[3].SettextureCoord1(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
 		Vertes[3].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		Vertes[3].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
 		Vertes[3].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);

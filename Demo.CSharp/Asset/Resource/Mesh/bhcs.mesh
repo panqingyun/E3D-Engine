@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MeshConfig>
+		<Item ID=1 ModelFilePath="Model/BHCS.obj" Materials="Material/BHCS.material : 1" />
+		<Item ID=2 ModelFilePath="Model/WLS_shanshijihe01.FBX" Materials="Material/BHCS.material : 2" />
+		<Item ID=3 ModelFilePath="Model/FHZC.obj" Materials="Material/BHCS.material : 3" />
+	</MeshConfig>
+</ConfigSystem>

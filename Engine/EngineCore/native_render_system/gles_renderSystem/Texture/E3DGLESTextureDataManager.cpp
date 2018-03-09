@@ -21,22 +21,24 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string image
 	
 	GLuint TextureBuffer = 0;
 	glGenTextures(1, &TextureBuffer);
+	glActiveTexture(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, TextureBuffer);
-
-	unsigned int clampType = 0;
-	unsigned int filterType = 0;
-
-	setTextureParam(tData, clampType, filterType);
-
+	setTextureParam(tData);
 	glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
+	if (tData.useMipMap)
+	{
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
 	m_mapTextureBuffer[imageName] = TextureBuffer;
 	glBindTexture(GL_TEXTURE_2D, 0);
 	return TextureBuffer;
 }
 
 
-void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData, unsigned int &clampType, unsigned int &filterType)
+void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData)
 {
+	unsigned int clampType = 0;
+	unsigned int filterType = 0;
 	switch (tData.clampType)
 	{
 	case CLAMP_TYPE::CLAMP_TO_EDGE:
@@ -60,10 +62,26 @@ void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData, uns
 	case  FILTER_TYPE::NEAREST:
 		filterType = GL_NEAREST;
 		break;
+	case FILTER_TYPE::LINEAR_MIPMAP_LINEAR:
+		filterType = GL_LINEAR_MIPMAP_LINEAR;
+		tData.useMipMap = true;
+		break;
+	case  FILTER_TYPE::LINEAR_MIPMAP_NEAREST:
+		filterType = GL_LINEAR_MIPMAP_NEAREST;
+		tData.useMipMap = true;
+		break;
+	case  FILTER_TYPE::NEAREST_MIPMAP_LINEAR:
+		filterType = GL_NEAREST_MIPMAP_LINEAR;
+		tData.useMipMap = true;
+		break;
+	case  FILTER_TYPE::NEAREST_MIPMAP_NEAREST:
+		filterType = GL_NEAREST_MIPMAP_NEAREST;
+		tData.useMipMap = true;
+		break;
 	default:
 		assert(false);
 	}
-
+	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterType);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampType);

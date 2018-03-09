@@ -61,7 +61,7 @@ void InitEngine(HWND hWnd)
 	::InitilizeEngine();
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
-	CreateEditorGrid();
+	//CreateEditorGrid();
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)

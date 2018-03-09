@@ -110,8 +110,20 @@ enum
 	LOCATION_ATTRIB_NORMAL,
 	/** texture 0 coord attrib*/
 	LOCATION_ATTRIB_TEXTURE0,
-	/** texture 1 coord attrib*/
+	/** texture 0 coord attrib*/
 	LOCATION_ATTRIB_TEXTURE1,
+	/** texture 0 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE2,
+	/** texture 0 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE3,
+	/** texture 0 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE4,
+	/** texture 0 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE5,
+	/** texture 0 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE6,
+	/** texture 1 coord attrib*/
+	LOCATION_ATTRIB_TEXTURE7,
 	/** tangent coord attrib*/
 	LOCATION_ATTRIB_TANGENT,
 	/** bone index attrib*/

@@ -1,7 +1,16 @@
 
+varying highp vec3 vPosition;
+varying highp vec3 mCameraPos;
+
 const vec4  ambient = vec4(0.5, 0.5, 0.5, 1.0);		//环境光颜色
 const float Ns = 20.0;			//高光系数
 const float attenuation = 1.0;	//光线的衰减系数
+
+void initFogNeedVar(vec3 _pos)
+{
+	vPosition = (_e3d_matModel * vec4(_pos ,1.0)).xyz;
+	mCameraPos = _e3d_CameraPos;
+}
 
 vec4 getPointLightColor(vec3 position, vec3 normal)
 {
@@ -106,3 +115,4 @@ mat4 getTransformMatrix(vec3 transformPosition, vec3 transformRotate, vec3 trans
 	
 	return translate * roateMatrix * scaleMat;
 }
+

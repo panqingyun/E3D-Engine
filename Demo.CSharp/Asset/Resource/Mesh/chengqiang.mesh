@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MeshConfig>
+		<Item ID=1 ModelFilePath="Model/cz_chengqiang01.fbx" Materials="Material/chengqiang.material : 1" />
+	</MeshConfig>
+</ConfigSystem>

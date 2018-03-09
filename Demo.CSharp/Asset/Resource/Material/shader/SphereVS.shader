@@ -11,6 +11,6 @@ void main(void)
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
-	
+	initFogNeedVar(position);
     gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;
 }

@@ -23,6 +23,10 @@ namespace E3DEngine
 	{
 		LINEAR = 0,
 		NEAREST = 1,
+		NEAREST_MIPMAP_NEAREST = 2,
+		LINEAR_MIPMAP_NEAREST = 3,
+		NEAREST_MIPMAP_LINEAR = 4,
+		LINEAR_MIPMAP_LINEAR = 5
 	};
 
 	struct TextureData
@@ -36,6 +40,7 @@ namespace E3DEngine
 		void *	imgData;
 		int		width;
 		int		height;
+		bool	useMipMap;
 
 		TextureData()
 		{
@@ -45,6 +50,7 @@ namespace E3DEngine
 			width = 0;
 			height = 0;
 			rgbModule = 0;
+			useMipMap = false;
 		}
 
 		~TextureData()

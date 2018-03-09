@@ -42,50 +42,50 @@ void E3DEngine::SkyBox::setTextureCoord()
 	getCoord(0, leftTop, rightTop, leftDown, rightDown);
 
 	// front
-	m_vecVertex[0].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[1].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[2].SettextureCoord(leftDown.x, leftDown.y);
-	m_vecVertex[3].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[0].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[1].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[2].SettextureCoord1(leftDown.x, leftDown.y);
+	m_vecVertex[3].SettextureCoord1(leftTop.x, leftTop.y);
 
 
 	getCoord(1, leftTop, rightTop, leftDown, rightDown);
 	// up
-	m_vecVertex[4].SettextureCoord(leftTop.x, leftTop.y);
-	m_vecVertex[5].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[6].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[7].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[4].SettextureCoord1(leftTop.x, leftTop.y);
+	m_vecVertex[5].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[6].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[7].SettextureCoord1(leftDown.x, leftDown.y);
 
 
 	getCoord(2, leftTop, rightTop, leftDown, rightDown);
 	// back
-	m_vecVertex[8].SettextureCoord(leftTop.x, leftTop.y);
-	m_vecVertex[9].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[10].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[11].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[8].SettextureCoord1(leftTop.x, leftTop.y);
+	m_vecVertex[9].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[10].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[11].SettextureCoord1(leftDown.x, leftDown.y);
 
 
 	getCoord(3, leftTop, rightTop, leftDown, rightDown);
 	// down
-	m_vecVertex[12].SettextureCoord(leftTop.x, leftTop.y);
-	m_vecVertex[13].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[14].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[15].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[12].SettextureCoord1(leftTop.x, leftTop.y);
+	m_vecVertex[13].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[14].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[15].SettextureCoord1(leftDown.x, leftDown.y);
 
 
 	getCoord(4, leftTop, rightTop, leftDown, rightDown);
 	// left
-	m_vecVertex[16].SettextureCoord(leftTop.x, leftTop.y);
-	m_vecVertex[17].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[18].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[19].SettextureCoord(leftDown.x, leftDown.y);
+	m_vecVertex[16].SettextureCoord1(leftTop.x, leftTop.y);
+	m_vecVertex[17].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[18].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[19].SettextureCoord1(leftDown.x, leftDown.y);
 
 
 	getCoord(5, leftTop, rightTop, leftDown, rightDown);
 	// right
-	m_vecVertex[20].SettextureCoord(rightTop.x, rightTop.y);
-	m_vecVertex[21].SettextureCoord(rightDown.x, rightDown.y);
-	m_vecVertex[22].SettextureCoord(leftDown.x, leftDown.y);
-	m_vecVertex[23].SettextureCoord(leftTop.x, leftTop.y);
+	m_vecVertex[20].SettextureCoord1(rightTop.x, rightTop.y);
+	m_vecVertex[21].SettextureCoord1(rightDown.x, rightDown.y);
+	m_vecVertex[22].SettextureCoord1(leftDown.x, leftDown.y);
+	m_vecVertex[23].SettextureCoord1(leftTop.x, leftTop.y);
 
 }
 
@@ -127,7 +127,7 @@ void E3DEngine::SkyDome::Create(float R)
 			m_vecVertex[vIndex].SetPosition(x, y, z);
 			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
 			m_vecVertex[vIndex].SetNormal(x, y, z);
-			m_vecVertex[vIndex].SettextureCoord((float)beta / (colNumber - 1), (float)alpha / (rowNumber - 1));
+			m_vecVertex[vIndex].SettextureCoord1((float)beta / (colNumber - 1), (float)alpha / (rowNumber - 1));
 			vIndex++;
 			if (alpha < rowNumber - 1 && beta < colNumber - 1)
 			{

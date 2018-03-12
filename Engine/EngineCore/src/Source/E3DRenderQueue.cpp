@@ -92,8 +92,8 @@ namespace E3DEngine
 		bool bInsert = false;
 		for (int i = _renderQueue.size() - 1; i >= 0;)
 		{
-			rb = _renderQueue[i];
-			if (rb->RenderIndex != eRI_TopMost || i == 0)
+			RenderObject * _rb = _renderQueue[i];
+			if (_rb->RenderIndex != eRI_TopMost || i == 0)
 			{
 				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				bInsert = true;
@@ -186,6 +186,7 @@ namespace E3DEngine
 		else if (render->RenderIndex == eRI_Transparent)
 		{
 			changeTransparentQueue(render);
+			render->GetMaterial()->SetEnableDepthWrite(false);
 		}
 		else
 		{

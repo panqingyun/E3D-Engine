@@ -57,6 +57,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
 	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
 	REGISTER_INTERNAL_CALL(Mesh,			create);
+	REGISTER_INTERNAL_CALL(Render,			set_RenderIndex);
+	REGISTER_INTERNAL_CALL(Render,			get_RenderIndex);
 
 }
 
@@ -743,4 +745,26 @@ CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID)
 	Mesh * mesh = new Mesh(filePath, cfgID);
 	ADD_IN_SCENE(mesh);
 	return mesh->GetMonoBehaviour()->GetMonoObject();
+}
+
+
+UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj)
+{
+	RenderObject* rb = getCppObject<RenderObject>(cs_boj);
+	if (rb == nullptr)
+	{
+		return 0;
+	}
+
+	return rb->RenderIndex;
+}
+VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri)
+{
+	RenderObject* rb = getCppObject<RenderObject>(cs_boj);
+	if (rb == nullptr)
+	{
+		return;
+	}
+
+	rb->SetRenderIndex(ri);
 }

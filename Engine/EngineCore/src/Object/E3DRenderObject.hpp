@@ -140,6 +140,7 @@ namespace E3DEngine
 		// 材质
 		Material	* pMaterial;
 		bool		m_bNeedSortVertex;
+
     public:
 		// 索引数目
 		DWORD		  m_nIndexSize;

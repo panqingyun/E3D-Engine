@@ -461,6 +461,7 @@ namespace E3DEngine
 		}
 
 		m_pRenderer->SetMaterial(material);
+		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		TRANSFER_FIELD_OBJECT(m_pRenderer);
 	}
 

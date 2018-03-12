@@ -142,3 +142,5 @@ VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material);
 VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range);
 float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light);
 CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID);
+UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj);
+VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri);

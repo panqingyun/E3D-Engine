@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MeshConfig>
+		<Item ID=1 ModelFilePath="Model/wd_zhiwu_01.fbx" Materials="Material/shu.material : 1" />
+		<Item ID=2 ModelFilePath="Model/wd_zhiwu_02.fbx" Materials="Material/shu.material : 2" />
+		<Item ID=3 ModelFilePath="Model/wd_zhiwu_03.fbx" Materials="Material/shu.material : 3" />
+		<Item ID=4 ModelFilePath="Model/Demo_zw_lvzhi001.fbx" Materials="Material/shu.material : 4" />
+	</MeshConfig>
+</ConfigSystem>

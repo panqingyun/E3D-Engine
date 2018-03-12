@@ -126,10 +126,16 @@ namespace E3DEngine
 		render->CreateNewTransform();
 	}
 
-
+/*
 	void GLES_MeshRender::SetRenderIndex(DWORD index)
 	{
 		render->SetRenderIndex(index);
+	}
+*/
+
+	void GLES_MeshRender::SetMaterial(Material *material)
+	{
+		render->SetMaterial(material);
 	}
 
 }

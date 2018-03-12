@@ -41,9 +41,10 @@ namespace E3DEngine
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
 		virtual void CreateNewTransform();
-		virtual void SetRenderIndex(DWORD index);
+		//virtual void SetRenderIndex(DWORD index) override;
 
-		virtual void SetMaterial(Material *material) { render->SetMaterial(material); }
+		virtual void SetMaterial(Material *material);
+		virtual Material *GetMaterial() { return render->GetMaterial(); }
 		virtual void SetCamera(Camera * camera) { render->SetCamera(camera); }
 		virtual void SetActive(bool active) { render->SetActive(active); }
 		virtual void ClearVertexIndexBuffer() { render->ClearVertexIndexBuffer(); }

@@ -111,6 +111,15 @@ namespace E3DEngine
         POINTS,
     }
 
+    public enum eRenderIndex
+    {
+        NONO,
+        LOWMOST,
+        NORMAL,
+        TRANSPARENT,
+        TOPMOST,
+    }
+
     public class Render : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -127,6 +136,15 @@ namespace E3DEngine
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern uint getDrawModule();
+
+        public eRenderIndex RenderIndex
+        {
+
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+        }
 
         public eDrawModule DrawModule
         {

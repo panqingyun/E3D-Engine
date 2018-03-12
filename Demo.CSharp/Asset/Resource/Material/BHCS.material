@@ -4,6 +4,9 @@
 		<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
 		<Item ID=2 ShaderID = 2 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
 		<Item ID=3 ShaderID = 3 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=4 ShaderID = 4 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=5 ShaderID = 5 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=6 ShaderID = 6 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -40,11 +43,12 @@
 									   sampler2D:_Splat2-texture/demo_tudi02_01.jpg;
 									   sampler2D:_Splat3-texture/YZW_shanshi01.png;
 									   sampler2D:_Control-texture/BHCS.png;" 
-									   
+					
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
 									   TEXTURECOORD0:uv0; 
 									   NORMAL:attr_normal;"
+					
 		/>
 		
 		<Item 
@@ -71,6 +75,39 @@
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
 									   TEXTURECOORD0:uv0; 
+									   NORMAL:attr_normal;"
+		/>
+		<Item 
+					ID				= 4
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/water.jpg;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate; 
+									   NORMAL:attr_normal;"
+		/>
+		<Item 
+					ID				= 5 
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/cz_chengqiang01.jpg;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate; 
+									   NORMAL:attr_normal;"
+		/>
+		<Item 
+					ID				= 6 
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/LH_changshiqiao01.jpg;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate; 
 									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>

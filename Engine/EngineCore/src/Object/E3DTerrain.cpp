@@ -91,7 +91,7 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
 	m_pRenderer->SetRenderIndex(eRI_Normal);
-	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+	//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
 	GameObject::SetMaterial(material);
 	m_pRenderer->IsStaticDraw = false;

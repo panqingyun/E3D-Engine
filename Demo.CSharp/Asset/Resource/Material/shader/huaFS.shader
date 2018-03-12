@@ -6,5 +6,5 @@ varying vec4 DestinationColor;
 
 void main(void) 
 { 
-	gl_FragColor = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor);
+	gl_FragColor = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor,vec4(1.0,1.0,1.0,1.0));
 }

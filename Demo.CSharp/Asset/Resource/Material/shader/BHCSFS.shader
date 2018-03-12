@@ -28,9 +28,9 @@ varying vec4 DestinationColor;
 void main(void) 
 { 
 	float scale = 1.0;
-    vec4 _SpecColor = vec4(0.5,0.5,0.5,0.0);
+   // vec4 _SpecColor = vec4(0.5,0.5,0.5,0.0);
 	vec2 v_0 = vec2(v_coord0.x * scale * tiling0, v_coord0.y * scale * tiling0);
-	vec2 v_1 = vec2(v_coord0.x * scale * tiling1, v_coord0.y * scale * tiling1);
+	vec2 v_1 = vec2(v_coord0.x * 5.0 * tiling1, v_coord0.y * 5.0 * tiling1);
 	vec2 v_2 = vec2(v_coord0.x * scale * tiling2, v_coord0.y * scale * tiling2);
 	vec2 v_3 = vec2(v_coord0.x * scale * tiling3, v_coord0.y * scale * tiling3);
 	
@@ -48,5 +48,5 @@ void main(void)
 	// vec4 fs = ((f_c * _SpecColor.w) + (_SpecColor * spec)) * 2.0;
 	// vec4 fc = fs + f_c ;
 	
-	gl_FragColor = mixFogColor(f_c * DestinationColor);
+	gl_FragColor = mixFogColor(f_c * DestinationColor,vec4(1.0,1.0,1.0,1.0));
 }

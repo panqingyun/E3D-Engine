@@ -4,5 +4,8 @@
 		<Item ID=1 ModelFilePath="Model/BHCS.obj" Materials="Material/BHCS.material : 1" />
 		<Item ID=2 ModelFilePath="Model/WLS_shanshijihe01.FBX" Materials="Material/BHCS.material : 2" />
 		<Item ID=3 ModelFilePath="Model/FHZC.obj" Materials="Material/BHCS.material : 3" />
+		<Item ID=4 ModelFilePath="Model/WaterPlane.fbx" Materials="Material/BHCS.material : 4" />
+		<Item ID=5 ModelFilePath="Model/cz_chengqiang01.fbx" Materials="Material/BHCS.material : 5" />
+		<Item ID=6 ModelFilePath="Model/LH_changshiqiao01.fbx" Materials="Material/BHCS.material : 6" />
 	</MeshConfig>
 </ConfigSystem>

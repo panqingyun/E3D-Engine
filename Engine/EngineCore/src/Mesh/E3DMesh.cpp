@@ -81,7 +81,7 @@ namespace E3DEngine
 		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
 		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
 
-		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+		//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
 		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 		{

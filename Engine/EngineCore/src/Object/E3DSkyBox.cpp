@@ -150,7 +150,7 @@ void E3DEngine::SkyDome::Create(float R)
 void E3DEngine::SkyDome::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
-	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+	//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 	
 	GameObject::SetMaterial(material);
 	m_pRenderer->SetTransform(Transform);

@@ -108,7 +108,6 @@ void E3DEngine::Box::Create(float l, float w, float h)
 void E3DEngine::Box::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
-	SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
 	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 	{

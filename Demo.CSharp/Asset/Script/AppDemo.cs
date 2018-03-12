@@ -48,7 +48,7 @@ namespace Game
         string particleFirePath = "Particle/ParticleFire.particle";
         string mainScenePath = "Scene/MainEntry.scene";
         string meshFilePath = "Mesh/bhcs.mesh";
-        string chengFilePath = "Mesh/chengqiang.mesh";
+        string shuFilePath = "Mesh/shu.mesh";
         string terrainMaterialPath = "Material/Terrain.material";
         Vector2 curMousePosition;
         Vector2 lastMousePosition;
@@ -58,13 +58,17 @@ namespace Game
         Vector3 rotate = new Vector3();
         Mesh di = null;
         Mesh cheng = null;
+        Mesh qiao = null;
+        Mesh shu1 = null;
+        Mesh shu2 = null;
+        Mesh shu3 = null;
 
         public void Main(string[] args)
         {
             MainScene = Scene.LoadScene(mainScenePath);
             MainCamera = Camera.Create();
             MainCamera.SetClearColor(new Vector4(0.0f, 0.0f, 0.0f, 1));
-            MainCamera.Transform.Position = new Vector3(200, 35,200);
+            MainCamera.Transform.Position = new Vector3(180, 35,180);
             MainCamera.Transform.Rotation = new Vector3(0, 45, 0);
             cameraRotateX = -MainCamera.Transform.Rotation.x;
             cameraRotateY = -MainCamera.Transform.Rotation.y;
@@ -81,13 +85,32 @@ namespace Game
             GameObject.CreateSkyBox(skyMaterial);
             //Debug.Log(material.ID.ToString());
             di = Resource.Load<Mesh>(meshFilePath, 3);
-            di.Transform.Position = new Vector3(0, 0, 0);
-            //  mesh.Transform.Rotation = new Vector3(-90, 0, 0);
-            //di.Transform.Scale = new Vector3(100, 1, 100);
-            //cheng = Resource.Load<Mesh>(meshFilePath,2);
-            //cheng.Transform.Scale = new Vector3(0.01f, 0.01f, 0.01f);
-            //cheng.Transform.Position = new Vector3(0, 100, 0);
-            //cheng.Transform.Rotation = new Vector3(-90, 0, 0);
+            cheng = Resource.Load<Mesh>(meshFilePath,5);
+            cheng.Transform.Scale = new Vector3(0.01f, 0.01f, 0.01f);
+            cheng.Transform.Position = new Vector3(80, 30, 100);
+            cheng.Transform.Rotation = new Vector3(-90, 0, 0);
+            qiao = Resource.Load<Mesh>(meshFilePath, 6);
+            qiao.Transform.Scale = new Vector3(0.010f, 0.007f, 0.010f);
+            qiao.Transform.Position = new Vector3(138, 30.1f, 164);
+            qiao.Transform.Rotation = new Vector3(-90, 0, 0);
+
+            shu1 = Resource.Load<Mesh>(shuFilePath, 1);
+            shu1.Transform.Scale = new Vector3(0.005f, 0.005f, 0.005f);
+            shu1.Transform.Position = new Vector3(142, 30.1f, 159);
+            shu1.Transform.Rotation = new Vector3(-90, 0, 0);
+
+            shu2 = Resource.Load<Mesh>(shuFilePath,3);
+            shu2.Transform.Scale = new Vector3(0.005f, 0.005f, 0.005f);
+            shu2.Transform.Position = new Vector3(125, 30, 160);
+            shu2.Transform.Rotation = new Vector3(-90, 0, 0);
+            shu1.GetRenderer().RenderIndex = eRenderIndex.TRANSPARENT;
+            shu2.GetRenderer().RenderIndex = eRenderIndex.TRANSPARENT;
+
+            shu3 = Resource.Load<Mesh>(shuFilePath, 2);
+            shu3.Transform.Scale = new Vector3(0.008f, 0.008f, 0.008f);
+            shu3.Transform.Position = new Vector3(150, 28, 168);
+            shu3.Transform.Rotation = new Vector3(-90, 0, 0);
+            shu3.GetRenderer().RenderIndex = eRenderIndex.TRANSPARENT;
             /* float xStart = -18;
              float yStart = 50;
              for (int i = 0; i < 15; i++)
@@ -113,12 +136,12 @@ namespace Game
              boxGround.Active = true;
              BoxCollider collider3 = boxGround.AddComponent<BoxCollider>();
              collider3.CreateRigiBody(0);*/
-            Material materialS = Resource.Load<Material>(sphereMaterialPath);
-            sphere = Sphere.Create(20);
-            sphere.Material = materialS;
-            sphere.Transform.Position = new Vector3(5000, 250, 5000);
-            SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
-            sCollider.CreateRigiBody(0);
+            /* Material materialS = Resource.Load<Material>(sphereMaterialPath);
+             sphere = Sphere.Create(20);
+             sphere.Material = materialS;
+             sphere.Transform.Position = new Vector3(5000, 250, 5000);
+             SphereCollider sCollider = sphere.AddComponent<SphereCollider>();
+             sCollider.CreateRigiBody(0);*/
             //Material materialB = Resource.Load<Material>(cubeMaterialPath);
             //Box box1 = Box.Create(3, 3, 3);
             //box1.Material = materialB;
@@ -200,12 +223,12 @@ namespace Game
 
         public void Update(float deltaTime)
         {
-            rotate.y += 1;
+          /*  rotate.y += 1;
             if (rotate.y == 360)
             {
                 rotate.y = 0;
             }
-            sphere.Transform.Rotation = rotate;
+            sphere.Transform.Rotation = rotate;*/
         }
 
         Vector3 curCameraPos = new Vector3();

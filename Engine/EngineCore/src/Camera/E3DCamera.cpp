@@ -387,4 +387,19 @@ namespace E3DEngine
 		
 		m_Plans[5] = normal(m_Plans[5]);
 	}
+
+	Camera * Camera::CreateCamera()
+	{
+		const float32 fov = 60.0f;
+		const vec3f up = vec3f(0.0f, 1.0f, 0.0);
+		const float32 zNear = 1.0f;
+		const float32 zFar = 30000.0f;
+		Vector2 frameSize = GetRenderSystem()->GetFrameSize();
+		const float32 aspect = frameSize.x / frameSize.y;
+		const vec3f position = vec3f(0, 0, 200);
+		const vec3f target = vec3f(0, 0, -1);
+		E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
+		return camera;
+	}
+
 }

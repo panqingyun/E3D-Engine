@@ -113,11 +113,11 @@ namespace E3DEngine
 
     public enum eRenderIndex
     {
-        NONO,
-        LOWMOST,
-        NORMAL,
-        TRANSPARENT,
-        TOPMOST,
+        None,
+        LowMost,
+        Normal,
+        Transparent,
+        TopMost,
     }
 
     public class Render : Object
@@ -139,7 +139,6 @@ namespace E3DEngine
 
         public eRenderIndex RenderIndex
         {
-
             [MethodImpl(MethodImplOptions.InternalCall)]
             get;
             [MethodImpl(MethodImplOptions.InternalCall)]

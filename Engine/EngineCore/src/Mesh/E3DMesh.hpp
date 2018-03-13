@@ -28,6 +28,7 @@ namespace E3DEngine
 	class Mesh : public GameObject
 	{
 	public:
+		static Mesh* Create(string path, int configID);
 		Mesh(std::string filePath, int cfgID);
 		virtual void SetMaterial(Material *material) override;
 		virtual void SetActive(bool isActive) override;

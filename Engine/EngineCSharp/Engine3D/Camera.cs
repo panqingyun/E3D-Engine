@@ -35,6 +35,12 @@ namespace E3DEngine
             }
         }
 
+        public static Camera MainCamera
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+        }
+
         public Vector3 Up
         {
             get

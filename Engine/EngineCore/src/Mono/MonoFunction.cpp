@@ -29,6 +29,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyBox);
 	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyDome);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
+	REGISTER_INTERNAL_CALL(Camera,		get_MainCamera);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
 	REGISTER_INTERNAL_CALL(Camera,		createCamera);
 	REGISTER_INTERNAL_CALL(Camera,		screen2WorldPoint);
@@ -160,16 +161,8 @@ VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera)
-{
-	const float32 fov = 60.0f;
-	const vec3f up = vec3f(0.0f, 1.0f, 0.0);
-	const float32 zNear = 1.0f;
-	const float32 zFar = 30000.0f;
-	Vector2 frameSize = GetRenderSystem()->GetFrameSize();
-	const float32 aspect = frameSize.x / frameSize.y;
-	const vec3f position = vec3f(0, 0, 200);
-	const vec3f target = vec3f(0, 0, -1);
-	E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
+{	
+	E3DEngine::Camera *camera = Camera::CreateCamera();
 	return camera->GetMonoBehaviour()->GetMonoObject();
 }
 
@@ -184,9 +177,9 @@ VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float
 	camera->SetClearColor(Color4(r, g, b, a));
 }
 
-CS_OBJECT _0_PARAM_FUNCTION(Scene, createScene)
+CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 {
-	Scene * scene = SceneManager::GetInstance().CreateScene();
+	Scene * scene = SceneManager::GetInstance().CreateScene(Convert::ToString(path));
 
 	return scene->GetMonoBehaviour()->GetMonoObject();
 }
@@ -602,27 +595,17 @@ UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
 
 VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
 {
-	SkyBox *skyBox = new SkyBox();
-	skyBox->Create(50, 50, 50);
 	Material * m = getCppObject<Material>(material);
-	skyBox->SetMaterial(m);
-
-	ADD_IN_SCENE(skyBox);
+	GameObject::CreateSkyBox(m);
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Light, Create, UINT, lightType)
 {
-	if (lightType == eDIRECTION_LIGHT)
+	Light *light = Light::Create((LightType)lightType);
+	if (light == nullptr)
 	{
-		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
-		{
-			Debug::Log(ell_Warning, "there must be only one direction light in the same scene");
-			return nullptr;
-		}
+		return nullptr;
 	}
-	Light * light = Light::Create((LightType)lightType);
-	SceneManager::GetInstance().GetCurrentScene()->AddLight(light);
-	ADD_IN_SCENE(light);
 	return light->GetMonoBehaviour()->GetMonoObject();
 }
 
@@ -742,9 +725,9 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID)
 {
 	std::string filePath = Convert::ToString(path);
-	Mesh * mesh = new Mesh(filePath, cfgID);
-	ADD_IN_SCENE(mesh);
-	return mesh->GetMonoBehaviour()->GetMonoObject();
+	Mesh * mh = Mesh::Create(filePath, cfgID);
+	ADD_IN_SCENE(mh);
+	return mh->GetMonoBehaviour()->GetMonoObject();
 }
 
 
@@ -767,4 +750,14 @@ VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri)
 	}
 
 	rb->SetRenderIndex(ri);
+}
+
+CS_OBJECT _0_PARAM_FUNCTION(Camera, get_MainCamera)
+{
+	Camera *pCamera = SceneManager::GetInstance().GetCurrentScene()->GetMainCamera();
+	if (pCamera == nullptr)
+	{
+		return nullptr;
+	}
+	return pCamera->GetMonoBehaviour()->GetMonoObject();
 }

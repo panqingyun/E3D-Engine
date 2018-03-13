@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace E3DEngine
 {
+
     public class Transform : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]

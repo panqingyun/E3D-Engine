@@ -26,7 +26,7 @@ namespace E3DEngine
 		SceneManager();
 		virtual void Initilize();
 		virtual void Destory();		
-		Scene * CreateScene();
+		Scene * CreateScene(std::string filePath);
 
 		bool ChangeScene(uint sceneID);
 		bool ChangeScene(Scene * scene);
@@ -40,5 +40,4 @@ namespace E3DEngine
 		uint					m_currentUseSceneID;
 	};
 }
-
 #endif /* E3DSceneManager_hpp */

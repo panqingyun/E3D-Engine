@@ -4,6 +4,8 @@
 //
 
 #include "E3DLight.hpp"
+#include "../Scene/E3DSceneManager.hpp"
+
 namespace E3DEngine
 {
 	PointLight::PointLight()
@@ -65,21 +67,29 @@ namespace E3DEngine
 
 	Light * Light::Create(LightType type)
 	{
+		Light * light = nullptr;
 		switch (type)
 		{
 		case eDIRECTION_LIGHT:
-			return new DirectionLight;
+			if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+			{
+				Debug::Log(ell_Warning, "there must be only one direction light in the same scene");
+				return nullptr;
+			}
+			light = new DirectionLight;
 			break;
 		case ePOINT_LIGHT:
-			return new PointLight;
+			light = new PointLight;
 			break;
 		case eSPOT_LIGHT:
-			return new SpotLight;
+			light = new SpotLight;
 			break;
 		default:
 			break;
 		}
-		return nullptr;
+		SceneManager::GetInstance().GetCurrentScene()->AddLight(light);
+		//ADD_IN_SCENE(light);
+		return light;
 	}
 
 	void Light::setBehaviourDefaultValue()

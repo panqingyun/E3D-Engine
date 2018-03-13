@@ -46,6 +46,7 @@ namespace E3DEngine
 		void AddCamera(Camera * pCamera);
 		void SortCamera();
 		Camera * GetCamera(UINT cameraID);
+		Camera * GetMainCamera();
 		void ChangeFrameSize(float w, float h);
 		void AddRenderObject(RenderObject* rb, UINT layer);
 		void AddLight(Light * light);

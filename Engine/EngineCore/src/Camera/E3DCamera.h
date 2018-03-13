@@ -41,6 +41,8 @@ namespace E3DEngine
 	{
 		friend class Render2Texture;
 	public:
+
+		static Camera * CreateCamera();
 		/** create a perspective camera
 		 @param position camera position
 		 @param target camera target point

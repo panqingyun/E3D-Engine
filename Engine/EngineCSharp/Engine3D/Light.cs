@@ -3,6 +3,13 @@ using System.Runtime.CompilerServices;
 
 namespace E3DEngine
 {
+
+    public class PLightSceneConfig
+    {
+        public const string _TypeName = "PointLight";
+        public const string _Color = "Color";
+    }
+
     public enum LightType : uint
     {
         DIRECTION_LIGHT = 1,

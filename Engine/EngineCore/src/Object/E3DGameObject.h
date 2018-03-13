@@ -278,6 +278,7 @@ namespace E3DEngine
 	class Material;
 	class RenderObject;
 	class Renderer;
+	class SkyBox;
 	class GameObject : public Object
 	{
 	public:
@@ -320,6 +321,9 @@ namespace E3DEngine
 			}
 			return retVector;
 		}
+
+		static SkyBox *CreateSkyBox(Material *m);
+
 		// 获取长宽高
 		virtual vec3f GetBounds() { return size; }
 		std::vector<Component*> * GetComponents(std::string type_name);

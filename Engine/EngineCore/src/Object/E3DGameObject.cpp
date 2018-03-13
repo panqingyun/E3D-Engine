@@ -58,6 +58,17 @@ namespace E3DEngine
 		return &m_listComponents[type_name];
 	}
 
+
+	E3DEngine::SkyBox * GameObject::CreateSkyBox(Material *m)
+	{
+		SkyBox *skyBox = new SkyBox();
+		skyBox->Create(50, 50, 50);
+		skyBox->SetMaterial(m);
+
+		ADD_IN_SCENE(skyBox);
+		return skyBox;
+	}
+
 	Component * GameObject::AddComponent(const char * type_name)
 	{
 		Component * component	= (Component *)ClassFactory::GetInstance().CreateClass(type_name);

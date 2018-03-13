@@ -13,6 +13,12 @@
 
 namespace E3DEngine
 {
+	Mesh *Mesh::Create(string path, int configID)
+	{
+		Mesh * mesh = new Mesh(path, configID);
+		return mesh;
+	}
+
 	Mesh::Mesh(std::string filePath, int cfgID)
 	{
 		NumBones = 0;

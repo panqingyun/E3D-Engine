@@ -4,13 +4,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace E3DEngine
 {
     public class Scene : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Scene createScene();
+        private static extern Scene createScene(string path);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern void changeScene(uint sceneId);
@@ -18,15 +19,14 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern void destoryScene(uint sceneId);
 
-        public static Scene CreateScene()
-        {
-            return createScene();
-        }
+        public List<GameObject> GameObjectList = new List<GameObject>();
 
+      
         public static Scene LoadScene(string path)
         {
-            Scene scene = createScene();
+            Scene scene = createScene(path);
             changeScene(scene.ID);
+
             return scene;
         }
 

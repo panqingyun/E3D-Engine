@@ -39,6 +39,7 @@ public:
 	void CallMethod(const char * name, void ** param = nullptr);
 	MonoClass * GetClass();
 	MonoObject * GetMonoObject();
+	void SetMonoObject(MonoObject *obj) { m_pMonoObject = obj; }
 private:
 	void constructor();
 	void callMethod(void ** param, MonoMethod *method);

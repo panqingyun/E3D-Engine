@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConfigSystem>
-	<SceneConfig>
-		<Item 	ID=1 Type="Object" IsActive="true">			
-		</Item>
-		<Item 	ID=2 Type="Cube" 
-				IsActive="true"
-				Position="0,0,0" Scale="1,1,1" Rotate="0,0,0" 
-				Materials="MainEntry/Material/CubeMaterial.material"
-				Script="Cube.cs">
-				
-		</Item>
-		<Item 	ID=3 Type="Camera" Position="0,0,120" Scale="1,1,1" Rotate="0,0,0"
-				IsActive="true"
-				ClearFlog=1 ClearColor="0,0,0,0" CullingMask="EveryThing" Projection="Perspective" Fov="60" Near="1" Far="1000" Depth="0">
-				<Component ScriptName="myCamera.cs">
-					<Variable Type="Object" Name="MainCamera" Value="3">
-				</Component>
-		</Item>
-	</SceneConfig>
-</ConfigSystem>
+<Scene>
+	<GameObject Type="Camera" ClearColor="0.0, 0.0, 0.0, 1">
+		<Transform Posistion="150, 35,180" Rotation="0, 30, 0" Scale="1,1,1"/>			
+	</GameObject>
+	<GameObject Type="DirectionLight" Color="1, 1, 1, 1.0">
+		<Transform Posistion="50, 50, 0" Rotation="0, 0, 0" Scale="1,1,1"/>			
+	</GameObject>
+	<GameObject Type="SkyBox" >
+		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>		
+		<Material FilePath="Material/SkyBox.material" ID="1"/>
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="3">
+		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>	
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="5">
+		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>	
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="6">
+		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>	
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="1" RenderIndex="Transparent">
+		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="3" RenderIndex="Transparent">
+		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
+	</GameObject>
+	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="2" RenderIndex="Transparent">
+		<Transform Posistion="150, 28, 168" Rotation="-90, 0, 0" Scale="0.008, 0.008, 0.008"/>	
+	</GameObject>
+	<GameObject Type="Particle" FilePath="Particle/ParticleFire.particle" RenderIndex="Transparent">
+		<Transform Posistion="2.5f, 45, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>	
+	</GameObject>
+</Scene>

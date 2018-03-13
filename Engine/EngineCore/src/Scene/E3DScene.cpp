@@ -165,6 +165,15 @@ namespace E3DEngine
 	}
 
 
+	Camera * Scene::GetMainCamera()
+	{
+		if (m_vecCamera.size() != 0)
+		{
+			return m_vecCamera[m_vecCamera.size() - 1];
+		}
+		return nullptr;
+	}
+
 	void Scene::ChangeFrameSize(float w, float h)
 	{
 		for each(Camera * camera in m_vecCamera)

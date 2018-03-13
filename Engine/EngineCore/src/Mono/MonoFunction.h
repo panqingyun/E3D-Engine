@@ -117,7 +117,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Render		, createRenderer	, UINT			, materialID);
 CS_OBJECT _1_PARAM_FUNCTION(Camera		, createCamera);
 CS_OBJECT _0_PARAM_FUNCTION(Render		, createRendererWithoutParam);
 VOID _0_PARAM_FUNCTION(Application		, exitApplication);
-CS_OBJECT _0_PARAM_FUNCTION(Scene		, createScene);
+CS_OBJECT _1_PARAM_FUNCTION(Scene		, createScene, CS_STRING , path);
 VOID _1_PARAM_FUNCTION(GameObject		, removeComponent	, CS_OBJECT		, cs_obj);
 
 CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem	, createParticle	, CS_OBJECT		, cs_obj, CS_STRING		, path);
@@ -144,3 +144,4 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light);
 CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID);
 UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj);
 VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri);
+CS_OBJECT _0_PARAM_FUNCTION(Camera, get_MainCamera);

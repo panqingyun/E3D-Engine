@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace E3DEngine
 {
+
     public class GameObject : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -72,7 +73,7 @@ namespace E3DEngine
         }
 
         private Dictionary<string, List<Component>> component_dic = new Dictionary<string, List<Component>>();
-        
+
         public Transform Transform;
 
         public GameObject()

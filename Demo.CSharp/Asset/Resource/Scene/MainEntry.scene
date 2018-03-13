@@ -8,27 +8,27 @@
 	</GameObject>
 	<GameObject Type="SkyBox" >
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>		
-		<Material FilePath="Material/SkyBox.material" ID="1"/>
+		<Material FilePath="../Material/SkyBox.material" ID="1"/>
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="3">
+	<GameObject Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="3">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>	
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="5">
+	<GameObject Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="5">
 		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>	
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/bhcs.mesh" ID="6">
+	<GameObject Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="6">
 		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>	
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="1" RenderIndex="Transparent">
+	<GameObject Type="Mesh" FilePath="../Mesh/shu.mesh" ID="1" RenderIndex="Transparent">
 		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="3" RenderIndex="Transparent">
+	<GameObject Type="Mesh" FilePath="../Mesh/shu.mesh" ID="3" RenderIndex="Transparent">
 		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
 	</GameObject>
-	<GameObject Type="Mesh" FilePath="Mesh/shu.mesh" ID="2" RenderIndex="Transparent">
+	<GameObject Type="Mesh" FilePath="../Mesh/shu.mesh" ID="2" RenderIndex="Transparent">
 		<Transform Posistion="150, 28, 168" Rotation="-90, 0, 0" Scale="0.008, 0.008, 0.008"/>	
 	</GameObject>
-	<GameObject Type="Particle" FilePath="Particle/ParticleFire.particle" RenderIndex="Transparent">
+	<GameObject Type="Particle" FilePath="../Particle/ParticleFire.particle" RenderIndex="Transparent">
 		<Transform Posistion="2.5f, 45, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>	
 	</GameObject>
 </Scene>

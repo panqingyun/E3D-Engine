@@ -48,6 +48,7 @@ namespace E3DEngine
 	std::map<std::string, createGameObjectFun> createFun;
 	std::map<std::string, UINT> renderIndexMap;
 	void createObjects(GameObject * parent, TiXmlElement* rootElem);
+	std::string sceneFolderPath = "";
 
 	void SceneManager::DestoryScene(E3DEngine::Scene *scene)
 	{
@@ -155,7 +156,7 @@ namespace E3DEngine
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_ID));
 
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + _path, _id);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(sceneFolderPath + "/" + _path, _id);
 		return m;
 	}
 
@@ -172,7 +173,7 @@ namespace E3DEngine
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_ID));
 
-		Mesh *mesh = Mesh::Create(Application::ResourcePath + _path, _id);
+		Mesh *mesh = Mesh::Create(sceneFolderPath + "/" + _path, _id);
 		descTransform(objectElement->FirstChildElement(_Transform), mesh->Transform);
 		setRenderIndex(objectElement, mesh);
 		createObjects(mesh, objectElement);
@@ -200,7 +201,7 @@ namespace E3DEngine
 	GameObject * createParticle(GameObject *parent, TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
-		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(Application::ResourcePath + _path);
+		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(sceneFolderPath + "/" + _path);
 
 		for (auto & particle: *particles)
 		{
@@ -278,7 +279,7 @@ namespace E3DEngine
 			return nullptr;
 		}
 		TiXmlElement* rootElem = doc->RootElement();
-
+		sceneFolderPath = vvision::GetFolder(filePath);
 		createObjects(nullptr, rootElem);
 
 		return pScene;

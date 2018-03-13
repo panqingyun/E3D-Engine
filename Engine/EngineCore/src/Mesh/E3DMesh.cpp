@@ -75,8 +75,8 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': split config wrong", filePath.c_str());
 			return;
 		}
-
-		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialCfg[0], Convert::ToInt(materialCfg[1]));
+		std::string folder = vvision::GetFolder(filePath);
+		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(folder + "/" + materialCfg[0], Convert::ToInt(materialCfg[1]));
 		SetMaterial(material);
 		SAFE_DELETE(tbMgr);
 	}

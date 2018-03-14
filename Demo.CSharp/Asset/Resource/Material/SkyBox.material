@@ -19,7 +19,7 @@
 			EnableDepthTest 0 关闭深度测试和深度缓冲区 1 开启深度测试与深度缓冲区
 			IsBlend 0 不做颜色叠加的混合 1 开启颜色叠加 
 		-->
-      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=0 CullFace = 0 TextureClampType=0 TextureFilterType = 0/>
+      	<Item ID=1 ShaderID = 1 Color="ffffffff" BlendType = 0 EnableDepthTest=0 CullFace = 0 TextureClampType=0 TextureFilterType = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--

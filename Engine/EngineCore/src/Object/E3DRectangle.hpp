@@ -16,11 +16,9 @@ namespace E3DEngine
 	{
 	public:
 		void CreateShape(float width, float height, bool up2down = false);
-		void SetBlendType(DWORD type);
 		void SetZWriteEnable(bool bEnable);
 
 	private: 
-		DWORD					m_BlendType;
 		bool					m_ZWriteEnable;
 	};
 }

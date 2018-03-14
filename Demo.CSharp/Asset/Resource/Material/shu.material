@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=2 ShaderID = 2 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=3 ShaderID = 3 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=4 ShaderID = 4 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=1 ShaderID = 1 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=2 ShaderID = 2 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=3 ShaderID = 3 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=4 ShaderID = 4 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -35,7 +35,7 @@
 		<Item 
 					ID				= 1 
 					VertexShader	= "shader/huaVS.shader" 
-					FragmentShader	= "shader/huaFS.shader" 	
+					FragmentShader	= "shader/shu_fs.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_01.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
@@ -46,7 +46,7 @@
 		<Item 
 					ID				= 2 
 					VertexShader	= "shader/huaVS.shader" 
-					FragmentShader	= "shader/huaFS.shader" 	
+					FragmentShader	= "shader/shu_fs.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_01.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
@@ -57,7 +57,7 @@
 		<Item 
 					ID				= 3 
 					VertexShader	= "shader/huaVS.shader" 
-					FragmentShader	= "shader/huaFS.shader" 	
+					FragmentShader	= "shader/shu_fs.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_03.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
@@ -68,7 +68,7 @@
 		<Item 
 					ID				= 4 
 					VertexShader	= "shader/huaVS.shader" 
-					FragmentShader	= "shader/huaFS.shader" 	
+					FragmentShader	= "shader/shu_fs.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/Demo_zw_lvzhi001_diffuse.tga;" 
 									   
 					AttribVariable	= "POSITION:position;

@@ -17,11 +17,9 @@ namespace E3DEngine
 {
     enum eBlendType
 	{
-        eBlendType_default = 0,
+		eBlendType_NONE = 0,
         eBlendType_One = 1,
-        eBlendType_Text = 2,
-		eBlendType_ONE_MINUS_SRC = 3,
-		eBlendType_NONE = 4,
+		eBlendType_ONE_MINUS_SRC = 2,
 
     };
 	
@@ -74,6 +72,10 @@ namespace E3DEngine
 		virtual void UseNullProgram() { }
 
 		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
+
+		virtual void SetBlendType(eBlendType type) { blendType = type; }
+		virtual void SetEnableDepthTest(bool enable) { enableDepthTest = enable; }
+		virtual void SetEnableCullFace(bool enable) { enableDoubleSide = enable; }
 	public:
 
 		// -----------------------------------------------
@@ -103,14 +105,8 @@ namespace E3DEngine
 		virtual void createTexture(TextureData& data);
 		virtual void createTexture(Texture *texture, std::string textureUniform);
 
-	public:
-		long		Color;			// 颜色
-		Shader *	pShader;		// shader
+	protected:
 		float       alpha;
-		vec4f		AmbientColor;
-		vec4f		SpecularColor;
-		vec4f		DiffuseColor;
-		float		Shininess;		// 光泽度 镜面反光强度
 		int			nFaceIndex;
 		bool        enableDepthTest; //开启深度测试
 		bool        enablewriteDepth;
@@ -118,6 +114,13 @@ namespace E3DEngine
 		bool        enableDoubleSide;
 		bool        turnOnBlend;
 		eBlendType  blendType;
+	public:
+		vec4f		AmbientColor;
+		vec4f		SpecularColor;
+		vec4f		DiffuseColor;
+		float		Shininess;		// 光泽度 镜面反光强度
+		long		Color;			// 颜色
+		Shader *	pShader;		// shader
 		TableManager * MaterialTableManager;
 		std::map<UINT, Texture*>	Textures; // 纹理
 		MaterialConfig	  *	pMaterialConfig;

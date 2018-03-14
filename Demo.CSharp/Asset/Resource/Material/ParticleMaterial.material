@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 1 EnableDepthTest=1 CullFace = 0/>
-		<Item ID=2 ShaderID = 1 Color="ffffffff" IsBlend = 0 EnableDepthTest=1 CullFace = 0/>
+      	<Item ID=1 ShaderID = 1 Color="ffffffff" BlendType = 1 EnableDepthTest=1 CullFace = 0/>
+		<Item ID=2 ShaderID = 1 Color="ffffffff" BlendType = 1 EnableDepthTest=1 CullFace = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--

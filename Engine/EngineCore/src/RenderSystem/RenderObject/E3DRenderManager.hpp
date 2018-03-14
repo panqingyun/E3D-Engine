@@ -42,7 +42,6 @@ namespace E3DEngine
 		virtual DWORD RecordCurrentIndexStartIndex(UINT objId);
 		virtual void VertexCountAdd(UINT objId, uint vertexCount);
 		virtual void IndexCountAdd(UINT objId, uint indexCount);
-		virtual void SetBlendType(DWORD blendType);
 		virtual void RemoveInRenderer(UINT objId);
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 
@@ -52,7 +51,6 @@ namespace E3DEngine
 		virtual void setBehaviourDefaultValue();
 
 	protected:
-		DWORD glBlendType;
 		DWORD m_vertexCount;
 		DWORD m_indexCount;
 		std::map<UINT, RendererBuffer> m_objRendererBuffers;

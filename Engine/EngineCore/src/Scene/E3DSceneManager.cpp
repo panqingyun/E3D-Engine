@@ -21,6 +21,7 @@ namespace E3DEngine
 	const std::string TP_Empty = "Empty";
 	const string _typeName = "Type";
 
+	const string _Name = "Name";
 	const string material_TypeName = "Material";
 	const string _FilePath = "FilePath";
 	const string _ID = "ID";
@@ -251,9 +252,11 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			GameObject *go = createFun[_type](parent,item->ToElement());
+			GameObject *go = createFun[_type](parent,item->ToElement());			
 			if (go != nullptr)
 			{
+				go->Name = *item->ToElement()->Attribute(_Name);
+				go->TypeName = _type;
 				if (parent == nullptr)
 				{
 					ADD_IN_SCENE(go);

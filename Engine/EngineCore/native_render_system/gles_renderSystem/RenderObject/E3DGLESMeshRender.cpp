@@ -55,13 +55,6 @@ namespace E3DEngine
 		render->IndexCountAdd(objId, indexCount);
 	}
 
-
-	void GLES_MeshRender::SetBlendType(DWORD blendType)
-	{
-		render->SetBlendType(blendType);
-	}
-
-
 	void GLES_MeshRender::RemoveInRenderer(UINT objId)
 	{
 		render->RemoveInRenderer(objId);

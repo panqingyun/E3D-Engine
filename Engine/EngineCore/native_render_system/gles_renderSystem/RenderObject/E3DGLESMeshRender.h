@@ -25,7 +25,6 @@ namespace E3DEngine
 		virtual DWORD RecordCurrentIndexStartIndex(UINT objId);
 		virtual void VertexCountAdd(UINT objId, uint vertexCount);
 		virtual void IndexCountAdd(UINT objId, uint indexCount);
-		virtual void SetBlendType(DWORD blendType);
 		virtual void RemoveInRenderer(UINT objId);
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 		virtual void TransformChange() override;

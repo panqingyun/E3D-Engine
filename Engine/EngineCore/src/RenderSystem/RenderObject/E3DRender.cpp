@@ -72,11 +72,6 @@ namespace E3DEngine
 		m_indexCount += indexCount;
 	}
 
-	void Renderer::SetBlendType(DWORD blendType)
-	{
-		glBlendType = blendType;
-	}
-
 	void Renderer::RemoveInRenderer(UINT objId)
 	{
 		std::map<UINT , RendererBuffer>::iterator vbuffer = m_objRendererBuffers.find(objId);

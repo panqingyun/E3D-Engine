@@ -146,21 +146,24 @@ namespace E3DEngine
 
 		if (blendType == eBlendType_One)
 		{
+			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 		}
-		else if (blendType == eBlendType_Text)
+		else if(blendType == eBlendType_ONE_MINUS_SRC)
 		{
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		}
-		else
-		{
+			glEnable(GL_BLEND);
 #ifdef __IOS__
 			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 #else
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 #endif // __IOS__
+		}	 
+		else
+		{
+			glDisable(GL_BLEND);
+		}
+		glEnable(GL_ALPHA);
 
-		}	
         glEnable(GL_STENCIL_TEST);
         glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
         

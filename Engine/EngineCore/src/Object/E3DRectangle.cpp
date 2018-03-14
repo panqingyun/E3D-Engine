@@ -86,11 +86,6 @@ namespace E3DEngine
 		}*/
 	/*}*/
 
-	void Rectangle::SetBlendType(DWORD type)
-	{
-		m_BlendType = type;
-	}
-
 	void Rectangle::SetZWriteEnable(bool bEnable)
 	{
 		m_ZWriteEnable = bEnable;

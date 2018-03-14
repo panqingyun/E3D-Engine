@@ -25,9 +25,7 @@ namespace E3DEngine
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 //
-		glEnable(GL_BLEND);
 		glEnable(GL_TEXTURE_2D);
-		glEnable(GL_ALPHA);
 		Renderer::prepareRender(deltaTime);
 	}
 

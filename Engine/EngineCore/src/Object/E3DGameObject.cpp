@@ -958,6 +958,25 @@ vec4f Convert::CSVector4ToVec4(MonoObject * vec)
 	return _vec4;
 }
 
+
+bool Convert::ToBoolean(std::string src)
+{
+	if (src.empty())
+	{
+		return false;
+	}
+	if (strcmp(src.c_str(), "true") == 0 || strcmp(src.c_str(), "TRUE") == 0)
+	{
+		return true;
+	}
+	else if (strcmp(src.c_str(), "false") == 0 || strcmp(src.c_str(), "FALSE") == 0)
+	{
+		return false;
+	}
+
+	return false;
+}
+
 object::object() : content(nullptr)
 {
 

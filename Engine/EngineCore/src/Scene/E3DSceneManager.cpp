@@ -27,6 +27,7 @@ namespace E3DEngine
 	const string _ID = "ID";
 	const string _LayerMask = "LayerMask";
 	const string _Layer_AllLayer = "AllLayer";
+	const string _Active = "Active";
 
 	const string transform_TypeName = "Transform";
 	const string _Position = "Posistion";
@@ -49,6 +50,9 @@ namespace E3DEngine
 
 	const string _Component = "Component";
 	const string _Component_ClassName = "ClassName";
+
+	const string _Camera_CullMask = "CulMask";
+	const string _Camera_CullMask_Everything = "Everything";
 
 	using createGameObjectFun = GameObject*(*)(GameObject *parent,TiXmlElement *objectElement);
 	std::map<std::string, createGameObjectFun> createFun;
@@ -160,6 +164,36 @@ namespace E3DEngine
 			return;
 		}
 		go->SetRenderIndex(renderIndexMap[rd]);
+	}
+
+	int selectLayerByName(std::string name);
+	void setCameraCullMask(TiXmlElement *objectElement, GameObject *go)
+	{
+		if (objectElement == nullptr)
+		{
+			return;
+		}
+		if (objectElement->Attribute(_Camera_CullMask) == nullptr)
+		{
+			return;
+		}
+		std::string cullMask = *objectElement->Attribute(_Camera_CullMask);
+
+		unsigned int layer = 0;
+		if (cullMask == _Camera_CullMask_Everything)
+		{
+			go->SetLayerMask(-1);
+		}
+		else
+		{
+			std::vector<std::string> layers = StringBuilder::Split(cullMask, "|");
+			for (auto &layerName : layers)
+			{
+				StringBuilder::Trim(layerName);
+				layer  |= (1 << selectLayerByName(layerName));
+			}
+			go->SetLayerMask(layer);
+		}
 	}
 
 	GameObject* createCamera(GameObject *parent, TiXmlElement *objectElement)
@@ -285,9 +319,27 @@ namespace E3DEngine
 		{
 			return;
 		}
-
+		if (objectElement->Attribute(_LayerMask) == nullptr)
+		{
+			return;
+		}
 		int layer = selectLayerByName(*objectElement->Attribute(_LayerMask));
 		go->SetLayerMask(1 << layer);
+	}
+
+	void setGameObjectActive(TiXmlElement *objectElement, GameObject * go)
+	{
+		if (objectElement == nullptr)
+		{
+			return;
+		}
+		if (objectElement->Attribute(_Active) == nullptr)
+		{
+			return;
+		}
+		string activeStr = *objectElement->Attribute(_Active);
+		bool active = Convert::ToBoolean(StringBuilder::Trim(activeStr));
+		go->SetActive(active);
 	}
 
 	void setObjectCommonValue(GameObject * go, TiXmlElement *objectElement, std::string _type)
@@ -297,6 +349,7 @@ namespace E3DEngine
 		descTransform(objectElement->FirstChildElement(_Transform), go->Transform);
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
+		setGameObjectActive(objectElement, go);
 	}
 
 	void createObjects(GameObject * parent, TiXmlElement* rootElem)

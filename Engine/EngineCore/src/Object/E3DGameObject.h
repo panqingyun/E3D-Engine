@@ -263,6 +263,9 @@ struct Convert
 	static MonoObject * ToCSVector3(vec3f vec);
 
 	static vec4f CSVector4ToVec4(MonoObject *vec);
+
+
+	static bool ToBoolean(std::string src);
 };
 
 namespace E3DEngine

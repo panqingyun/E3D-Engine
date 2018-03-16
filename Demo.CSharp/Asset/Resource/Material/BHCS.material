@@ -5,7 +5,7 @@
 		<Item ID=2 ShaderID = 2 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
 		<Item ID=3 ShaderID = 3 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
 		<Item ID=4 ShaderID = 4 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=5 ShaderID = 5 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=5 ShaderID = 5 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
 		<Item ID=6 ShaderID = 6 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
 	</MaterialConfig>
 	<ShaderConfig>

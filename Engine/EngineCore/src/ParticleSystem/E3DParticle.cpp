@@ -850,6 +850,10 @@ namespace E3DEngine
 	
 	void ParticleGroup::checkParticleState(float deltaTime)
 	{
+		if (m_pRenderer->pCamera == nullptr)
+		{
+			return;
+		}
 		for (auto & m_particleEmitter : m_particleEmitters)
 		{
 			m_particleEmitter->Update(deltaTime);

@@ -26,7 +26,7 @@ namespace E3DEngine
 	}
 
 	class CTransform;
-	class Object extends Ref
+	class Object : public Ref
 	{
 	public:
 		Object();

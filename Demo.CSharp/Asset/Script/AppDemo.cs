@@ -12,28 +12,6 @@ using log4net;
 /// </summary>
 namespace Game
 {
-    namespace App
-    {
-        class CubeComponent : Component
-        {
-            void Start()
-            {
-
-            }
-
-            void Update(float deltaTime)
-            {
-                
-            }
-
-            void OnCollisionEnter(E3DEngine.Object collisionObject)
-            {
-
-            }
-        }
-        
-    }
-
     public class AppDemo
     {
         string mainScenePath = "Scene/MainEntry.scene";

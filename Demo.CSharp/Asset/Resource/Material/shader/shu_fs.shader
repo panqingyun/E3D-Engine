@@ -6,7 +6,7 @@ varying vec4 DestinationColor;
 
 void main(void) 
 { 
-	vec4 color = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor,vec4(1.0,1.0,1.0,1.0));
+	vec4 color = texture2D(myTexture0, v_coord);
 	
 	if(color.a < 0.1)
 	{
@@ -14,6 +14,7 @@ void main(void)
 	}
 	else
 	{
-		gl_FragColor = color;
+		vec4 fogColor = mixFogColor(color,vec4(1.0,1.0,1.0,1.0));
+		gl_FragColor = fogColor * DestinationColor;
 	}
 }

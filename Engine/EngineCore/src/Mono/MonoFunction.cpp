@@ -309,34 +309,8 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 		return nullptr;
 	}
 	std::string full_name = Convert::ToString(class_name);
-	std::string cName = "";
-	std::string sName = "";
-	int dotPos = full_name.find_last_of(".");
 
-	Component * component = nullptr;
-	if (dotPos == std::string::npos)
-	{
-		cName = full_name;
-	}
-	else
-	{
-		cName = full_name.substr(dotPos + 1);
-		sName = full_name.substr(0, dotPos);
-	}
-	string kName = ClassFactory::GetInstance().getTypeNameByClassName(cName);
-	if (kName != "NAN")
-	{
-		component = go->AddComponent(kName.c_str());
-	}
-	else
-	{
-		// 不是引擎类
-		component = new Component;
-		component->TypeName = full_name;
-		component->m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
-		component->m_pBehaviour->Create(sName.c_str(), cName.c_str());
-		go->AddComponent(component);
-	}
+	Component * component = go->AddComponent(full_name.c_str());
 
 	if (component == nullptr)
 	{

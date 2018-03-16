@@ -308,6 +308,7 @@ namespace E3DEngine
 		{
 			bone.second->Update(deltaTime);
 		}
+		GameObject::Update(deltaTime);
 	}
 
 	MeshEntity::MeshEntity()

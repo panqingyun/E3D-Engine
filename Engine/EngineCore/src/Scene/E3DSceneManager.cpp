@@ -25,6 +25,8 @@ namespace E3DEngine
 	const string material_TypeName = "Material";
 	const string _FilePath = "FilePath";
 	const string _ID = "ID";
+	const string _LayerMask = "LayerMask";
+	const string _Layer_AllLayer = "AllLayer";
 
 	const string transform_TypeName = "Transform";
 	const string _Position = "Posistion";
@@ -44,6 +46,9 @@ namespace E3DEngine
 	const string _RenderIndex_Normal = "Normal";
 	const string _RenderIndex_LowMost = "LowMost";
 	const string _RenderIndex_TopMost = "TopMost";
+
+	const string _Component = "Component";
+	const string _Component_ClassName = "ClassName";
 
 	using createGameObjectFun = GameObject*(*)(GameObject *parent,TiXmlElement *objectElement);
 	std::map<std::string, createGameObjectFun> createFun;
@@ -115,9 +120,24 @@ namespace E3DEngine
 		return vec3f(x, y, z);
 	}
 
+	void createComponent(TiXmlElement *objectElement, GameObject *go)
+	{
+		if (objectElement == nullptr)
+		{
+			return;
+		}
+
+		std::string comName = *objectElement->Attribute(_Component_ClassName);
+		go->AddComponent(comName.c_str());
+	}
+
 	void descTransform(TiXmlElement *objectElement, CTransform * transform)
 	{
 		if (transform == nullptr)
+		{
+			return;
+		}
+		if (objectElement == nullptr)
 		{
 			return;
 		}
@@ -175,7 +195,6 @@ namespace E3DEngine
 		int _id = Convert::ToInt(*objectElement->Attribute(_ID));
 
 		Mesh *mesh = Mesh::Create(sceneFolderPath + "/" + _path, _id);
-		descTransform(objectElement->FirstChildElement(_Transform), mesh->Transform);
 		setRenderIndex(objectElement, mesh);
 		createObjects(mesh, objectElement);
 		return mesh;
@@ -186,7 +205,6 @@ namespace E3DEngine
 		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
 		Color4 color = createColor(*objectElement->Attribute(_Color));
 		light->Color = vec4f(color.r, color.g, color.b, color.a);
-		descTransform(objectElement->FirstChildElement(_Transform), light->Transform);
 		createObjects(light, objectElement);
 		return light;
 	}
@@ -194,7 +212,6 @@ namespace E3DEngine
 	GameObject *createEmpty(GameObject *parent, TiXmlElement *objectElement)
 	{
 		GameObject * go = new GameObject();
-		descTransform(objectElement->FirstChildElement(_Transform), go->Transform);
 
 		return go;
 	}
@@ -238,6 +255,49 @@ namespace E3DEngine
 		renderIndexMap[_RenderIndex_Transparent] = eRenderIndex::eRI_Transparent;
 	}
 
+	int selectLayerByName(std::string name)
+	{
+		if (name == _Layer_AllLayer)
+		{
+			return -1;
+		}
+		TableManager *tbMgr = EngineDelegate::GetInstance().GetTableManager(LAYER_CONFIAG_NAME);
+		if (tbMgr == nullptr)
+		{
+			return 0;
+		}
+		std::vector< LayerConfig*> *layers = tbMgr->GetTable<LayerConfig>();
+		for (auto &layer : *layers)
+		{
+			if (layer->Name == name)
+			{
+				return layer->ID;
+			}
+		}
+
+		SAFE_DELETE(layers);
+		return 0;
+	}
+
+	void setLayerMask(TiXmlElement *objectElement,GameObject * go)
+	{
+		if (objectElement == nullptr)
+		{
+			return;
+		}
+
+		int layer = selectLayerByName(*objectElement->Attribute(_LayerMask));
+		go->SetLayerMask(1 << layer);
+	}
+
+	void setObjectCommonValue(GameObject * go, TiXmlElement *objectElement, std::string _type)
+	{
+		go->Name = *objectElement->Attribute(_Name);
+		go->TypeName = _type;
+		descTransform(objectElement->FirstChildElement(_Transform), go->Transform);
+		createComponent(objectElement->FirstChildElement(_Component), go);
+		setLayerMask(objectElement, go);
+	}
 
 	void createObjects(GameObject * parent, TiXmlElement* rootElem)
 	{
@@ -255,8 +315,7 @@ namespace E3DEngine
 			GameObject *go = createFun[_type](parent,item->ToElement());			
 			if (go != nullptr)
 			{
-				go->Name = *item->ToElement()->Attribute(_Name);
-				go->TypeName = _type;
+				setObjectCommonValue(go, item->ToElement(), _type);
 				if (parent == nullptr)
 				{
 					ADD_IN_SCENE(go);

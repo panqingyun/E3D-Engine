@@ -76,7 +76,7 @@ extern "C"
 	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
 	///------------------------------------------------------
 	/// 日志输出
-	__api_function_ void setDebugLogOutFunc(void * func);
+	__api_function_ void SetDebugLogOutFunc(void * func);
 	///------------------------------------------------------
 	/// <summary>
 	/// 设置运行，目录

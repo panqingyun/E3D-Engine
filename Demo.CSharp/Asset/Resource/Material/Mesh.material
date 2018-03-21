@@ -7,6 +7,8 @@
 		<Item ID=4 ShaderID = 4 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
 		<Item ID=5 ShaderID = 5 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
 		<Item ID=6 ShaderID = 6 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=7 ShaderID = 7 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=8 ShaderID = 8 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -36,8 +38,8 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/BHCSVS.shader" 
-					FragmentShader	= "shader/BHCSFS.shader" 	
+					VertexShader	= "shader/MeshVS.shader" 
+					FragmentShader	= "shader/MeshFS.shader" 	
 					UniformVariable	= "sampler2D:_Splat0-texture/BH_zhuandi.tga;
 									   sampler2D:_Splat1-texture/wls_caodi02.png;
 									   sampler2D:_Splat2-texture/demo_tudi02_01.jpg;
@@ -64,8 +66,8 @@
 		/>
 		<Item 
 					ID				= 3 
-					VertexShader	= "shader/BHCSVS.shader" 
-					FragmentShader	= "shader/BHCSFS.shader" 	
+					VertexShader	= "shader/MeshVS.shader" 
+					FragmentShader	= "shader/MeshFS.shader" 	
 					UniformVariable	= "sampler2D:_Splat0-texture/demo_caodi08.jpg;
 									   sampler2D:_Splat1-texture/HFZC_dizhuan01.jpg;
 									   sampler2D:_Splat2-texture/XWD_shitou01.png;
@@ -104,6 +106,27 @@
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
 					UniformVariable	= "sampler2D:myTexture0-texture/LH_changshiqiao01.jpg;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate; 
+									   NORMAL:attr_normal;"
+		/>
+		<Item 
+					ID				= 7 
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/b_0000_shengmu_001.tga;" 
+									   
+					AttribVariable	= "POSITION:position;
+									   COLOR:color;
+									   TEXTURECOORD:inputTextureCoordinate; 
+									   NORMAL:attr_normal;"
+		/><Item 
+					ID				= 8 
+					VertexShader	= "shader/huaVS.shader" 
+					FragmentShader	= "shader/huaFS.shader" 	
+					UniformVariable	= "sampler2D:myTexture0-texture/rose2_D.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

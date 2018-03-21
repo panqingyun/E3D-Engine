@@ -75,7 +75,7 @@ namespace E3DEngine
 
 	void DebugLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[debug]:\t%s", log);
+		std::string outLog = StringBuilder::Format("[debug]:\t%s\n", log);
 #ifdef __IOS__
 		printf("%s\n", outLog.c_str());
 #endif 
@@ -92,7 +92,7 @@ namespace E3DEngine
 
 	void WarningLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[warning]:\t%s", log);
+		std::string outLog = StringBuilder::Format("[warning]:\t%s\n", log);
 #ifdef __IOS__
 		printf("%s\n", outLog.c_str());
 #endif 
@@ -109,7 +109,7 @@ namespace E3DEngine
 
 	void ErrorLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[error]:\t%s", log);
+		std::string outLog = StringBuilder::Format("[error]:\t%s\n", log);
 #ifdef __IOS__
 		printf("%s\n", outLog.c_str());
 #endif 
@@ -126,7 +126,7 @@ namespace E3DEngine
 
 	void InfoLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[info]:\t%s", log);
+		std::string outLog = StringBuilder::Format("[info]:\t%s\n", log);
 #ifdef __IOS__
 		printf("%s\n", outLog.c_str());
 #endif 

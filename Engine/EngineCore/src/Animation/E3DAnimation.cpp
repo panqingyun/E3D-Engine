@@ -58,6 +58,7 @@ namespace E3DEngine
 						EventArgs * args = new EventArgs();
 						args->_handled = true;
 						AnimationPlayEndEvent(this, args);
+						delete args;
 					}
 				}
 				else
@@ -206,7 +207,13 @@ namespace E3DEngine
 		
 		if (pNodeAnim)
 		{
-			std::map<std::string, Bone *>::iterator it = m_BoneMapping->find(NodeName);
+			int sPos = NodeName.find("_$");
+			std::string boneName = NodeName;
+			if (sPos != std::string::npos)
+			{
+				boneName = NodeName.substr(0, sPos);
+			}
+			std::map<std::string, Bone *>::iterator it = m_BoneMapping->find(boneName);
 			if (it != m_BoneMapping->end())
 			{
 				// 插值缩放

@@ -144,12 +144,12 @@ namespace E3DEngine
 			glEnable(GL_CULL_FACE);
         }		
 
-		if (blendType == eBlendType_One)
+		if (blendType == BLEND_TYPE::ONE_BLEND_ONE)
 		{
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 		}
-		else if(blendType == eBlendType_ONE_MINUS_SRC)
+		else if(blendType == BLEND_TYPE::SRCALPHA_ONEMINUSSRCALPHA)
 		{
 			glEnable(GL_BLEND);
 #ifdef __IOS__

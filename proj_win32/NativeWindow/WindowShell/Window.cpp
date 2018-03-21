@@ -28,6 +28,8 @@ float				CameraPitch = 0;
 float				CameraYaw = 0;
 bool				MButtonDown = false;
 
+HANDLE g_hConsoleHandle = 0;
+
 
 #ifdef _DEBUG
 #define EXE_NAME "WinClient_d.exe"
@@ -37,6 +39,12 @@ bool				MButtonDown = false;
 #endif
 
 #define ONE_INSTANCE 1
+
+DWORD nRet = 0;
+void LogOutput(const char* log)
+{
+	::WriteConsole(g_hConsoleHandle, log, strlen(log), &nRet, NULL);
+}
 
 void InitEngine(HWND hWnd)
 {
@@ -59,6 +67,9 @@ void InitEngine(HWND hWnd)
 #endif
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine();
+	::SetDebugLogOutFunc(LogOutput);
+	::AllocConsole();
+	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
 	//CreateEditorGrid();

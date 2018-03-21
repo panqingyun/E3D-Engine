@@ -24,7 +24,7 @@ namespace E3DEngine
 	const string _Name = "Name";
 	const string material_TypeName = "Material";
 	const string _FilePath = "FilePath";
-	const string _ID = "ID";
+	const string _SelectID = "SelectID";
 	const string _LayerMask = "LayerMask";
 	const string _Layer_AllLayer = "AllLayer";
 	const string _Active = "Active";
@@ -209,7 +209,7 @@ namespace E3DEngine
 	Material * createMaterial(TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
-		int _id = Convert::ToInt(*objectElement->Attribute(_ID));
+		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
 
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(sceneFolderPath + "/" + _path, _id);
 		return m;
@@ -226,7 +226,7 @@ namespace E3DEngine
 	GameObject* createMesh(GameObject *parent, TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
-		int _id = Convert::ToInt(*objectElement->Attribute(_ID));
+		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
 
 		Mesh *mesh = Mesh::Create(sceneFolderPath + "/" + _path, _id);
 		setRenderIndex(objectElement, mesh);
@@ -396,7 +396,7 @@ namespace E3DEngine
 		TiXmlElement* rootElem = doc->RootElement();
 		sceneFolderPath = vvision::GetFolder(filePath);
 		createObjects(nullptr, rootElem);
-
+		delete doc;
 		return pScene;
 	}
 

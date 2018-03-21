@@ -39,7 +39,7 @@ namespace E3DEngine
 		StringManipulator::SplitFileName(path, folder, file);
 		MaterialConfig *config = materialConfig;
 		GLES_Material * material = new GLES_Material;
-		material->SetBlendType((eBlendType)config->BlendType);
+		material->SetBlendType((BLEND_TYPE)config->BlendType);
 		material->SetEnableDepthTest(config->EnableDepthTest == 1);
 		material->SetEnableCullFace(config->CullFace == 0);
 		material->filePath = folder + "/";

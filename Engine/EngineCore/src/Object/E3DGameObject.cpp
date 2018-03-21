@@ -182,7 +182,7 @@ namespace E3DEngine
 					if (itr->NotStart)
 					{
 						itr->Start();
-						itr->NotStart = true;
+						itr->NotStart = false;
 					}
 					itr->Update(deltaTime);
 				}

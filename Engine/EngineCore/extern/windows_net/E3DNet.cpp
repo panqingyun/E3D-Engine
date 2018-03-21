@@ -14,7 +14,6 @@ void LogOutput(const char* log)
 E3DNet::E3DNet()
 {
 	currentReadPool = 1;
-	setDebugLogOutFunc(LogOutput);
 	commandHandlerMap[EnginePause]		= new EnginePauseCommand();
 	commandHandlerMap[GotoNextFrame]	= new GotoNextFrameCommand();
 }

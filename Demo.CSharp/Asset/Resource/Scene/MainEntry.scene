@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Scene>
-	<GameObject Name="MainCamera" Type="Camera" ClearColor="0.0, 0.0, 0.0, 1" LayerMask="AllLayer" BackGround="0,0,0,0" CulMask="Everything"  Active="true" >
+	<GameObject Name="MainCamera" Type="Camera" ClearColor="0.0, 0.0, 0.0, 1" BackGround="0,0,0,0" CulMask="Everything"  Active="true" >
 		<Transform Posistion="150, 35,180" Rotation="0, 30, 0" Scale="1,1,1"/>			
 	</GameObject>
 	<GameObject Name="Light" Type="DirectionLight" Color="1, 1, 1, 1.0" LayerMask="AllLayer"  Active="true">
@@ -8,25 +8,28 @@
 	</GameObject>
 	<GameObject Name="SkyBox" Type="SkyBox" LayerMask="defaultLayer">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>		
-		<Material FilePath="../Material/SkyBox.material" ID="1"/>
+		<Material FilePath="../Material/SkyBox.material" SelectID="1"/>
 	</GameObject>
-	<GameObject Name="Dimian" Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="3" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="Dimian" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="3" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>	
 	</GameObject>
-	<GameObject Name="fangzi" Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="5" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="fangzi" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="5" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>	
 		<Component ClassName="AppMain"/>
 	</GameObject>
-	<GameObject Name="qiao" Type="Mesh" FilePath="../Mesh/bhcs.mesh" ID="6" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="qiao" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="6" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>	
 	</GameObject>
-	<GameObject Name="shu1" Type="Mesh" FilePath="../Mesh/shu.mesh" ID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="shu1" Type="Mesh" FilePath="../Mesh/shu.mesh" SelectID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
 	</GameObject>
-	<GameObject Name="shu2" Type="Mesh" FilePath="../Mesh/shu.mesh" ID="3" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="shu2" Type="Mesh" FilePath="../Mesh/shu.mesh" SelectID="3" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
 	</GameObject>
-	<GameObject Name="shu3" Type="Mesh" FilePath="../Mesh/shu.mesh" ID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
+	<GameObject Name="huaye" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="7" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>	
+	</GameObject>
+	<GameObject Name="shu3" Type="Mesh" FilePath="../Mesh/shu.mesh" SelectID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="185, 30, 170" Rotation="-90, 0, 0" Scale="0.008, 0.008, 0.008"/>	
 	</GameObject>
 	<GameObject Name="particle" Type="Particle" FilePath="../Particle/ParticleFire.particle" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">

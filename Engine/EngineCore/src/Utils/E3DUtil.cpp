@@ -36,7 +36,7 @@ extern "C"
 	__api_function_ void InitilizeEngine()
 	{
 #ifdef WIN32
-		E3DNet::GetInstance().InitLogic();
+		//E3DNet::GetInstance().InitLogic();
 #endif
 		E3DEngine::EngineDelegate::GetInstance().Initilize();
 	}
@@ -62,7 +62,7 @@ extern "C"
 		lastTime = curTime;
 		Time::deltaTime = _deltaTime;
 #ifdef WIN32
-		E3DNet::GetInstance().Update(_deltaTime);
+		//E3DNet::GetInstance().Update(_deltaTime);
 #endif
 		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime, true);
 		
@@ -71,7 +71,7 @@ extern "C"
 	__api_function_ void DestoryEngine()
 	{
 #ifdef WIN32
-		E3DNet::GetInstance().Destory();
+		//E3DNet::GetInstance().Destory();
 #endif
 		E3DEngine::EngineDelegate::GetInstance().Destory();
 	}
@@ -99,7 +99,7 @@ extern "C"
 		CreateRenderSystem(nativeWindow, width, height);
 	}
 
-	__api_function_ void setDebugLogOutFunc(void * func)
+	__api_function_ void SetDebugLogOutFunc(void * func)
 	{
 		Debug::OutputLogFunc = (DebugOutput)func;
 	}

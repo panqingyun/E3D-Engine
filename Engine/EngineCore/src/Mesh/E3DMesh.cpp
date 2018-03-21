@@ -157,7 +157,13 @@ namespace E3DEngine
 	
 	void Mesh::createBoneTree(aiNode * pNode)
 	{
-		if (BoneMapping.find(pNode->mName.data) == BoneMapping.end())
+		std::string boneName = pNode->mName.data;
+		int sPos = boneName.find("_$");
+		if (sPos != std::string::npos)
+		{
+			boneName = boneName.substr(0, sPos);
+		}
+		if (BoneMapping.find(boneName) == BoneMapping.end())
 		{
 			for (int i = 0; i < pNode->mNumChildren; ++i)
 			{
@@ -166,16 +172,22 @@ namespace E3DEngine
 			return;
 		}
 		// 根据Node结构创建骨骼树
-		Bone *pBone = BoneMapping[pNode->mName.data];
+		Bone *pBone = BoneMapping[boneName];
 		//transform->AddChild(pBone->Name, pBone->Transform);
 		pBone->SetMetadata(pNode->mMetaData);
 		
 		for (int i = 0; i < pNode->mNumChildren; ++i)
 		{
-			if (BoneTree.find(pNode->mChildren[i]->mName.data) != BoneTree.end())
+			boneName = pNode->mChildren[i]->mName.data;
+			sPos = boneName.find("_$");
+			if (sPos != std::string::npos)
+			{
+				boneName = boneName.substr(0, sPos);
+			}
+			if (BoneTree.find(boneName) != BoneTree.end())
 			{// 找到一个节点和Bone重名 这个Bone在子节点中，所以是子骨骼
-				pBone->AddChild(BoneTree[pNode->mChildren[i]->mName.data]);
-				BoneTree.erase(pNode->mChildren[i]->mName.data);
+				pBone->AddChild(BoneTree[boneName]);
+				BoneTree.erase(boneName);
 			}
 			createBoneTree(pNode->mChildren[i]);
 		}

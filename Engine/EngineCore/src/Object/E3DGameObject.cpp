@@ -766,17 +766,32 @@ namespace E3DEngine
 
 int Convert::ToInt(std::string source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	source = StringBuilder::Trim(source);
 	return atoi(source.c_str());
 }
 
 int Convert::ToInt(const char * source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return atoi(source);
 }
 
 int Convert::ToInt(const char source)
 {
+	if (!StringBuilder::IsNumber(&source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return atoi(&source);
 }
 
@@ -792,11 +807,21 @@ int Convert::ToInt(float source)
 
 float Convert::ToFloat(std::string source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return atof(source.c_str());
 }
 
 float Convert::ToFloat(const char * source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return atof(source);
 }
 
@@ -807,11 +832,21 @@ float Convert::ToFloat(int source)
 
 double Convert::ToDouble(std::string source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return strtod(source.c_str(), nullptr);
 }
 
 double Convert::ToDouble(const char * source)
 {
+	if (!StringBuilder::IsNumber(source))
+	{
+		Debug::Log(ell_Error, "source string is not a number!");
+		assert(false);
+	}
 	return strtod(source, nullptr);
 }
 

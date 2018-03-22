@@ -158,7 +158,7 @@ namespace E3DEngine
 			return;
 		}
 		std::string  rd = *objectElement->Attribute(_RenderIndex);
-		rd = StringBuilder::Trim(rd);
+		StringBuilder::Trim(rd);
 		if (renderIndexMap.find(rd) == renderIndexMap.end())
 		{
 			return;

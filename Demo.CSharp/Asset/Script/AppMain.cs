@@ -14,7 +14,7 @@ class AppMain : Component
 
     void Update(float deltaTime)
     {
-
+        
     }
 
     void OnCollisionEnter(E3DEngine.Object collisionObject)

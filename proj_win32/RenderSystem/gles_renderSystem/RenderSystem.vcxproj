@@ -49,7 +49,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -71,12 +71,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\..\lib</OutDir>
-    <IncludePath>..\..\..\Engine\EngineCore;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono\eglib\src;GLES\include;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono\eglib\src;GLES\include;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
+    <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\..\lib</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\lib</OutDir>
   </PropertyGroup>
@@ -131,13 +136,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;GLES_VERSION=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -145,6 +150,9 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Lib>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />

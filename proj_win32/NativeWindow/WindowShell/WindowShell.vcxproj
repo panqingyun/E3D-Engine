@@ -95,8 +95,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt>.exe</TargetExt>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\3d_engine;..\..\3d_engine\engine\3rd\header;D:\Code\ParticleEffectDemo\proj_win32\EngineLib\GLES\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\Engine\EngineCore;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

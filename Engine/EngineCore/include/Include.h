@@ -23,7 +23,7 @@
 #include <set>
 #include <FilePath.h>
 #include <queue>
-#include <assimp/mesh.h>
+#include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>
 #include <assimp/Importer.hpp>

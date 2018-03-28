@@ -1,4 +1,4 @@
-﻿//
+//
 //  RenderSystem.hpp
 //
 //  Created by 潘庆云 on 2017/1/22.
@@ -6,8 +6,9 @@
 
 #ifndef _GLES_RenderSystem_HPP_
 #define _GLES_RenderSystem_HPP_
-
-#include "EGL\EGLContext.h"
+#ifndef __IOS__
+#include <EGL/EGLContext.h>
+#endif
 #include <stdio.h>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
 #include "EGL/EGLContext.h"
@@ -26,9 +27,7 @@ namespace E3DEngine
 		virtual void Cleanup() override;
 		virtual void BindDefaultBackbuffer() override;
 		virtual Render2Texture * CreateRtt(float width, float height) override;
-#ifndef __IOS__
 		void	CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle);
-#endif
 		void	BindDefaultFBO();
 		void    Clear(Color4 color, int clearType);
 

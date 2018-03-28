@@ -1,4 +1,4 @@
-﻿//
+//
 //  Util.h
 //
 //  Created by 潘庆云 on 2017/2/7.
@@ -13,7 +13,7 @@
 using DWORD = unsigned int;
 using WORD = unsigned short;
 #endif
-using UINT = unsigned int;
+//using UINT = unsigned int;
 using ULONG = unsigned long;
 #ifdef _WIN32
 typedef unsigned int		uint

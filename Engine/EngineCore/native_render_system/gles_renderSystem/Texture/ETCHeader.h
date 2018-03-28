@@ -11,13 +11,7 @@
 #ifndef ETCHEADER_H
 #define ETCHEADER_H
 
-#if GLES_VERSION == 2
-#include <GLES2/gl2.h>
-#elif GLES_VERSION == 3
-#include <GLES3/gl3.h>
-#else 
-#error "GLES_VERSION must be defined as either 2 or 3"
-#endif
+#include "../Include/Include.h"
 
 /**
     * \brief Class to extract information from the ETC headers of compressed textures.

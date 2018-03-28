@@ -30,7 +30,7 @@
 #include <iterator> 
 #define __api_function_  __declspec(dllexport)
 #else
-define UINT unsigned int
+#define UINT unsigned int
 #define __api_function_ __attribute__ ((visibility("default")))
 #endif
 
@@ -38,13 +38,16 @@ define UINT unsigned int
 typedef HWND NATIVE_WINDOW_TYPE;
 #else
 #define NATIVE_WINDOW_TYPE void *
+#define EGLNativeDisplayType void *
+#define EGLNativeWindowType NATIVE_WINDOW_TYPE
+#define EGL_DEFAULT_DISPLAY 0
 #endif
-enum RenderSystemType
+typedef enum  
 {
 	eRS_D3D,
 	eRS_GL,
 	eRS_GLES2,
-};
+}RenderSystemType;
 
 //////////////////////////////////////////////////////////////////////////
 /// dll export function

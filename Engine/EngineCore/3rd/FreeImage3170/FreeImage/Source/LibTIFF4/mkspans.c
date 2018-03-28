@@ -49,6 +49,7 @@ dumparray(name, runs)
 			sep = ", ";
 	}
 	printf("\n};\n");
+    return 0;
 }
 
 main()

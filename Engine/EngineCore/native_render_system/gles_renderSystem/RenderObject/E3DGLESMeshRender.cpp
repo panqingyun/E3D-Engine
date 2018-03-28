@@ -16,107 +16,107 @@ namespace E3DEngine
 
 	void GLES_MeshRender::FillVertex(Vertex vb)
 	{
-		render->FillVertex(vb);
+		pRender->FillVertex(vb);
 	}
 
 
 	void GLES_MeshRender::FillIndex(uint ib)
 	{
-		render->FillIndex(ib);
+		pRender->FillIndex(ib);
 	}
 
 
 	void GLES_MeshRender::FillEnd()
 	{
-		render->FillEnd();
+		pRender->FillEnd();
 	}
 
 
 	DWORD GLES_MeshRender::RecordCurrentVextexStartIndex(UINT objId)
 	{
-		return render->RecordCurrentVextexStartIndex(objId);
+		return pRender->RecordCurrentVextexStartIndex(objId);
 	}
 
 
 	DWORD GLES_MeshRender::RecordCurrentIndexStartIndex(UINT objId)
 	{
-		return render->RecordCurrentIndexStartIndex(objId);
+		return pRender->RecordCurrentIndexStartIndex(objId);
 	}
 
 
 	void GLES_MeshRender::VertexCountAdd(UINT objId, uint vertexCount)
 	{
-		render->VertexCountAdd(objId, vertexCount);
+		pRender->VertexCountAdd(objId, vertexCount);
 	}
 
 
 	void GLES_MeshRender::IndexCountAdd(UINT objId, uint indexCount)
 	{
-		render->IndexCountAdd(objId, indexCount);
+		pRender->IndexCountAdd(objId, indexCount);
 	}
 
 	void GLES_MeshRender::RemoveInRenderer(UINT objId)
 	{
-		render->RemoveInRenderer(objId);
+		pRender->RemoveInRenderer(objId);
 	}
 
 
 	E3DEngine::RendererBuffer* GLES_MeshRender::GetRendererBuffer(UINT objID)
 	{
-		return render->GetRendererBuffer(objID);
+		return pRender->GetRendererBuffer(objID);
 	}
 
 
 	void GLES_MeshRender::TransformChange()
 	{
-		render->TransformChange();
+		pRender->TransformChange();
 	}
 
 
 	void GLES_MeshRender::Render(float deltaTime)
 	{
-		render->Render(deltaTime);
+		pRender->Render(deltaTime);
 	}
 
 	void GLES_MeshRender::SetDrawModule(DWORD module)
 	{
-		render->SetDrawModule(module);
+		pRender->SetDrawModule(module);
 	}
 
 
 	void GLES_MeshRender::SetColor(long color)
 	{
-		render->SetColor(color);
+		pRender->SetColor(color);
 	}
 
 
 	void GLES_MeshRender::SetIsBillborad(bool isBillboard)
 	{
-		render->SetIsBillborad(isBillboard);
+		pRender->SetIsBillborad(isBillboard);
 	}
 
 
 	bool GLES_MeshRender::GetIsBillBoard()
 	{
-		return render->GetIsBillBoard();
+		return pRender->GetIsBillBoard();
 	}
 
 
 	E3DEngine::CTransform * GLES_MeshRender::GetTransform()
 	{
-		return render->GetTransform();
+		return pRender->GetTransform();
 	}
 
 
 	void GLES_MeshRender::SetTransform(CTransform *_transform)
 	{
-		render->SetTransform(_transform);
+		pRender->SetTransform(_transform);
 	}
 
 
 	void GLES_MeshRender::CreateNewTransform()
 	{
-		render->CreateNewTransform();
+		pRender->CreateNewTransform();
 	}
 
 /*
@@ -128,7 +128,7 @@ namespace E3DEngine
 
 	void GLES_MeshRender::SetMaterial(Material *material)
 	{
-		render->SetMaterial(material);
+		pRender->SetMaterial(material);
 	}
 
 }

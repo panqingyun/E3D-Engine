@@ -1,4 +1,4 @@
-﻿//
+//
 //  E3DTimer.hpp
 //
 //  Created by 潘庆云 on 2017/5/9.
@@ -47,11 +47,11 @@ namespace E3DEngine
 			return timer;
 		}
 	public:
-		static UINT	AddTimer(float timeInSec, EventHandleFunction * timerTickCallBack,EventArgs * param, bool isRepeat = false);
-		static void StartTimer(UINT timerID);
+		static unsigned int	AddTimer(float timeInSec, EventHandleFunction * timerTickCallBack,EventArgs * param, bool isRepeat = false);
+		static void StartTimer(unsigned int timerID);
 		static void StopAllTimer();
-		static void PauseTimer(UINT timerID);
-		static void StopTimer(UINT timerID);
+		static void PauseTimer(unsigned int timerID);
+		static void StopTimer(unsigned int timerID);
 		static void Update(float deltaTime);
 		static void Init();
 		static void Destory()
@@ -59,8 +59,8 @@ namespace E3DEngine
 			StopAllTimer();
 		}
 	private:
-		std::map<UINT, stTimer*> timerMap;
-		UINT m_nTimerID;
+		std::map<unsigned int, stTimer*> timerMap;
+		unsigned int m_nTimerID;
 	};
 }
 

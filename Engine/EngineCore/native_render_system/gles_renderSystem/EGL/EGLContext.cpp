@@ -1,6 +1,9 @@
+
 #include "EGLContext.h"
 #include <assert.h>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
+
+#ifndef __IOS__
 /// esCreateWindow flag - RGB color buffer
 #define ES_WINDOW_RGB           0
 /// esCreateWindow flag - ALPHA color buffer
@@ -11,7 +14,10 @@
 #define ES_WINDOW_STENCIL       4
 /// esCreateWindow flat - multi-sample buffer
 #define ES_WINDOW_MULTISAMPLE   8
-EGLBoolean EGL_Context::CreateEGLEnv(bool isOffScreen)
+#endif
+
+#ifdef WIN32
+GLboolean EGL_Context::CreateEGLEnv(bool isOffScreen)
 {
 	EGLint numConfigs;
 	EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
@@ -50,6 +56,7 @@ EGLBoolean EGL_Context::CreateEGLEnv(bool isOffScreen)
 	};
 	return UseContext();
 }
+#endif
 
 EGLBoolean EGL_Context::chooseConfig(bool isOffScreen, EGLConfig &config, EGLint &numConfigs)
 {
@@ -161,3 +168,4 @@ EGLBoolean EGL_Context::createSurface(bool isOffScreen, EGLConfig config)
 	pESContext->eglSurface = surface;
 	return EGL_TRUE;
 }
+

@@ -38,7 +38,7 @@ namespace E3DEngine
 	protected:
 		virtual void setBehaviourDefaultValue();
 	public:
-		UINT			ID;
+		unsigned int			ID;
 		std::string		TypeName;
 		std::string		Name;
 		ObjectType		NodeType;

@@ -1,4 +1,4 @@
-﻿//
+//
 //  Transform.hpp
 //
 //  Created by 潘庆云 on 2017/2/8.
@@ -29,7 +29,7 @@ namespace E3DEngine
 		void SetScale(vec3f scale);
 		void SetScale(float x, float y, float z);
         void GenBillBoard(vec3f center, vec3f cameraForward);
-		void RemoveChild(UINT objID);
+		void RemoveChild(unsigned int objID);
 		void Identity();
         void SetBillBoardNormal(vec3f pos,vec3f scale);
         void SetIsBillBoard(bool bill);
@@ -39,7 +39,7 @@ namespace E3DEngine
 		vec3f GetUp();
 		vec3f GetRight();
         vec3f GetPosition();
-		void AddChild(UINT objID ,CTransform * child);
+		void AddChild(unsigned int objID ,CTransform * child);
 		mat4f GetParentMatrix();
 		void Destory();
 	public:
@@ -64,7 +64,7 @@ namespace E3DEngine
 		vec3f RotationEuler;
 		bool  IsTransPosFirst;
 		CTransform * Parent;
-		std::map<UINT, CTransform*> Childs;
+		std::map<unsigned int, CTransform*> Childs;
 	private:
 		bool  m_bStateChange;
         bool    m_IsBillBoard;

@@ -6,15 +6,15 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Object,		get_Name);
 	REGISTER_INTERNAL_CALL(Object,		set_Name);
 	REGISTER_INTERNAL_CALL(Object,		get_ID);
-	REGISTER_INTERNAL_CALL(Transform,	getPosition);
-	REGISTER_INTERNAL_CALL(Transform,	setPosition);
-	REGISTER_INTERNAL_CALL(Transform,	getScale);
-	REGISTER_INTERNAL_CALL(Transform,	setScale);
-	REGISTER_INTERNAL_CALL(Transform,	getRotation);
-	REGISTER_INTERNAL_CALL(Transform,	setRotation);
-	REGISTER_INTERNAL_CALL(Transform,	getForward);
-	REGISTER_INTERNAL_CALL(Transform,	getUp);
-	REGISTER_INTERNAL_CALL(Transform,	getRight);
+	REGISTER_INTERNAL_CALL(Transform,	    getPosition);
+	REGISTER_INTERNAL_CALL(Transform,   	setPosition);
+	REGISTER_INTERNAL_CALL(Transform,	    getScale);
+	REGISTER_INTERNAL_CALL(Transform,	    setScale);
+	REGISTER_INTERNAL_CALL(Transform,	    getRotation);
+	REGISTER_INTERNAL_CALL(Transform,	    setRotation);
+	REGISTER_INTERNAL_CALL(Transform,	    getForward);
+	REGISTER_INTERNAL_CALL(Transform,	    getUp);
+	REGISTER_INTERNAL_CALL(Transform,	    getRight);
 	REGISTER_INTERNAL_CALL(GameObject,	set_LayerMask);
 	REGISTER_INTERNAL_CALL(GameObject,	get_LayerMask);
 	REGISTER_INTERNAL_CALL(GameObject,	set_Material);
@@ -46,9 +46,9 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Render,		setVertex2Render);
 	REGISTER_INTERNAL_CALL(Render,		setDrawModule);
 	REGISTER_INTERNAL_CALL(Render,		getDrawModule);
-	REGISTER_INTERNAL_CALL(Material,	createMaterial);
-	REGISTER_INTERNAL_CALL(Box,			Create);
-	REGISTER_INTERNAL_CALL(RigidBody,	addRigidBody);
+	REGISTER_INTERNAL_CALL(Material,	    createMaterial);
+	REGISTER_INTERNAL_CALL(Box,		Create);
+	REGISTER_INTERNAL_CALL(RigidBody,	    addRigidBody);
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
 	REGISTER_INTERNAL_CALL(Sphere,			Create);
@@ -160,7 +160,7 @@ VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 	E3DEngine::Debug::Log(ell_Info, _log.c_str());
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Camera, createCamera)
+CS_OBJECT _0_PARAM_FUNCTION(Camera, createCamera)
 {	
 	E3DEngine::Camera *camera = Camera::CreateCamera();
 	return camera->GetMonoBehaviour()->GetMonoObject();
@@ -442,13 +442,13 @@ VOID _2_PARAM_FUNCTION(ParticleGroup, SetEmitterEnable, CS_OBJECT, cs_obj, CS_BO
 	group->SetEmitterEnable(enable == 1);
 }
 
-CS_OBJECT _4_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, float&, x, float&, y, float&, z)
+VOID _4_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, float&, x, float&, y, float&, z)
 {
 	Camera * camera = getCppObject<Camera>(cs_obj);
 
 	if (camera == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 	vec3f newPos(x, y, z);
 
@@ -636,7 +636,7 @@ VOID _4_PARAM_FUNCTION(Transform, getRight, CS_OBJECT, obj, float&, x, float&, y
 	z = forward.z;
 }
 
-VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data)
+VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY&, data)
 {
 	Camera * camera = getCppObject<Camera>(cs_obj);
 	if (camera == nullptr)
@@ -651,7 +651,7 @@ VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data)
 	}
 }
 
-VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data)
+VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY&, data)
 {
 	Camera * camera = getCppObject<Camera>(cs_obj);
 	if (camera == nullptr)
@@ -696,7 +696,7 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 	return pl->Range;
 }
 
-CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID)
+CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int, cfgID)
 {
 	std::string filePath = Convert::ToString(path);
 	Mesh * mh = Mesh::Create(filePath, cfgID);

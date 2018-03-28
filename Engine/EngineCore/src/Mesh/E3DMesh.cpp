@@ -1,4 +1,4 @@
-﻿//
+//
 //  E3DVertexBuffer.cpp
 //
 //  Created by 潘庆云 on 2017/5/24.
@@ -48,7 +48,7 @@ namespace E3DEngine
 		}
 		else
 		{
-			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", filePath, pImporter.GetErrorString());
+			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", filePath.c_str(), pImporter.GetErrorString());
 			return;
 		}
 

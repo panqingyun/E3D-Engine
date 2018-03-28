@@ -1,6 +1,6 @@
 #pragma once
 #include "E3DGLESRenderManager.hpp"
-#include <src/Mesh/E3DBone.hpp>
+#include <src/Mesh/E3DMeshRender.h>
 
 namespace E3DEngine
 {
@@ -9,11 +9,11 @@ namespace E3DEngine
 	public:
 		GLES_MeshRender()
 		{
-			render = new GLES_Renderer;
+			pRender = new GLES_Renderer;
 		}
 		virtual ~GLES_MeshRender() override
 		{
-			SAFE_DELETE(render);
+			SAFE_DELETE(pRender);
 		}
 		
 	public:
@@ -32,22 +32,22 @@ namespace E3DEngine
 		virtual void SetDrawModule(DWORD module) override;
 
 	public:
-		virtual bool GetActive() { return render->GetActive(); }
+		virtual bool GetActive() { return pRender->GetActive(); }
 		virtual void SetColor(long color);
 		virtual void SetIsBillborad(bool isBillboard);
 		virtual bool GetIsBillBoard();
-		virtual UINT GetDrawModule() { return render->GetDrawModule(); }
+		virtual UINT GetDrawModule() { return pRender->GetDrawModule(); }
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
 		virtual void CreateNewTransform();
 		//virtual void SetRenderIndex(DWORD index) override;
 
 		virtual void SetMaterial(Material *material);
-		virtual Material *GetMaterial() { return render->GetMaterial(); }
-		virtual void SetCamera(Camera * camera) { render->SetCamera(camera); }
-		virtual void SetActive(bool active) { render->SetActive(active); }
-		virtual void ClearVertexIndexBuffer() { render->ClearVertexIndexBuffer(); }
+		virtual Material *GetMaterial() { return pRender->GetMaterial(); }
+		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
+		virtual void SetActive(bool active) { pRender->SetActive(active); }
+		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
 	protected:
-		GLES_Renderer * render;
+		GLES_Renderer * pRender;
 	};
 }

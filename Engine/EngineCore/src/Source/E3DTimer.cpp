@@ -1,4 +1,4 @@
-﻿//
+//
 //  E3DTimer.cpp
 //
 //  Created by 潘庆云 on 2017/5/9.
@@ -10,7 +10,7 @@ namespace E3DEngine
 {
 	float Time::deltaTime = 0.0f;
 
-	UINT Timer::AddTimer(float timeInSec, EventHandleFunction * timerTickCallBack, EventArgs * param, bool isRepeat)
+	unsigned int Timer::AddTimer(float timeInSec, EventHandleFunction * timerTickCallBack, EventArgs * param, bool isRepeat)
 	{
 		getInstance().m_nTimerID++;
 		stTimer * timer = new stTimer;
@@ -24,7 +24,7 @@ namespace E3DEngine
 		return getInstance().m_nTimerID;
 	}
 
-	void Timer::StartTimer(UINT timerID)
+	void Timer::StartTimer(unsigned int timerID)
 	{
 		if (getInstance().timerMap.find(timerID) == getInstance().timerMap.end())
 		{
@@ -36,7 +36,7 @@ namespace E3DEngine
 	void Timer::Update(float deltaTime)
 	{
 		Timer &t = getInstance();
-		std::map<UINT, stTimer*> temp;
+		std::map<unsigned int, stTimer*> temp;
 		std::copy(t.timerMap.begin(), t.timerMap.end(), std::inserter(temp, temp.begin()));
 		for (auto & it : temp)
 		{
@@ -65,9 +65,9 @@ namespace E3DEngine
 		getInstance().m_nTimerID = 0;
 	}
 
-	void Timer::PauseTimer(UINT timerID)
+	void Timer::PauseTimer(unsigned int timerID)
 	{
-		std::map<UINT, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
+		std::map<unsigned int, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
 		if (it == getInstance().timerMap.end())
 		{
 			return;
@@ -75,9 +75,9 @@ namespace E3DEngine
 		it->second->isPause = true;
 	}
 
-	void Timer::StopTimer(UINT timerID)
+	void Timer::StopTimer(unsigned int timerID)
 	{
-		std::map<UINT, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
+		std::map<unsigned int, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
 		if (it == getInstance().timerMap.end())
 		{
 			return;
@@ -92,7 +92,7 @@ namespace E3DEngine
 
 	void Timer::StopAllTimer()
 	{
-		for (std::map<UINT, stTimer *>::iterator it = getInstance().timerMap.begin(); it != getInstance().timerMap.end(); ++it)
+		for (std::map<unsigned int, stTimer *>::iterator it = getInstance().timerMap.begin(); it != getInstance().timerMap.end(); ++it)
 		{
 			SAFE_DELETE(it->second);
 		}

@@ -1,4 +1,4 @@
-﻿//
+//
 //	按照材质ID 索引顶点缓存，同一材质ID的物体顶点都输出到同一个顶点缓存中，然后统一绘制
 //  Created by 潘庆云 on 2017/7/19.
 //
@@ -7,7 +7,7 @@
 #define E3D_GLES_RENDER_BufferManager_hpp
 
 #include <src/Source/Interface.h>
-#include <src/Mesh/E3DMeshRender.h>
+#include <src/RenderSystem/RenderObject/E3DRenderManager.hpp>
 #include "../Include/Include.h"
 
 namespace E3DEngine

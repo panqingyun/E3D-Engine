@@ -8,16 +8,16 @@
 #define  _DEBUG_CSHARP 0
 void mono_logger_call(const char *log_domain, const char *log_level, const char *message, mono_bool fatal, void *user_data)
 {
-	E3DEngine::Debug::OutputLogFunc(E3DEngine::StringBuilder::Format("%s ,%s ,%s" ,log_domain, log_level, message).c_str());
+	E3DEngine::Debug::Log(ell_Info, E3DEngine::StringBuilder::Format("%s ,%s ,%s" ,log_domain, log_level, message).c_str());
 }
 void mono_print_call(const char *string, mono_bool is_stdout)
 {
-	E3DEngine::Debug::OutputLogFunc(string);
+	E3DEngine::Debug::Log(ell_Info,string);
 }
 
 void mono_printerr_call(const char *string, mono_bool is_stdout)
 {
-	E3DEngine::Debug::OutputLogFunc(string);
+	E3DEngine::Debug::Log(ell_Info,string);
 }
 
 static MonoBreakPolicy NeverInsertBreakpoint(MonoMethod *method)
@@ -111,7 +111,7 @@ void MonoScriptManager::loadPlugin()
 {
 	std::vector<FileInfo> files;
 	Resource::GetFiles(Application::AppDataPath + "Plugin", files, "dll");
-	for each (auto &file in files)
+    for (auto &file : files)
 	{
 		MonoAssembly * assembly =  mono_domain_assembly_open(m_pDomain, file.FullName.c_str());
 		m_assemblyLists.emplace_back(assembly);

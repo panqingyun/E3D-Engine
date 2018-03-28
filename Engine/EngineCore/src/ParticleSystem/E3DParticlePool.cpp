@@ -4,7 +4,7 @@
 
 namespace E3DEngine
 {
-	void ParticlePool::CreateParticlePool(UINT particleNumber)
+	void ParticlePool::CreateParticlePool(unsigned int particleNumber)
 	{
 		for (int i = 0; i < particleNumber; i++)
 		{

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE133B24206A62C600438E93 /* E3DGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133AFF206A62C500438E93 /* E3DGLESShader.cpp */; };
 		BE133B25206A62C600438E93 /* E3DFrameBufferObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B02206A62C500438E93 /* E3DFrameBufferObject.cpp */; };
-		BE133B26206A62C600438E93 /* EGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B05206A62C500438E93 /* EGLContext.cpp */; };
 		BE133B28206A62C600438E93 /* E3DGLESMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0A206A62C600438E93 /* E3DGLESMaterial.cpp */; };
 		BE133B29206A62C600438E93 /* E3DGLESMaterialManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0C206A62C600438E93 /* E3DGLESMaterialManager.cpp */; };
 		BE133B2A206A62C600438E93 /* E3DGLESMeshRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0F206A62C600438E93 /* E3DGLESMeshRender.cpp */; };
@@ -42,7 +41,6 @@
 		BE133B00206A62C500438E93 /* E3DGLESShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESShader.hpp; sourceTree = "<group>"; };
 		BE133B02206A62C500438E93 /* E3DFrameBufferObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DFrameBufferObject.cpp; sourceTree = "<group>"; };
 		BE133B03206A62C500438E93 /* E3DFrameBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E3DFrameBufferObject.h; sourceTree = "<group>"; };
-		BE133B05206A62C500438E93 /* EGLContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EGLContext.cpp; sourceTree = "<group>"; };
 		BE133B06206A62C500438E93 /* EGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGLContext.h; sourceTree = "<group>"; };
 		BE133B0A206A62C600438E93 /* E3DGLESMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESMaterial.cpp; sourceTree = "<group>"; };
 		BE133B0B206A62C600438E93 /* E3DGLESMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESMaterial.hpp; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		BE133B04206A62C500438E93 /* EGL */ = {
 			isa = PBXGroup;
 			children = (
-				BE133B05206A62C500438E93 /* EGLContext.cpp */,
 				BE133B06206A62C500438E93 /* EGLContext.h */,
 			);
 			name = EGL;
@@ -275,7 +272,6 @@
 				BE133B25206A62C600438E93 /* E3DFrameBufferObject.cpp in Sources */,
 				BE133B28206A62C600438E93 /* E3DGLESMaterial.cpp in Sources */,
 				BE133B2F206A62C600438E93 /* E3DGLESRender2Texture.cpp in Sources */,
-				BE133B26206A62C600438E93 /* EGLContext.cpp in Sources */,
 				BE133B31206A62C600438E93 /* E3DGLESTextureDataManager.cpp in Sources */,
 				BE133B32206A62C600438E93 /* ETCHeader.cpp in Sources */,
 			);
@@ -401,6 +397,14 @@
 				DEVELOPMENT_TEAM = ZN46JDPR44;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/header",
+					"$(SRCROOT)/../../Engine/EngineCore",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Physical/src",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Mono",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/assimp-3.3.1/include",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RenderSystem/Lib",
@@ -419,6 +423,14 @@
 				DEVELOPMENT_TEAM = ZN46JDPR44;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/header",
+					"$(SRCROOT)/../../Engine/EngineCore",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Physical/src",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Mono",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/assimp-3.3.1/include",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RenderSystem/Lib",

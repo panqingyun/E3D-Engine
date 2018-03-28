@@ -2,6 +2,7 @@
 #define __GL_CONTEXT_H__
 #include "../Include/Include.h"
 
+#ifndef __IOS__
 typedef struct
 {
 	/// Put your user data here...
@@ -16,9 +17,10 @@ typedef struct
 	EGLDisplay  eglDisplay;
 	/// EGL context
 	EGLContext  eglContext;
-	/// EGL surface
+	/// EGL surface 
 	EGLSurface  eglSurface;
 } ESContext;
+#endif
 
 class EGL_Context
 {

@@ -15,10 +15,10 @@ namespace E3DEngine
 {
 	void GLES_RenderSystem::Initilize()
 	{
-		m_pTextureDataManager = new GLES_TextureDataManager;
+		m_pTextureDataManager = dynamic_cast<TextureDataManager*>(new GLES_TextureDataManager);
 		m_pTextureDataManager->Init();
-		m_pMaterialManager = new GLES_MaterialManager;
-		m_pRenderManager = new GLES_RendererManager;
+		m_pMaterialManager = dynamic_cast<MaterialManager*>(new GLES_MaterialManager);
+		m_pRenderManager = dynamic_cast<RendererManager*>(new GLES_RendererManager);
 	}
 
 
@@ -54,20 +54,18 @@ namespace E3DEngine
 
 	void GLES_RenderSystem::BeginFrame()
 	{
+#ifndef __IOS__
 		m_pEGL_Context_Ex->UseContext();
+#endif
 		glCullFace(GL_BACK);
 #ifdef WIN32
 		//m_pEGL_Context->UseContext();
 #endif
 #ifdef __IOS__
-		if (m_NeedClear)
-		{
-			BindDefaultFBO();
-			defaultFrameBuffer->Clear();
-		}
+        BindDefaultFBO();
+        defaultFrameBuffer->Clear();
 #else
 		BindDefaultFBO();
-		//clearFrameBufferObject();
 
 #endif
 				
@@ -87,15 +85,21 @@ namespace E3DEngine
 
 	void GLES_RenderSystem::EndFrame()
 	{
+#ifndef __IOS__
 		m_pEGL_Context_Ex->SwapBuffer();
+#endif
 		glFlush();
 	}
 
 	void GLES_RenderSystem::CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle)
 	{
+#ifndef __IOS__
 		m_pEGL_Context_Ex = new EGL_Context();
 		m_pEGL_Context_Ex->InitGLES(displayID, windowHandle);
 		m_pEGL_Context_Ex->UseContext();
+#else
+        SetupDefaultFrameBuffer();
+#endif
 	}
 
 	GLES_RenderSystem::GLES_RenderSystem()
@@ -137,7 +141,6 @@ namespace E3DEngine
 
 }
 
-#if GLES_VERSION == 2
 void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
@@ -148,4 +151,3 @@ void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 	renderSystem->CreateOpenGLES(EGL_DEFAULT_DISPLAY, nativeWindow);
 }
 
-#endif

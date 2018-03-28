@@ -150,7 +150,9 @@ FI_STRUCT (FIMULTIBITMAP) { void *data; };
 #ifndef _MSC_VER
 // define portable types for 32-bit / 64-bit OS
 #include <inttypes.h>
+#ifdef WIN32
 typedef int32_t BOOL;
+#endif
 typedef uint8_t BYTE;
 typedef uint16_t WORD;
 typedef uint32_t DWORD;
@@ -622,6 +624,8 @@ FI_STRUCT (FIMEMORY) { void *data; };
 
 #ifndef PLUGINS
 #define PLUGINS
+
+typedef int BOOL;
 
 typedef const char *(DLL_CALLCONV *FI_FormatProc)(void);
 typedef const char *(DLL_CALLCONV *FI_DescriptionProc)(void);

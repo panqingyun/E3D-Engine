@@ -30,7 +30,7 @@ namespace E3DEngine
 			m_ParticleList.clear();
 		}
 
-		void CreateParticlePool(UINT particleNumber);
+		void CreateParticlePool(unsigned int particleNumber);
 		
 		share_pointer<Particle> ActiveParticleFromPool();
 

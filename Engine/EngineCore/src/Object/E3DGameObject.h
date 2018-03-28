@@ -1,4 +1,4 @@
-﻿//
+//
 //  Object.h
 //
 //  Created by 潘庆云 on 2017/1/26.
@@ -292,7 +292,7 @@ namespace E3DEngine
 			((Component*)_t)->gameObject = this;
 			((Component*)_t)->Awake();
 			((Component*)_t)->Start();
-			((Component*)_t)->_TypeName = type_id;
+			((Component*)_t)->TypeName = type_id;
 			((Component*)_t)->Transform = Transform;
 			((Component*)_t)->OnEnable();
 			m_listComponents[type_id].push_back((Component*)_t);

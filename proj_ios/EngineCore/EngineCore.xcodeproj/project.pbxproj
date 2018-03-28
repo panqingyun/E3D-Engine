@@ -275,6 +275,7 @@
 		BE133B9B206B496600438E93 /* libBulletXmlWorldImporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletXmlWorldImporter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133B9D206B496600438E93 /* libConvexDecomposition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConvexDecomposition.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133B9F206B496600438E93 /* libLinearMath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libLinearMath.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE133BA1206BB8C600438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +312,7 @@
 		BE1333612069FD3100438E93 = {
 			isa = PBXGroup;
 			children = (
+				BE133BA1206BB8C600438E93 /* PrefixHeader.pch */,
 				BE13336C2069FD3100438E93 /* EngineCore */,
 				BE13336B2069FD3100438E93 /* Products */,
 				BE133B37206A693200438E93 /* Frameworks */,
@@ -876,6 +878,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -886,6 +890,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/header",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Physical/src",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Mono",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/assimp-3.3.1/include",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -932,12 +944,22 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/header",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Physical/src",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/Mono",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/assimp-3.3.1/include",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

@@ -3479,7 +3479,24 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJPEG/**",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/common",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/image/sys",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/jxrgluelib",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/ZLib",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibRawLite",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmImf",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IexMath",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Imath",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Iex",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/DeprecationManager",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmThread",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Half",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -3492,7 +3509,24 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../**";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJPEG/**",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/common",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/image/sys",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/jxrgluelib",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/ZLib",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibRawLite",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmImf",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IexMath",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Imath",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Iex",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/DeprecationManager",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmThread",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Half",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

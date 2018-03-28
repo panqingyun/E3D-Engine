@@ -5,7 +5,8 @@
 #include "EGL/egl.h"
 #endif
 
-#ifdefine __IOS__
+
+#ifdef __IOS__ 
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 #else

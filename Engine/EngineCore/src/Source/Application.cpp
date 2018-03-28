@@ -1,5 +1,6 @@
 #include "Application.h"
 #include "EngineDelegate.h"
+#include <include/Include.h>
 
 namespace E3DEngine
 {
@@ -11,9 +12,9 @@ namespace E3DEngine
 	MouseButtonInfo * Application::m_pMouseInfo = nullptr;
 	void Application::CreatScript()
 	{
-		mono_add_internal_call("E3DEngine.Application::getAppDataPath", Application::getAppDataPath);
-		mono_add_internal_call("E3DEngine.Application::exitApplication", Application::ExitApp);
-		mono_add_internal_call("E3DEngine.Application::getResourcePath", Application::getResourcePath);
+        mono_add_internal_call("E3DEngine.Application::getAppDataPath", (const void *)Application::getAppDataPath);
+        mono_add_internal_call("E3DEngine.Application::exitApplication", (const void *)Application::ExitApp);
+        mono_add_internal_call("E3DEngine.Application::getResourcePath", (const void *)Application::getResourcePath);
 	}
 
 	void Application::StartApp()

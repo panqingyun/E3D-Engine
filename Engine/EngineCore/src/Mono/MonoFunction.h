@@ -83,7 +83,11 @@ void RegisterMonoFunction();
 
 #define __STRINGIFY(x)   #x
 #define REGISTER_INTERNAL_CALL(className, funcName)\
-	mono_add_internal_call(__STRINGIFY( E3DEngine##.##className##:##:##funcName), className##_##funcName);
+	mono_add_internal_call((string("E3DEngine.") + __STRINGIFY(className) + "::" + __STRINGIFY(funcName)).c_str(), (const void*)className##_##funcName);
+
+#ifndef WIN32
+#define UINT unsigned int
+#endif
 
 VOID _1_PARAM_FUNCTION(Camera			, renderCamera		, CS_OBJECT		, cs_obj);
 VOID _1_PARAM_FUNCTION(Debug			, log_error			, CS_STRING		, err);
@@ -114,7 +118,7 @@ UINT _1_PARAM_FUNCTION(Object			, get_ID			, CS_OBJECT		, cs_boj);
 UINT _1_PARAM_FUNCTION(GameObject		, get_LayerMask		, CS_OBJECT		, cs_boj);
 CS_OBJECT _2_PARAM_FUNCTION(Material	, createMaterial	, CS_STRING		, path		, int ,id);
 CS_OBJECT _1_PARAM_FUNCTION(Render		, createRenderer	, UINT			, materialID);
-CS_OBJECT _1_PARAM_FUNCTION(Camera		, createCamera);
+CS_OBJECT _0_PARAM_FUNCTION(Camera		, createCamera);
 CS_OBJECT _0_PARAM_FUNCTION(Render		, createRendererWithoutParam);
 VOID _0_PARAM_FUNCTION(Application		, exitApplication);
 CS_OBJECT _1_PARAM_FUNCTION(Scene		, createScene, CS_STRING , path);
@@ -122,7 +126,7 @@ VOID _1_PARAM_FUNCTION(GameObject		, removeComponent	, CS_OBJECT		, cs_obj);
 
 CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem	, createParticle	, CS_OBJECT		, cs_obj, CS_STRING		, path);
 VOID _2_PARAM_FUNCTION(ParticleGroup		, SetEmitterEnable	, CS_OBJECT		, cs_obj, CS_BOOL		, enable);
-CS_OBJECT _4_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, float&		, x		, float&, y, float&	, z);
+VOID _4_PARAM_FUNCTION(Camera			, screen2WorldPoint	, CS_OBJECT		, cs_obj, float&		, x		, float&, y, float&	, z);
 VOID _1_PARAM_FUNCTION(GameObject			, destory			, CS_OBJECT		, cs_obj);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithName , CS_OBJECT		, cs_obj, CS_STRING		, name);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject		, findChildWithID	, CS_OBJECT		, cs_obj, UINT			, id);
@@ -136,12 +140,12 @@ UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT			, cs_obj);
 VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyBox		, CS_OBJECT		, material);
 CS_OBJECT _1_PARAM_FUNCTION(Light			, Create			, UINT			, lightType);
 VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, float, b, float, a);
-VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);
-VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& data);
+VOID _2_PARAM_FUNCTION(Camera, getViewMatrix, CS_OBJECT, cs_obj, CS_ARRAY&, data);
+VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY& ,data);
 VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material);
 VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range);
 float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light);
-CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int cfgID);
+CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int ,cfgID);
 UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj);
 VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri);
 CS_OBJECT _0_PARAM_FUNCTION(Camera, get_MainCamera);

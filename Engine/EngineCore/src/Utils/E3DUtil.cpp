@@ -1,4 +1,4 @@
-﻿//
+//
 //  GLEngineAPI.c
 //
 //  Created by 潘庆云 on 2017/1/19.
@@ -101,7 +101,9 @@ extern "C"
 
 	__api_function_ void SetDebugLogOutFunc(void * func)
 	{
+#ifdef WIN32
 		Debug::OutputLogFunc = (DebugOutput)func;
+#endif
 	}
 
 	__api_function_ void MouseDown(int mouseButtonID, float xPos, float yPos)

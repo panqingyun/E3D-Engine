@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE133B24206A62C600438E93 /* E3DGLESShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133AFF206A62C500438E93 /* E3DGLESShader.cpp */; };
+		BE133B25206A62C600438E93 /* E3DFrameBufferObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B02206A62C500438E93 /* E3DFrameBufferObject.cpp */; };
+		BE133B26206A62C600438E93 /* EGLContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B05206A62C500438E93 /* EGLContext.cpp */; };
+		BE133B28206A62C600438E93 /* E3DGLESMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0A206A62C600438E93 /* E3DGLESMaterial.cpp */; };
+		BE133B29206A62C600438E93 /* E3DGLESMaterialManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0C206A62C600438E93 /* E3DGLESMaterialManager.cpp */; };
+		BE133B2A206A62C600438E93 /* E3DGLESMeshRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B0F206A62C600438E93 /* E3DGLESMeshRender.cpp */; };
+		BE133B2B206A62C600438E93 /* E3DGLESRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B11206A62C600438E93 /* E3DGLESRender.cpp */; };
+		BE133B2C206A62C600438E93 /* E3DGLESRenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B13206A62C600438E93 /* E3DGLESRenderManager.cpp */; };
+		BE133B2D206A62C600438E93 /* E3DGLESRenderSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B15206A62C600438E93 /* E3DGLESRenderSystem.cpp */; };
+		BE133B2E206A62C600438E93 /* E3DGLESCubeMapTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B1A206A62C600438E93 /* E3DGLESCubeMapTexture.cpp */; };
+		BE133B2F206A62C600438E93 /* E3DGLESRender2Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B1C206A62C600438E93 /* E3DGLESRender2Texture.cpp */; };
+		BE133B30206A62C600438E93 /* E3DGLESTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B1E206A62C600438E93 /* E3DGLESTexture.cpp */; };
+		BE133B31206A62C600438E93 /* E3DGLESTextureDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B20206A62C600438E93 /* E3DGLESTextureDataManager.cpp */; };
+		BE133B32206A62C600438E93 /* ETCHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133B22206A62C600438E93 /* ETCHeader.cpp */; };
+		BE133B35206A62DF00438E93 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B34206A62DF00438E93 /* OpenGLES.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE13337D2069FD5D00438E93 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE13337F2069FD5D00438E93 /* libRenderSystem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenderSystem.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE133AFF206A62C500438E93 /* E3DGLESShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESShader.cpp; sourceTree = "<group>"; };
+		BE133B00206A62C500438E93 /* E3DGLESShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESShader.hpp; sourceTree = "<group>"; };
+		BE133B02206A62C500438E93 /* E3DFrameBufferObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DFrameBufferObject.cpp; sourceTree = "<group>"; };
+		BE133B03206A62C500438E93 /* E3DFrameBufferObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E3DFrameBufferObject.h; sourceTree = "<group>"; };
+		BE133B05206A62C500438E93 /* EGLContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EGLContext.cpp; sourceTree = "<group>"; };
+		BE133B06206A62C500438E93 /* EGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGLContext.h; sourceTree = "<group>"; };
+		BE133B0A206A62C600438E93 /* E3DGLESMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESMaterial.cpp; sourceTree = "<group>"; };
+		BE133B0B206A62C600438E93 /* E3DGLESMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESMaterial.hpp; sourceTree = "<group>"; };
+		BE133B0C206A62C600438E93 /* E3DGLESMaterialManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESMaterialManager.cpp; sourceTree = "<group>"; };
+		BE133B0D206A62C600438E93 /* E3DGLESMaterialManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESMaterialManager.hpp; sourceTree = "<group>"; };
+		BE133B0F206A62C600438E93 /* E3DGLESMeshRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESMeshRender.cpp; sourceTree = "<group>"; };
+		BE133B10206A62C600438E93 /* E3DGLESMeshRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E3DGLESMeshRender.h; sourceTree = "<group>"; };
+		BE133B11206A62C600438E93 /* E3DGLESRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESRender.cpp; sourceTree = "<group>"; };
+		BE133B12206A62C600438E93 /* E3DGLESRender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESRender.hpp; sourceTree = "<group>"; };
+		BE133B13206A62C600438E93 /* E3DGLESRenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESRenderManager.cpp; sourceTree = "<group>"; };
+		BE133B14206A62C600438E93 /* E3DGLESRenderManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESRenderManager.hpp; sourceTree = "<group>"; };
+		BE133B15206A62C600438E93 /* E3DGLESRenderSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = E3DGLESRenderSystem.cpp; path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/E3DGLESRenderSystem.cpp; sourceTree = "<group>"; };
+		BE133B16206A62C600438E93 /* E3DGLESRenderSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = E3DGLESRenderSystem.hpp; path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/E3DGLESRenderSystem.hpp; sourceTree = "<group>"; };
+		BE133B18206A62C600438E93 /* Include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Include.h; sourceTree = "<group>"; };
+		BE133B1A206A62C600438E93 /* E3DGLESCubeMapTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESCubeMapTexture.cpp; sourceTree = "<group>"; };
+		BE133B1B206A62C600438E93 /* E3DGLESCubeMapTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESCubeMapTexture.hpp; sourceTree = "<group>"; };
+		BE133B1C206A62C600438E93 /* E3DGLESRender2Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESRender2Texture.cpp; sourceTree = "<group>"; };
+		BE133B1D206A62C600438E93 /* E3DGLESRender2Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E3DGLESRender2Texture.h; sourceTree = "<group>"; };
+		BE133B1E206A62C600438E93 /* E3DGLESTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESTexture.cpp; sourceTree = "<group>"; };
+		BE133B1F206A62C600438E93 /* E3DGLESTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESTexture.hpp; sourceTree = "<group>"; };
+		BE133B20206A62C600438E93 /* E3DGLESTextureDataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DGLESTextureDataManager.cpp; sourceTree = "<group>"; };
+		BE133B21206A62C600438E93 /* E3DGLESTextureDataManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = E3DGLESTextureDataManager.hpp; sourceTree = "<group>"; };
+		BE133B22206A62C600438E93 /* ETCHeader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETCHeader.cpp; sourceTree = "<group>"; };
+		BE133B23206A62C600438E93 /* ETCHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETCHeader.h; sourceTree = "<group>"; };
+		BE133B34206A62DF00438E93 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BE133B36206A652700438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE13337C2069FD5D00438E93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE133B35206A62DF00438E93 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE1333762069FD5D00438E93 = {
+			isa = PBXGroup;
+			children = (
+				BE133B36206A652700438E93 /* PrefixHeader.pch */,
+				BE1333812069FD5D00438E93 /* RenderSystem */,
+				BE1333802069FD5D00438E93 /* Products */,
+				BE133B33206A62DE00438E93 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BE1333802069FD5D00438E93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE13337F2069FD5D00438E93 /* libRenderSystem.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE1333812069FD5D00438E93 /* RenderSystem */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B15206A62C600438E93 /* E3DGLESRenderSystem.cpp */,
+				BE133B16206A62C600438E93 /* E3DGLESRenderSystem.hpp */,
+				BE133B04206A62C500438E93 /* EGL */,
+				BE133B01206A62C500438E93 /* FrameBufferObject */,
+				BE133B17206A62C600438E93 /* Include */,
+				BE133B09206A62C600438E93 /* Material */,
+				BE133B0E206A62C600438E93 /* RenderObject */,
+				BE133AFE206A62C500438E93 /* Shader */,
+				BE133B19206A62C600438E93 /* Texture */,
+			);
+			path = RenderSystem;
+			sourceTree = "<group>";
+		};
+		BE133AFE206A62C500438E93 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				BE133AFF206A62C500438E93 /* E3DGLESShader.cpp */,
+				BE133B00206A62C500438E93 /* E3DGLESShader.hpp */,
+			);
+			name = Shader;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/Shader;
+			sourceTree = "<group>";
+		};
+		BE133B01206A62C500438E93 /* FrameBufferObject */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B02206A62C500438E93 /* E3DFrameBufferObject.cpp */,
+				BE133B03206A62C500438E93 /* E3DFrameBufferObject.h */,
+			);
+			name = FrameBufferObject;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/FrameBufferObject;
+			sourceTree = "<group>";
+		};
+		BE133B04206A62C500438E93 /* EGL */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B05206A62C500438E93 /* EGLContext.cpp */,
+				BE133B06206A62C500438E93 /* EGLContext.h */,
+			);
+			name = EGL;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/EGL;
+			sourceTree = "<group>";
+		};
+		BE133B09206A62C600438E93 /* Material */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B0A206A62C600438E93 /* E3DGLESMaterial.cpp */,
+				BE133B0B206A62C600438E93 /* E3DGLESMaterial.hpp */,
+				BE133B0C206A62C600438E93 /* E3DGLESMaterialManager.cpp */,
+				BE133B0D206A62C600438E93 /* E3DGLESMaterialManager.hpp */,
+			);
+			name = Material;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/Material;
+			sourceTree = "<group>";
+		};
+		BE133B0E206A62C600438E93 /* RenderObject */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B0F206A62C600438E93 /* E3DGLESMeshRender.cpp */,
+				BE133B10206A62C600438E93 /* E3DGLESMeshRender.h */,
+				BE133B11206A62C600438E93 /* E3DGLESRender.cpp */,
+				BE133B12206A62C600438E93 /* E3DGLESRender.hpp */,
+				BE133B13206A62C600438E93 /* E3DGLESRenderManager.cpp */,
+				BE133B14206A62C600438E93 /* E3DGLESRenderManager.hpp */,
+			);
+			name = RenderObject;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/RenderObject;
+			sourceTree = "<group>";
+		};
+		BE133B17206A62C600438E93 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B18206A62C600438E93 /* Include.h */,
+			);
+			name = Include;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/Include;
+			sourceTree = "<group>";
+		};
+		BE133B19206A62C600438E93 /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B1A206A62C600438E93 /* E3DGLESCubeMapTexture.cpp */,
+				BE133B1B206A62C600438E93 /* E3DGLESCubeMapTexture.hpp */,
+				BE133B1C206A62C600438E93 /* E3DGLESRender2Texture.cpp */,
+				BE133B1D206A62C600438E93 /* E3DGLESRender2Texture.h */,
+				BE133B1E206A62C600438E93 /* E3DGLESTexture.cpp */,
+				BE133B1F206A62C600438E93 /* E3DGLESTexture.hpp */,
+				BE133B20206A62C600438E93 /* E3DGLESTextureDataManager.cpp */,
+				BE133B21206A62C600438E93 /* E3DGLESTextureDataManager.hpp */,
+				BE133B22206A62C600438E93 /* ETCHeader.cpp */,
+				BE133B23206A62C600438E93 /* ETCHeader.h */,
+			);
+			name = Texture;
+			path = ../../../Engine/EngineCore/native_render_system/gles_renderSystem/Texture;
+			sourceTree = "<group>";
+		};
+		BE133B33206A62DE00438E93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE133B34206A62DF00438E93 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE13337E2069FD5D00438E93 /* RenderSystem */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE1333882069FD5D00438E93 /* Build configuration list for PBXNativeTarget "RenderSystem" */;
+			buildPhases = (
+				BE13337B2069FD5D00438E93 /* Sources */,
+				BE13337C2069FD5D00438E93 /* Frameworks */,
+				BE13337D2069FD5D00438E93 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RenderSystem;
+			productName = RenderSystem;
+			productReference = BE13337F2069FD5D00438E93 /* libRenderSystem.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE1333772069FD5D00438E93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = zhangjian_dev;
+				TargetAttributes = {
+					BE13337E2069FD5D00438E93 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+				};
+			};
+			buildConfigurationList = BE13337A2069FD5D00438E93 /* Build configuration list for PBXProject "RenderSystem" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BE1333762069FD5D00438E93;
+			productRefGroup = BE1333802069FD5D00438E93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE13337E2069FD5D00438E93 /* RenderSystem */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE13337B2069FD5D00438E93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE133B2D206A62C600438E93 /* E3DGLESRenderSystem.cpp in Sources */,
+				BE133B2A206A62C600438E93 /* E3DGLESMeshRender.cpp in Sources */,
+				BE133B29206A62C600438E93 /* E3DGLESMaterialManager.cpp in Sources */,
+				BE133B30206A62C600438E93 /* E3DGLESTexture.cpp in Sources */,
+				BE133B2E206A62C600438E93 /* E3DGLESCubeMapTexture.cpp in Sources */,
+				BE133B2B206A62C600438E93 /* E3DGLESRender.cpp in Sources */,
+				BE133B2C206A62C600438E93 /* E3DGLESRenderManager.cpp in Sources */,
+				BE133B24206A62C600438E93 /* E3DGLESShader.cpp in Sources */,
+				BE133B25206A62C600438E93 /* E3DFrameBufferObject.cpp in Sources */,
+				BE133B28206A62C600438E93 /* E3DGLESMaterial.cpp in Sources */,
+				BE133B2F206A62C600438E93 /* E3DGLESRender2Texture.cpp in Sources */,
+				BE133B26206A62C600438E93 /* EGLContext.cpp in Sources */,
+				BE133B31206A62C600438E93 /* E3DGLESTextureDataManager.cpp in Sources */,
+				BE133B32206A62C600438E93 /* ETCHeader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BE1333862069FD5D00438E93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BE1333872069FD5D00438E93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE1333892069FD5D00438E93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZN46JDPR44;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RenderSystem/Lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BE13338A2069FD5D00438E93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZN46JDPR44;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RenderSystem/Lib",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE13337A2069FD5D00438E93 /* Build configuration list for PBXProject "RenderSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE1333862069FD5D00438E93 /* Debug */,
+				BE1333872069FD5D00438E93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE1333882069FD5D00438E93 /* Build configuration list for PBXNativeTarget "RenderSystem" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE1333892069FD5D00438E93 /* Debug */,
+				BE13338A2069FD5D00438E93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE1333772069FD5D00438E93 /* Project object */;
+}

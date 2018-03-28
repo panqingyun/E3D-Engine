@@ -1,0 +1,1501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		072E818093BE4075A5A8CE1D /* install */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 934CF65C62CA460195E40C3D /* Build configuration list for PBXAggregateTarget "install" */;
+			buildPhases = (
+				05BB97123E72455F9243A431 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				1A35FCB4BE3C4F0F86D734A1 /* PBXTargetDependency */,
+			);
+			name = install;
+			productName = install;
+		};
+		951144BA5C494BD981A787D6 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7407D0489E6A4A14A7204891 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				BE8980B211F446828722F406 /* CMake Rules */,
+			);
+			dependencies = (
+				9C56E13397EE4F3DBD67BF8D /* PBXTargetDependency */,
+				31FE0B85F0954428A4D4C018 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+		9F34555A3A004E398542962A /* package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3750923D62FE4C47B955FC7B /* Build configuration list for PBXAggregateTarget "package" */;
+			buildPhases = (
+				FDE03E00661C4B5C98061C51 /* CMake PostBuild Rules */,
+			);
+			dependencies = (
+				F5932F7DFE09416F9066D532 /* PBXTargetDependency */,
+			);
+			name = package;
+			productName = package;
+		};
+		B262D94156534010AF4338B9 /* dist */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1FF697401C3A485786135D6C /* Build configuration list for PBXAggregateTarget "dist" */;
+			buildPhases = (
+				C2C111FE6FE14DBCB520B391 /* CMake Rules */,
+			);
+			dependencies = (
+				25F75D2C716549D7A9846BA2 /* PBXTargetDependency */,
+			);
+			name = dist;
+			productName = dist;
+		};
+		E0C9F8AF61424B41B33CC4CF /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F3CE5BD335D24C748482613A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				492508456CDA4EA5BADBDBD2 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		00CA1ADC8E76407FB215047E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpatent.c */ = {isa = PBXBuildFile; fileRef = C62DB7E19ACE459D94A3A08C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpatent.c */; };
+		01A21C18A21A4DC9BA1D9227 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdbgmem.c */ = {isa = PBXBuildFile; fileRef = C2BF83956FCC41C1AB116F7B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdbgmem.c */; };
+		031167115A554B0EB7DC887F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftvalid.h */ = {isa = PBXBuildFile; fileRef = 97CF91B91B654D19BDCC9472 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftvalid.h */; };
+		052B4C1F3BFA4EE3A12CE1E7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftrfork.h */ = {isa = PBXBuildFile; fileRef = 7133D10269AF461BBED3CCA9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftrfork.h */; };
+		0DC19C936E1C4BDD968FFD09 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftttdrv.h */ = {isa = PBXBuildFile; fileRef = 4FAFDA789E9C48F78CDF5C37 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftttdrv.h */; };
+		0E682FAB5E2B42509737E9EF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftmodule.h */ = {isa = PBXBuildFile; fileRef = 6A1ACB01620D4349863D25E3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftmodule.h */; };
+		0F7721E05B484D25BEC0A645 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftstroke.h */ = {isa = PBXBuildFile; fileRef = 2109505079AF4088A3068D51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftstroke.h */; };
+		107A98D1DEA943188EB723BA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type1/type1.c */ = {isa = PBXBuildFile; fileRef = C63E233388B043C9ACC5E227 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type1/type1.c */; };
+		140C148D22BE40CA86CC6700 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftstream.h */ = {isa = PBXBuildFile; fileRef = 84C55E03704A4C7F82D61E0B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftstream.h */; };
+		1645E54140EF4C69AA8626D7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftfntfmt.h */ = {isa = PBXBuildFile; fileRef = D3EDDE9C5C9D458281AE37D0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftfntfmt.h */; };
+		171FB33F1A27452FB6D57E01 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsizes.h */ = {isa = PBXBuildFile; fileRef = 5B041290C3F9462B8CB0EA60 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsizes.h */; };
+		194E70485974488F80F683C1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftcalc.h */ = {isa = PBXBuildFile; fileRef = 711E68AB91FB460C96C8AF26 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftcalc.h */; };
+		1B4181689C294B69A3260B6B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbbox.h */ = {isa = PBXBuildFile; fileRef = EEDF61ABA28043098911A065 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbbox.h */; };
+		1FB421AFDC1347499B25A13F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmodapi.h */ = {isa = PBXBuildFile; fileRef = 828D9AA701D64D14AE674A84 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmodapi.h */; };
+		20A9F5BC2E2D4DC59E486C37 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt/sfnt.c */ = {isa = PBXBuildFile; fileRef = E5D7BD67DDCA4B9E83817B61 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt/sfnt.c */; };
+		21B0895E31514CC5BC800EFF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdebug.c */ = {isa = PBXBuildFile; fileRef = 267E22ACF2DB4D48BBA6E700 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdebug.c */; };
+		23439BE3EE364B65BE80B2B8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftconfig.h */ = {isa = PBXBuildFile; fileRef = 7344883386154988BD7468C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftconfig.h */; };
+		2419E08FA4BA4AB68056B413 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pshinter/pshinter.c */ = {isa = PBXBuildFile; fileRef = 6C72CCBF9FA1423DA7A29206 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pshinter/pshinter.c */; };
+		26B7BED7FDBA4465B9367524 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftglyph.c */ = {isa = PBXBuildFile; fileRef = 1B94199D59DB4E35AF07936C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftglyph.c */; };
+		26B84B5D11B8491399546A85 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsynth.h */ = {isa = PBXBuildFile; fileRef = 91FAB7367EE24B8FB9B58A55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsynth.h */; };
+		2809CC6F07F04380A1451101 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgasp.c */ = {isa = PBXBuildFile; fileRef = E2359F0202D146E999A76CEF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgasp.c */; };
+		29A49E8E849D466B943A3CC6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftobjs.h */ = {isa = PBXBuildFile; fileRef = C198440DE5CF4888935C56A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftobjs.h */; };
+		2D423B2E541B42928B4DE9D8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsnames.c */ = {isa = PBXBuildFile; fileRef = 5C4B9211B31B4B5B94131516 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsnames.c */; };
+		2D900725593E415F8776CA27 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsystem.h */ = {isa = PBXBuildFile; fileRef = B631F6D5B5714744A60CF5EC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsystem.h */; };
+		3009E386EFE94AA4A24A5A14 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlist.h */ = {isa = PBXBuildFile; fileRef = 5CA78A97811044EE9BEB5991 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlist.h */; };
+		38799AE8977248D0BD0B9415 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbbox.c */ = {isa = PBXBuildFile; fileRef = D5375172BA4248E783584FD6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbbox.c */; };
+		399D70D2DD86417F9F559C71 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/tttypes.h */ = {isa = PBXBuildFile; fileRef = DDA810DAD58E4E84A7DDFC9F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/tttypes.h */; };
+		3A8658AA0375413781BFC77D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftimage.h */ = {isa = PBXBuildFile; fileRef = D07C0BB2F39D434AA623579D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftimage.h */; };
+		3C18D56DDACC4BBDB64CB73C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/gzip/ftgzip.c */ = {isa = PBXBuildFile; fileRef = 30AD38CC98FA48B79C0DAEF6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/gzip/ftgzip.c */; };
+		3C68F0A0CD954247B4CAB4AD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftgloadr.h */ = {isa = PBXBuildFile; fileRef = B24C140F60194326A2EA234E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftgloadr.h */; };
+		3E03430B28464EC3B8223794 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgloadr.c */ = {isa = PBXBuildFile; fileRef = 75A09589F06048A5BF6F2775 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgloadr.c */; };
+		3E6C39315A2544A4A365F4A3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftadvanc.h */ = {isa = PBXBuildFile; fileRef = 5B1DEDD8E3034C68AFA2B3CE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftadvanc.h */; };
+		433045D2B15A4E2C8A7D6F28 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmm.h */ = {isa = PBXBuildFile; fileRef = 9203CA633E3848B48D020580 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmm.h */; };
+		456CD44A364F490FAEFB589B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdebug.h */ = {isa = PBXBuildFile; fileRef = 84F7D2D92890435DB6A4AB4B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdebug.h */; };
+		483B5542035643DFA5A1C133 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcache.h */ = {isa = PBXBuildFile; fileRef = CC51A0FC84E84E90B191BEE8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcache.h */; };
+		4B7F6DD58BA242888E501358 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgxval.h */ = {isa = PBXBuildFile; fileRef = 60B0AB7A57E0476680420CC7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgxval.h */; };
+		4F48BF0FF47B4C4DABCD7D3A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftoutln.h */ = {isa = PBXBuildFile; fileRef = 59C146A0F4674E3C83080F04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftoutln.h */; };
+		56F8A8AAFF304DF995A3CDF2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsystem.c */ = {isa = PBXBuildFile; fileRef = 41BBA72114664BC7A5D722F4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsystem.c */; };
+		57E3591FDDF24E8AB4DFA937 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbitmap.c */ = {isa = PBXBuildFile; fileRef = E2545C4322F742E397B5FC14 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbitmap.c */; };
+		58AB4C0AD7D84AC8AD287CE8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/winfonts/winfnt.c */ = {isa = PBXBuildFile; fileRef = 05A97D468CCE436F8D03E567 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/winfonts/winfnt.c */; };
+		5D83ADF565B0460EB0C1A128 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttrigon.h */ = {isa = PBXBuildFile; fileRef = 488E1457A06F4C47A5591421 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttrigon.h */; };
+		5F3934BBC30347AC8643C756 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsynth.c */ = {isa = PBXBuildFile; fileRef = A220E56AE047418E8A40D5FE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsynth.c */; };
+		6383C75A482540C293A620BE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftoutln.c */ = {isa = PBXBuildFile; fileRef = D0238F0D32324BC18836D7B5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftoutln.c */; };
+		6622CEA52F1B4F14A828F141 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpfr.c */ = {isa = PBXBuildFile; fileRef = 605CFC74A0E24AEBB5C09742 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpfr.c */; };
+		669DD24A6B9645C4B4B7A533 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftotval.h */ = {isa = PBXBuildFile; fileRef = 56946DC5C9C84F1C9DF15C9B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftotval.h */; };
+		695E2DA141FA4DF79520DBBD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftstdlib.h */ = {isa = PBXBuildFile; fileRef = 673169EC31594768AF1DF037 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftstdlib.h */; };
+		6C142BF4F5EA469FA104E184 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/sfnt.h */ = {isa = PBXBuildFile; fileRef = 6DC59F804E7F4196AFAB8075 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/sfnt.h */; };
+		6C829CCE662548DBAD95DCA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster/raster.c */ = {isa = PBXBuildFile; fileRef = 6E77602F701243AC88563486 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster/raster.c */; };
+		6DC3DCF1AA9A4DB1A16E3E93 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/t1types.h */ = {isa = PBXBuildFile; fileRef = 81822E52BBD442C996E70AFB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/t1types.h */; };
+		6DC94678BFDD4372BDAE978B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftutil.c */ = {isa = PBXBuildFile; fileRef = F16A77EE9D264951A533D4AD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftutil.c */; };
+		6E7F73FA278B4928A41931EA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcffdrv.h */ = {isa = PBXBuildFile; fileRef = 1CF0F53BF6C94E218002DF55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcffdrv.h */; };
+		71FA91D3981F4B578DCF732D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttags.h */ = {isa = PBXBuildFile; fileRef = 013CCCAF2EA341C199DF3EBE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttags.h */; };
+		73C9878BB6884EA1989FCF96 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftinit.c */ = {isa = PBXBuildFile; fileRef = FA7F6616550A4137A7085EC6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftinit.c */; };
+		73FD843BC61644F7BFFD814C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftpic.h */ = {isa = PBXBuildFile; fileRef = 53F93F6CD793480595C56DA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftpic.h */; };
+		7457C24D7CC94B4F9379D9F7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 33344EABBB5849B6A14E1B6D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */; };
+		771E44DF90524F02BFFE5235 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames/psmodule.c */ = {isa = PBXBuildFile; fileRef = 349E8355797D4DEF9A6A4AD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames/psmodule.c */; };
+		79320E6339FC46D5B283687A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftwinfnt.h */ = {isa = PBXBuildFile; fileRef = ACBAC83ED4814B3182E877EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftwinfnt.h */; };
+		7B5FEE9E89D14CF4BBFB8DCA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttnameid.h */ = {isa = PBXBuildFile; fileRef = 81E5CACF79124FD2BDD48A1A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttnameid.h */; };
+		7CE1AB5A22784C1F881C1A26 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftincrem.h */ = {isa = PBXBuildFile; fileRef = D6DA6347AFDE44C0B1F569F5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftincrem.h */; };
+		80D3FBD5D726495EB6B28153 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftpfr.h */ = {isa = PBXBuildFile; fileRef = CA37B7A45FAF4A8398A9D474 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftpfr.h */; };
+		8277E03883A84FB2894B122E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cid/type1cid.c */ = {isa = PBXBuildFile; fileRef = DC2321DD447B4827A302E2FC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cid/type1cid.c */; };
+		8481484DBC874DB0805BE701 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrors.h */ = {isa = PBXBuildFile; fileRef = 0E2C7338669D4D4BBD04837D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrors.h */; };
+		895703D2BF1E435080D0ACFE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftmm.c */ = {isa = PBXBuildFile; fileRef = 8AD6517C467541329CD41130 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftmm.c */; };
+		899364A754BE4E728573FE36 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftautoh.h */ = {isa = PBXBuildFile; fileRef = 0862A866CDE84F06BFC5A080 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftautoh.h */; };
+		89F844722EDC49FC8C323A98 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bdf/bdf.c */ = {isa = PBXBuildFile; fileRef = 89E373C9368D4D15B1F8E757 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bdf/bdf.c */; };
+		8BCF8C24452B4580A2C348C6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlzw.h */ = {isa = PBXBuildFile; fileRef = F71E4A6914FA45B89E803823 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlzw.h */; };
+		8C867D2D1E8048AFA4C34542 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftobjs.c */ = {isa = PBXBuildFile; fileRef = 5642642C0B09473AB56692C5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftobjs.c */; };
+		8DDF7C1FDD3541ADA2068657 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/psaux.h */ = {isa = PBXBuildFile; fileRef = 7A4CB6DE3EE04BF28BD813D1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/psaux.h */; };
+		93597FF5CBBC4AEEA66FA304 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstream.c */ = {isa = PBXBuildFile; fileRef = 740F023D456245EE84D90B04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstream.c */; };
+		961883F6FFEB47909AD31D8F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftoption.h */ = {isa = PBXBuildFile; fileRef = 7E45D0ECF9B24D8BA3ED9671 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftoption.h */; };
+		984AB9DF47A84DBB9E6C5288 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcid.c */ = {isa = PBXBuildFile; fileRef = 621E88AA70B44F07902AF529 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcid.c */; };
+		9B78460654824BEE912599AB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrdef.h */ = {isa = PBXBuildFile; fileRef = 4AE3A972C6D3429DBB7B36C9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrdef.h */; };
+		9C0F642A053D40B388FF8897 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftrfork.c */ = {isa = PBXBuildFile; fileRef = 60E1C0419521442BB31153EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftrfork.c */; };
+		9C335CABFC4A4811B02AFB6B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cache/ftcache.c */ = {isa = PBXBuildFile; fileRef = 04CD0E2CBDAA4C4896777DC5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cache/ftcache.c */; };
+		9EABDCD907B64A67A2ECC35E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth/smooth.c */ = {isa = PBXBuildFile; fileRef = 813ECF7450AF45CFB63C903F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth/smooth.c */; };
+		9F37653855F0494898A42555 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbzip2.h */ = {isa = PBXBuildFile; fileRef = 8B5A9FF568154C0E8053474D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbzip2.h */; };
+		9F3D8A71BAB9457E92E798F2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcalc.c */ = {isa = PBXBuildFile; fileRef = 266F539C11F64900B0107C7A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcalc.c */; };
+		A0654C89D6614768B08BF7FC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/autohint.h */ = {isa = PBXBuildFile; fileRef = 8D62946BFEDA46FAAD5CE5F0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/autohint.h */; };
+		A1AE264A244E45709703A535 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pfr/pfr.c */ = {isa = PBXBuildFile; fileRef = 6B6ED53F43E14AD987C08AF3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pfr/pfr.c */; };
+		A3BF3FF9503647CFAB018012 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftlcdfil.c */ = {isa = PBXBuildFile; fileRef = 48FB311E2C0C417EADA4A506 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftlcdfil.c */; };
+		AB1E10E6794C469AAFFB8EF5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbitmap.h */ = {isa = PBXBuildFile; fileRef = 106783D0EEFC4EA5BF720585 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbitmap.h */; };
+		ABC0708C21094AE0A1D64A79 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/internal.h */ = {isa = PBXBuildFile; fileRef = 5BFABD973C4E41D39D1B92CC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/internal.h */; };
+		AC212051D29A45B89A3D3A46 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsnames.h */ = {isa = PBXBuildFile; fileRef = C79CFD200F3B49C18E8B08E6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsnames.h */; };
+		B0E996CD24C84319A1729F23 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbdf.h */ = {isa = PBXBuildFile; fileRef = 0DAE4CBE5B464FA59A4F71D4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbdf.h */; };
+		B135203417F1430FAA16B414 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cff/cff.c */ = {isa = PBXBuildFile; fileRef = A1652FCCF2E349BF9B2309E9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cff/cff.c */; };
+		B473758E4A9644FB9A434069 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/pshints.h */ = {isa = PBXBuildFile; fileRef = 456114A3B2D4426DAE9BEDF5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/pshints.h */; };
+		B4FA8EEB17D448B08ECDD369 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftchapters.h */ = {isa = PBXBuildFile; fileRef = 458C337085E04284AEA3A75A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftchapters.h */; };
+		B6DE302F25D84DA88D245015 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftheader.h */ = {isa = PBXBuildFile; fileRef = 23254CF7C5A84387AA176371 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftheader.h */; };
+		C094AC8DEC16435EB281B519 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlcdfil.h */ = {isa = PBXBuildFile; fileRef = BF7864C760244E94BA5C72FF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlcdfil.h */; };
+		C0BB407654024F7B8568C597 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bzip2/ftbzip2.c */ = {isa = PBXBuildFile; fileRef = A2746366A0ED44EFAE7F07AB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bzip2/ftbzip2.c */; };
+		C4BE649483D9451D8CEB2322 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/fttrace.h */ = {isa = PBXBuildFile; fileRef = 82CA9430654545DEB3B29CAB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/fttrace.h */; };
+		C8E0E8A7DF154E498D1BBA99 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftrender.h */ = {isa = PBXBuildFile; fileRef = 79B8F0E168E04E398D484DF9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftrender.h */; };
+		C908FAA52E7645A3BAE7B405 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttypes.h */ = {isa = PBXBuildFile; fileRef = 01FF952A15B348D1BD920EB8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttypes.h */; };
+		CB89A86AFFBB410D9B5E9BD3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmoderr.h */ = {isa = PBXBuildFile; fileRef = 78F102A6747F49F99A08953E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmoderr.h */; };
+		CBEC3FCFB49C494A869390CA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftwinfnt.c */ = {isa = PBXBuildFile; fileRef = A8AF33BB904D4398B37ECD99 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftwinfnt.c */; };
+		CE35AA3B7180453F8F0B643D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit/autofit.c */ = {isa = PBXBuildFile; fileRef = 13DD723074D74AF1898F2EA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit/autofit.c */; };
+		CF762FB4B40949549EA01A24 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux/psaux.c */ = {isa = PBXBuildFile; fileRef = B15649DE9CD74BDA8EA982BD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux/psaux.c */; };
+		CF9B585E78344F7FBF813D5D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttables.h */ = {isa = PBXBuildFile; fileRef = 4D5EE9305A1E401AA4E3B651 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttables.h */; };
+		D04542A04E4F495BBB082402 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pcf/pcf.c */ = {isa = PBXBuildFile; fileRef = 4B26091210A14B32A546548E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pcf/pcf.c */; };
+		D4005069CEBE48DE9C6B44C8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type42/type42.c */ = {isa = PBXBuildFile; fileRef = 4B600E8FF8EA401DAAD53B74 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type42/type42.c */; };
+		D6141AC533DF4AD088C2F3CA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmac.h */ = {isa = PBXBuildFile; fileRef = 9872277934224B76845F9257 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmac.h */; };
+		D7703FCA6613453C841C094C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdriver.h */ = {isa = PBXBuildFile; fileRef = 8B02EF5A72E441ADB4E56187 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdriver.h */; };
+		D7C7641925FD45D788837960 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfntfmt.c */ = {isa = PBXBuildFile; fileRef = E350017D705B4121B18333A7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfntfmt.c */; };
+		D8C8065B5E904826986722E8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftserv.h */ = {isa = PBXBuildFile; fileRef = 6A44ABB68F394BEA980EFBB3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftserv.h */; };
+		DB9FC650A543418CA8B9C54F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgxval.c */ = {isa = PBXBuildFile; fileRef = 5E6D0D47CB944C23B3C72FA7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgxval.c */; };
+		DBE4A3C3EBA44D059662004D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftmemory.h */ = {isa = PBXBuildFile; fileRef = 2BBA45B25D024031A26A5100 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftmemory.h */; };
+		DEA28B2C6797471897E1093D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ft2build.h */ = {isa = PBXBuildFile; fileRef = 6A281ECCA7624CCAADD0D059 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ft2build.h */; };
+		E028691DA66945C297C0C57A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftotval.c */ = {isa = PBXBuildFile; fileRef = A043DB0659CC4BA89EA144C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftotval.c */; };
+		E0B033AAA7864710AE2DD547 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftglyph.h */ = {isa = PBXBuildFile; fileRef = 1A63F8409FF64536ACD699A8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftglyph.h */; };
+		E2EA230D9BD24546A8729AD8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfstype.c */ = {isa = PBXBuildFile; fileRef = 340F7672D7E34490ACFDF3B8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfstype.c */; };
+		E6437C9935C94A93B29247BD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttype1.c */ = {isa = PBXBuildFile; fileRef = C513642E88EE4CBBA1081E51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttype1.c */; };
+		E7549D27D733416884BEA8B8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/t1tables.h */ = {isa = PBXBuildFile; fileRef = E50B1BC36EC244CDB5D1CCD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/t1tables.h */; };
+		E9CA9434D5984814A2D09E0D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/lzw/ftlzw.c */ = {isa = PBXBuildFile; fileRef = B9184C61E68A4C4DB6A00082 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/lzw/ftlzw.c */; };
+		EC5CCA7D714B4C07AC0CCB40 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttunpat.h */ = {isa = PBXBuildFile; fileRef = D1489E9C6DF84ADFBA20EE5A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttunpat.h */; };
+		EE7F12C91B284C8CBB3945AA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttrigon.c */ = {isa = PBXBuildFile; fileRef = D058EDA939444BDCB204BFC8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttrigon.c */; };
+		EE81F5B515C445F088322909 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcid.h */ = {isa = PBXBuildFile; fileRef = 74DDA56482BD4BF58895A115 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcid.h */; };
+		F1459B6B58A14D3CB50427F1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgasp.h */ = {isa = PBXBuildFile; fileRef = 38523BFC09104FC3A1FAD703 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgasp.h */; };
+		F53D07C01E69493FA285CC2B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/freetype.h */ = {isa = PBXBuildFile; fileRef = 0E5EA5478E7646E8B3C532A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/freetype.h */; };
+		FA37F7953F7945C19F98E8A9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgzip.h */ = {isa = PBXBuildFile; fileRef = F5CD6D97275D4187BAFE6A97 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgzip.h */; };
+		FBD3C13135D04C539076FF6E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftadvanc.c */ = {isa = PBXBuildFile; fileRef = 202B1AA4EF8F4EE0A7A607D3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftadvanc.c */; };
+		FC1220F0147B490FAAFA6B79 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype/truetype.c */ = {isa = PBXBuildFile; fileRef = 8B82408594AD46738A6FA379 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype/truetype.c */; };
+		FC56CB5A3204405D9596CA11 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstroke.c */ = {isa = PBXBuildFile; fileRef = 1524B5C2929D4175B3DBBFA0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstroke.c */; };
+		FDA012F56D9343F8AAF08277 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbdf.c */ = {isa = PBXBuildFile; fileRef = D80B13982A2140D6B2C0A2A4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbdf.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		A25AFE65420243ADAB8FCBB6 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		B89748124BC04A1FB0A8ED08 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		D9FE9ED77FFC425AAD3C0562 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		DEC9C95D9AE444A6B72B8E80 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		12BC640D3A024149998055B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B7EF13340C44185ABFBCE28;
+			remoteInfo = freetype;
+		};
+		2092256B6C294A6CBCCC031C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 951144BA5C494BD981A787D6;
+			remoteInfo = ALL_BUILD;
+		};
+		439EF99817EF490DA8314E31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0C9F8AF61424B41B33CC4CF;
+			remoteInfo = ZERO_CHECK;
+		};
+		8A8C537ACF1E4B0790DABD07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 951144BA5C494BD981A787D6;
+			remoteInfo = ALL_BUILD;
+		};
+		C119C2C4B1F741AA8574159E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0C9F8AF61424B41B33CC4CF;
+			remoteInfo = ZERO_CHECK;
+		};
+		EEC59724C7E44B8D83AF9DD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C704DA1D1BC24EB2B6353B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E0C9F8AF61424B41B33CC4CF;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		013CCCAF2EA341C199DF3EBE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttags.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = tttags.h; path = include/tttags.h; sourceTree = SOURCE_ROOT; };
+		01FF952A15B348D1BD920EB8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fttypes.h; path = include/fttypes.h; sourceTree = SOURCE_ROOT; };
+		04CD0E2CBDAA4C4896777DC5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cache/ftcache.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftcache.c; path = src/cache/ftcache.c; sourceTree = SOURCE_ROOT; };
+		05A97D468CCE436F8D03E567 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/winfonts/winfnt.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = winfnt.c; path = src/winfonts/winfnt.c; sourceTree = SOURCE_ROOT; };
+		0862A866CDE84F06BFC5A080 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftautoh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftautoh.h; path = include/ftautoh.h; sourceTree = SOURCE_ROOT; };
+		0981180940354970A708E962 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		0DAE4CBE5B464FA59A4F71D4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbdf.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftbdf.h; path = include/ftbdf.h; sourceTree = SOURCE_ROOT; };
+		0E2C7338669D4D4BBD04837D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrors.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fterrors.h; path = include/fterrors.h; sourceTree = SOURCE_ROOT; };
+		0E5EA5478E7646E8B3C532A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/freetype.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = freetype.h; path = include/freetype.h; sourceTree = SOURCE_ROOT; };
+		106783D0EEFC4EA5BF720585 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbitmap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftbitmap.h; path = include/ftbitmap.h; sourceTree = SOURCE_ROOT; };
+		13DD723074D74AF1898F2EA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit/autofit.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = autofit.c; path = src/autofit/autofit.c; sourceTree = SOURCE_ROOT; };
+		1524B5C2929D4175B3DBBFA0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstroke.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftstroke.c; path = src/base/ftstroke.c; sourceTree = SOURCE_ROOT; };
+		1A63F8409FF64536ACD699A8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftglyph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftglyph.h; path = include/ftglyph.h; sourceTree = SOURCE_ROOT; };
+		1B94199D59DB4E35AF07936C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftglyph.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftglyph.c; path = src/base/ftglyph.c; sourceTree = SOURCE_ROOT; };
+		1CF0F53BF6C94E218002DF55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcffdrv.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftcffdrv.h; path = include/ftcffdrv.h; sourceTree = SOURCE_ROOT; };
+		202B1AA4EF8F4EE0A7A607D3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftadvanc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftadvanc.c; path = src/base/ftadvanc.c; sourceTree = SOURCE_ROOT; };
+		2109505079AF4088A3068D51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftstroke.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftstroke.h; path = include/ftstroke.h; sourceTree = SOURCE_ROOT; };
+		23254CF7C5A84387AA176371 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftheader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftheader.h; path = include/config/ftheader.h; sourceTree = SOURCE_ROOT; };
+		24366A35DD304E828EB240B6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		266F539C11F64900B0107C7A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcalc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftcalc.c; path = src/base/ftcalc.c; sourceTree = SOURCE_ROOT; };
+		267E22ACF2DB4D48BBA6E700 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdebug.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftdebug.c; path = src/base/ftdebug.c; sourceTree = SOURCE_ROOT; };
+		2BBA45B25D024031A26A5100 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftmemory.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmemory.h; path = include/internal/ftmemory.h; sourceTree = SOURCE_ROOT; };
+		30AD38CC98FA48B79C0DAEF6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/gzip/ftgzip.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftgzip.c; path = src/gzip/ftgzip.c; sourceTree = SOURCE_ROOT; };
+		33344EABBB5849B6A14E1B6D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		340F7672D7E34490ACFDF3B8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfstype.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftfstype.c; path = src/base/ftfstype.c; sourceTree = SOURCE_ROOT; };
+		349E8355797D4DEF9A6A4AD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames/psmodule.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = psmodule.c; path = src/psnames/psmodule.c; sourceTree = SOURCE_ROOT; };
+		3567405A384544118323B470 /* freetype */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		38523BFC09104FC3A1FAD703 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgasp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftgasp.h; path = include/ftgasp.h; sourceTree = SOURCE_ROOT; };
+		41BBA72114664BC7A5D722F4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsystem.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftsystem.c; path = src/base/ftsystem.c; sourceTree = SOURCE_ROOT; };
+		456114A3B2D4426DAE9BEDF5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/pshints.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = pshints.h; path = include/internal/pshints.h; sourceTree = SOURCE_ROOT; };
+		458C337085E04284AEA3A75A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftchapters.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftchapters.h; path = include/ftchapters.h; sourceTree = SOURCE_ROOT; };
+		488E1457A06F4C47A5591421 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttrigon.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fttrigon.h; path = include/fttrigon.h; sourceTree = SOURCE_ROOT; };
+		48FB311E2C0C417EADA4A506 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftlcdfil.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftlcdfil.c; path = src/base/ftlcdfil.c; sourceTree = SOURCE_ROOT; };
+		4AE3A972C6D3429DBB7B36C9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrdef.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fterrdef.h; path = include/fterrdef.h; sourceTree = SOURCE_ROOT; };
+		4B26091210A14B32A546548E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pcf/pcf.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pcf.c; path = src/pcf/pcf.c; sourceTree = SOURCE_ROOT; };
+		4B600E8FF8EA401DAAD53B74 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type42/type42.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = type42.c; path = src/type42/type42.c; sourceTree = SOURCE_ROOT; };
+		4D5EE9305A1E401AA4E3B651 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttables.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = tttables.h; path = include/tttables.h; sourceTree = SOURCE_ROOT; };
+		4FAFDA789E9C48F78CDF5C37 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftttdrv.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftttdrv.h; path = include/ftttdrv.h; sourceTree = SOURCE_ROOT; };
+		53F93F6CD793480595C56DA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftpic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftpic.h; path = include/internal/ftpic.h; sourceTree = SOURCE_ROOT; };
+		5642642C0B09473AB56692C5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftobjs.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftobjs.c; path = src/base/ftobjs.c; sourceTree = SOURCE_ROOT; };
+		56946DC5C9C84F1C9DF15C9B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftotval.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftotval.h; path = include/ftotval.h; sourceTree = SOURCE_ROOT; };
+		59C146A0F4674E3C83080F04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftoutln.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftoutln.h; path = include/ftoutln.h; sourceTree = SOURCE_ROOT; };
+		5B041290C3F9462B8CB0EA60 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsizes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftsizes.h; path = include/ftsizes.h; sourceTree = SOURCE_ROOT; };
+		5B1DEDD8E3034C68AFA2B3CE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftadvanc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftadvanc.h; path = include/ftadvanc.h; sourceTree = SOURCE_ROOT; };
+		5BFABD973C4E41D39D1B92CC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/internal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = internal.h; path = include/internal/internal.h; sourceTree = SOURCE_ROOT; };
+		5C4B9211B31B4B5B94131516 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsnames.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftsnames.c; path = src/base/ftsnames.c; sourceTree = SOURCE_ROOT; };
+		5CA78A97811044EE9BEB5991 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftlist.h; path = include/ftlist.h; sourceTree = SOURCE_ROOT; };
+		5E6D0D47CB944C23B3C72FA7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgxval.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftgxval.c; path = src/base/ftgxval.c; sourceTree = SOURCE_ROOT; };
+		605CFC74A0E24AEBB5C09742 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpfr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftpfr.c; path = src/base/ftpfr.c; sourceTree = SOURCE_ROOT; };
+		60B0AB7A57E0476680420CC7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgxval.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftgxval.h; path = include/ftgxval.h; sourceTree = SOURCE_ROOT; };
+		60E1C0419521442BB31153EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftrfork.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftrfork.c; path = src/base/ftrfork.c; sourceTree = SOURCE_ROOT; };
+		621E88AA70B44F07902AF529 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcid.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftcid.c; path = src/base/ftcid.c; sourceTree = SOURCE_ROOT; };
+		673169EC31594768AF1DF037 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftstdlib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftstdlib.h; path = include/config/ftstdlib.h; sourceTree = SOURCE_ROOT; };
+		6A1ACB01620D4349863D25E3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftmodule.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmodule.h; path = include/config/ftmodule.h; sourceTree = SOURCE_ROOT; };
+		6A281ECCA7624CCAADD0D059 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ft2build.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ft2build.h; path = include/ft2build.h; sourceTree = SOURCE_ROOT; };
+		6A44ABB68F394BEA980EFBB3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftserv.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftserv.h; path = include/internal/ftserv.h; sourceTree = SOURCE_ROOT; };
+		6B6ED53F43E14AD987C08AF3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pfr/pfr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pfr.c; path = src/pfr/pfr.c; sourceTree = SOURCE_ROOT; };
+		6C72CCBF9FA1423DA7A29206 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pshinter/pshinter.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = pshinter.c; path = src/pshinter/pshinter.c; sourceTree = SOURCE_ROOT; };
+		6DC59F804E7F4196AFAB8075 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/sfnt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = sfnt.h; path = include/internal/sfnt.h; sourceTree = SOURCE_ROOT; };
+		6E77602F701243AC88563486 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster/raster.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = raster.c; path = src/raster/raster.c; sourceTree = SOURCE_ROOT; };
+		711E68AB91FB460C96C8AF26 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftcalc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftcalc.h; path = include/internal/ftcalc.h; sourceTree = SOURCE_ROOT; };
+		7133D10269AF461BBED3CCA9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftrfork.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftrfork.h; path = include/internal/ftrfork.h; sourceTree = SOURCE_ROOT; };
+		7344883386154988BD7468C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftconfig.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftconfig.h; path = include/config/ftconfig.h; sourceTree = SOURCE_ROOT; };
+		740F023D456245EE84D90B04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstream.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftstream.c; path = src/base/ftstream.c; sourceTree = SOURCE_ROOT; };
+		74DDA56482BD4BF58895A115 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftcid.h; path = include/ftcid.h; sourceTree = SOURCE_ROOT; };
+		75A09589F06048A5BF6F2775 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgloadr.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftgloadr.c; path = src/base/ftgloadr.c; sourceTree = SOURCE_ROOT; };
+		78F102A6747F49F99A08953E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmoderr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmoderr.h; path = include/ftmoderr.h; sourceTree = SOURCE_ROOT; };
+		79B8F0E168E04E398D484DF9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftrender.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftrender.h; path = include/ftrender.h; sourceTree = SOURCE_ROOT; };
+		7A4CB6DE3EE04BF28BD813D1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/psaux.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = psaux.h; path = include/internal/psaux.h; sourceTree = SOURCE_ROOT; };
+		7E45D0ECF9B24D8BA3ED9671 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftoption.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftoption.h; path = include/config/ftoption.h; sourceTree = SOURCE_ROOT; };
+		813ECF7450AF45CFB63C903F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth/smooth.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = smooth.c; path = src/smooth/smooth.c; sourceTree = SOURCE_ROOT; };
+		81822E52BBD442C996E70AFB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/t1types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = t1types.h; path = include/internal/t1types.h; sourceTree = SOURCE_ROOT; };
+		81E5CACF79124FD2BDD48A1A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttnameid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ttnameid.h; path = include/ttnameid.h; sourceTree = SOURCE_ROOT; };
+		828D9AA701D64D14AE674A84 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmodapi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmodapi.h; path = include/ftmodapi.h; sourceTree = SOURCE_ROOT; };
+		82CA9430654545DEB3B29CAB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/fttrace.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = fttrace.h; path = include/internal/fttrace.h; sourceTree = SOURCE_ROOT; };
+		84C55E03704A4C7F82D61E0B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftstream.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftstream.h; path = include/internal/ftstream.h; sourceTree = SOURCE_ROOT; };
+		84F7D2D92890435DB6A4AB4B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdebug.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftdebug.h; path = include/internal/ftdebug.h; sourceTree = SOURCE_ROOT; };
+		89E373C9368D4D15B1F8E757 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bdf/bdf.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = bdf.c; path = src/bdf/bdf.c; sourceTree = SOURCE_ROOT; };
+		8AD6517C467541329CD41130 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftmm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftmm.c; path = src/base/ftmm.c; sourceTree = SOURCE_ROOT; };
+		8B02EF5A72E441ADB4E56187 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdriver.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftdriver.h; path = include/internal/ftdriver.h; sourceTree = SOURCE_ROOT; };
+		8B5A9FF568154C0E8053474D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbzip2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftbzip2.h; path = include/ftbzip2.h; sourceTree = SOURCE_ROOT; };
+		8B82408594AD46738A6FA379 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype/truetype.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = truetype.c; path = src/truetype/truetype.c; sourceTree = SOURCE_ROOT; };
+		8D62946BFEDA46FAAD5CE5F0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/autohint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = autohint.h; path = include/internal/autohint.h; sourceTree = SOURCE_ROOT; };
+		91FAB7367EE24B8FB9B58A55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftsynth.h; path = include/ftsynth.h; sourceTree = SOURCE_ROOT; };
+		9203CA633E3848B48D020580 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmm.h; path = include/ftmm.h; sourceTree = SOURCE_ROOT; };
+		97CF91B91B654D19BDCC9472 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftvalid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftvalid.h; path = include/internal/ftvalid.h; sourceTree = SOURCE_ROOT; };
+		9872277934224B76845F9257 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmac.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftmac.h; path = include/ftmac.h; sourceTree = SOURCE_ROOT; };
+		A043DB0659CC4BA89EA144C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftotval.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftotval.c; path = src/base/ftotval.c; sourceTree = SOURCE_ROOT; };
+		A1652FCCF2E349BF9B2309E9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cff/cff.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = cff.c; path = src/cff/cff.c; sourceTree = SOURCE_ROOT; };
+		A220E56AE047418E8A40D5FE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsynth.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftsynth.c; path = src/base/ftsynth.c; sourceTree = SOURCE_ROOT; };
+		A2746366A0ED44EFAE7F07AB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bzip2/ftbzip2.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftbzip2.c; path = src/bzip2/ftbzip2.c; sourceTree = SOURCE_ROOT; };
+		A8AF33BB904D4398B37ECD99 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftwinfnt.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftwinfnt.c; path = src/base/ftwinfnt.c; sourceTree = SOURCE_ROOT; };
+		ACBAC83ED4814B3182E877EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftwinfnt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftwinfnt.h; path = include/ftwinfnt.h; sourceTree = SOURCE_ROOT; };
+		B15649DE9CD74BDA8EA982BD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux/psaux.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = psaux.c; path = src/psaux/psaux.c; sourceTree = SOURCE_ROOT; };
+		B24C140F60194326A2EA234E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftgloadr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftgloadr.h; path = include/internal/ftgloadr.h; sourceTree = SOURCE_ROOT; };
+		B631F6D5B5714744A60CF5EC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsystem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftsystem.h; path = include/ftsystem.h; sourceTree = SOURCE_ROOT; };
+		B9184C61E68A4C4DB6A00082 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/lzw/ftlzw.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftlzw.c; path = src/lzw/ftlzw.c; sourceTree = SOURCE_ROOT; };
+		BF7864C760244E94BA5C72FF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlcdfil.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftlcdfil.h; path = include/ftlcdfil.h; sourceTree = SOURCE_ROOT; };
+		C198440DE5CF4888935C56A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftobjs.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftobjs.h; path = include/internal/ftobjs.h; sourceTree = SOURCE_ROOT; };
+		C2BF83956FCC41C1AB116F7B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdbgmem.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftdbgmem.c; path = src/base/ftdbgmem.c; sourceTree = SOURCE_ROOT; };
+		C513642E88EE4CBBA1081E51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttype1.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = fttype1.c; path = src/base/fttype1.c; sourceTree = SOURCE_ROOT; };
+		C62DB7E19ACE459D94A3A08C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpatent.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftpatent.c; path = src/base/ftpatent.c; sourceTree = SOURCE_ROOT; };
+		C63E233388B043C9ACC5E227 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type1/type1.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = type1.c; path = src/type1/type1.c; sourceTree = SOURCE_ROOT; };
+		C79CFD200F3B49C18E8B08E6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsnames.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftsnames.h; path = include/ftsnames.h; sourceTree = SOURCE_ROOT; };
+		CA37B7A45FAF4A8398A9D474 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftpfr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftpfr.h; path = include/ftpfr.h; sourceTree = SOURCE_ROOT; };
+		CC51A0FC84E84E90B191BEE8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcache.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftcache.h; path = include/ftcache.h; sourceTree = SOURCE_ROOT; };
+		D0238F0D32324BC18836D7B5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftoutln.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftoutln.c; path = src/base/ftoutln.c; sourceTree = SOURCE_ROOT; };
+		D058EDA939444BDCB204BFC8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttrigon.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = fttrigon.c; path = src/base/fttrigon.c; sourceTree = SOURCE_ROOT; };
+		D07C0BB2F39D434AA623579D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftimage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftimage.h; path = include/ftimage.h; sourceTree = SOURCE_ROOT; };
+		D1489E9C6DF84ADFBA20EE5A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttunpat.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ttunpat.h; path = include/ttunpat.h; sourceTree = SOURCE_ROOT; };
+		D3EDDE9C5C9D458281AE37D0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftfntfmt.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftfntfmt.h; path = include/ftfntfmt.h; sourceTree = SOURCE_ROOT; };
+		D5375172BA4248E783584FD6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbbox.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftbbox.c; path = src/base/ftbbox.c; sourceTree = SOURCE_ROOT; };
+		D6DA6347AFDE44C0B1F569F5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftincrem.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftincrem.h; path = include/ftincrem.h; sourceTree = SOURCE_ROOT; };
+		D80B13982A2140D6B2C0A2A4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbdf.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftbdf.c; path = src/base/ftbdf.c; sourceTree = SOURCE_ROOT; };
+		DC2321DD447B4827A302E2FC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cid/type1cid.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = type1cid.c; path = src/cid/type1cid.c; sourceTree = SOURCE_ROOT; };
+		DDA810DAD58E4E84A7DDFC9F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/tttypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = tttypes.h; path = include/internal/tttypes.h; sourceTree = SOURCE_ROOT; };
+		E2359F0202D146E999A76CEF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgasp.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftgasp.c; path = src/base/ftgasp.c; sourceTree = SOURCE_ROOT; };
+		E2545C4322F742E397B5FC14 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbitmap.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftbitmap.c; path = src/base/ftbitmap.c; sourceTree = SOURCE_ROOT; };
+		E350017D705B4121B18333A7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfntfmt.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftfntfmt.c; path = src/base/ftfntfmt.c; sourceTree = SOURCE_ROOT; };
+		E50B1BC36EC244CDB5D1CCD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/t1tables.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = t1tables.h; path = include/t1tables.h; sourceTree = SOURCE_ROOT; };
+		E5D7BD67DDCA4B9E83817B61 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt/sfnt.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = sfnt.c; path = src/sfnt/sfnt.c; sourceTree = SOURCE_ROOT; };
+		EEDF61ABA28043098911A065 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbbox.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftbbox.h; path = include/ftbbox.h; sourceTree = SOURCE_ROOT; };
+		F16A77EE9D264951A533D4AD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftutil.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftutil.c; path = src/base/ftutil.c; sourceTree = SOURCE_ROOT; };
+		F5CD6D97275D4187BAFE6A97 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgzip.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftgzip.h; path = include/ftgzip.h; sourceTree = SOURCE_ROOT; };
+		F71E4A6914FA45B89E803823 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlzw.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ftlzw.h; path = include/ftlzw.h; sourceTree = SOURCE_ROOT; };
+		FA7F6616550A4137A7085EC6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftinit.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ftinit.c; path = src/base/ftinit.c; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		31A3C04F8D74449594F24AA0 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				13DD723074D74AF1898F2EA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit/autofit.c */,
+				202B1AA4EF8F4EE0A7A607D3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftadvanc.c */,
+				D5375172BA4248E783584FD6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbbox.c */,
+				D80B13982A2140D6B2C0A2A4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbdf.c */,
+				E2545C4322F742E397B5FC14 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbitmap.c */,
+				266F539C11F64900B0107C7A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcalc.c */,
+				621E88AA70B44F07902AF529 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcid.c */,
+				C2BF83956FCC41C1AB116F7B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdbgmem.c */,
+				267E22ACF2DB4D48BBA6E700 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdebug.c */,
+				E350017D705B4121B18333A7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfntfmt.c */,
+				340F7672D7E34490ACFDF3B8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfstype.c */,
+				E2359F0202D146E999A76CEF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgasp.c */,
+				75A09589F06048A5BF6F2775 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgloadr.c */,
+				1B94199D59DB4E35AF07936C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftglyph.c */,
+				5E6D0D47CB944C23B3C72FA7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgxval.c */,
+				FA7F6616550A4137A7085EC6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftinit.c */,
+				48FB311E2C0C417EADA4A506 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftlcdfil.c */,
+				8AD6517C467541329CD41130 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftmm.c */,
+				5642642C0B09473AB56692C5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftobjs.c */,
+				A043DB0659CC4BA89EA144C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftotval.c */,
+				D0238F0D32324BC18836D7B5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftoutln.c */,
+				C62DB7E19ACE459D94A3A08C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpatent.c */,
+				605CFC74A0E24AEBB5C09742 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpfr.c */,
+				60E1C0419521442BB31153EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftrfork.c */,
+				5C4B9211B31B4B5B94131516 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsnames.c */,
+				740F023D456245EE84D90B04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstream.c */,
+				1524B5C2929D4175B3DBBFA0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstroke.c */,
+				A220E56AE047418E8A40D5FE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsynth.c */,
+				41BBA72114664BC7A5D722F4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsystem.c */,
+				D058EDA939444BDCB204BFC8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttrigon.c */,
+				C513642E88EE4CBBA1081E51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttype1.c */,
+				F16A77EE9D264951A533D4AD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftutil.c */,
+				A8AF33BB904D4398B37ECD99 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftwinfnt.c */,
+				89E373C9368D4D15B1F8E757 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bdf/bdf.c */,
+				A2746366A0ED44EFAE7F07AB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bzip2/ftbzip2.c */,
+				04CD0E2CBDAA4C4896777DC5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cache/ftcache.c */,
+				A1652FCCF2E349BF9B2309E9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cff/cff.c */,
+				DC2321DD447B4827A302E2FC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cid/type1cid.c */,
+				30AD38CC98FA48B79C0DAEF6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/gzip/ftgzip.c */,
+				B9184C61E68A4C4DB6A00082 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/lzw/ftlzw.c */,
+				4B26091210A14B32A546548E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pcf/pcf.c */,
+				6B6ED53F43E14AD987C08AF3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pfr/pfr.c */,
+				B15649DE9CD74BDA8EA982BD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux/psaux.c */,
+				6C72CCBF9FA1423DA7A29206 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pshinter/pshinter.c */,
+				349E8355797D4DEF9A6A4AD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames/psmodule.c */,
+				6E77602F701243AC88563486 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster/raster.c */,
+				E5D7BD67DDCA4B9E83817B61 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt/sfnt.c */,
+				813ECF7450AF45CFB63C903F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth/smooth.c */,
+				8B82408594AD46738A6FA379 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype/truetype.c */,
+				C63E233388B043C9ACC5E227 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type1/type1.c */,
+				4B600E8FF8EA401DAAD53B74 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type42/type42.c */,
+				05A97D468CCE436F8D03E567 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/winfonts/winfnt.c */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		388C6C645DD5437DAF7D2EC7 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				CC03701D63BD4779BA01C940 /* CMake Rules */,
+				0981180940354970A708E962 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		731E4A4CFCAC416C9B8824D3 = {
+			isa = PBXGroup;
+			children = (
+				9C62C8E92EBC4B86A821B648 /* dist */,
+				E73CC0502FBB49A191F623AD /* freetype */,
+				388C6C645DD5437DAF7D2EC7 /* ALL_BUILD */,
+				868D5E7D3BC9463285A0991A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		868D5E7D3BC9463285A0991A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3567405A384544118323B470 /* freetype */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98794877E52D42B69D9AE273 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				7344883386154988BD7468C2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftconfig.h */,
+				23254CF7C5A84387AA176371 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftheader.h */,
+				6A1ACB01620D4349863D25E3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftmodule.h */,
+				7E45D0ECF9B24D8BA3ED9671 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftoption.h */,
+				673169EC31594768AF1DF037 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/config/ftstdlib.h */,
+				0E5EA5478E7646E8B3C532A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/freetype.h */,
+				6A281ECCA7624CCAADD0D059 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ft2build.h */,
+				5B1DEDD8E3034C68AFA2B3CE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftadvanc.h */,
+				0862A866CDE84F06BFC5A080 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftautoh.h */,
+				EEDF61ABA28043098911A065 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbbox.h */,
+				0DAE4CBE5B464FA59A4F71D4 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbdf.h */,
+				106783D0EEFC4EA5BF720585 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbitmap.h */,
+				8B5A9FF568154C0E8053474D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftbzip2.h */,
+				CC51A0FC84E84E90B191BEE8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcache.h */,
+				1CF0F53BF6C94E218002DF55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcffdrv.h */,
+				458C337085E04284AEA3A75A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftchapters.h */,
+				74DDA56482BD4BF58895A115 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftcid.h */,
+				4AE3A972C6D3429DBB7B36C9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrdef.h */,
+				0E2C7338669D4D4BBD04837D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fterrors.h */,
+				D3EDDE9C5C9D458281AE37D0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftfntfmt.h */,
+				38523BFC09104FC3A1FAD703 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgasp.h */,
+				1A63F8409FF64536ACD699A8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftglyph.h */,
+				60B0AB7A57E0476680420CC7 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgxval.h */,
+				F5CD6D97275D4187BAFE6A97 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftgzip.h */,
+				D07C0BB2F39D434AA623579D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftimage.h */,
+				D6DA6347AFDE44C0B1F569F5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftincrem.h */,
+				BF7864C760244E94BA5C72FF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlcdfil.h */,
+				5CA78A97811044EE9BEB5991 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlist.h */,
+				F71E4A6914FA45B89E803823 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftlzw.h */,
+				9872277934224B76845F9257 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmac.h */,
+				9203CA633E3848B48D020580 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmm.h */,
+				828D9AA701D64D14AE674A84 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmodapi.h */,
+				78F102A6747F49F99A08953E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftmoderr.h */,
+				56946DC5C9C84F1C9DF15C9B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftotval.h */,
+				59C146A0F4674E3C83080F04 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftoutln.h */,
+				CA37B7A45FAF4A8398A9D474 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftpfr.h */,
+				79B8F0E168E04E398D484DF9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftrender.h */,
+				5B041290C3F9462B8CB0EA60 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsizes.h */,
+				C79CFD200F3B49C18E8B08E6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsnames.h */,
+				2109505079AF4088A3068D51 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftstroke.h */,
+				91FAB7367EE24B8FB9B58A55 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsynth.h */,
+				B631F6D5B5714744A60CF5EC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftsystem.h */,
+				488E1457A06F4C47A5591421 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttrigon.h */,
+				4FAFDA789E9C48F78CDF5C37 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftttdrv.h */,
+				01FF952A15B348D1BD920EB8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/fttypes.h */,
+				ACBAC83ED4814B3182E877EB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ftwinfnt.h */,
+				8D62946BFEDA46FAAD5CE5F0 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/autohint.h */,
+				711E68AB91FB460C96C8AF26 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftcalc.h */,
+				84F7D2D92890435DB6A4AB4B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdebug.h */,
+				8B02EF5A72E441ADB4E56187 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftdriver.h */,
+				B24C140F60194326A2EA234E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftgloadr.h */,
+				2BBA45B25D024031A26A5100 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftmemory.h */,
+				C198440DE5CF4888935C56A2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftobjs.h */,
+				53F93F6CD793480595C56DA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftpic.h */,
+				7133D10269AF461BBED3CCA9 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftrfork.h */,
+				6A44ABB68F394BEA980EFBB3 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftserv.h */,
+				84C55E03704A4C7F82D61E0B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftstream.h */,
+				82CA9430654545DEB3B29CAB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/fttrace.h */,
+				97CF91B91B654D19BDCC9472 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/ftvalid.h */,
+				5BFABD973C4E41D39D1B92CC /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/internal.h */,
+				7A4CB6DE3EE04BF28BD813D1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/psaux.h */,
+				456114A3B2D4426DAE9BEDF5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/pshints.h */,
+				6DC59F804E7F4196AFAB8075 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/sfnt.h */,
+				81822E52BBD442C996E70AFB /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/t1types.h */,
+				DDA810DAD58E4E84A7DDFC9F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/internal/tttypes.h */,
+				E50B1BC36EC244CDB5D1CCD1 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/t1tables.h */,
+				81E5CACF79124FD2BDD48A1A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttnameid.h */,
+				4D5EE9305A1E401AA4E3B651 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttables.h */,
+				013CCCAF2EA341C199DF3EBE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/tttags.h */,
+				D1489E9C6DF84ADFBA20EE5A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include/ttunpat.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		9C62C8E92EBC4B86A821B648 /* dist */ = {
+			isa = PBXGroup;
+			children = (
+				D4E082D98C9A48F8971AF327 /* CMake Rules */,
+				24366A35DD304E828EB240B6 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */,
+			);
+			name = dist;
+			sourceTree = "<group>";
+		};
+		CC03701D63BD4779BA01C940 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		D4E082D98C9A48F8971AF327 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		E73CC0502FBB49A191F623AD /* freetype */ = {
+			isa = PBXGroup;
+			children = (
+				98794877E52D42B69D9AE273 /* Header Files */,
+				31A3C04F8D74449594F24AA0 /* Source Files */,
+				33344EABBB5849B6A14E1B6D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/CMakeLists.txt */,
+			);
+			name = freetype;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B7EF13340C44185ABFBCE28 /* freetype */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D522347C7534463981879C4 /* Build configuration list for PBXNativeTarget "freetype" */;
+			buildPhases = (
+				C218B2FD9DB94F9E9BE8F59C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40B19ADBCF594F26B08418E2 /* PBXTargetDependency */,
+			);
+			name = freetype;
+			productName = freetype;
+			productReference = 3567405A384544118323B470 /* freetype */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C704DA1D1BC24EB2B6353B7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0820;
+			};
+			buildConfigurationList = 7D19ABE0AD96465C96F57454 /* Build configuration list for PBXProject "freetype" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				DEC9C95D9AE444A6B72B8E80 /* Debug */,
+				A25AFE65420243ADAB8FCBB6 /* Release */,
+				B89748124BC04A1FB0A8ED08 /* MinSizeRel */,
+				D9FE9ED77FFC425AAD3C0562 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = 731E4A4CFCAC416C9B8824D3;
+			projectDirPath = "/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6";
+			projectRoot = "";
+			targets = (
+				951144BA5C494BD981A787D6 /* ALL_BUILD */,
+				E0C9F8AF61424B41B33CC4CF /* ZERO_CHECK */,
+				B262D94156534010AF4338B9 /* dist */,
+				3B7EF13340C44185ABFBCE28 /* freetype */,
+				072E818093BE4075A5A8CE1D /* install */,
+				9F34555A3A004E398542962A /* package */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05BB97123E72455F9243A431 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/zhangjian_dev/Project/E3D.git/proj_ios -f /Users/zhangjian_dev/Project/E3D.git/proj_ios/CMakeScripts/install_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		3C93FC953BC14308AF66ECA0 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		492508456CDA4EA5BADBDBD2 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/zhangjian_dev/Project/E3D.git/proj_ios -f /Users/zhangjian_dev/Project/E3D.git/proj_ios/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		54F688C2F17546A0BF9D2E34 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		8DB6F335844F4A6AAE49EF3E = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		BE8980B211F446828722F406 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/zhangjian_dev/Project/E3D.git/proj_ios -f /Users/zhangjian_dev/Project/E3D.git/proj_ios/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		C2BDF4B73E6F4F4E9AFD0E51 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		C2C111FE6FE14DBCB520B391 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/zhangjian_dev/Project/E3D.git/proj_ios -f /Users/zhangjian_dev/Project/E3D.git/proj_ios/CMakeScripts/dist_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		EB4CA12C50DB459CB2723BE4 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		FDE03E00661C4B5C98061C51 /* CMake PostBuild Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake PostBuild Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/zhangjian_dev/Project/E3D.git/proj_ios -f /Users/zhangjian_dev/Project/E3D.git/proj_ios/CMakeScripts/package_postBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C218B2FD9DB94F9E9BE8F59C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE35AA3B7180453F8F0B643D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit/autofit.c */,
+				FBD3C13135D04C539076FF6E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftadvanc.c */,
+				38799AE8977248D0BD0B9415 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbbox.c */,
+				FDA012F56D9343F8AAF08277 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbdf.c */,
+				57E3591FDDF24E8AB4DFA937 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftbitmap.c */,
+				9F3D8A71BAB9457E92E798F2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcalc.c */,
+				984AB9DF47A84DBB9E6C5288 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftcid.c */,
+				01A21C18A21A4DC9BA1D9227 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdbgmem.c */,
+				21B0895E31514CC5BC800EFF /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftdebug.c */,
+				D7C7641925FD45D788837960 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfntfmt.c */,
+				E2EA230D9BD24546A8729AD8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftfstype.c */,
+				2809CC6F07F04380A1451101 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgasp.c */,
+				3E03430B28464EC3B8223794 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgloadr.c */,
+				26B7BED7FDBA4465B9367524 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftglyph.c */,
+				DB9FC650A543418CA8B9C54F /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftgxval.c */,
+				73C9878BB6884EA1989FCF96 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftinit.c */,
+				A3BF3FF9503647CFAB018012 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftlcdfil.c */,
+				895703D2BF1E435080D0ACFE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftmm.c */,
+				8C867D2D1E8048AFA4C34542 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftobjs.c */,
+				E028691DA66945C297C0C57A /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftotval.c */,
+				6383C75A482540C293A620BE /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftoutln.c */,
+				00CA1ADC8E76407FB215047E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpatent.c */,
+				6622CEA52F1B4F14A828F141 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftpfr.c */,
+				9C0F642A053D40B388FF8897 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftrfork.c */,
+				2D423B2E541B42928B4DE9D8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsnames.c */,
+				93597FF5CBBC4AEEA66FA304 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstream.c */,
+				FC56CB5A3204405D9596CA11 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftstroke.c */,
+				5F3934BBC30347AC8643C756 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsynth.c */,
+				56F8A8AAFF304DF995A3CDF2 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftsystem.c */,
+				EE7F12C91B284C8CBB3945AA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttrigon.c */,
+				E6437C9935C94A93B29247BD /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/fttype1.c */,
+				6DC94678BFDD4372BDAE978B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftutil.c */,
+				CBEC3FCFB49C494A869390CA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/base/ftwinfnt.c */,
+				89F844722EDC49FC8C323A98 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bdf/bdf.c */,
+				C0BB407654024F7B8568C597 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/bzip2/ftbzip2.c */,
+				9C335CABFC4A4811B02AFB6B /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cache/ftcache.c */,
+				B135203417F1430FAA16B414 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cff/cff.c */,
+				8277E03883A84FB2894B122E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/cid/type1cid.c */,
+				3C18D56DDACC4BBDB64CB73C /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/gzip/ftgzip.c */,
+				E9CA9434D5984814A2D09E0D /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/lzw/ftlzw.c */,
+				D04542A04E4F495BBB082402 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pcf/pcf.c */,
+				A1AE264A244E45709703A535 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pfr/pfr.c */,
+				CF762FB4B40949549EA01A24 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux/psaux.c */,
+				2419E08FA4BA4AB68056B413 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/pshinter/pshinter.c */,
+				771E44DF90524F02BFFE5235 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames/psmodule.c */,
+				6C829CCE662548DBAD95DCA5 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster/raster.c */,
+				20A9F5BC2E2D4DC59E486C37 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt/sfnt.c */,
+				9EABDCD907B64A67A2ECC35E /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth/smooth.c */,
+				FC1220F0147B490FAAFA6B79 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype/truetype.c */,
+				107A98D1DEA943188EB723BA /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type1/type1.c */,
+				D4005069CEBE48DE9C6B44C8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/type42/type42.c */,
+				58AB4C0AD7D84AC8AD287CE8 /* /Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/winfonts/winfnt.c */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1A35FCB4BE3C4F0F86D734A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 951144BA5C494BD981A787D6 /* ALL_BUILD */;
+			targetProxy = 2092256B6C294A6CBCCC031C /* PBXContainerItemProxy */;
+		};
+		25F75D2C716549D7A9846BA2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0C9F8AF61424B41B33CC4CF /* ZERO_CHECK */;
+			targetProxy = EEC59724C7E44B8D83AF9DD0 /* PBXContainerItemProxy */;
+		};
+		31FE0B85F0954428A4D4C018 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0C9F8AF61424B41B33CC4CF /* ZERO_CHECK */;
+			targetProxy = C119C2C4B1F741AA8574159E /* PBXContainerItemProxy */;
+		};
+		40B19ADBCF594F26B08418E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E0C9F8AF61424B41B33CC4CF /* ZERO_CHECK */;
+			targetProxy = 439EF99817EF490DA8314E31 /* PBXContainerItemProxy */;
+		};
+		9C56E13397EE4F3DBD67BF8D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B7EF13340C44185ABFBCE28 /* freetype */;
+			targetProxy = 12BC640D3A024149998055B4 /* PBXContainerItemProxy */;
+		};
+		F5932F7DFE09416F9066D532 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 951144BA5C494BD981A787D6 /* ALL_BUILD */;
+			targetProxy = 8A8C537ACF1E4B0790DABD07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04A6AA06CCCF4D9F8D84FB5B /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		0FA8EBF1356D482F96E3BEAB /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		10DA9ED8BE1B405FA2AFE75A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		1FE61F4CDCC34DEE9CC6A82C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		209AF470810349938161D3EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		2A61817A93254145A5F68456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		34A72BD14789411BACA589DB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		5BCE7EE1087140B7A9B9396F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		6599C389477F4B96B0473CB5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		6CEC13BEB467471E88A67448 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2,"/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "       -DNDEBUG -I/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2 -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = freetype;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		704668485B084EC9A470201A /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		74F372B3EE834A1BAEA8F1AC /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2,"/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG -I/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2 -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = freetype;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		75DF970325B24800A4BED8E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios/build;
+			};
+			name = Debug;
+		};
+		782000A535FA4D63B4B2A9CD /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		839FC88B30EC4E748160471F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		926CF8F80B894B6DA997F3CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		94254689D9574431B57FF204 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios/build;
+			};
+			name = RelWithDebInfo;
+		};
+		9FFD53738F0B4659B46A67EA /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		B1B39B9E52CD41EEBA679435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2,"/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "   -I/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2 -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = freetype;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		B445FCAE8F794C05B79B50A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",FT2_BUILD_LIBRARY);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2,"/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux","/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames");
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = "    -DNDEBUG -I/Users/zhangjian_dev/Project/E3D.git/proj_ios/include/freetype2 -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/include -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/truetype -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/sfnt -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/autofit -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/smooth -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/raster -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psaux -I/Users/zhangjian_dev/Project/E3D.git/Engine/EngineCore/3rd/FreeType-2.6/src/psnames   ";
+				OTHER_LIBTOOLFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = freetype;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		BCBD4442CAFF4F7EBD93EAD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		C4FFB06CCE104C3BA5748898 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = dist;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		DD28DD6C4BD64CC096647F2D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		DF278ACD97B04239BBAE099E /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		E26A8459B4C04887A99093AB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = install;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		E4BB73B23A1040299216D5B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios/build;
+			};
+			name = Release;
+		};
+		E88356DA185A43E391BA5CE5 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk;
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios/build;
+			};
+			name = MinSizeRel;
+		};
+		F30E45E19B664E07B2A79A6A /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = package;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/zhangjian_dev/Project/E3D.git/proj_ios;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1FF697401C3A485786135D6C /* Build configuration list for PBXAggregateTarget "dist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4FFB06CCE104C3BA5748898 /* Debug */,
+				BCBD4442CAFF4F7EBD93EAD7 /* Release */,
+				9FFD53738F0B4659B46A67EA /* MinSizeRel */,
+				34A72BD14789411BACA589DB /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3750923D62FE4C47B955FC7B /* Build configuration list for PBXAggregateTarget "package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				926CF8F80B894B6DA997F3CD /* Debug */,
+				1FE61F4CDCC34DEE9CC6A82C /* Release */,
+				F30E45E19B664E07B2A79A6A /* MinSizeRel */,
+				04A6AA06CCCF4D9F8D84FB5B /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7407D0489E6A4A14A7204891 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A61817A93254145A5F68456 /* Debug */,
+				5BCE7EE1087140B7A9B9396F /* Release */,
+				782000A535FA4D63B4B2A9CD /* MinSizeRel */,
+				DF278ACD97B04239BBAE099E /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7D19ABE0AD96465C96F57454 /* Build configuration list for PBXProject "freetype" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75DF970325B24800A4BED8E8 /* Debug */,
+				E4BB73B23A1040299216D5B9 /* Release */,
+				E88356DA185A43E391BA5CE5 /* MinSizeRel */,
+				94254689D9574431B57FF204 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8D522347C7534463981879C4 /* Build configuration list for PBXNativeTarget "freetype" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B39B9E52CD41EEBA679435 /* Debug */,
+				B445FCAE8F794C05B79B50A0 /* Release */,
+				74F372B3EE834A1BAEA8F1AC /* MinSizeRel */,
+				6CEC13BEB467471E88A67448 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		934CF65C62CA460195E40C3D /* Build configuration list for PBXAggregateTarget "install" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				209AF470810349938161D3EE /* Debug */,
+				10DA9ED8BE1B405FA2AFE75A /* Release */,
+				6599C389477F4B96B0473CB5 /* MinSizeRel */,
+				E26A8459B4C04887A99093AB /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F3CE5BD335D24C748482613A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				839FC88B30EC4E748160471F /* Debug */,
+				DD28DD6C4BD64CC096647F2D /* Release */,
+				0FA8EBF1356D482F96E3BEAB /* MinSizeRel */,
+				704668485B084EC9A470201A /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C704DA1D1BC24EB2B6353B7E /* Project object */;
+}

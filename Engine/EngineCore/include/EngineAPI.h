@@ -36,8 +36,7 @@ define UINT unsigned int
 
 #ifdef WIN32 
 typedef HWND NATIVE_WINDOW_TYPE;
-#endif
-#ifdef __ANDROID__
+#else
 #define NATIVE_WINDOW_TYPE void *
 #endif
 enum RenderSystemType

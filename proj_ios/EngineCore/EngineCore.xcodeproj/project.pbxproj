@@ -72,23 +72,8 @@
 		BE133B39206A693200438E93 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B38206A693200438E93 /* libassimp.a */; };
 		BE133B3B206A693200438E93 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B3A206A693200438E93 /* libfreetype.a */; };
 		BE133B3D206A693200438E93 /* libRenderSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B3C206A693200438E93 /* libRenderSystem.a */; };
-		BE133B80206B496600438E93 /* libBullet2FileLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B7F206B496600438E93 /* libBullet2FileLoader.a */; };
-		BE133B82206B496600438E93 /* libBullet3Collision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B81206B496600438E93 /* libBullet3Collision.a */; };
-		BE133B84206B496600438E93 /* libBullet3Common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B83206B496600438E93 /* libBullet3Common.a */; };
-		BE133B86206B496600438E93 /* libBullet3Dynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B85206B496600438E93 /* libBullet3Dynamics.a */; };
-		BE133B88206B496600438E93 /* libBullet3Geometry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B87206B496600438E93 /* libBullet3Geometry.a */; };
-		BE133B8A206B496600438E93 /* libBullet3OpenCL_clew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B89206B496600438E93 /* libBullet3OpenCL_clew.a */; };
-		BE133B8C206B496600438E93 /* libBulletCollision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B8B206B496600438E93 /* libBulletCollision.a */; };
-		BE133B8E206B496600438E93 /* libBulletDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B8D206B496600438E93 /* libBulletDynamics.a */; };
-		BE133B90206B496600438E93 /* libBulletFileLoader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B8F206B496600438E93 /* libBulletFileLoader.a */; };
-		BE133B92206B496600438E93 /* libBulletInverseDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B91206B496600438E93 /* libBulletInverseDynamics.a */; };
-		BE133B94206B496600438E93 /* libBulletInverseDynamicsUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B93206B496600438E93 /* libBulletInverseDynamicsUtils.a */; };
-		BE133B96206B496600438E93 /* libBulletRobotics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B95206B496600438E93 /* libBulletRobotics.a */; };
-		BE133B98206B496600438E93 /* libBulletSoftBody.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B97206B496600438E93 /* libBulletSoftBody.a */; };
-		BE133B9A206B496600438E93 /* libBulletWorldImporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B99206B496600438E93 /* libBulletWorldImporter.a */; };
-		BE133B9C206B496600438E93 /* libBulletXmlWorldImporter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B9B206B496600438E93 /* libBulletXmlWorldImporter.a */; };
-		BE133B9E206B496600438E93 /* libConvexDecomposition.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B9D206B496600438E93 /* libConvexDecomposition.a */; };
-		BE133BA0206B496600438E93 /* libLinearMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B9F206B496600438E93 /* libLinearMath.a */; };
+		BE133E82206C8BEF00438E93 /* libBulletStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133E81206C8BEF00438E93 /* libBulletStatic.a */; };
+		BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133E83206C8BEF00438E93 /* libFreeImage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -276,6 +261,8 @@
 		BE133B9D206B496600438E93 /* libConvexDecomposition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConvexDecomposition.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133B9F206B496600438E93 /* libLinearMath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libLinearMath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133BA1206BB8C600438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BE133E81206C8BEF00438E93 /* libBulletStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE133E83206C8BEF00438E93 /* libFreeImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFreeImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,23 +270,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE133B80206B496600438E93 /* libBullet2FileLoader.a in Frameworks */,
-				BE133B82206B496600438E93 /* libBullet3Collision.a in Frameworks */,
-				BE133B84206B496600438E93 /* libBullet3Common.a in Frameworks */,
-				BE133B86206B496600438E93 /* libBullet3Dynamics.a in Frameworks */,
-				BE133B88206B496600438E93 /* libBullet3Geometry.a in Frameworks */,
-				BE133B8A206B496600438E93 /* libBullet3OpenCL_clew.a in Frameworks */,
-				BE133B8C206B496600438E93 /* libBulletCollision.a in Frameworks */,
-				BE133B8E206B496600438E93 /* libBulletDynamics.a in Frameworks */,
-				BE133B90206B496600438E93 /* libBulletFileLoader.a in Frameworks */,
-				BE133B92206B496600438E93 /* libBulletInverseDynamics.a in Frameworks */,
-				BE133B94206B496600438E93 /* libBulletInverseDynamicsUtils.a in Frameworks */,
-				BE133B96206B496600438E93 /* libBulletRobotics.a in Frameworks */,
-				BE133B98206B496600438E93 /* libBulletSoftBody.a in Frameworks */,
-				BE133B9A206B496600438E93 /* libBulletWorldImporter.a in Frameworks */,
-				BE133B9C206B496600438E93 /* libBulletXmlWorldImporter.a in Frameworks */,
-				BE133B9E206B496600438E93 /* libConvexDecomposition.a in Frameworks */,
-				BE133BA0206B496600438E93 /* libLinearMath.a in Frameworks */,
+				BE133E82206C8BEF00438E93 /* libBulletStatic.a in Frameworks */,
+				BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */,
 				BE133B39206A693200438E93 /* libassimp.a in Frameworks */,
 				BE133B3B206A693200438E93 /* libfreetype.a in Frameworks */,
 				BE133B3D206A693200438E93 /* libRenderSystem.a in Frameworks */,
@@ -689,6 +661,8 @@
 		BE133B37206A693200438E93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE133E81206C8BEF00438E93 /* libBulletStatic.a */,
+				BE133E83206C8BEF00438E93 /* libFreeImage.a */,
 				BE133B7F206B496600438E93 /* libBullet2FileLoader.a */,
 				BE133B81206B496600438E93 /* libBullet3Collision.a */,
 				BE133B83206B496600438E93 /* libBullet3Common.a */,

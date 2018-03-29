@@ -625,7 +625,7 @@ FI_STRUCT (FIMEMORY) { void *data; };
 #ifndef PLUGINS
 #define PLUGINS
 
-typedef int BOOL;
+#define BOOL int 
 
 typedef const char *(DLL_CALLCONV *FI_FormatProc)(void);
 typedef const char *(DLL_CALLCONV *FI_DescriptionProc)(void);

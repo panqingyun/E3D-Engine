@@ -1,4 +1,4 @@
-﻿/* Library for accessing X3F Files 
+/* Library for accessing X3F Files 
 ----------------------------------------------------------------
 BSD-style License
 ----------------------------------------------------------------
@@ -1246,7 +1246,7 @@ static void huffman_decode_row(x3f_info_t *I,
   x3f_image_data_t *ID = &DEH->data_subsection.image_data;
   x3f_huffman_t *HUF = ID->huffman;
 
-  int16_t c[3] = {offset,offset,offset};
+  int16_t c[3] = {(short)offset,(short)offset,(short)offset};
   int col;
   bit_state_t BS;
   

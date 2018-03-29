@@ -84,7 +84,7 @@
 #ifdef PLATFORM_ANSI
 typedef unsigned long long U64;
 #else // PLATFORM_ANSI
-typedef unsigned __int64 U64;
+typedef unsigned long long U64;
 #endif // PLATFORM_ANSI
 
 //================================================================
@@ -92,8 +92,8 @@ typedef unsigned __int64 U64;
 
 // The following macros depend on UINTPTR_T and INTPTR_T being properly defined
 // so that they are equal to pointer width. Confirm and fail if our assumptions are wrong.
-CT_ASSERT(sizeof(UINTPTR_T) == sizeof(void*), strcodec1);
-CT_ASSERT(sizeof(INTPTR_T) == sizeof(void*), strcodec2);
+CT_ASSERT(sizeof(uintptr_t) == sizeof(void*), strcodec1);
+CT_ASSERT(sizeof(intptr_t) == sizeof(void*), strcodec2);
 
 // wrap around pointer, s=pow(2,n), p wraps aligned to s
 #define WRAPPTR(p, s) ((void*)((UINTPTR_T)(p) & ~(UINTPTR_T)(s)))
@@ -127,7 +127,7 @@ typedef enum tagPacketType
 
 typedef struct tagIOContext
 {
-    U8 P0[PACKETLENGTH];        // packet circular buffer 0
+    U8 P0[PACKETLENGTH];        // packet circular buffer 0 
     U8 P1[PACKETLENGTH];        // packet circular buffer 1
 
     union

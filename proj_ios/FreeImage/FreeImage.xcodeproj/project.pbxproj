@@ -92,12 +92,6 @@
 		BE13392F206A268000438E93 /* MultigridPoissonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133550206A267D00438E93 /* MultigridPoissonSolver.cpp */; };
 		BE133930206A268000438E93 /* Rescale.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133551206A267D00438E93 /* Rescale.cpp */; };
 		BE133931206A268000438E93 /* Resize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133552206A267D00438E93 /* Resize.cpp */; };
-		BE133932206A268000438E93 /* ansi2knr.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133555206A267D00438E93 /* ansi2knr.c */; };
-		BE133933206A268000438E93 /* cdjpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133557206A267D00438E93 /* cdjpeg.c */; };
-		BE133934206A268000438E93 /* cjpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13355A206A267D00438E93 /* cjpeg.c */; };
-		BE133935206A268000438E93 /* ckconfig.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13355B206A267D00438E93 /* ckconfig.c */; };
-		BE133936206A268000438E93 /* djpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13355D206A267D00438E93 /* djpeg.c */; };
-		BE133937206A268000438E93 /* example.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13355E206A267D00438E93 /* example.c */; };
 		BE133938206A268000438E93 /* jaricom.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133561206A267D00438E93 /* jaricom.c */; };
 		BE133939206A268000438E93 /* jcapimin.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133562206A267D00438E93 /* jcapimin.c */; };
 		BE13393A206A268000438E93 /* jcapistd.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133563206A267D00438E93 /* jcapistd.c */; };
@@ -139,32 +133,12 @@
 		BE13395E206A268000438E93 /* jidctflt.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13358B206A267D00438E93 /* jidctflt.c */; };
 		BE13395F206A268000438E93 /* jidctfst.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13358C206A267D00438E93 /* jidctfst.c */; };
 		BE133960206A268000438E93 /* jidctint.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13358D206A267D00438E93 /* jidctint.c */; };
-		BE133961206A268000438E93 /* jmemansi.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13358F206A267D00438E93 /* jmemansi.c */; };
-		BE133962206A268000438E93 /* jmemdos.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133590206A267D00438E93 /* jmemdos.c */; };
-		BE133963206A268000438E93 /* jmemdosa.asm in Sources */ = {isa = PBXBuildFile; fileRef = BE133591206A267D00438E93 /* jmemdosa.asm */; };
-		BE133964206A268000438E93 /* jmemmac.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133592206A267D00438E93 /* jmemmac.c */; };
 		BE133965206A268000438E93 /* jmemmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133593206A267D00438E93 /* jmemmgr.c */; };
-		BE133966206A268000438E93 /* jmemname.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133594206A267D00438E93 /* jmemname.c */; };
 		BE133967206A268000438E93 /* jmemnobs.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133595206A267D00438E93 /* jmemnobs.c */; };
-		BE133968206A268000438E93 /* jpegtran.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13359A206A267D00438E93 /* jpegtran.c */; };
 		BE133969206A268000438E93 /* jquant1.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13359B206A267D00438E93 /* jquant1.c */; };
 		BE13396A206A268000438E93 /* jquant2.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13359C206A267D00438E93 /* jquant2.c */; };
 		BE13396B206A268000438E93 /* jutils.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13359D206A267D00438E93 /* jutils.c */; };
-		BE13396C206A268000438E93 /* rdbmp.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A4206A267D00438E93 /* rdbmp.c */; };
-		BE13396D206A268000438E93 /* rdcolmap.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A5206A267D00438E93 /* rdcolmap.c */; };
-		BE13396E206A268000438E93 /* rdgif.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A6206A267D00438E93 /* rdgif.c */; };
-		BE13396F206A268000438E93 /* rdjpgcom.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A7206A267D00438E93 /* rdjpgcom.c */; };
-		BE133970206A268000438E93 /* rdppm.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A8206A267D00438E93 /* rdppm.c */; };
-		BE133971206A268000438E93 /* rdrle.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335A9206A267D00438E93 /* rdrle.c */; };
-		BE133972206A268000438E93 /* rdswitch.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335AA206A267D00438E93 /* rdswitch.c */; };
-		BE133973206A268000438E93 /* rdtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335AB206A267D00438E93 /* rdtarga.c */; };
 		BE133974206A268000438E93 /* transupp.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335AE206A267D00438E93 /* transupp.c */; };
-		BE133975206A268000438E93 /* wrbmp.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B2206A267D00438E93 /* wrbmp.c */; };
-		BE133976206A268000438E93 /* wrgif.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B3206A267D00438E93 /* wrgif.c */; };
-		BE133977206A268000438E93 /* wrjpgcom.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B4206A267D00438E93 /* wrjpgcom.c */; };
-		BE133978206A268000438E93 /* wrppm.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B5206A267D00438E93 /* wrppm.c */; };
-		BE133979206A268000438E93 /* wrrle.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B6206A267D00438E93 /* wrrle.c */; };
-		BE13397A206A268000438E93 /* wrtarga.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335B7206A267D00438E93 /* wrtarga.c */; };
 		BE13397B206A268000438E93 /* decode.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335C3206A267D00438E93 /* decode.c */; };
 		BE13397C206A268000438E93 /* JXRTranscode.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335C5206A267D00438E93 /* JXRTranscode.c */; };
 		BE13397D206A268000438E93 /* postprocess.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335C6206A267D00438E93 /* postprocess.c */; };
@@ -181,16 +155,9 @@
 		BE133988206A268000438E93 /* strPredQuantEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335D3206A267D00438E93 /* strPredQuantEnc.c */; };
 		BE133989206A268000438E93 /* adapthuff.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335D5206A267D00438E93 /* adapthuff.c */; };
 		BE13398A206A268000438E93 /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335D8206A267D00438E93 /* image.c */; };
-		BE13398B206A268000438E93 /* perfTimerANSI.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335DA206A267D00438E93 /* perfTimerANSI.c */; };
-		BE13398C206A268000438E93 /* strcodec.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335DB206A267D00438E93 /* strcodec.c */; };
 		BE13398D206A268000438E93 /* strPredQuant.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335DD206A267D00438E93 /* strPredQuant.c */; };
 		BE13398E206A268000438E93 /* strTransform.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335DE206A267D00438E93 /* strTransform.c */; };
-		BE13398F206A268000438E93 /* JXRGlue.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335E5206A267D00438E93 /* JXRGlue.c */; };
-		BE133990206A268000438E93 /* JXRGlueJxr.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335E7206A267D00438E93 /* JXRGlueJxr.c */; };
-		BE133991206A268000438E93 /* JXRGluePFC.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335E8206A267D00438E93 /* JXRGluePFC.c */; };
-		BE133992206A268000438E93 /* JXRMeta.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335E9206A267D00438E93 /* JXRMeta.c */; };
 		BE133993206A268000438E93 /* bio.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335F3206A267D00438E93 /* bio.c */; };
-		BE133994206A268000438E93 /* cidx_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335F5206A267D00438E93 /* cidx_manager.c */; };
 		BE133995206A268000438E93 /* cio.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335F7206A267D00438E93 /* cio.c */; };
 		BE133996206A268000438E93 /* dwt.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335F9206A267D00438E93 /* dwt.c */; };
 		BE133997206A268000438E93 /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1335FB206A267D00438E93 /* event.c */; };
@@ -203,17 +170,12 @@
 		BE13399E206A268000438E93 /* mqc.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133610206A267E00438E93 /* mqc.c */; };
 		BE13399F206A268000438E93 /* openjpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133613206A267E00438E93 /* openjpeg.c */; };
 		BE1339A0206A268000438E93 /* opj_clock.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133615206A267E00438E93 /* opj_clock.c */; };
-		BE1339A1206A268000438E93 /* phix_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13361F206A267E00438E93 /* phix_manager.c */; };
 		BE1339A2206A268000438E93 /* pi.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133620206A267E00438E93 /* pi.c */; };
-		BE1339A3206A268000438E93 /* ppix_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133622206A267E00438E93 /* ppix_manager.c */; };
 		BE1339A4206A268000438E93 /* raw.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133623206A267E00438E93 /* raw.c */; };
 		BE1339A5206A268000438E93 /* t1.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133626206A267E00438E93 /* t1.c */; };
-		BE1339A6206A268000438E93 /* t1_generate_luts.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133628206A267E00438E93 /* t1_generate_luts.c */; };
 		BE1339A7206A268000438E93 /* t2.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13362A206A267E00438E93 /* t2.c */; };
 		BE1339A8206A268000438E93 /* tcd.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13362C206A267E00438E93 /* tcd.c */; };
 		BE1339A9206A268000438E93 /* tgt.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13362E206A267E00438E93 /* tgt.c */; };
-		BE1339AA206A268000438E93 /* thix_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133631206A267E00438E93 /* thix_manager.c */; };
-		BE1339AB206A268000438E93 /* tpix_manager.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133632206A267E00438E93 /* tpix_manager.c */; };
 		BE1339AC206A268000438E93 /* example.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133637206A267E00438E93 /* example.c */; };
 		BE1339AD206A268000438E93 /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133641206A267E00438E93 /* png.c */; };
 		BE1339AE206A268000438E93 /* pngerror.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133645206A267E00438E93 /* pngerror.c */; };
@@ -231,20 +193,12 @@
 		BE1339BA206A268000438E93 /* pngwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133655206A267E00438E93 /* pngwrite.c */; };
 		BE1339BB206A268000438E93 /* pngwtran.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133656206A267E00438E93 /* pngwtran.c */; };
 		BE1339BC206A268000438E93 /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133657206A267E00438E93 /* pngwutil.c */; };
-		BE1339BD206A268000438E93 /* dcraw.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13365F206A267E00438E93 /* dcraw.c */; };
-		BE1339BE206A268000438E93 /* aahd_demosaic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133662206A267E00438E93 /* aahd_demosaic.cpp */; };
-		BE1339BF206A268000438E93 /* dcb_demosaicing.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133663206A267E00438E93 /* dcb_demosaicing.c */; };
 		BE1339C0206A268000438E93 /* dcraw_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133664206A267E00438E93 /* dcraw_common.cpp */; };
 		BE1339C1206A268000438E93 /* dcraw_fileio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133665206A267E00438E93 /* dcraw_fileio.cpp */; };
 		BE1339C2206A268000438E93 /* demosaic_packs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133667206A267E00438E93 /* demosaic_packs.cpp */; };
-		BE1339C3206A268000438E93 /* dht_demosaic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133668206A267E00438E93 /* dht_demosaic.cpp */; };
-		BE1339C4206A268000438E93 /* libraw_x3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE13366A206A267E00438E93 /* libraw_x3f.cpp */; };
-		BE1339C5206A268000438E93 /* wf_filtering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE13366D206A267E00438E93 /* wf_filtering.cpp */; };
 		BE1339C6206A268000438E93 /* libraw_c_api.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE13367F206A267E00438E93 /* libraw_c_api.cpp */; };
 		BE1339C7206A268000438E93 /* libraw_cxx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133680206A267E00438E93 /* libraw_cxx.cpp */; };
 		BE1339C8206A268000438E93 /* libraw_datastream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE133681206A267E00438E93 /* libraw_datastream.cpp */; };
-		BE1339C9206A268000438E93 /* mkg3states.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133688206A267E00438E93 /* mkg3states.c */; };
-		BE1339CA206A268000438E93 /* mkspans.c in Sources */ = {isa = PBXBuildFile; fileRef = BE133689206A267E00438E93 /* mkspans.c */; };
 		BE1339CB206A268000438E93 /* tif_aux.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13368B206A267E00438E93 /* tif_aux.c */; };
 		BE1339CC206A268000438E93 /* tif_close.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13368C206A267E00438E93 /* tif_close.c */; };
 		BE1339CD206A268000438E93 /* tif_codec.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13368D206A267E00438E93 /* tif_codec.c */; };
@@ -261,9 +215,7 @@
 		BE1339D8206A268000438E93 /* tif_fax3sm.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13369F206A267E00438E93 /* tif_fax3sm.c */; };
 		BE1339D9206A268000438E93 /* tif_flush.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A0206A267E00438E93 /* tif_flush.c */; };
 		BE1339DA206A268000438E93 /* tif_getimage.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A1206A267E00438E93 /* tif_getimage.c */; };
-		BE1339DB206A268000438E93 /* tif_jbig.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A2206A267E00438E93 /* tif_jbig.c */; };
 		BE1339DC206A268000438E93 /* tif_jpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A3206A267E00438E93 /* tif_jpeg.c */; };
-		BE1339DD206A268000438E93 /* tif_jpeg_12.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A4206A267E00438E93 /* tif_jpeg_12.c */; };
 		BE1339DE206A268000438E93 /* tif_luv.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A5206A267E00438E93 /* tif_luv.c */; };
 		BE1339DF206A268000438E93 /* tif_lzma.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A6206A267E00438E93 /* tif_lzma.c */; };
 		BE1339E0206A268000438E93 /* tif_lzw.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336A7206A267E00438E93 /* tif_lzw.c */; };
@@ -275,17 +227,12 @@
 		BE1339E6206A268000438E93 /* tif_predict.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336AD206A267E00438E93 /* tif_predict.c */; };
 		BE1339E7206A268000438E93 /* tif_print.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336AF206A267E00438E93 /* tif_print.c */; };
 		BE1339E8206A268000438E93 /* tif_read.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B0206A267E00438E93 /* tif_read.c */; };
-		BE1339E9206A268000438E93 /* tif_stream.cxx in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B1206A267E00438E93 /* tif_stream.cxx */; };
 		BE1339EA206A268000438E93 /* tif_strip.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B2206A267E00438E93 /* tif_strip.c */; };
 		BE1339EB206A268000438E93 /* tif_swab.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B3206A267E00438E93 /* tif_swab.c */; };
 		BE1339EC206A268000438E93 /* tif_thunder.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B4206A267E00438E93 /* tif_thunder.c */; };
 		BE1339ED206A268000438E93 /* tif_tile.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B5206A267E00438E93 /* tif_tile.c */; };
-		BE1339EE206A268000438E93 /* tif_unix.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B6206A267E00438E93 /* tif_unix.c */; };
 		BE1339EF206A268000438E93 /* tif_version.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B7206A267E00438E93 /* tif_version.c */; };
-		BE1339F0206A268000438E93 /* tif_vms.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B8206A267E00438E93 /* tif_vms.c */; };
 		BE1339F1206A268000438E93 /* tif_warning.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336B9206A267E00438E93 /* tif_warning.c */; };
-		BE1339F2206A268000438E93 /* tif_win32.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336BA206A267E00438E93 /* tif_win32.c */; };
-		BE1339F3206A268000438E93 /* tif_wince.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336BB206A267E00438E93 /* tif_wince.c */; };
 		BE1339F4206A268000438E93 /* tif_write.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336BC206A267E00438E93 /* tif_write.c */; };
 		BE1339F5206A268000438E93 /* tif_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336BD206A267E00438E93 /* tif_zip.c */; };
 		BE1339F6206A268000438E93 /* dec.alpha.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1336D9206A267E00438E93 /* dec.alpha.c */; };
@@ -513,7 +460,6 @@
 		BE133AD4206A268000438E93 /* inffast.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338C6206A267F00438E93 /* inffast.c */; };
 		BE133AD5206A268000438E93 /* inflate.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338C9206A267F00438E93 /* inflate.c */; };
 		BE133AD6206A268000438E93 /* inftrees.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338CB206A267F00438E93 /* inftrees.c */; };
-		BE133AD7206A268000438E93 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = BE1338CD206A267F00438E93 /* Makefile */; };
 		BE133AD8206A268000438E93 /* trees.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338D0206A267F00438E93 /* trees.c */; };
 		BE133AD9206A268000438E93 /* uncompr.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338D2206A267F00438E93 /* uncompr.c */; };
 		BE133ADA206A268000438E93 /* zutil.c in Sources */ = {isa = PBXBuildFile; fileRef = BE1338DB206A267F00438E93 /* zutil.c */; };
@@ -626,14 +572,6 @@
 		BE133551206A267D00438E93 /* Rescale.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rescale.cpp; sourceTree = "<group>"; };
 		BE133552206A267D00438E93 /* Resize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Resize.cpp; sourceTree = "<group>"; };
 		BE133553206A267D00438E93 /* Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resize.h; sourceTree = "<group>"; };
-		BE133555206A267D00438E93 /* ansi2knr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ansi2knr.c; sourceTree = "<group>"; };
-		BE133556206A267D00438E93 /* cderror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cderror.h; sourceTree = "<group>"; };
-		BE133557206A267D00438E93 /* cdjpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cdjpeg.c; sourceTree = "<group>"; };
-		BE133558206A267D00438E93 /* cdjpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cdjpeg.h; sourceTree = "<group>"; };
-		BE13355A206A267D00438E93 /* cjpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cjpeg.c; sourceTree = "<group>"; };
-		BE13355B206A267D00438E93 /* ckconfig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ckconfig.c; sourceTree = "<group>"; };
-		BE13355D206A267D00438E93 /* djpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = djpeg.c; sourceTree = "<group>"; };
-		BE13355E206A267D00438E93 /* example.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = example.c; sourceTree = "<group>"; };
 		BE133561206A267D00438E93 /* jaricom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jaricom.c; sourceTree = "<group>"; };
 		BE133562206A267D00438E93 /* jcapimin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jcapimin.c; sourceTree = "<group>"; };
 		BE133563206A267D00438E93 /* jcapistd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jcapistd.c; sourceTree = "<group>"; };
@@ -679,38 +617,18 @@
 		BE13358C206A267D00438E93 /* jidctfst.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jidctfst.c; sourceTree = "<group>"; };
 		BE13358D206A267D00438E93 /* jidctint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jidctint.c; sourceTree = "<group>"; };
 		BE13358E206A267D00438E93 /* jinclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jinclude.h; sourceTree = "<group>"; };
-		BE13358F206A267D00438E93 /* jmemansi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemansi.c; sourceTree = "<group>"; };
-		BE133590206A267D00438E93 /* jmemdos.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemdos.c; sourceTree = "<group>"; };
-		BE133591206A267D00438E93 /* jmemdosa.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = jmemdosa.asm; sourceTree = "<group>"; };
-		BE133592206A267D00438E93 /* jmemmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemmac.c; sourceTree = "<group>"; };
 		BE133593206A267D00438E93 /* jmemmgr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemmgr.c; sourceTree = "<group>"; };
-		BE133594206A267D00438E93 /* jmemname.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemname.c; sourceTree = "<group>"; };
 		BE133595206A267D00438E93 /* jmemnobs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jmemnobs.c; sourceTree = "<group>"; };
 		BE133596206A267D00438E93 /* jmemsys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmemsys.h; sourceTree = "<group>"; };
 		BE133597206A267D00438E93 /* jmorecfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jmorecfg.h; sourceTree = "<group>"; };
 		BE133598206A267D00438E93 /* jpegint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpegint.h; sourceTree = "<group>"; };
 		BE133599206A267D00438E93 /* jpeglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
-		BE13359A206A267D00438E93 /* jpegtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jpegtran.c; sourceTree = "<group>"; };
 		BE13359B206A267D00438E93 /* jquant1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jquant1.c; sourceTree = "<group>"; };
 		BE13359C206A267D00438E93 /* jquant2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jquant2.c; sourceTree = "<group>"; };
 		BE13359D206A267D00438E93 /* jutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jutils.c; sourceTree = "<group>"; };
 		BE13359E206A267D00438E93 /* jversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jversion.h; sourceTree = "<group>"; };
-		BE1335A4206A267D00438E93 /* rdbmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdbmp.c; sourceTree = "<group>"; };
-		BE1335A5206A267D00438E93 /* rdcolmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdcolmap.c; sourceTree = "<group>"; };
-		BE1335A6206A267D00438E93 /* rdgif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdgif.c; sourceTree = "<group>"; };
-		BE1335A7206A267D00438E93 /* rdjpgcom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdjpgcom.c; sourceTree = "<group>"; };
-		BE1335A8206A267D00438E93 /* rdppm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdppm.c; sourceTree = "<group>"; };
-		BE1335A9206A267D00438E93 /* rdrle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdrle.c; sourceTree = "<group>"; };
-		BE1335AA206A267D00438E93 /* rdswitch.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdswitch.c; sourceTree = "<group>"; };
-		BE1335AB206A267D00438E93 /* rdtarga.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rdtarga.c; sourceTree = "<group>"; };
 		BE1335AE206A267D00438E93 /* transupp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = transupp.c; sourceTree = "<group>"; };
 		BE1335AF206A267D00438E93 /* transupp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transupp.h; sourceTree = "<group>"; };
-		BE1335B2206A267D00438E93 /* wrbmp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrbmp.c; sourceTree = "<group>"; };
-		BE1335B3206A267D00438E93 /* wrgif.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrgif.c; sourceTree = "<group>"; };
-		BE1335B4206A267D00438E93 /* wrjpgcom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrjpgcom.c; sourceTree = "<group>"; };
-		BE1335B5206A267D00438E93 /* wrppm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrppm.c; sourceTree = "<group>"; };
-		BE1335B6206A267D00438E93 /* wrrle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrrle.c; sourceTree = "<group>"; };
-		BE1335B7206A267D00438E93 /* wrtarga.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrtarga.c; sourceTree = "<group>"; };
 		BE1335BB206A267D00438E93 /* guiddef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiddef.h; sourceTree = "<group>"; };
 		BE1335BC206A267D00438E93 /* wmsal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wmsal.h; sourceTree = "<group>"; };
 		BE1335BD206A267D00438E93 /* wmspecstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wmspecstring.h; sourceTree = "<group>"; };
@@ -738,26 +656,16 @@
 		BE1335D7206A267D00438E93 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		BE1335D8206A267D00438E93 /* image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image.c; sourceTree = "<group>"; };
 		BE1335D9206A267D00438E93 /* perfTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perfTimer.h; sourceTree = "<group>"; };
-		BE1335DA206A267D00438E93 /* perfTimerANSI.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = perfTimerANSI.c; sourceTree = "<group>"; };
-		BE1335DB206A267D00438E93 /* strcodec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strcodec.c; sourceTree = "<group>"; };
 		BE1335DC206A267D00438E93 /* strcodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strcodec.h; sourceTree = "<group>"; };
 		BE1335DD206A267D00438E93 /* strPredQuant.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strPredQuant.c; sourceTree = "<group>"; };
 		BE1335DE206A267D00438E93 /* strTransform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strTransform.c; sourceTree = "<group>"; };
 		BE1335DF206A267D00438E93 /* strTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strTransform.h; sourceTree = "<group>"; };
-		BE1335E0206A267D00438E93 /* windowsmediaphoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = windowsmediaphoto.h; sourceTree = "<group>"; };
 		BE1335E1206A267D00438E93 /* xplatform_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xplatform_image.h; sourceTree = "<group>"; };
 		BE1335E3206A267D00438E93 /* x86.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x86.h; sourceTree = "<group>"; };
-		BE1335E5206A267D00438E93 /* JXRGlue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = JXRGlue.c; sourceTree = "<group>"; };
 		BE1335E6206A267D00438E93 /* JXRGlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXRGlue.h; sourceTree = "<group>"; };
-		BE1335E7206A267D00438E93 /* JXRGlueJxr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = JXRGlueJxr.c; sourceTree = "<group>"; };
-		BE1335E8206A267D00438E93 /* JXRGluePFC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = JXRGluePFC.c; sourceTree = "<group>"; };
-		BE1335E9206A267D00438E93 /* JXRMeta.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = JXRMeta.c; sourceTree = "<group>"; };
 		BE1335EA206A267D00438E93 /* JXRMeta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXRMeta.h; sourceTree = "<group>"; };
-		BE1335F2206A267D00438E93 /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		BE1335F3206A267D00438E93 /* bio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bio.c; sourceTree = "<group>"; };
 		BE1335F4206A267D00438E93 /* bio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bio.h; sourceTree = "<group>"; };
-		BE1335F5206A267D00438E93 /* cidx_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cidx_manager.c; sourceTree = "<group>"; };
-		BE1335F6206A267D00438E93 /* cidx_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cidx_manager.h; sourceTree = "<group>"; };
 		BE1335F7206A267D00438E93 /* cio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cio.c; sourceTree = "<group>"; };
 		BE1335F8206A267D00438E93 /* cio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cio.h; sourceTree = "<group>"; };
 		BE1335F9206A267D00438E93 /* dwt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dwt.c; sourceTree = "<group>"; };
@@ -769,28 +677,20 @@
 		BE1335FF206A267D00438E93 /* image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image.c; sourceTree = "<group>"; };
 		BE133600206A267D00438E93 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
 		BE133601206A267D00438E93 /* indexbox_manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = indexbox_manager.h; sourceTree = "<group>"; };
-		BE133602206A267D00438E93 /* INSTALL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
 		BE133603206A267D00438E93 /* invert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = invert.c; sourceTree = "<group>"; };
 		BE133604206A267D00438E93 /* invert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = invert.h; sourceTree = "<group>"; };
 		BE133605206A267D00438E93 /* j2k.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = j2k.c; sourceTree = "<group>"; };
 		BE133606206A267D00438E93 /* j2k.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = j2k.h; sourceTree = "<group>"; };
 		BE133607206A267D00438E93 /* jp2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = jp2.c; sourceTree = "<group>"; };
 		BE133608206A267D00438E93 /* jp2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jp2.h; sourceTree = "<group>"; };
-		BE133609206A267D00438E93 /* LibOpenJPEG.2005.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibOpenJPEG.2005.vcproj; sourceTree = "<group>"; };
-		BE13360A206A267D00438E93 /* LibOpenJPEG.2008.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibOpenJPEG.2008.vcproj; sourceTree = "<group>"; };
-		BE13360B206A267D00438E93 /* LibOpenJPEG.2013.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibOpenJPEG.2013.vcxproj; sourceTree = "<group>"; };
-		BE13360C206A267D00438E93 /* LibOpenJPEG.2013.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibOpenJPEG.2013.vcxproj.filters; sourceTree = "<group>"; };
-		BE13360D206A267E00438E93 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BE13360E206A267E00438E93 /* mct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mct.c; sourceTree = "<group>"; };
 		BE13360F206A267E00438E93 /* mct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mct.h; sourceTree = "<group>"; };
 		BE133610206A267E00438E93 /* mqc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mqc.c; sourceTree = "<group>"; };
 		BE133611206A267E00438E93 /* mqc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mqc.h; sourceTree = "<group>"; };
-		BE133612206A267E00438E93 /* NEWS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
 		BE133613206A267E00438E93 /* openjpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = openjpeg.c; sourceTree = "<group>"; };
 		BE133614206A267E00438E93 /* openjpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = openjpeg.h; sourceTree = "<group>"; };
 		BE133615206A267E00438E93 /* opj_clock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = opj_clock.c; sourceTree = "<group>"; };
 		BE133616206A267E00438E93 /* opj_clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_clock.h; sourceTree = "<group>"; };
-		BE133617206A267E00438E93 /* opj_codec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_codec.h; sourceTree = "<group>"; };
 		BE133618206A267E00438E93 /* opj_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_config.h; sourceTree = "<group>"; };
 		BE133619206A267E00438E93 /* opj_config_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_config_private.h; sourceTree = "<group>"; };
 		BE13361A206A267E00438E93 /* opj_includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_includes.h; sourceTree = "<group>"; };
@@ -798,16 +698,12 @@
 		BE13361C206A267E00438E93 /* opj_inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_inttypes.h; sourceTree = "<group>"; };
 		BE13361D206A267E00438E93 /* opj_malloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_malloc.h; sourceTree = "<group>"; };
 		BE13361E206A267E00438E93 /* opj_stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opj_stdint.h; sourceTree = "<group>"; };
-		BE13361F206A267E00438E93 /* phix_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = phix_manager.c; sourceTree = "<group>"; };
 		BE133620206A267E00438E93 /* pi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pi.c; sourceTree = "<group>"; };
 		BE133621206A267E00438E93 /* pi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pi.h; sourceTree = "<group>"; };
-		BE133622206A267E00438E93 /* ppix_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ppix_manager.c; sourceTree = "<group>"; };
 		BE133623206A267E00438E93 /* raw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = raw.c; sourceTree = "<group>"; };
 		BE133624206A267E00438E93 /* raw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = raw.h; sourceTree = "<group>"; };
-		BE133625206A267E00438E93 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		BE133626206A267E00438E93 /* t1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = t1.c; sourceTree = "<group>"; };
 		BE133627206A267E00438E93 /* t1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t1.h; sourceTree = "<group>"; };
-		BE133628206A267E00438E93 /* t1_generate_luts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = t1_generate_luts.c; sourceTree = "<group>"; };
 		BE133629206A267E00438E93 /* t1_luts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t1_luts.h; sourceTree = "<group>"; };
 		BE13362A206A267E00438E93 /* t2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = t2.c; sourceTree = "<group>"; };
 		BE13362B206A267E00438E93 /* t2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t2.h; sourceTree = "<group>"; };
@@ -815,9 +711,6 @@
 		BE13362D206A267E00438E93 /* tcd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcd.h; sourceTree = "<group>"; };
 		BE13362E206A267E00438E93 /* tgt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tgt.c; sourceTree = "<group>"; };
 		BE13362F206A267E00438E93 /* tgt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tgt.h; sourceTree = "<group>"; };
-		BE133630206A267E00438E93 /* THANKS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = THANKS; sourceTree = "<group>"; };
-		BE133631206A267E00438E93 /* thix_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thix_manager.c; sourceTree = "<group>"; };
-		BE133632206A267E00438E93 /* tpix_manager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tpix_manager.c; sourceTree = "<group>"; };
 		BE133634206A267E00438E93 /* ANNOUNCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ANNOUNCE; sourceTree = "<group>"; };
 		BE133635206A267E00438E93 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
 		BE133636206A267E00438E93 /* configure */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = configure; sourceTree = "<group>"; };
@@ -856,23 +749,12 @@
 		BE133657206A267E00438E93 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		BE133658206A267E00438E93 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		BE133659206A267E00438E93 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
-		BE13365B206A267E00438E93 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
-		BE13365C206A267E00438E93 /* COPYRIGHT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT; sourceTree = "<group>"; };
-		BE13365E206A267E00438E93 /* dcraw.1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = dcraw.1.html; sourceTree = "<group>"; };
-		BE13365F206A267E00438E93 /* dcraw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dcraw.c; sourceTree = "<group>"; };
-		BE133660206A267E00438E93 /* DEVELOPER-NOTES */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "DEVELOPER-NOTES"; sourceTree = "<group>"; };
-		BE133662206A267E00438E93 /* aahd_demosaic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aahd_demosaic.cpp; sourceTree = "<group>"; };
-		BE133663206A267E00438E93 /* dcb_demosaicing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dcb_demosaicing.c; sourceTree = "<group>"; };
 		BE133664206A267E00438E93 /* dcraw_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dcraw_common.cpp; sourceTree = "<group>"; };
 		BE133665206A267E00438E93 /* dcraw_fileio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dcraw_fileio.cpp; sourceTree = "<group>"; };
 		BE133666206A267E00438E93 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
 		BE133667206A267E00438E93 /* demosaic_packs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demosaic_packs.cpp; sourceTree = "<group>"; };
-		BE133668206A267E00438E93 /* dht_demosaic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dht_demosaic.cpp; sourceTree = "<group>"; };
 		BE133669206A267E00438E93 /* libraw_internal_funcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_internal_funcs.h; sourceTree = "<group>"; };
-		BE13366A206A267E00438E93 /* libraw_x3f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libraw_x3f.cpp; sourceTree = "<group>"; };
-		BE13366B206A267E00438E93 /* preprocess.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = preprocess.pl; sourceTree = "<group>"; };
 		BE13366C206A267E00438E93 /* var_defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = var_defines.h; sourceTree = "<group>"; };
-		BE13366D206A267E00438E93 /* wf_filtering.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wf_filtering.cpp; sourceTree = "<group>"; };
 		BE13366F206A267E00438E93 /* libraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw.h; sourceTree = "<group>"; };
 		BE133670206A267E00438E93 /* libraw_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_alloc.h; sourceTree = "<group>"; };
 		BE133671206A267E00438E93 /* libraw_const.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_const.h; sourceTree = "<group>"; };
@@ -880,24 +762,9 @@
 		BE133673206A267E00438E93 /* libraw_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_internal.h; sourceTree = "<group>"; };
 		BE133674206A267E00438E93 /* libraw_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_types.h; sourceTree = "<group>"; };
 		BE133675206A267E00438E93 /* libraw_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libraw_version.h; sourceTree = "<group>"; };
-		BE133676206A267E00438E93 /* LibRawLite.2005.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibRawLite.2005.vcproj; sourceTree = "<group>"; };
-		BE133677206A267E00438E93 /* LibRawLite.2008.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibRawLite.2008.vcproj; sourceTree = "<group>"; };
-		BE133678206A267E00438E93 /* LibRawLite.2013.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibRawLite.2013.vcxproj; sourceTree = "<group>"; };
-		BE133679206A267E00438E93 /* LibRawLite.2013.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibRawLite.2013.vcxproj.filters; sourceTree = "<group>"; };
-		BE13367A206A267E00438E93 /* LICENSE.CDDL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.CDDL; sourceTree = "<group>"; };
-		BE13367B206A267E00438E93 /* LICENSE.LGPL */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.LGPL; sourceTree = "<group>"; };
-		BE13367C206A267E00438E93 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		BE13367D206A267E00438E93 /* README.demosaic-packs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "README.demosaic-packs"; sourceTree = "<group>"; };
 		BE13367F206A267E00438E93 /* libraw_c_api.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libraw_c_api.cpp; sourceTree = "<group>"; };
 		BE133680206A267E00438E93 /* libraw_cxx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libraw_cxx.cpp; sourceTree = "<group>"; };
 		BE133681206A267E00438E93 /* libraw_datastream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libraw_datastream.cpp; sourceTree = "<group>"; };
-		BE133683206A267E00438E93 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
-		BE133684206A267E00438E93 /* LibTIFF4.2005.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibTIFF4.2005.vcproj; sourceTree = "<group>"; };
-		BE133685206A267E00438E93 /* LibTIFF4.2008.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibTIFF4.2008.vcproj; sourceTree = "<group>"; };
-		BE133686206A267E00438E93 /* LibTIFF4.2013.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibTIFF4.2013.vcxproj; sourceTree = "<group>"; };
-		BE133687206A267E00438E93 /* LibTIFF4.2013.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LibTIFF4.2013.vcxproj.filters; sourceTree = "<group>"; };
-		BE133688206A267E00438E93 /* mkg3states.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkg3states.c; sourceTree = "<group>"; };
-		BE133689206A267E00438E93 /* mkspans.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mkspans.c; sourceTree = "<group>"; };
 		BE13368A206A267E00438E93 /* t4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = t4.h; sourceTree = "<group>"; };
 		BE13368B206A267E00438E93 /* tif_aux.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_aux.c; sourceTree = "<group>"; };
 		BE13368C206A267E00438E93 /* tif_close.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_close.c; sourceTree = "<group>"; };
@@ -905,10 +772,6 @@
 		BE13368E206A267E00438E93 /* tif_color.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_color.c; sourceTree = "<group>"; };
 		BE13368F206A267E00438E93 /* tif_compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_compress.c; sourceTree = "<group>"; };
 		BE133690206A267E00438E93 /* tif_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tif_config.h; sourceTree = "<group>"; };
-		BE133691206A267E00438E93 /* tif_config.h-vms */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "tif_config.h-vms"; sourceTree = "<group>"; };
-		BE133692206A267E00438E93 /* tif_config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tif_config.h.in; sourceTree = "<group>"; };
-		BE133693206A267E00438E93 /* tif_config.vc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tif_config.vc.h; sourceTree = "<group>"; };
-		BE133694206A267E00438E93 /* tif_config.wince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tif_config.wince.h; sourceTree = "<group>"; };
 		BE133695206A267E00438E93 /* tif_dir.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_dir.c; sourceTree = "<group>"; };
 		BE133696206A267E00438E93 /* tif_dir.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tif_dir.h; sourceTree = "<group>"; };
 		BE133697206A267E00438E93 /* tif_dirinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_dirinfo.c; sourceTree = "<group>"; };
@@ -922,9 +785,7 @@
 		BE13369F206A267E00438E93 /* tif_fax3sm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_fax3sm.c; sourceTree = "<group>"; };
 		BE1336A0206A267E00438E93 /* tif_flush.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_flush.c; sourceTree = "<group>"; };
 		BE1336A1206A267E00438E93 /* tif_getimage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_getimage.c; sourceTree = "<group>"; };
-		BE1336A2206A267E00438E93 /* tif_jbig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_jbig.c; sourceTree = "<group>"; };
 		BE1336A3206A267E00438E93 /* tif_jpeg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_jpeg.c; sourceTree = "<group>"; };
-		BE1336A4206A267E00438E93 /* tif_jpeg_12.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_jpeg_12.c; sourceTree = "<group>"; };
 		BE1336A5206A267E00438E93 /* tif_luv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_luv.c; sourceTree = "<group>"; };
 		BE1336A6206A267E00438E93 /* tif_lzma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_lzma.c; sourceTree = "<group>"; };
 		BE1336A7206A267E00438E93 /* tif_lzw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_lzw.c; sourceTree = "<group>"; };
@@ -937,30 +798,19 @@
 		BE1336AE206A267E00438E93 /* tif_predict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tif_predict.h; sourceTree = "<group>"; };
 		BE1336AF206A267E00438E93 /* tif_print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_print.c; sourceTree = "<group>"; };
 		BE1336B0206A267E00438E93 /* tif_read.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_read.c; sourceTree = "<group>"; };
-		BE1336B1206A267E00438E93 /* tif_stream.cxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tif_stream.cxx; sourceTree = "<group>"; };
 		BE1336B2206A267E00438E93 /* tif_strip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_strip.c; sourceTree = "<group>"; };
 		BE1336B3206A267E00438E93 /* tif_swab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_swab.c; sourceTree = "<group>"; };
 		BE1336B4206A267E00438E93 /* tif_thunder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_thunder.c; sourceTree = "<group>"; };
 		BE1336B5206A267E00438E93 /* tif_tile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_tile.c; sourceTree = "<group>"; };
-		BE1336B6206A267E00438E93 /* tif_unix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_unix.c; sourceTree = "<group>"; };
 		BE1336B7206A267E00438E93 /* tif_version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_version.c; sourceTree = "<group>"; };
-		BE1336B8206A267E00438E93 /* tif_vms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_vms.c; sourceTree = "<group>"; };
 		BE1336B9206A267E00438E93 /* tif_warning.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_warning.c; sourceTree = "<group>"; };
-		BE1336BA206A267E00438E93 /* tif_win32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_win32.c; sourceTree = "<group>"; };
-		BE1336BB206A267E00438E93 /* tif_wince.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_wince.c; sourceTree = "<group>"; };
 		BE1336BC206A267E00438E93 /* tif_write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_write.c; sourceTree = "<group>"; };
 		BE1336BD206A267E00438E93 /* tif_zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tif_zip.c; sourceTree = "<group>"; };
 		BE1336BE206A267E00438E93 /* tiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiff.h; sourceTree = "<group>"; };
 		BE1336BF206A267E00438E93 /* tiffconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffconf.h; sourceTree = "<group>"; };
-		BE1336C0206A267E00438E93 /* tiffconf.h-vms */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "tiffconf.h-vms"; sourceTree = "<group>"; };
-		BE1336C1206A267E00438E93 /* tiffconf.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tiffconf.h.in; sourceTree = "<group>"; };
-		BE1336C2206A267E00438E93 /* tiffconf.vc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffconf.vc.h; sourceTree = "<group>"; };
-		BE1336C3206A267E00438E93 /* tiffconf.wince.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffconf.wince.h; sourceTree = "<group>"; };
 		BE1336C4206A267E00438E93 /* tiffio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffio.h; sourceTree = "<group>"; };
-		BE1336C5206A267E00438E93 /* tiffio.hxx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tiffio.hxx; sourceTree = "<group>"; };
 		BE1336C6206A267E00438E93 /* tiffiop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffiop.h; sourceTree = "<group>"; };
 		BE1336C7206A267E00438E93 /* tiffvers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiffvers.h; sourceTree = "<group>"; };
-		BE1336C8206A267E00438E93 /* tiffvers.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tiffvers.h.in; sourceTree = "<group>"; };
 		BE1336C9206A267E00438E93 /* uvcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uvcode.h; sourceTree = "<group>"; };
 		BE1336CB206A267E00438E93 /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
 		BE1336CC206A267E00438E93 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
@@ -1424,30 +1274,22 @@
 		BE1338A9206A267F00438E93 /* ImathVec.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImathVec.cpp; sourceTree = "<group>"; };
 		BE1338AA206A267F00438E93 /* ImathVec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImathVec.h; sourceTree = "<group>"; };
 		BE1338AB206A267F00438E93 /* ImathVecAlgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImathVecAlgo.h; sourceTree = "<group>"; };
-		BE1338AC206A267F00438E93 /* OpenEXR.2005.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OpenEXR.2005.vcproj; sourceTree = "<group>"; };
-		BE1338AD206A267F00438E93 /* OpenEXR.2008.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OpenEXR.2008.vcproj; sourceTree = "<group>"; };
-		BE1338AE206A267F00438E93 /* OpenEXR.2013.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OpenEXR.2013.vcxproj; sourceTree = "<group>"; };
-		BE1338AF206A267F00438E93 /* OpenEXR.2013.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = OpenEXR.2013.vcxproj.filters; sourceTree = "<group>"; };
 		BE1338B0206A267F00438E93 /* OpenEXRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenEXRConfig.h; sourceTree = "<group>"; };
 		BE1338B1206A267F00438E93 /* Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plugin.h; sourceTree = "<group>"; };
 		BE1338B2206A267F00438E93 /* Quantizers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quantizers.h; sourceTree = "<group>"; };
 		BE1338B3206A267F00438E93 /* ToneMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToneMapping.h; sourceTree = "<group>"; };
 		BE1338B4206A267F00438E93 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		BE1338B6206A267F00438E93 /* adler32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = adler32.c; sourceTree = "<group>"; };
-		BE1338B7206A267F00438E93 /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		BE1338B8206A267F00438E93 /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
-		BE1338B9206A267F00438E93 /* configure */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = configure; sourceTree = "<group>"; };
 		BE1338BA206A267F00438E93 /* crc32.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crc32.c; sourceTree = "<group>"; };
 		BE1338BB206A267F00438E93 /* crc32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc32.h; sourceTree = "<group>"; };
 		BE1338BC206A267F00438E93 /* deflate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = deflate.c; sourceTree = "<group>"; };
 		BE1338BD206A267F00438E93 /* deflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deflate.h; sourceTree = "<group>"; };
-		BE1338BE206A267F00438E93 /* FAQ */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ; sourceTree = "<group>"; };
 		BE1338BF206A267F00438E93 /* gzclose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzclose.c; sourceTree = "<group>"; };
 		BE1338C0206A267F00438E93 /* gzguts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gzguts.h; sourceTree = "<group>"; };
 		BE1338C1206A267F00438E93 /* gzlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzlib.c; sourceTree = "<group>"; };
 		BE1338C2206A267F00438E93 /* gzread.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzread.c; sourceTree = "<group>"; };
 		BE1338C3206A267F00438E93 /* gzwrite.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gzwrite.c; sourceTree = "<group>"; };
-		BE1338C4206A267F00438E93 /* INDEX */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = INDEX; sourceTree = "<group>"; };
 		BE1338C5206A267F00438E93 /* infback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = infback.c; sourceTree = "<group>"; };
 		BE1338C6206A267F00438E93 /* inffast.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inffast.c; sourceTree = "<group>"; };
 		BE1338C7206A267F00438E93 /* inffast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inffast.h; sourceTree = "<group>"; };
@@ -1456,22 +1298,14 @@
 		BE1338CA206A267F00438E93 /* inflate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inflate.h; sourceTree = "<group>"; };
 		BE1338CB206A267F00438E93 /* inftrees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = inftrees.c; sourceTree = "<group>"; };
 		BE1338CC206A267F00438E93 /* inftrees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inftrees.h; sourceTree = "<group>"; };
-		BE1338CD206A267F00438E93 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		BE1338CE206A267F00438E93 /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
-		BE1338CF206A267F00438E93 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		BE1338D0206A267F00438E93 /* trees.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = trees.c; sourceTree = "<group>"; };
 		BE1338D1206A267F00438E93 /* trees.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trees.h; sourceTree = "<group>"; };
 		BE1338D2206A267F00438E93 /* uncompr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uncompr.c; sourceTree = "<group>"; };
 		BE1338D3206A267F00438E93 /* zconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zconf.h; sourceTree = "<group>"; };
-		BE1338D4206A267F00438E93 /* zconf.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zconf.h.in; sourceTree = "<group>"; };
-		BE1338D5206A267F00438E93 /* ZLib.2005.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZLib.2005.vcproj; sourceTree = "<group>"; };
-		BE1338D6206A267F00438E93 /* ZLib.2008.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZLib.2008.vcproj; sourceTree = "<group>"; };
-		BE1338D7206A267F00438E93 /* ZLib.2013.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZLib.2013.vcxproj; sourceTree = "<group>"; };
-		BE1338D8206A267F00438E93 /* ZLib.2013.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ZLib.2013.vcxproj.filters; sourceTree = "<group>"; };
-		BE1338D9206A267F00438E93 /* zlib.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = zlib.3; sourceTree = "<group>"; };
 		BE1338DA206A267F00438E93 /* zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zlib.h; sourceTree = "<group>"; };
 		BE1338DB206A267F00438E93 /* zutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zutil.c; sourceTree = "<group>"; };
 		BE1338DC206A267F00438E93 /* zutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zutil.h; sourceTree = "<group>"; };
+		BEAB862A206CB3C90012C694 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1488,6 +1322,7 @@
 		BE1334D9206A264200438E93 = {
 			isa = PBXGroup;
 			children = (
+				BEAB862A206CB3C90012C694 /* PrefixHeader.pch */,
 				BE1334E4206A264200438E93 /* FreeImage */,
 				BE1334E3206A264200438E93 /* Products */,
 			);
@@ -1652,14 +1487,6 @@
 		BE133554206A267D00438E93 /* LibJPEG */ = {
 			isa = PBXGroup;
 			children = (
-				BE133555206A267D00438E93 /* ansi2knr.c */,
-				BE133556206A267D00438E93 /* cderror.h */,
-				BE133557206A267D00438E93 /* cdjpeg.c */,
-				BE133558206A267D00438E93 /* cdjpeg.h */,
-				BE13355A206A267D00438E93 /* cjpeg.c */,
-				BE13355B206A267D00438E93 /* ckconfig.c */,
-				BE13355D206A267D00438E93 /* djpeg.c */,
-				BE13355E206A267D00438E93 /* example.c */,
 				BE133561206A267D00438E93 /* jaricom.c */,
 				BE133562206A267D00438E93 /* jcapimin.c */,
 				BE133563206A267D00438E93 /* jcapistd.c */,
@@ -1705,38 +1532,18 @@
 				BE13358C206A267D00438E93 /* jidctfst.c */,
 				BE13358D206A267D00438E93 /* jidctint.c */,
 				BE13358E206A267D00438E93 /* jinclude.h */,
-				BE13358F206A267D00438E93 /* jmemansi.c */,
-				BE133590206A267D00438E93 /* jmemdos.c */,
-				BE133591206A267D00438E93 /* jmemdosa.asm */,
-				BE133592206A267D00438E93 /* jmemmac.c */,
 				BE133593206A267D00438E93 /* jmemmgr.c */,
-				BE133594206A267D00438E93 /* jmemname.c */,
 				BE133595206A267D00438E93 /* jmemnobs.c */,
 				BE133596206A267D00438E93 /* jmemsys.h */,
 				BE133597206A267D00438E93 /* jmorecfg.h */,
 				BE133598206A267D00438E93 /* jpegint.h */,
 				BE133599206A267D00438E93 /* jpeglib.h */,
-				BE13359A206A267D00438E93 /* jpegtran.c */,
 				BE13359B206A267D00438E93 /* jquant1.c */,
 				BE13359C206A267D00438E93 /* jquant2.c */,
 				BE13359D206A267D00438E93 /* jutils.c */,
 				BE13359E206A267D00438E93 /* jversion.h */,
-				BE1335A4206A267D00438E93 /* rdbmp.c */,
-				BE1335A5206A267D00438E93 /* rdcolmap.c */,
-				BE1335A6206A267D00438E93 /* rdgif.c */,
-				BE1335A7206A267D00438E93 /* rdjpgcom.c */,
-				BE1335A8206A267D00438E93 /* rdppm.c */,
-				BE1335A9206A267D00438E93 /* rdrle.c */,
-				BE1335AA206A267D00438E93 /* rdswitch.c */,
-				BE1335AB206A267D00438E93 /* rdtarga.c */,
 				BE1335AE206A267D00438E93 /* transupp.c */,
 				BE1335AF206A267D00438E93 /* transupp.h */,
-				BE1335B2206A267D00438E93 /* wrbmp.c */,
-				BE1335B3206A267D00438E93 /* wrgif.c */,
-				BE1335B4206A267D00438E93 /* wrjpgcom.c */,
-				BE1335B5206A267D00438E93 /* wrppm.c */,
-				BE1335B6206A267D00438E93 /* wrrle.c */,
-				BE1335B7206A267D00438E93 /* wrtarga.c */,
 			);
 			path = LibJPEG;
 			sourceTree = "<group>";
@@ -1821,13 +1628,10 @@
 				BE1335D7206A267D00438E93 /* common.h */,
 				BE1335D8206A267D00438E93 /* image.c */,
 				BE1335D9206A267D00438E93 /* perfTimer.h */,
-				BE1335DA206A267D00438E93 /* perfTimerANSI.c */,
-				BE1335DB206A267D00438E93 /* strcodec.c */,
 				BE1335DC206A267D00438E93 /* strcodec.h */,
 				BE1335DD206A267D00438E93 /* strPredQuant.c */,
 				BE1335DE206A267D00438E93 /* strTransform.c */,
 				BE1335DF206A267D00438E93 /* strTransform.h */,
-				BE1335E0206A267D00438E93 /* windowsmediaphoto.h */,
 				BE1335E1206A267D00438E93 /* xplatform_image.h */,
 			);
 			path = sys;
@@ -1844,11 +1648,7 @@
 		BE1335E4206A267D00438E93 /* jxrgluelib */ = {
 			isa = PBXGroup;
 			children = (
-				BE1335E5206A267D00438E93 /* JXRGlue.c */,
 				BE1335E6206A267D00438E93 /* JXRGlue.h */,
-				BE1335E7206A267D00438E93 /* JXRGlueJxr.c */,
-				BE1335E8206A267D00438E93 /* JXRGluePFC.c */,
-				BE1335E9206A267D00438E93 /* JXRMeta.c */,
 				BE1335EA206A267D00438E93 /* JXRMeta.h */,
 			);
 			path = jxrgluelib;
@@ -1857,44 +1657,20 @@
 		BE1335F1206A267D00438E93 /* LibOpenJPEG */ = {
 			isa = PBXGroup;
 			children = (
-				BE1335F2206A267D00438E93 /* AUTHORS */,
-				BE1335F3206A267D00438E93 /* bio.c */,
 				BE1335F4206A267D00438E93 /* bio.h */,
-				BE1335F5206A267D00438E93 /* cidx_manager.c */,
-				BE1335F6206A267D00438E93 /* cidx_manager.h */,
-				BE1335F7206A267D00438E93 /* cio.c */,
 				BE1335F8206A267D00438E93 /* cio.h */,
-				BE1335F9206A267D00438E93 /* dwt.c */,
 				BE1335FA206A267D00438E93 /* dwt.h */,
-				BE1335FB206A267D00438E93 /* event.c */,
 				BE1335FC206A267D00438E93 /* event.h */,
-				BE1335FD206A267D00438E93 /* function_list.c */,
 				BE1335FE206A267D00438E93 /* function_list.h */,
-				BE1335FF206A267D00438E93 /* image.c */,
 				BE133600206A267D00438E93 /* image.h */,
 				BE133601206A267D00438E93 /* indexbox_manager.h */,
-				BE133602206A267D00438E93 /* INSTALL */,
-				BE133603206A267D00438E93 /* invert.c */,
 				BE133604206A267D00438E93 /* invert.h */,
-				BE133605206A267D00438E93 /* j2k.c */,
 				BE133606206A267D00438E93 /* j2k.h */,
-				BE133607206A267D00438E93 /* jp2.c */,
 				BE133608206A267D00438E93 /* jp2.h */,
-				BE133609206A267D00438E93 /* LibOpenJPEG.2005.vcproj */,
-				BE13360A206A267D00438E93 /* LibOpenJPEG.2008.vcproj */,
-				BE13360B206A267D00438E93 /* LibOpenJPEG.2013.vcxproj */,
-				BE13360C206A267D00438E93 /* LibOpenJPEG.2013.vcxproj.filters */,
-				BE13360D206A267E00438E93 /* LICENSE */,
-				BE13360E206A267E00438E93 /* mct.c */,
 				BE13360F206A267E00438E93 /* mct.h */,
-				BE133610206A267E00438E93 /* mqc.c */,
 				BE133611206A267E00438E93 /* mqc.h */,
-				BE133612206A267E00438E93 /* NEWS */,
-				BE133613206A267E00438E93 /* openjpeg.c */,
 				BE133614206A267E00438E93 /* openjpeg.h */,
-				BE133615206A267E00438E93 /* opj_clock.c */,
 				BE133616206A267E00438E93 /* opj_clock.h */,
-				BE133617206A267E00438E93 /* opj_codec.h */,
 				BE133618206A267E00438E93 /* opj_config.h */,
 				BE133619206A267E00438E93 /* opj_config_private.h */,
 				BE13361A206A267E00438E93 /* opj_includes.h */,
@@ -1902,26 +1678,32 @@
 				BE13361C206A267E00438E93 /* opj_inttypes.h */,
 				BE13361D206A267E00438E93 /* opj_malloc.h */,
 				BE13361E206A267E00438E93 /* opj_stdint.h */,
-				BE13361F206A267E00438E93 /* phix_manager.c */,
-				BE133620206A267E00438E93 /* pi.c */,
 				BE133621206A267E00438E93 /* pi.h */,
-				BE133622206A267E00438E93 /* ppix_manager.c */,
-				BE133623206A267E00438E93 /* raw.c */,
 				BE133624206A267E00438E93 /* raw.h */,
-				BE133625206A267E00438E93 /* README */,
-				BE133626206A267E00438E93 /* t1.c */,
 				BE133627206A267E00438E93 /* t1.h */,
-				BE133628206A267E00438E93 /* t1_generate_luts.c */,
 				BE133629206A267E00438E93 /* t1_luts.h */,
-				BE13362A206A267E00438E93 /* t2.c */,
 				BE13362B206A267E00438E93 /* t2.h */,
-				BE13362C206A267E00438E93 /* tcd.c */,
 				BE13362D206A267E00438E93 /* tcd.h */,
-				BE13362E206A267E00438E93 /* tgt.c */,
 				BE13362F206A267E00438E93 /* tgt.h */,
-				BE133630206A267E00438E93 /* THANKS */,
-				BE133631206A267E00438E93 /* thix_manager.c */,
-				BE133632206A267E00438E93 /* tpix_manager.c */,
+				BE1335F3206A267D00438E93 /* bio.c */,
+				BE1335F7206A267D00438E93 /* cio.c */,
+				BE1335F9206A267D00438E93 /* dwt.c */,
+				BE1335FB206A267D00438E93 /* event.c */,
+				BE1335FD206A267D00438E93 /* function_list.c */,
+				BE1335FF206A267D00438E93 /* image.c */,
+				BE133603206A267D00438E93 /* invert.c */,
+				BE133605206A267D00438E93 /* j2k.c */,
+				BE133607206A267D00438E93 /* jp2.c */,
+				BE13360E206A267E00438E93 /* mct.c */,
+				BE133610206A267E00438E93 /* mqc.c */,
+				BE133613206A267E00438E93 /* openjpeg.c */,
+				BE133615206A267E00438E93 /* opj_clock.c */,
+				BE133620206A267E00438E93 /* pi.c */,
+				BE133623206A267E00438E93 /* raw.c */,
+				BE133626206A267E00438E93 /* t1.c */,
+				BE13362A206A267E00438E93 /* t2.c */,
+				BE13362C206A267E00438E93 /* tcd.c */,
+				BE13362E206A267E00438E93 /* tgt.c */,
 			);
 			path = LibOpenJPEG;
 			sourceTree = "<group>";
@@ -1974,20 +1756,9 @@
 		BE13365A206A267E00438E93 /* LibRawLite */ = {
 			isa = PBXGroup;
 			children = (
-				BE13365B206A267E00438E93 /* Changelog.txt */,
-				BE13365C206A267E00438E93 /* COPYRIGHT */,
 				BE13365D206A267E00438E93 /* dcraw */,
-				BE133660206A267E00438E93 /* DEVELOPER-NOTES */,
 				BE133661206A267E00438E93 /* internal */,
 				BE13366E206A267E00438E93 /* libraw */,
-				BE133676206A267E00438E93 /* LibRawLite.2005.vcproj */,
-				BE133677206A267E00438E93 /* LibRawLite.2008.vcproj */,
-				BE133678206A267E00438E93 /* LibRawLite.2013.vcxproj */,
-				BE133679206A267E00438E93 /* LibRawLite.2013.vcxproj.filters */,
-				BE13367A206A267E00438E93 /* LICENSE.CDDL */,
-				BE13367B206A267E00438E93 /* LICENSE.LGPL */,
-				BE13367C206A267E00438E93 /* README */,
-				BE13367D206A267E00438E93 /* README.demosaic-packs */,
 				BE13367E206A267E00438E93 /* src */,
 			);
 			path = LibRawLite;
@@ -1996,8 +1767,6 @@
 		BE13365D206A267E00438E93 /* dcraw */ = {
 			isa = PBXGroup;
 			children = (
-				BE13365E206A267E00438E93 /* dcraw.1.html */,
-				BE13365F206A267E00438E93 /* dcraw.c */,
 			);
 			path = dcraw;
 			sourceTree = "<group>";
@@ -2005,18 +1774,12 @@
 		BE133661206A267E00438E93 /* internal */ = {
 			isa = PBXGroup;
 			children = (
-				BE133662206A267E00438E93 /* aahd_demosaic.cpp */,
-				BE133663206A267E00438E93 /* dcb_demosaicing.c */,
 				BE133664206A267E00438E93 /* dcraw_common.cpp */,
 				BE133665206A267E00438E93 /* dcraw_fileio.cpp */,
 				BE133666206A267E00438E93 /* defines.h */,
 				BE133667206A267E00438E93 /* demosaic_packs.cpp */,
-				BE133668206A267E00438E93 /* dht_demosaic.cpp */,
 				BE133669206A267E00438E93 /* libraw_internal_funcs.h */,
-				BE13366A206A267E00438E93 /* libraw_x3f.cpp */,
-				BE13366B206A267E00438E93 /* preprocess.pl */,
 				BE13366C206A267E00438E93 /* var_defines.h */,
-				BE13366D206A267E00438E93 /* wf_filtering.cpp */,
 			);
 			path = internal;
 			sourceTree = "<group>";
@@ -2048,26 +1811,23 @@
 		BE133682206A267E00438E93 /* LibTIFF4 */ = {
 			isa = PBXGroup;
 			children = (
-				BE133683206A267E00438E93 /* ChangeLog */,
-				BE133684206A267E00438E93 /* LibTIFF4.2005.vcproj */,
-				BE133685206A267E00438E93 /* LibTIFF4.2008.vcproj */,
-				BE133686206A267E00438E93 /* LibTIFF4.2013.vcxproj */,
-				BE133687206A267E00438E93 /* LibTIFF4.2013.vcxproj.filters */,
-				BE133688206A267E00438E93 /* mkg3states.c */,
-				BE133689206A267E00438E93 /* mkspans.c */,
 				BE13368A206A267E00438E93 /* t4.h */,
+				BE133690206A267E00438E93 /* tif_config.h */,
+				BE133696206A267E00438E93 /* tif_dir.h */,
+				BE13369E206A267E00438E93 /* tif_fax3.h */,
+				BE1336AE206A267E00438E93 /* tif_predict.h */,
+				BE1336BE206A267E00438E93 /* tiff.h */,
+				BE1336BF206A267E00438E93 /* tiffconf.h */,
+				BE1336C4206A267E00438E93 /* tiffio.h */,
+				BE1336C6206A267E00438E93 /* tiffiop.h */,
+				BE1336C7206A267E00438E93 /* tiffvers.h */,
+				BE1336C9206A267E00438E93 /* uvcode.h */,
 				BE13368B206A267E00438E93 /* tif_aux.c */,
 				BE13368C206A267E00438E93 /* tif_close.c */,
 				BE13368D206A267E00438E93 /* tif_codec.c */,
 				BE13368E206A267E00438E93 /* tif_color.c */,
 				BE13368F206A267E00438E93 /* tif_compress.c */,
-				BE133690206A267E00438E93 /* tif_config.h */,
-				BE133691206A267E00438E93 /* tif_config.h-vms */,
-				BE133692206A267E00438E93 /* tif_config.h.in */,
-				BE133693206A267E00438E93 /* tif_config.vc.h */,
-				BE133694206A267E00438E93 /* tif_config.wince.h */,
 				BE133695206A267E00438E93 /* tif_dir.c */,
-				BE133696206A267E00438E93 /* tif_dir.h */,
 				BE133697206A267E00438E93 /* tif_dirinfo.c */,
 				BE133698206A267E00438E93 /* tif_dirread.c */,
 				BE133699206A267E00438E93 /* tif_dirwrite.c */,
@@ -2075,13 +1835,10 @@
 				BE13369B206A267E00438E93 /* tif_error.c */,
 				BE13369C206A267E00438E93 /* tif_extension.c */,
 				BE13369D206A267E00438E93 /* tif_fax3.c */,
-				BE13369E206A267E00438E93 /* tif_fax3.h */,
 				BE13369F206A267E00438E93 /* tif_fax3sm.c */,
 				BE1336A0206A267E00438E93 /* tif_flush.c */,
 				BE1336A1206A267E00438E93 /* tif_getimage.c */,
-				BE1336A2206A267E00438E93 /* tif_jbig.c */,
 				BE1336A3206A267E00438E93 /* tif_jpeg.c */,
-				BE1336A4206A267E00438E93 /* tif_jpeg_12.c */,
 				BE1336A5206A267E00438E93 /* tif_luv.c */,
 				BE1336A6206A267E00438E93 /* tif_lzma.c */,
 				BE1336A7206A267E00438E93 /* tif_lzw.c */,
@@ -2091,34 +1848,16 @@
 				BE1336AB206A267E00438E93 /* tif_packbits.c */,
 				BE1336AC206A267E00438E93 /* tif_pixarlog.c */,
 				BE1336AD206A267E00438E93 /* tif_predict.c */,
-				BE1336AE206A267E00438E93 /* tif_predict.h */,
 				BE1336AF206A267E00438E93 /* tif_print.c */,
 				BE1336B0206A267E00438E93 /* tif_read.c */,
-				BE1336B1206A267E00438E93 /* tif_stream.cxx */,
 				BE1336B2206A267E00438E93 /* tif_strip.c */,
 				BE1336B3206A267E00438E93 /* tif_swab.c */,
 				BE1336B4206A267E00438E93 /* tif_thunder.c */,
 				BE1336B5206A267E00438E93 /* tif_tile.c */,
-				BE1336B6206A267E00438E93 /* tif_unix.c */,
 				BE1336B7206A267E00438E93 /* tif_version.c */,
-				BE1336B8206A267E00438E93 /* tif_vms.c */,
 				BE1336B9206A267E00438E93 /* tif_warning.c */,
-				BE1336BA206A267E00438E93 /* tif_win32.c */,
-				BE1336BB206A267E00438E93 /* tif_wince.c */,
 				BE1336BC206A267E00438E93 /* tif_write.c */,
 				BE1336BD206A267E00438E93 /* tif_zip.c */,
-				BE1336BE206A267E00438E93 /* tiff.h */,
-				BE1336BF206A267E00438E93 /* tiffconf.h */,
-				BE1336C0206A267E00438E93 /* tiffconf.h-vms */,
-				BE1336C1206A267E00438E93 /* tiffconf.h.in */,
-				BE1336C2206A267E00438E93 /* tiffconf.vc.h */,
-				BE1336C3206A267E00438E93 /* tiffconf.wince.h */,
-				BE1336C4206A267E00438E93 /* tiffio.h */,
-				BE1336C5206A267E00438E93 /* tiffio.hxx */,
-				BE1336C6206A267E00438E93 /* tiffiop.h */,
-				BE1336C7206A267E00438E93 /* tiffvers.h */,
-				BE1336C8206A267E00438E93 /* tiffvers.h.in */,
-				BE1336C9206A267E00438E93 /* uvcode.h */,
 			);
 			path = LibTIFF4;
 			sourceTree = "<group>";
@@ -2361,10 +2100,6 @@
 				BE1337A4206A267F00438E93 /* IlmImf */,
 				BE133870206A267F00438E93 /* IlmThread */,
 				BE133883206A267F00438E93 /* Imath */,
-				BE1338AC206A267F00438E93 /* OpenEXR.2005.vcproj */,
-				BE1338AD206A267F00438E93 /* OpenEXR.2008.vcproj */,
-				BE1338AE206A267F00438E93 /* OpenEXR.2013.vcxproj */,
-				BE1338AF206A267F00438E93 /* OpenEXR.2013.vcxproj.filters */,
 				BE1338B0206A267F00438E93 /* OpenEXRConfig.h */,
 			);
 			path = OpenEXR;
@@ -2749,45 +2484,32 @@
 		BE1338B5206A267F00438E93 /* ZLib */ = {
 			isa = PBXGroup;
 			children = (
-				BE1338B6206A267F00438E93 /* adler32.c */,
-				BE1338B7206A267F00438E93 /* ChangeLog */,
-				BE1338B8206A267F00438E93 /* compress.c */,
-				BE1338B9206A267F00438E93 /* configure */,
-				BE1338BA206A267F00438E93 /* crc32.c */,
 				BE1338BB206A267F00438E93 /* crc32.h */,
-				BE1338BC206A267F00438E93 /* deflate.c */,
 				BE1338BD206A267F00438E93 /* deflate.h */,
-				BE1338BE206A267F00438E93 /* FAQ */,
-				BE1338BF206A267F00438E93 /* gzclose.c */,
 				BE1338C0206A267F00438E93 /* gzguts.h */,
+				BE1338C7206A267F00438E93 /* inffast.h */,
+				BE1338C8206A267F00438E93 /* inffixed.h */,
+				BE1338CA206A267F00438E93 /* inflate.h */,
+				BE1338CC206A267F00438E93 /* inftrees.h */,
+				BE1338D1206A267F00438E93 /* trees.h */,
+				BE1338D3206A267F00438E93 /* zconf.h */,
+				BE1338DA206A267F00438E93 /* zlib.h */,
+				BE1338DC206A267F00438E93 /* zutil.h */,
+				BE1338B6206A267F00438E93 /* adler32.c */,
+				BE1338B8206A267F00438E93 /* compress.c */,
+				BE1338BA206A267F00438E93 /* crc32.c */,
+				BE1338BC206A267F00438E93 /* deflate.c */,
+				BE1338BF206A267F00438E93 /* gzclose.c */,
 				BE1338C1206A267F00438E93 /* gzlib.c */,
 				BE1338C2206A267F00438E93 /* gzread.c */,
 				BE1338C3206A267F00438E93 /* gzwrite.c */,
-				BE1338C4206A267F00438E93 /* INDEX */,
 				BE1338C5206A267F00438E93 /* infback.c */,
 				BE1338C6206A267F00438E93 /* inffast.c */,
-				BE1338C7206A267F00438E93 /* inffast.h */,
-				BE1338C8206A267F00438E93 /* inffixed.h */,
 				BE1338C9206A267F00438E93 /* inflate.c */,
-				BE1338CA206A267F00438E93 /* inflate.h */,
 				BE1338CB206A267F00438E93 /* inftrees.c */,
-				BE1338CC206A267F00438E93 /* inftrees.h */,
-				BE1338CD206A267F00438E93 /* Makefile */,
-				BE1338CE206A267F00438E93 /* Makefile.in */,
-				BE1338CF206A267F00438E93 /* README */,
 				BE1338D0206A267F00438E93 /* trees.c */,
-				BE1338D1206A267F00438E93 /* trees.h */,
 				BE1338D2206A267F00438E93 /* uncompr.c */,
-				BE1338D3206A267F00438E93 /* zconf.h */,
-				BE1338D4206A267F00438E93 /* zconf.h.in */,
-				BE1338D5206A267F00438E93 /* ZLib.2005.vcproj */,
-				BE1338D6206A267F00438E93 /* ZLib.2008.vcproj */,
-				BE1338D7206A267F00438E93 /* ZLib.2013.vcxproj */,
-				BE1338D8206A267F00438E93 /* ZLib.2013.vcxproj.filters */,
-				BE1338D9206A267F00438E93 /* zlib.3 */,
-				BE1338DA206A267F00438E93 /* zlib.h */,
 				BE1338DB206A267F00438E93 /* zutil.c */,
-				BE1338DC206A267F00438E93 /* zutil.h */,
 			);
 			path = ZLib;
 			sourceTree = "<group>";
@@ -2860,7 +2582,6 @@
 				BE133A2C206A268000438E93 /* enc.analysis.c in Sources */,
 				BE133AAD206A268000438E93 /* ImfTiledMisc.cpp in Sources */,
 				BE133A7B206A268000438E93 /* ImfEnvmapAttribute.cpp in Sources */,
-				BE133934206A268000438E93 /* cjpeg.c in Sources */,
 				BE133951206A268000438E93 /* jdhuff.c in Sources */,
 				BE133954206A268000438E93 /* jdmarker.c in Sources */,
 				BE133A69206A268000438E93 /* ImfCompressionAttribute.cpp in Sources */,
@@ -2871,18 +2592,15 @@
 				BE133919206A268000438E93 /* PluginWBMP.cpp in Sources */,
 				BE1339E3206A268000438E93 /* tif_open.c in Sources */,
 				BE133A5F206A268000438E93 /* dwaLookups.cpp in Sources */,
-				BE133979206A268000438E93 /* wrrle.c in Sources */,
 				BE1339C2206A268000438E93 /* demosaic_packs.cpp in Sources */,
 				BE133A7D206A268000438E93 /* ImfFloatAttribute.cpp in Sources */,
 				BE133902206A267F00438E93 /* PluginGIF.cpp in Sources */,
 				BE1339E2206A268000438E93 /* tif_ojpeg.c in Sources */,
 				BE133A98206A268000438E93 /* ImfPizCompressor.cpp in Sources */,
 				BE133A75206A268000438E93 /* ImfDeepTiledInputPart.cpp in Sources */,
-				BE1339CA206A268000438E93 /* mkspans.c in Sources */,
 				BE133AD8206A268000438E93 /* trees.c in Sources */,
 				BE1338FF206A267F00438E93 /* PluginDDS.cpp in Sources */,
 				BE133A3B206A268000438E93 /* enc.syntax.c in Sources */,
-				BE1339AA206A268000438E93 /* thix_manager.c in Sources */,
 				BE1338E7206A267F00438E93 /* Conversion4.cpp in Sources */,
 				BE133A29206A268000438E93 /* dsp.yuv_mips_dsp_r2.c in Sources */,
 				BE133903206A267F00438E93 /* PluginHDR.cpp in Sources */,
@@ -2894,33 +2612,27 @@
 				BE13395B206A268000438E93 /* jfdctflt.c in Sources */,
 				BE133918206A268000438E93 /* PluginTIFF.cpp in Sources */,
 				BE133A4D206A268000438E93 /* utils.rescaler.c in Sources */,
-				BE1339F0206A268000438E93 /* tif_vms.c in Sources */,
 				BE1339DA206A268000438E93 /* tif_getimage.c in Sources */,
 				BE1339F9206A268000438E93 /* dec.idec.c in Sources */,
 				BE1338F0206A267F00438E93 /* FreeImage.cpp in Sources */,
 				BE133AB3206A268000438E93 /* ImfTimeCodeAttribute.cpp in Sources */,
 				BE1339AD206A268000438E93 /* png.c in Sources */,
-				BE133963206A268000438E93 /* jmemdosa.asm in Sources */,
 				BE133997206A268000438E93 /* event.c in Sources */,
 				BE133AD4206A268000438E93 /* inffast.c in Sources */,
 				BE1339E1206A268000438E93 /* tif_next.c in Sources */,
 				BE133A79206A268000438E93 /* ImfDwaCompressor.cpp in Sources */,
-				BE1339DB206A268000438E93 /* tif_jbig.c in Sources */,
 				BE133A07206A268000438E93 /* dsp.cost.c in Sources */,
 				BE1339E6206A268000438E93 /* tif_predict.c in Sources */,
 				BE1338FB206A267F00438E93 /* PixelAccess.cpp in Sources */,
 				BE133AA7206A268000438E93 /* ImfSystemSpecific.cpp in Sources */,
-				BE133937206A268000438E93 /* example.c in Sources */,
 				BE1338EE206A267F00438E93 /* ConversionType.cpp in Sources */,
 				BE133967206A268000438E93 /* jmemnobs.c in Sources */,
 				BE13394B206A268000438E93 /* jdarith.c in Sources */,
-				BE133968206A268000438E93 /* jpegtran.c in Sources */,
 				BE133A2F206A268000438E93 /* enc.cost.c in Sources */,
 				BE1339B4206A268000438E93 /* pngrtran.c in Sources */,
 				BE133908206A267F00438E93 /* PluginJP2.cpp in Sources */,
 				BE133AD5206A268000438E93 /* inflate.c in Sources */,
 				BE133915206A268000438E93 /* PluginRAW.cpp in Sources */,
-				BE133972206A268000438E93 /* rdswitch.c in Sources */,
 				BE1338ED206A267F00438E93 /* ConversionRGBF.cpp in Sources */,
 				BE133941206A268000438E93 /* jcmainct.c in Sources */,
 				BE1339C1206A268000438E93 /* dcraw_fileio.cpp in Sources */,
@@ -2932,15 +2644,11 @@
 				BE133A4B206A268000438E93 /* utils.quant_levels_dec.c in Sources */,
 				BE1338E4206A267F00438E93 /* Conversion16_565.cpp in Sources */,
 				BE133AA3206A268000438E93 /* ImfStandardAttributes.cpp in Sources */,
-				BE133966206A268000438E93 /* jmemname.c in Sources */,
 				BE133986206A268000438E93 /* strenc_x86.c in Sources */,
-				BE13396F206A268000438E93 /* rdjpgcom.c in Sources */,
 				BE1339F7206A268000438E93 /* dec.buffer.c in Sources */,
 				BE13397B206A268000438E93 /* decode.c in Sources */,
 				BE1339A9206A268000438E93 /* tgt.c in Sources */,
 				BE1339B3206A268000438E93 /* pngrio.c in Sources */,
-				BE1339BF206A268000438E93 /* dcb_demosaicing.c in Sources */,
-				BE133976206A268000438E93 /* wrgif.c in Sources */,
 				BE133A5C206A268000438E93 /* IexMathFloatExc.cpp in Sources */,
 				BE1339B7206A268000438E93 /* pngtest.c in Sources */,
 				BE1339D8206A268000438E93 /* tif_fax3sm.c in Sources */,
@@ -2953,7 +2661,6 @@
 				BE133A06206A268000438E93 /* dsp.argb_sse2.c in Sources */,
 				BE1339B0206A268000438E93 /* pngmem.c in Sources */,
 				BE133A84206A268000438E93 /* ImfHuf.cpp in Sources */,
-				BE133964206A268000438E93 /* jmemmac.c in Sources */,
 				BE133A9B206A268000438E93 /* ImfPxr24Compressor.cpp in Sources */,
 				BE13391A206A268000438E93 /* PluginWebP.cpp in Sources */,
 				BE13390B206A267F00438E93 /* PluginKOALA.cpp in Sources */,
@@ -2968,21 +2675,18 @@
 				BE1338F8206A267F00438E93 /* MNGHelper.cpp in Sources */,
 				BE133A01206A268000438E93 /* dsp.alpha_processing.c in Sources */,
 				BE13394A206A268000438E93 /* jdapistd.c in Sources */,
-				BE133992206A268000438E93 /* JXRMeta.c in Sources */,
 				BE1338FC206A267F00438E93 /* Plugin.cpp in Sources */,
 				BE133ACC206A268000438E93 /* compress.c in Sources */,
 				BE133A7A206A268000438E93 /* ImfEnvmap.cpp in Sources */,
 				BE133ABE206A268000438E93 /* IlmThreadPosix.cpp in Sources */,
 				BE133927206A268000438E93 /* BSplineRotate.cpp in Sources */,
 				BE133A52206A268000438E93 /* FreeImageTag.cpp in Sources */,
-				BE133933206A268000438E93 /* cdjpeg.c in Sources */,
 				BE133953206A268000438E93 /* jdmainct.c in Sources */,
 				BE133A0E206A268000438E93 /* dsp.dec_mips32.c in Sources */,
 				BE133AB5206A268000438E93 /* ImfVersion.cpp in Sources */,
 				BE133907206A267F00438E93 /* PluginJNG.cpp in Sources */,
 				BE133ABF206A268000438E93 /* IlmThreadSemaphore.cpp in Sources */,
 				BE1338E6206A267F00438E93 /* Conversion32.cpp in Sources */,
-				BE13396C206A268000438E93 /* rdbmp.c in Sources */,
 				BE133AB0206A268000438E93 /* ImfTiledRgbaFile.cpp in Sources */,
 				BE133929206A268000438E93 /* ClassicRotate.cpp in Sources */,
 				BE133A3C206A268000438E93 /* enc.token.c in Sources */,
@@ -3001,7 +2705,6 @@
 				BE1339CB206A268000438E93 /* tif_aux.c in Sources */,
 				BE1338F4206A267F00438E93 /* Halftoning.cpp in Sources */,
 				BE1339CE206A268000438E93 /* tif_color.c in Sources */,
-				BE133975206A268000438E93 /* wrbmp.c in Sources */,
 				BE133A6D206A268000438E93 /* ImfDeepCompositing.cpp in Sources */,
 				BE133A91206A268000438E93 /* ImfMultiPartOutputFile.cpp in Sources */,
 				BE1338DD206A267F00438E93 /* Deprecated.cpp in Sources */,
@@ -3019,7 +2722,6 @@
 				BE13393F206A268000438E93 /* jchuff.c in Sources */,
 				BE133A94206A268000438E93 /* ImfOutputFile.cpp in Sources */,
 				BE1339E7206A268000438E93 /* tif_print.c in Sources */,
-				BE133971206A268000438E93 /* rdrle.c in Sources */,
 				BE1339FC206A268000438E93 /* dec.tree.c in Sources */,
 				BE133A9C206A268000438E93 /* ImfRational.cpp in Sources */,
 				BE133A7C206A268000438E93 /* ImfFastHuf.cpp in Sources */,
@@ -3034,7 +2736,6 @@
 				BE133A27206A268000438E93 /* dsp.yuv.c in Sources */,
 				BE1339EF206A268000438E93 /* tif_version.c in Sources */,
 				BE133957206A268000438E93 /* jdpostct.c in Sources */,
-				BE1339F2206A268000438E93 /* tif_win32.c in Sources */,
 				BE133A23206A268000438E93 /* dsp.upsampling.c in Sources */,
 				BE133A76206A268000438E93 /* ImfDeepTiledOutputFile.cpp in Sources */,
 				BE1339E4206A268000438E93 /* tif_packbits.c in Sources */,
@@ -3042,7 +2743,6 @@
 				BE133960206A268000438E93 /* jidctint.c in Sources */,
 				BE133A45206A268000438E93 /* utils.bit_writer.c in Sources */,
 				BE1339EB206A268000438E93 /* tif_swab.c in Sources */,
-				BE133973206A268000438E93 /* rdtarga.c in Sources */,
 				BE133A70206A268000438E93 /* ImfDeepScanLineInputFile.cpp in Sources */,
 				BE133A6F206A268000438E93 /* ImfDeepImageStateAttribute.cpp in Sources */,
 				BE1339FE206A268000438E93 /* dec.vp8l.c in Sources */,
@@ -3053,17 +2753,13 @@
 				BE133A73206A268000438E93 /* ImfDeepScanLineOutputPart.cpp in Sources */,
 				BE13399E206A268000438E93 /* mqc.c in Sources */,
 				BE1339B8206A268000438E93 /* pngtrans.c in Sources */,
-				BE1339C9206A268000438E93 /* mkg3states.c in Sources */,
 				BE133958206A268000438E93 /* jdsample.c in Sources */,
-				BE1339A3206A268000438E93 /* ppix_manager.c in Sources */,
 				BE133A1A206A268000438E93 /* dsp.filters_sse2.c in Sources */,
 				BE133A39206A268000438E93 /* enc.picture_tools.c in Sources */,
-				BE13396E206A268000438E93 /* rdgif.c in Sources */,
 				BE133AC5206A268000438E93 /* ImathColorAlgo.cpp in Sources */,
 				BE133924206A268000438E93 /* WuQuantizer.cpp in Sources */,
 				BE133A81206A268000438E93 /* ImfGenericInputFile.cpp in Sources */,
 				BE133AC1206A268000438E93 /* IlmThreadSemaphorePosixCompat.cpp in Sources */,
-				BE133935206A268000438E93 /* ckconfig.c in Sources */,
 				BE1339D1206A268000438E93 /* tif_dirinfo.c in Sources */,
 				BE133A44206A268000438E93 /* utils.bit_reader.c in Sources */,
 				BE1338F6206A267F00438E93 /* LFPQuantizer.cpp in Sources */,
@@ -3076,7 +2772,6 @@
 				BE133A6B206A268000438E93 /* ImfConvert.cpp in Sources */,
 				BE133920206A268000438E93 /* tmoDrago03.cpp in Sources */,
 				BE1339D5206A268000438E93 /* tif_error.c in Sources */,
-				BE13396D206A268000438E93 /* rdcolmap.c in Sources */,
 				BE133A10206A268000438E93 /* dsp.dec_neon.c in Sources */,
 				BE133A11206A268000438E93 /* dsp.dec_sse2.c in Sources */,
 				BE1339CF206A268000438E93 /* tif_compress.c in Sources */,
@@ -3089,7 +2784,6 @@
 				BE133AA4206A268000438E93 /* ImfStdIO.cpp in Sources */,
 				BE133A48206A268000438E93 /* utils.huffman.c in Sources */,
 				BE133AC7206A268000438E93 /* ImathMatrixAlgo.cpp in Sources */,
-				BE13398F206A268000438E93 /* JXRGlue.c in Sources */,
 				BE1339F6206A268000438E93 /* dec.alpha.c in Sources */,
 				BE133A67206A268000438E93 /* ImfChromaticitiesAttribute.cpp in Sources */,
 				BE1339A2206A268000438E93 /* pi.c in Sources */,
@@ -3098,14 +2792,12 @@
 				BE133A61206A268000438E93 /* ImfAttribute.cpp in Sources */,
 				BE133969206A268000438E93 /* jquant1.c in Sources */,
 				BE133ABD206A268000438E93 /* IlmThreadPool.cpp in Sources */,
-				BE1339BE206A268000438E93 /* aahd_demosaic.cpp in Sources */,
 				BE133A50206A268000438E93 /* Exif.cpp in Sources */,
 				BE133A5E206A268000438E93 /* b44ExpLogTable.cpp in Sources */,
 				BE133A8E206A268000438E93 /* ImfMatrixAttribute.cpp in Sources */,
 				BE133A46206A268000438E93 /* utils.color_cache.c in Sources */,
 				BE1339A4206A268000438E93 /* raw.c in Sources */,
 				BE13394D206A268000438E93 /* jdatasrc.c in Sources */,
-				BE133991206A268000438E93 /* JXRGluePFC.c in Sources */,
 				BE1338F3206A267F00438E93 /* GetType.cpp in Sources */,
 				BE133A4F206A268000438E93 /* utils.utils.c in Sources */,
 				BE1339D6206A268000438E93 /* tif_extension.c in Sources */,
@@ -3126,7 +2818,6 @@
 				BE133A77206A268000438E93 /* ImfDeepTiledOutputPart.cpp in Sources */,
 				BE133A78206A268000438E93 /* ImfDoubleAttribute.cpp in Sources */,
 				BE133945206A268000438E93 /* jcparam.c in Sources */,
-				BE133962206A268000438E93 /* jmemdos.c in Sources */,
 				BE133950206A268000438E93 /* jddctmgr.c in Sources */,
 				BE1339FF206A268000438E93 /* dec.webp.c in Sources */,
 				BE1339C0206A268000438E93 /* dcraw_common.cpp in Sources */,
@@ -3141,7 +2832,6 @@
 				BE133A35206A268000438E93 /* enc.picture.c in Sources */,
 				BE133ACF206A268000438E93 /* gzclose.c in Sources */,
 				BE133926206A268000438E93 /* Background.cpp in Sources */,
-				BE13398C206A268000438E93 /* strcodec.c in Sources */,
 				BE133A49206A268000438E93 /* utils.huffman_encode.c in Sources */,
 				BE133939206A268000438E93 /* jcapimin.c in Sources */,
 				BE133ABA206A268000438E93 /* IlmThreadMutex.cpp in Sources */,
@@ -3158,26 +2848,17 @@
 				BE1339D7206A268000438E93 /* tif_fax3.c in Sources */,
 				BE133905206A267F00438E93 /* PluginIFF.cpp in Sources */,
 				BE133A97206A268000438E93 /* ImfPartType.cpp in Sources */,
-				BE1339AB206A268000438E93 /* tpix_manager.c in Sources */,
-				BE1339A6206A268000438E93 /* t1_generate_luts.c in Sources */,
 				BE13396A206A268000438E93 /* jquant2.c in Sources */,
 				BE133AD0206A268000438E93 /* gzlib.c in Sources */,
 				BE133A25206A268000438E93 /* dsp.upsampling_neon.c in Sources */,
 				BE133A9D206A268000438E93 /* ImfRationalAttribute.cpp in Sources */,
 				BE133A21206A268000438E93 /* dsp.rescaler_mips32.c in Sources */,
-				BE1339A1206A268000438E93 /* phix_manager.c in Sources */,
-				BE133977206A268000438E93 /* wrjpgcom.c in Sources */,
 				BE1339EC206A268000438E93 /* tif_thunder.c in Sources */,
 				BE1339E8206A268000438E93 /* tif_read.c in Sources */,
 				BE1339ED206A268000438E93 /* tif_tile.c in Sources */,
 				BE133A8D206A268000438E93 /* ImfLut.cpp in Sources */,
 				BE1338EF206A267F00438E93 /* ConversionUINT16.cpp in Sources */,
-				BE133978206A268000438E93 /* wrppm.c in Sources */,
-				BE1339C4206A268000438E93 /* libraw_x3f.cpp in Sources */,
-				BE1339C5206A268000438E93 /* wf_filtering.cpp in Sources */,
 				BE1338FD206A267F00438E93 /* PluginBMP.cpp in Sources */,
-				BE133936206A268000438E93 /* djpeg.c in Sources */,
-				BE133932206A268000438E93 /* ansi2knr.c in Sources */,
 				BE133914206A268000438E93 /* PluginRAS.cpp in Sources */,
 				BE133A43206A268000438E93 /* mux.muxread.c in Sources */,
 				BE133A1C206A268000438E93 /* dsp.lossless_mips32.c in Sources */,
@@ -3194,7 +2875,6 @@
 				BE1339C7206A268000438E93 /* libraw_cxx.cpp in Sources */,
 				BE133A71206A268000438E93 /* ImfDeepScanLineInputPart.cpp in Sources */,
 				BE133A66206A268000438E93 /* ImfChromaticities.cpp in Sources */,
-				BE1339DD206A268000438E93 /* tif_jpeg_12.c in Sources */,
 				BE1338F7206A267F00438E93 /* MemoryIO.cpp in Sources */,
 				BE1338EA206A267F00438E93 /* ConversionRGB16.cpp in Sources */,
 				BE1339D9206A268000438E93 /* tif_flush.c in Sources */,
@@ -3214,7 +2894,6 @@
 				BE1339CC206A268000438E93 /* tif_close.c in Sources */,
 				BE133912206A268000438E93 /* PluginPNM.cpp in Sources */,
 				BE133906206A267F00438E93 /* PluginJ2K.cpp in Sources */,
-				BE13397A206A268000438E93 /* wrtarga.c in Sources */,
 				BE13397C206A268000438E93 /* JXRTranscode.c in Sources */,
 				BE133A0F206A268000438E93 /* dsp.dec_mips_dsp_r2.c in Sources */,
 				BE133A14206A268000438E93 /* dsp.enc_mips32.c in Sources */,
@@ -3227,7 +2906,6 @@
 				BE133A17206A268000438E93 /* dsp.enc_sse2.c in Sources */,
 				BE13391B206A268000438E93 /* PluginXBM.cpp in Sources */,
 				BE133AB2206A268000438E93 /* ImfTimeCode.cpp in Sources */,
-				BE1339F3206A268000438E93 /* tif_wince.c in Sources */,
 				BE133985206A268000438E93 /* strenc.c in Sources */,
 				BE133946206A268000438E93 /* jcprepct.c in Sources */,
 				BE133A26206A268000438E93 /* dsp.upsampling_sse2.c in Sources */,
@@ -3235,7 +2913,6 @@
 				BE133911206A268000438E93 /* PluginPNG.cpp in Sources */,
 				BE133987206A268000438E93 /* strFwdTransform.c in Sources */,
 				BE13397D206A268000438E93 /* postprocess.c in Sources */,
-				BE1339BD206A268000438E93 /* dcraw.c in Sources */,
 				BE133A8F206A268000438E93 /* ImfMisc.cpp in Sources */,
 				BE133A31206A268000438E93 /* enc.frame.c in Sources */,
 				BE133A59206A268000438E93 /* toFloat.cpp in Sources */,
@@ -3252,7 +2929,6 @@
 				BE133A3F206A268000438E93 /* enc.webpenc.c in Sources */,
 				BE133948206A268000438E93 /* jctrans.c in Sources */,
 				BE13394C206A268000438E93 /* jdatadst.c in Sources */,
-				BE133994206A268000438E93 /* cidx_manager.c in Sources */,
 				BE13399D206A268000438E93 /* mct.c in Sources */,
 				BE133947206A268000438E93 /* jcsample.c in Sources */,
 				BE133A9F206A268000438E93 /* ImfRgbaYca.cpp in Sources */,
@@ -3261,7 +2937,6 @@
 				BE1339BA206A268000438E93 /* pngwrite.c in Sources */,
 				BE133A51206A268000438E93 /* FIRational.cpp in Sources */,
 				BE133AA0206A268000438E93 /* ImfRle.cpp in Sources */,
-				BE1339E9206A268000438E93 /* tif_stream.cxx in Sources */,
 				BE133AB9206A268000438E93 /* IlmThread.cpp in Sources */,
 				BE133925206A268000438E93 /* ZLibInterface.cpp in Sources */,
 				BE13392F206A268000438E93 /* MultigridPoissonSolver.cpp in Sources */,
@@ -3276,15 +2951,12 @@
 				BE1339B6206A268000438E93 /* pngset.c in Sources */,
 				BE133921206A268000438E93 /* tmoFattal02.cpp in Sources */,
 				BE13393E206A268000438E93 /* jcdctmgr.c in Sources */,
-				BE133AD7206A268000438E93 /* Makefile in Sources */,
 				BE13399C206A268000438E93 /* jp2.c in Sources */,
 				BE133AD6206A268000438E93 /* inftrees.c in Sources */,
-				BE1339EE206A268000438E93 /* tif_unix.c in Sources */,
 				BE133989206A268000438E93 /* adapthuff.c in Sources */,
 				BE133A13206A268000438E93 /* dsp.enc_avx2.c in Sources */,
 				BE133A8B206A268000438E93 /* ImfKeyCodeAttribute.cpp in Sources */,
 				BE133956206A268000438E93 /* jdmerge.c in Sources */,
-				BE133990206A268000438E93 /* JXRGlueJxr.c in Sources */,
 				BE13394F206A268000438E93 /* jdcolor.c in Sources */,
 				BE13390D206A267F00438E93 /* PluginPCD.cpp in Sources */,
 				BE1339AC206A268000438E93 /* example.c in Sources */,
@@ -3327,7 +2999,6 @@
 				BE13390A206A267F00438E93 /* PluginJXR.cpp in Sources */,
 				BE1338E5206A267F00438E93 /* Conversion24.cpp in Sources */,
 				BE133AC6206A268000438E93 /* ImathFun.cpp in Sources */,
-				BE1339C3206A268000438E93 /* dht_demosaic.cpp in Sources */,
 				BE1339AF206A268000438E93 /* pngget.c in Sources */,
 				BE133A99206A268000438E93 /* ImfPreviewImage.cpp in Sources */,
 				BE133A1B206A268000438E93 /* dsp.lossless.c in Sources */,
@@ -3341,10 +3012,8 @@
 				BE1339BC206A268000438E93 /* pngwutil.c in Sources */,
 				BE133917206A268000438E93 /* PluginTARGA.cpp in Sources */,
 				BE133940206A268000438E93 /* jcinit.c in Sources */,
-				BE133970206A268000438E93 /* rdppm.c in Sources */,
 				BE133AD9206A268000438E93 /* uncompr.c in Sources */,
 				BE133AC0206A268000438E93 /* IlmThreadSemaphorePosix.cpp in Sources */,
-				BE133961206A268000438E93 /* jmemansi.c in Sources */,
 				BE13392B206A268000438E93 /* CopyPaste.cpp in Sources */,
 				BE13395A206A268000438E93 /* jerror.c in Sources */,
 				BE133A68206A268000438E93 /* ImfCompositeDeepScanLine.cpp in Sources */,
@@ -3353,7 +3022,6 @@
 				BE1339A7206A268000438E93 /* t2.c in Sources */,
 				BE13396B206A268000438E93 /* jutils.c in Sources */,
 				BE133A0A206A268000438E93 /* dsp.cost_sse2.c in Sources */,
-				BE13398B206A268000438E93 /* perfTimerANSI.c in Sources */,
 				BE133A8A206A268000438E93 /* ImfKeyCode.cpp in Sources */,
 				BE133AB8206A268000438E93 /* ImfZipCompressor.cpp in Sources */,
 				BE133A28206A268000438E93 /* dsp.yuv_mips32.c in Sources */,
@@ -3479,6 +3147,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJPEG/**",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR",
@@ -3496,6 +3166,7 @@
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmThread",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Half",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/common/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3509,6 +3180,8 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJPEG/**",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR",
@@ -3526,6 +3199,7 @@
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/IlmThread",
 					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/OpenEXR/Half",
+					"$(SRCROOT)/../../Engine/EngineCore/3rd/FreeImage3170/FreeImage/Source/LibJXR/common/include",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

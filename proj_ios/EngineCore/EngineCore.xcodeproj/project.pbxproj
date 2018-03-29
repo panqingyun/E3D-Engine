@@ -70,10 +70,9 @@
 		BE1334A32069FE8500438E93 /* UIWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE1334622069FE8400438E93 /* UIWidget.cpp */; };
 		BE1334A42069FE8500438E93 /* E3DUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE1334652069FE8400438E93 /* E3DUtil.cpp */; };
 		BE133B39206A693200438E93 /* libassimp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B38206A693200438E93 /* libassimp.a */; };
-		BE133B3B206A693200438E93 /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B3A206A693200438E93 /* libfreetype.a */; };
 		BE133B3D206A693200438E93 /* libRenderSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B3C206A693200438E93 /* libRenderSystem.a */; };
-		BE133E82206C8BEF00438E93 /* libBulletStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133E81206C8BEF00438E93 /* libBulletStatic.a */; };
 		BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133E83206C8BEF00438E93 /* libFreeImage.a */; };
+		BEAB89DC206CBFC60012C694 /* libBullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB89DB206CBFC60012C694 /* libBullet.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -241,28 +240,10 @@
 		BE1334D72069FEE500438E93 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		BE1334D82069FEE500438E93 /* vmath.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vmath.cpp; sourceTree = "<group>"; };
 		BE133B38206A693200438E93 /* libassimp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libassimp.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B3A206A693200438E93 /* libfreetype.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfreetype.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133B3C206A693200438E93 /* libRenderSystem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRenderSystem.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B7F206B496600438E93 /* libBullet2FileLoader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet2FileLoader.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B81206B496600438E93 /* libBullet3Collision.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet3Collision.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B83206B496600438E93 /* libBullet3Common.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet3Common.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B85206B496600438E93 /* libBullet3Dynamics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet3Dynamics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B87206B496600438E93 /* libBullet3Geometry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet3Geometry.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B89206B496600438E93 /* libBullet3OpenCL_clew.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet3OpenCL_clew.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B8B206B496600438E93 /* libBulletCollision.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletCollision.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B8D206B496600438E93 /* libBulletDynamics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletDynamics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B8F206B496600438E93 /* libBulletFileLoader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletFileLoader.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B91206B496600438E93 /* libBulletInverseDynamics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletInverseDynamics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B93206B496600438E93 /* libBulletInverseDynamicsUtils.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletInverseDynamicsUtils.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B95206B496600438E93 /* libBulletRobotics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletRobotics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B97206B496600438E93 /* libBulletSoftBody.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletSoftBody.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B99206B496600438E93 /* libBulletWorldImporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletWorldImporter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B9B206B496600438E93 /* libBulletXmlWorldImporter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletXmlWorldImporter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B9D206B496600438E93 /* libConvexDecomposition.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libConvexDecomposition.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE133B9F206B496600438E93 /* libLinearMath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libLinearMath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133BA1206BB8C600438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		BE133E81206C8BEF00438E93 /* libBulletStatic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBulletStatic.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133E83206C8BEF00438E93 /* libFreeImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFreeImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEAB89DB206CBFC60012C694 /* libBullet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,10 +251,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE133E82206C8BEF00438E93 /* libBulletStatic.a in Frameworks */,
+				BEAB89DC206CBFC60012C694 /* libBullet.a in Frameworks */,
 				BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */,
 				BE133B39206A693200438E93 /* libassimp.a in Frameworks */,
-				BE133B3B206A693200438E93 /* libfreetype.a in Frameworks */,
 				BE133B3D206A693200438E93 /* libRenderSystem.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,27 +641,9 @@
 		BE133B37206A693200438E93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE133E81206C8BEF00438E93 /* libBulletStatic.a */,
+				BEAB89DB206CBFC60012C694 /* libBullet.a */,
 				BE133E83206C8BEF00438E93 /* libFreeImage.a */,
-				BE133B7F206B496600438E93 /* libBullet2FileLoader.a */,
-				BE133B81206B496600438E93 /* libBullet3Collision.a */,
-				BE133B83206B496600438E93 /* libBullet3Common.a */,
-				BE133B85206B496600438E93 /* libBullet3Dynamics.a */,
-				BE133B87206B496600438E93 /* libBullet3Geometry.a */,
-				BE133B89206B496600438E93 /* libBullet3OpenCL_clew.a */,
-				BE133B8B206B496600438E93 /* libBulletCollision.a */,
-				BE133B8D206B496600438E93 /* libBulletDynamics.a */,
-				BE133B8F206B496600438E93 /* libBulletFileLoader.a */,
-				BE133B91206B496600438E93 /* libBulletInverseDynamics.a */,
-				BE133B93206B496600438E93 /* libBulletInverseDynamicsUtils.a */,
-				BE133B95206B496600438E93 /* libBulletRobotics.a */,
-				BE133B97206B496600438E93 /* libBulletSoftBody.a */,
-				BE133B99206B496600438E93 /* libBulletWorldImporter.a */,
-				BE133B9B206B496600438E93 /* libBulletXmlWorldImporter.a */,
-				BE133B9D206B496600438E93 /* libConvexDecomposition.a */,
-				BE133B9F206B496600438E93 /* libLinearMath.a */,
 				BE133B38206A693200438E93 /* libassimp.a */,
-				BE133B3A206A693200438E93 /* libfreetype.a */,
 				BE133B3C206A693200438E93 /* libRenderSystem.a */,
 			);
 			name = Frameworks;

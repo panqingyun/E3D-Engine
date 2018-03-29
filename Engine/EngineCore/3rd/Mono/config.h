@@ -2,7 +2,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 #ifndef _MSC_VER
-#include "cygconfig.h"
+//#include "cygconfig.h"
 #else
 
 /* The architecture this is running on */

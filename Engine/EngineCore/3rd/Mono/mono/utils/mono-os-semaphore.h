@@ -161,6 +161,7 @@ retry:
 	default:
 		g_assert_not_reached ();
 	}
+    return MONO_SEM_TIMEDWAIT_RET_TIMEDOUT;
 }
 
 static inline void

@@ -16,6 +16,10 @@
 #include <config.h>
 #include <glib.h>
 
+#ifdef __IOS__
+#include <sys/time.h>'
+#endif
+
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -140,7 +144,7 @@ mono_os_cond_init (mono_cond_t *cond)
 	if (G_UNLIKELY (res != 0))
 		g_error ("%s: pthread_condattr_init failed with \"%s\" (%d)", __func__, g_strerror (res), res);
 
-	res = pthread_condattr_setclock (&attr, CLOCK_MONOTONIC);
+	res = pthread_condattr_setclock (&attr, CLOCK_MONOTONIC); 
 	if (G_UNLIKELY (res != 0))
 		g_error ("%s: pthread_condattr_setclock failed with \"%s\" (%d)", __func__, g_strerror (res), res);
 

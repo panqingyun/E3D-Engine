@@ -139,14 +139,14 @@ mono_stack_mark_init (MonoThreadInfo *info, HandleStackMark *stackmark)
 	handles->stackmark_sp = sptop;
 #endif
 }
-
+static inline void mono_memory_write_barrier (void);
 static inline void
 mono_stack_mark_pop (MonoThreadInfo *info, HandleStackMark *stackmark)
 {
 	HandleStack *handles = (HandleStack *)info->handle_stack;
 	HandleChunk *old_top = stackmark->chunk;
 	old_top->size = stackmark->size;
-	mono_memory_write_barrier ();
+	mono_memory_write_barrier();
 	handles->top = old_top;
 	handles->interior->size = stackmark->interior_size;
 #ifdef MONO_HANDLE_TRACK_SP

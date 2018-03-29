@@ -603,8 +603,8 @@ gboolean g_hash_table_iter_next (GHashTableIter *it, gpointer *key, gpointer *va
 
 	GHashTable *hash = iter->ht;
 
-	g_assert (iter->slot_index != -2);
-	g_assert (sizeof (Iter) <= sizeof (GHashTableIter));
+	//assert (iter->slot_index != -2);
+	//assert (sizeof (Iter) <= sizeof (GHashTableIter));
 
 	if (!iter->slot) {
 		while (TRUE) {
@@ -636,8 +636,8 @@ g_direct_equal (gconstpointer v1, gconstpointer v2)
 
 guint
 g_direct_hash (gconstpointer v1)
-{
-	return GPOINTER_TO_UINT (v1);
+{    
+	return GPOINTER_TO_UINT(v1);
 }
 
 gboolean

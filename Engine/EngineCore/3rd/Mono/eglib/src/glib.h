@@ -571,7 +571,7 @@ GLogLevelFlags g_log_set_always_fatal (GLogLevelFlags fatal_mask);
 GLogLevelFlags g_log_set_fatal_mask   (const gchar *log_domain, GLogLevelFlags fatal_mask);
 void           g_logv                 (const gchar *log_domain, GLogLevelFlags log_level, const gchar *format, va_list args);
 void           g_log                  (const gchar *log_domain, GLogLevelFlags log_level, const gchar *format, ...);
-void           g_assertion_message    (const gchar *format, ...) G_GNUC_NORETURN;
+void           g_assertion_message    (const gchar *format, ...);
 
 #ifdef HAVE_C99_SUPPORT
 /* The for (;;) tells gc thats g_error () doesn't return, avoiding warnings */

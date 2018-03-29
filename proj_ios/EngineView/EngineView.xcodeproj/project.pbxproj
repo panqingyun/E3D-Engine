@@ -15,6 +15,9 @@
 		BE133B5D206B2C1100438E93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE133B5C206B2C1100438E93 /* main.m */; };
 		BE133B67206B2C1100438E93 /* EngineViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE133B66206B2C1100438E93 /* EngineViewTests.m */; };
 		BE133B72206B2C1100438E93 /* EngineViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE133B71206B2C1100438E93 /* EngineViewUITests.m */; };
+		BEAB90A6206CCD560012C694 /* libEngineCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB90A5206CCD560012C694 /* libEngineCore.a */; };
+		BEAB90AB206CCE1B0012C694 /* Engine3D_Objc.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEAB90A7206CCE1A0012C694 /* Engine3D_Objc.mm */; };
+		BEAB90AC206CCE1B0012C694 /* OpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = BEAB90A8206CCE1B0012C694 /* OpenGLView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,11 @@
 		BE133B6D206B2C1100438E93 /* EngineViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE133B71206B2C1100438E93 /* EngineViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EngineViewUITests.m; sourceTree = "<group>"; };
 		BE133B73206B2C1100438E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEAB90A5206CCD560012C694 /* libEngineCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libEngineCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEAB90A7206CCE1A0012C694 /* Engine3D_Objc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Engine3D_Objc.mm; sourceTree = "<group>"; };
+		BEAB90A8206CCE1B0012C694 /* OpenGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenGLView.mm; sourceTree = "<group>"; };
+		BEAB90A9206CCE1B0012C694 /* Engine3D_Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Engine3D_Objc.h; sourceTree = "<group>"; };
+		BEAB90AA206CCE1B0012C694 /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEAB90A6206CCD560012C694 /* libEngineCore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +94,7 @@
 				BE133B65206B2C1100438E93 /* EngineViewTests */,
 				BE133B70206B2C1100438E93 /* EngineViewUITests */,
 				BE133B4B206B2C0F00438E93 /* Products */,
+				BEAB90A4206CCD560012C694 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +111,10 @@
 		BE133B4C206B2C0F00438E93 /* EngineView */ = {
 			isa = PBXGroup;
 			children = (
+				BEAB90A9206CCE1B0012C694 /* Engine3D_Objc.h */,
+				BEAB90A7206CCE1A0012C694 /* Engine3D_Objc.mm */,
+				BEAB90AA206CCE1B0012C694 /* OpenGLView.h */,
+				BEAB90A8206CCE1B0012C694 /* OpenGLView.mm */,
 				BE133B4D206B2C0F00438E93 /* AppDelegate.h */,
 				BE133B4E206B2C0F00438E93 /* AppDelegate.m */,
 				BE133B50206B2C0F00438E93 /* ViewController.h */,
@@ -130,6 +144,14 @@
 				BE133B73206B2C1100438E93 /* Info.plist */,
 			);
 			path = EngineViewUITests;
+			sourceTree = "<group>";
+		};
+		BEAB90A4206CCD560012C694 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEAB90A5206CCD560012C694 /* libEngineCore.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +286,8 @@
 			files = (
 				BE133B52206B2C0F00438E93 /* ViewController.m in Sources */,
 				BE133B5D206B2C1100438E93 /* main.m in Sources */,
+				BEAB90AC206CCE1B0012C694 /* OpenGLView.mm in Sources */,
+				BEAB90AB206CCE1B0012C694 /* Engine3D_Objc.mm in Sources */,
 				BE133B4F206B2C0F00438E93 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../Engine/EngineCore";
 				INFOPLIST_FILE = EngineView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZN46JDPR44;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../Engine/EngineCore";
 				INFOPLIST_FILE = EngineView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

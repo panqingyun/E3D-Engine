@@ -28,9 +28,8 @@ namespace E3DEngine
 		virtual void BindDefaultBackbuffer() override;
 		virtual Render2Texture * CreateRtt(float width, float height) override;
 		void	CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle);
-		void	BindDefaultFBO();
 		void    Clear(Color4 color, int clearType);
-
+        
 	public:
 		virtual void BeginFrame() override;
 		void clearFrameBufferObject();

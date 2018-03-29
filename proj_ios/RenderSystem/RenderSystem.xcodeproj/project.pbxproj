@@ -23,6 +23,16 @@
 		BE133B35206A62DF00438E93 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B34206A62DF00438E93 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BEAB89FD206CC57A0012C694 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BEAB89F9206CC57A0012C694 /* Mono.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEAB89E7206CC5630012C694;
+			remoteInfo = Mono;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		BE13337D2069FD5D00438E93 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -67,6 +77,7 @@
 		BE133B23206A62C600438E93 /* ETCHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETCHeader.h; sourceTree = "<group>"; };
 		BE133B34206A62DF00438E93 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BE133B36206A652700438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		BEAB89F9206CC57A0012C694 /* Mono.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mono.xcodeproj; path = ../Mono/Mono.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +95,7 @@
 		BE1333762069FD5D00438E93 = {
 			isa = PBXGroup;
 			children = (
+				BEAB89F9206CC57A0012C694 /* Mono.xcodeproj */,
 				BE133B36206A652700438E93 /* PrefixHeader.pch */,
 				BE1333812069FD5D00438E93 /* RenderSystem */,
 				BE1333802069FD5D00438E93 /* Products */,
@@ -205,6 +217,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BEAB89FA206CC57A0012C694 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEAB89FE206CC57A0012C694 /* libMono.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,12 +269,28 @@
 			mainGroup = BE1333762069FD5D00438E93;
 			productRefGroup = BE1333802069FD5D00438E93 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BEAB89FA206CC57A0012C694 /* Products */;
+					ProjectRef = BEAB89F9206CC57A0012C694 /* Mono.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BE13337E2069FD5D00438E93 /* RenderSystem */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BEAB89FE206CC57A0012C694 /* libMono.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMono.a;
+			remoteRef = BEAB89FD206CC57A0012C694 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE13337B2069FD5D00438E93 /* Sources */ = {

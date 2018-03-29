@@ -52,6 +52,7 @@ namespace E3DEngine
 		void Clear();
 		void Bind();
 		void SetClearColor(Color4 clearColor);
+        void BindRenderBuffer();
 	public:
 		GLuint GetTextureBufferID();
 		GLuint GetFrameBufferID();

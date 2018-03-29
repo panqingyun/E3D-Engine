@@ -71,6 +71,14 @@ namespace E3DEngine
 		glViewport(0, 0, m_FrameWidth, m_FrameHeight);
 	}
 
+    void FrameBufferObject::BindRenderBuffer()
+    {
+        if (m_renderTarget->Type == RENDER_BUFFER)
+        {
+            glBindRenderbuffer(GL_RENDERBUFFER, static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer);
+        }
+    }
+    
 	void FrameBufferObject::SetClearColor(Color4 clearColor)
 	{
 		m_ClearColor = clearColor;

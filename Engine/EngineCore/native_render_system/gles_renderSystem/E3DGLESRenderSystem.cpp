@@ -33,8 +33,10 @@ namespace E3DEngine
 	{
 #ifdef __IOS__
 		defaultFrameBuffer->Bind();
+        defaultFrameBuffer->BindRenderBuffer();
 #else
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glViewport(0, 0, m_frameWidth, m_frameHeight);
 #endif // __IOS_
 
 	}
@@ -54,20 +56,14 @@ namespace E3DEngine
 
 	void GLES_RenderSystem::BeginFrame()
 	{
-#ifndef __IOS__
-		m_pEGL_Context_Ex->UseContext();
-#endif
-		glCullFace(GL_BACK);
-#ifdef WIN32
-		//m_pEGL_Context->UseContext();
-#endif
 #ifdef __IOS__
-        BindDefaultFBO();
+        BindDefaultBackbuffer();
         defaultFrameBuffer->Clear();
 #else
-		BindDefaultFBO();
-
+        m_pEGL_Context_Ex->UseContext();
+		BindDefaultBackbuffer();
 #endif
+        glCullFace(GL_BACK);
 				
 	}
 
@@ -87,35 +83,24 @@ namespace E3DEngine
 	{
 #ifndef __IOS__
 		m_pEGL_Context_Ex->SwapBuffer();
+        glFlush();
 #endif
-		glFlush();
 	}
 
 	void GLES_RenderSystem::CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle)
 	{
-#ifndef __IOS__
-		m_pEGL_Context_Ex = new EGL_Context();
-		m_pEGL_Context_Ex->InitGLES(displayID, windowHandle);
-		m_pEGL_Context_Ex->UseContext();
-#else
+#ifdef __IOS__
         SetupDefaultFrameBuffer();
+#else
+        m_pEGL_Context_Ex = new EGL_Context();
+        m_pEGL_Context_Ex->InitGLES(displayID, windowHandle);
+        m_pEGL_Context_Ex->UseContext();
 #endif
 	}
 
 	GLES_RenderSystem::GLES_RenderSystem()
 	{
 		defaultFrameBuffer = nullptr;
-	}
-
-	void GLES_RenderSystem::BindDefaultFBO()
-	{		
-#ifdef __IOS__
-		defaultFrameBuffer->Bind();
-		glBindRenderbuffer(GL_RENDERBUFFER, defaultFrameBuffer->GetRenderBufferID());
-#else
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		glViewport(0, 0, m_frameWidth, m_frameHeight);
-#endif		
 	}
 
 	void GLES_RenderSystem::Clear(Color4 color, int clearType)

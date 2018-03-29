@@ -1,4 +1,4 @@
-//
+﻿//
 //  RenderSystem.hpp
 //
 //  Created by 潘庆云 on 2017/1/22.
@@ -7,7 +7,7 @@
 #ifndef _GLES_RenderSystem_HPP_
 #define _GLES_RenderSystem_HPP_
 #ifndef __IOS__
-#include <EGL/EGLContext.h>
+#include "EGL/EGLContext.h"
 #endif
 #include <stdio.h>
 #include <src/RenderSystem/E3DRenderSystem.hpp>

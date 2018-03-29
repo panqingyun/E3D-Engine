@@ -17,7 +17,7 @@
 #endif
 
 #ifdef WIN32
-GLboolean EGL_Context::CreateEGLEnv(bool isOffScreen)
+EGLBoolean EGL_Context::CreateEGLEnv(bool isOffScreen)
 {
 	EGLint numConfigs;
 	EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };

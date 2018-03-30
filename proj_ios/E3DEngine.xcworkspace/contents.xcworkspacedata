@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Mono/Mono.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Bullet/Bullet.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../Engine/EngineCore/3rd/assimp-3.3.1/workspaces/xcode6/Assimp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FreeImage/FreeImage.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:EngineView/EngineView.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RenderSystem/RenderSystem.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/zhangjian_dev/Project/E3D.git/proj_ios/EngineCore/E3DEngine.xcodeproj">
+   </FileRef>
+</Workspace>

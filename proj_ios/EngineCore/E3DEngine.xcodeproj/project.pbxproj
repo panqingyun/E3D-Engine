@@ -73,6 +73,7 @@
 		BE133B3D206A693200438E93 /* libRenderSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133B3C206A693200438E93 /* libRenderSystem.a */; };
 		BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE133E83206C8BEF00438E93 /* libFreeImage.a */; };
 		BEAB89DC206CBFC60012C694 /* libBullet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB89DB206CBFC60012C694 /* libBullet.a */; };
+		BEAB90B0206D0E210012C694 /* libMono.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAB90AF206D0E210012C694 /* libMono.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -88,7 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BE13336A2069FD3100438E93 /* libEngineCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngineCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE13336A2069FD3100438E93 /* libE3DEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libE3DEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1333CE2069FE7500438E93 /* EngineAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EngineAPI.h; sourceTree = "<group>"; };
 		BE1333CF2069FE7500438E93 /* Include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Include.h; sourceTree = "<group>"; };
 		BE1333D22069FE8400438E93 /* E3DAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = E3DAnimation.cpp; sourceTree = "<group>"; };
@@ -244,6 +245,7 @@
 		BE133BA1206BB8C600438E93 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		BE133E83206C8BEF00438E93 /* libFreeImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libFreeImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEAB89DB206CBFC60012C694 /* libBullet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libBullet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEAB90AF206D0E210012C694 /* libMono.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMono.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEAB90B0206D0E210012C694 /* libMono.a in Frameworks */,
 				BEAB89DC206CBFC60012C694 /* libBullet.a in Frameworks */,
 				BE133E84206C8BEF00438E93 /* libFreeImage.a in Frameworks */,
 				BE133B39206A693200438E93 /* libassimp.a in Frameworks */,
@@ -274,7 +277,7 @@
 		BE13336B2069FD3100438E93 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BE13336A2069FD3100438E93 /* libEngineCore.a */,
+				BE13336A2069FD3100438E93 /* libE3DEngine.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 		BE133B37206A693200438E93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEAB90AF206D0E210012C694 /* libMono.a */,
 				BEAB89DB206CBFC60012C694 /* libBullet.a */,
 				BE133E83206C8BEF00438E93 /* libFreeImage.a */,
 				BE133B38206A693200438E93 /* libassimp.a */,
@@ -652,9 +656,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BE1333692069FD3100438E93 /* EngineCore */ = {
+		BE1333692069FD3100438E93 /* E3DEngine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE1333732069FD3100438E93 /* Build configuration list for PBXNativeTarget "EngineCore" */;
+			buildConfigurationList = BE1333732069FD3100438E93 /* Build configuration list for PBXNativeTarget "E3DEngine" */;
 			buildPhases = (
 				BE1333662069FD3100438E93 /* Sources */,
 				BE1333672069FD3100438E93 /* Frameworks */,
@@ -664,9 +668,9 @@
 			);
 			dependencies = (
 			);
-			name = EngineCore;
+			name = E3DEngine;
 			productName = EngineCore;
-			productReference = BE13336A2069FD3100438E93 /* libEngineCore.a */;
+			productReference = BE13336A2069FD3100438E93 /* libE3DEngine.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -683,7 +687,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BE1333652069FD3100438E93 /* Build configuration list for PBXProject "EngineCore" */;
+			buildConfigurationList = BE1333652069FD3100438E93 /* Build configuration list for PBXProject "E3DEngine" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -695,7 +699,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BE1333692069FD3100438E93 /* EngineCore */,
+				BE1333692069FD3100438E93 /* E3DEngine */,
 			);
 		};
 /* End PBXProject section */
@@ -930,7 +934,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BE1333652069FD3100438E93 /* Build configuration list for PBXProject "EngineCore" */ = {
+		BE1333652069FD3100438E93 /* Build configuration list for PBXProject "E3DEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BE1333712069FD3100438E93 /* Debug */,
@@ -939,7 +943,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BE1333732069FD3100438E93 /* Build configuration list for PBXNativeTarget "EngineCore" */ = {
+		BE1333732069FD3100438E93 /* Build configuration list for PBXNativeTarget "E3DEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BE1333742069FD3100438E93 /* Debug */,

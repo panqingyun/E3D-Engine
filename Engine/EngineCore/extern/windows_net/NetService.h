@@ -59,20 +59,14 @@ public:
 			(*msg)[5]
 		};
 		cmd->Length = EncodingTools::bytesToInt(content);
-		cmd->Content = "";
-		for (int i = CMD_HEADER_LENGTH; i < cmd->Length; i++)
-		{
-			cmd->Content += (*msg)[i];
-		}
-		BYTE * subMsg = new BYTE[length - cmd->Length];
+		std::string message = std::string((char*)*msg);
+		cmd->Content = message.substr(CMD_HEADER_LENGTH, cmd->Length - CMD_HEADER_LENGTH);
+		std::string subMsg = message.substr(cmd->Length);
 
-		int idex = 0;	
-		for (int i = cmd->Length; i < length; i++)
-		{
-			subMsg[idex] = (*msg)[i];
-		}
 		length = length - cmd->Length;
-		*msg = subMsg;
+		BYTE * bRet = new BYTE[length];
+		memcpy(bRet, subMsg.c_str(), length);
+		*msg = bRet;
 		return cmd;
 	}
 
@@ -91,13 +85,9 @@ public:
 			length[3],
 		};
 		int size_byte = cmd->Content.length();
-		std::string bRet = "";
+		std::string bRet = std::string((char*)bmsg);
 
-		for (unsigned char i : bmsg)
-		{
-			bRet += i;
-		}
-		bRet += cmd->Content;
+		bRet.append(cmd->Content);
 
 		return bRet;
 	}

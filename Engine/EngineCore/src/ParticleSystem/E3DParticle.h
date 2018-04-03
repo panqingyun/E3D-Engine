@@ -25,7 +25,7 @@ namespace E3DEngine
     class Camera;
     class ParticleAffector;
     class ParticleEmitter;
-	class Particle extends Ref , public IActor
+	class Particle : public Ref , public IActor
     {
     public:
         Particle();

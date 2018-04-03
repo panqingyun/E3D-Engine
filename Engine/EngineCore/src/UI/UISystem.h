@@ -7,7 +7,7 @@ namespace E3DEngine
 {
 	namespace UI
 	{
-		class UISystem extends ISystem
+		class UISystem : public ISystem
 		{
 		public:
 			UISystem();

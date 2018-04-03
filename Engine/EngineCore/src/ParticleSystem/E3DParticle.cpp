@@ -175,10 +175,6 @@ namespace E3DEngine
 	{
 		m_eParticleState = state;
 	}
-//worldMatrix * 
-//worldMatrix * 
-//worldMatrix * 	
-//worldMatrix *
 
 	Vertex * Particle::getVertex(mat4f worldMatrix)
 	{

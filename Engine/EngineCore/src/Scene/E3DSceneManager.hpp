@@ -13,7 +13,7 @@
 
 namespace E3DEngine
 {
-	class SceneManager implement IObject
+	class SceneManager : public IObject
 	{
 	public:
 		static SceneManager& GetInstance()

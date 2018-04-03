@@ -162,9 +162,6 @@ namespace E3DEngine
 		particle->SetRenderer(render);
 		particle->SetActive(true);
 		render->SetRenderIndex(eRI_TopMost);
-		/*
-				rtt->AddChild(particle);
-				rtt->SetRenderIndex(eRI_TopMost);*/
 	}
 
 	void ParticleSystem::createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle)

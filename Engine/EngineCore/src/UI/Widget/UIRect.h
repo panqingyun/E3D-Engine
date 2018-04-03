@@ -7,7 +7,7 @@ namespace E3DEngine
 {
 	namespace UI
 	{
-		class UIRect extends Rectangle
+		class UIRect : public Rectangle
 		{
 			
 		};

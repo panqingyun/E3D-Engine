@@ -49,7 +49,7 @@
 namespace E3DEngine
 {
 #define USE_GPU_IMAGE
-	class EngineDelegate implement IObject
+	class EngineDelegate : public IObject
 	{
 	public:
 		static EngineDelegate &GetInstance()
@@ -59,9 +59,6 @@ namespace E3DEngine
 		};
 		~EngineDelegate();
 		void Initilize();
-		void SetupMainCamera(Camera *camera);
-		void SetupCamera(const char * name, Camera *camera);
-		void SetCameraRotateByMat(const char* name ,mat4f new_mat,bool isCameraFront);
 		void InitConfig(const char * path);
 		void SetResourcePath(const char * path);
 		void DestoryTableManager(std::string id);
@@ -76,7 +73,6 @@ namespace E3DEngine
 		void ChangeScene(Scene* scene);
 		void ChangeScene(uint sceneID);
 		void AddDonotDestory(GameObject* obj);
-		void DeleteCamera(std::string name);
 		void SetEnginePause(bool bPause);
 		bool GetEnginePause();
         void SetSceneType(int type);
@@ -91,7 +87,7 @@ namespace E3DEngine
 		bool									m_bIsInited;
 		UINT									m_nObjectID;
 		bool									m_bPause;
-		std::map<UINT, GameObject*>			m_mapDoNotDestoryObject;
+		std::map<UINT, GameObject*>				m_mapDoNotDestoryObject;
 		Scene		*							m_pLastScene;
 		
 	public:

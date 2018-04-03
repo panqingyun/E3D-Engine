@@ -12,7 +12,7 @@ namespace E3DEngine
 		/* 																		*/
 		/* 																		*/
 		/************************************************************************/
-		class UICamera extends Ref
+		class UICamera : public Ref
 		{
 		public:
 			UICamera(const vec3f& position, const vec3f& target, vec3f up, float32 zNear, float32 zFar);

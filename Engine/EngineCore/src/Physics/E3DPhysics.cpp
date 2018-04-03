@@ -36,35 +36,35 @@ namespace E3DEngine
 	void Physics::Update(float deltaTime)
 	{
 		m_pDynamicsWorld->stepSimulation(deltaTime);
-		/*int  numManifolds = m_pDispatcher->getNumManifolds();
-		for (int i = 0; i < numManifolds; i++)
-		{
-			btPersistentManifold* contactManifold = m_pDynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
-			GameObject* obA = static_cast<GameObject*>(contactManifold->getBody0()->getUserPointer());
-			GameObject* obB = static_cast<GameObject*>(contactManifold->getBody1()->getUserPointer());
-			if (m_hasCheckObjectMap.find(obA->ID) != m_hasCheckObjectMap.end() &&
-				m_hasCheckObjectMap.find(obB->ID) != m_hasCheckObjectMap.end())
-			{// 不做重复检测
-				continue;
-			}
-			// obA 与 obB 发生碰撞
-			if (obA == nullptr || obB == nullptr)
-			{
-				continue;
-			}
-			int  numContacts = contactManifold->getNumContacts();
-			for (int j = 0; j < numContacts; j++)
-			{
-				btManifoldPoint& pt = contactManifold->getContactPoint(j);
-				if (pt.getDistance() < 0.f)
-				{					
-					m_hasCheckObjectMap[obA->ID] = 1;
-					m_hasCheckObjectMap[obB->ID] = 1;
-					obA->OnCollisionEnter(obB);
-					obB->OnCollisionEnter(obA);
-				}
-			}
-		}*/
+		//int  numManifolds = m_pDispatcher->getNumManifolds();
+		//for (int i = 0; i < numManifolds; i++)
+		//{
+		//	btPersistentManifold* contactManifold = m_pDynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
+		//	GameObject* obA = static_cast<GameObject*>(contactManifold->getBody0()->getUserPointer());
+		//	GameObject* obB = static_cast<GameObject*>(contactManifold->getBody1()->getUserPointer());
+		//	if (m_hasCheckObjectMap.find(obA->ID) != m_hasCheckObjectMap.end() &&
+		//		m_hasCheckObjectMap.find(obB->ID) != m_hasCheckObjectMap.end())
+		//	{// 不做重复检测
+		//		continue;
+		//	}
+		//	// obA 与 obB 发生碰撞
+		//	if (obA == nullptr || obB == nullptr)
+		//	{
+		//		continue;
+		//	}
+		//	int  numContacts = contactManifold->getNumContacts();
+		//	for (int j = 0; j < numContacts; j++)
+		//	{
+		//		btManifoldPoint& pt = contactManifold->getContactPoint(j);
+		//		if (pt.getDistance() < 0.f)
+		//		{					
+		//			m_hasCheckObjectMap[obA->ID] = 1;
+		//			m_hasCheckObjectMap[obB->ID] = 1;
+		//			obA->OnCollisionEnter(obB);
+		//			obB->OnCollisionEnter(obA);
+		//		}
+		//	}
+		//}
 		m_hasCheckObjectMap.clear();
 	}
 

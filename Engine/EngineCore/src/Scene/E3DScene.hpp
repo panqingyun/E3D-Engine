@@ -10,7 +10,6 @@
 #include "../Object/E3DGameObject.h"
 #include "../Object/E3DRenderObject.hpp"
 #include "../Source/E3DDelegate.h"
-#include "../Source/E3DRenderQueue.h"
 #include "../Light/E3DLight.hpp"
 
 namespace E3DEngine

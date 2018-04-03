@@ -8,6 +8,7 @@
 #include "E3DScene.hpp"
 #include "../Source/E3DDebug.h"
 #include "../Source/EngineDelegate.h"
+#include "../RenderSystem/E3DRenderQueue.h"
 
 namespace E3DEngine
 {	

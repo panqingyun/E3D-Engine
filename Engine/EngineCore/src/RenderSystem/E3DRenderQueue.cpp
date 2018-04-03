@@ -1,5 +1,5 @@
 #include "E3DRenderQueue.h"
-#include "EngineDelegate.h"
+#include "E3DRenderSystem.hpp"
 
 namespace E3DEngine
 {

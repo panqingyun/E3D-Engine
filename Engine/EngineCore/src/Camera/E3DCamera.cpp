@@ -9,7 +9,7 @@
 #include "E3DCamera.h"
 #include <cmath>
 #include "../Object/E3DTransform.hpp"
-#include "../Source/E3DRenderQueue.h"
+#include "../RenderSystem/E3DRenderQueue.h"
 #include "../RenderSystem/Texture/E3DRender2Texture.h"
 #include "../Source/EngineDelegate.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"

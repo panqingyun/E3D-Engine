@@ -1,12 +1,11 @@
 #ifndef __RENDER_QUEUE_H__
 #define __RENDER_QUEUE_H__
 
-#include "Interface.h"
-#include "src/Object/E3DRenderObject.hpp"
+#include "../Object/E3DRenderObject.hpp"
 
 namespace E3DEngine
 {
-	class RenderQueue extends Ref
+	class RenderQueue : public Ref
 	{
 	public:
 		RenderQueue();

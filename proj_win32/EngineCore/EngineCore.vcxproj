@@ -232,6 +232,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp" />
@@ -251,7 +252,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DEncoding.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h" />
@@ -313,6 +313,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp" />
@@ -328,7 +329,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp" />

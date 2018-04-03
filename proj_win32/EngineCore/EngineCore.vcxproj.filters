@@ -252,9 +252,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UISystem.h">
       <Filter>EngineCore\src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.h">
       <Filter>EngineCore\src\Object</Filter>
     </ClInclude>
@@ -350,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h">
       <Filter>EngineCore\src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h">
+      <Filter>EngineCore\src\RenderSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -470,9 +470,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UISystem.cpp">
       <Filter>EngineCore\src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DRenderQueue.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
@@ -571,6 +568,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
+      <Filter>EngineCore\src\RenderSystem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

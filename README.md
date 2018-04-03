@@ -11,7 +11,7 @@
 - [x] 多FBO
 - [x] 渲染合批
 - [x] 模型读取和显示
-- [x] Mono和Bullet已接入。
+- [x] Mono和Bullet。
 
 #### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。实时阴影、骨骼动画、UI尚未完成。
 

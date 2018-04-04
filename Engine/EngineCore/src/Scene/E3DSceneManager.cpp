@@ -51,7 +51,7 @@ namespace E3DEngine
 	const string _Component = "Component";
 	const string _Component_ClassName = "ClassName";
 
-	const string _Camera_CullMask = "CulMask";
+	const string _Camera_CullMask = "CullingMask";
 	const string _Camera_CullMask_Everything = "Everything";
 
 	using createGameObjectFun = GameObject*(*)(GameObject *parent,TiXmlElement *objectElement);
@@ -135,7 +135,7 @@ namespace E3DEngine
 		go->AddComponent(comName.c_str());
 	}
 
-	void descTransform(TiXmlElement *objectElement, CTransform * transform)
+	void parseTransform(TiXmlElement *objectElement, CTransform * transform)
 	{
 		if (transform == nullptr)
 		{
@@ -190,6 +190,10 @@ namespace E3DEngine
 			for (auto &layerName : layers)
 			{
 				StringBuilder::Trim(layerName);
+				if (layerName == "")
+				{
+					continue;
+				}
 				layer  |= (1 << selectLayerByName(layerName));
 			}
 			go->SetLayerMask(layer);
@@ -201,7 +205,8 @@ namespace E3DEngine
 		Camera *pCamera = Camera::CreateCamera();
 
 		pCamera->SetClearColor(createColor(*objectElement->Attribute(_ClearColor)));
-		descTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
+		setCameraCullMask(objectElement, pCamera);
+		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
 		createObjects(pCamera, objectElement);
 		return pCamera;
 	}
@@ -257,7 +262,7 @@ namespace E3DEngine
 
 		for (auto & particle: *particles)
 		{
-			descTransform(objectElement->FirstChildElement(_Transform), particle->Transform);
+			parseTransform(objectElement->FirstChildElement(_Transform), particle->Transform);
 			if (parent != nullptr)
 			{
 				parent->AddChild(particle);
@@ -346,7 +351,7 @@ namespace E3DEngine
 	{
 		go->Name = *objectElement->Attribute(_Name);
 		go->TypeName = _type;
-		descTransform(objectElement->FirstChildElement(_Transform), go->Transform);
+		parseTransform(objectElement->FirstChildElement(_Transform), go->Transform);
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		setGameObjectActive(objectElement, go);

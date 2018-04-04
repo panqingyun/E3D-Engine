@@ -147,6 +147,18 @@ namespace E3DEngine
 		return bFind;
 	}
 
+
+	void RenderQueue::CullRenderObjectByLayer(DWORD layer)
+	{
+		for (int i = _renderQueue.size() - 1; i >= 0; i--)
+		{
+			if (_renderQueue[i]->GetLayerMask() != layer)
+			{
+				_renderQueue.erase(_renderQueue.begin() + i);
+			}
+		}
+	}
+
 	bool RenderQueue::ChangeRenderQueue(UINT id, eRenderIndex index)
 	{
 		int renderIndex = -1;

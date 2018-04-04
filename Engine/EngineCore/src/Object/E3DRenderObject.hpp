@@ -123,7 +123,9 @@ namespace E3DEngine
 		virtual void SetRenderIndex(DWORD index);
 		virtual Material* GetMaterial() { return pMaterial; }
 		virtual void SetNeedSortVertex(bool bNeed) { m_bNeedSortVertex = bNeed; }
-		
+		virtual void SetLayerMask(DWORD layer) { m_layer = layer; }
+		virtual DWORD GetLayerMask() { return m_layer; }
+
 		MinMaxAABB GetBounds()
 		{
 			return m_AABB;
@@ -140,6 +142,7 @@ namespace E3DEngine
 		// 材质
 		Material	* pMaterial;
 		bool		m_bNeedSortVertex;
+		DWORD   m_layer;
 
     public:
 		// 索引数目

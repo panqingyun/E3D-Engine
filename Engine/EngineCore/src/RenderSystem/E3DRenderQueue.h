@@ -23,6 +23,8 @@ namespace E3DEngine
 		unsigned int GetID();
 		bool FindInRenderQueue(RenderObject *rb);
 
+		void CullRenderObjectByLayer(DWORD layer);
+
 	private:
 		void changeNormalQueue(RenderObject * rb);
 		void changeTransparentQueue(RenderObject * rb);

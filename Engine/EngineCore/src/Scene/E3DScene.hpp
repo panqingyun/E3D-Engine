@@ -44,6 +44,8 @@ namespace E3DEngine
 		void ChangeRenderIndex(UINT id, eRenderIndex index);
 		void AddCamera(Camera * pCamera);
 		void SortCamera();
+		void ChangeCameraObject(Camera *pCamera);
+		void ChangeRenderObjectLayer(RenderObject * rb);
 		Camera * GetCamera(UINT cameraID);
 		Camera * GetMainCamera();
 		void ChangeFrameSize(float w, float h);

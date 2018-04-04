@@ -154,6 +154,13 @@ namespace E3DEngine
 		return m_RenderQueue;
 	}
 
+	void Camera::SetLayerMask(DWORD layerMask)
+	{
+		GameObject::SetLayerMask(layerMask);
+		m_RenderQueue->CullRenderObjectByLayer(layerMask);
+		SceneManager::GetInstance().GetCurrentScene()->ChangeCameraObject(this);
+	}
+
 	int Camera::GetDepth()
 	{
 		return m_nDepth;

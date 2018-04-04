@@ -133,13 +133,7 @@ namespace E3DEngine
 		if (isCanInsert)
 		{
 			m_vecCamera.emplace_back(pCamera);
-            for(auto &obj : m_mapRenders)
-			{
-				if (!pCamera->GetRenderQueue()->FindInRenderQueue(obj.second))
-				{
-					pCamera->GetRenderQueue()->Add(obj.second);
-				}
-			}
+			ChangeCameraObject(pCamera);
 		}
 	}
 
@@ -150,6 +144,37 @@ namespace E3DEngine
 		{
 			return camera1->GetDepth() < camera2->GetDepth();
 		});
+	}
+
+	void Scene::ChangeCameraObject(Camera * pCamera)
+	{
+		for (auto &obj : m_mapRenders)
+		{
+			if (obj.second->GetLayerMask() & pCamera->GetLayerMask())
+			{
+				pCamera->GetRenderQueue()->Add(obj.second);
+			}
+		}
+	}
+
+	void Scene::ChangeRenderObjectLayer(RenderObject * rb)
+	{
+		if (m_mapRenders.find(rb->ID) == m_mapRenders.end())
+		{
+			return;
+		}
+
+		for (Camera * camera : m_vecCamera)
+		{
+			if (camera->GetLayerMask() & rb->GetLayerMask())
+			{
+				camera->GetRenderQueue()->Add(rb);
+			}
+			else
+			{
+				camera->GetRenderQueue()->Remove(rb);
+			}
+		}
 	}
 
 

@@ -294,9 +294,10 @@ namespace E3DEngine
 	void GameObject::SetLayerMask(DWORD layerMask)
 	{
 		m_layerMask = layerMask;
-		if (NodeType != eT_Camera)
+		if (m_pRenderer != nullptr)
 		{
-
+			m_pRenderer->SetLayerMask(layerMask);
+			SceneManager::GetInstance().GetCurrentScene()->ChangeRenderObjectLayer(m_pRenderer);
 		}
 		m_pBehaviour->SetFieldValue("layerMask", &m_layerMask);
 	}

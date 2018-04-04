@@ -37,7 +37,7 @@ namespace E3DEngine
 {
 	class RenderQueue;
 	class Render2Texture;
-	class Camera extends GameObject
+	class Camera : public GameObject
 	{
 		friend class Render2Texture;
 	public:
@@ -70,6 +70,8 @@ namespace E3DEngine
 		void FrameSizeChange(float aspect);
 
 		RenderQueue * GetRenderQueue();
+
+		virtual void SetLayerMask(DWORD layerMask) override;
 
 		int GetDepth();
 

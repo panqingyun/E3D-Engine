@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ConfigSystem>
-	<SkyBoxConfig>
-      	<Item ID=1 ShaderID = 1 Color="ffffffff" IsBlend = 0/>
-	</SkyBoxConfig>
-</ConfigSystem>

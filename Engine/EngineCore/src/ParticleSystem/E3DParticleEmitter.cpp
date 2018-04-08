@@ -13,7 +13,7 @@ namespace E3DEngine
     
     void ParticleEmitter::Update(float deltaTime)
     {
-        if (m_pParent->IsActive == false)
+        if (m_pParticleGroup->IsActive == false)
         {
             return;
         }
@@ -51,7 +51,7 @@ namespace E3DEngine
     
     void ParticleEmitter::CreateParticleEx()
     {
-        if (m_pParent->IsActive == false)
+        if (m_pParticleGroup->IsActive == false)
         {
             return;
         }
@@ -59,7 +59,7 @@ namespace E3DEngine
         {
             return;
         }
-        if(m_pParent->m_isLock > 0)
+        if(m_pParticleGroup->m_isLock > 0)
         {
             return;
         }
@@ -87,17 +87,17 @@ namespace E3DEngine
         m_pConfigTable = nullptr;
         m_bIsLoop = true;
         m_bEnable = true;
-        m_pParent = p;
+        m_pParticleGroup = p;
         m_bIsBlank = false;
         m_CurrentParticleNumer = 0;
         m_fBlankTime = 0;
-        m_pParent->UpdateRefrence(1);
+        m_pParticleGroup->UpdateRefrence(1);
     }
     
     void ParticleEmitter::InitCompleted()
     {
         _CreateParticle();
-		m_pParent->CreateParticle(m_MaxParticleNumber, m_LiveTime, vec3f(NO_POS), m_v2ParticleSize, m_fParticleColor, particleGroupID, vec3f(0.0, 0.0, 0.0), true);
+		m_pParticleGroup->CreateParticle(m_MaxParticleNumber, m_LiveTime, vec3f(NO_POS), m_v2ParticleSize, m_fParticleColor, particleGroupID, vec3f(0.0, 0.0, 0.0), true);
         bIsFirstCreate = false;
     }
     
@@ -109,14 +109,14 @@ namespace E3DEngine
     
     void ParticleEmitter::SetEmitterPosition(vec3f position)
     {
-        m_pParent->SetParticleDir(position, m_EmitterPosition);
-        if (m_pParent->m_isLock == 0)
+        m_pParticleGroup->SetParticleDir(position, m_EmitterPosition);
+        if (m_pParticleGroup->m_isLock == 0)
             m_EmitterPosition = position;
     }
     
     void ParticleEmitter::_CreateParticle()
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -169,17 +169,17 @@ namespace E3DEngine
         m_fBlankTime = 1;
         m_fParticleColor = 0;
         m_TotalParticleNumber = 10000;
-        m_pParent->SetMaxParticleNumber(1000);
+        m_pParticleGroup->SetMaxParticleNumber(1000);
         m_vPointPosition = vec3f(0, 0, 0);
     }
     
     void PointEmitter::_GenEmissionPosition()
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
-        m_pParent->CreateParticle(m_CurrentCreateNumber, m_LiveTime, m_EmitterPosition + m_vPointPosition, m_v2ParticleSize, m_fParticleColor, particleGroupID,vec3f(0.0,0.0,0.0));
+        m_pParticleGroup->CreateParticle(m_CurrentCreateNumber, m_LiveTime, m_EmitterPosition + m_vPointPosition, m_v2ParticleSize, m_fParticleColor, particleGroupID,vec3f(0.0,0.0,0.0));
         m_CurrentParticleNumer += m_CurrentCreateNumber;
     }
     
@@ -196,13 +196,13 @@ namespace E3DEngine
         m_bIsLoop = cfg->IsLoop == 1 ? true : false;
         //        m_pParent->SetIsBillborad(m_bIsBillboard);
 		m_MaxParticleNumber = cfg->MaxParticleNumber;
-        m_pParent->SetMaxParticleNumber(cfg->MaxParticleNumber);
+        m_pParticleGroup->SetMaxParticleNumber(cfg->MaxParticleNumber);
         std::vector<std::string> strs = StringBuilder::Split(cfg->ParticlePosition, ",");
         if (strs.size() == 3)
         {
             m_vPointPosition =
             vec3f(Convert::ToFloat(strs[0]), Convert::ToFloat(strs[1]), Convert::ToFloat(strs[2]));
-            m_pParent->Transform->SetPosition(m_vPointPosition);
+            m_pParticleGroup->Transform->SetPosition(m_vPointPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPointPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPointPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPointPosition.z;
@@ -226,12 +226,12 @@ namespace E3DEngine
         m_v2ParticleSize.y = 0.1;
         m_fParticleColor = 0;
         m_TotalParticleNumber = 1000;
-        m_pParent->SetMaxParticleNumber(100);
+        m_pParticleGroup->SetMaxParticleNumber(100);
     }
     
     void AreaEmitter::_GenEmissionPosition()
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -260,7 +260,7 @@ namespace E3DEngine
                 alpha = (min + rand() % (max - min)) / 100.0;
             }
             
-            m_pParent->CreateParticle(1, m_LiveTime, vec3f(xArea, yArea, zArea), ParticleSize, alpha, particleGroupID,m_EmitterPosition);
+            m_pParticleGroup->CreateParticle(1, m_LiveTime, vec3f(xArea, yArea, zArea), ParticleSize, alpha, particleGroupID,m_EmitterPosition);
         }
         m_CurrentParticleNumer += m_CurrentCreateNumber;
     }
@@ -279,7 +279,7 @@ namespace E3DEngine
         m_fBronInterval = cfg->BornInterval;
 		//        m_pParent->SetIsBillborad(m_bIsBillboard);
 		m_MaxParticleNumber = cfg->MaxParticleNumber;
-        m_pParent->SetMaxParticleNumber(cfg->MaxParticleNumber);
+        m_pParticleGroup->SetMaxParticleNumber(cfg->MaxParticleNumber);
         std::vector<std::string> alpharange = StringBuilder::Split(cfg->AlphaRange, ",");
         if (alpharange.size() == 2)
         {
@@ -300,7 +300,7 @@ namespace E3DEngine
         if (pos.size() == 3)
         {
             m_vPosition = vec3f(Convert::ToFloat(pos[0]), Convert::ToFloat(pos[1]), Convert::ToFloat(pos[2]));
-            m_pParent->Transform->SetPosition(m_vPosition);
+            m_pParticleGroup->Transform->SetPosition(m_vPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPosition.z;
@@ -326,12 +326,12 @@ namespace E3DEngine
         m_TotalParticleNumber = 10000;
         m_CurrentCreateNumber = 1;
         m_SizeScaleRange = vec2f(1.0, 1.0);
-        m_pParent->SetMaxParticleNumber(900);
+        m_pParticleGroup->SetMaxParticleNumber(900);
     }
     
     void BallEmitter::_GenEmissionPosition()
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -373,7 +373,7 @@ namespace E3DEngine
                 }
             }
             
-            m_pParent->CreateParticle(1, livetime, vec3f(x, y, z), ParticleSize, m_fParticleColor, particleGroupID,m_EmitterPosition);
+            m_pParticleGroup->CreateParticle(1, livetime, vec3f(x, y, z), ParticleSize, m_fParticleColor, particleGroupID,m_EmitterPosition);
         }
         m_CurrentParticleNumer += m_CurrentCreateNumber;
     }
@@ -398,13 +398,13 @@ namespace E3DEngine
         }
 		//        m_pParent->SetIsBillborad(m_bIsBillboard);
 		m_MaxParticleNumber = cfg->MaxParticleNumber;
-        m_pParent->SetMaxParticleNumber(cfg->MaxParticleNumber);
+        m_pParticleGroup->SetMaxParticleNumber(cfg->MaxParticleNumber);
         Radius = cfg->Radius;
         std::vector<std::string> pos = StringBuilder::Split(cfg->ParticlePosition, ",");
         if (pos.size() == 3)
         {
             m_vPosition = vec3f(Convert::ToFloat(pos[0]), Convert::ToFloat(pos[1]), Convert::ToFloat(pos[2]));
-            m_pParent->Transform->SetPosition(m_vPosition);
+            m_pParticleGroup->Transform->SetPosition(m_vPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPosition.z;

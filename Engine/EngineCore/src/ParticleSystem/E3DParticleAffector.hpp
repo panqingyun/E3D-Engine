@@ -30,13 +30,13 @@ namespace E3DEngine
 	class ParticleGroup;
 	class Particle;
 
-	class ParticleAffector extends Ref
+	class ParticleAffector : public Ref
 	{
 		DECLARE_CLASS(ParticleAffector);
 	public:
 		ParticleAffector()
 		{
-			m_pParent = nullptr;
+			m_pParticleGroup = nullptr;
 		}
 		virtual void Initilize(ParticleGroup *pParent);
 		virtual ~ParticleAffector();
@@ -50,14 +50,14 @@ namespace E3DEngine
 		}
 		virtual void RotateParticleByMat(mat4f rotateMatrix);
 	public:
-		ParticleGroup *m_pParent;
+		ParticleGroup *m_pParticleGroup;
 		eParticleAffector m_Type;
 		mat4f m_matrixRotate;
 		uint	particleGroupID;
 	};
 
 	/* 随机外力效果器
-
+		随机方向 即四面八方
 	*/
 
 	class RandomForceAffector extends ParticleAffector
@@ -85,10 +85,11 @@ namespace E3DEngine
 	};
 
 	/* 线性外力效果器
+		匀速直线运动
 
 	*/
 
-	class LinerForceAffector extends ParticleAffector
+	class LinerForceAffector : public ParticleAffector
 	{
 		DECLARE_CLASS(LinerForceAffector);
 	public:
@@ -103,11 +104,11 @@ namespace E3DEngine
 		float m_fSpeed;
 	};
     
-    /* 线性外力效果器
-     
+    /* 向心力影响器
+      向中心运动
      */
     
-    class MoveToFiringPointForceAffector extends ParticleAffector
+    class MoveToFiringPointForceAffector : public ParticleAffector
     {
         DECLARE_CLASS(MoveToFiringPointForceAffector);
     public:
@@ -123,7 +124,10 @@ namespace E3DEngine
         float m_fRotateWithEmitterAngle;
     };
     
-    class RotateForceAffector extends ParticleAffector
+	/* 旋转外力影响器
+		
+	*/
+    class RotateForceAffector : public ParticleAffector
     {
         DECLARE_CLASS(RotateForceAffector);
     public:
@@ -140,7 +144,7 @@ namespace E3DEngine
     };
 
 	// 缩放影响器
-	class ScaleAffector extends ParticleAffector
+	class ScaleAffector : public ParticleAffector
 	{
 		DECLARE_CLASS(ScaleAffector);
 	public:
@@ -156,7 +160,7 @@ namespace E3DEngine
     
 
 	// 颜色渐变影响器
-	class LinnerColorAffector extends ParticleAffector
+	class LinnerColorAffector : public ParticleAffector
 	{
 		DECLARE_CLASS(LinnerColorAffector);
 	public:
@@ -181,7 +185,7 @@ namespace E3DEngine
 	};
 
 	// 粒子团整体旋转
-	class GroupRotationAffector  extends ParticleAffector
+	class GroupRotationAffector  : public ParticleAffector
 	{
 		DECLARE_CLASS(GroupRotationAffector);
 	public:
@@ -199,7 +203,7 @@ namespace E3DEngine
 	};
 
 	// 粒子自旋
-	class RotateAffector extends ParticleAffector
+	class RotateAffector : public ParticleAffector
 	{
 		DECLARE_CLASS(RotateAffector);
 	public:

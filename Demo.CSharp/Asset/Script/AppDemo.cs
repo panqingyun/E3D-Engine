@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using E3DEngine;
-using log4net;
+﻿using E3DEngine;
 
 /// <summary>
 /// Entry point

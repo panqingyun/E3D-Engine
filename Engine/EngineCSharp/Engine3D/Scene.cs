@@ -25,7 +25,7 @@ namespace E3DEngine
         public static Scene LoadScene(string path)
         {
             Scene scene = createScene(path);
-            changeScene(scene.ID);
+           // changeScene(scene.ID);
 
             return scene;
         }

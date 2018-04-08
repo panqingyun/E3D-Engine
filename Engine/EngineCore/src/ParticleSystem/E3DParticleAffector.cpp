@@ -13,19 +13,19 @@ namespace E3DEngine
     
 	void ParticleAffector::Initilize(ParticleGroup *pParent)
 	{
-		m_pParent = pParent;
+		m_pParticleGroup = pParent;
 		particleGroupID = 0;
 	}
 
 
 	ParticleAffector::~ParticleAffector()
 	{
-		m_pParent = nullptr;
+		m_pParticleGroup = nullptr;
 	}
 
 	void ParticleAffector::Update(float deltaTime)
     {
-        if (m_pParent->IsActive == false)
+        if (m_pParticleGroup->IsActive == false)
         {
             return;
         }
@@ -53,7 +53,7 @@ namespace E3DEngine
 
 	void RandomForceAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -74,7 +74,7 @@ namespace E3DEngine
             
             if (m_bRotateByOrbit)
             {
-				ptr->RotateByDir(m_pParent->m_ParticleDir);
+				ptr->RotateByDir(m_pParticleGroup->m_ParticleDir);
                             }
             else if(m_bRotateByDir)
             {
@@ -108,9 +108,9 @@ namespace E3DEngine
         else
         {
 			vec3f dir = ptr->GetMoveDirection();
-            if (m_pParent->m_isLock == 2)
+            if (m_pParticleGroup->m_isLock == 2)
             {
-                dir.x += m_pParent->m_ParticleDir.x;
+                dir.x += m_pParticleGroup->m_ParticleDir.x;
             }
             
 			if (ptr->GetMoveSpeed() < 0.000001  && ptr->GetMoveSpeed() > -0.00001)
@@ -173,7 +173,7 @@ namespace E3DEngine
 
 	void MoveToFiringPointForceAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -272,7 +272,7 @@ namespace E3DEngine
 
 	void RotateForceAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -340,7 +340,7 @@ namespace E3DEngine
 
 	void LinerForceAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -401,7 +401,7 @@ namespace E3DEngine
 
 	void LinnerColorAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -460,7 +460,7 @@ namespace E3DEngine
 
 	void GroupRotationAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -474,9 +474,9 @@ namespace E3DEngine
 		//float hasLiveTime = ptr->getLiveTime();
         //float p = hasLiveTime/totalTime;
         
-        vec3f target = m_pParent->m_EmitterPositon;
+        vec3f target = m_pParticleGroup->m_EmitterPositon;
 
-		vec3f dir = ptr->Transform->GetPosition() - m_pParent->m_EmitterPositon;
+		vec3f dir = ptr->Transform->GetPosition() - m_pParticleGroup->m_EmitterPositon;
         dir.normalize();
 		ptr->RotateByDir(dir, m_fRotateSpeed);
     }
@@ -509,7 +509,7 @@ namespace E3DEngine
     
     void ScaleAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }
@@ -562,7 +562,7 @@ namespace E3DEngine
     void RotateAffector::AffectParticle(float fElapsedTime, share_pointer<Particle> particle)
     {
         
-        if (m_pParent == nullptr)
+        if (m_pParticleGroup == nullptr)
         {
             return;
         }

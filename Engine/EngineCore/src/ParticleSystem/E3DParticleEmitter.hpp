@@ -35,7 +35,7 @@ namespace E3DEngine
      发射器类提供不同的实现。
      */
     // ----------------------------------------------------------------------------------------
-    class ParticleEmitter extends Ref
+    class ParticleEmitter : public Ref
     {
         DECLARE_CLASS(ParticleEmitter);
     public:
@@ -94,7 +94,7 @@ namespace E3DEngine
         // 是否启用
         bool m_bEnable;
         // 归属哪个粒子团
-        ParticleGroup *m_pParent;
+        ParticleGroup *m_pParticleGroup;
         float m_fBlankTime; //间歇时间
         float m_fHasBlankTime; // 已经间歇时长
         float m_fBronInterval;  //粒子出生间隔时间
@@ -123,7 +123,7 @@ namespace E3DEngine
         uint	particleGroupID;
     };
     
-    class PointEmitter extends ParticleEmitter
+    class PointEmitter : public ParticleEmitter
     {
         DECLARE_CLASS(PointEmitter);
     public:
@@ -137,7 +137,7 @@ namespace E3DEngine
     };
     
     // 区域发射器
-    class AreaEmitter extends ParticleEmitter
+    class AreaEmitter : public ParticleEmitter
     {
         DECLARE_CLASS(AreaEmitter)
     public:
@@ -154,7 +154,7 @@ namespace E3DEngine
     };
     
     //球面发射器
-    class BallEmitter extends ParticleEmitter
+    class BallEmitter : public ParticleEmitter
     {
         DECLARE_CLASS(BallEmitter)
     public:

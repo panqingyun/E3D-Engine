@@ -72,7 +72,7 @@ namespace E3DEngine
 		char buffer_[BUFFER_SIZE + 1];
 	};
 
-	class Logger implement IObject
+	class Logger : public IObject
 	{
 	public:
 		Logger() = default;
@@ -89,7 +89,7 @@ namespace E3DEngine
 		Logger * nextDebugLogger;
 	};
 
-	class Debug
+	class Debug : public IObject
 	{
 	public:
 		Debug();
@@ -98,9 +98,7 @@ namespace E3DEngine
 	public: 
 		static void Log(LogLevel ll, const char * param, ...);
 		static StreamBuffer * m_MyStreamBuf;
-#ifdef WIN32
 		static DebugOutput OutputLogFunc;
-#endif
 	protected:
 		static Logger * infoLogger;
 		static Logger * errorLogger;

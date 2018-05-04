@@ -11,7 +11,7 @@
 
 namespace E3DEngine
 {
-	class Encoding
+	class Encoding : public IObject
 	{
 	public:
 		static bool IsNumber(const char * cstring)

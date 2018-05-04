@@ -22,7 +22,7 @@ namespace E3DEngine
 	} eRenderIndex;
 
 
-	class MinMaxAABB extends Object
+	class MinMaxAABB : public Object
 	{
 	private:
 		vec3f    m_Min;

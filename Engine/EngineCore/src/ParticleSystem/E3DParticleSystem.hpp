@@ -18,7 +18,7 @@ namespace E3DEngine
 	class RenderObject;
 	class ParticleGroup;
 	class ParticleConfig;
-	class ParticleSystem implement ISystem
+	class ParticleSystem : public ISystem
 	{
 	public:		
 		static ParticleSystem& GetInstance()

@@ -27,7 +27,7 @@ namespace E3DEngine
 		int mPositionY;
 	};
 
-	class Application
+	class Application : public IObject
 	{
 	public:
 		Application();

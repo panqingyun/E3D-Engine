@@ -16,7 +16,7 @@ namespace E3DEngine
 {
 	void ImplCollider();
 
-	struct ColCallBack : btCollisionWorld::ContactResultCallback
+	struct ColCallBack : public btCollisionWorld::ContactResultCallback
 	{
 	public:
 		virtual btScalar addSingleResult(
@@ -49,7 +49,7 @@ namespace E3DEngine
 		};
 	};
 
-	class Collider extends Component
+	class Collider : public Component
 	{
 	public:
 		virtual ~Collider()
@@ -71,12 +71,12 @@ namespace E3DEngine
 		btCollisionShape*	m_pShape;
 		btScalar			m_fMass;
 		btRigidBody*		m_pRigidBody;
-		btDefaultMotionState* m_pMotionState;
-		ColCallBack			 mColCallBack;
-		btTransform			m_StartTransform;
+		btDefaultMotionState*	m_pMotionState;
+		ColCallBack				mColCallBack;
+		btTransform				m_StartTransform;
 	};
 	
-	class BoxCollider extends Collider
+	class BoxCollider : public  Collider
 	{
 		DECLARE_CLASS(BoxCollider)
 	public:
@@ -92,7 +92,7 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 	};
 
-	class SphereCollider extends Collider
+	class SphereCollider : public  Collider
 	{
 		DECLARE_CLASS(SphereCollider)
 	public:
@@ -122,7 +122,7 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 	};
 
-	class MotionState extends btDefaultMotionState
+	class MotionState : public  btDefaultMotionState
 	{
 	public:
 		MotionState(const  btTransform &initialpos, GameObject *obj)

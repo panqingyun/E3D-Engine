@@ -34,7 +34,7 @@ namespace E3DEngine
 		eDM_POINTS,
 	};
 
-	class RenderSystem
+	class RenderSystem : public IObject
 	{
 	public:
 		RenderSystem();

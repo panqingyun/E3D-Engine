@@ -15,7 +15,7 @@ namespace E3DEngine
 {
 
 	class TextureFrameEffect;
-	class Texture
+	class Texture : public IObject
 	{
 		friend class Material;
 	public:

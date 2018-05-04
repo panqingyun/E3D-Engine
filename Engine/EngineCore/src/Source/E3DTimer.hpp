@@ -13,7 +13,7 @@
 
 namespace E3DEngine
 {
-	class Time
+	class Time : public IObject
 	{
 	public:
 		static float deltaTime;

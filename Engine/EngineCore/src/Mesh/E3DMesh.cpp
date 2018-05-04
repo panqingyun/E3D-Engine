@@ -221,18 +221,17 @@ namespace E3DEngine
 		{
 			const aiVector3D* pPos      = &(paiMesh->mVertices[i]);
 			const aiVector3D* pNormal   = &(paiMesh->mNormals[i]);
-			const aiVector3D* pTexCoord1 = paiMesh->HasTextureCoords(0) ? &(paiMesh->mTextureCoords[0][i]) : &Zero3D;
-			const aiVector3D* pTexCoord2 = paiMesh->HasTextureCoords(1) ? &(paiMesh->mTextureCoords[1][i]) : &Zero3D;
-			const aiVector3D* pTexCoord3 = paiMesh->HasTextureCoords(2) ? &(paiMesh->mTextureCoords[2][i]) : &Zero3D;
-			const aiVector3D* pTexCoord4 = paiMesh->HasTextureCoords(3) ? &(paiMesh->mTextureCoords[3][i]) : &Zero3D;
-			const aiVector3D* pTexCoord5 = paiMesh->HasTextureCoords(4) ? &(paiMesh->mTextureCoords[4][i]) : &Zero3D;
-			const aiVector3D* pTexCoord6 = paiMesh->HasTextureCoords(5) ? &(paiMesh->mTextureCoords[5][i]) : &Zero3D;
-			const aiVector3D* pTexCoord7 = paiMesh->HasTextureCoords(6) ? &(paiMesh->mTextureCoords[6][i]) : &Zero3D;
-			const aiVector3D* pTexCoord8 = paiMesh->HasTextureCoords(7) ? &(paiMesh->mTextureCoords[7][i]) : &Zero3D;
-			const aiColor4D * pColor	= paiMesh->HasVertexColors(0)  ? &(paiMesh->mColors[0][i])			: &Default4D;
-			const aiVector3D* pTangent	= paiMesh->HasTangentsAndBitangents() ? &(paiMesh->mTangents[i])	: &Zero3D;
+			const aiVector3D* pTexCoord1 = paiMesh->HasTextureCoords(0)			? &(paiMesh->mTextureCoords[0][i])	: &Zero3D;
+			const aiVector3D* pTexCoord2 = paiMesh->HasTextureCoords(1)			? &(paiMesh->mTextureCoords[1][i])	: &Zero3D;
+			const aiVector3D* pTexCoord3 = paiMesh->HasTextureCoords(2)			? &(paiMesh->mTextureCoords[2][i])	: &Zero3D;
+			const aiVector3D* pTexCoord4 = paiMesh->HasTextureCoords(3)			? &(paiMesh->mTextureCoords[3][i])	: &Zero3D;
+			const aiVector3D* pTexCoord5 = paiMesh->HasTextureCoords(4)			? &(paiMesh->mTextureCoords[4][i])	: &Zero3D;
+			const aiVector3D* pTexCoord6 = paiMesh->HasTextureCoords(5)			? &(paiMesh->mTextureCoords[5][i])	: &Zero3D;
+			const aiVector3D* pTexCoord7 = paiMesh->HasTextureCoords(6)			? &(paiMesh->mTextureCoords[6][i])	: &Zero3D;
+			const aiVector3D* pTexCoord8 = paiMesh->HasTextureCoords(7)			? &(paiMesh->mTextureCoords[7][i])	: &Zero3D;
+			const aiColor4D * pColor	 = paiMesh->HasVertexColors(0)			? &(paiMesh->mColors[0][i])			: &Default4D;
+			const aiVector3D* pTangent	 = paiMesh->HasTangentsAndBitangents()	? &(paiMesh->mTangents[i])			: &Zero3D;
 			
-			aiColor4D realColor = aiColor4D(pColor->r ,pColor->g ,pColor->b ,pColor->a);
 			Vertex vertex;
 			vertex.SetPosition(pPos->x, pPos->y, pPos->z);
 			vertex.SettextureCoord1(pTexCoord1->x, pTexCoord1->y);
@@ -244,7 +243,7 @@ namespace E3DEngine
 			vertex.SettextureCoord7(pTexCoord7->x, pTexCoord7->y);
 			vertex.SettextureCoord8(pTexCoord8->x, pTexCoord8->y);
 			vertex.SetNormal(pNormal->x, pNormal->y, pNormal->z);
-			vertex.SetColor(realColor.r,realColor.g,realColor.b, realColor.a);
+			vertex.SetColor(pColor->r, pColor->g, pColor->b, pColor->a);
 			vertex.SetTangent(pTangent->x, pTangent->y, pTangent->z);
 			m_vecVertex.push_back(vertex);
 		}

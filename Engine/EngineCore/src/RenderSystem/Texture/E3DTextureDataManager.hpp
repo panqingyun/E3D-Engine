@@ -72,7 +72,7 @@ namespace E3DEngine
 		// @return 纹理缓冲区ID
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual unsigned int CreateTextureBuffer(std::string imageName, TextureData &tData);
+		virtual unsigned int CreateTexture(std::string imageName, TextureData &tData);
 
 		// -----------------------------------------------
 		// 创建图像数据

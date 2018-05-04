@@ -4,7 +4,7 @@
 
 namespace E3DEngine
 {
-	class Plane extends GameObject
+	class Plane : public GameObject
 	{
 	public:
 		Plane();

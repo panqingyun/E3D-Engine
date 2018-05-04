@@ -12,7 +12,7 @@
 
 namespace E3DEngine
 {
-	class Rectangle extends GameObject
+	class Rectangle : public GameObject
 	{
 	public:
 		void CreateShape(float width, float height, bool up2down = false);

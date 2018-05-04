@@ -32,7 +32,7 @@ void MonoScriptManager::Initialize()
 	mono_trace_set_printerr_handler(mono_printerr_call);
 	// Never insert system breakpoint for IL opcode Break and Debugger.Break () call.
 	mono_set_break_policy(NeverInsertBreakpoint);
-	// TODO ±‡“ÎC#  ‰≥ˆµΩ AssemblyCSharp/effect_engine.dll
+	
 	std::string mono_dll_path = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly";
 	std::string code_dll_file = E3DEngine::Application::AppDataPath + "../Library/AssemblyCSharp.dll";
 	std::string engine_dll_file = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly/E3DEngine.dll";

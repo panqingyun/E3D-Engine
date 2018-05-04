@@ -24,7 +24,7 @@ namespace E3DEngine
 
     };
 	
-	class Material extends Object
+	class Material : public  Object
 	{
 	public:
 		Material(); 
@@ -34,7 +34,7 @@ namespace E3DEngine
 		virtual void UseMaterial();
 
 		// -----------------------------------------------
-		// 是材质失效
+		// 材质失效
 		//-----------------------------------------------
 		virtual void InvalidMaterial();
 

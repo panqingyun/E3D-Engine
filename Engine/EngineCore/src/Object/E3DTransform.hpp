@@ -67,7 +67,7 @@ namespace E3DEngine
 		std::map<unsigned int, CTransform*> Childs;
 	private:
 		bool  m_bStateChange;
-        bool    m_IsBillBoard;
+        bool  m_IsBillBoard;
 		bool  m_bNeedUpdate;
 		vec3f m_vForward;
 		vec3f m_vUp;

@@ -7,7 +7,7 @@
 
 namespace E3DEngine
 {
-	class Physics extends Ref
+	class Physics : public  Ref
 	{
 	private:
 		Physics();

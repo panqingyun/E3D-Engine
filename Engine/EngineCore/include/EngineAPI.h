@@ -57,8 +57,8 @@ extern "C"
 	/// <summary>
 	/// 初始化
 	/// </summary>
-	/// <param> screenWidth </param>  屏幕宽度
-	/// <param> screenHeight </param> 屏幕高度
+	/// <param name = "screenWidth"> 屏幕宽度 </param>
+	/// <param name = "screenHeight"> 屏幕高度</param> 
 	__api_function_ void InitilizeEngine();
 	/// <summary>
 	/// 启动程序脚本
@@ -68,10 +68,6 @@ extern "C"
 	/// 关闭程序脚本
 	/// </summary>
 	__api_function_ void StopAppliaction();
-	/// <summary>
-	/// 初始化OpenGLES IOS 创建默认的fbo
-	/// </summary>
-	__api_function_ void SetupGLBuffer();
 	/// <summary>
 	/// 创建EGL
 	/// </summary>
@@ -87,7 +83,7 @@ extern "C"
 	/// <summary>
 	/// 更新
 	/// </summary>
-	/// <param> deltaTime </param>  时间
+	/// <param name = "deltaTime"> 时间 </param>
 	__api_function_ void EngineUpdate();
 	/// <summary>
 	/// 销毁

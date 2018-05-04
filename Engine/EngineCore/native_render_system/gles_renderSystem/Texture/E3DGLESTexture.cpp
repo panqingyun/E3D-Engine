@@ -19,7 +19,7 @@ namespace E3DEngine
 
 	void GLES_Texture::Create(std::string fileName, TextureData &tData)
 	{
-		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->CreateTextureBuffer(fileName, tData);
+		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->CreateTexture(fileName, tData);
 	}
 	
 	void GLES_Texture::SetTextureData(TextureData &tData)

@@ -6,7 +6,7 @@
 namespace E3DEngine
 {
 	class Renderer;
-	class Sphere extends GameObject
+	class Sphere : public GameObject
 	{
 	public:
 		Sphere()

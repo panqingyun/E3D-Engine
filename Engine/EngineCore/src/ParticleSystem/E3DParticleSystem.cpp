@@ -89,7 +89,7 @@ namespace E3DEngine
 				}
 				// 初始化粒子团属性
 				initParticleGroup(particle, cfgName, it);
-				// 初始化粒子团所在层属性
+				// 初始化粒子团渲染器
 				initParticleRenderer(it, particle);
 				// 创建发射器
 				createParticleEmitter(it, cfgName, particle);

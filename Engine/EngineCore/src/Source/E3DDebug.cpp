@@ -3,9 +3,7 @@
 
 namespace E3DEngine
 {
-#ifdef WIN32
 	DebugOutput Debug::OutputLogFunc = nullptr;
-#endif
 	StreamBuffer * Debug::m_MyStreamBuf = nullptr;
 	Debug::Debug() = default;
 	Logger * Debug::infoLogger = nullptr;
@@ -59,16 +57,10 @@ namespace E3DEngine
 
 		if (len <= BUFFER_SIZE)
 			buffer_[len] = '\0';
-
-#ifdef __ANDROID__    
-		LOGERROR("%s", buffer_);
-#endif
-#ifdef WIN32
-		Debug::OutputLogFunc( buffer_);
-#endif
-#ifdef __IOS__    
-		printf("%s\n", buffer_);
-#endif    
+		if (Debug::OutputLogFunc != nullptr)
+		{
+			Debug::OutputLogFunc(buffer_);
+		}
 		pbump(-len);
 		return len;
 	}
@@ -76,69 +68,40 @@ namespace E3DEngine
 	void DebugLogger::Log(const char * log)
 	{
 		std::string outLog = StringBuilder::Format("[debug]:\t%s\n", log);
-#ifdef __IOS__
-		printf("%s\n", outLog.c_str());
-#endif 
-#ifdef __ANDROID__
-		LOGDEBUG("%s", outLog.c_str());
-#endif
-#ifdef WIN32
+
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
 		}
-#endif
 	}
 
 	void WarningLogger::Log(const char * log)
 	{
 		std::string outLog = StringBuilder::Format("[warning]:\t%s\n", log);
-#ifdef __IOS__
-		printf("%s\n", outLog.c_str());
-#endif 
-#ifdef __ANDROID__
-		LOGWARNING("%s", outLog.c_str());
-#endif
-#ifdef WIN32
+
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
 		}
-#endif
 	}
 
 	void ErrorLogger::Log(const char * log)
 	{
 		std::string outLog = StringBuilder::Format("[error]:\t%s\n", log);
-#ifdef __IOS__
-		printf("%s\n", outLog.c_str());
-#endif 
-#ifdef __ANDROID__
-		LOGERROR("%s", outLog.c_str());
-#endif
-#ifdef WIN32
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
 		}
-#endif
 	}
 
 	void InfoLogger::Log(const char * log)
 	{
 		std::string outLog = StringBuilder::Format("[info]:\t%s\n", log);
-#ifdef __IOS__
-		printf("%s\n", outLog.c_str());
-#endif 
-#ifdef __ANDROID__
-		LOGINFO("%s", outLog.c_str());
-#endif
-#ifdef WIN32
+
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
 		}
-#endif
 	}
 
 	Logger::Logger(LogLevel level, Logger * nextLogger)

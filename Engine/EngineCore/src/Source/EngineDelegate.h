@@ -9,7 +9,6 @@
 #ifndef EngineDelegate_hpp
 #define EngineDelegate_hpp
 
-#include "../../include/Include.h"
 #include "../Camera/E3DCamera.h"
 #include "../ParticleSystem/E3DParticleFactory.hpp"
 #include "../ParticleSystem/E3DParticleSystem.hpp"

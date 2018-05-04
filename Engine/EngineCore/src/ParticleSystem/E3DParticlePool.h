@@ -11,7 +11,7 @@ namespace E3DEngine
 {
 	class Particle;
 	using particleListIterator = std::list<share_pointer<Particle>>::iterator;
-	class ParticlePool implement IObject
+	class ParticlePool : public IObject
 	{
 	public:
 		ParticlePool()

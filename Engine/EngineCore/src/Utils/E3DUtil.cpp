@@ -9,7 +9,6 @@
 #include "../Source/E3DPlatformConfig.h"
 #include "../Mesh/E3DMeshRender.h"
 #include "../Source/EngineDelegate.h"
-#include "../../include/Include.h"
 #ifdef __IOS__
 #include <sys/time.h>
 #endif
@@ -29,15 +28,8 @@ long getCurrentTime()
 }
 extern "C"
 {
-#ifdef WIN32
-#include "..\..\extern\windows_net\E3DNet.h"
-#endif
-//#include "../../gles_renderSystem/E3DGLESRenderSystem.hpp"
 	__api_function_ void InitilizeEngine()
 	{
-#ifdef WIN32
-		//E3DNet::GetInstance().InitLogic();
-#endif
 		E3DEngine::EngineDelegate::GetInstance().Initilize();
 	}
 	
@@ -49,11 +41,6 @@ extern "C"
 	{
 		Application::StopApp();
 	}
-	__api_function_ void SetupGLBuffer()
-	{
-		//E3DEngine::EngineDelegate::GetInstance().GetRenderSystem()->SetupDefaultFrameBuffer();
-	}
-
 	__api_function_ void EngineUpdate()
 	{
 		static DWORD lastTime = getCurrentTime();
@@ -61,18 +48,12 @@ extern "C"
 		float _deltaTime = (float)(curTime - lastTime) / 1000.0f;
 		lastTime = curTime;
 		Time::deltaTime = _deltaTime;
-#ifdef WIN32
-		//E3DNet::GetInstance().Update(_deltaTime);
-#endif
 		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime, true);
 		
 	}
 
 	__api_function_ void DestoryEngine()
 	{
-#ifdef WIN32
-		//E3DNet::GetInstance().Destory();
-#endif
 		E3DEngine::EngineDelegate::GetInstance().Destory();
 	}
 
@@ -101,9 +82,7 @@ extern "C"
 
 	__api_function_ void SetDebugLogOutFunc(void * func)
 	{
-#ifdef WIN32
 		Debug::OutputLogFunc = (DebugOutput)func;
-#endif
 	}
 
 	__api_function_ void MouseDown(int mouseButtonID, float xPos, float yPos)

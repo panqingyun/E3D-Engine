@@ -16,7 +16,7 @@
 namespace E3DEngine
 {
     void ImplmentParticle();
-    class ParticleFactory implement IFactory
+    class ParticleFactory : public IFactory
     {
     public:
         static ParticleFactory& GetInstance()

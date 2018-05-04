@@ -11,7 +11,7 @@
 
 namespace E3DEngine
 {
-	class MaterialManager
+	class MaterialManager : public IObject
 	{
 	public:
 		MaterialManager() 

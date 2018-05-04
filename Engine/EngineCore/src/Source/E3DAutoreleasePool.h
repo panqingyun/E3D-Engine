@@ -1,7 +1,6 @@
 #ifndef __REF_MANAGER_H__
 #define __REF_MANAGER_H__
-
-#include "../Utils/E3DUtil.hpp"
+#include <vector>
 
 namespace E3DEngine
 {

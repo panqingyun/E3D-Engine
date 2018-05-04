@@ -2,6 +2,7 @@
 #include "Interface.h"
 #pragma pack(1) 
 #define MaxBoneNumber 106.0f
+
 struct Vertex
 {
 	Vertex()

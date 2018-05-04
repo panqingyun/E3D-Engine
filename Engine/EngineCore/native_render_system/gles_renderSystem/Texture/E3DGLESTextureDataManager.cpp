@@ -12,7 +12,7 @@ void E3DEngine::GLES_TextureDataManager::Init()
 	DEFAULT_TEXTURE_FILE = "Resource/Material/texture/common.png";
 }
 
-GLuint E3DEngine::GLES_TextureDataManager::CreateTextureBuffer(std::string imageName,TextureData &tData)
+GLuint E3DEngine::GLES_TextureDataManager::CreateTexture(std::string imageName,TextureData &tData)
 {
 	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
 	{

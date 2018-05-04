@@ -103,7 +103,7 @@ namespace E3DEngine
 		}
 	}
 
-	void CTransform::AddChild(UINT objID, E3DEngine::CTransform *child)
+	void CTransform::AddChild(unsigned int objID, E3DEngine::CTransform *child)
 	{
 		if (Childs.find(objID) != Childs.end())
 		{
@@ -129,7 +129,7 @@ namespace E3DEngine
 		Rotation		= q;
     }
 
-	void CTransform::RemoveChild(UINT objID)
+	void CTransform::RemoveChild(unsigned int objID)
 	{
 		if (Childs.find(objID) == Childs.end())
 		{

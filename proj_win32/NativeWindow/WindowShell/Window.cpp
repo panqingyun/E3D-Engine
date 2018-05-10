@@ -94,13 +94,9 @@ std::vector<std::string> Split(std::string str, std::string pattern)
 	}
 	return result;
 }
-int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPTSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+
+int APIENTRY initWindow(LPTSTR lpCmdLine)
 {
-	UNREFERENCED_PARAMETER(hPrevInstance);
-	UNREFERENCED_PARAMETER(lpCmdLine);
 
 #ifdef ONE_INSTANCE //单例进程模式  	
 	HANDLE   hMutex = ::CreateMutex(NULL, TRUE, EXE_NAME);
@@ -108,7 +104,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	{
 		if (GetLastError() == ERROR_ALREADY_EXISTS)
 		{
-			MessageBox(NULL,"核心组件已经运行!","警告",NULL);
+			MessageBox(NULL, "核心组件已经运行!", "警告", NULL);
 			CloseHandle(hMutex);
 			return   1;
 		}
@@ -128,7 +124,22 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		WindowHeight = atoi(cmdLine[1].c_str());
 		WindowStyle = WS_POPUP;
 	}
-	
+
+	return 0;
+}
+
+int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
+                     _In_opt_ HINSTANCE hPrevInstance,
+                     _In_ LPTSTR    lpCmdLine,
+                     _In_ int       nCmdShow)
+{
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
+	if (initWindow(lpCmdLine) == 1)
+	{
+		return 1;
+	}
+
 
  	// TODO:  在此放置代码。
 	MSG msg = {};
@@ -155,7 +166,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			TranslateMessage(&msg); 		
 			DispatchMessage(&msg); 
 		}
-		else11111111111
+		else
 		{
 			::EngineUpdate();
 		}

@@ -135,9 +135,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
       <Filter>EngineCore\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\include\Include.h">
-      <Filter>EngineCore\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp">
       <Filter>EngineCore\src\Animation</Filter>
     </ClInclude>
@@ -350,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h">
       <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Utils\Include.h">
+      <Filter>EngineCore\src\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

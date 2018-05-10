@@ -49,17 +49,17 @@ namespace EngineEditor
 
         void EffectEditor_Load(object sender, EventArgs e)
         {
-            EngineDLL.SetAppDataPath("../../Demo.CSharp/Asset/");
-            EngineDLL.InitilizeEngine();
-            EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
-            EngineDLL.StartAppliaction();
-            EngineDLL.CreateEditorGrid();
+            //EngineDLL.SetAppDataPath("../../Demo.CSharp/Asset/");
+            //EngineDLL.InitilizeEngine();
+            //EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
+            //EngineDLL.StartAppliaction();
+            //EngineDLL.CreateEditorGrid();
             isLoaded = true;
         }
 
         private void EffectEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
-            EngineDLL.StopAppliaction();
+            //EngineDLL.StopAppliaction();
             RenderContent.Close();
             srv.ShutDown();
             System.Environment.Exit(0);
@@ -111,7 +111,7 @@ namespace EngineEditor
             {
                 return;
             }
-            EngineDLL.EngineUpdate();
+            //EngineDLL.EngineUpdate();
             frameSpeed.Text = m_fps.ToString();
             srv.Tick(0.2f);
         }
@@ -122,18 +122,18 @@ namespace EngineEditor
             {
                 return;
             }
-            if (e.Button == MouseButtons.Left)
-            {
-                EngineDLL.MouseDown((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                EngineDLL.MouseDown((int)EngineDLL.MouseButton.eRightButton, e.X, e.Y);
-            }
-            else if (e.Button == MouseButtons.Middle)
-            {
-                EngineDLL.MouseDown((int)EngineDLL.MouseButton.eMiddleButton, e.X, e.Y);
-            }
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    EngineDLL.MouseDown((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
+            //}
+            //else if (e.Button == MouseButtons.Right)
+            //{
+            //    EngineDLL.MouseDown((int)EngineDLL.MouseButton.eRightButton, e.X, e.Y);
+            //}
+            //else if (e.Button == MouseButtons.Middle)
+            //{
+            //    EngineDLL.MouseDown((int)EngineDLL.MouseButton.eMiddleButton, e.X, e.Y);
+            //}
         }
 
         private void EngineContener_MouseUp(object sender, MouseEventArgs e)
@@ -142,18 +142,18 @@ namespace EngineEditor
             {
                 return;
             }
-            if (e.Button == MouseButtons.Left)
-            {
-                EngineDLL.MouseUp((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                EngineDLL.MouseUp((int)EngineDLL.MouseButton.eRightButton, e.X, e.Y);
-            }
-            else if (e.Button == MouseButtons.Middle)
-            {
-                EngineDLL.MouseUp((int)EngineDLL.MouseButton.eMiddleButton, e.X, e.Y);
-            }
+            //if (e.Button == MouseButtons.Left)
+            //{
+            //    EngineDLL.MouseUp((int)EngineDLL.MouseButton.eLeftButton, e.X, e.Y);
+            //}
+            //else if (e.Button == MouseButtons.Right)
+            //{
+            //    EngineDLL.MouseUp((int)EngineDLL.MouseButton.eRightButton, e.X, e.Y);
+            //}
+            //else if (e.Button == MouseButtons.Middle)
+            //{
+            //    EngineDLL.MouseUp((int)EngineDLL.MouseButton.eMiddleButton, e.X, e.Y);
+            //}
         }
 
         private void EngineContener_MouseMove(object sender, MouseEventArgs e)
@@ -162,7 +162,7 @@ namespace EngineEditor
             {
                 return;
             }
-            EngineDLL.MouseMove(e.X, e.Y);
+            //EngineDLL.MouseMove(e.X, e.Y);
         }
 
         private void EffectEditor_SizeChanged(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace EngineEditor
             {
                 return;
             }
-            EngineDLL.ChageFrameSize(sceneContener.Width, sceneContener.Height);
+            //EngineDLL.ChageFrameSize(sceneContener.Width, sceneContener.Height);
         }
 
         private void pauseButton_Click(object sender, EventArgs e)
@@ -198,7 +198,7 @@ namespace EngineEditor
             {
                 return;
             }
-            EngineDLL.KeyDown((char)e.KeyValue);
+            //EngineDLL.KeyDown((char)e.KeyValue);
         }
 
         private void EffectEditor_KeyUp(object sender, KeyEventArgs e)
@@ -207,7 +207,7 @@ namespace EngineEditor
             {
                 return;
             }
-            EngineDLL.KeyUp((char)e.KeyValue);
+            //EngineDLL.KeyUp((char)e.KeyValue);
         }
     }
 }

@@ -8,7 +8,6 @@
 #define TextureDataManager_hpp
 
 #include "src/Source/Interface.h"
-#include <FreeImage.h>
 
 namespace E3DEngine
 {	

@@ -25,7 +25,7 @@ namespace E3DEngine
 	public:
 		virtual void SetTextureUniformName(std::string name);
 		virtual void Create(std::string fileName, TextureData &tData);
-		virtual void SetTextureUniformLocation(int i, GLuint ProgramHandle);
+		virtual void SetTextureUniformIndex(int i, GLuint ProgramHandle);
 		virtual void SetTextureData(TextureData &tData)override;
 		virtual void Create(TextureData &tData)override;
 		virtual void SetTextureEnum(unsigned int enumNumber);

@@ -7,6 +7,11 @@
 #include "E3DGLESTextureDataManager.hpp"
 #include <src/Source/E3DDebug.h>
 
+#ifndef STB_IMAGE_IMPLEMENTATION
+#define  STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+#endif
+
 void E3DEngine::GLES_TextureDataManager::Init()
 {
 	DEFAULT_TEXTURE_FILE = "Resource/Material/texture/common.png";
@@ -91,38 +96,18 @@ void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData)
 E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::CreateTextureData(std::string imageName)
 {
 	E3DEngine::TextureData * imgData = new E3DEngine::TextureData();
-	FREE_IMAGE_FORMAT fifmt = FreeImage_GetFileType(imageName.c_str(), 0);
-	FIBITMAP *dib = FreeImage_Load(fifmt, imageName.c_str(), 0);
-	//dib = FreeImage_ConvertTo32Bits(dib);
-	// 图片是上下颠倒的
-	FreeImage_FlipVertical(dib);
-	char *bits = (char*)FreeImage_GetBits(dib);
-	int width = FreeImage_GetWidth(dib);
-	int height = FreeImage_GetHeight(dib);
-	int bpp = FreeImage_GetBPP(dib);
-	int pitch = FreeImage_GetPitch(dib);
+	int width, height, bpp;
+	char *bits = (char*)stbi_load(imageName.c_str(), &width, &height, &bpp, 0);
 	char * outByte = nullptr;
-	// 交换 R和B的位置 ，FreeImage读取的图片内容是BGRA 或 BGR
-	if (bpp == 24)
+	// 交换 R和B的位置
+	if (bpp == 3)
 	{
-		for (size_t i = 0; i < width*height * 3; i += 3)
-		{
-			char temp = bits[i];
-			bits[i] = bits[i + 2];
-			bits[i + 2] = temp;
-		}
 		imgData->rgbModule = GL_RGB;
 		outByte = (char*)malloc(width * height * 3);
 		memcpy(outByte, bits, width*height * 3);
 	}
-	else if (bpp == 32)
+	else if (bpp == 4)
 	{
-		for (size_t i = 0; i < width*height * 4; i += 4)
-		{
-			char temp = bits[i];
-			bits[i] = bits[i + 2];
-			bits[i + 2] = temp;
-		}
 		imgData->rgbModule = GL_RGBA;
 		outByte = (char*)malloc(width * height * 4);
 		memcpy(outByte, bits, width*height * 4);
@@ -136,7 +121,7 @@ E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::CreateTextureData(s
 	imgData->imgData = outByte;
 	imgData->height = height;
 	imgData->width = width;
-	FreeImage_Unload(dib);
+	stbi_image_free(bits);
 	return imgData;
 }
 

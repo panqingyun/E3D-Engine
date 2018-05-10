@@ -49,7 +49,7 @@ namespace E3DEngine
 		m_nTextureEnum = enumNumber;
 	}
 	
-	void GLES_Texture::SetTextureUniformLocation(int i, GLuint ProgramHandle)
+	void GLES_Texture::SetTextureUniformIndex(int i, GLuint ProgramHandle)
 	{
 		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
 		glUniform1i(m_nTextureUniform, i);

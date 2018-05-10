@@ -103,6 +103,9 @@ RECENT REVISION HISTORY:
     Blazej Dariusz Roszkowski                                     github:Michaelangel007
 */
 
+#ifndef __STB_IMAGE_H__
+#define __STB_IMAGE_H__
+
 #ifndef STBI_INCLUDE_STB_IMAGE_H
 #define STBI_INCLUDE_STB_IMAGE_H
 
@@ -467,7 +470,6 @@ STBIDEF int   stbi_zlib_decode_noheader_buffer(char *obuffer, int olen, const ch
 #endif // STBI_INCLUDE_STB_IMAGE_H
 
 #ifdef STB_IMAGE_IMPLEMENTATION
-
 #if defined(STBI_ONLY_JPEG) || defined(STBI_ONLY_PNG) || defined(STBI_ONLY_BMP) \
   || defined(STBI_ONLY_TGA) || defined(STBI_ONLY_GIF) || defined(STBI_ONLY_PSD) \
   || defined(STBI_ONLY_HDR) || defined(STBI_ONLY_PIC) || defined(STBI_ONLY_PNM) \
@@ -7235,6 +7237,8 @@ STBIDEF int stbi_is_16_bit_from_callbacks(stbi_io_callbacks const *c, void *user
 }
 
 #endif // STB_IMAGE_IMPLEMENTATION
+
+#endif
 
 /*
    revision history:

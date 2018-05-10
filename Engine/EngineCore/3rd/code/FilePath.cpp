@@ -20,7 +20,6 @@
 #import <QuartzCore/QuartzCore.h>
 #endif
 #include "Helpers.h"
-#include "../FreeImage3170/FreeImage/Source/FreeImage.h"
 
 namespace vvision
 {

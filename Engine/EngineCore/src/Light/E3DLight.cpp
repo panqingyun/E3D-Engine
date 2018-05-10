@@ -27,6 +27,12 @@ namespace E3DEngine
 		TRANSFER_FIELD_VALUE(Range);
 	}
 
+	void PointLight::CreateShadow()
+	{
+		// TODO 点光源创建透视投影摄像机
+
+	}
+
 	DirectionLight::DirectionLight()
 	{
 		Type = eDIRECTION_LIGHT;
@@ -43,6 +49,11 @@ namespace E3DEngine
 	void DirectionLight::setBehaviourDefaultValue()
 	{
 		Light::setBehaviourDefaultValue();
+	}
+
+	void DirectionLight::CreateShadow()
+	{
+		// 平行光 创建正交投影摄像机
 	}
 
 	SpotLight::SpotLight()
@@ -63,6 +74,11 @@ namespace E3DEngine
 		Light::setBehaviourDefaultValue();
 		TRANSFER_FIELD_VALUE(Range);
 		TRANSFER_FIELD_VALUE(SpotAngle);
+	}
+
+	void SpotLight::CreateShadow()
+	{
+		// 追光 透视投影摄像机
 	}
 
 	Light * Light::Create(LightType type)

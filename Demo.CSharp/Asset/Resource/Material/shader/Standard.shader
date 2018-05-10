@@ -2,7 +2,7 @@
 varying highp vec3 vPosition;
 varying highp vec3 mCameraPos;
 
-const vec4  ambient = vec4(0.5, 0.5, 0.5, 1.0);		//环境光颜色
+const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
 const float Ns = 1.0;			//高光系数
 const float attenuation = 1.0;	//光线的衰减系数
 

@@ -31,16 +31,16 @@ namespace E3DEngine
 
 	void GLES_Material::SetTexture(Texture * texture, int index)
 	{
-		UINT textureIndex = GL_TEXTURE0 + index;
-		std::map<UINT, Texture*>::iterator it = Textures.find(index);
-		if (it != Textures.end())
+		if (Textures.find(index) != Textures.end() && texture != Textures[index])
 		{
-			static_cast<GLES_Texture*>(texture)->SetTextureUniformName(static_cast<GLES_Texture*>(it->second)->m_strTextureUniformName);
-			SAFE_DELETE(it->second);
-			Textures[index] = texture;
-			static_cast<GLES_Texture*>(texture)->SetTextureEnum(textureIndex);
-			static_cast<GLES_Texture*>(texture)->SetTextureUniformLocation(index, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+			SAFE_DELETE(Textures[index]);
 		}
+		UINT textureIndex = GL_TEXTURE0 + index;
+		Textures[index] = texture;
+		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(static_cast<GLES_Texture*>(texture)->m_strTextureUniformName);
+		static_cast<GLES_Texture*>(texture)->SetTextureEnum(textureIndex);
+		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(index, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		
 	}
 
 	void GLES_Material::createTexture(TextureData& data)
@@ -52,7 +52,7 @@ namespace E3DEngine
 		texture->Create(path, data);
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
 		texture->SetTextureUniformName(data.uniformName);
-		texture->SetTextureUniformLocation(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		texture->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}
 
@@ -61,7 +61,7 @@ namespace E3DEngine
 		int textureSum = Textures.size();
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
 		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(textureUniform);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformLocation(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}
 

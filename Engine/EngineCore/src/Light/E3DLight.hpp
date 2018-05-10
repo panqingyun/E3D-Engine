@@ -31,6 +31,23 @@ namespace E3DEngine
 
 	public:
 		virtual void setBehaviourDefaultValue() override;
+
+	public:
+		virtual void CreateShadow() { }
+		Light()
+		{
+			shadowCamera = nullptr;
+		}
+		virtual ~Light()
+		{
+			if (shadowCamera != nullptr)
+			{
+				SAFE_DELETE(shadowCamera);
+			}
+		}
+
+	protected:
+		Camera * shadowCamera;
 	};
 
 	class PointLight : public Light
@@ -42,6 +59,7 @@ namespace E3DEngine
 	public:
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue();
+		virtual void CreateShadow() override;
 	};
 
 	class DirectionLight : public Light
@@ -52,6 +70,7 @@ namespace E3DEngine
 	public:
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue();
+		virtual void CreateShadow() override;
 	};
 
 	class SpotLight : public Light
@@ -64,6 +83,7 @@ namespace E3DEngine
 	public:
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue();
+		virtual void CreateShadow() override;
 	};
 	
 }

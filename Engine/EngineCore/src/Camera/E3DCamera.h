@@ -26,13 +26,6 @@
 #include <vector>
 #include "../Object/E3DGameObject.h"
 
-enum Layer
-{
-	Default_Layer = 1,
-	NotBlend_Layer = 2,
-	Back_Layer = 3,
-};
-
 namespace E3DEngine
 {
 	class RenderQueue;

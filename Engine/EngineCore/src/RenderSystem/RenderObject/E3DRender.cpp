@@ -1,5 +1,5 @@
 ﻿//
-//  E3DVertexBuffer.cpp
+//  E3DRenderer.cpp
 //
 //  Created by 潘庆云 on 2017/7/17.
 //

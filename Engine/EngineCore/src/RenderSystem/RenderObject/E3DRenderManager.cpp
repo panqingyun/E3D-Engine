@@ -37,5 +37,4 @@ namespace E3DEngine
 		m_mapVertexBuffers.clear();
 	}
 
-
 }

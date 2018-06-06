@@ -20,7 +20,7 @@ namespace E3DEngine
 
 		void setTextureParam(TextureData &tData);
 
-		virtual TextureData * CreateTextureData(std::string imageName) override;
+		virtual TextureData * GetTextureDataFromFile(std::string imageName) override;
 		virtual void Cleanup() override;
 	};
 }

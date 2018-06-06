@@ -189,6 +189,12 @@ namespace E3DEngine
 		return Vertes;
 	}
 
+
+	BatchVertex * Particle::getBatchVertex()
+	{
+		return BVertes;
+	}
+
 	void Particle::SetSize(Vector2 size)
 	{
 		m_fWidth = size.x;
@@ -274,37 +280,41 @@ namespace E3DEngine
 		Vertes[0].SetNormal(0, 0, 1);
 		Vertes[0].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[0].SettextureCoord1(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
-		Vertes[0].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		Vertes[0].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
-		Vertes[0].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
 		Vertes[0].ShaderIndex = fShaderIndex;
-		
+
 		Vertes[1].SetPosition(m_Point[1].x, m_Point[1].y, m_Point[1].z);
 		Vertes[1].SetNormal(0, 0, 1);
 		Vertes[1].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[1].SettextureCoord1(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
-		Vertes[1].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		Vertes[1].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
-		Vertes[1].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
 		Vertes[1].ShaderIndex = fShaderIndex;
-		
+
 		Vertes[2].SetPosition(m_Point[2].x, m_Point[2].y, m_Point[2].z);
 		Vertes[2].SetNormal(0, 0, 1);
 		Vertes[2].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[2].SettextureCoord1(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
-		Vertes[2].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		Vertes[2].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
-		Vertes[2].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
 		Vertes[2].ShaderIndex = fShaderIndex;
-		
+
 		Vertes[3].SetPosition(m_Point[3].x, m_Point[3].y, m_Point[3].z);
 		Vertes[3].SetNormal(0, 0, 1);
 		Vertes[3].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[3].SettextureCoord1(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
-		Vertes[3].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		Vertes[3].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
-		Vertes[3].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
 		Vertes[3].ShaderIndex = fShaderIndex;
+
+		BVertes[0].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+		BVertes[0].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
+		BVertes[0].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
+		
+		BVertes[1].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+		BVertes[1].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
+		BVertes[1].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
+		
+		BVertes[2].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+		BVertes[2].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
+		BVertes[2].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
+		
+		BVertes[3].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+		BVertes[3].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
+		BVertes[3].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
 	}
 	
 	void Particle::RotateByDir(vec3f dir,float force)
@@ -739,9 +749,7 @@ namespace E3DEngine
 		int ivertexTotal = 0;
 		int iindexTotal = 0;
 		Renderer * render = static_cast<Renderer*>(m_pRenderer);;
-		render->RecordCurrentVextexStartIndex(ID);
-		render->RecordCurrentIndexStartIndex(ID);
-		
+		render->FillBegin(ID);		
 
 		for (share_pointer<Particle> &it : m_ParticlePool)
 		{
@@ -755,6 +763,12 @@ namespace E3DEngine
 				// TODO
 				render->FillVertex(vertex[vi]);
 			}
+			BatchVertex *b_vertex = it.get_ptr()->getBatchVertex();
+			for (int vi = 0; vi < 4; vi++)
+			{
+				// TODO
+				render->FillBatchVertex(b_vertex[vi]);
+			}
 			// 4 个顶点有 6个索引,
 			uint * index = it.get_ptr()->getIndices();
 			for (int ii = 0; ii < 6; ii++)
@@ -766,9 +780,7 @@ namespace E3DEngine
 			}
 			ivertexTotal += 4;
 		}
-		render->FillEnd();
-		render->VertexCountAdd(ID, (DWORD)ivertexTotal);
-		render->IndexCountAdd(ID, (DWORD)iindexTotal);
+		render->FillEnd(ID, (DWORD)ivertexTotal);
 	}
 	
 	void ParticleGroup::TransformChange()
@@ -836,11 +848,11 @@ namespace E3DEngine
 				it ++;
 			}
 			p->Update(deltaTime);
-			Vertex * vertex = p->getVertex(Transform->WorldMatrix);
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + p->Index * 4 + 3] = vertex[3];
+			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 3] = vertex[3];
 		}
 	}
 	
@@ -899,11 +911,11 @@ namespace E3DEngine
 			}
 			particle.get_ptr()->SetCamera(m_pRenderer->pCamera);
 			particle.get_ptr()->Update(deltaTime);
-			Vertex * vertex = particle.get_ptr()->getVertex(Transform->WorldMatrix);
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = vertex[1];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = vertex[2];
-			static_cast<Renderer*>(m_pRenderer)->Vertices[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = vertex[3];
+			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = vertex[1];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = vertex[2];
+			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = vertex[3];
 		}
 		if (m_ActiveParticles.empty() && !bIsEnable )
 		{

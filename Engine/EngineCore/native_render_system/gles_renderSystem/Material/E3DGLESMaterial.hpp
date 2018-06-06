@@ -29,6 +29,7 @@ namespace E3DEngine
 		virtual void UseProgram();		
 		virtual void UseNullProgram();
 		virtual void InvalidMaterial();
+		virtual void UpdateShader(unsigned int vertexType);
 	public:
 		virtual void CreateShader(ShaderConfig *cfg)
 		{

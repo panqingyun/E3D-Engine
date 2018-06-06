@@ -93,13 +93,13 @@ void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 }
 
-E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::CreateTextureData(std::string imageName)
+E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::GetTextureDataFromFile(std::string imageName)
 {
 	E3DEngine::TextureData * imgData = new E3DEngine::TextureData();
 	int width, height, bpp;
 	char *bits = (char*)stbi_load(imageName.c_str(), &width, &height, &bpp, 0);
 	char * outByte = nullptr;
-	// 交换 R和B的位置
+
 	if (bpp == 3)
 	{
 		imgData->rgbModule = GL_RGB;

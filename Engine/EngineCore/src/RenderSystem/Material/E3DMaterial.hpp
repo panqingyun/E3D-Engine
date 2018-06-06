@@ -71,6 +71,7 @@ namespace E3DEngine
 		// 使用ID是0的shader 即不使用任何shader
 		//-----------------------------------------------
 		virtual void UseNullProgram() { }
+		virtual void UpdateShader(unsigned int vertexType) { }
 
 		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
 

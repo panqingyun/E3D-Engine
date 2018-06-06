@@ -95,16 +95,6 @@ namespace E3DEngine
 		//}
 	}
 
-	void RenderObject::prepareRender(float deltaTime)
-	{
-		m_nIndexSize = (DWORD)Indices.size();
-	}
-	
-	void RenderObject::afterRender(float deltaTime)
-	{
-		
-	}
-
 	void RenderObject::Render(float deltaTime)
 	{
 		

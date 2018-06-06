@@ -44,7 +44,7 @@ namespace E3DEngine
 			
 			for (auto& sp : pShader->GetSamplerNameValue())
 			{
-				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->CreateTextureData(filePath + sp.second);
+				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(filePath + sp.second);
 				tData->clampType = (CLAMP_TYPE)config->TextureClampType;
 				tData->filterType = (FILTER_TYPE)config->TextureFilterType;
 				tData->fileName = sp.second;

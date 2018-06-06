@@ -3,6 +3,12 @@
 #pragma pack(1) 
 #define MaxBoneNumber 106.0f
 
+enum VertexType
+{
+	STATIC_VERTEX = 0,
+	DYNAMIC_VERTEX
+};
+
 struct Vertex
 {
 	Vertex()
@@ -26,9 +32,6 @@ struct Vertex
 		memset(Normals, 0, sizeof(float) * 3);
 		memset(Tangent, 0, sizeof(float) * 3);
 
-		memset(TranformPosition, 0, sizeof(float) * 3);
-		memset(TransformScale, 0, sizeof(float) * 3);
-		memset(TransformRotate, 0, sizeof(float) * 3);
 	}
 	void SetPosition(float x, float y, float z)
 	{
@@ -108,6 +111,36 @@ struct Vertex
 		}
 	}
 
+	float Position[3];
+	float Normals[3];
+	float Color[4];
+	float UV1[2];
+	float UV2[2];
+	float UV3[2];
+	float UV4[2];
+	float UV5[2];
+	float UV6[2];
+	float UV7[2];
+	float UV8[2];
+	float Tangent[3];
+	float BoneIndex[4];
+	float BoneWeight[4];
+	float ShaderIndex;
+};
+
+struct BatchVertex 
+{
+	float TranformPosition[3];
+	float TransformScale[3];
+	float TransformRotate[3];
+
+	BatchVertex()
+	{
+		memset(TranformPosition, 0, sizeof(float) * 3);
+		memset(TransformScale, 0, sizeof(float) * 3);
+		memset(TransformRotate, 0, sizeof(float) * 3);
+	}
+
 	void SetTransformPosition(float x, float y, float z)
 	{
 		TranformPosition[0] = x;
@@ -129,23 +162,5 @@ struct Vertex
 		TransformRotate[2] = z;
 	}
 
-	float Position[3];
-	float Normals[3];
-	float Color[4];
-	float UV1[2];
-	float UV2[2];
-	float UV3[2];
-	float UV4[2];
-	float UV5[2];
-	float UV6[2];
-	float UV7[2];
-	float UV8[2];
-	float Tangent[3];
-	float BoneIndex[4];
-	float BoneWeight[4];
-	float TranformPosition[3];
-	float TransformScale[3];
-	float TransformRotate[3];
-	float ShaderIndex;
 };
 #pragma pack() 

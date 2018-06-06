@@ -52,6 +52,7 @@ namespace E3DEngine
         eParticleLiveState	getParticleState() const;
         void				setParticleState(eParticleLiveState state);
         Vertex *			getVertex(mat4f worldMatrix);
+		BatchVertex *		getBatchVertex();
         uint *				getIndices();
         float				getParticleTimeToLive() const;
         void				SetSize(Vector2 size);
@@ -110,7 +111,8 @@ namespace E3DEngine
         vec3f   m_vBornPosition;
         float	m_fSpeed;                     // 速度
         vec3f		m_Point[4];
-        Vertex		Vertes[4];
+        BatchVertex BVertes[4];
+		Vertex		Vertes[4];
         uint		Indices[6];
         long		m_nCurrentColor;
         float		m_fTextureCoord[4][2];

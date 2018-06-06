@@ -398,6 +398,7 @@ namespace E3DEngine
 		Renderer * m_pRenderer;
 		vec3f		size;
 		std::vector<Vertex> m_vecVertex;
+		std::vector<BatchVertex> m_vecBatchVertex;
 		std::vector<uint> m_vecIndex;
 		bool	m_bIsStatic;
 	};

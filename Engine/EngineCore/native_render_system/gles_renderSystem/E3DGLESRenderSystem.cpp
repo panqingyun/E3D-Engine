@@ -62,7 +62,7 @@ namespace E3DEngine
         BindDefaultBackbuffer();
         defaultFrameBuffer->Clear();
 #else
-        m_pEGL_Context_Ex->UseContext();
+        m_pEGL_Context->UseContext();
 		BindDefaultBackbuffer();
 #endif
         glCullFace(GL_BACK);
@@ -84,7 +84,7 @@ namespace E3DEngine
 	void GLES_RenderSystem::EndFrame()
 	{
 #ifndef __IOS__
-		m_pEGL_Context_Ex->SwapBuffer();
+		m_pEGL_Context->SwapBuffer();
         glFlush();
 #endif
 	}
@@ -94,9 +94,9 @@ namespace E3DEngine
 #ifdef __IOS__
         SetupDefaultFrameBuffer();
 #else
-        m_pEGL_Context_Ex = new EGL_Context();
-        m_pEGL_Context_Ex->InitGLES(displayID, windowHandle);
-        m_pEGL_Context_Ex->UseContext();
+        m_pEGL_Context = new EGL_Context();
+        m_pEGL_Context->InitGLES(displayID, windowHandle);
+        m_pEGL_Context->UseContext();
 #endif
 	}
 

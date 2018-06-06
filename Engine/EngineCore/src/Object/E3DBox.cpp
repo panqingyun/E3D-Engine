@@ -7,6 +7,7 @@ void E3DEngine::Box::Create(float l, float w, float h)
 {
 	IsActive = false;
 	m_vecVertex.resize(24);
+	m_vecBatchVertex.resize(24);
 	// ǰ
 	m_vecVertex[0].SetPosition(-l / 2, h / 2, w / 2);
 	m_vecVertex[0].SetColor(1, 0, 1, 1);
@@ -138,23 +139,22 @@ void E3DEngine::Box::SetActive(bool isActive)
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
-		mRenderer->RecordCurrentVextexStartIndex(ID);
-		mRenderer->RecordCurrentIndexStartIndex(ID);
+		mRenderer->FillBegin(ID);
 		for (int i = 0; i < m_vecVertex.size(); i ++)
 		{
-			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-			m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
-			m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x * M_PI / 180, Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.z * M_PI / 180);
 			mRenderer->FillVertex(m_vecVertex[i]);
+			m_vecBatchVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+			m_vecBatchVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
+			m_vecBatchVertex[i].SetTransformRotate(Transform->RotationEuler.x * M_PI / 180, Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.z * M_PI / 180);
+			mRenderer->FillBatchVertex(m_vecBatchVertex[i]);
 		}
 
 		for (int i = 0; i < m_vecIndex.size(); i ++)
 		{
 			mRenderer->FillIndex(m_vecIndex[i]);
 		}
-		mRenderer->FillEnd();
-		mRenderer->VertexCountAdd(ID, m_vecVertex.size());
-		mRenderer->IndexCountAdd(ID, m_vecIndex.size());
+
+		mRenderer->FillEnd(ID, m_vecVertex.size());
 	}
 	m_pRenderer->TransformChange();
 }
@@ -178,12 +178,12 @@ void E3DEngine::Box::TransformChange()
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
 	int vertexStartIndex = mRenderer->GetRendererBuffer(ID)->VertextStartIndex;
 	std::vector<Vertex>::iterator it = m_vecVertex.begin();
-	for (int i = 0; i < m_vecVertex.size(); i++)
+	for (int i = 0; i < m_vecBatchVertex.size(); i++)
 	{
-		m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
-		m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
-		mRenderer->Vertices[vertexStartIndex + i] = m_vecVertex[i];
+		m_vecBatchVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+		m_vecBatchVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
+		m_vecBatchVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
+		mRenderer->mBatchVertex[vertexStartIndex + i] = m_vecBatchVertex[i];
 	}
 	mRenderer->TransformChange();
 }

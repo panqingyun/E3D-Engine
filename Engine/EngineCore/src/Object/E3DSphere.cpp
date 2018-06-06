@@ -78,23 +78,19 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
-		mRenderer->RecordCurrentVextexStartIndex(ID);
-		mRenderer->RecordCurrentIndexStartIndex(ID);
+		mRenderer->FillBegin(ID);
 		for (int i = 0; i < m_vecVertex.size(); i++)
 		{
-			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-			/*m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
-			m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);*/
-			mRenderer->FillVertex(m_vecVertex[i]);	
+			mRenderer->FillVertex(m_vecVertex[i]);
+			m_vecBatchVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+			mRenderer->FillBatchVertex(m_vecBatchVertex[i]);
 		}
 
 		for (int i = 0; i < m_vecIndex.size(); i++)
 		{
 			mRenderer->FillIndex(m_vecIndex[i]);
 		}
-		mRenderer->FillEnd();
-		mRenderer->VertexCountAdd(ID, m_vecVertex.size());
-		mRenderer->IndexCountAdd(ID, m_vecIndex.size());
+		mRenderer->FillEnd(ID, m_vecVertex.size());
 	}
 	mRenderer->TransformChange();
 }

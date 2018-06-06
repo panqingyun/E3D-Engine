@@ -1,3 +1,8 @@
+/*
+ * MonoScriptManager.cpp 
+ * create by PanQingyun
+ * 2017-12-01
+ */
 #include "MonoScriptManager.h"
 #include "../Object/E3DGameObject.h"
 #include <mono/utils/mono-logger.h>
@@ -22,7 +27,7 @@ void mono_printerr_call(const char *string, mono_bool is_stdout)
 
 static MonoBreakPolicy NeverInsertBreakpoint(MonoMethod *method)
 {
-	return MONO_BREAK_POLICY_NEVER;
+	return MONO_BREAK_POLICY_ALWAYS;
 }
 
 void MonoScriptManager::Initialize()

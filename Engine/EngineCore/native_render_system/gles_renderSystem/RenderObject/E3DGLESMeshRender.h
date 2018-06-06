@@ -17,14 +17,10 @@ namespace E3DEngine
 		}
 		
 	public:
+		virtual void FillBegin(UINT objId);
 		virtual void FillVertex(Vertex vb);
 		virtual void FillIndex(uint ib);
-		virtual void FillEnd();
-		virtual DWORD RecordCurrentVextexStartIndex(UINT objId);
-
-		virtual DWORD RecordCurrentIndexStartIndex(UINT objId);
-		virtual void VertexCountAdd(UINT objId, uint vertexCount);
-		virtual void IndexCountAdd(UINT objId, uint indexCount);
+		virtual void FillEnd(UINT objId, uint vertexCount);
 		virtual void RemoveInRenderer(UINT objId);
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 		virtual void TransformChange() override;

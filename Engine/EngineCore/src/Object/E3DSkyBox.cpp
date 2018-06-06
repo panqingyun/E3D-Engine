@@ -108,6 +108,7 @@ void E3DEngine::SkyDome::Create(float R)
 	int rowNumber = 91;
 	int colNumber = 361;
 	m_vecVertex.resize(rowNumber  * colNumber );
+	m_vecBatchVertex.resize(rowNumber  * colNumber);
 	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
 	m_vecIndex.resize(indexSize);
 	int index = 0;
@@ -184,21 +185,19 @@ void E3DEngine::SkyDome::SetActive(bool isActive)
 	mRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
-		mRenderer->RecordCurrentVextexStartIndex(ID);
-		mRenderer->RecordCurrentIndexStartIndex(ID);
+		mRenderer->FillBegin(ID);
 		for (int i = 0; i < m_vecVertex.size(); i++)
 		{
-			m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 			mRenderer->FillVertex(m_vecVertex[i]);
+			m_vecBatchVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
+			mRenderer->FillBatchVertex(m_vecBatchVertex[i]);
 		}
 
 		for (int i = 0; i < m_vecIndex.size(); i++)
 		{
 			mRenderer->FillIndex(m_vecIndex[i]);
 		}
-		mRenderer->FillEnd();
-		mRenderer->VertexCountAdd(ID, m_vecVertex.size());
-		mRenderer->IndexCountAdd(ID, m_vecIndex.size());
+		mRenderer->FillEnd(ID, m_vecVertex.size());
 	}
 	mRenderer->TransformChange();
 }

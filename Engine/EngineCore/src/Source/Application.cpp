@@ -51,6 +51,7 @@ namespace E3DEngine
 		}
 		else
 		{
+			Debug::Log(ell_Error, "Application::StartApp ERROR app.config");
 			assert(false);
 		}
 	}

@@ -2,6 +2,12 @@
 
 namespace E3DEngine
 {
+
+	void GLES_MeshRender::FillBegin(UINT objId)
+	{
+		pRender->FillBegin(objId);
+	}
+
 	/*void MeshRender::initBoneMatrix()
 	{
 	VecBoneMatrix.resize( m_pMeshBuffer->VecBoneMatrix.size());
@@ -26,33 +32,9 @@ namespace E3DEngine
 	}
 
 
-	void GLES_MeshRender::FillEnd()
+	void GLES_MeshRender::FillEnd(UINT objId, uint vertexCount)
 	{
-		pRender->FillEnd();
-	}
-
-
-	DWORD GLES_MeshRender::RecordCurrentVextexStartIndex(UINT objId)
-	{
-		return pRender->RecordCurrentVextexStartIndex(objId);
-	}
-
-
-	DWORD GLES_MeshRender::RecordCurrentIndexStartIndex(UINT objId)
-	{
-		return pRender->RecordCurrentIndexStartIndex(objId);
-	}
-
-
-	void GLES_MeshRender::VertexCountAdd(UINT objId, uint vertexCount)
-	{
-		pRender->VertexCountAdd(objId, vertexCount);
-	}
-
-
-	void GLES_MeshRender::IndexCountAdd(UINT objId, uint indexCount)
-	{
-		pRender->IndexCountAdd(objId, indexCount);
+		pRender->FillEnd(objId, vertexCount);
 	}
 
 	void GLES_MeshRender::RemoveInRenderer(UINT objId)

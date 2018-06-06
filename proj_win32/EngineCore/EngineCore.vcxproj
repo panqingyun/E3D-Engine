@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
     <OutDir>..\bin</OutDir>
@@ -101,11 +101,14 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;FreeImage_d.lib;freetype.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;FreeImage_d.lib;freetype.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PreBuildEvent>
+      <Command>start cmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

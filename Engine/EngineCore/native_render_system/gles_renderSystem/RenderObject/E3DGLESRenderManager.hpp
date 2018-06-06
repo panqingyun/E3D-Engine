@@ -36,8 +36,8 @@ namespace E3DEngine
 			}
 		}
 	public:
-		virtual void prepareRender(float deltaTime) override;
-
+		virtual void updateArrayBuffer(float deltaTime);
+		virtual void FillEnd(UINT objId, uint vertexCount) override;
 		virtual void TransformChange() override;
 
 		virtual void ClearVertexIndexBuffer() override;
@@ -48,17 +48,21 @@ namespace E3DEngine
 
 	protected:
 		void updateEngineDefineShaderValue();
-		virtual void afterRender(float deltaTime) override;
+		virtual void afterRender(float deltaTime);
 
 	private:
 		void setVBOs()
 		{
 			glGenBuffers(1, &m_VertexBuffer);
 			glGenBuffers(1, &m_IndexBuffer);
+			glGenBuffers(1, &m_BatchVertexBuffer);
+			Debug::Log(ell_Info, "-------------------++ m_VertexBuffer id = %d", m_VertexBuffer);
+			Debug::Log(ell_Info, "-------------------++ m_BatchVertexBuffer id = %d", m_BatchVertexBuffer);
 		}
 
 		GLuint	m_VertexBuffer;
 		GLuint	m_IndexBuffer;
+		GLuint	m_BatchVertexBuffer;
 		GLuint	m_VertexArrayObject;
 	};
 

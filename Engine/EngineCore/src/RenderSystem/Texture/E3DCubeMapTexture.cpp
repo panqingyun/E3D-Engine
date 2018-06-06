@@ -11,7 +11,7 @@ namespace E3DEngine
 {
 	void * CubeMapTexture::createImageData(std::string imageName, int *width, int *height)
 	{
-		TextureData * data = GetRenderSystem()->GetTextureDataManager()->CreateTextureData(imageName);
+		TextureData * data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(imageName);
 		*width	= data->width;
 		*height = data->height;
 		return data->imgData;

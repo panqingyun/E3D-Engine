@@ -1,11 +1,11 @@
 ﻿//
-//  RenderSystem.hpp
+//  GLES_RenderSystem.hpp
 //
 //  Created by 潘庆云 on 2017/1/22.
 //
 
-#ifndef _GLES_RenderSystem_HPP_
-#define _GLES_RenderSystem_HPP_
+#ifndef _GLES_RENDERSYSTEM_HPP_
+#define _GLES_RENDERSYSTEM_HPP_
 #ifndef __IOS__
 #include "EGL/EGLContext.h"
 #endif
@@ -39,7 +39,7 @@ namespace E3DEngine
 
 	private:
 		FrameBufferObject * defaultFrameBuffer;
-		EGL_Context *		m_pEGL_Context_Ex;
+		EGL_Context *		m_pEGL_Context;
 	};
 
 }

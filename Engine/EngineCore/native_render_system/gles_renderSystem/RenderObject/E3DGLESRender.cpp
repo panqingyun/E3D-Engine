@@ -14,49 +14,53 @@
 namespace E3DEngine
 {
 	
-	void GLES_Renderer::prepareRender(float deltaTime)
+	void GLES_Renderer::updateArrayBuffer(float deltaTime)
 	{
 		if (pMaterial == nullptr)
 		{
 			return;
 		}
 
-		m_nIndexSize = (uint)Indices.size();
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		pMaterial->UpdateShader(STATIC_VERTEX);
+
+		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		pMaterial->UpdateShader(DYNAMIC_VERTEX);
+
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-//
-		glEnable(GL_TEXTURE_2D);
-		Renderer::prepareRender(deltaTime);
 	}
 
 	void GLES_Renderer::TransformChange()
 	{
-		UINT drawState = GL_STREAM_DRAW;
-		if (IsStaticDraw)
+		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+	}
+
+	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount)
+	{
+		Renderer::FillEnd(objId, vertexCount);
+		if (pMaterial == nullptr)
 		{
-			drawState = GL_STATIC_DRAW;
+			assert(false);
 		}
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STREAM_DRAW);
+		pMaterial->UpdateShader(STATIC_VERTEX);
+		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+		pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-	
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), drawState);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort)* Indices.size(), Indices.data(), drawState);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STREAM_DRAW);
 	}
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
 	{
-		UINT drawState = GL_STREAM_DRAW;
-		if (IsStaticDraw)
-		{
-			drawState = GL_STATIC_DRAW;
-		}
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		if (!m_bIsBufferData)
-		{
-			glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, drawState);
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, drawState);
-		}
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
 
 
@@ -87,7 +91,6 @@ namespace E3DEngine
 
 	void GLES_Renderer::Render(float deltaTime)
 	{
-		prepareRender(deltaTime);
 		if (pMaterial == nullptr)
 		{
 			return;
@@ -97,9 +100,13 @@ namespace E3DEngine
 		{
 			return;
 		}
+		m_nIndexSize = (DWORD)Indices.size();
+		pMaterial->UseMaterial();
+
+		updateArrayBuffer(deltaTime);
+
 		updateEngineDefineShaderValue();
 
-		pMaterial->UseMaterial();
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_SHORT, nullptr);
 		int err = glGetError();

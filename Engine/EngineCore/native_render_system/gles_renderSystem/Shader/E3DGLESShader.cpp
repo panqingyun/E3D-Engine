@@ -49,7 +49,15 @@ namespace E3DEngine
 		priveVs.append("{\n");
 		priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
 		priveVs.append("}\n");
-		for (auto &attri : attributeMap)
+		for (auto &attri : staticAttributeMap)
+		{
+			if (attri.second.VarName == "")
+			{
+				continue;
+			}
+			priveVs.append("attribute ").append(attri.second.AttribType).append(" ").append(attri.second.VarName).append(";\n");
+		}
+		for (auto &attri : dynamicAttributeMap)
 		{
 			if (attri.second.VarName == "")
 			{
@@ -111,25 +119,25 @@ namespace E3DEngine
 
 	void GLES_Shader::InitShaderVar()
 	{
-		createAttribute("POSITION", 0, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_VERTEX, "vec3");
-		createAttribute("NORMAL", 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL, "vec3");
-		createAttribute("COLOR", 6, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_COLOR, "vec4");
-		createAttribute("TEXTURECOORD", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2");
-		createAttribute("TEXTURECOORD0", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2");
-		createAttribute("TEXTURECOORD1", 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE1, "vec2");
-		createAttribute("TEXTURECOORD2", 14, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE2, "vec2");
-		createAttribute("TEXTURECOORD3", 16, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE3, "vec2");
-		createAttribute("TEXTURECOORD4", 18, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE4, "vec2");
-		createAttribute("TEXTURECOORD5", 20, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE5, "vec2");
-		createAttribute("TEXTURECOORD6", 22, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE6, "vec2");
-		createAttribute("TEXTURECOORD7", 24, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE7, "vec2");
-		createAttribute("TANGENT", 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT, "vec3");
-		createAttribute("BONEINDEX", 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES, "vec4");
-		createAttribute("BONEWEIGHT", 33, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS, "vec4");
-		createAttribute("TRANSPOSITION", 37, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION, "vec3");
-		createAttribute("TRANSSCALE", 40, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE, "vec3");
-		createAttribute("TRANSROTATE", 43, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3");
-		createAttribute("SHADERINDEX", 46, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX, "float");
+		createAttribute("POSITION", 0, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_VERTEX, "vec3",STATIC_VERTEX);
+		createAttribute("NORMAL", 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL, "vec3", STATIC_VERTEX);
+		createAttribute("COLOR", 6, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_COLOR, "vec4", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD0", 10, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE0, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD1", 12, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE1, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD2", 14, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE2, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD3", 16, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE3, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD4", 18, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE4, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD5", 20, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE5, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD6", 22, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE6, "vec2", STATIC_VERTEX);
+		createAttribute("TEXTURECOORD7", 24, GL_FLOAT, GL_FALSE, sizeof(Vertex), 2, LOCATION_ATTRIB_TEXTURE7, "vec2", STATIC_VERTEX);
+		createAttribute("TANGENT", 26, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_TANGENT, "vec3", STATIC_VERTEX);
+		createAttribute("BONEINDEX", 29, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_INDICES, "vec4", STATIC_VERTEX);
+		createAttribute("BONEWEIGHT", 33, GL_FLOAT, GL_FALSE, sizeof(Vertex), 4, LOCATION_ATTRIB_BONES_WEIGHTS, "vec4", STATIC_VERTEX);
+		createAttribute("SHADERINDEX", 37, GL_FLOAT, GL_FALSE, sizeof(Vertex), 1, LOCATION_ATTRIB_FRAGMENT_INDEX, "float", STATIC_VERTEX);
+		createAttribute("TRANSPOSITION", 0, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION, "vec3", DYNAMIC_VERTEX);
+		createAttribute("TRANSSCALE", 3, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE, "vec3", DYNAMIC_VERTEX);
+		createAttribute("TRANSROTATE", 6, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3", DYNAMIC_VERTEX);
 		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
 		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
 		uniformSetFunc["vec2"] = &Shader::createFloat2Uniform;
@@ -228,7 +236,8 @@ namespace E3DEngine
 
 		glAttachShader(ShaderProgram, vertexShaderHandle);
 		glAttachShader(ShaderProgram, fragmentShaderHandle);
-		bindAttribLoaction();
+		bindAttribLoaction(STATIC_VERTEX);
+		bindAttribLoaction(DYNAMIC_VERTEX);
 		glLinkProgram(ShaderProgram);
 		GLint linkSuccess;
 		glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &linkSuccess);
@@ -254,7 +263,8 @@ namespace E3DEngine
 			glDeleteShader(fragmentShaderHandle);
 		}
 		loadUniformLocation();
-		loadAttribLocation();
+		loadAttribLocation(STATIC_VERTEX);
+		loadAttribLocation(DYNAMIC_VERTEX);
 	}
 
 
@@ -378,14 +388,24 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Shader::UpdateAttribPointerValue()
+	void GLES_Shader::UpdateAttribPointerValue(UINT vertexType)
 	{
-		EnableVertexAttribArray();
+		std::vector<Attribute> *attrList = nullptr;
+		if (vertexType == STATIC_VERTEX)
+		{
+			attrList = &StaticAttributeList;
+		}
+		else
+		{
+			attrList = &DynamicAttributeList;
+		}
 
-		for (auto & attrib : AttributeList)
+		for (auto & attrib : *attrList)
 		{
 			glVertexAttribPointer(attrib.AttributeName, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
 		}
+
+		EnableVertexAttribArray(vertexType);
 	}
 
 	void GLES_Shader::DeleteShader()
@@ -393,26 +413,56 @@ namespace E3DEngine
 		glDeleteShader(ShaderProgram);
 	}
 
-	void GLES_Shader::EnableVertexAttribArray()
+	void GLES_Shader::EnableVertexAttribArray(UINT vertexType)
 	{
-		for (auto & attrib : AttributeList)
+		std::vector<Attribute> *attrList = nullptr;
+		if (vertexType == STATIC_VERTEX)
+		{
+			attrList = &StaticAttributeList;
+		}
+		else
+		{
+			attrList = &DynamicAttributeList;
+		}
+
+		for (auto & attrib : *attrList)
 		{
 			glEnableVertexAttribArray(attrib.AttributeName);
 		}
 		
 	}
 
-	void GLES_Shader::bindAttribLoaction()
+	void GLES_Shader::bindAttribLoaction(UINT vertexType)
 	{
-		for (auto & attrib : AttributeList)
+		std::vector<Attribute> *attrList = nullptr;
+		if (vertexType == STATIC_VERTEX)
+		{
+			attrList = &StaticAttributeList;
+		}
+		else
+		{
+			attrList = &DynamicAttributeList;
+		}
+
+		for (auto & attrib : *attrList)
 		{
 			glBindAttribLocation(ShaderProgram, attrib.BindLocation, attrib.VarName.c_str());
 		}
 	}
 
-	void GLES_Shader::loadAttribLocation()
+	void GLES_Shader::loadAttribLocation(UINT vertexType)
 	{
-		for (auto & attrib : AttributeList)
+		std::vector<Attribute> *attrList = nullptr;
+		if (vertexType == STATIC_VERTEX)
+		{
+			attrList = &StaticAttributeList;
+		}
+		else
+		{
+			attrList = &DynamicAttributeList;
+		}
+
+		for (auto & attrib : *attrList)
 		{
 			attrib.AttributeName = LoadSelfDefAttribuate(attrib.VarName);
 		}
@@ -493,7 +543,7 @@ namespace E3DEngine
 		matrix3UniformList.clear();
 		matrix2UniformList.clear();
 		int1UniformList.clear();
-		AttributeList.clear();
+		StaticAttributeList.clear();
 	}
 
 	GLint GLES_Shader::LoadSelfDefUniform(std::string name)
@@ -504,8 +554,6 @@ namespace E3DEngine
 	GLuint GLES_Shader::LoadSelfDefAttribuate(std::string name)
 	{
 		GLuint attr = glGetAttribLocation(ShaderProgram, name.c_str());
-		int err = glGetError();
-		//glEnableVertexAttribArray(attr);
 		return attr;
 	}
 }

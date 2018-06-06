@@ -8,6 +8,7 @@
 #include "src/Object/E3DTransform.hpp"
 #include "../Material/E3DMaterial.hpp"
 #include "src/Source/E3DDebug.h"
+#include "../../Source/E3DVertex.h"
 
 namespace E3DEngine
 {
@@ -22,7 +23,7 @@ namespace E3DEngine
 		matrix3UniformList.clear();
 		matrix2UniformList.clear();
 		int1UniformList.clear();
-		AttributeList.clear();
+		StaticAttributeList.clear();
 	}
 
 	void Shader::UpdateFloatValue(std::string name, float value)
@@ -250,7 +251,7 @@ namespace E3DEngine
 		float4UniformArrayList[varName] = uni;
 	}
 
-	void Shader::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType)
+	void Shader::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType, uint type)
 	{
 		Attribute attribute;
 		attribute.AttributeSize = AttributeSize;
@@ -262,8 +263,16 @@ namespace E3DEngine
 		attribute.AttribType = attrType;
 
 		attribute.VertexStructSize = VertexStructSize;
-		attributeMap[typeName] = attribute;
+		if (type == DYNAMIC_VERTEX)
+		{
+			dynamicAttributeMap[typeName] = attribute;
+		}
+		else
+		{
+			staticAttributeMap[typeName] = attribute;
+		}
 	}
+
 
 	void Shader::processUniformVar(ShaderConfig * cfg)
 	{
@@ -307,17 +316,29 @@ namespace E3DEngine
 			std::string attribTypeName = attribKey[0];
 			std::string attribVarName = attribKey[1];
 
-			if (attributeMap.find(attribTypeName) == attributeMap.end())
+			if (staticAttributeMap.find(attribTypeName) != staticAttributeMap.end())
+			{
+				int typeSize = staticAttributeMap[attribTypeName].AttributeSize;
+				Attribute attr = staticAttributeMap[attribTypeName];
+				staticAttributeMap[attribTypeName].VarName = attribVarName;
+				attr.VarName = attribVarName;
+				attr.TypeName = attribTypeName;
+				StaticAttributeList.emplace_back(attr);
+			}
+			else if (dynamicAttributeMap.find(attribTypeName) != dynamicAttributeMap.end())
+			{
+				int typeSize = dynamicAttributeMap[attribTypeName].AttributeSize;
+				Attribute attr = dynamicAttributeMap[attribTypeName];
+				dynamicAttributeMap[attribTypeName].VarName = attribVarName;
+				attr.VarName = attribVarName;
+				attr.TypeName = attribTypeName;
+				DynamicAttributeList.emplace_back(attr);
+			}
+			else
 			{
 				Debug::Log(ell_Error, "attribute varible type is wrong!");
 				assert(false);
 			}
-			int typeSize = attributeMap[attribTypeName].AttributeSize;
-			Attribute attr = attributeMap[attribTypeName];
-			attributeMap[attribTypeName].VarName = attribVarName;
-			attr.VarName = attribVarName;
-			attr.TypeName = attribTypeName;
-			AttributeList.emplace_back(attr);
 		}
 	}
 }

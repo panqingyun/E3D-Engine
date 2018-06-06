@@ -112,8 +112,7 @@ namespace E3DEngine
 		mRenderer->RemoveInRenderer(ID);
 		if (isActive)
 		{
-			mRenderer->RecordCurrentVextexStartIndex(ID);
-			mRenderer->RecordCurrentIndexStartIndex(ID);
+			mRenderer->FillBegin(ID);
 			for (int i = 0; i < m_vecVertex.size(); i++)
 			{
 				mRenderer->FillVertex(m_vecVertex[i]);
@@ -123,9 +122,7 @@ namespace E3DEngine
 			{
 				mRenderer->FillIndex(m_vecIndex[i]);
 			}
-			mRenderer->FillEnd();
-			mRenderer->VertexCountAdd(ID, m_vecVertex.size());
-			mRenderer->IndexCountAdd(ID, m_vecIndex.size());
+			mRenderer->FillEnd(ID, m_vecVertex.size());
 		}
 		m_pRenderer->TransformChange();
 	}

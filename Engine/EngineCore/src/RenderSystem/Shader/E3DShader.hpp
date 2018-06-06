@@ -123,21 +123,6 @@ namespace E3DEngine
 		void UpdataFloat2ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat3ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat4ArrayUniform(std::string name, std::vector<float> value);
-	protected:
-		std::map<std::string , float1Uniform> float1UniformList;
-		std::map<std::string , float2Uniform> float2UniformList;
-		std::map<std::string , float3Uniform> float3UniformList;
-		std::map<std::string , float4Uniform> float4UniformList;
-		std::map<std::string , matrixUniform> matrix4UniformList;
-		std::map<std::string , matrixUniform> matrix3UniformList;
-		std::map<std::string, matrixUniform> matrix2UniformList;
-		std::map<std::string, int1Uniform> int1UniformList;
-		std::map<std::string, floatUniformArray> float1UniformArrayList;
-		std::map<std::string, floatUniformArray> float2UniformArrayList;
-		std::map<std::string, floatUniformArray> float3UniformArrayList;
-		std::map<std::string, floatUniformArray> float4UniformArrayList;
-
-		std::vector<Attribute> AttributeList;
 
 	public:
 		virtual void	DeleteShader() { }
@@ -160,25 +145,36 @@ namespace E3DEngine
 		void createFloat3ArrayUniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat4ArrayUniform(std::string varName, std::string defValueFormat, int count);
 
-		virtual void createAttribute(std::string		typeName,
-			int		StartPosition,
-			uint		VarType,
-			BOOL		Normalized,
-			uint		VertexStructSize,
-			uint		AttributeSize,
-			uint		BindLocation,
-			std::string attrType);
+		void createAttribute(std::string	typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint	BindLocation, std::string attrType, uint type);
 
 	protected:
 		virtual void processAttribVar(ShaderConfig * cfg);
 		virtual void processUniformVar(ShaderConfig * cfg);
 
 	protected:
-		std::map<std::string, Attribute> attributeMap;
+		std::map<std::string, Attribute> staticAttributeMap;
+		std::map<std::string, Attribute> dynamicAttributeMap;
 		std::map<std::string, setShaderValueFunc> uniformSetFunc;
 		std::map<std::string, std::string> samplerNameValue;
 
 		std::string filePath;
+	protected:
+		std::map<std::string, float1Uniform> float1UniformList;
+		std::map<std::string, float2Uniform> float2UniformList;
+		std::map<std::string, float3Uniform> float3UniformList;
+		std::map<std::string, float4Uniform> float4UniformList;
+		std::map<std::string, matrixUniform> matrix4UniformList;
+		std::map<std::string, matrixUniform> matrix3UniformList;
+		std::map<std::string, matrixUniform> matrix2UniformList;
+		std::map<std::string, int1Uniform> int1UniformList;
+		std::map<std::string, floatUniformArray> float1UniformArrayList;
+		std::map<std::string, floatUniformArray> float2UniformArrayList;
+		std::map<std::string, floatUniformArray> float3UniformArrayList;
+		std::map<std::string, floatUniformArray> float4UniformArrayList;
+
+		std::vector<Attribute> StaticAttributeList;
+		std::vector<Attribute> DynamicAttributeList;
+
 	};
 }
 

@@ -90,10 +90,6 @@ namespace E3DEngine
 	public:
 		int		nMaterialID;
 		
-	protected:
-		virtual void prepareRender(float deltaTime);
-		virtual void afterRender(float deltaTime);
-
 	public:
 		virtual void PrepareUpdate()
 		{

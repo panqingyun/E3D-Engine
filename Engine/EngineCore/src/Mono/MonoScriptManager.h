@@ -1,3 +1,8 @@
+/*
+* MonoScriptManager.h
+* create by PanQingyun
+* 2017-12-01
+*/
 #pragma once
 #include "../Source/Interface.h"
 #include "MonoFunction.h"

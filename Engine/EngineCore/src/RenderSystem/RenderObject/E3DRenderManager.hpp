@@ -33,22 +33,27 @@ namespace E3DEngine
 		Renderer();
 		virtual ~Renderer() override;
 	public:
-		virtual void prepareRender(float deltaTime) override;
+		virtual void FillBegin(UINT objId);
 		virtual void FillVertex(Vertex vb);
+		virtual void FillBatchVertex(BatchVertex bv);
 		virtual void FillIndex(uint ib);
-		virtual void FillEnd();
+		virtual void FillEnd(UINT objId, uint vertexCount);
+		virtual void RemoveInRenderer(UINT objId);
+		virtual RendererBuffer* GetRendererBuffer(UINT objID);
+
+		virtual void TransformChange() override;
+
+	public:
+		std::vector<BatchVertex> mBatchVertex;
+
+	protected:
+		virtual void CreateBehaviour();
+		virtual void setBehaviourDefaultValue();
 		virtual DWORD RecordCurrentVextexStartIndex(UINT objId);
 
 		virtual DWORD RecordCurrentIndexStartIndex(UINT objId);
 		virtual void VertexCountAdd(UINT objId, uint vertexCount);
 		virtual void IndexCountAdd(UINT objId, uint indexCount);
-		virtual void RemoveInRenderer(UINT objId);
-		virtual RendererBuffer* GetRendererBuffer(UINT objID);
-
-		virtual void TransformChange() override;
-	protected:
-		virtual void CreateBehaviour();
-		virtual void setBehaviourDefaultValue();
 
 	protected:
 		DWORD m_vertexCount;

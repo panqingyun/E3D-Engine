@@ -111,7 +111,6 @@ namespace E3DEngine
 		if (pShader != nullptr)
 		{
 			static_cast<GLES_Shader*>(pShader)->UpdateProgramUniformValue();
-			static_cast<GLES_Shader*>(pShader)->UpdateAttribPointerValue();
 		}
 	}
 
@@ -195,6 +194,12 @@ namespace E3DEngine
 		}
 		UseNullProgram();
 		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+
+	void GLES_Material::UpdateShader(unsigned int vertexType)
+	{
+		static_cast<GLES_Shader*>(pShader)->UpdateAttribPointerValue(vertexType);
 	}
 
 }

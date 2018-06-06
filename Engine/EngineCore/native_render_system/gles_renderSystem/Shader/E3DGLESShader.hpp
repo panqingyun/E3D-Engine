@@ -35,8 +35,8 @@ namespace E3DEngine
 		virtual void	UseNullProgram();
 		virtual void    SetProgramUniform(){ }
 		virtual void	DeleteShader();
-		virtual void	UpdateAttribPointerValue();
-		virtual void	EnableVertexAttribArray();
+		virtual void	UpdateAttribPointerValue(UINT vertexType);
+		virtual void	EnableVertexAttribArray(UINT vertexType);
 		virtual void	InitShaderVar();
 		virtual void	LoadShader(ShaderConfig *cfg);
 		std::string		processVShader();
@@ -47,9 +47,9 @@ namespace E3DEngine
 	protected:
 		virtual GLuint	compileShader(const char*  shaderName, GLenum shaderType);
 		virtual void	compileShaders();
-		virtual void	loadAttribLocation();
+		virtual void	loadAttribLocation(UINT vertexType);
 		virtual void	loadUniformLocation();
-		virtual void	bindAttribLoaction();
+		virtual void	bindAttribLoaction(UINT vertexType);
 	};
 }
 

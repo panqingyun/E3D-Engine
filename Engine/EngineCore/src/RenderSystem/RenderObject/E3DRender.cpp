@@ -12,15 +12,27 @@ namespace E3DEngine
 	{
 		Vertices.push_back(vb);
 	}
-	
+
+	void Renderer::FillBatchVertex(BatchVertex bv)
+	{
+		mBatchVertex.emplace_back(bv);
+	}
+
 	void Renderer::FillIndex(uint ib)
 	{
 		Indices.push_back(m_vertexCount + ib);
 	}
 
-	void Renderer::FillEnd()
+	void Renderer::FillBegin(UINT objId)
 	{
-		
+		RecordCurrentVextexStartIndex(ID);
+		RecordCurrentIndexStartIndex(ID);
+	}
+
+	void Renderer::FillEnd(UINT objId, uint vertexCount)
+	{
+		VertexCountAdd(objId, vertexCount);
+		IndexCountAdd(objId, vertexCount);
 	}
 
 	Renderer::Renderer()
@@ -88,6 +100,7 @@ namespace E3DEngine
 			}
 		}
 		Vertices.erase(Vertices.begin() + vbuffer->second.VertextStartIndex, Vertices.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
+		mBatchVertex.erase(mBatchVertex.begin() + vbuffer->second.VertextStartIndex, mBatchVertex.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
 		Indices.erase(Indices.begin() + vbuffer->second.IndexStartIndex, Indices.begin() + vbuffer->second.IndexStartIndex + vbuffer->second.IndexNumber);
 		for (int i = 0; i < Indices.size(); i ++)
 		{
@@ -99,12 +112,6 @@ namespace E3DEngine
 		m_vertexCount -= vbuffer->second.VertextNumber;
 		m_indexCount -= vbuffer->second.IndexNumber;
 		m_objRendererBuffers.erase(vbuffer);
-	}
-	
-	void Renderer::prepareRender(float deltaTime)
-	{
-	
-
 	}
 	
 	RendererBuffer* Renderer::GetRendererBuffer(UINT objID)

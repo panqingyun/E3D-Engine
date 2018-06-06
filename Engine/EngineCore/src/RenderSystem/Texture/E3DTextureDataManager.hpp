@@ -78,7 +78,7 @@ namespace E3DEngine
 		// @return 图像内部数据RGB
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual TextureData * CreateTextureData(std::string imageName);
+		virtual TextureData * GetTextureDataFromFile(std::string imageName);
 
 		// -----------------------------------------------
 		// 清理

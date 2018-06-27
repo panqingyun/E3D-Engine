@@ -31,8 +31,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
-	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyBox);
-	REGISTER_INTERNAL_CALL(GameObject,	CreateSkyDome);
+	REGISTER_INTERNAL_CALL(SkyBox,		CreateSkyBox);
+	REGISTER_INTERNAL_CALL(SkyDome,		CreateSkyDome);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		get_MainCamera);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
@@ -572,10 +572,14 @@ UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
 	return rd->GetDrawModule();
 }
 
-VOID _1_PARAM_FUNCTION(GameObject, CreateSkyBox, CS_OBJECT, material)
+VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox, CS_OBJECT, material)
 {
 	Material * m = getCppObject<Material>(material);
-	GameObject::CreateSkyBox(m);
+	SkyBox *skyBox = new SkyBox();
+	skyBox->Create(50, 50, 50);
+	skyBox->SetMaterial(m);
+
+	ADD_IN_SCENE(skyBox);
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Light, Create, UINT, lightType)
@@ -671,7 +675,7 @@ VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY&
 	}
 }
 
-VOID _1_PARAM_FUNCTION(GameObject, CreateSkyDome, CS_OBJECT, material)
+VOID _1_PARAM_FUNCTION(SkyDome, CreateSkyDome, CS_OBJECT, material)
 {
 	SkyDome * skyDome = new SkyDome;
 	skyDome->Create(50);

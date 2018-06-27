@@ -141,12 +141,12 @@ VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJEC
 CS_OBJECT _1_PARAM_FUNCTION(Terrain			, Create			, CS_STRING		,heightMap);
 VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT			, cs_obj		, UINT ,drawModule);
 UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT			, cs_obj);
-VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyBox		, CS_OBJECT		, material);
+VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox	, CS_OBJECT			, material);
 CS_OBJECT _1_PARAM_FUNCTION(Light			, Create			, UINT			, lightType);
 VOID _5_PARAM_FUNCTION(Light				, setColor			, CS_OBJECT		, cs_obj, float, r, float, g, float, b, float, a);
 VOID _2_PARAM_FUNCTION(Camera				, getViewMatrix		, CS_OBJECT		, cs_obj, CS_ARRAY&, data);
 VOID _2_PARAM_FUNCTION(Camera				, getProjectionMatrix, CS_OBJECT	, cs_obj, CS_ARRAY& ,data);
-VOID _1_PARAM_FUNCTION(GameObject			, CreateSkyDome		, CS_OBJECT		, material);
+VOID _1_PARAM_FUNCTION(SkyDome				, CreateSkyDome		, CS_OBJECT		, material);
 VOID _2_PARAM_FUNCTION(PointLight			, set_Range			, CS_OBJECT		, light, float, range);
 float _1_PARAM_FUNCTION(PointLight			, get_Range			, CS_OBJECT		, light);
 CS_OBJECT _2_PARAM_FUNCTION(Mesh			, create			, CS_STRING		, path, int ,cfgID);

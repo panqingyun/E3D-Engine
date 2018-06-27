@@ -325,7 +325,6 @@ namespace E3DEngine
 			return retVector;
 		}
 
-		static SkyBox *CreateSkyBox(Material *m);
 
 		// 获取长宽高
 		virtual vec3f GetBounds() { return size; }

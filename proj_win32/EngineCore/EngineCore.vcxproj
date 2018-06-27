@@ -107,7 +107,8 @@
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PreBuildEvent>
-      <Command>start cmd</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -182,17 +183,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\value.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Singleton.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinystr.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyutil.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyxml.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\types.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Utils.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vmath.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vvision.h" />
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.h" />
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetCommand.h" />
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetService.h" />
@@ -258,8 +248,16 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Singleton.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinystr.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyutil.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyxml.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Utils.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\vmath.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UICamera.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UISystem.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.h" />
@@ -270,13 +268,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyutil.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxml.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\NetService.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\TCPClient.cpp" />
@@ -334,9 +325,15 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinystr.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyutil.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxml.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\vmath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UICamera.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UISystem.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.cpp" />

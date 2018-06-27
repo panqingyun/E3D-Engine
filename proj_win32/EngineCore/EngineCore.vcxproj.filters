@@ -55,15 +55,6 @@
     <Filter Include="EngineCore\src\Utils">
       <UniqueIdentifier>{638851e2-da5a-43fb-9536-15fea4db7969}</UniqueIdentifier>
     </Filter>
-    <Filter Include="3rd">
-      <UniqueIdentifier>{88980474-17cc-42dc-9017-aa95d9166ba0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="3rd\header">
-      <UniqueIdentifier>{43f0ad63-c988-45a7-a3d2-fd17ab62d579}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="3rd\code">
-      <UniqueIdentifier>{0281620b-3221-460e-8936-f01611d48bb8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EngineCore\src\UI">
       <UniqueIdentifier>{50a0d3c3-7346-4a5b-af55-5590f373b4a6}</UniqueIdentifier>
     </Filter>
@@ -98,39 +89,6 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\json\value.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\FilePath.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Helpers.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Singleton.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinystr.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyutil.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\tinyxml.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\types.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\Utils.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vmath.h">
-      <Filter>3rd\header</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\3rd\header\vvision.h">
-      <Filter>3rd\header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
       <Filter>EngineCore\include</Filter>
@@ -351,28 +309,34 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\Include.h">
       <Filter>EngineCore\src\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Singleton.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinystr.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyutil.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyxml.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Utils.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\vmath.h">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinystr.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyutil.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxml.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlerror.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\tinyxmlparser.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\vmath.cpp">
-      <Filter>3rd\code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
       <Filter>EngineCore\src\Animation</Filter>
@@ -497,9 +461,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp">
       <Filter>EngineCore\src\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\NetService.cpp">
       <Filter>extern\WindowsSocket</Filter>
     </ClCompile>
@@ -563,14 +524,32 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\3rd\code\FilePath.cpp">
-      <Filter>3rd\code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
       <Filter>EngineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinystr.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyutil.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxml.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlerror.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp">
+      <Filter>EngineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\vmath.cpp">
+      <Filter>EngineCore\src\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

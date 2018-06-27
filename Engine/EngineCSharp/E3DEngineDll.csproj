@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine3D\Box.cs" />
+    <Compile Include="Engine3D\InnerObject.cs" />
     <Compile Include="Engine3D\Camera.cs" />
     <Compile Include="Engine3D\Collider.cs" />
     <Compile Include="Engine3D\Component.cs" />

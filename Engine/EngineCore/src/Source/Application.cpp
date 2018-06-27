@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "EngineDelegate.h"
 #include "../Utils/Include.h"
+#include "FilePath.h"
 
 namespace E3DEngine
 {
@@ -24,7 +25,7 @@ namespace E3DEngine
 		CreatScript();
 		m_pMouseInfo = new MouseButtonInfo();
 		std::string startApp = AppDataPath + "/app.config";
-		std::string fileContent = vvision::getContentFromPath(startApp);
+		std::string fileContent = getContentFromPath(startApp);
 		if (fileContent != empty_string)
 		{
 			std::vector<std::string> vestr = E3DEngine::StringBuilder::Split(fileContent, "=");

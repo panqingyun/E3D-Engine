@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include "E3DObject.h"
+#include "../Source/vmath.h"
 
 namespace E3DEngine
 {

@@ -13,6 +13,8 @@
 #include "E3DComponent.hpp"
 #include "../Source/E3DDelegate.h"
 #include "../Source/E3DVertex.h"
+#include "../Source/vmath.h"
+using namespace vvision;
 
 
 #ifndef _TT_REMOVE_REFERENCE_H_

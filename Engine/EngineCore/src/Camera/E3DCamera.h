@@ -1,30 +1,10 @@
-/* CameraEntity.h
- *
- * Copyright (C) 2012 Abdallah DIB.
- * All rights reserved. Email: Abdallah.dib@virtual-vison.net
- * Web: <http://www.virutal-vision.net/>
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
-
-#ifndef VVISION_CameraEntity_h
-#define VVISION_CameraEntity_h
+#ifndef __E3D_CAMERA_H__
+#define __E3D_CAMERA_H__
 
 #include <float.h>
 #include <complex>
-#include <iostream>
-#include <vector>
 #include "../Object/E3DGameObject.h"
+#include "../Source/vmath.h"
 
 namespace E3DEngine
 {

@@ -9,6 +9,7 @@
 #include "E3DComponent.hpp"
 #include "../RenderSystem/Material/E3DMaterial.hpp"
 #include "../Source/E3DVertex.h"
+#include "../Source/vmath.h"
 
 namespace E3DEngine
 {

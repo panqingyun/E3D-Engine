@@ -51,7 +51,7 @@ namespace E3DEngine
 		}
 	protected:
 		void			BoneTransform(float TimeInSeconds);
-		aiNodeAnim  *	FindNodeAnim(const aiAnimation* pAnimation, const string NodeName) const;
+		aiNodeAnim  *	FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName) const;
 		void			TransformBone(const char * name, mat4f trans);
 		aiAnimation *	FindAnimationInScene(const char * aniName) const;
 		

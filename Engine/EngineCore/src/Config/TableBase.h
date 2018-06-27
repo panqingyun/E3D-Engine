@@ -2,6 +2,7 @@
 #define _TABLE_BASE_H_
 #include "../Object/E3DGameObject.h"
 #include "../Source/ClassFactory.h"
+#include "../Source/tinyxml.h"
 
 namespace E3DEngine
 {

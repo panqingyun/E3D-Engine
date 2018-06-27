@@ -6,7 +6,6 @@
 
 #include "E3DTextureDataManager.hpp"
 #include "src/Source/EngineDelegate.h"
-#include "3rd/header/Helpers.h"
 
 void E3DEngine::TextureDataManager::Init()
 {

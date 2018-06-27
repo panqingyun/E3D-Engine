@@ -10,6 +10,7 @@
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Config/TableRegister.h"
 #include "../Source/Application.h"
+#include "../Source/FilePath.h"
 
 namespace E3DEngine
 {
@@ -38,7 +39,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': select table wrong", filePath.c_str());
 			return;
 		}
-		std::string   fbxPath = vvision::GetFolder(filePath) + "/" + modelCfg->ModelFilePath;
+		std::string   fbxPath = GetFolder(filePath) + "/" + modelCfg->ModelFilePath;
 
 		bool Ret	= false;
 		pScene		= pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
@@ -75,7 +76,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': split config wrong", filePath.c_str());
 			return;
 		}
-		std::string folder = vvision::GetFolder(filePath);
+		std::string folder = GetFolder(filePath);
 		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(folder + "/" + materialCfg[0], Convert::ToInt(materialCfg[1]));
 		SetMaterial(material);
 		SAFE_DELETE(tbMgr);

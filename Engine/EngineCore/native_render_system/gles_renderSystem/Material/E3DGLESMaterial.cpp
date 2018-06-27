@@ -6,9 +6,8 @@
 
 #include "E3DGLESMaterial.hpp"
 #include <src/Source/Application.h>
-#include <3rd/header/FilePath.h>
 #include <src/Source/E3DVertex.h>
-#include <3rd/header/Helpers.h>
+#include <src/Source/Helpers.h>
 
 namespace E3DEngine
 {

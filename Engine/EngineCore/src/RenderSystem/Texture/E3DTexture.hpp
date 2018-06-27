@@ -26,7 +26,7 @@ namespace E3DEngine
 		TextureFrameEffect * TextureEffect;
 		
 	public:
-		virtual void Create(string fileName);
+		virtual void Create(std::string fileName);
 		virtual void SetTextureData(TextureData &tData);
 		virtual void Create(TextureData &tData);
 		virtual void SetTextureEnum(uint enumNumber);

@@ -8,6 +8,8 @@
 #define Util_h
 
 #include "Include.h"
+#include "../Source/vmath.h"
+using namespace vvision;
 
 #ifndef WIN32 
 using DWORD = unsigned int;
@@ -68,6 +70,17 @@ if (!OBJ->IsActive)\
 #define ARRAY_SIZE_IN_ELEMENTS(a) (sizeof(a)/sizeof(a[0]))
 #define ASSIMP_LOAD_FLAGS (aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices)
 #define GLCheckError() (glGetError() == GL_NO_ERROR)
+
+typedef unsigned char	uchar8;
+typedef signed char		schar8;
+typedef char			char8;
+typedef unsigned short	ushort16;
+typedef signed short	sshort16;
+typedef unsigned int	uint32;
+typedef signed int		sint32;
+typedef  int			int32;
+typedef float			float32;
+typedef double			float64;
 
 #ifndef __IOS__
 #define GLchar char

@@ -201,7 +201,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		string NodeName(pNode->mName.data);
+		std::string NodeName(pNode->mName.data);
 
 		const aiNodeAnim* pNodeAnim = FindNodeAnim(pAnimation, NodeName);
 		
@@ -274,13 +274,13 @@ namespace E3DEngine
 		
 	}
 	
-	aiNodeAnim* Animation::FindNodeAnim(const aiAnimation* pAnimation, const string NodeName) const
+	aiNodeAnim* Animation::FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName) const
 	{
 		for (uint i = 0 ; i < pAnimation->mNumChannels ; i++)
 		{
 			aiNodeAnim* pNodeAnim = pAnimation->mChannels[i];
 			
-			if (string(pNodeAnim->mNodeName.data) == NodeName)
+			if (std::string(pNodeAnim->mNodeName.data) == NodeName)
 			{
 				return pNodeAnim;
 			}

@@ -7,6 +7,7 @@
 #include "E3DSceneManager.hpp"
 #include "../Source/EngineDelegate.h"
 #include "../Object/E3DObject.h"
+#include "../Source/FilePath.h"
 
 namespace E3DEngine
 {
@@ -223,7 +224,8 @@ namespace E3DEngine
 	GameObject* createSkyBox(GameObject *parent, TiXmlElement *objectElement)
 	{		
 		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
-		SkyBox *skb = GameObject::CreateSkyBox(m);
+		SkyBox *skb = new SkyBox();
+		skb->Create(50, 50, 50);
 		createObjects(skb, objectElement);
 		return skb;
 	}
@@ -399,7 +401,7 @@ namespace E3DEngine
 			return nullptr;
 		}
 		TiXmlElement* rootElem = doc->RootElement();
-		sceneFolderPath = vvision::GetFolder(filePath);
+		sceneFolderPath = GetFolder(filePath);
 		createObjects(nullptr, rootElem);
 		delete doc;
 		return pScene;

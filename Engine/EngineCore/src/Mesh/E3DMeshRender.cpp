@@ -4,7 +4,6 @@
  */
 
 #include "E3DMeshRender.h"
-#include "Helpers.h"
 #include <cstdlib>
 #include "../Animation/E3DAnimation.hpp"
 #include "E3DMesh.hpp"

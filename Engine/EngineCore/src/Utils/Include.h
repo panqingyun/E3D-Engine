@@ -1,12 +1,5 @@
-//
-//  Include.h
-//  Created by 潘庆云 on 2017/1/19.
-//
-//#define __IOS__
-#ifndef commonType_h
-#define commonType_h
-
-#include <vvision.h>
+#ifndef __E3D_INCLUDE_H__
+#define __E3D_INCLUDE_H__
 
 #ifdef _WIN32
 #include <windows.h>
@@ -19,9 +12,7 @@
 #include <vector>
 #include <map>
 #include <list>
-#include <tinyxml.h>
 #include <set>
-#include <FilePath.h>
 #include <queue>
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>

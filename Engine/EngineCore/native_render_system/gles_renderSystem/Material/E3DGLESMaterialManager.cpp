@@ -7,7 +7,7 @@
 #include "E3DGLESMaterialManager.hpp"
 #include "src/Config/Table.h"
 #include "src/Config/TableRegister.h"
-#include "3rd/header/Helpers.h"
+#include "src/Source/Helpers.h"
 #include "E3DGLESMaterial.hpp"
 
 namespace E3DEngine

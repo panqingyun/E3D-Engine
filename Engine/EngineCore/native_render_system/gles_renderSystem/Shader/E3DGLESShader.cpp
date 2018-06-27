@@ -9,7 +9,7 @@
 #include <src/Config/Table.h>
 #include <src/Source/Application.h>
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
-#include <3rd/header/Helpers.h>
+#include <src/Source/Helpers.h>
 #include <src/Source/E3DVertex.h>
 #include <src/Scene/E3DSceneManager.hpp>
 

@@ -9,7 +9,7 @@
 #include "src/Source/EngineDelegate.h"
 #include "src/Config/Table.h"
 #include "src/Config/TableRegister.h"
-#include "3rd/header/Helpers.h"
+#include "src/Source/Helpers.h"
 
 namespace E3DEngine
 {

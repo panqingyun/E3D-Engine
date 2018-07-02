@@ -1,7 +1,6 @@
-﻿/*
- * Create 2017 PanQingyun.
- *
- */
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-5-24 PanQingyun. All rights reserved. *************************//
 
 #include "E3DMeshRender.h"
 #include <cstdlib>

@@ -1,7 +1,5 @@
-﻿//
-//  E3DRenderObject.hpp
-//  Created by 潘庆云 on 2017/1/17.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-17  PanQingyun. All rights reserved. *************************//
 
 #ifndef Object_hpp
 #define Object_hpp

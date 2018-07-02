@@ -1,3 +1,5 @@
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-7  PanQingyun. All rights reserved. *************************//
 #ifndef __TERRAIN_H__
 #define __TERRAIN_H__
 #include "E3DGameObject.h"

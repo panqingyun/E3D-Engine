@@ -1,7 +1,6 @@
-﻿//
-//  E3DComponent.hpp
-//  Created by 潘庆云 on 2017/2/8.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-2-8  PanQingyun. All rights reserved. *************************//
 
 #ifndef E3DComponent_hpp
 #define E3DComponent_hpp

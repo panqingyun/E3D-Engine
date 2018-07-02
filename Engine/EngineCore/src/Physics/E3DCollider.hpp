@@ -1,8 +1,6 @@
-﻿//
-//  Collider.hpp
-//
-//  Created by 潘庆云 on 2017/7/14.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-14  PanQingyun. All rights reserved. ************************//
 
 #ifndef Collider_hpp
 #define Collider_hpp

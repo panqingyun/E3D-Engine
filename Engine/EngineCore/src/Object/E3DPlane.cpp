@@ -1,3 +1,7 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-7  PanQingyun. All rights reserved. *************************//
+
 #include "E3DPlane.h"
 
 E3DEngine::Plane::Plane()

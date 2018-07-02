@@ -1,4 +1,6 @@
-﻿#ifndef _TABLE_BASE_H_
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
+#ifndef _TABLE_BASE_H_
 #define _TABLE_BASE_H_
 #include "../Object/E3DGameObject.h"
 #include "../Source/ClassFactory.h"

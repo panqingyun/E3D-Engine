@@ -2,24 +2,18 @@
 <ConfigSystem>
 	<ParticleConfig>
 		<!--
-		 ElementClassName	处理类名 由程序来定义
-		 AffectorName		影响器的名字 可以多填
 		 AffectorID			影响器内ID 可以多填
-		 EmitterName		发射器名字
 		 EmitterID			发射器内ID
-		 Material			材质的ID
-		 DisplayCamera		0 前置摄像头绘制， 1 后置摄像头绘制， 2 前后都绘制
+		 Material			材质
 		 -->
         
 		<Item
 			ID = 1
-			ElementClassName	= "Effect3DParticleElement"
 			Affector			= "RandomForceAffectorConfig:1;
                                    SelfScalAffectorConfig:1,2;
                                    LinnerColorAffectorConfig:1"
 			Emitter				= "BallEmitterConfig : 1"
 			Material			= "Material/ParticleMaterial.material : 1"
-			DisplayCamera		= 2
             LockEmitterMove     = 0
 			TextureUV 			= "1"
 			LayerID				= 0
@@ -42,9 +36,9 @@
         ID					= 1
         Name				= "球面发射器"
         Type				= 2
-        Radius				= 1
-        ParticleWidth		= 2
-        ParticleHeight		= 2
+        Radius				= 2.5
+        ParticleWidth		= 10
+        ParticleHeight		= 10
         BlankTime			= 0
         MaxParticleNumber	= 50
         TotalParticleNumber	= 10000

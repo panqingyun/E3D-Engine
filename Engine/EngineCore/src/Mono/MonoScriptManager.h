@@ -1,8 +1,7 @@
-/*
-* MonoScriptManager.h
-* create by PanQingyun
-* 2017-12-01
-*/
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-12-1 PanQingyun. All rights reserved. *************************//
+
 #pragma once
 #include "../Source/Interface.h"
 #include "MonoFunction.h"

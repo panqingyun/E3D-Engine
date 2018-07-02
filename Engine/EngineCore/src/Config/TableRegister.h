@@ -1,4 +1,6 @@
-﻿#ifndef _TABLEREGISTER_H_
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
+#ifndef _TABLEREGISTER_H_
 #define _TABLEREGISTER_H_
 
 #include "TableBase.h"

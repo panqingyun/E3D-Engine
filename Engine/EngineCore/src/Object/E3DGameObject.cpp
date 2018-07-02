@@ -1,8 +1,6 @@
-﻿//
-//  Object.cpp
-//
-//  Created by 潘庆云 on 2017/3/1.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-1  PanQingyun. All rights reserved. *************************//
 
 #include <stdio.h>
 #include "E3DGameObject.h"

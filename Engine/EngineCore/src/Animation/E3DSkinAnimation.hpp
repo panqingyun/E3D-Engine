@@ -1,8 +1,5 @@
-﻿//
-//  SkinAnimation.hpp
-//
-//  Created by 潘庆云 on 2017/3/28.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-28 PanQingyun. All rights reserved. *************************//
 
 #ifndef SkinAnimation_hpp
 #define SkinAnimation_hpp

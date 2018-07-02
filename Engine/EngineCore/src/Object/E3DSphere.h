@@ -1,5 +1,6 @@
 #pragma once
-
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-12-7  PanQingyun. All rights reserved. *************************//
 #include "E3DGameObject.h"
 #include "../Source/E3DVertex.h"
 

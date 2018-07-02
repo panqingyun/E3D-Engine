@@ -1,3 +1,7 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-7  PanQingyun. All rights reserved. *************************//
+
 #ifndef __PLANE_H__
 #define __PLANE_H__
 #include "E3DGameObject.h"

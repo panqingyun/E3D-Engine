@@ -1,3 +1,5 @@
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
 #ifndef __E3D_CAMERA_H__
 #define __E3D_CAMERA_H__
 

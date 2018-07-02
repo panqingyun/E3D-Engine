@@ -1,9 +1,5 @@
-//
-//  E3DRectangle.hpp
-//
-//  Created by 潘庆云 on 2017/7/6.
-//
-
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-7  PanQingyun. All rights reserved. *************************//
 #ifndef E3Drectangle_hpp
 #define E3Drectangle_hpp
 

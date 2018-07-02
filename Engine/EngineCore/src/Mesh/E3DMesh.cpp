@@ -1,8 +1,6 @@
-﻿//
-//  E3DVertexBuffer.cpp
-//
-//  Created by 潘庆云 on 2017/5/24.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-5-24 PanQingyun. All rights reserved. *************************//
 
 #include "E3DMesh.hpp"
 #include "E3DMeshRender.h"

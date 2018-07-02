@@ -37,12 +37,11 @@
 					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;" 
 									   
 					AttribVariable	= "POSITION:position;
-									   COLOR:color;
+									   DYNAMICCOLOR:color;
 									   TEXTURECOORD:inputTextureCoordinate;
 									   TRANSPOSITION:transformPosition;
 									   TRANSSCALE:transformScale;
 									   TRANSROTATE:transformRotate;
-									   SHADERINDEX:fShaderIndex; 
 									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>

@@ -1,3 +1,7 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-11-28 PanQingyun. All rights reserved. ************************//
+
 #include "E3DBox.h"
 #include "../Scene/E3DSceneManager.hpp"
 #include "../Object/E3DTransform.hpp"

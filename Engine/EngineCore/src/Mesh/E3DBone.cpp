@@ -1,8 +1,6 @@
-﻿//
-//  FBXBone.cpp
-//
-//  Created by 潘庆云 on 2017/3/17.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-17 PanQingyun. All rights reserved. *************************//
 
 #include "E3DBone.hpp"
 

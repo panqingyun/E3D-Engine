@@ -1,7 +1,5 @@
-﻿//
-//  AnimationClip.hpp
-//  Created by 潘庆云 on 2017/3/27.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-27 PanQingyun. All rights reserved. *************************//
 
 #ifndef AnimationClip_hpp
 #define AnimationClip_hpp

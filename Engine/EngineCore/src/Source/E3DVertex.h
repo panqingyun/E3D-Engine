@@ -131,12 +131,14 @@ struct BatchVertex
 	float TranformPosition[3];
 	float TransformScale[3];
 	float TransformRotate[3];
+	float Color[4];
 
 	BatchVertex()
 	{
 		memset(TranformPosition, 0, sizeof(float) * 3);
 		memset(TransformScale, 0, sizeof(float) * 3);
 		memset(TransformRotate, 0, sizeof(float) * 3);
+		memset(Color, 0, sizeof(float) * 3);
 	}
 
 	void SetTransformPosition(float x, float y, float z)
@@ -158,6 +160,14 @@ struct BatchVertex
 		TransformRotate[0] = x;
 		TransformRotate[1] = y;
 		TransformRotate[2] = z;
+	}
+
+	void SetColor(float r, float g, float b, float a)
+	{
+		Color[0] = r;
+		Color[1] = g;
+		Color[2] = b;
+		Color[3] = a;
 	}
 
 };

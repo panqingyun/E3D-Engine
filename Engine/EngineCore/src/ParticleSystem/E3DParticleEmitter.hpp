@@ -1,10 +1,5 @@
-﻿//
-//  ParticleEmitter.hpp
-//  Obj
-//  粒子发射器
-//  Created by 潘庆云 on 2017/1/17.
-//  Copyright © 2017年 潘庆云. All rights reserved.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-17  PanQingyun. All rights reserved. ************************//
 
 #ifndef ParticleEmitter_hpp
 #define ParticleEmitter_hpp

@@ -1,8 +1,6 @@
-﻿//
-//  E3DVertexBuffer.hpp
-//
-//  Created by 潘庆云 on 2017/5/24.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-5-24 PanQingyun. All rights reserved. *************************//
 
 #ifndef E3DVertexBuffer_hpp
 #define E3DVertexBuffer_hpp

@@ -1,8 +1,6 @@
-﻿//
-//  CComponent.cpp
-//
-//  Created by 潘庆云 on 2017/2/8.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-2-8  PanQingyun. All rights reserved. *************************//
 
 #include "../Object/E3DComponent.hpp"
 #include "../Object/E3DGameObject.h"

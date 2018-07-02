@@ -1,6 +1,6 @@
-﻿/*
- * Create 2017 Pan Qingyun.
- */
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-5-24 PanQingyun. All rights reserved. *************************//
 
 #ifndef _SKINNED_MESH_H_
 #define	_SKINNED_MESH_H_

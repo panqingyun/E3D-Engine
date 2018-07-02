@@ -1,8 +1,5 @@
-//
-//  ParticleAffector.cpp
-//  粒子系统影响器
-//  Created by 潘庆云 on 2017/1/17.
-//
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-17  PanQingyun. All rights reserved. ************************//
 
 #include "E3DParticleAffector.hpp"
 #include "E3DParticle.h"

@@ -1,8 +1,7 @@
-/*
- * MonoScriptManager.cpp 
- * create by PanQingyun
- * 2017-12-01
- */
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-12-1 PanQingyun. All rights reserved. *************************//
+
 #include "MonoScriptManager.h"
 #include "../Object/E3DGameObject.h"
 #include <mono/utils/mono-logger.h>

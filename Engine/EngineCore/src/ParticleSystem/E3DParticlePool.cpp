@@ -1,3 +1,7 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-7-17  PanQingyun. All rights reserved. ************************//
+
 #include "E3DParticlePool.h"
 #include "E3DParticle.h"
 #include "../Source/E3DDebug.h"

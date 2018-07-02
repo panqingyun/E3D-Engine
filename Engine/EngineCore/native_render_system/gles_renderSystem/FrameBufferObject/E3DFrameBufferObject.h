@@ -1,3 +1,5 @@
+//********************************** Effect 3D Engine **************************************************//
+//********************* Copyright (c) 2017 PanQingyun. All rights reserved. ****************************//
 #ifndef __FRAME_BUFFER_H__
 #define __FRAME_BUFFER_H__
 

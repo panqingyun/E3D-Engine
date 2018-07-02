@@ -1,3 +1,5 @@
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-12-7  PanQingyun. All rights reserved. *************************//
 #include "E3DSphere.h"
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 #include "E3DTransform.hpp"

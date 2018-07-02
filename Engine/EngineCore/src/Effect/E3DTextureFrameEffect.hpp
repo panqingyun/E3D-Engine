@@ -1,8 +1,5 @@
-﻿//
-//  ZZEffect3DTextureFrameAnimation.hpp
-//
-//  Created by 潘庆云 on 2017/5/16.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-5-16 PanQingyun. All rights reserved. *************************//
 
 #ifndef ZZEffect3DTextureFrameAnimation_hpp
 #define ZZEffect3DTextureFrameAnimation_hpp

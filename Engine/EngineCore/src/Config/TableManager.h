@@ -1,4 +1,6 @@
-﻿#ifndef _TABLEMANAGER_H_
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
+#ifndef _TABLEMANAGER_H_
 #define _TABLEMANAGER_H_
 
 #include "TableBase.h"

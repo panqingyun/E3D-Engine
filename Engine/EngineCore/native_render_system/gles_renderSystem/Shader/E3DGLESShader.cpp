@@ -138,6 +138,7 @@ namespace E3DEngine
 		createAttribute("TRANSPOSITION", 0, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_POSITION, "vec3", DYNAMIC_VERTEX);
 		createAttribute("TRANSSCALE", 3, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_SCALE, "vec3", DYNAMIC_VERTEX);
 		createAttribute("TRANSROTATE", 6, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 3, LOCATION_ATTRIB_TRANSFORM_ROTETION, "vec3", DYNAMIC_VERTEX);
+		createAttribute("DYNAMICCOLOR", 9, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 4, LOCATION_ATTRIB_DYNAMIC_COLOR, "vec4", DYNAMIC_VERTEX);
 		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
 		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
 		uniformSetFunc["vec2"] = &Shader::createFloat2Uniform;

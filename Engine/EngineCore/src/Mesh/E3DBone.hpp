@@ -1,8 +1,6 @@
-﻿//
-//  CBone.hpp
-//
-//  Created by 潘庆云 on 2017/3/17.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-17 PanQingyun. All rights reserved. *************************//
 
 #ifndef FBXBone_hpp
 #define FBXBone_hpp

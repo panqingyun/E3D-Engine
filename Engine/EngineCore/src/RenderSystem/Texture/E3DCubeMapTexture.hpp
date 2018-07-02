@@ -1,8 +1,7 @@
-﻿//
+﻿// 
 //  E3DCubeMapTexture.hpp
-//
+// 
 //  Created by 潘庆云 on 2017/5/9.
-//
 
 #ifndef E3DCubeMapTexture_hpp
 #define E3DCubeMapTexture_hpp

@@ -1,9 +1,5 @@
-﻿//
-//  ParticleSystemFactory.hpp
-//  ParticleSystem
-//
-//  Created by 潘庆云 on 2017/1/18.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-18  PanQingyun. All rights reserved. ************************//
 
 #ifndef ParticleSystemFactory_hpp
 #define ParticleSystemFactory_hpp

@@ -1,8 +1,5 @@
-﻿//
-//  ParticleEmitter.cpp
-//
-//  Created by 潘庆云 on 2017/1/17.
-//
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-17  PanQingyun. All rights reserved. ************************//
 #include "E3DParticleEmitter.hpp"
 #include "E3DParticle.h"
 #include "../Config/Table.h"

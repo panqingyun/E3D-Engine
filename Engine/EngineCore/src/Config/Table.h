@@ -1,7 +1,6 @@
-﻿//
-//  Table.hpp
-//  Created by 潘庆云 on 2017/2/7.
-//
+﻿
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c)  2017-2-7 PanQingyun. All rights reserved. *************************//
 
 #ifndef Table_hpp
 #define Table_hpp

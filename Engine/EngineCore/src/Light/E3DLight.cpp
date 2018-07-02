@@ -1,8 +1,5 @@
-﻿//
-//  Light.cpp
-//  Created by 潘庆云 on 2017/3/21.
-//
-
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-3-21 PanQingyun. All rights reserved. *************************//
 #include "E3DLight.hpp"
 #include "../Scene/E3DSceneManager.hpp"
 

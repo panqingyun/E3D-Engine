@@ -1,9 +1,5 @@
-﻿//
-//  EffectFactory.hpp
-//
-//  Created by 潘庆云 on 2017/1/26.
-//
-
+﻿//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-26 PanQingyun. All rights reserved. *************************//
 #ifndef EffectFactory_hpp
 #define EffectFactory_hpp
 

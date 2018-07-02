@@ -1,3 +1,7 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2017-11-27  PanQingyun. All rights reserved. ***********************//
+
 #include "E3DPhysics.h"
 #include "../Object/E3DGameObject.h"
 #include "../Source/E3DDebug.h"

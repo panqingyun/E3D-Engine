@@ -79,6 +79,18 @@
     <Filter Include="EngineCore\src\RenderSystem">
       <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EngineCore\src\Source\txml">
+      <UniqueIdentifier>{0bd15ebd-3080-41af-8bc0-8ea4616279ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Source\math">
+      <UniqueIdentifier>{aab477d7-942a-4bc7-9e02-66e719ff34ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Source\helpers">
+      <UniqueIdentifier>{04d72975-65fa-4e6d-8045-e6ae92e237a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EngineCore\src\Source\application">
+      <UniqueIdentifier>{2f5518de-ae2c-42e4-bbfc-c3b3bec635ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -132,9 +144,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp">
-      <Filter>EngineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTransform.hpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClInclude>
@@ -169,9 +178,6 @@
       <Filter>EngineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
       <Filter>EngineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\E3DUtil.hpp">
@@ -224,12 +230,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h">
       <Filter>EngineCore\src\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
-      <Filter>EngineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h">
       <Filter>EngineCore\src\Source</Filter>
@@ -309,29 +309,38 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\Include.h">
       <Filter>EngineCore\src\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Singleton.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinystr.h">
-      <Filter>EngineCore\src\Source</Filter>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyxml.h">
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyutil.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyxml.h">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Utils.h">
-      <Filter>EngineCore\src\Source</Filter>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinystr.h">
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\vmath.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>EngineCore\src\Source\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Singleton.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Utils.h">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
+      <Filter>EngineCore\src\Source\application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -372,9 +381,6 @@
       <Filter>EngineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp">
-      <Filter>EngineCore\src\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTransform.cpp">
@@ -452,12 +458,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp">
       <Filter>EngineCore\src\Object</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp">
       <Filter>EngineCore\src\Source</Filter>
     </ClCompile>
@@ -530,26 +530,32 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
       <Filter>EngineCore\src\RenderSystem</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinystr.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyutil.cpp">
-      <Filter>EngineCore\src\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxml.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp">
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlerror.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxml.cpp">
+      <Filter>EngineCore\src\Source\txml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyutil.cpp">
+      <Filter>EngineCore\src\Source\txml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinystr.cpp">
+      <Filter>EngineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\vmath.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>EngineCore\src\Source\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp">
+      <Filter>EngineCore\src\Source\helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp">
+      <Filter>EngineCore\src\Source\application</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

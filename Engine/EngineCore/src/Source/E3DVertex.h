@@ -17,7 +17,6 @@ struct Vertex
 		BoneIndex[1] = MaxBoneNumber;
 		BoneIndex[2] = MaxBoneNumber;
 		BoneIndex[3] = MaxBoneNumber;
-		ShaderIndex = 0;
 
 		memset(UV1, 0, sizeof(float) * 2);
 		memset(UV2, 0, sizeof(float) * 2);
@@ -125,7 +124,6 @@ struct Vertex
 	float Tangent[3];
 	float BoneIndex[4];
 	float BoneWeight[4];
-	float ShaderIndex;
 };
 
 struct BatchVertex 

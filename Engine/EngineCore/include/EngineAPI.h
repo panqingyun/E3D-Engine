@@ -69,7 +69,7 @@ extern "C"
 	/// </summary>
 	__api_function_ void StopAppliaction();
 	/// <summary>
-	/// 创建EGL
+	/// 创建RenderSystem
 	/// </summary>
 	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
 	///------------------------------------------------------
@@ -90,11 +90,11 @@ extern "C"
 	/// </summary>
 	__api_function_ void DestoryEngine();
 	/// <summary>
-	/// 暂停或恢复引擎
+	/// 暂停或恢复运行
 	/// </summary>
 	__api_function_ void PauseEngine(bool bPause);
 	/// <summary>
-	/// 修改宽高
+	/// 修改渲染缓冲区尺寸
 	/// </summary>
 	__api_function_ void ChageFrameSize(int w, int h);
 	/// <summary>

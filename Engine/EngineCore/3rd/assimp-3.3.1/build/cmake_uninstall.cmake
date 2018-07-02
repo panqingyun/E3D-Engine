@@ -1,8 +1,8 @@
-IF(NOT EXISTS "C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/install_manifest.txt")
-  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/install_manifest.txt\"")
-ENDIF(NOT EXISTS "C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/install_manifest.txt")
+IF(NOT EXISTS "E:/E3D/trunk/Engine/EngineCore/3rd/assimp-3.3.1/build/install_manifest.txt")
+  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"E:/E3D/trunk/Engine/EngineCore/3rd/assimp-3.3.1/build/install_manifest.txt\"")
+ENDIF(NOT EXISTS "E:/E3D/trunk/Engine/EngineCore/3rd/assimp-3.3.1/build/install_manifest.txt")
 
-FILE(READ "C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/install_manifest.txt" files)
+FILE(READ "E:/E3D/trunk/Engine/EngineCore/3rd/assimp-3.3.1/build/install_manifest.txt" files)
 STRING(REGEX REPLACE "\n" ";" files "${files}")
 FOREACH(file ${files})
   MESSAGE(STATUS "Uninstalling \"$ENV{DESTDIR}${file}\"")

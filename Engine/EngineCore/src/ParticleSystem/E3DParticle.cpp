@@ -280,25 +280,21 @@ namespace E3DEngine
 		Vertes[0].SetNormal(0, 0, 1);
 		Vertes[0].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[0].SettextureCoord1(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
-		Vertes[0].ShaderIndex = fShaderIndex;
 
 		Vertes[1].SetPosition(m_Point[1].x, m_Point[1].y, m_Point[1].z);
 		Vertes[1].SetNormal(0, 0, 1);
 		Vertes[1].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[1].SettextureCoord1(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
-		Vertes[1].ShaderIndex = fShaderIndex;
 
 		Vertes[2].SetPosition(m_Point[2].x, m_Point[2].y, m_Point[2].z);
 		Vertes[2].SetNormal(0, 0, 1);
 		Vertes[2].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[2].SettextureCoord1(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
-		Vertes[2].ShaderIndex = fShaderIndex;
 
 		Vertes[3].SetPosition(m_Point[3].x, m_Point[3].y, m_Point[3].z);
 		Vertes[3].SetNormal(0, 0, 1);
 		Vertes[3].SetColor(m_fColor[0], m_fColor[1], m_fColor[2], m_fColor[3]);
 		Vertes[3].SettextureCoord1(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
-		Vertes[3].ShaderIndex = fShaderIndex;
 
 		BVertes[0].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		BVertes[0].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);

@@ -22,7 +22,6 @@
 			DisplayCamera		= 2
             LockEmitterMove     = 0
 			TextureUV 			= "1"
-            fShaderIndex 		= 3
 			LayerID				= 0
 		/>
 	</ParticleConfig>

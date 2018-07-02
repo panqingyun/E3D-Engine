@@ -206,7 +206,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h" />
@@ -289,7 +288,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp" />

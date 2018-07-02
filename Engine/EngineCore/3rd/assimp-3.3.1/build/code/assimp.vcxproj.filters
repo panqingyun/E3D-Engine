@@ -424,7 +424,4 @@
     <ClInclude Include="..\..\include\assimp\Compiler\poppack1.h" />
     <ClInclude Include="..\..\include\assimp\Compiler\pstdint.h" />
   </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\..\code\CMakeLists.txt" />
-  </ItemGroup>
 </Project>

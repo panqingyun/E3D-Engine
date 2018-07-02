@@ -226,6 +226,7 @@ namespace E3DEngine
 		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
 		SkyBox *skb = new SkyBox();
 		skb->Create(50, 50, 50);
+		skb->SetMaterial(m);
 		createObjects(skb, objectElement);
 		return skb;
 	}

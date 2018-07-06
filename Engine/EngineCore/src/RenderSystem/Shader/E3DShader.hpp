@@ -112,13 +112,10 @@ namespace E3DEngine
 		void UpdateFloatValue(std::string name, float value1, float value2);
 		void UpdateFloatValue(std::string name, float value1, float value2, float value3);
 		void UpdateFloatValue(std::string name, float value1, float value2, float value3, float value4);
-
 		void UpdateIntValue(std::string name, int value);
-
 		void UpdateMatrix2Value(std::string name, const float * data);
 		void UpdateMatrix3Value(std::string name, const  float * data);
 		void UpdateMatrix4Value(std::string name, const  float * data);
-
 		void UpdataFloat1ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat2ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat3ArrayUniform(std::string name, std::vector<float> value);
@@ -126,10 +123,10 @@ namespace E3DEngine
 
 	public:
 		virtual void	DeleteShader() { }
-
 		std::string GetFileRelativeFolder();
 		void SetFileRelativeFolder(std::string path);
 		std::map<std::string, std::string> &GetSamplerNameValue();
+
 	public:
 		void createInt1Uniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat1Uniform(std::string varName, std::string defValueFormat, int count);
@@ -156,9 +153,6 @@ namespace E3DEngine
 		std::map<std::string, Attribute> dynamicAttributeMap;
 		std::map<std::string, setShaderValueFunc> uniformSetFunc;
 		std::map<std::string, std::string> samplerNameValue;
-
-		std::string filePath;
-	protected:
 		std::map<std::string, float1Uniform> float1UniformList;
 		std::map<std::string, float2Uniform> float2UniformList;
 		std::map<std::string, float3Uniform> float3UniformList;
@@ -171,9 +165,10 @@ namespace E3DEngine
 		std::map<std::string, floatUniformArray> float2UniformArrayList;
 		std::map<std::string, floatUniformArray> float3UniformArrayList;
 		std::map<std::string, floatUniformArray> float4UniformArrayList;
-
 		std::vector<Attribute> StaticAttributeList;
 		std::vector<Attribute> DynamicAttributeList;
+
+		std::string filePath;
 
 	};
 }

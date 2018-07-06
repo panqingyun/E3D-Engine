@@ -9,20 +9,30 @@
 -->
 	<GameObject Name="MainCamera" Type="Camera" ClearColor="0.0, 0.0, 0.0, 1" BackGround="0,0,0,0" CullingMask="Everything"  Active="true" >
 		<Transform Posistion="150, 35,180" Rotation="0, 30, 0" Scale="1,1,1"/>			
+		<Component ClassName="AppMain"/>
 	</GameObject>
-	<GameObject Name="Light" Type="DirectionLight" Color="1, 1, 1, 1.0" LayerMask="AllLayer"  Active="true">
+	<GameObject Name="Light" Type="PointLight" Color="1, 1, 1, 1.0" Range="1000" LayerMask="AllLayer"  Active="true">
 		<Transform Posistion="50, 50, 0" Rotation="0, 0, 0" Scale="1,1,1"/>
 	</GameObject>
 	<GameObject Name="SkyBox" Type="SkyBox" LayerMask="defaultLayer">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>
 		<Material FilePath="../Material/SkyBox.material" SelectID="1"/>
 	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer">
+		<Transform Posistion="150, 35,160" Rotation="0, 0, 0" Scale="1,1,1"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
+		<Component ClassName="BoxDemo"/>
+	</GameObject>
+	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer">
+		<Transform Posistion="150, 45,160" Rotation="0, 0, 0" Scale="1,1,1"/>
+		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
+		<Component ClassName="BoxDemo"/>
+	</GameObject>
 	<GameObject Name="Dimian" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="3" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>
 	</GameObject>
 	<GameObject Name="fangzi" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="5" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>
-		<Component ClassName="AppMain"/>
 	</GameObject>
 	<GameObject Name="qiao" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="6" LayerMask="backLayer"  Active="true">
 		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>

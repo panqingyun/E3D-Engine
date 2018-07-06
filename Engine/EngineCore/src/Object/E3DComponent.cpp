@@ -10,3 +10,12 @@ void E3DEngine::Component::OnCollisionEnter(GameObject* go)
 	MonoObject * mObj = go->GetMonoBehaviour()->GetMonoObject();
 	m_pBehaviour->CallMethod("OnCollisionEnter", (void**)&mObj);
 }
+
+void E3DEngine::Component::SetGameObject(GameObject *go)
+{
+	this->gameObject = go;
+	if (m_pBehaviour != nullptr)
+	{
+		m_pBehaviour->SetPropertyValue("gameObject", gameObject->m_pBehaviour->GetMonoObject());
+	}
+}

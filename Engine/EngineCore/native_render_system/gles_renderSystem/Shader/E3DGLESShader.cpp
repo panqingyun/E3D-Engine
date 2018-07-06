@@ -333,21 +333,37 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : float1UniformArrayList)
 		{
+			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			{
+				continue;
+			}
 			glUniform1fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float2UniformArrayList)
 		{
+			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			{
+				continue;
+			}
 			glUniform2fv(uniformKeyValue.second.UniformName,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformArrayList)
 		{
+			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			{
+				continue;
+			}
 			glUniform3fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float4UniformArrayList)
 		{
+			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			{
+				continue;
+			}
 			glUniform4fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 

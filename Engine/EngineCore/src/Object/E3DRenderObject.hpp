@@ -145,7 +145,7 @@ namespace E3DEngine
 		// 顶点数组
 		std::vector<Vertex>		Vertices;
 		// 索引数组
-		std::vector<unsigned short>		Indices;
+		std::vector<unsigned int>		Indices;
 		// 渲染层级
 		eRenderIndex			RenderIndex;
 		// true 1次送入显卡后不再更改， false 每帧都向显卡发送数据

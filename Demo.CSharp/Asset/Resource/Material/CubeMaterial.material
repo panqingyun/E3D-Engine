@@ -37,9 +37,6 @@
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
-									   TRANSPOSITION:transformPosition;
-									   TRANSSCALE:transformScale;
-									   TRANSROTATE:transformRotate;
 									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>

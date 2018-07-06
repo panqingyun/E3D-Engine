@@ -23,17 +23,21 @@ namespace E3DEngine
 
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		pMaterial->UpdateShader(STATIC_VERTEX);
-
-		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-		pMaterial->UpdateShader(DYNAMIC_VERTEX);
-
+		if (!mBatchVertex.empty())
+		{
+			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			pMaterial->UpdateShader(DYNAMIC_VERTEX);
+		}
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 	}
 
 	void GLES_Renderer::TransformChange()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+		if (!mBatchVertex.empty())
+		{
+			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+		}
 	}
 
 	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount)
@@ -46,14 +50,14 @@ namespace E3DEngine
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 		pMaterial->UpdateShader(STATIC_VERTEX);
-		if (mBatchVertex.size() != 0)
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
+		if (!mBatchVertex.empty())
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
 	}
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
@@ -111,7 +115,7 @@ namespace E3DEngine
 		updateEngineDefineShaderValue();
 
 		// 绘制图形
-		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_SHORT, nullptr);
+		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 		int err = glGetError();
 		afterRender(deltaTime);
 	}

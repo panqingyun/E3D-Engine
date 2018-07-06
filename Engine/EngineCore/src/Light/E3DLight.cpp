@@ -7,6 +7,7 @@ namespace E3DEngine
 {
 	PointLight::PointLight()
 	{
+		Range = 0;
 		CreateBehaviour();
 	}
 

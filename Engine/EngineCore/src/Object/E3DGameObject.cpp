@@ -81,7 +81,7 @@ namespace E3DEngine
 			{
 				return nullptr;
 			}
-			component->gameObject = this;
+			component->SetGameObject(this);
 			component->TypeName = type_name;
 			component->Transform = Transform;
 			component->Awake();
@@ -107,7 +107,7 @@ namespace E3DEngine
 		{
 			return nullptr;
 		}
-		component->gameObject	= this;
+		component->SetGameObject(this);
 		component->Transform = Transform;
 		component->Awake();
 		component->OnEnable();

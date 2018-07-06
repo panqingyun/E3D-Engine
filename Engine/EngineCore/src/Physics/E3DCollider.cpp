@@ -1,6 +1,6 @@
 ﻿
 //********************************** Effect 3D Engine **************************************************//
-//******************* Copyright (c) 2017-7-14  PanQingyun. All rights reserved. ************************//
+//******************* Copyright (c) PanQingyun. All rights reserved. 2017-7-14  ************************//
 
 #include "E3DCollider.hpp"
 #include "../Object/E3DRenderObject.hpp"

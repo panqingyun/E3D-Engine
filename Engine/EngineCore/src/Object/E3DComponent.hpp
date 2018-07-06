@@ -74,6 +74,11 @@ namespace E3DEngine
 			}
 		}
 		virtual void OnCollisionEnter(GameObject* go);
+		virtual void SetGameObject(GameObject *go);
+		GameObject * GetGameObject()
+		{
+			return gameObject;
+		}
     public:
         GameObject *	gameObject;
 		std::string 	_Tag;

@@ -14,6 +14,7 @@ namespace E3DEngine
 	const std::string NM_GameObject = "GameObject";
 	const std::string TP_Camera = "Camera";
 	const std::string TP_DLight = "DirectionLight";
+	const std::string TP_PLight = "PointLight";
 	const std::string TP_SkyBox = "SkyBox";
 	const std::string TP_Mesh = "Mesh";
 	const std::string TP_Particle = "Particle";
@@ -54,6 +55,7 @@ namespace E3DEngine
 
 	const string _Camera_CullMask = "CullingMask";
 	const string _Camera_CullMask_Everything = "Everything";
+	const string _Range = "Range";
 
 	using createGameObjectFun = GameObject*(*)(GameObject *parent,TiXmlElement *objectElement);
 	std::map<std::string, createGameObjectFun> createFun;
@@ -258,6 +260,42 @@ namespace E3DEngine
 		return go;
 	}
 
+	GameObject *createCube(GameObject *parent, TiXmlElement *objectElement)
+	{
+		Box * box = new Box();
+		box->Create(5, 5, 5);
+		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
+		box->SetMaterial(m);
+		createObjects(box, objectElement);
+
+		return box;
+	}
+
+	GameObject *createSphere(GameObject *parent, TiXmlElement *objectElement)
+	{
+		Sphere * sphere = new Sphere();
+		sphere->Create(5);
+		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
+		sphere->SetMaterial(m);
+		createObjects(sphere, objectElement);
+
+		return sphere;
+	}
+	
+	GameObject *createPointLight(GameObject *parent, TiXmlElement *objectElement)
+	{
+		Light *light = Light::Create(LightType::ePOINT_LIGHT);
+		Color4 color = createColor(*objectElement->Attribute(_Color));
+		light->Color = vec4f(color.r, color.g, color.b, color.a);
+		if (objectElement->Attribute(_Range) != nullptr)
+		{
+			static_cast<PointLight*>(light)->Range = Convert::ToFloat(*objectElement->Attribute(_Range));
+		}
+		createObjects(light, objectElement);
+
+		return light;
+	}
+
 	GameObject * createParticle(GameObject *parent, TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
@@ -290,6 +328,9 @@ namespace E3DEngine
 		createFun[TP_Mesh] = createMesh;
 		createFun[TP_Particle] = createParticle;
 		createFun[TP_Empty] = createEmpty;
+		createFun[TP_Cube] = createCube;
+		createFun[TP_Sphere] = createSphere;
+		createFun[TP_PLight] = createPointLight;
 
 		renderIndexMap[_RenderIndex_LowMost] = eRenderIndex::eRI_LowMost;
 		renderIndexMap[_RenderIndex_TopMost] = eRenderIndex::eRI_TopMost;

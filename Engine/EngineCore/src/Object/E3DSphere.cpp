@@ -52,8 +52,6 @@ void E3DEngine::Sphere::Create(float R)
 void E3DEngine::Sphere::SetMaterial(Material *material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
-	//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-
 	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 	{
 		// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
@@ -76,25 +74,22 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 	{
 		return;
 	}
-	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-	mRenderer->RemoveInRenderer(ID);
+	m_pRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
-		mRenderer->FillBegin(ID);
+		m_pRenderer->FillBegin(ID);
 		for (int i = 0; i < m_vecVertex.size(); i++)
 		{
-			mRenderer->FillVertex(m_vecVertex[i]);
-			m_vecBatchVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-			mRenderer->FillBatchVertex(m_vecBatchVertex[i]);
+			m_pRenderer->FillVertex(m_vecVertex[i]);
 		}
 
 		for (int i = 0; i < m_vecIndex.size(); i++)
 		{
-			mRenderer->FillIndex(m_vecIndex[i]);
+			m_pRenderer->FillIndex(m_vecIndex[i]);
 		}
-		mRenderer->FillEnd(ID, m_vecVertex.size());
+		m_pRenderer->FillEnd(ID, m_vecVertex.size());
 	}
-	mRenderer->TransformChange();
+	m_pRenderer->TransformChange();
 }
 
 void E3DEngine::Sphere::TransformChange()

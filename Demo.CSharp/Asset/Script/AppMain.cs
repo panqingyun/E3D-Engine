@@ -7,11 +7,6 @@ class AppMain : Component
         Debug.Log("--------------------------");
     }
 
-    void Update(float deltaTime)
-    {
-        
-    }
-
     void OnCollisionEnter(E3DEngine.Object collisionObject)
     {
 

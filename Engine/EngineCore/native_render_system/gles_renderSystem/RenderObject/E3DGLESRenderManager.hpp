@@ -57,7 +57,7 @@ namespace E3DEngine
 			glGenBuffers(1, &m_IndexBuffer);
 			glGenBuffers(1, &m_BatchVertexBuffer);
 			Debug::Log(ell_Info, "-------------------++ m_VertexBuffer id = %d", m_VertexBuffer);
-			Debug::Log(ell_Info, "-------------------++ m_BatchVertexBuffer id = %d", m_BatchVertexBuffer);
+			Debug::Log(ell_Info, "-------------------++ m_IndexBuffer id = %d", m_IndexBuffer);
 		}
 
 		GLuint	m_VertexBuffer;

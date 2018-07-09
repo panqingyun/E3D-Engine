@@ -78,6 +78,10 @@ namespace E3DEngine
 	{
 		DECLARE_CLASS(BoxCollider)
 	public:
+		BoxCollider()
+		{
+			CreateBehaviour();
+		}
 		virtual void Awake() override;
 		virtual void Start() override;
 		virtual void Update(float deltaTime) override;
@@ -94,6 +98,10 @@ namespace E3DEngine
 	{
 		DECLARE_CLASS(SphereCollider)
 	public:
+		SphereCollider()
+		{
+			CreateBehaviour();
+		}
 		virtual void Awake() override;
 		virtual void Start() override;
 		virtual void Update(float deltaTime) override;
@@ -109,6 +117,10 @@ namespace E3DEngine
 	{
 		DECLARE_CLASS(MeshCollider)
 	public:
+		MeshCollider()
+		{
+			CreateBehaviour();
+		}
 		virtual void Awake() override;
 		virtual void Start() override;
 		virtual void Update(float deltaTime) override;

@@ -116,6 +116,7 @@ VOID _2_PARAM_FUNCTION(GameObject		, set_Active		, CS_OBJECT		, cs_boj	, CS_BOOL
 VOID _2_PARAM_FUNCTION(RigidBody		, addRigidBody		, CS_OBJECT		, rigibody	, CS_OBJECT	, _collider);
 VOID _2_PARAM_FUNCTION(GameObject		, set_LayerMask		, CS_OBJECT		, cs_boj	, UINT		, mask);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject	, addComponent		, CS_OBJECT		, obj		, CS_STRING	, class_name);
+CS_OBJECT _2_PARAM_FUNCTION(GameObject	, getComponent		, CS_OBJECT		, obj		, CS_STRING	, class_name);
 CS_OBJECT _1_PARAM_FUNCTION(GameObject	, get_Material		, CS_OBJECT		, cs_boj);
 CS_BOOL _1_PARAM_FUNCTION(GameObject	, get_Active		, CS_OBJECT		, cs_boj);
 UINT _1_PARAM_FUNCTION(Object			, get_ID			, CS_OBJECT		, cs_boj);

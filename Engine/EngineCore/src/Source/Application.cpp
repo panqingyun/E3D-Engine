@@ -28,32 +28,49 @@ namespace E3DEngine
 		std::string fileContent = getContentFromPath(startApp);
 		if (fileContent != empty_string)
 		{
-			std::vector<std::string> vestr = E3DEngine::StringBuilder::Split(fileContent, "=");
-			if (vestr.size() == 2)
+			std::vector<std::string> vestr = E3DEngine::StringBuilder::Split(fileContent, "\n");
+			for (auto &cfg : vestr)
 			{
-				string entryClass = vestr[1];
-				std::vector<std::string> nameSpace_className = StringBuilder::Split(entryClass, ":");
-				std::string entryNameSpce = "";
-				std::string entryClassName = "";
-				if (nameSpace_className.size() == 2)  
+				if (cfg.find("entryClass") != std::string::npos)
 				{
-					entryNameSpce = StringBuilder::Trim(nameSpace_className[0]);
-					entryClassName = StringBuilder::Trim(nameSpace_className[1]);
+					std::vector<std::string> entryConfig = E3DEngine::StringBuilder::Split(cfg, "=");
+					startCSharp(entryConfig);
 				}
-				else if (nameSpace_className.size() == 1)
+				else if (cfg.find("debugWindow") != std::string::npos)
 				{
-					entryClassName = StringBuilder::Trim(nameSpace_className[0]);
+
 				}
-				m_pEntryBehaviour = new MonoBehaviour;
-				m_pEntryBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
-				m_pEntryBehaviour->Create(entryNameSpce.c_str(), entryClassName.c_str());
-				m_pEntryBehaviour->CallMethod("Main");
+
 			}
 		}
 		else
 		{
 			Debug::Log(ell_Error, "Application::StartApp ERROR app.config");
 			assert(false);
+		}
+	}
+
+	void Application::startCSharp(std::vector<std::string> &vestr)
+	{
+		if (vestr.size() == 2)
+		{
+			string entryClass = vestr[1];
+			std::vector<std::string> nameSpace_className = StringBuilder::Split(entryClass, ":");
+			std::string entryNameSpce = "";
+			std::string entryClassName = "";
+			if (nameSpace_className.size() == 2)
+			{
+				entryNameSpce = StringBuilder::Trim(nameSpace_className[0]);
+				entryClassName = StringBuilder::Trim(nameSpace_className[1]);
+			}
+			else if (nameSpace_className.size() == 1)
+			{
+				entryClassName = StringBuilder::Trim(nameSpace_className[0]);
+			}
+			m_pEntryBehaviour = new MonoBehaviour;
+			m_pEntryBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
+			m_pEntryBehaviour->Create(entryNameSpce.c_str(), entryClassName.c_str());
+			m_pEntryBehaviour->CallMethod("Main");
 		}
 	}
 

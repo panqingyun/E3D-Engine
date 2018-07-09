@@ -16,6 +16,10 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Component addComponent(string comName);
 
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        protected extern Component getComponent(string comName);
+
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern void removeComponent(Component com);
 
@@ -89,23 +93,9 @@ namespace E3DEngine
 
         public Component GetComponent(string typeFullName)
         {
-            if (component_dic.ContainsKey(typeFullName))
-            {
-                return component_dic[typeFullName][0];
-            }
-
-            return null;
+            return getComponent(typeFullName);
         }
-
-        public List<T> GetComponents<T>() where T : Component
-        {
-            if (component_dic.ContainsKey(typeof(T).FullName))
-            {
-                return component_dic[typeof(T).FullName] as List<T>;
-            }
-            return null;
-        }
-
+        
         public List<Component> GetComponents(Type t)
         {
             return GetComponents(t.FullName);
@@ -136,16 +126,6 @@ namespace E3DEngine
         public Component AddComponent(string typeFullName)
         {
             Component com = addComponent(typeFullName);
-            if (com == null)
-            {
-                return null;
-            }
-            com.gameObject = this;
-            if (!component_dic.ContainsKey(typeFullName))
-            {
-                component_dic[typeFullName] = new List<Component>();
-            }
-            component_dic[typeFullName].Add(com);
             return com;
         }
 

@@ -227,7 +227,7 @@ struct Convert
     static std::string ToString(double source);
 	static std::string ToString(int source);
     static std::string ToString(object source);
-	static std::string ToString(MonoString* str);
+	static std::string ToStdString(MonoString* str);
 
 	/*
 		把16进制的字符串转换成10进制数
@@ -331,6 +331,7 @@ namespace E3DEngine
 		std::vector<Component*> * GetComponents(std::string type_name);
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
+		Component * GetComponent(const char * type_name);
 		void RemoveComponent(UINT id);
 		void RemoveComponent(Component *com);
 		void SetIsStatic(bool isStatic);
@@ -373,9 +374,9 @@ namespace E3DEngine
 
 		std::vector<Vertex>& GetVertex() { return m_vecVertex; };
 		std::vector<uint>& GetIndex() { return m_vecIndex; }
+		virtual void CreateBehaviour() override;
 	protected:
 		virtual void ComponentAdded(Component * component);
-		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue();
 		virtual bool removeComponentFromListByID(std::vector<Component*> &comList, UINT id);
 	public:

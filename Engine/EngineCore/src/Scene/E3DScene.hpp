@@ -27,12 +27,15 @@ namespace E3DEngine
 		eNotBlendOther		= 2,
 	};
     
+	void RegistScnObjCreateFunc();
+
 	class Scene : public Object
 	{
 	public:
 		Scene();
 		virtual ~Scene() override;
 	public:
+		void Create(std::string filePath);
 		void Update(float deltaTime);
 		void Destory();
 		void SetDontDestory(bool dontDestory);

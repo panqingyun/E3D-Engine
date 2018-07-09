@@ -785,11 +785,7 @@ namespace E3DEngine
 	
 	void ParticleGroup::TransformChange()
 	{
-		//m_pRenderer->SetTransform(Transform);		
-		for (auto & emitter : m_particleEmitters)
-		{
-			emitter->SetEmitterPosition(Transform->Position);
-		}
+		m_pRenderer->SetTransform(Transform);	
 		m_pRenderer->TransformChange();
 	}
 

@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class BoxDemo : Component
+class BoxScript : Component
 {
     void Start()
     {
-        BoxCollider col = gameObject.AddComponent<BoxCollider>();
-        col.CreateRigiBody(10);
+        gameObject.AddComponent<BoxCollider>().CreateRigiBody(10);
     }
 
     private Vector3 rotate = new Vector3();

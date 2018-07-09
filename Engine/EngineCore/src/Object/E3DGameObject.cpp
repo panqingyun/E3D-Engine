@@ -76,7 +76,7 @@ namespace E3DEngine
 		string kName = ClassFactory::GetInstance().getTypeNameByClassName(cName);
 		if (kName != "NAN")
 		{
-			Component * component = (Component *)ClassFactory::GetInstance().CreateClass(kName);
+			component = (Component *)ClassFactory::GetInstance().CreateClass(kName);
 			if (component == nullptr)
 			{
 				return nullptr;
@@ -115,6 +115,15 @@ namespace E3DEngine
 		return component;
 	}
 	
+	E3DEngine::Component * GameObject::GetComponent(const char * type_name)
+	{
+		if (m_listComponents.find(type_name) != m_listComponents.end())
+		{
+			return m_listComponents[type_name][0];
+		}
+		return nullptr;
+	}
+
 	void GameObject::RemoveComponent(Component *com)
 	{
 		std::string type_name = com->TypeName;
@@ -859,7 +868,7 @@ std::string Convert::ToString(object source)
 }
 
 
-std::string Convert::ToString(MonoString* str)
+std::string Convert::ToStdString(MonoString* str)
 {
 	int length = mono_string_length(str);
 	wchar_t * chars = (wchar_t *)mono_string_chars(str);

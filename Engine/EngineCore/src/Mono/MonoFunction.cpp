@@ -26,6 +26,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	set_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
+	REGISTER_INTERNAL_CALL(GameObject,	getComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	removeComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
@@ -148,19 +149,19 @@ VOID _4_PARAM_FUNCTION(Transform, setRotation, CS_OBJECT, obj, float, x, float, 
 
 VOID _1_PARAM_FUNCTION(Debug, log_error, CS_STRING, err)
 {
-	std::string _log = Convert::ToString(err);
+	std::string _log = Convert::ToStdString(err);
 	E3DEngine::Debug::Log(ell_Error, _log.c_str());
 }
 
 VOID _1_PARAM_FUNCTION(Debug, log_warning, CS_STRING, warning)
 {
-	std::string _log = Convert::ToString(warning);
+	std::string _log = Convert::ToStdString(warning);
 	E3DEngine::Debug::Log(ell_Warning, _log.c_str());
 }
 
 VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 {
-	std::string _log = Convert::ToString(info);
+	std::string _log = Convert::ToStdString(info);
 	E3DEngine::Debug::Log(ell_Info, _log.c_str());
 }
 
@@ -183,7 +184,7 @@ VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float
 
 CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 {
-	Scene * scene = SceneManager::GetInstance().CreateScene(Convert::ToString(path));
+	Scene * scene = SceneManager::GetInstance().CreateScene(Convert::ToStdString(path));
 
 	return scene->GetMonoBehaviour()->GetMonoObject();
 }
@@ -253,7 +254,7 @@ CS_OBJECT _0_PARAM_FUNCTION(Render, createRendererWithoutParam)
 
 CS_OBJECT _2_PARAM_FUNCTION(Material, createMaterial, CS_STRING, path, int, id)
 {
-	std::string m_Path = Convert::ToString(path);
+	std::string m_Path = Convert::ToStdString(path);
 
 	E3DEngine::Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(m_Path, id);
 	return material->GetBehaviour()->GetMonoObject();
@@ -289,7 +290,7 @@ VOID _2_PARAM_FUNCTION(Object, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
 		return;
 	}
 
-	go->Name = Convert::ToString(name);
+	go->Name = Convert::ToStdString(name);
 }
 
 CS_STRING _1_PARAM_FUNCTION(Object, get_Name, CS_OBJECT, cs_obj)
@@ -312,9 +313,29 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 	{
 		return nullptr;
 	}
-	std::string full_name = Convert::ToString(class_name);
+	std::string full_name = Convert::ToStdString(class_name);
 
 	Component * component = go->AddComponent(full_name.c_str());
+
+	if (component == nullptr)
+	{
+		return nullptr;
+	}
+
+	return component->GetMonoBehaviour()->GetMonoObject();
+}
+
+CS_OBJECT _2_PARAM_FUNCTION(GameObject, getComponent, CS_OBJECT, obj, CS_STRING, class_name)
+{
+	GameObject *go = getCppObject<GameObject>(obj);
+
+	if (go == nullptr)
+	{
+		return nullptr;
+	}
+	std::string full_name = Convert::ToStdString(class_name);
+
+	Component * component = go->GetComponent(full_name.c_str());
 
 	if (component == nullptr)
 	{
@@ -415,7 +436,7 @@ VOID _2_PARAM_FUNCTION(GameObject, set_LayerMask, CS_OBJECT, cs_boj, UINT, mask)
 
 CS_ARRAY _2_PARAM_FUNCTION(ParticleSystem, createParticle, CS_OBJECT, cs_obj , CS_STRING, path)
 {
-	std::string particle_path = Convert::ToString(path);
+	std::string particle_path = Convert::ToStdString(path);
 	std::vector<ParticleGroup*> *pG = ParticleSystem::GetInstance().ActiveParticle(particle_path);
 
 	MonoClass *klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(),
@@ -484,7 +505,7 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithName, CS_OBJECT, cs_obj, CS
 	{
 		return nullptr;
 	}
-	std::string cName = Convert::ToString(name);
+	std::string cName = Convert::ToStdString(name);
 	GameObject * child = go->FindChild(cName);
 	if (child == nullptr)
 	{
@@ -541,7 +562,7 @@ VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child
 CS_OBJECT _1_PARAM_FUNCTION(Terrain, Create, CS_STRING, heightMap)
 {
 	Terrain * terrain = new Terrain;
-	terrain->Create(Convert::ToString(heightMap).c_str());
+	terrain->Create(Convert::ToStdString(heightMap).c_str());
 	ADD_IN_SCENE(terrain);
 
 	return terrain->GetMonoBehaviour()->GetMonoObject();
@@ -706,7 +727,7 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 
 CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int, cfgID)
 {
-	std::string filePath = Convert::ToString(path);
+	std::string filePath = Convert::ToStdString(path);
 	Mesh * mh = Mesh::Create(filePath, cfgID);
 	ADD_IN_SCENE(mh);
 	return mh->GetMonoBehaviour()->GetMonoObject();

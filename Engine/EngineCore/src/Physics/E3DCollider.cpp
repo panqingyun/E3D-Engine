@@ -60,13 +60,13 @@ namespace E3DEngine
 
 	void BoxCollider::Awake()
 	{
-		CreateBehaviour();
 		vec3f lwh;
 		lwh = gameObject->GetBounds();
 		m_pMotionState = nullptr;
 		m_pShape = createBoxShape(btVector3(btScalar(lwh.x / 2), btScalar(lwh.z / 2), btScalar(lwh.y / 2)));
+		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Start();
+		m_pBehaviour->Awake();
 	}
 
 	void BoxCollider::Update(float deltaTime)
@@ -108,6 +108,7 @@ namespace E3DEngine
 			btScalar(Transform->Position.z)));
 		btQuaternion q;
 		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
+		
 		m_StartTransform.setRotation(q);
 		createRigidBody(mass, m_StartTransform, m_pShape);
 		Physics::GetInstance().GetWorld()->contactTest(m_pRigidBody, mColCallBack);
@@ -134,10 +135,10 @@ namespace E3DEngine
 
 	void SphereCollider::Awake()
 	{
-		CreateBehaviour();
 		float l = gameObject->GetBounds().x;
 		m_pMotionState = nullptr;
 		m_pShape = createSphereShape(l);
+		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Awake();
 	}
@@ -196,28 +197,31 @@ namespace E3DEngine
 
 	void MeshCollider::Awake()
 	{
-		CreateBehaviour();
 		m_pMotionState = nullptr;
 		std::vector<Vertex> &vertexs = gameObject->GetVertex();
 		std::vector<UINT> &indexs = gameObject->GetIndex();
 		btIndexedMesh part;
-		std::vector<float> vertexBase;
-		for (auto &vertex : vertexs)
+		const int size = vertexs.size() * 3;
+		float *vertexBase = new float[size];
+		for (int i = 0; i < vertexs.size(); i++)
 		{
-			vertexBase.push_back(vertex.Position[0]);
-			vertexBase.push_back(vertex.Position[1]);
-			vertexBase.push_back(vertex.Position[2]);
+			vertexBase[i * 3 + 0] = vertexs[i].Position[0];
+			vertexBase[i * 3 + 1] = vertexs[i].Position[1];
+			vertexBase[i * 3 + 2] = vertexs[i].Position[2];
 		}
-		part.m_vertexBase = (const unsigned char*)vertexBase.data();
+		
+		part.m_vertexBase = (const unsigned char*)vertexBase;
 		part.m_vertexStride = sizeof(btScalar) * 3;
 		part.m_numVertices = gameObject->GetVertex().size();
 		part.m_triangleIndexBase = (const unsigned char*)indexs.data();
 		part.m_triangleIndexStride = sizeof(UINT) * 3;
-		part.m_numTriangles = vertexs.size() / 3;
+		part.m_numTriangles = indexs.size() / 3;
 		part.m_indexType = PHY_INTEGER;
+
 		btTriangleIndexVertexArray * indexVertex = new btTriangleIndexVertexArray();
 		indexVertex->addIndexedMesh(part, PHY_INTEGER);
-		m_pShape = new btBvhTriangleMeshShape(indexVertex,true);
+		m_pShape = new btBvhTriangleMeshShape(indexVertex, true);
+		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Awake();
 	}

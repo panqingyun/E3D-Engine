@@ -193,7 +193,7 @@ void MonoBehaviour::SetPropertyValue(const char *name, void *value)
 		if (m_pException != nullptr)
 		{
 			MonoString* string = mono_object_to_string(m_pException, nullptr);
-			E3DEngine::Debug::Log(ell_Error, Convert::ToString(string).c_str());
+			E3DEngine::Debug::Log(ell_Error, Convert::ToStdString(string).c_str());
 		}
 	}
 }
@@ -222,7 +222,7 @@ void * MonoBehaviour::GetPropertyValue(const char * name)
 		if (m_pException != nullptr)
 		{
 			MonoString* string = mono_object_to_string(m_pException, nullptr);
-			E3DEngine::Debug::Log(ell_Error, Convert::ToString(string).c_str());
+			E3DEngine::Debug::Log(ell_Error, Convert::ToStdString(string).c_str());
 		}
 		return val;
 	}
@@ -255,7 +255,7 @@ void MonoBehaviour::callMethod(void ** param, MonoMethod *method)
 	if (m_pException != nullptr)
 	{
 		MonoString* string = mono_object_to_string(m_pException, nullptr);
-		E3DEngine::Debug::Log(ell_Error, Convert::ToString(string).c_str());
+		E3DEngine::Debug::Log(ell_Error, Convert::ToStdString(string).c_str());
 	}
 }
 
@@ -300,7 +300,7 @@ void MonoBehaviour::constructor()
 		if (m_pException != nullptr)
 		{
 			MonoString* string = mono_object_to_string(m_pException, nullptr);
-			E3DEngine::Debug::Log(ell_Error, Convert::ToString(string).c_str());
+			E3DEngine::Debug::Log(ell_Error, Convert::ToStdString(string).c_str());
 		}
 	}
 }

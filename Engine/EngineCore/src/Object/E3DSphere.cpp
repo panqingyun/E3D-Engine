@@ -49,20 +49,6 @@ void E3DEngine::Sphere::Create(float R)
 	IsActive = false;
 }
 
-void E3DEngine::Sphere::SetMaterial(Material *material)
-{
-	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
-	if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
-	{
-		// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
-		//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
-	}
-	GameObject::SetMaterial(material);
-	m_pRenderer->SetTransform(Transform);
-	m_pRenderer->IsStaticDraw = false;
-	SetActive(true);
-}
-
 void E3DEngine::Sphere::SetActive(bool isActive)
 {
 	if (isActive == IsActive)

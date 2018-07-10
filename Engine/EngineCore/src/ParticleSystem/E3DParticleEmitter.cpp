@@ -88,14 +88,15 @@ namespace E3DEngine
         m_bIsBlank = false;
         m_CurrentParticleNumer = 0;
         m_fBlankTime = 0;
-        m_pParticleGroup->UpdateRefrence(1);
+		m_pParticleGroup->UpdateRefrence(1);
     }
     
     void ParticleEmitter::InitCompleted()
-    {
+	{
+		m_pParticleGroup->SetParticleSize(vec2f(m_v2ParticleSize.x, m_v2ParticleSize.y));
         _CreateParticle();
 		m_pParticleGroup->CreateParticle(m_MaxParticleNumber, m_LiveTime, vec3f(NO_POS), m_v2ParticleSize, m_fParticleColor, particleGroupID, vec3f(0.0, 0.0, 0.0), true);
-        bIsFirstCreate = false;
+		bIsFirstCreate = false;
     }
     
     bool ParticleEmitter::CheckLiveTime(float time)
@@ -311,12 +312,12 @@ namespace E3DEngine
     }
     
     void BallEmitter::Initilize(ParticleGroup *p)
-    {
-        ParticleEmitter::Initilize(p);
+	{
+		ParticleEmitter::Initilize(p);
+		m_v2ParticleSize.x = 0.5;
+		m_v2ParticleSize.y = 0.5;
         m_Type = eParticleEmitterBall;
         m_LiveTime = 5;
-        m_v2ParticleSize.x = 0.5;
-        m_v2ParticleSize.y = 0.5;
         m_fParticleColor = 1;
         m_fBlankTime = 10;
         Radius = 3;
@@ -396,7 +397,6 @@ namespace E3DEngine
 		//        m_pParent->SetIsBillborad(m_bIsBillboard);
 		m_MaxParticleNumber = cfg->MaxParticleNumber;
         m_pParticleGroup->SetMaxParticleNumber(cfg->MaxParticleNumber);
-        Radius = cfg->Radius;
         std::vector<std::string> pos = StringBuilder::Split(cfg->ParticlePosition, ",");
         if (pos.size() == 3)
         {

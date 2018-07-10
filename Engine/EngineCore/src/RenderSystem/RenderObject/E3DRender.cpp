@@ -46,7 +46,7 @@ namespace E3DEngine
 	void Renderer::CreateBehaviour()
 	{
 		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		m_pBehaviour->Create(NAME_SPACE, "Render");
+		NEW_INSTANCE(Renderer);
 		setBehaviourDefaultValue();
 	}
 

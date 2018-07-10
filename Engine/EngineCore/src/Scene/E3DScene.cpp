@@ -24,6 +24,7 @@ namespace E3DEngine
 	const std::string TP_Sphere = "Sphere";
 	const std::string TP_Empty = "Empty";
 	const string _typeName = "Type";
+	const string TP_Terrain = "Terrain";
 
 	const string _Name = "Name";
 	const string material_TypeName = "Material";
@@ -173,21 +174,23 @@ namespace E3DEngine
 		return pCamera;
 	}
 
-	Material * createMaterial(TiXmlElement *objectElement)
+	Renderer * createRenderer(TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
 
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(sceneFolderPath + "/" + _path, _id);
-		return m;
+		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		renderer->SetMaterial(m);
+		return renderer;
 	}
 
 	GameObject* createSkyBox(TiXmlElement *objectElement)
 	{
-		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
+		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
 		SkyBox *skb = new SkyBox();
 		skb->Create(50, 50, 50);
-		skb->SetMaterial(m);
+		skb->SetRenderer(rd);
 		createObjects(skb, objectElement);
 		return skb;
 	}
@@ -223,8 +226,9 @@ namespace E3DEngine
 	{
 		Box * box = new Box();
 		box->Create(1, 1, 1);
-		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
-		box->SetMaterial(m);
+		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
+
+		box->SetRenderer(rd);
 		createObjects(box, objectElement);
 
 		return box;
@@ -234,8 +238,8 @@ namespace E3DEngine
 	{
 		Sphere * sphere = new Sphere();
 		sphere->Create(1);
-		Material * m = createMaterial(objectElement->FirstChildElement(_Material));
-		sphere->SetMaterial(m);
+		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
+		sphere->SetRenderer(rd);
 		createObjects(sphere, objectElement);
 
 		return sphere;
@@ -327,6 +331,10 @@ namespace E3DEngine
 		go->Name = *objectElement->Attribute(_Name);
 		go->TypeName = _type;
 		parseTransform(objectElement->FirstChildElement(_Transform), go->Transform);
+		if (_type == TP_Particle)
+		{
+			go->Transform->SetIsBillBoard(true);
+		}
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		setGameObjectActive(objectElement, go);

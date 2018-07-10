@@ -336,8 +336,7 @@ namespace E3DEngine
 		void RemoveComponent(Component *com);
 		void SetIsStatic(bool isStatic);
 		bool GetIsStatic() { return m_bIsStatic; }
-		virtual void SetMaterial(Material *material);
-		virtual Material * GetMaterial();
+		virtual void TransferRender();
 	public:
 		virtual void PrepareUpdate(float deltaTime);
 		virtual void AfterUpdate(float deltaTime);
@@ -367,6 +366,7 @@ namespace E3DEngine
 		virtual void Render(float deltaTime);
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
+		void SetRenderer(Renderer * renderer);
 		std::map<UINT, GameObject *> &GetChilds()
 		{
 			return childNode;

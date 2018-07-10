@@ -27,7 +27,8 @@ namespace E3DEngine
     public:
         Particle();
 		void Create(float width, float height, bool ownDimension, float color, vec3f position, int fsIndex,float time2Live);
-        void SetDimension(float width, float height); // 设置粒子大小
+		
+		void SetDimension(float width, float height); // 设置粒子大小
         void Update(float deltaTime);
         void SetColor(float r, float g, float b);
         void SetColor(long color); // 16 进制颜色值
@@ -95,7 +96,8 @@ namespace E3DEngine
     private:
         void	updateVertexCoord();
         void	move2Position(vec3f newPos);
-        vec4f	cumputBillboardCoord(int index);
+		vec4f	cumputBillboardCoord(int index);
+		void    initVertex();
 
     private:
         int     m_RandomForceID;
@@ -121,8 +123,6 @@ namespace E3DEngine
         float		m_rotateSpeed;
         bool		m_bIsBillBoard;
         float		rudis;
-        float		sin_theat[4];
-        float		cos_theat[4];
         vec3f		m_vRight;
         vec3f		m_vUp;
         eParticleLiveState		m_eParticleState;
@@ -186,6 +186,7 @@ namespace E3DEngine
         void			CleaParticle();
 		void            UpdateParticles(float deltaTime);
 		void			SetParticleDir(vec3f TouchPos, vec3f EmitterPos);
+		void			SetParticleSize(vec2f size) { pSzie = size; }
 		virtual void	SetMaxParticleNumber(UINT number);
 		virtual void	SetCamera(Camera * camera) override;
 		virtual void	AfterUpdate(float deltaTime) override;
@@ -242,7 +243,7 @@ namespace E3DEngine
 		bool			beGetFromLocalPool;
 		bool			bIsEnable;
 		bool			bLockEnable;
-
+		vec2f			pSzie;
     };
     
 }

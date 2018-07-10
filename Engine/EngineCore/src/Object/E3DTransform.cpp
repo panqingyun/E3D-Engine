@@ -213,7 +213,15 @@ namespace E3DEngine
 
 	vvision::vec3f CTransform::GetPosition()
 	{
-		return Position;
+		vec3f pos = vec3f(WorldMatrix.at(3, 0), WorldMatrix.at(3, 1), WorldMatrix.at(3, 2));
+		return pos;
+	}
+
+	vec3f CTransform::GetScale()
+	{
+		vec3f scale = vec3f(1, 1, 1);
+		vec3f pScale = Parent != nullptr ? Parent->GetScale() : scale;
+		return Scale * pScale;
 	}
 
 	mat4f CTransform::GetParentMatrix()
@@ -316,29 +324,21 @@ namespace E3DEngine
 			return;
 		}
 		WorldMatrix.identity();
-		if (IsTransPosFirst)
-		{
-			translation();
-			// 旋转
-			WorldMatrix = Rotation.transform() * WorldMatrix ;
-			scale();
+        // 旋转
+		WorldMatrix = WorldMatrix * Rotation.transform();
+        scale();
+		translation();
+		mat4f parentMatrix = GetParentMatrix();
+		if (m_IsBillBoard)
+		{ // 公告板 只要父级矩阵的平移
+			mat4f wMatrix;
+			wMatrix.identity();
+			wMatrix.at(3, 0) = parentMatrix.at(3, 0);
+			wMatrix.at(3, 1) = parentMatrix.at(3, 1);
+			wMatrix.at(3, 2) = parentMatrix.at(3, 2);
+			parentMatrix = wMatrix;
 		}
-		else
-		{
-            if(m_IsBillBoard)
-            {
-				SetBillBoardNormal(Position, Scale);
-                WorldMatrix = billboardMatrix;
-            }
-            else
-            {
-                // 旋转
-                WorldMatrix = WorldMatrix * Rotation.transform();
-                scale();
-                translation();
-            }
-		}
-		WorldMatrix = GetParentMatrix() * WorldMatrix;
+		WorldMatrix = parentMatrix * WorldMatrix;
 		for (auto & Child : Childs)
 		{
 			Child.second->Update();

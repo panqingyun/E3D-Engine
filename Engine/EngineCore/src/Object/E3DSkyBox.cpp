@@ -13,18 +13,18 @@ void E3DEngine::SkyBox::Create(float l, float w, float h)
 	Box::Create(l, w, h);	
 }
 
-void E3DEngine::SkyBox::SetMaterial(Material * material)
+void E3DEngine::SkyBox::SetRenderer(Renderer *rd)
 {
-	SkyBoxConfig * skyBox = material->MaterialTableManager->Select<SkyBoxConfig>(1);
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
-	textures.emplace_back(material->MaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
+	SkyBoxConfig * skyBox = rd->GetMaterial()->MaterialTableManager->Select<SkyBoxConfig>(1);
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
+	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
 
 	setTextureCoord();
-	Box::SetMaterial(material);
+	GameObject::SetRenderer(rd);
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
 
 }
@@ -153,14 +153,11 @@ void E3DEngine::SkyDome::Create(float R)
 
 void E3DEngine::SkyDome::SetMaterial(Material * material)
 {
-	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
-	//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-	
-	GameObject::SetMaterial(material);
+	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);	
+	GameObject::TransferRender();
 	m_pRenderer->SetTransform(Transform);
 	m_pRenderer->IsStaticDraw = true;
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
-	//m_pRenderer->SetDrawModule(eDM_LINES);
 	IsActive = false;
 	SetActive(true);
 }

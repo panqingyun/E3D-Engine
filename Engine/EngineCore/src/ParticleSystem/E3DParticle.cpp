@@ -39,29 +39,19 @@ namespace E3DEngine
 		m_fTextureCoord[3][1] = 0;
 		m_NotChangeTextureCoord[0].x = 0;
 		m_NotChangeTextureCoord[0].y = 0;
-		//=========
 		m_NotChangeTextureCoord[1].x = 0;
 		m_NotChangeTextureCoord[1].y = 1;
-		//=========
 		m_NotChangeTextureCoord[2].x = 1;
 		m_NotChangeTextureCoord[2].y = 1;
-		//=========
 		m_NotChangeTextureCoord[3].x = 1;
 		m_NotChangeTextureCoord[3].y = 0;
-		//=========
 		
 		Transform->SetPosition(position);
 		vec3f up = vec3f(0, 1, 0);
-		cos_theat[0] = Convert::Vec4ToVec3<float>(m_Point[0]).dotProduct(up) / Convert::Vec4ToVec3<float>(m_Point[0]).length();
-		cos_theat[1] = Convert::Vec4ToVec3<float>(m_Point[1]).dotProduct(up) / Convert::Vec4ToVec3<float>(m_Point[1]).length();
-		cos_theat[2] = Convert::Vec4ToVec3<float>(m_Point[2]).dotProduct(up) / Convert::Vec4ToVec3<float>(m_Point[2]).length();
-		cos_theat[3] = Convert::Vec4ToVec3<float>(m_Point[3]).dotProduct(up) / Convert::Vec4ToVec3<float>(m_Point[3]).length();
-		sin_theat[0] = sqrt(1 - cos_theat[0] * cos_theat[0]);
-		sin_theat[1] = sqrt(1 - cos_theat[1] * cos_theat[1]);
-		sin_theat[2] = -sqrt(1 - cos_theat[2] * cos_theat[2]);
-		sin_theat[3] = -sqrt(1 - cos_theat[3] * cos_theat[3]);
+		
 		rudis = sqrt(m_fWidth * m_fWidth + m_fHeight * m_fHeight) / 2;
-		updateVertexCoord();
+		initVertex();
+
 		bFristUpdte = true;
 		m_rotateSpeed = 0.0f;
 		m_rotateAngle = 0.0f;
@@ -253,11 +243,11 @@ namespace E3DEngine
 		vec3f right = forward.crossProduct(up);
 		up.normalize();
 		right.normalize();
-		
-		point.x = rudis * (up.x * cos_theat[index] + right.x * sin_theat[index]);
-		point.y = rudis * (up.y * cos_theat[index] + right.y * sin_theat[index]);
-		point.z = rudis * (up.z * cos_theat[index] + right.z * sin_theat[index]);
-		point.w = 1.0f;
+		vec3f pos = m_Point[index];
+		pos += right * rudis;
+		pos += up * rudis;
+
+		point = vec4f(0, 0, 0, 1.0);
 		return point;
 	}
 	
@@ -271,31 +261,7 @@ namespace E3DEngine
 		// |      \  |
 		// |        \|
 		// 2---------3
-		/*if (m_bIsBillBoard && m_MainCamera != nullptr)
-		{
-			vec4f point[4];
-			for (int i =0; i < 4; i++)
-			{
-				point[i] = cumputBillboardCoord(i);
-				m_Point[i] = Convert::Vec4ToVec3(point[i]);
-			}
-		}*/
-		Vertes[0].SetPosition(m_Point[0].x, m_Point[0].y, m_Point[0].z);
-		Vertes[0].SetNormal(0, 0, 1);
-		Vertes[0].SettextureCoord1(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
-
-		Vertes[1].SetPosition(m_Point[1].x, m_Point[1].y, m_Point[1].z);
-		Vertes[1].SetNormal(0, 0, 1);
-		Vertes[1].SettextureCoord1(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
-
-		Vertes[2].SetPosition(m_Point[2].x, m_Point[2].y, m_Point[2].z);
-		Vertes[2].SetNormal(0, 0, 1);
-		Vertes[2].SettextureCoord1(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
-
-		Vertes[3].SetPosition(m_Point[3].x, m_Point[3].y, m_Point[3].z);
-		Vertes[3].SetNormal(0, 0, 1);
-		Vertes[3].SettextureCoord1(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
-
+		
 		BVertes[0].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
 		BVertes[0].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);
 		BVertes[0].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
@@ -524,6 +490,36 @@ namespace E3DEngine
 		m_FrameEffect->Init(*cfg);
 	}
 
+	void Particle::initVertex()
+	{
+		// 1---------4
+		// |\        |
+		// |  \      |
+		// |    \    |   (1,2,3),(3,4,1)
+		// |      \  |
+		// |        \|
+		// 2---------3
+		Vertes[0].SetPosition(m_Point[0].x, m_Point[0].y, m_Point[0].z);
+		Vertes[0].SetNormal(0, 0, 1);
+		Vertes[0].SettextureCoord1(m_fTextureCoord[0][0], m_fTextureCoord[0][1]);
+		Vertes[0].SetTangent(-1, 1, 0);
+
+		Vertes[1].SetPosition(m_Point[1].x, m_Point[1].y, m_Point[1].z);
+		Vertes[1].SetNormal(0, 0, 1);
+		Vertes[1].SettextureCoord1(m_fTextureCoord[1][0], m_fTextureCoord[1][1]);
+		Vertes[1].SetTangent(-1, -1, 0);
+
+		Vertes[2].SetPosition(m_Point[2].x, m_Point[2].y, m_Point[2].z);
+		Vertes[2].SetNormal(0, 0, 1);
+		Vertes[2].SettextureCoord1(m_fTextureCoord[2][0], m_fTextureCoord[2][1]);
+		Vertes[2].SetTangent(1, -1, 0);
+
+		Vertes[3].SetPosition(m_Point[3].x, m_Point[3].y, m_Point[3].z);
+		Vertes[3].SetNormal(0, 0, 1);
+		Vertes[3].SettextureCoord1(m_fTextureCoord[3][0], m_fTextureCoord[3][1]);
+		Vertes[3].SetTangent(1, 1, 0);
+	}
+
 
 	ParticleGroup::ParticleGroup()
 	{
@@ -663,6 +659,7 @@ namespace E3DEngine
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);
 		m_pRenderer->GetTransform()->SetIsBillBoard(true);
+		GameObject::SetRenderer(buffer);
 	}
 	
 	void ParticleGroup::SetCamera(Camera * camera)
@@ -975,56 +972,13 @@ namespace E3DEngine
 		}
 		if (IsActive && !m_ParticlePool.empty())
 		{
-			makeBillboard();
-			/*Camera * pCamera = m_pRenderer->pCamera;
-			if (pCamera == nullptr)
-			{
-				return;
-			}
-			vec3f cameraPos = pCamera->Transform->Position;
-			mat4f view = pCamera->GetViewMatrix();
-			view.at(3, 0) = 0;
-			view.at(3, 1) = 0;
-			view.at(3, 2) = 0;
-			view = view.inverse();
-			m_pRenderer->GetTransform()->WorldMatrix = view;*/
 			checkParticleState(deltaTime);
 			m_pRenderer->TransformChange();
+
+			m_pRenderer->GetMaterial()->pShader->UpdateFloatValue("particleSize", pSzie.x);
 		}
 	}
 	
-	void ParticleGroup::makeBillboard()
-	{
-		Camera * pCamera = m_pRenderer->pCamera;
-		if (pCamera == nullptr)
-		{
-			return;
-		}
-		vec3f pos = m_pRenderer->GetTransform()->Position;
-		vec3f cameraPos = pCamera->Transform->Position;
-
-		vec3f forward = pos - cameraPos;
-		forward.normalize();
-
-		vec3f up = vec3f(0.0, 1.0, 0.0);
-		up.normalize();
-
-		vec3f side = forward.crossProduct(up);
-		side.normalize();
-
-
-		m_pRenderer->GetTransform()->WorldMatrix.identity();
-
-		m_pRenderer->GetTransform()->WorldMatrix.data[0] = side.x; m_pRenderer->GetTransform()->WorldMatrix.data[1] = side.y; m_pRenderer->GetTransform()->WorldMatrix.data[2] = side.z;
-		m_pRenderer->GetTransform()->WorldMatrix.data[4] = up.x;  m_pRenderer->GetTransform()->WorldMatrix.data[5] = up.y;  m_pRenderer->GetTransform()->WorldMatrix.data[6] = up.z;
-		m_pRenderer->GetTransform()->WorldMatrix.data[8] = forward.x; m_pRenderer->GetTransform()->WorldMatrix.data[9] = 0; m_pRenderer->GetTransform()->WorldMatrix.data[10] = forward.z;
-
-		mat4f tranM = mat4f::createTranslation(pos.x, pos.y, pos.z);
-
-		mat4f result = m_pRenderer->GetTransform()->WorldMatrix;
-		m_pRenderer->GetTransform()->WorldMatrix = tranM * result;
-	}
-
 	void ParticleGroup::SetParticleDir(vec3f TouchPos, vec3f EmitterPos)
 	{
 		if(m_isLock > 0)

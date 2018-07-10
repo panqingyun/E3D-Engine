@@ -28,7 +28,7 @@ namespace E3DEngine
 	public:
 		static Mesh* Create(string path, int configID);
 		Mesh(std::string filePath, int cfgID);
-		virtual void SetMaterial(Material *material) override;
+		virtual void SetMaterial(Material *material);
 		virtual void SetActive(bool isActive) override;
 		void Destory();
 		virtual void Update(float deltaTime) override;

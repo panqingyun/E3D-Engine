@@ -39,6 +39,7 @@ namespace E3DEngine
 		//virtual void SetRenderIndex(DWORD index) override;
 
 		virtual void SetMaterial(Material *material);
+		virtual void SetLayerMask(DWORD layer) { pRender->SetLayerMask(layer); }
 		virtual Material *GetMaterial() { return pRender->GetMaterial(); }
 		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
 		virtual void SetActive(bool active) { pRender->SetActive(active); }

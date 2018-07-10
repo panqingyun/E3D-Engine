@@ -11,7 +11,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual void Create(float l, float w, float h) override;
-		virtual void SetMaterial(Material * material) override;
+		virtual void SetRenderer(Renderer *rd);
 		virtual void PrepareUpdate(float deltaTime) override;
 	private:
 		void setTextureCoord();
@@ -25,7 +25,7 @@ namespace E3DEngine
 	public:
 		SkyDome() { CreateBehaviour(); }
 		virtual void Create(float R);
-		virtual void SetMaterial(Material * material) override;
+		virtual void SetMaterial(Material * material);
 		virtual void SetActive(bool isActive) override;
 
 		virtual void PrepareUpdate(float deltaTime) override;

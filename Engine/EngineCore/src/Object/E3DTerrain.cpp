@@ -89,9 +89,10 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
 	m_pRenderer->SetRenderIndex(eRI_Normal);
+	m_pRenderer->SetMaterial(material);
 	//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
-	GameObject::SetMaterial(material);
+	GameObject::TransferRender();
 	m_pRenderer->IsStaticDraw = false;
 	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
 	m_pRenderer->SetTransform(Transform);

@@ -118,7 +118,7 @@ namespace E3DEngine
 		virtual void SetRenderIndex(DWORD index);
 		virtual Material* GetMaterial() { return pMaterial; }
 		virtual void SetNeedSortVertex(bool bNeed) { m_bNeedSortVertex = bNeed; }
-		virtual void SetLayerMask(DWORD layer) { m_layer = layer; }
+		virtual void SetLayerMask(DWORD layer);
 		virtual DWORD GetLayerMask() { return m_layer; }
 
 		MinMaxAABB GetBounds()

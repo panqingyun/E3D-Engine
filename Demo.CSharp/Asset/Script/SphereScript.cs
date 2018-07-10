@@ -9,6 +9,6 @@ class SphereScript : Component
 {
     void Start()
     {
-        gameObject.AddComponent<SphereCollider>().CreateRigiBody(15);
+        gameObject.AddComponent<SphereCollider>().CreateRigiBody(35);
     }
 }

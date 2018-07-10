@@ -33,9 +33,9 @@ namespace E3DEngine
         protected extern GameObject findChildWithID(uint id);
 
 
-        private Render m_pRenderer;
+        private Renderer m_pRenderer;
 
-        public Render GetRenderer()
+        public Renderer GetRenderer()
         {
             return m_pRenderer;
         }
@@ -53,14 +53,6 @@ namespace E3DEngine
             get;
             [MethodImpl(MethodImplOptions.InternalCall)]
             set;
-        }
-
-        public Material Material
-        {
-            [MethodImpl(MethodImplOptions.InternalCall)]
-            set;
-            [MethodImpl(MethodImplOptions.InternalCall)]
-            get;
         }
 
         private Dictionary<string, List<Component>> component_dic = new Dictionary<string, List<Component>>();

@@ -35,10 +35,10 @@
         <Item
         ID					= 1
         Name				= "球面发射器"
-        Type				= 2
-        Radius				= 2
-        ParticleWidth		= 8
-        ParticleHeight		= 8
+        Type				= 1
+        Radius				= 1
+        ParticleWidth		= 4
+        ParticleHeight		= 4
         BlankTime			= 0
         MaxParticleNumber	= 50
         TotalParticleNumber	= 10000

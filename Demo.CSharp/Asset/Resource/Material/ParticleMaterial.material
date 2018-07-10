@@ -34,7 +34,8 @@
 					ID				= 1 
 					VertexShader	= "shader/ParticleVertex.shader" 
 					FragmentShader	= "shader/ParticleFragment.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;" 
+					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;
+									   float:particleSize;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   DYNAMICCOLOR:color;
@@ -42,7 +43,8 @@
 									   TRANSPOSITION:transformPosition;
 									   TRANSSCALE:transformScale;
 									   TRANSROTATE:transformRotate;
-									   NORMAL:attr_normal;"
+									   NORMAL:attr_normal;
+									   TANGENT:tangent;"
 		/>
 	</ShaderConfig>
 </ConfigSystem>

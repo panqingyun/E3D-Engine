@@ -160,10 +160,13 @@ namespace E3DEngine
 			return;
 		}
 		m_StartTransform.setIdentity();
+		vec3f position = Transform->GetPosition();
 		m_StartTransform.setOrigin(btVector3(
-			btScalar(Transform->Position.x),
-			btScalar(Transform->Position.y),
-			btScalar(Transform->Position.z)));
+			btScalar(position.x),
+			btScalar(position.y),
+			btScalar(position.z)));
+		vec3f scale = Transform->GetScale();
+		m_pShape->setLocalScaling(btVector3(scale.x, scale.y, scale.z));
 		btQuaternion q;
 		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
 		m_StartTransform.setRotation(q);

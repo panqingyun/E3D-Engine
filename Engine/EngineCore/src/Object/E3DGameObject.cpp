@@ -293,7 +293,6 @@ namespace E3DEngine
 		if (m_pRenderer != nullptr)
 		{
 			m_pRenderer->SetLayerMask(layerMask);
-			SceneManager::GetInstance().GetCurrentScene()->ChangeRenderObjectLayer(m_pRenderer);
 		}
 		m_pBehaviour->SetFieldValue("layerMask", &m_layerMask);
 	}
@@ -485,33 +484,25 @@ namespace E3DEngine
 		return m_pRenderer;
 	}
 
+
+	void GameObject::SetRenderer(Renderer * renderer)
+	{
+		m_pRenderer = renderer;
+		m_pRenderer->SetTransform(Transform);
+		m_pRenderer->SetLayerMask(m_layerMask);
+		TransferRender();
+		SetActive(true);
+	}
+
 	void GameObject::ComponentAdded(Component * component)
 	{
 
 	}
 
-	void GameObject::SetMaterial(Material *material)
+	void GameObject::TransferRender()
 	{
-		if (m_pRenderer == nullptr)
-		{
-			return;
-		}
-
-		m_pRenderer->SetMaterial(material);
-		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		TRANSFER_FIELD_OBJECT(m_pRenderer);
 	}
-
-	Material * GameObject::GetMaterial()
-	{
-		if (m_pRenderer == nullptr)
-		{
-			return nullptr;
-		}
-
-		return m_pRenderer->GetMaterial();
-	}
-
 
 	void GameObject::CreateBehaviour()
 	{

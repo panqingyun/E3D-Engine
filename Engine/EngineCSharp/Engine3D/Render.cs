@@ -120,13 +120,13 @@ namespace E3DEngine
         TopMost,
     }
 
-    public class Render : Object
+    public class Renderer : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Render createRenderer(uint materialID);
+        private static extern Renderer createRenderer(uint materialID);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Render createRendererWithoutParam();
+        private static extern Renderer createRendererWithoutParam();
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern void setVertex2Render(Vertex[] vertexs, uint[] indexs);
@@ -136,6 +136,14 @@ namespace E3DEngine
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         private extern uint getDrawModule();
+
+        public Material Material
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+        }
 
         public eRenderIndex RenderIndex
         {
@@ -157,12 +165,12 @@ namespace E3DEngine
             }
         }
 
-        public static Render CreateRenderer(Material material)
+        public static Renderer CreateRenderer(Material material)
         {
             return createRenderer(material.ID);
         }
 
-        public static Render CreateRenderer()
+        public static Renderer CreateRenderer()
         {
             return createRendererWithoutParam();
         }

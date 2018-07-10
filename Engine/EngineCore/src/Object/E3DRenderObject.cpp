@@ -86,6 +86,13 @@ namespace E3DEngine
 	void RenderObject::SetMaterial(Material *material)
 	{
 		pMaterial = material;
+		if (RenderIndex != eRI_None)
+		{
+			// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
+			//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
+		}
+		IsStaticDraw = false;
+		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(this, m_layer);
 		//for (auto & attr : pMaterial->pShader->AttributeList)
 		//{// TODO 根据材质需要的顶点数据重新分配顶点数组
 
@@ -150,6 +157,13 @@ namespace E3DEngine
 			return;
 		}
 		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
+	}
+
+
+	void RenderObject::SetLayerMask(DWORD layer)
+	{
+		m_layer = layer;
+		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderObjectLayer(this);
 	}
 
 }

@@ -72,7 +72,7 @@ void InitEngine(HWND hWnd)
 	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
-	//CreateEditorGrid();
+	CreateEditorGrid();
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)

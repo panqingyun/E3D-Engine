@@ -139,7 +139,6 @@ namespace E3DEngine
 			return;
 		}
 		std::string layerName = layerConfig->Name;
-		particle->SetLayerMask(1 << layerConfig->ID);
 		SceneManager::GetInstance().GetCurrentScene()->AddChild(particle);
 		std::vector<string> materialCfg = StringBuilder::Split(particle->m_MaterialName, ":");
 		std::string materialPath = "";
@@ -158,6 +157,7 @@ namespace E3DEngine
 		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
 		render->SetMaterial(mMaterial);
 		particle->SetRenderer(render);
+		particle->SetLayerMask(1 << layerConfig->ID);
 		particle->SetActive(true);
 		render->SetRenderIndex(eRI_TopMost);
 	}

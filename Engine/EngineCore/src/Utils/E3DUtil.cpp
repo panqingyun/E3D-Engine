@@ -109,7 +109,7 @@ extern "C"
 	__api_function_ void CreateEditorGrid()
 	{
 		Terrain * terrain = new Terrain();
-		terrain->Create(128);
+		terrain->Create(512);
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);

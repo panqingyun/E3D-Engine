@@ -21,8 +21,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Transform,	getRight);
 	REGISTER_INTERNAL_CALL(GameObject,	set_LayerMask);
 	REGISTER_INTERNAL_CALL(GameObject,	get_LayerMask);
-	REGISTER_INTERNAL_CALL(GameObject,	set_Material);
-	REGISTER_INTERNAL_CALL(GameObject,	get_Material);
+	REGISTER_INTERNAL_CALL(Renderer,	set_Material);
+	REGISTER_INTERNAL_CALL(Renderer,	get_Material);
 	REGISTER_INTERNAL_CALL(GameObject,	set_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
@@ -46,11 +46,11 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Scene,		createScene);
 	REGISTER_INTERNAL_CALL(Scene,		changeScene);
 	REGISTER_INTERNAL_CALL(Scene,		destoryScene);
-	REGISTER_INTERNAL_CALL(Render,		createRenderer);
-	REGISTER_INTERNAL_CALL(Render,		createRendererWithoutParam);
-	REGISTER_INTERNAL_CALL(Render,		setVertex2Render);
-	REGISTER_INTERNAL_CALL(Render,		setDrawModule);
-	REGISTER_INTERNAL_CALL(Render,		getDrawModule);
+	REGISTER_INTERNAL_CALL(Renderer,	createRenderer);
+	REGISTER_INTERNAL_CALL(Renderer,	createRendererWithoutParam);
+	REGISTER_INTERNAL_CALL(Renderer,	setVertex2Render);
+	REGISTER_INTERNAL_CALL(Renderer,	setDrawModule);
+	REGISTER_INTERNAL_CALL(Renderer,	getDrawModule);
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
 	REGISTER_INTERNAL_CALL(Box,			Create);
 	REGISTER_INTERNAL_CALL(RigidBody,	    addRigidBody);
@@ -233,19 +233,19 @@ VOID _2_PARAM_FUNCTION(RigidBody, addRigidBody, CS_OBJECT, rigibody, CS_OBJECT, 
 	}
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Render, createRenderer, UINT, materialID)
+CS_OBJECT _1_PARAM_FUNCTION(Renderer, createRenderer, UINT, materialID)
 {
 	Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(materialID);
 
 	return render->GetMonoBehaviour()->GetMonoObject();
 }
 
-VOID _1_PARAM_FUNCTION(Render, setVertex2Render, CPP_OBJECT, obj)
+VOID _1_PARAM_FUNCTION(Renderer, setVertex2Render, CPP_OBJECT, obj)
 {
 	
 }
 
-CS_OBJECT _0_PARAM_FUNCTION(Render, createRendererWithoutParam)
+CS_OBJECT _0_PARAM_FUNCTION(Renderer, createRendererWithoutParam)
 {
 	Renderer * render = new Renderer();
 
@@ -345,14 +345,14 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, getComponent, CS_OBJECT, obj, CS_STRING,
 	return component->GetMonoBehaviour()->GetMonoObject();
 }
 
-VOID _2_PARAM_FUNCTION(GameObject, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, material)
+VOID _2_PARAM_FUNCTION(Renderer, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, material)
 {
 	Material *m = getCppObject<Material>(material);
 	if (m == nullptr)
 	{
 		return;
 	}
-	GameObject * obj = getCppObject<GameObject>(cs_boj);
+	Renderer * obj = getCppObject<Renderer>(cs_boj);
 	if (obj == nullptr)
 	{
 		return;
@@ -361,9 +361,9 @@ VOID _2_PARAM_FUNCTION(GameObject, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, m
 }
 
 
-CS_OBJECT _1_PARAM_FUNCTION(GameObject, get_Material, CS_OBJECT, cs_boj)
+CS_OBJECT _1_PARAM_FUNCTION(Renderer, get_Material, CS_OBJECT, cs_boj)
 {
-	GameObject * obj = getCppObject<GameObject>(cs_boj);
+	Renderer * obj = getCppObject<Renderer>(cs_boj);
 	if (obj == nullptr)
 	{
 		return nullptr;
@@ -568,7 +568,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Terrain, Create, CS_STRING, heightMap)
 	return terrain->GetMonoBehaviour()->GetMonoObject();
 }
 
-VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT, cs_obj, UINT, drawModule)
+VOID _2_PARAM_FUNCTION(Renderer, setDrawModule, CS_OBJECT, cs_obj, UINT, drawModule)
 {
 	RenderObject * rd = getCppObject<RenderObject>(cs_obj);
 
@@ -580,7 +580,7 @@ VOID _2_PARAM_FUNCTION(Render, setDrawModule, CS_OBJECT, cs_obj, UINT, drawModul
 	rd->SetDrawModule(drawModule);
 }
 
-UINT _1_PARAM_FUNCTION(Render, getDrawModule, CS_OBJECT, cs_obj)
+UINT _1_PARAM_FUNCTION(Renderer, getDrawModule, CS_OBJECT, cs_obj)
 {
 	RenderObject * rd = getCppObject<RenderObject>(cs_obj);
 
@@ -597,7 +597,8 @@ VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox, CS_OBJECT, material)
 	Material * m = getCppObject<Material>(material);
 	SkyBox *skyBox = new SkyBox();
 	skyBox->Create(50, 50, 50);
-	skyBox->SetMaterial(m);
+	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+	skyBox->SetRenderer(rd);
 
 	ADD_IN_SCENE(skyBox);
 }

@@ -83,11 +83,9 @@ namespace E3DEngine
 	void Mesh::SetMaterial(Material *material)
 	{
 		m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, MESH);
+		m_pRenderer->SetMaterial(material);
 		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
 		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
-
-		//SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-
 		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 		{
 			// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
@@ -95,7 +93,7 @@ namespace E3DEngine
 		}
 		m_pRenderer->IsStaticDraw = false;
 		m_pRenderer->SetTransform(Transform);
-		GameObject::SetMaterial(material);
+		GameObject::TransferRender();
 		IsActive = false;
 		SetActive(true);
 	}

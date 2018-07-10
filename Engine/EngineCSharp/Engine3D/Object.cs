@@ -18,10 +18,7 @@ namespace E3DEngine
         {
            
         }
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void Internal_ManagedInstanceDeleted(IntPtr nativeInstance);
-
+        
         public uint ID
         {
             [MethodImpl(MethodImplOptions.InternalCall)]

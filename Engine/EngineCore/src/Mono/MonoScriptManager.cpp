@@ -229,17 +229,22 @@ void * MonoBehaviour::GetPropertyValue(const char * name)
 	return nullptr;
 }
 
-void MonoBehaviour::CallMethod(const char * name, void ** param )
+void MonoBehaviour::CallMethod(const char * name, void ** param , int paramNum /* = 0*/)
 {
+	MonoMethod * method = nullptr;
 	if (m_MethodMap.find(name) == m_MethodMap.end())
 	{
-		return;
+		method = mono_class_get_method_from_name(m_pClass, name, paramNum);
 	}
-	if (m_MethodMap[name] == nullptr)
+	else
+	{
+		method = m_MethodMap[name];
+	}
+	if (method == nullptr)
 	{
 		return;
 	}
-	callMethod(param, m_MethodMap[name]);
+	callMethod(param, method);
 
 }
 
@@ -262,6 +267,17 @@ void MonoBehaviour::callMethod(void ** param, MonoMethod *method)
 MonoObject * MonoBehaviour::GetMonoObject()
 {
 	return m_pMonoObject;
+}
+
+
+void MonoBehaviour::SetMonoObject(MonoObject *obj)
+{
+	if (m_pMonoObject == obj)
+	{
+		return;
+	}
+	m_pMonoObject = obj;
+	m_pClass = mono_object_get_class(obj);
 }
 
 void MonoBehaviour::Create(const char * name_space, const char * className)

@@ -45,10 +45,7 @@
   <ItemGroup>
     <Compile Include="Asset\Script\AppDemo.cs" />
     <Compile Include="Asset\Script\AppMain.cs" />
-    <Compile Include="Asset\Script\BoxScript.cs" />
-    <Compile Include="Asset\Script\MeshScript.cs" />
     <Compile Include="Asset\Script\SelfRotateSphere.cs" />
-    <Compile Include="Asset\Script\SphereScript.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

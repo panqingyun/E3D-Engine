@@ -66,6 +66,9 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.cpp">
       <Filter>gles_renderSystem\RenderObject</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.cpp">
+      <Filter>gles_renderSystem\Shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.hpp">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.h">
       <Filter>gles_renderSystem\RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.h">
+      <Filter>gles_renderSystem\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

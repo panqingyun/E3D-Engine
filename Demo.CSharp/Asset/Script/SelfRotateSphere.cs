@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 class SelfRotateSphere : Component
 {
+    public float RotateSpeed { get; set; }
+
     void Start()
     {
+        GameObject go = new GameObject();
     }
 
     private Vector3 rotate = new Vector3();
     void Update(float dt)
     {
-        rotate.y += 1f;
+        rotate.y += RotateSpeed;
         if (rotate.y >= 360)
         {
             rotate.y = 0;

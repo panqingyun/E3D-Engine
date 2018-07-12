@@ -199,6 +199,7 @@ namespace E3DEngine
 		{
 			changeTransparentQueue(render);
 			render->GetMaterial()->SetEnableDepthWrite(false);
+			render->GetMaterial()->SetEnableDepthTest(true);
 		}
 		else
 		{

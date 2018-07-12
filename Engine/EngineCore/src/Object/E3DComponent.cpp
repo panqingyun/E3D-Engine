@@ -5,6 +5,18 @@
 #include "../Object/E3DComponent.hpp"
 #include "../Object/E3DGameObject.h"
 
+
+void E3DEngine::Component::OnCreate()
+{
+	Awake();
+	OnEnable();
+}
+
+void E3DEngine::Component::OnCreateComplete()
+{
+	
+}
+
 void E3DEngine::Component::OnCollisionEnter(GameObject* go)
 {
 	MonoObject * mObj = go->GetMonoBehaviour()->GetMonoObject();
@@ -20,10 +32,7 @@ void E3DEngine::Component::SetGameObject(GameObject *go)
 	}
 }
 
-void E3DEngine::Component::SetPropertyValue(const char* name, void* value)
+void E3DEngine::Component::SetPropertyValue(void* value)
 {
-	if (m_pBehaviour != nullptr)
-	{
-		m_pBehaviour->SetPropertyValue(name, value);
-	}
+	m_pBehaviour->SetPropertyValue("descPropertyValue", value);
 }

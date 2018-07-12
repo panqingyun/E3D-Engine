@@ -34,6 +34,7 @@ namespace E3DEngine
 		virtual void Update(float deltaTime);
 		MonoBehaviour * GetMonoBehaviour();
 		virtual void CreateBehaviour();
+		virtual void SetMonoObject(MonoObject * monoObject);
 	protected:
 		virtual void setBehaviourDefaultValue();
 	public:

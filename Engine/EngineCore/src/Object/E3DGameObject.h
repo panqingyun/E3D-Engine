@@ -291,11 +291,8 @@ namespace E3DEngine
 			std::string type_id = GetClassName<T>();
 			T *_t = new T();
 			((Component*)_t)->SetGameObject(this);
-			((Component*)_t)->OnCreate();
-			((Component*)_t)->Awake();
 			((Component*)_t)->TypeName = type_id;
 			((Component*)_t)->Transform = Transform;
-			((Component*)_t)->OnEnable();
 			m_listComponents[type_id].push_back((Component*)_t);
 			ComponentAdded((Component*)_t);
 			return _t;

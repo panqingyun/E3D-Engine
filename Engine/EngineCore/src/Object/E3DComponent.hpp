@@ -24,14 +24,9 @@ namespace E3DEngine
 			NotStart = true;
 		}
 
-		virtual void OnCreate() 
-		{
-		}
+		virtual void OnCreate();
 
-		virtual void OnCreateComplete()
-		{
-
-		}
+		virtual void OnCreateComplete();
 
 		virtual void Awake()
 		{
@@ -89,7 +84,7 @@ namespace E3DEngine
 			return gameObject;
 		}
 
-		virtual void SetPropertyValue(const char* name, void* value);
+		virtual void SetPropertyValue(void* value);
     public:
         GameObject *	gameObject;
 		std::string 	_Tag;

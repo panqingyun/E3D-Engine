@@ -392,6 +392,7 @@ namespace E3DEngine
 		{
 			Name			= "MaterialConfig";
 			EnableDepthTest	= 1;
+			EnableWriteDepth = 1;
 			CullFace		= 1;
 			TextureClampType = 0;
 			TextureFilterType = 0;
@@ -405,6 +406,7 @@ namespace E3DEngine
 		DECLARE_MEMBER(MaterialConfig, string, DstBlendFactor);
 		DECLARE_MEMBER(MaterialConfig, int, CullFace);
 		DECLARE_MEMBER(MaterialConfig, int, EnableDepthTest);
+		DECLARE_MEMBER(MaterialConfig, int, EnableWriteDepth);
 		DECLARE_MEMBER(MaterialConfig, int, TextureClampType);
 		DECLARE_MEMBER(MaterialConfig, int, TextureFilterType);
 
@@ -419,6 +421,7 @@ namespace E3DEngine
 			SAVE_MEMBER(DstBlendFactor, string);
 			SAVE_MEMBER(CullFace, int);
 			SAVE_MEMBER(EnableDepthTest, int);
+			SAVE_MEMBER(EnableWriteDepth, int);
 			SAVE_MEMBER(TextureClampType, int);
 			SAVE_MEMBER(TextureFilterType, int);
 		}

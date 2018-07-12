@@ -33,6 +33,18 @@ namespace E3DEngine
 		setBehaviourDefaultValue();
 	}
 
+
+	void Object::SetMonoObject(MonoObject * monoObject)
+	{
+		if (m_pBehaviour->GetMonoObject() != nullptr)
+		{
+			return;
+		}
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		m_pBehaviour->SetMonoObject(monoObject);
+		setBehaviourDefaultValue();
+	}
+
 	void Object::setBehaviourDefaultValue()
 	{		
 		m_pBehaviour->SetFieldValue(CPP_OBJ_PTR_NAME, this);

@@ -16,6 +16,8 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Component addComponent(string comName);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        protected static extern void newGameObject(GameObject go);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Component getComponent(string comName);
@@ -61,7 +63,7 @@ namespace E3DEngine
 
         public GameObject()
         {
-            
+            newGameObject(this);
         }
 
         public void RemoveComponent(Component com)

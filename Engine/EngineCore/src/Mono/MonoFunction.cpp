@@ -29,7 +29,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	getComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	removeComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
-	REGISTER_INTERNAL_CALL(GameObject,	findChildWithID);
+	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
+	REGISTER_INTERNAL_CALL(GameObject,	newGameObject);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
 	REGISTER_INTERNAL_CALL(SkyBox,		CreateSkyBox);
 	REGISTER_INTERNAL_CALL(SkyDome,		CreateSkyDome);
@@ -64,9 +65,19 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
 	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
 	REGISTER_INTERNAL_CALL(Mesh,			create);
-	REGISTER_INTERNAL_CALL(Renderer,			set_RenderIndex);
-	REGISTER_INTERNAL_CALL(Renderer,			get_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer,		set_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer,		get_RenderIndex);
+	REGISTER_INTERNAL_CALL(RigidBody,		get_Friction);
+	REGISTER_INTERNAL_CALL(RigidBody,		get_Restitution);
+	REGISTER_INTERNAL_CALL(RigidBody,		set_Friction);
+	REGISTER_INTERNAL_CALL(RigidBody,		set_Restitution);
 
+}
+
+VOID _1_PARAM_FUNCTION(GameObject, newGameObject, CS_OBJECT, cs_obj)
+{
+	GameObject *go = new GameObject();
+	go->SetMonoObject(cs_obj);
 }
 
 VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
@@ -299,6 +310,7 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 	{
 		return nullptr;
 	}
+	component->OnCreate();
 
 	return component->GetMonoBehaviour()->GetMonoObject();
 }
@@ -764,4 +776,48 @@ float _1_PARAM_FUNCTION(RigidBody, get_Mass, CS_OBJECT, rigibody)
 	}
 
 	return rb->GetMass();
+}
+
+float _1_PARAM_FUNCTION(RigidBody, get_Friction, CS_OBJECT, rigibody)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return 0;
+	}
+
+	return rb->GetFriction();
+}
+
+float _1_PARAM_FUNCTION(RigidBody, get_Restitution, CS_OBJECT, rigibody)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return 0;
+	}
+
+	return rb->GetRestitution();
+}
+
+VOID _2_PARAM_FUNCTION(RigidBody, set_Friction, CS_OBJECT, rigibody, float, friction)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return;
+	}
+
+	return rb->SetFriction(friction);
+}
+
+VOID _2_PARAM_FUNCTION(RigidBody, set_Restitution, CS_OBJECT, rigibody, float, restitution)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return;
+	}
+
+	return rb->SetRestitution(restitution);
 }

@@ -16,5 +16,21 @@ namespace E3DEngine
             [MethodImpl(MethodImplOptions.InternalCall)]
             get;
         }
+
+        public float Friction
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+        }
+
+        public float Restitution
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+        }
     }
 }

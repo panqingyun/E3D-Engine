@@ -65,7 +65,7 @@ void E3DEngine::Terrain::Create(int size)
 			x = (float)i - size / 2.0f;
 			z = -((float)j - size / 2.0f);
 			y = 0;
-			m_vecVertex[vertexIndex].SetPosition(x * 5, y, z * 5);
+			m_vecVertex[vertexIndex].SetPosition(x * 20, y, z * 20);
 			m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
 			m_vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 1);
 			m_vecVertex[vertexIndex].SettextureCoord1((float)i / (size - 1), (float)j / (size - 1));

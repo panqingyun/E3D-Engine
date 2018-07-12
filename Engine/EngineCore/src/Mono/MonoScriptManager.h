@@ -40,10 +40,10 @@ public:
 	void SetPropertyValue(const char *name, void *value);
 	void *GetFieldValue(const char * fieldName);
 	void *GetPropertyValue(const char * name);
-	void CallMethod(const char * name, void ** param = nullptr);
+	void CallMethod(const char * name, void ** param = nullptr, int paramNum = 0);
 	MonoClass * GetClass();
 	MonoObject * GetMonoObject();
-	void SetMonoObject(MonoObject *obj) { m_pMonoObject = obj; }
+	void SetMonoObject(MonoObject *obj);
 private:
 	void constructor();
 	void callMethod(void ** param, MonoMethod *method);

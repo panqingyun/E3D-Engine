@@ -93,6 +93,7 @@ void RegisterMonoFunction();
 #define UINT unsigned int
 #endif
 
+VOID _1_PARAM_FUNCTION(GameObject		, newGameObject		, CS_OBJECT		, cs_obj);
 VOID _1_PARAM_FUNCTION(Camera			, renderCamera		, CS_OBJECT		, cs_obj);
 VOID _1_PARAM_FUNCTION(Debug			, log_error			, CS_STRING		, err);
 VOID _1_PARAM_FUNCTION(Debug			, log_warning		, CS_STRING		, warning);
@@ -155,3 +156,7 @@ VOID _2_PARAM_FUNCTION(Renderer				, set_RenderIndex	, CS_OBJECT		, cs_boj, UINT
 CS_OBJECT _0_PARAM_FUNCTION(Camera			, get_MainCamera);
 VOID _2_PARAM_FUNCTION(RigidBody			, set_Mass			, CS_OBJECT		, rigibody, float, mass);
 float _1_PARAM_FUNCTION(RigidBody			, get_Mass			, CS_OBJECT		, rigibody);
+float _1_PARAM_FUNCTION(RigidBody			, get_Friction		, CS_OBJECT		, rigibody);
+float _1_PARAM_FUNCTION(RigidBody			, get_Restitution	, CS_OBJECT		, rigibody);
+VOID _2_PARAM_FUNCTION(RigidBody			, set_Friction		, CS_OBJECT		, rigibody, float, friction);
+VOID _2_PARAM_FUNCTION(RigidBody			, set_Restitution	, CS_OBJECT		, rigibody, float, restitution);

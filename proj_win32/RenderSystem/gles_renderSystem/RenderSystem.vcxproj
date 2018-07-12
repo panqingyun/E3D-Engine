@@ -167,6 +167,7 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRender.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRenderManager.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESCubeMapTexture.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESRender2Texture.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRender.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESRenderManager.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShader.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESCubeMapTexture.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESRender2Texture.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture.hpp" />

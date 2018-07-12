@@ -63,6 +63,7 @@ namespace E3DEngine
 		dstFactor = dstItr != g_BlendFactorMap.end() ? dstItr->second : GL_ONE;
 		material->SetBlendType(srcFactor, dstFactor);
 		material->SetEnableDepthTest(config->EnableDepthTest == 1);
+		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
 		material->SetEnableCullFace(config->CullFace == 0);
 		material->filePath = folder + "/";
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);

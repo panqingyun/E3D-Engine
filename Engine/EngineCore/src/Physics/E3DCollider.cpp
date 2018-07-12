@@ -36,7 +36,9 @@ namespace E3DEngine
 	RigidBody::RigidBody()
 	{
 		mMass = 0;
-		m_pRigidBody = nullptr;
+		mFriction = 500;
+		mRestitution = 0.1;
+		mRigidBody = nullptr;
 		mMotionState = nullptr;
 		CreateBehaviour();
 	}
@@ -48,12 +50,30 @@ namespace E3DEngine
 	void RigidBody::SetMass(float mass)
 	{
 		mMass = mass;
-		if (m_pRigidBody != nullptr)
+		if (mRigidBody != nullptr)
 		{
-			m_pRigidBody->setMassProps(mass, Physics::GetInstance().GetInertia());
+			mRigidBody->setMassProps(mass, Physics::GetInstance().GetInertia());
 		}
 	}
 
+
+	void RigidBody::SetFriction(float friction)
+	{
+		mFriction = friction;
+		if (mRigidBody != nullptr)
+		{
+			mRigidBody->setFriction(friction);
+		}
+	}
+
+	void RigidBody::SetRestitution(float restitution)
+	{
+		mRestitution = restitution;
+		if (mRigidBody != nullptr)
+		{
+			mRigidBody->setRestitution(restitution);
+		}
+	}
 
 	void RigidBody::CreateBehaviour()
 	{
@@ -102,7 +122,7 @@ namespace E3DEngine
 		vec3f scale = Transform->GetScale();
 		mStartTransform.setRotation(q);
 
-		m_pRigidBody->setWorldTransform(mStartTransform);
+		mRigidBody->setWorldTransform(mStartTransform);
 	}
 
 	void  RigidBody::createRigidBody(btCollisionShape *shape)
@@ -125,14 +145,14 @@ namespace E3DEngine
 		mMotionState = new MotionState(mStartTransform, gameObject);
 		btRigidBody::btRigidBodyConstructionInfo cInfo(mMass, mMotionState, shape, localInertia);
 
-		m_pRigidBody = new btRigidBody(cInfo);
+		mRigidBody = new btRigidBody(cInfo);
 
-		m_pRigidBody->setUserIndex(-1);
-		m_pRigidBody->setFriction(500); // 摩擦力
-		m_pRigidBody->setUserPointer(gameObject);
-		m_pRigidBody->setRestitution(0.1);
-		Physics::GetInstance().GetWorld()->contactTest(this->m_pRigidBody, mColCallBack);
-		Physics::GetInstance().AddRigidBody(m_pRigidBody);
+		mRigidBody->setUserIndex(-1);
+		mRigidBody->setFriction(mFriction); // 摩擦力
+		mRigidBody->setUserPointer(gameObject);
+		mRigidBody->setRestitution(mRestitution);
+		Physics::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
+		Physics::GetInstance().AddRigidBody(mRigidBody);
 	}
 
 	void BoxCollider::Start()
@@ -259,7 +279,7 @@ namespace E3DEngine
 		part.m_triangleIndexBase = (const unsigned char*)indexs.data();
 		part.m_triangleIndexStride = sizeof(UINT) * 3;
 		part.m_numTriangles = indexs.size() / 3;
-		part.m_indexType = PHY_INTEGER;
+		part.m_indexType = PHY_INTEGER;    
 
 		btTriangleIndexVertexArray * indexVertex = new btTriangleIndexVertexArray();
 		indexVertex->addIndexedMesh(part, PHY_INTEGER);

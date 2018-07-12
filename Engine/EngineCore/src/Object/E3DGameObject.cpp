@@ -85,9 +85,6 @@ namespace E3DEngine
 			component->SetGameObject(this);
 			component->TypeName = type_name;
 			component->Transform = Transform;
-			component->OnCreate();
-			component->Awake();
-			component->OnEnable();
 			m_listComponents[type_name].push_back((Component*)component);
 		}
 		else
@@ -111,9 +108,6 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
-		component->OnCreate();
-		component->Awake();
-		component->OnEnable();
 		m_listComponents[(component)->TypeName].push_back(component);
 		return component;
 	}

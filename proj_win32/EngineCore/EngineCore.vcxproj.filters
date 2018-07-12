@@ -1,241 +1,220 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="源文件">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="头文件">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="资源文件">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="EngineCore">
-      <UniqueIdentifier>{3cbb2a75-e461-4b39-a63a-f57560f0db9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\include">
-      <UniqueIdentifier>{ecdf0e65-bd17-4424-9df2-9f66c0a11f74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src">
-      <UniqueIdentifier>{26922a62-3580-4a19-b762-44c850569f6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Animation">
-      <UniqueIdentifier>{3afb2f22-d792-42cc-aaad-c937ed1520e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Camera">
-      <UniqueIdentifier>{efa54bcc-1e46-43a2-ae8f-2ed7b0d34a51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Config">
-      <UniqueIdentifier>{80f110d5-af52-411c-a885-26577680e324}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Effect">
-      <UniqueIdentifier>{bad3d090-c67e-4777-8012-0fbdc0119569}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Light">
-      <UniqueIdentifier>{807fe9c2-5bba-43af-bc89-39106ba511b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Mesh">
-      <UniqueIdentifier>{b36b2763-2675-4ed5-97f1-8e6b1957ed74}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Object">
-      <UniqueIdentifier>{d36f0dea-f646-439e-967c-042d973612f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\ParticleSystem">
-      <UniqueIdentifier>{54769581-cbd5-4f6b-b4c2-42faa8b30eb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Scene">
-      <UniqueIdentifier>{e779e713-4f18-4838-b53d-f1a51e7ecb93}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Source">
-      <UniqueIdentifier>{b00cc315-b396-4cf3-bce7-16b61f35e955}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Utils">
-      <UniqueIdentifier>{638851e2-da5a-43fb-9536-15fea4db7969}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\UI">
-      <UniqueIdentifier>{50a0d3c3-7346-4a5b-af55-5590f373b4a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\UI\UIBase">
-      <UniqueIdentifier>{73d32f34-47da-4f55-91a4-6c7d0016b0cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\UI\Widget">
-      <UniqueIdentifier>{60fca01e-ce24-4c7c-86d1-afcdcb1216d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EngineCore\src\Physics">
-      <UniqueIdentifier>{b88bac2d-3779-4408-ba0e-8e93571db415}</UniqueIdentifier>
-    </Filter>
     <Filter Include="extern">
       <UniqueIdentifier>{f806271e-3039-44a0-bf02-b5866b3dd0a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="extern\WindowsSocket">
       <UniqueIdentifier>{1c791a7b-0524-4cca-9327-8f87da698764}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\Mono">
-      <UniqueIdentifier>{38e4a4a1-f471-4251-bc11-8810de2e0ba5}</UniqueIdentifier>
+    <Filter Include="engineCore">
+      <UniqueIdentifier>{3cbb2a75-e461-4b39-a63a-f57560f0db9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\RenderSystem">
-      <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
+    <Filter Include="engineCore\include">
+      <UniqueIdentifier>{ecdf0e65-bd17-4424-9df2-9f66c0a11f74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\Source\txml">
+    <Filter Include="engineCore\src">
+      <UniqueIdentifier>{26922a62-3580-4a19-b762-44c850569f6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Animation">
+      <UniqueIdentifier>{3afb2f22-d792-42cc-aaad-c937ed1520e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Camera">
+      <UniqueIdentifier>{efa54bcc-1e46-43a2-ae8f-2ed7b0d34a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Config">
+      <UniqueIdentifier>{80f110d5-af52-411c-a885-26577680e324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Effect">
+      <UniqueIdentifier>{bad3d090-c67e-4777-8012-0fbdc0119569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Light">
+      <UniqueIdentifier>{807fe9c2-5bba-43af-bc89-39106ba511b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Mesh">
+      <UniqueIdentifier>{b36b2763-2675-4ed5-97f1-8e6b1957ed74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Object">
+      <UniqueIdentifier>{d36f0dea-f646-439e-967c-042d973612f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\ParticleSystem">
+      <UniqueIdentifier>{54769581-cbd5-4f6b-b4c2-42faa8b30eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Scene">
+      <UniqueIdentifier>{e779e713-4f18-4838-b53d-f1a51e7ecb93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Source">
+      <UniqueIdentifier>{b00cc315-b396-4cf3-bce7-16b61f35e955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Source\txml">
       <UniqueIdentifier>{0bd15ebd-3080-41af-8bc0-8ea4616279ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\Source\math">
+    <Filter Include="engineCore\src\Source\math">
       <UniqueIdentifier>{aab477d7-942a-4bc7-9e02-66e719ff34ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\Source\helpers">
+    <Filter Include="engineCore\src\Source\helpers">
       <UniqueIdentifier>{04d72975-65fa-4e6d-8045-e6ae92e237a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EngineCore\src\Source\application">
+    <Filter Include="engineCore\src\Source\application">
       <UniqueIdentifier>{2f5518de-ae2c-42e4-bbfc-c3b3bec635ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Utils">
+      <UniqueIdentifier>{638851e2-da5a-43fb-9536-15fea4db7969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\UI">
+      <UniqueIdentifier>{50a0d3c3-7346-4a5b-af55-5590f373b4a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\UI\UIBase">
+      <UniqueIdentifier>{73d32f34-47da-4f55-91a4-6c7d0016b0cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\UI\Widget">
+      <UniqueIdentifier>{60fca01e-ce24-4c7c-86d1-afcdcb1216d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Physics">
+      <UniqueIdentifier>{b88bac2d-3779-4408-ba0e-8e93571db415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\Mono">
+      <UniqueIdentifier>{38e4a4a1-f471-4251-bc11-8810de2e0ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\RenderSystem">
+      <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
-      <Filter>EngineCore\include</Filter>
+      <Filter>engineCore\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimationClip.hpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DSkinAnimation.hpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Config\Table.h">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableBase.h">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableManager.h">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Config\TableRegister.h">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DEffect.hpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DEffectFactory.hpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.hpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Light\E3DLight.hpp">
-      <Filter>EngineCore\src\Light</Filter>
+      <Filter>engineCore\src\Light</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTransform.hpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticle.h">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleAffector.hpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleEmitter.hpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleFactory.hpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.hpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DScene.hpp">
-      <Filter>EngineCore\src\Scene</Filter>
+      <Filter>engineCore\src\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\ClassFactory.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDelegate.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DEncoding.hpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\E3DUtil.hpp">
-      <Filter>EngineCore\src\Utils</Filter>
+      <Filter>engineCore\src\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.hpp">
-      <Filter>EngineCore\src\Scene</Filter>
+      <Filter>engineCore\src\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDebug.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.h">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\Widget\UIWidget.h">
-      <Filter>EngineCore\src\UI\Widget</Filter>
+      <Filter>engineCore\src\UI\Widget</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UICamera.h">
-      <Filter>EngineCore\src\UI</Filter>
+      <Filter>engineCore\src\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.h">
-      <Filter>EngineCore\src\UI\Widget</Filter>
+      <Filter>engineCore\src\UI\Widget</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UISystem.h">
-      <Filter>EngineCore\src\UI</Filter>
+      <Filter>engineCore\src\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.h">
-      <Filter>EngineCore\src\Camera</Filter>
+      <Filter>engineCore\src\Camera</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.hpp">
-      <Filter>EngineCore\src\Physics</Filter>
+      <Filter>engineCore\src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.h">
-      <Filter>EngineCore\src\Physics</Filter>
+      <Filter>engineCore\src\Physics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetCommand.h">
       <Filter>extern\WindowsSocket</Filter>
@@ -247,219 +226,219 @@
       <Filter>extern\WindowsSocket</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSphere.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.h">
-      <Filter>EngineCore\src\Mono</Filter>
+      <Filter>engineCore\src\Mono</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h">
-      <Filter>EngineCore\src\Mono</Filter>
+      <Filter>engineCore\src\Mono</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.h">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.hpp">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\Include.h">
-      <Filter>EngineCore\src\Utils</Filter>
+      <Filter>engineCore\src\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyxml.h">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinyutil.h">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\tinystr.h">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\vmath.h">
-      <Filter>EngineCore\src\Source\math</Filter>
+      <Filter>engineCore\src\Source\math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Singleton.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Utils.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
-      <Filter>EngineCore\src\Source\application</Filter>
+      <Filter>engineCore\src\Source\application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.h">
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimationClip.cpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DSkinAnimation.cpp">
-      <Filter>EngineCore\src\Animation</Filter>
+      <Filter>engineCore\src\Animation</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Config\Table.cpp">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Config\TableBase.cpp">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Config\TableManager.cpp">
-      <Filter>EngineCore\src\Config</Filter>
+      <Filter>engineCore\src\Config</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DEffect.cpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DEffectFactory.cpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Effect\E3DTextureFrameEffect.cpp">
-      <Filter>EngineCore\src\Effect</Filter>
+      <Filter>engineCore\src\Effect</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Light\E3DLight.cpp">
-      <Filter>EngineCore\src\Light</Filter>
+      <Filter>engineCore\src\Light</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTransform.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticle.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleAffector.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleEmitter.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleFactory.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticleSystem.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DScene.cpp">
-      <Filter>EngineCore\src\Scene</Filter>
+      <Filter>engineCore\src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Utils\E3DUtil.cpp">
-      <Filter>EngineCore\src\Utils</Filter>
+      <Filter>engineCore\src\Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.cpp">
-      <Filter>EngineCore\src\Scene</Filter>
+      <Filter>engineCore\src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.cpp">
-      <Filter>EngineCore\src\ParticleSystem</Filter>
+      <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\Widget\UIWidget.cpp">
-      <Filter>EngineCore\src\UI\Widget</Filter>
+      <Filter>engineCore\src\UI\Widget</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UICamera.cpp">
-      <Filter>EngineCore\src\UI</Filter>
+      <Filter>engineCore\src\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\Widget\UIRect.cpp">
-      <Filter>EngineCore\src\UI\Widget</Filter>
+      <Filter>engineCore\src\UI\Widget</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UISystem.cpp">
-      <Filter>EngineCore\src\UI</Filter>
+      <Filter>engineCore\src\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.cpp">
-      <Filter>EngineCore\src\Camera</Filter>
+      <Filter>engineCore\src\Camera</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DCollider.cpp">
-      <Filter>EngineCore\src\Physics</Filter>
+      <Filter>engineCore\src\Physics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.cpp">
-      <Filter>EngineCore\src\Physics</Filter>
+      <Filter>engineCore\src\Physics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp">
-      <Filter>EngineCore\src\Source</Filter>
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\NetService.cpp">
       <Filter>extern\WindowsSocket</Filter>
@@ -471,91 +450,94 @@
       <Filter>extern\WindowsSocket</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSphere.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.cpp">
-      <Filter>EngineCore\src\Mono</Filter>
+      <Filter>engineCore\src\Mono</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp">
-      <Filter>EngineCore\src\Mono</Filter>
+      <Filter>engineCore\src\Mono</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
-      <Filter>EngineCore\src\Object</Filter>
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
-      <Filter>EngineCore\src\Mesh</Filter>
+      <Filter>engineCore\src\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
-      <Filter>EngineCore\src\RenderSystem</Filter>
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlerror.cpp">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxml.cpp">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyutil.cpp">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinystr.cpp">
-      <Filter>EngineCore\src\Source\txml</Filter>
+      <Filter>engineCore\src\Source\txml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\vmath.cpp">
-      <Filter>EngineCore\src\Source\math</Filter>
+      <Filter>engineCore\src\Source\math</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp">
-      <Filter>EngineCore\src\Source\helpers</Filter>
+      <Filter>engineCore\src\Source\helpers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp">
-      <Filter>EngineCore\src\Source\application</Filter>
+      <Filter>engineCore\src\Source\application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

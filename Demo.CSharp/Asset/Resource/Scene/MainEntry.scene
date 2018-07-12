@@ -12,7 +12,7 @@
 		<Component ClassName="AppMain"/>
 	</GameObject>
 	<GameObject Name="Light" Type="DirectionLight" Color="1, 1, 1, 1.0" LayerMask="AllLayer"  Active="true">
-		<Transform Posistion="50, 50, 0" Rotation="0, 0, 0" Scale="1,1,1"/>
+		<Transform Posistion="50, 50, -50" Rotation="0, 0, 0" Scale="1,1,1"/>
 	</GameObject>
 	<GameObject Name="SkyBox" Type="SkyBox" LayerMask="defaultLayer"   Active="true">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>
@@ -99,13 +99,13 @@
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="160, 31,172" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="SelfRotateSphere"/>
+		<Component ClassName="SelfRotateSphere" Property="RotateSpeed=2;"/>
 		<Component ClassName="SphereCollider"/>
 		<Component ClassName="RigidBody" Property="Mass = 0;"/>
 		<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
-			<Transform Posistion="3.5, 0 ,0" Rotation="0, 0, 0" Scale="1,1,1"/>
+			<Transform Posistion="3.5, 0 ,0" Rotation="0, 0, 0" Scale="0.5,0.5,0.5"/>
 			<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>		
-			<Component ClassName="SelfRotateSphere"/>
+			<Component ClassName="SelfRotateSphere" Property="RotateSpeed=1;"/>
 			<Component ClassName="SphereCollider"/>
 			<Component ClassName="RigidBody" Property="Mass = 0;"/>			
 		</GameObject>
@@ -128,7 +128,7 @@
 	<GameObject Name="Dimian" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="3" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>
 		<Component ClassName="MeshCollider"/>
-		<Component ClassName="RigidBody" Property="Mass = 0;"/>
+		<Component ClassName="RigidBody" Property="Mass=0;Friction=1000;"/>
 	</GameObject>
 	<GameObject Name="fangzi" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="5" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>
@@ -138,7 +138,7 @@
 	<GameObject Name="qiao" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="6" LayerMask="backLayer"  Active="true">
 		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>
 		<Component ClassName="MeshCollider"/>
-		<Component ClassName="RigidBody" Property="Mass = 0;"/>
+		<Component ClassName="RigidBody" Property="Mass=0;Friction=1000;"/>
 	</GameObject>
 	<GameObject Name="shu1" Type="Mesh" FilePath="../Mesh/shu.mesh" SelectID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>

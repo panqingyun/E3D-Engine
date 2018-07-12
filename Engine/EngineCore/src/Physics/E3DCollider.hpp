@@ -57,6 +57,12 @@ namespace E3DEngine
 	public:
 		void SetMass(float mass);
 		float GetMass() { return mMass; }
+		void SetFriction(float friction);
+		float GetFriction() { return mFriction; }
+		void SetRestitution(float restitution);
+		float GetRestitution() { return mRestitution; }
+
+	public:
 		virtual void CreateBehaviour() override;
 		virtual void OnCreateComplete() override;
 		virtual void Update(float deltaTime) override;
@@ -65,7 +71,9 @@ namespace E3DEngine
 
 	private:
 		float mMass;
-		btRigidBody* m_pRigidBody;
+		float mFriction;
+		float mRestitution;
+		btRigidBody* mRigidBody;
 		btTransform  mStartTransform;
 		ColCallBack	 mColCallBack;
 		btDefaultMotionState*	mMotionState;
@@ -82,6 +90,7 @@ namespace E3DEngine
 		}
 		virtual void OnCreate()
 		{
+			Component::OnCreate();
 			gameObject->SetCollider(this);
 		}
 	public:

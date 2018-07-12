@@ -95,19 +95,8 @@ namespace E3DEngine
 		{
 			return;
 		}
-		std::string prop = *_property;
-		std::vector<std::string> props = StringBuilder::Split(prop, ";");
-		for (auto &p : props)
-		{
-			if (p.empty())
-			{
-				continue;
-			}
-			std::vector<std::string> values = StringBuilder::Split(p, "=");
-			std::string name = StringBuilder::Trim(values[0]);
-			float val = Convert::ToFloat(values[1]);
-			component->SetPropertyValue(name.c_str(), &val);
-		}
+		MonoString *arg = mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), _property->c_str());
+		component->SetPropertyValue((void*)arg);
 	}
 
 	void createComponent(TiXmlElement *objectElement, GameObject *go)
@@ -120,6 +109,7 @@ namespace E3DEngine
 		std::string comName = *objectElement->Attribute(_Component_ClassName);
 		Component * component = go->AddComponent(comName.c_str());
 		setComponentPropertyValue(objectElement, component);
+		component->OnCreate();
 		component->OnCreateComplete();
 		createComponent(objectElement->NextSiblingElement(_Component), go);
 	}

@@ -854,7 +854,7 @@ float _1_PARAM_FUNCTION(CapsuleCollider, get_Radius, CS_OBJECT, capsuleCollider)
 	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
 	if (collider == nullptr)
 	{
-		return;
+		return 0;
 	}
 
 	return collider->GetRadius();
@@ -876,7 +876,7 @@ float _1_PARAM_FUNCTION(CapsuleCollider, get_Height, CS_OBJECT, capsuleCollider)
 	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
 	if (collider == nullptr)
 	{
-		return;
+		return 0;
 	}
 
 	return collider->GetHeight();

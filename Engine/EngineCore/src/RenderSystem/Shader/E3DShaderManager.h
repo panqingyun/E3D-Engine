@@ -1,0 +1,23 @@
+
+//********************************** Effect 3D Engine **************************************************//
+//******************* Copyright (c) 2018-7-12 PanQingyun. All rights reserved. *************************//
+
+#ifndef __E3D_SHADER_MANAGER_H__
+#define __E3D_SHADER_MANAGER_H__
+
+#include "../../Source/Interface.h"
+
+namespace E3DEngine
+{
+	class Shader;
+	class ShaderManager : public IObject
+	{
+	public: 
+		virtual Shader * GetShaderContentByPath(std::string shaderPath);
+
+	protected:
+		std::map<std::string, std::string> mShadersMap;
+	};
+}
+
+#endif

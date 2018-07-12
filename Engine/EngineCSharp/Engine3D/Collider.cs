@@ -9,19 +9,33 @@ namespace E3DEngine
 {
     public class Collider : Component
     {
-        public RigidBody rigiBody
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void setSize(float x, float y, float z);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private extern void getSize(out float x, out float y, out float z);
+
+        private Vector3 size = new Vector3();
+        public Vector3 Size
         {
-            get;
-            private set;
+            get
+            {
+                float x, y, z;
+                getSize(out x, out y, out z);
+                size.SetValue(x, y, z);
+                return size;
+            }
+            set
+            {
+                size = value;
+                setSize(value.x, value.y, value.z);
+            }
         }
     }
 
     public class BoxCollider : Collider
     {
-        public Vector3 Size
-        {
-            get; set;
-        }
+        
     }
 
     public class SphereCollider : Collider
@@ -32,5 +46,24 @@ namespace E3DEngine
     public class MeshCollider : Collider
     {
 
+    }
+
+    public class CapsuleCollider : Collider
+    {
+        public float Radius
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+        }
+
+        public float Height
+        {
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+        }
     }
 }

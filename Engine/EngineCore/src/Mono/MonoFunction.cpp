@@ -71,6 +71,12 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(RigidBody,		get_Restitution);
 	REGISTER_INTERNAL_CALL(RigidBody,		set_Friction);
 	REGISTER_INTERNAL_CALL(RigidBody,		set_Restitution);
+	REGISTER_INTERNAL_CALL(Collider,		setSize);
+	REGISTER_INTERNAL_CALL(Collider,		getSize);
+	REGISTER_INTERNAL_CALL(CapsuleCollider, set_Radius);
+	REGISTER_INTERNAL_CALL(CapsuleCollider, get_Radius);
+	REGISTER_INTERNAL_CALL(CapsuleCollider, set_Height);
+	REGISTER_INTERNAL_CALL(CapsuleCollider, get_Height);
 
 }
 
@@ -820,4 +826,58 @@ VOID _2_PARAM_FUNCTION(RigidBody, set_Restitution, CS_OBJECT, rigibody, float, r
 	}
 
 	return rb->SetRestitution(restitution);
+}
+
+VOID _2_PARAM_FUNCTION(Collider, setSize, CS_OBJECT, collider, float, x, float, y, float, z)
+{
+
+}
+
+VOID _2_PARAM_FUNCTION(Collider, getSize, CS_OBJECT, collider, float&, x, float&, y, float&, z)
+{
+
+}
+
+VOID _2_PARAM_FUNCTION(CapsuleCollider, set_Radius, CS_OBJECT, capsuleCollider, float, radius)
+{
+	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
+	if (collider == nullptr)
+	{
+		return;
+	}
+
+	collider->SetRadius(radius);
+}
+
+float _1_PARAM_FUNCTION(CapsuleCollider, get_Radius, CS_OBJECT, capsuleCollider)
+{
+	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
+	if (collider == nullptr)
+	{
+		return;
+	}
+
+	return collider->GetRadius();
+}
+
+VOID _2_PARAM_FUNCTION(CapsuleCollider, set_Height, CS_OBJECT, capsuleCollider, float, height)
+{
+	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
+	if (collider == nullptr)
+	{
+		return;
+	}
+
+	collider->SetHieght(height);
+}
+
+float _1_PARAM_FUNCTION(CapsuleCollider, get_Height, CS_OBJECT, capsuleCollider)
+{
+	CapsuleCollider * collider = getCppObject<CapsuleCollider>(capsuleCollider);
+	if (collider == nullptr)
+	{
+		return;
+	}
+
+	return collider->GetHeight();
 }

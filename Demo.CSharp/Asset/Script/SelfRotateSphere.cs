@@ -11,7 +11,7 @@ class SelfRotateSphere : Component
 
     void Start()
     {
-        GameObject go = new GameObject();
+        //GameObject go = new GameObject();
     }
 
     private Vector3 rotate = new Vector3();

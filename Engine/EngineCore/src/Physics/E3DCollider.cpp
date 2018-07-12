@@ -14,12 +14,14 @@ namespace E3DEngine
 		REGIST_CLASS(SphereCollider);
 		REGIST_CLASS(MeshCollider);
 		REGIST_CLASS(RigidBody);
+		REGIST_CLASS(CapsuleCollider);
 	}
 
 	DECLARE_CLASS_NAME(BoxCollider)
 	DECLARE_CLASS_NAME(SphereCollider)
 	DECLARE_CLASS_NAME(MeshCollider)
 	DECLARE_CLASS_NAME(RigidBody)
+	DECLARE_CLASS_NAME(CapsuleCollider)
 
 	btBoxShape* createBoxShape(const btVector3& halfExtents)
 	{
@@ -31,6 +33,12 @@ namespace E3DEngine
 	{
 		btSphereShape * sphere = new btSphereShape(radius);
 		return sphere;
+	}
+
+	btCapsuleShapeZ * createCapsuleShape(btScalar radius, btScalar height)
+	{
+		btCapsuleShapeZ * capsule = new btCapsuleShapeZ(radius, height);
+		return capsule;
 	}
 
 	RigidBody::RigidBody()
@@ -155,11 +163,6 @@ namespace E3DEngine
 		Physics::GetInstance().AddRigidBody(mRigidBody);
 	}
 
-	void BoxCollider::Start()
-	{
-		m_pBehaviour->Start();
-	}
-
 	void BoxCollider::Awake()
 	{
 		vec3f lwh;
@@ -168,16 +171,6 @@ namespace E3DEngine
 		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Awake();
-	}
-
-	void BoxCollider::Update(float deltaTime)
-	{
-		m_pBehaviour->Update(deltaTime);
-	}
-
-	void BoxCollider::Destory()
-	{
-		m_pBehaviour->Destory();
 	}
 
 	bool BoxCollider::CheckClick(vec2d screenPoint)
@@ -223,21 +216,6 @@ namespace E3DEngine
 		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
 		m_pBehaviour->Awake();
-	}
-
-	void SphereCollider::Start()
-	{
-		m_pBehaviour->Start();
-	}
-
-	void SphereCollider::Update(float deltaTime)
-	{
-		m_pBehaviour->Update(deltaTime);
-	}
-
-	void SphereCollider::Destory()
-	{
-		m_pBehaviour->Destory();
 	}
 
 	bool SphereCollider::CheckClick(vec2d screenPoint)
@@ -289,22 +267,6 @@ namespace E3DEngine
 		m_pBehaviour->Awake();
 	}
 
-	void MeshCollider::Start()
-	{
-		m_pBehaviour->Start();
-	}
-
-	void MeshCollider::Update(float deltaTime)
-	{
-		m_pBehaviour->Update(deltaTime);
-	}
-
-
-	void MeshCollider::Destory()
-	{
-		m_pBehaviour->Destory();
-	}
-
 	bool MeshCollider::CheckClick(vec2d screenPoint)
 	{
 		return false;
@@ -322,6 +284,44 @@ namespace E3DEngine
 		NEW_INSTANCE(MeshCollider);
 		m_pBehaviour->Awake();
 		setBehaviourDefaultValue();
+	}
+
+
+	CapsuleCollider::CapsuleCollider()
+	{
+		CapsuleCollider();
+	}
+
+	CapsuleCollider::~CapsuleCollider()
+	{
+	}
+
+	void CapsuleCollider::Awake()
+	{
+		m_pShape = createCapsuleShape(mRadius, mHeight); 
+		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
+		m_pShape->setUserPointer(gameObject);
+		m_pBehaviour->Awake();
+	}
+
+	void CapsuleCollider::CreateBehaviour()
+	{
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(CapsuleCollider);
+		m_pBehaviour->Awake();
+		setBehaviourDefaultValue();
+	}
+
+
+	void CapsuleCollider::SetRadius(float radius)
+	{
+		mRadius = radius;
+	}
+
+
+	void CapsuleCollider::SetHieght(float height)
+	{
+		mHeight = height;
 	}
 
 }

@@ -110,7 +110,7 @@
 			<Component ClassName="RigidBody" Property="Mass = 0;"/>			
 		</GameObject>
 		<GameObject Name="particle" Type="Particle" FilePath="../Particle/ParticleFire.particle" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
-			<Transform Posistion="0, 1, 0" Rotation="0, 0, 0" Scale="0.5, 0.5, 0.5"/>
+			<Transform Posistion="0, 3, 0" Rotation="0, 0, 0" Scale="0.5, 0.5, 0.5"/>
 		</GameObject>
 	</GameObject>.
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">

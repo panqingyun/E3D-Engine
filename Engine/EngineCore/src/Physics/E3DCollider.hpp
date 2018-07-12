@@ -94,10 +94,6 @@ namespace E3DEngine
 			gameObject->SetCollider(this);
 		}
 	public:
-		virtual void Start() override { }
-		virtual void Update(float deltaTime) override { }
-		virtual void Destory() override { }
-	public:
 		virtual bool CheckClick(vec2d screenPoint) { return false;}
 		virtual bool CheckPress(vec2d screenPoint) { return false;}
 		virtual btCollisionShape * GetCollisionShape() { return m_pShape; }
@@ -115,9 +111,6 @@ namespace E3DEngine
 			CreateBehaviour();
 		}
 		virtual void Awake() override;
-		virtual void Start() override;
-		virtual void Update(float deltaTime) override;
-		virtual void Destory() override;
 
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
@@ -135,9 +128,6 @@ namespace E3DEngine
 			CreateBehaviour();
 		}
 		virtual void Awake() override;
-		virtual void Start() override;
-		virtual void Update(float deltaTime) override;
-		virtual void Destory() override;
 
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
@@ -154,9 +144,6 @@ namespace E3DEngine
 			CreateBehaviour();
 		}
 		virtual void Awake() override;
-		virtual void Start() override;
-		virtual void Update(float deltaTime) override;
-		virtual void Destory() override;
 
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
@@ -193,6 +180,27 @@ namespace E3DEngine
 		GameObject *mObject;
 		btTransform mWorldTrans;
 	};
+
+	class CapsuleCollider : public Collider
+	{
+		DECLARE_CLASS(CapsuleCollider)
+	public:
+		CapsuleCollider();
+		~CapsuleCollider();
+
+	public:
+		virtual void Awake() override;
+		virtual void CreateBehaviour() override;
+		void SetRadius(float radius);
+		void SetHieght(float height);
+		float GetHeight() { return mHeight; }
+		float GetRadius() { return mRadius; }
+
+	private: 
+		float mRadius;
+		float mHeight;
+	};
+
 }
 
 #endif /* Collider_hpp */

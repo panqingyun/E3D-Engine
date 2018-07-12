@@ -67,11 +67,11 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BulletCollision.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BulletCollision</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\lib\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">BulletCollision.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">BulletCollision_MinsizeRel</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">BulletCollision.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">BulletCollision_RelWithDebugInfo</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
@@ -100,10 +100,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_DEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -138,10 +138,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
@@ -176,10 +176,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -192,7 +192,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -213,10 +213,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -228,10 +228,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -239,12 +239,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -252,12 +252,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -265,12 +265,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -278,240 +278,240 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletCollision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\src\BulletCollision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\btBulletCollisionCommon.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvt.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDispatcher.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionConfiguration.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObject.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorld.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorldImporter.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btGhostObject.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btManifoldResult.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btUnionFind.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBoxShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBox2dShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCapsuleShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionMargin.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCompoundShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConcaveShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConeShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexHullShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexInternalShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPolyhedron.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvex2dShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCylinderShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btEmptyShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMaterial.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultiSphereShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btOptimizedBvh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btShapeHull.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btSphereShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStaticPlaneShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStridingMeshInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTetrahedronShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleBuffer.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleCallback.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleInfoMap.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMesh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMeshShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btUniformScalingShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btBoxCollision.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btClipPolygon.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessingStructs.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessing.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGenericPoolAllocator.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGeometryOperations.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvhStructs.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactMassUtil.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvhStructs.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactShape.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btQuantization.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btTriangleShapeEx.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_array.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_basic_geometry_operations.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_bitset.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_collision.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_set.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_clip_polygon.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_contact.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_geom_types.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_geometry.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_hash_table.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_linear_math.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_math.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_memory.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_radixsort.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_tri_collision.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexCast.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPointCollector.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvt.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDispatcher.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObject.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorld.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorldImporter.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btGhostObject.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btManifoldResult.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btUnionFind.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBoxShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBox2dShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCapsuleShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCompoundShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConcaveShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConeShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexHullShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexInternalShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvex2dShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCylinderShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btEmptyShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultiSphereShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btOptimizedBvh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btShapeHull.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btSphereShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTetrahedronShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleBuffer.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleCallback.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMesh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btUniformScalingShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessing.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGenericPoolAllocator.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactShape.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btTriangleShapeEx.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_set.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_contact.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_memory.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_tri_collision.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\btBulletCollisionCommon.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3Internal.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvt.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDispatcher.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCallback.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionConfiguration.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionCreateFunc.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObject.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObjectWrapper.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorld.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorldImporter.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btGhostObject.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btManifoldResult.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btUnionFind.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBoxShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBox2dShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCapsuleShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionMargin.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCompoundShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConcaveShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConeShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexHullShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexInternalShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPolyhedron.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvex2dShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCylinderShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btEmptyShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMaterial.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultiSphereShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btOptimizedBvh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btShapeHull.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btSphereShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStaticPlaneShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStridingMeshInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTetrahedronShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleBuffer.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleCallback.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleInfoMap.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMesh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMeshShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btUniformScalingShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btBoxCollision.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btClipPolygon.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessingStructs.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessing.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGenericPoolAllocator.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGeometryOperations.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvhStructs.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactMassUtil.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvhStructs.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactShape.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btQuantization.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btTriangleShapeEx.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_array.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_basic_geometry_operations.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_bitset.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_collision.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_set.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_clip_polygon.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_contact.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_geom_types.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_geometry.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_hash_table.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_linear_math.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_math.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_memory.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_radixsort.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_tri_collision.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexCast.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexPenetrationDepthSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btDiscreteCollisionDetectorInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btManifoldPoint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPointCollector.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSimplexSolverInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btBroadphaseProxy.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvt.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDbvtBroadphase.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btDispatcher.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btOverlappingPairCache.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btQuantizedBvh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btSimpleBroadphase.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btActivatingCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBox2dBox2dCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btBoxBoxDetector.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcher.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionDispatcherMt.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionObject.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorld.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCollisionWorldImporter.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btCompoundCompoundCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConcaveCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexConvexAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvexPlaneCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btConvex2dConvex2dAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btDefaultCollisionConfiguration.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btEmptyCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btGhostObject.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btHashedSimplePairCache.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btInternalEdgeUtility.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btManifoldResult.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSimulationIslandManager.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereBoxCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereSphereCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btSphereTriangleCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\btUnionFind.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionDispatch\SphereTriangleDetector.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBoxShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBox2dShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btBvhTriangleMeshShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCapsuleShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCollisionShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCompoundShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConcaveShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConeShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexHullShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexInternalShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPointCloudShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexPolyhedron.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvex2dShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btConvexTriangleMeshShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btCylinderShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btEmptyShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btHeightfieldTerrainShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMinkowskiSumShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultimaterialTriangleMeshShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btMultiSphereShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btOptimizedBvh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btPolyhedralConvexShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btScaledBvhTriangleMeshShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btShapeHull.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btSphereShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStaticPlaneShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btStridingMeshInterface.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTetrahedronShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleBuffer.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleCallback.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexArray.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleIndexVertexMaterialArray.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMesh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btTriangleMeshShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CollisionShapes\btUniformScalingShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btContactProcessing.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGenericPoolAllocator.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactBvh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactCollisionAlgorithm.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactQuantizedBvh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btGImpactShape.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\btTriangleShapeEx.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_box_set.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_contact.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_memory.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\Gimpact\gim_tri_collision.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btContinuousConvexCollision.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btConvexCast.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkConvexCast.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpa2.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkEpaPenetrationDepthSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btGjkPairDetector.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btMinkowskiPenetrationDepthSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPersistentManifold.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btRaycastCallback.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btSubSimplexConvexCast.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btVoronoiSimplexSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="E:/E3D/trunk/proj_win32/bullet/ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\..\..\../proj_win32/bullet/ZERO_CHECK.vcxproj">
       <Project>78A9AF2D-0047-39C0-878D-9C84AE6AEF8E</Project>
     </ProjectReference>
   </ItemGroup>

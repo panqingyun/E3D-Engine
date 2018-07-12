@@ -12,6 +12,23 @@
 
 namespace E3DEngine
 {
+	std::map<std::string, DWORD> g_BlendFactorMap;
+
+
+	GLES_MaterialManager::GLES_MaterialManager()
+	{
+		g_BlendFactorMap["ZERO"] = GL_ZERO;
+		g_BlendFactorMap["ONE"] = GL_ONE;
+		g_BlendFactorMap["SRC_COLOR"] = GL_SRC_COLOR;
+		g_BlendFactorMap["ONE_MINUS_SRC_COLOR"] = GL_ONE_MINUS_SRC_COLOR;
+		g_BlendFactorMap["SRC_ALPHA"] = GL_SRC_ALPHA;
+		g_BlendFactorMap["ONE_MINUS_SRC_ALPHA"] = GL_ONE_MINUS_SRC_ALPHA;
+		g_BlendFactorMap["DST_ALPHA"] = GL_DST_ALPHA;
+		g_BlendFactorMap["ONE_MINUS_DST_ALPHA"] = GL_ONE_MINUS_DST_ALPHA;
+		g_BlendFactorMap["DST_COLOR"] = GL_DST_COLOR;
+		g_BlendFactorMap["ONE_MINUS_DST_COLOR"] = GL_ONE_MINUS_DST_COLOR;
+	}
+
 	Material * GLES_MaterialManager::GetMaterial(int id)
 	{
 		if (m_mapIDMaterials.find(id) == m_mapIDMaterials.end())
@@ -39,7 +56,12 @@ namespace E3DEngine
 		StringManipulator::SplitFileName(path, folder, file);
 		MaterialConfig *config = materialConfig;
 		GLES_Material * material = new GLES_Material;
-		material->SetBlendType((BLEND_TYPE)config->BlendType);
+		DWORD srcFactor = GL_NONE, dstFactor = GL_NONE;
+		std::map<std::string, DWORD>::iterator srcItr = g_BlendFactorMap.find(config->SrcBlendFactor);
+		std::map<std::string, DWORD>::iterator dstItr = g_BlendFactorMap.find(config->DstBlendFactor);
+		srcFactor = srcItr != g_BlendFactorMap.end() ? srcItr->second : GL_NONE;
+		dstFactor = dstItr != g_BlendFactorMap.end() ? dstItr->second : GL_ONE;
+		material->SetBlendType(srcFactor, dstFactor);
 		material->SetEnableDepthTest(config->EnableDepthTest == 1);
 		material->SetEnableCullFace(config->CullFace == 0);
 		material->filePath = folder + "/";

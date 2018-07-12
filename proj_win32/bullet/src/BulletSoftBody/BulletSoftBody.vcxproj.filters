@@ -1,77 +1,77 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBody.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBody.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyHelpers.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyHelpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidDynamicsWorld.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidDynamicsWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btDefaultSoftBodySolver.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btDefaultSoftBodySolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBody.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyData.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyHelpers.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyHelpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidDynamicsWorld.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftRigidDynamicsWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSparseSDF.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSparseSDF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodySolvers.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodySolvers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btDefaultSoftBodySolver.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btDefaultSoftBodySolver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodySolverVertexBuffer.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\btSoftBodySolverVertexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\CMakeLists.txt" />
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletSoftBody\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

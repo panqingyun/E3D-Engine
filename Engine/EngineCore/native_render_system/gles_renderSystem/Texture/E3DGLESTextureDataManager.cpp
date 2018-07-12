@@ -17,7 +17,7 @@ void E3DEngine::GLES_TextureDataManager::Init()
 	DEFAULT_TEXTURE_FILE = "Resource/Material/texture/common.png";
 }
 
-GLuint E3DEngine::GLES_TextureDataManager::CreateTexture(std::string imageName,TextureData &tData)
+GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
 {
 	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
 	{
@@ -26,72 +26,10 @@ GLuint E3DEngine::GLES_TextureDataManager::CreateTexture(std::string imageName,T
 	
 	GLuint TextureBuffer = 0;
 	glGenTextures(1, &TextureBuffer);
-	glActiveTexture(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, TextureBuffer);
-	setTextureParam(tData);
-	glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-	if (tData.useMipMap)
-	{
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
 	m_mapTextureBuffer[imageName] = TextureBuffer;
-	glBindTexture(GL_TEXTURE_2D, 0);
 	return TextureBuffer;
 }
 
-
-void E3DEngine::GLES_TextureDataManager::setTextureParam(TextureData &tData)
-{
-	unsigned int clampType = 0;
-	unsigned int filterType = 0;
-	switch (tData.clampType)
-	{
-	case CLAMP_TYPE::CLAMP_TO_EDGE:
-		clampType = GL_CLAMP_TO_EDGE;
-		break;
-	case  CLAMP_TYPE::MIRRORED_REPEAT:
-		clampType = GL_MIRRORED_REPEAT;
-		break;
-	case CLAMP_TYPE::REPEAT:
-		clampType = GL_REPEAT;
-		break;
-	default:
-		assert(false);
-	}
-
-	switch (tData.filterType)
-	{
-	case FILTER_TYPE::LINEAR:
-		filterType = GL_LINEAR;
-		break;
-	case  FILTER_TYPE::NEAREST:
-		filterType = GL_NEAREST;
-		break;
-	case FILTER_TYPE::LINEAR_MIPMAP_LINEAR:
-		filterType = GL_LINEAR_MIPMAP_LINEAR;
-		tData.useMipMap = true;
-		break;
-	case  FILTER_TYPE::LINEAR_MIPMAP_NEAREST:
-		filterType = GL_LINEAR_MIPMAP_NEAREST;
-		tData.useMipMap = true;
-		break;
-	case  FILTER_TYPE::NEAREST_MIPMAP_LINEAR:
-		filterType = GL_NEAREST_MIPMAP_LINEAR;
-		tData.useMipMap = true;
-		break;
-	case  FILTER_TYPE::NEAREST_MIPMAP_NEAREST:
-		filterType = GL_NEAREST_MIPMAP_NEAREST;
-		tData.useMipMap = true;
-		break;
-	default:
-		assert(false);
-	}
-	
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterType);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampType);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
-}
 
 E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::GetTextureDataFromFile(std::string imageName)
 {

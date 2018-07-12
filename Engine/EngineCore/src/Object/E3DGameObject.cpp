@@ -9,6 +9,7 @@
 #include <stdarg.h>
 #include "E3DRenderObject.hpp"
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
+#include "../Physics/E3DCollider.hpp"
 
 namespace E3DEngine
 {
@@ -84,6 +85,7 @@ namespace E3DEngine
 			component->SetGameObject(this);
 			component->TypeName = type_name;
 			component->Transform = Transform;
+			component->OnCreate();
 			component->Awake();
 			component->OnEnable();
 			m_listComponents[type_name].push_back((Component*)component);
@@ -109,6 +111,7 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
+		component->OnCreate();
 		component->Awake();
 		component->OnEnable();
 		m_listComponents[(component)->TypeName].push_back(component);
@@ -434,6 +437,16 @@ namespace E3DEngine
 		childNode.clear();
 	}
 
+
+	E3DEngine::Collider * GameObject::GetCollider()
+	{
+		return mCollider;
+	}
+
+	void GameObject::SetCollider(Collider * collider)
+	{
+		mCollider = collider;
+	}
 
 	void GameObject::Render(float deltaTime)
 	{

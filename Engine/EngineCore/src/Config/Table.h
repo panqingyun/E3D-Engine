@@ -395,14 +395,14 @@ namespace E3DEngine
 			CullFace		= 1;
 			TextureClampType = 0;
 			TextureFilterType = 0;
-			BlendType = 0;
 		}
 		DECLARE_MEMBER(MaterialConfig, int, ID);
 		DECLARE_MEMBER(MaterialConfig, string, Texture);
 		DECLARE_MEMBER(MaterialConfig, int, ShaderID);
 		DECLARE_MEMBER(MaterialConfig, string, Color);
 		DECLARE_MEMBER(MaterialConfig, string, Textures);
-		DECLARE_MEMBER(MaterialConfig, int, BlendType);
+		DECLARE_MEMBER(MaterialConfig, string, SrcBlendFactor);
+		DECLARE_MEMBER(MaterialConfig, string, DstBlendFactor);
 		DECLARE_MEMBER(MaterialConfig, int, CullFace);
 		DECLARE_MEMBER(MaterialConfig, int, EnableDepthTest);
 		DECLARE_MEMBER(MaterialConfig, int, TextureClampType);
@@ -415,7 +415,8 @@ namespace E3DEngine
 			SAVE_MEMBER(ShaderID, int);
 			SAVE_MEMBER(Color, string);
 			SAVE_MEMBER(Textures, string);
-			SAVE_MEMBER(BlendType, int);
+			SAVE_MEMBER(SrcBlendFactor, string);
+			SAVE_MEMBER(DstBlendFactor, string);
 			SAVE_MEMBER(CullFace, int);
 			SAVE_MEMBER(EnableDepthTest, int);
 			SAVE_MEMBER(TextureClampType, int);

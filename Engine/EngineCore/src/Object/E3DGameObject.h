@@ -282,6 +282,7 @@ namespace E3DEngine
 	class RenderObject;
 	class Renderer;
 	class SkyBox;
+	class Collider;
 	class GameObject : public Object
 	{
 	public:
@@ -289,9 +290,9 @@ namespace E3DEngine
 		{
 			std::string type_id = GetClassName<T>();
 			T *_t = new T();
-			((Component*)_t)->gameObject = this;
+			((Component*)_t)->SetGameObject(this);
+			((Component*)_t)->OnCreate();
 			((Component*)_t)->Awake();
-			((Component*)_t)->Start();
 			((Component*)_t)->TypeName = type_id;
 			((Component*)_t)->Transform = Transform;
 			((Component*)_t)->OnEnable();
@@ -362,7 +363,8 @@ namespace E3DEngine
 		virtual void RemoveChild(GameObject * node);
 		virtual void RemoveChild(UINT ID);
 		virtual void DestoryAllChild();
-
+		virtual Collider * GetCollider();
+		virtual void SetCollider(Collider * collider);
 		virtual void Render(float deltaTime);
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
@@ -401,6 +403,7 @@ namespace E3DEngine
 		std::vector<BatchVertex> m_vecBatchVertex;
 		std::vector<uint> m_vecIndex;
 		bool	m_bIsStatic;
+		Collider	* mCollider;
 	};
 
 	

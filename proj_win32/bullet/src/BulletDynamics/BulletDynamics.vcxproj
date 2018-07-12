@@ -67,11 +67,11 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BulletDynamics.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">BulletDynamics</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\lib\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">BulletDynamics.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">BulletDynamics_MinsizeRel</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">BulletDynamics.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">BulletDynamics_RelWithDebugInfo</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
@@ -100,10 +100,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_DEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -138,10 +138,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
@@ -176,10 +176,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -192,7 +192,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -213,10 +213,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -228,10 +228,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -239,12 +239,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -252,12 +252,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -265,12 +265,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -278,108 +278,108 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/BulletDynamics/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\src\BulletDynamics\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\btBulletDynamicsCommon.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\btBulletCollisionCommon.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConeTwistConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConstraintSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactSolverInfo.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btFixedConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGearConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHinge2Constraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHingeConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btJacobianEntry.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSliderConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolverBody.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolverConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btTypedConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btUniversalConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btActionInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimulationIslandManagerMt.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDynamicsWorld.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimpleDynamicsWorld.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btRigidBody.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btRaycastVehicle.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btVehicleRaycaster.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btWheelInfo.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btCharacterControllerInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btKinematicCharacterController.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBody.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyLink.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyLinkCollider.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySolverConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyPoint2Point.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySliderConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointMotor.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyGearConstraint.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigLCP.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolverInterface.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btPATHSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btSolveProjectedGaussSeidel.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeSolver.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.h" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btKinematicCharacterController.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConeTwistConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btFixedConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGearConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHinge2Constraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHingeConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSliderConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btTypedConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btUniversalConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimulationIslandManagerMt.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btRigidBody.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimpleDynamicsWorld.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btRaycastVehicle.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btWheelInfo.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBody.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyPoint2Point.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySliderConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointMotor.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyGearConstraint.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigLCP.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolver.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.cpp" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\btBulletDynamicsCommon.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\btBulletCollisionCommon.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConeTwistConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConstraintSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactSolverInfo.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btFixedConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGearConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHinge2Constraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHingeConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btJacobianEntry.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSliderConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolverBody.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolverConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btTypedConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btUniversalConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btActionInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimulationIslandManagerMt.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDynamicsWorld.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimpleDynamicsWorld.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btRigidBody.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btRaycastVehicle.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btVehicleRaycaster.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btWheelInfo.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btCharacterControllerInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btKinematicCharacterController.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBody.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyLink.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyLinkCollider.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySolverConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyPoint2Point.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySliderConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointMotor.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyGearConstraint.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigLCP.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolverInterface.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btPATHSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btSolveProjectedGaussSeidel.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeSolver.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.h" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Character\btKinematicCharacterController.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btConeTwistConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btContactConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btFixedConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGearConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpringConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btGeneric6DofSpring2Constraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHinge2Constraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btHingeConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btPoint2PointConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSequentialImpulseConstraintSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btNNCGConstraintSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSliderConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btSolve2LinearConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btTypedConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\ConstraintSolver\btUniversalConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorld.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btDiscreteDynamicsWorldMt.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimulationIslandManagerMt.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btRigidBody.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Dynamics\btSimpleDynamicsWorld.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btRaycastVehicle.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Vehicle\btWheelInfo.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBody.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraintSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyDynamicsWorld.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointLimitConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyPoint2Point.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyFixedConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodySliderConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyJointMotor.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\Featherstone\btMultiBodyGearConstraint.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btDantzigLCP.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btMLCPSolver.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletDynamics\MLCPSolvers\btLemkeAlgorithm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="E:/E3D/trunk/proj_win32/bullet/ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\..\..\../proj_win32/bullet/ZERO_CHECK.vcxproj">
       <Project>78A9AF2D-0047-39C0-878D-9C84AE6AEF8E</Project>
     </ProjectReference>
   </ItemGroup>

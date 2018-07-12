@@ -15,15 +15,6 @@
 
 namespace E3DEngine
 {
-    enum BLEND_TYPE
-	{
-		NONE = 0,
-        ONE_BLEND_ONE = 1,
-		SRCALPHA_ONEMINUSSRCALPHA = 2,
-
-
-    };
-	
 	class Material : public  Object
 	{
 	public:
@@ -75,7 +66,7 @@ namespace E3DEngine
 
 		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
 
-		virtual void SetBlendType(BLEND_TYPE type) { blendType = type; }
+		virtual void SetBlendType(DWORD src, DWORD dst) { srcBlendFactor = src; dstBlendFactor = dst; }
 		virtual void SetEnableDepthTest(bool enable) { enableDepthTest = enable; }
 		virtual void SetEnableCullFace(bool enable) { enableDoubleSide = enable; }
 	public:
@@ -115,7 +106,8 @@ namespace E3DEngine
 		bool        enableStencilTest; //开启模版测试
 		bool        enableDoubleSide;
 		bool        turnOnBlend;
-		BLEND_TYPE  blendType;
+		DWORD		srcBlendFactor;
+		DWORD		dstBlendFactor;
 	public:
 		vec4f		AmbientColor;
 		vec4f		SpecularColor;

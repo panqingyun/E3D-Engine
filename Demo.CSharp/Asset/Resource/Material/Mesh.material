@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 <!--
-	TextureClampType 0 CLAMP_TO_EDGE 1 REPEAT 2 MIRRORED_REPEAT
-	TextureFilterType 0 LINEAR, 1 NEAREST, 2 NEAREST_MIPMAP_NEAREST, 3 LINEAR_MIPMAP_NEAREST , 4 NEAREST_MIPMAP_LINEAR , 5 LINEAR_MIPMAP_LINEAR 
-	CullFace 0 不剔除背面 1 剔除背面
-	EnableDepthTest 0 关闭深度测试和深度缓冲区 1 开启深度测试与深度缓冲区
-	IsBlend 0 不做颜色叠加的混合 1 开启颜色叠加 
+		TextureClampType 0 CLAMP_TO_EDGE 1 REPEAT 2 MIRRORED_REPEAT
+		TextureFilterType 0 LINEAR, 1 NEAREST, 2 NEAREST_MIPMAP_NEAREST, 3 LINEAR_MIPMAP_NEAREST , 4 NEAREST_MIPMAP_LINEAR , 5 LINEAR_MIPMAP_LINEAR 
+		CullFace 0 不剔除背面 1 剔除背面
+		EnableDepthTest 0 关闭深度测试和深度缓冲区 1 开启深度测试与深度缓冲区
+		SrcBlendFactor DstBlendFactor = ZERO,  ONE ,SRC_COLOR, ONE_MINUS_SRC_COLOR, SRC_ALPHA, ONE_MINUS_SRC_ALPHA, DST_ALPHA, ONE_MINUS_DST_ALPHA, DST_COLOR, ONE_MINUS_DST_COLOR
 -->
 	<MaterialConfig>
-		<Item ID=1 ShaderID = 1 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=2 ShaderID = 2 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=3 ShaderID = 3 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
-		<Item ID=4 ShaderID = 4 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
-		<Item ID=5 ShaderID = 5 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
-		<Item ID=6 ShaderID = 6 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
-		<Item ID=7 ShaderID = 7 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
-		<Item ID=8 ShaderID = 8 Color="ffffffff" BlendType = 0 EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=1 ShaderID = 1 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=2 ShaderID = 2 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=3 ShaderID = 3 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=4 ShaderID = 4 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 0 TextureClampType=1 TextureFilterType = 0/>
+		<Item ID=5 ShaderID = 5 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=6 ShaderID = 6 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=7 ShaderID = 7 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 5/>
+		<Item ID=8 ShaderID = 8 Color="ffffffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace = 1 TextureClampType=1 TextureFilterType = 0/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--

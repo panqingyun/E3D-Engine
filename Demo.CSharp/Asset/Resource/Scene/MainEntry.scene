@@ -21,102 +21,124 @@
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"   Active="true">
 		<Transform Posistion="110, 35,160" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"   Active="true">
 		<Transform Posistion="112, 35,160" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="115, 35,160" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="120, 35,165" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="125, 35,170" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="130, 35,175" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="140, 35,180" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="150, 35,160" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="160, 90,150" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="120, 55,160" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="160, 66,176" Rotation="0, 0, 0" Scale="2,2,2"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="110, 66,155" Rotation="0, 0, 50" Scale="3,3,3"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="BoxScript"/>
+		<Component ClassName="BoxCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 10;"/>
 	</GameObject>
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="160, 60,176" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="SphereScript"/>
+		<Component ClassName="SphereCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 30;"/>
 	</GameObject>
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
-		<Transform Posistion="160, 35,176" Rotation="0, 0, 50" Scale="1,1,1"/>
+		<Transform Posistion="160, 31,172" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
 		<Component ClassName="SelfRotateSphere"/>
+		<Component ClassName="SphereCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 0;"/>
 		<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
-			<Transform Posistion="5, 0 ,0" Rotation="0, 0, 0" Scale="0.5,0.5,0.5"/>
+			<Transform Posistion="3.5, 0 ,0" Rotation="0, 0, 0" Scale="1,1,1"/>
 			<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>		
-			<Component ClassName="SelfRotateSphere"/>			
+			<Component ClassName="SelfRotateSphere"/>
+			<Component ClassName="SphereCollider"/>
+			<Component ClassName="RigidBody" Property="Mass = 0;"/>			
 		</GameObject>
 		<GameObject Name="particle" Type="Particle" FilePath="../Particle/ParticleFire.particle" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
-			<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="0.5, 0.5, 0.5"/>
+			<Transform Posistion="0, 1, 0" Rotation="0, 0, 0" Scale="0.5, 0.5, 0.5"/>
 		</GameObject>
 	</GameObject>.
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="110, 80,155" Rotation="0, 0, 50" Scale="1,1,1"/>
 		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="SphereScript"/>
+		<Component ClassName="SphereCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 30;"/>
 	</GameObject>
 	<GameObject Name="Sphere" Type="Sphere" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="138, 80, 164" Rotation="0, 0, 0" Scale="1,1,1"/>
 		<Material FilePath="../Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="SphereScript" Variable = "Mass = 10"/>
+		<Component ClassName="SphereCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 30;"/>
 	</GameObject>
 	<GameObject Name="Dimian" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="3" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>
-		<Component ClassName="MeshScript"/>
+		<Component ClassName="MeshCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 0;"/>
 	</GameObject>
 	<GameObject Name="fangzi" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="5" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>
-		<Component ClassName="MeshScript"/>
+		<Component ClassName="MeshCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 0;"/>
 	</GameObject>
 	<GameObject Name="qiao" Type="Mesh" FilePath="../Mesh/bhcs.mesh" SelectID="6" LayerMask="backLayer"  Active="true">
 		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>
-		<Component ClassName="MeshScript"/>
+		<Component ClassName="MeshCollider"/>
+		<Component ClassName="RigidBody" Property="Mass = 0;"/>
 	</GameObject>
 	<GameObject Name="shu1" Type="Mesh" FilePath="../Mesh/shu.mesh" SelectID="1" RenderIndex="Transparent" LayerMask="defaultLayer"  Active="true">
 		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>

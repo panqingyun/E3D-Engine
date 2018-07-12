@@ -67,11 +67,11 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Bullet3Collision.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Bullet3Collision</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\lib\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Bullet3Collision.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Bullet3Collision_MinsizeRel</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\lib\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Bullet3Collision.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Bullet3Collision_RelWithDebugInfo</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
@@ -100,10 +100,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_DEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -138,10 +138,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
@@ -176,10 +176,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -192,7 +192,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -213,10 +213,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\Engine\EngineCore\3rd\Physical\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -228,10 +228,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -239,12 +239,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -252,12 +252,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -265,12 +265,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/Physical -BE:/E3D/trunk/proj_win32/bullet --check-stamp-file E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -278,48 +278,48 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Collision/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Collision\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3BroadphaseCallback.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPair.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\shared\b3Aabb.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhSubtreeInfoData.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhTraversal.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ClipFaces.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3Collidable.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3Contact4Data.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactConvexConvexSAT.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactSphereSphere.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ConvexPolyhedronData.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3FindConcaveSatAxis.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3FindSeparatingAxis.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3MprPenetration.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3NewContactReduction.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3QuantizedBvhNodeData.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ReduceContacts.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3RigidBodyData.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3UpdateAabbs.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3Config.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3Contact4.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3RaycastInfo.h" />
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3RigidBodyCL.h" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.cpp" />
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.cpp" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3BroadphaseCallback.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPair.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\shared\b3Aabb.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhSubtreeInfoData.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3BvhTraversal.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ClipFaces.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3Collidable.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3Contact4Data.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactConvexConvexSAT.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ContactSphereSphere.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ConvexPolyhedronData.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3FindConcaveSatAxis.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3FindSeparatingAxis.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3MprPenetration.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3NewContactReduction.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3QuantizedBvhNodeData.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3ReduceContacts.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3RigidBodyData.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\shared\b3UpdateAabbs.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3Config.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3Contact4.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3RaycastInfo.h" />
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3RigidBodyCL.h" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvh.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3DynamicBvhBroadphase.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\BroadPhaseCollision\b3OverlappingPairCache.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3ConvexUtility.cpp" />
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Collision\NarrowPhaseCollision\b3CpuNarrowPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="E:/E3D/trunk/proj_win32/bullet/ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\..\..\../proj_win32/bullet/ZERO_CHECK.vcxproj">
       <Project>78A9AF2D-0047-39C0-878D-9C84AE6AEF8E</Project>
     </ProjectReference>
   </ItemGroup>

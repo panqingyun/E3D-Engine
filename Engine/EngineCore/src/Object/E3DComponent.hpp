@@ -24,6 +24,15 @@ namespace E3DEngine
 			NotStart = true;
 		}
 
+		virtual void OnCreate() 
+		{
+		}
+
+		virtual void OnCreateComplete()
+		{
+
+		}
+
 		virtual void Awake()
 		{
 			if (m_pBehaviour != nullptr)
@@ -79,6 +88,8 @@ namespace E3DEngine
 		{
 			return gameObject;
 		}
+
+		virtual void SetPropertyValue(const char* name, void* value);
     public:
         GameObject *	gameObject;
 		std::string 	_Tag;

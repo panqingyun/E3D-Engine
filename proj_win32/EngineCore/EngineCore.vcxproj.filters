@@ -327,9 +327,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h">
       <Filter>EngineCore\src\Source\helpers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
-      <Filter>EngineCore\src\Source\helpers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\NativeSystem.h">
       <Filter>EngineCore\src\Source\helpers</Filter>
     </ClInclude>
@@ -341,6 +338,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
       <Filter>EngineCore\src\Source\application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
+      <Filter>EngineCore\src\Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

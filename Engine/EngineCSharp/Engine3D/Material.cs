@@ -6,8 +6,8 @@ namespace E3DEngine
     public enum BLEND_TYPE
     {
         NONE = 0,
-        ONE_BLEND_ONE = 1,
-        SRCALPHA_ONEMINUSSRCALPHA = 2,
+        SRCALPHA_ADD_DESONE = 1,
+        SRCALPHA_DESONEMINUSSRCALPHA = 2,
     }
 
     public enum CLAMP_TYPE

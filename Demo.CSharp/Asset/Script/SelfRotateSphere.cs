@@ -9,7 +9,6 @@ class SelfRotateSphere : Component
 {
     void Start()
     {
-        gameObject.AddComponent<SphereCollider>().CreateRigiBody(0);
     }
 
     private Vector3 rotate = new Vector3();

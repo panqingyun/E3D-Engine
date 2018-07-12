@@ -47,6 +47,31 @@ namespace E3DEngine
 		};
 	};
 
+	class RigidBody : public Component
+	{
+		DECLARE_CLASS(RigidBody)
+	public:
+		RigidBody();
+		~RigidBody();
+
+	public:
+		void SetMass(float mass);
+		float GetMass() { return mMass; }
+		virtual void CreateBehaviour() override;
+		virtual void OnCreateComplete() override;
+		virtual void Update(float deltaTime) override;
+	private:
+		void createRigidBody(btCollisionShape *shape);
+
+	private:
+		float mMass;
+		btRigidBody* m_pRigidBody;
+		btTransform  mStartTransform;
+		ColCallBack	 mColCallBack;
+		btDefaultMotionState*	mMotionState;
+
+	};
+
 	class Collider : public Component
 	{
 	public:
@@ -55,6 +80,10 @@ namespace E3DEngine
 			SAFE_DELETE(m_pShape);
 			SAFE_DELETE(m_pMotionState);
 		}
+		virtual void OnCreate()
+		{
+			gameObject->SetCollider(this);
+		}
 	public:
 		virtual void Start() override { }
 		virtual void Update(float deltaTime) override { }
@@ -62,16 +91,10 @@ namespace E3DEngine
 	public:
 		virtual bool CheckClick(vec2d screenPoint) { return false;}
 		virtual bool CheckPress(vec2d screenPoint) { return false;}
-		virtual btRigidBody* CreateRigidBody(float mass);
+		virtual btCollisionShape * GetCollisionShape() { return m_pShape; }
 	protected:
-		void createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape);
 
 		btCollisionShape*	m_pShape;
-		btScalar			m_fMass;
-		btRigidBody*		m_pRigidBody;
-		btDefaultMotionState*	m_pMotionState;
-		ColCallBack				mColCallBack;
-		btTransform				m_StartTransform;
 	};
 	
 	class BoxCollider : public  Collider

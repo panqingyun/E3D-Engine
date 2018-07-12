@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3ConvexHullComputer.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3ConvexHullComputer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GeometryUtil.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GeometryUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3AabbUtil.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3AabbUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3ConvexHullComputer.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3ConvexHullComputer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GeometryUtil.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GeometryUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GrahamScan2dConvexHull.h">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\b3GrahamScan2dConvexHull.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\CMakeLists.txt" />
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Geometry\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

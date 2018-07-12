@@ -11,11 +11,6 @@
 #ifndef GLEngineAPI_h
 #define GLEngineAPI_h
 
-#define OPEN_GL_ES
-//#define D3D_11
-//#define D3D_9
-//#define OPEN_GL
-
 #include <stdio.h>
 #include <vector>
 #include <map>

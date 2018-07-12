@@ -11,6 +11,7 @@ namespace E3DEngine
 {
 	Physics::Physics()
 	{
+		mlocalInertia = btVector3(0, 10, 0);
 	}
 
 	Physics::~Physics()

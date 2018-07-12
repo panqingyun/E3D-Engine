@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace E3DEngine
 {
-    public class RigidBody : Object
+    public class RigidBody : Component
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        protected extern void addRigidBody(Collider collider);
-
-        private float mass;
-        public RigidBody(Collider collider, float _mass)
+        public float Mass
         {
-            mass = _mass;
-           addRigidBody(collider);
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            set;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
         }
     }
 }

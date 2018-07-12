@@ -55,6 +55,7 @@ namespace E3DEngine
 
 	const string _Component = "Component";
 	const string _Component_ClassName = "ClassName";
+	const string _Component_Property = "Property";
 
 	const string _Camera_CullMask = "CullingMask";
 	const string _Camera_CullMask_Everything = "Everything";
@@ -87,6 +88,28 @@ namespace E3DEngine
 		return vec3f(x, y, z);
 	}
 
+	void setComponentPropertyValue(TiXmlElement *objectElement, Component *component)
+	{
+		const std::string *_property = objectElement->Attribute(_Component_Property);
+		if (_property == nullptr)
+		{
+			return;
+		}
+		std::string prop = *_property;
+		std::vector<std::string> props = StringBuilder::Split(prop, ";");
+		for (auto &p : props)
+		{
+			if (p.empty())
+			{
+				continue;
+			}
+			std::vector<std::string> values = StringBuilder::Split(p, "=");
+			std::string name = StringBuilder::Trim(values[0]);
+			float val = Convert::ToFloat(values[1]);
+			component->SetPropertyValue(name.c_str(), &val);
+		}
+	}
+
 	void createComponent(TiXmlElement *objectElement, GameObject *go)
 	{
 		if (objectElement == nullptr)
@@ -95,7 +118,10 @@ namespace E3DEngine
 		}
 
 		std::string comName = *objectElement->Attribute(_Component_ClassName);
-		go->AddComponent(comName.c_str());
+		Component * component = go->AddComponent(comName.c_str());
+		setComponentPropertyValue(objectElement, component);
+		component->OnCreateComplete();
+		createComponent(objectElement->NextSiblingElement(_Component), go);
 	}
 
 	void parseTransform(TiXmlElement *objectElement, CTransform * transform)

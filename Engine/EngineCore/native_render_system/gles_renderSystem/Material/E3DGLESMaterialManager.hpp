@@ -10,9 +10,7 @@ namespace E3DEngine
 	class GLES_MaterialManager : public MaterialManager
 	{
 	public:
-		GLES_MaterialManager()
-		{
-		}
+		GLES_MaterialManager();
 		~GLES_MaterialManager()= default;
 	public:
 		virtual Material * GetMaterial(int id) override;

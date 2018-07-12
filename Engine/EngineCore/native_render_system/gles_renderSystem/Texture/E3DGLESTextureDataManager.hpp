@@ -16,9 +16,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual void Init() override;
-		virtual unsigned int CreateTexture(std::string imageName,TextureData &tData) override;
-
-		void setTextureParam(TextureData &tData);
+		virtual unsigned int GetTextureBuffer(std::string imageName) override;
 
 		virtual TextureData * GetTextureDataFromFile(std::string imageName) override;
 		virtual void Cleanup() override;

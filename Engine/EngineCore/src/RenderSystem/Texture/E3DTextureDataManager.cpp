@@ -12,7 +12,7 @@ void E3DEngine::TextureDataManager::Init()
 	DEFAULT_TEXTURE_FILE = Application::ResourcePath + "/defaultTexture.png";
 }
 
-unsigned int E3DEngine::TextureDataManager::CreateTexture(std::string imageName, TextureData &tData)
+unsigned int E3DEngine::TextureDataManager::GetTextureBuffer(std::string imageName)
 {
 	return 0;
 }

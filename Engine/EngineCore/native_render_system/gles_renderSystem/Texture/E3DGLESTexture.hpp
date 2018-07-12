@@ -34,6 +34,9 @@ namespace E3DEngine
 		virtual void SetClampType(int tp) override;
 		virtual void SetFilterType(int tp) override;
 
+	private:
+		void setTextureParam(TextureData &tData);
+
 	public:
 		GLuint			m_nTextureUniform;
 		std::string		m_strTextureUniformName;

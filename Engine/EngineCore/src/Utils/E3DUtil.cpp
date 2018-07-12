@@ -9,7 +9,7 @@
 #include "../Source/E3DPlatformConfig.h"
 #include "../Mesh/E3DMeshRender.h"
 #include "../Source/EngineDelegate.h"
-#ifdef __IOS__
+#ifndef WIN32
 #include <sys/time.h>
 #endif
 /*
@@ -17,13 +17,12 @@
  */
 long getCurrentTime()
 {
-#ifndef WIN32
+#ifdef WIN32
+	return  GetTickCount();
+#else
 	struct timeval tv;
 	gettimeofday(&tv, nullptr);
 	return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-#endif
-#ifdef WIN32
-	return  GetTickCount();
 #endif
 }
 extern "C"
@@ -113,6 +112,7 @@ extern "C"
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
+		terrain->SetLayerMask(1);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(terrain);
 	}

@@ -113,7 +113,7 @@ VOID _5_PARAM_FUNCTION(Camera			, setClearColor		, CS_OBJECT		, cs_boj	, float		
 CS_OBJECT _3_PARAM_FUNCTION(Box			, Create			, float			, l			, float		, w, float	, h);
 VOID _2_PARAM_FUNCTION(Renderer			, set_Material		, CS_OBJECT		, cs_boj	, CS_OBJECT	, material);
 VOID _2_PARAM_FUNCTION(GameObject		, set_Active		, CS_OBJECT		, cs_boj	, CS_BOOL	, isActive);
-VOID _2_PARAM_FUNCTION(RigidBody		, addRigidBody		, CS_OBJECT		, rigibody	, CS_OBJECT	, _collider);
+
 VOID _2_PARAM_FUNCTION(GameObject		, set_LayerMask		, CS_OBJECT		, cs_boj	, UINT		, mask);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject	, addComponent		, CS_OBJECT		, obj		, CS_STRING	, class_name);
 CS_OBJECT _2_PARAM_FUNCTION(GameObject	, getComponent		, CS_OBJECT		, obj		, CS_STRING	, class_name);
@@ -150,6 +150,8 @@ VOID _1_PARAM_FUNCTION(SkyDome				, CreateSkyDome		, CS_OBJECT		, material);
 VOID _2_PARAM_FUNCTION(PointLight			, set_Range			, CS_OBJECT		, light, float, range);
 float _1_PARAM_FUNCTION(PointLight			, get_Range			, CS_OBJECT		, light);
 CS_OBJECT _2_PARAM_FUNCTION(Mesh			, create			, CS_STRING		, path, int ,cfgID);
-UINT _1_PARAM_FUNCTION(Render				, get_RenderIndex	, CS_OBJECT		, cs_boj);
-VOID _2_PARAM_FUNCTION(Render				, set_RenderIndex	, CS_OBJECT		, cs_boj, UINT, ri);
+UINT _1_PARAM_FUNCTION(Renderer				, get_RenderIndex	, CS_OBJECT		, cs_boj);
+VOID _2_PARAM_FUNCTION(Renderer				, set_RenderIndex	, CS_OBJECT		, cs_boj, UINT, ri);
 CS_OBJECT _0_PARAM_FUNCTION(Camera			, get_MainCamera);
+VOID _2_PARAM_FUNCTION(RigidBody			, set_Mass			, CS_OBJECT		, rigibody, float, mass);
+float _1_PARAM_FUNCTION(RigidBody			, get_Mass			, CS_OBJECT		, rigibody);

@@ -14,11 +14,6 @@ namespace E3DEngine
             get;
             private set;
         }
-
-        public void CreateRigiBody(float mass)
-        {
-            rigiBody = new RigidBody(this, mass);
-        }
     }
 
     public class BoxCollider : Collider

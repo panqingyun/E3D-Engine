@@ -53,7 +53,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Renderer,	getDrawModule);
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
 	REGISTER_INTERNAL_CALL(Box,			Create);
-	REGISTER_INTERNAL_CALL(RigidBody,	    addRigidBody);
+	REGISTER_INTERNAL_CALL(RigidBody,	    set_Mass);
+	REGISTER_INTERNAL_CALL(RigidBody,		get_Mass);
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
 	REGISTER_INTERNAL_CALL(Sphere,			Create);
@@ -63,8 +64,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
 	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
 	REGISTER_INTERNAL_CALL(Mesh,			create);
-	REGISTER_INTERNAL_CALL(Render,			set_RenderIndex);
-	REGISTER_INTERNAL_CALL(Render,			get_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer,			set_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer,			get_RenderIndex);
 
 }
 
@@ -208,29 +209,6 @@ VOID _1_PARAM_FUNCTION(Scene, destoryScene, UINT, sceneId)
 		return;
 	}
 	SceneManager::GetInstance().DestoryScene(scene);
-}
-
-VOID _2_PARAM_FUNCTION(RigidBody, addRigidBody, CS_OBJECT, rigibody, CS_OBJECT, _collider)
-{
-	Collider * collider = getCppObject<Collider>(_collider);
-
-	if (collider == nullptr || rigibody == nullptr)
-	{
-		return;
-	}
-	MonoClass *klass = mono_object_get_class(rigibody);
-
-	MonoClassField *mField = mono_class_get_field_from_name(klass, "mass");
-
-	float value = 0;
-	mono_field_get_value(rigibody, mField, &value);
-
-	btRigidBody *body = collider->CreateRigidBody(value);
-	mField = mono_class_get_field_from_name(klass, CPP_OBJ_PTR_NAME);
-	if (mField != nullptr)
-	{
-		mono_field_set_value(rigibody, mField, body);
-	}
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Renderer, createRenderer, UINT, materialID)
@@ -735,7 +713,7 @@ CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int, cfgID)
 }
 
 
-UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj)
+UINT _1_PARAM_FUNCTION(Renderer, get_RenderIndex, CS_OBJECT, cs_boj)
 {
 	RenderObject* rb = getCppObject<RenderObject>(cs_boj);
 	if (rb == nullptr)
@@ -745,7 +723,7 @@ UINT _1_PARAM_FUNCTION(Render, get_RenderIndex, CS_OBJECT, cs_boj)
 
 	return rb->RenderIndex;
 }
-VOID _2_PARAM_FUNCTION(Render, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri)
+VOID _2_PARAM_FUNCTION(Renderer, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri)
 {
 	RenderObject* rb = getCppObject<RenderObject>(cs_boj);
 	if (rb == nullptr)
@@ -764,4 +742,26 @@ CS_OBJECT _0_PARAM_FUNCTION(Camera, get_MainCamera)
 		return nullptr;
 	}
 	return pCamera->GetMonoBehaviour()->GetMonoObject();
+}
+
+VOID _2_PARAM_FUNCTION(RigidBody, set_Mass, CS_OBJECT, rigibody, float, mass)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return;
+	}
+
+	rb->SetMass(mass);
+}
+
+float _1_PARAM_FUNCTION(RigidBody, get_Mass, CS_OBJECT, rigibody)
+{
+	RigidBody * rb = getCppObject<RigidBody>(rigibody);
+	if (rb == nullptr)
+	{
+		return 0;
+	}
+
+	return rb->GetMass();
 }

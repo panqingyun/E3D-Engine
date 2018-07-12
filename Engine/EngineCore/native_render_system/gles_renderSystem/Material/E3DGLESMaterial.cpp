@@ -142,23 +142,14 @@ namespace E3DEngine
 			glEnable(GL_CULL_FACE);
         }		
 
-		if (blendType == BLEND_TYPE::ONE_BLEND_ONE)
-		{
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-		}
-		else if(blendType == BLEND_TYPE::SRCALPHA_ONEMINUSSRCALPHA)
-		{
-			glEnable(GL_BLEND);
-#ifdef __IOS__
-			glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-#else
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-#endif // __IOS__
-		}	 
-		else
+		if (srcBlendFactor == GL_NONE || dstBlendFactor == GL_NONE)
 		{
 			glDisable(GL_BLEND);
+		}
+		else
+		{
+			glEnable(GL_BLEND);
+			glBlendFunc(srcBlendFactor, dstBlendFactor);
 		}
 		glEnable(GL_ALPHA);
 

@@ -19,3 +19,11 @@ void E3DEngine::Component::SetGameObject(GameObject *go)
 		m_pBehaviour->SetPropertyValue("gameObject", gameObject->m_pBehaviour->GetMonoObject());
 	}
 }
+
+void E3DEngine::Component::SetPropertyValue(const char* name, void* value)
+{
+	if (m_pBehaviour != nullptr)
+	{
+		m_pBehaviour->SetPropertyValue(name, value);
+	}
+}

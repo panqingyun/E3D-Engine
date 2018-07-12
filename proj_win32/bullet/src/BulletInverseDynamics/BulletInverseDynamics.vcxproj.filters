@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDMath.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\MultiBodyTree.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\MultiBodyTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeInitCache.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeInitCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeImpl.cpp">
+    <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfig.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfig.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfigEigen.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfigEigen.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDMath.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDMath.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfigBuiltin.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDConfigBuiltin.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDErrorMessages.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\IDErrorMessages.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\MultiBodyTree.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\MultiBodyTree.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDEigenInterface.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDEigenInterface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDMatVec.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDMatVec.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDLinearMathInterface.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\IDLinearMathInterface.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeImpl.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeImpl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeInitCache.hpp">
+    <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\details\MultiBodyTreeInitCache.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\CMakeLists.txt" />
+    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletInverseDynamics\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

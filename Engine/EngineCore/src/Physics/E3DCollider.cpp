@@ -13,11 +13,13 @@ namespace E3DEngine
 		REGIST_CLASS(BoxCollider);
 		REGIST_CLASS(SphereCollider);
 		REGIST_CLASS(MeshCollider);
+		REGIST_CLASS(RigidBody);
 	}
 
 	DECLARE_CLASS_NAME(BoxCollider)
 	DECLARE_CLASS_NAME(SphereCollider)
 	DECLARE_CLASS_NAME(MeshCollider)
+	DECLARE_CLASS_NAME(RigidBody)
 
 	btBoxShape* createBoxShape(const btVector3& halfExtents)
 	{
@@ -31,25 +33,105 @@ namespace E3DEngine
 		return sphere;
 	}
 
-	void  Collider::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape)
+	RigidBody::RigidBody()
 	{
-		//rigidbody is dynamic if and only if mass is non zero, otherwise static
-		bool isDynamic = (mass != 0.f);
+		mMass = 0;
+		m_pRigidBody = nullptr;
+		mMotionState = nullptr;
+		CreateBehaviour();
+	}
 
-		btVector3 localInertia(0, 10, 0);
+	RigidBody::~RigidBody()
+	{
+	}
+
+	void RigidBody::SetMass(float mass)
+	{
+		mMass = mass;
+		if (m_pRigidBody != nullptr)
+		{
+			m_pRigidBody->setMassProps(mass, Physics::GetInstance().GetInertia());
+		}
+	}
+
+
+	void RigidBody::CreateBehaviour()
+	{
+		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(RigidBody);
+		m_pBehaviour->Awake();
+		setBehaviourDefaultValue();
+	}
+
+
+	void RigidBody::OnCreateComplete()
+	{
+		Collider * collider = gameObject->GetCollider();
+		if (collider != nullptr)
+		{
+			btCollisionShape *shape = collider->GetCollisionShape();
+			createRigidBody(shape);
+		}
+		else
+		{
+			// TODO
+		}
+	}
+
+
+	void RigidBody::Update(float deltaTime)
+	{
+		m_pBehaviour->Update(deltaTime);
+		if (mMotionState == nullptr)
+		{
+			return;
+		}
+		if (mMass != 0)
+		{
+			return;
+		}
+		mStartTransform.setIdentity();
+		vec3f position = Transform->GetPosition();
+		mStartTransform.setOrigin(btVector3(
+			btScalar(position.x),
+			btScalar(position.y),
+			btScalar(position.z)));
+
+		btQuaternion q;
+		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
+		vec3f scale = Transform->GetScale();
+		mStartTransform.setRotation(q);
+
+		m_pRigidBody->setWorldTransform(mStartTransform);
+	}
+
+	void  RigidBody::createRigidBody(btCollisionShape *shape)
+	{
+		mStartTransform.setIdentity();
+		mStartTransform.setOrigin(btVector3(
+			btScalar(Transform->Position.x),
+			btScalar(Transform->Position.y),
+			btScalar(Transform->Position.z)));
+		btQuaternion q;
+		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
+
+		mStartTransform.setRotation(q);
+		
+		bool isDynamic = (mMass != 0.f);
+		btVector3 localInertia = Physics::GetInstance().GetInertia();
 		if (isDynamic)
-			shape->calculateLocalInertia(mass, localInertia);
+			shape->calculateLocalInertia(mMass, localInertia);
 
-		m_pMotionState = new MotionState(startTransform, gameObject);
-		btRigidBody::btRigidBodyConstructionInfo cInfo(mass, m_pMotionState, shape, localInertia);
+		mMotionState = new MotionState(mStartTransform, gameObject);
+		btRigidBody::btRigidBodyConstructionInfo cInfo(mMass, mMotionState, shape, localInertia);
 
 		m_pRigidBody = new btRigidBody(cInfo);
-		//body->setContactProcessingThreshold(m_defaultContactProcessingThreshold);
 
 		m_pRigidBody->setUserIndex(-1);
-		m_pRigidBody->setFriction(500);
+		m_pRigidBody->setFriction(500); // 摩擦力
 		m_pRigidBody->setUserPointer(gameObject);
 		m_pRigidBody->setRestitution(0.1);
+		Physics::GetInstance().GetWorld()->contactTest(this->m_pRigidBody, mColCallBack);
 		Physics::GetInstance().AddRigidBody(m_pRigidBody);
 	}
 
@@ -62,7 +144,6 @@ namespace E3DEngine
 	{
 		vec3f lwh;
 		lwh = gameObject->GetBounds();
-		m_pMotionState = nullptr;
 		m_pShape = createBoxShape(btVector3(btScalar(lwh.x / 2), btScalar(lwh.z / 2), btScalar(lwh.y / 2)));
 		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
@@ -98,24 +179,6 @@ namespace E3DEngine
 		setBehaviourDefaultValue();
 	}
 
-	btRigidBody* Collider::CreateRigidBody(float mass)
-	{
-		m_fMass = mass;
-		m_StartTransform.setIdentity();
-		m_StartTransform.setOrigin(btVector3(
-			btScalar(Transform->Position.x),
-			btScalar(Transform->Position.y),
-			btScalar(Transform->Position.z)));
-		btQuaternion q;
-		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
-		
-		m_StartTransform.setRotation(q);
-		createRigidBody(mass, m_StartTransform, m_pShape);
-		Physics::GetInstance().GetWorld()->contactTest(m_pRigidBody, mColCallBack);
-		return m_pRigidBody;
-	}
-
-
 	void MotionState::setWorldTransform(const btTransform &worldTrans)
 	{
 		if (mObject == nullptr)
@@ -136,7 +199,6 @@ namespace E3DEngine
 	void SphereCollider::Awake()
 	{
 		float l = gameObject->GetBounds().x;
-		m_pMotionState = nullptr;
 		m_pShape = createSphereShape(l);
 		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(gameObject);
@@ -151,27 +213,6 @@ namespace E3DEngine
 	void SphereCollider::Update(float deltaTime)
 	{
 		m_pBehaviour->Update(deltaTime);
-		if (m_pMotionState == nullptr)
-		{
-			return;
-		}
-		if (m_fMass != 0)
-		{
-			return;
-		}
-		m_StartTransform.setIdentity();
-		vec3f position = Transform->GetPosition();
-		m_StartTransform.setOrigin(btVector3(
-			btScalar(position.x),
-			btScalar(position.y),
-			btScalar(position.z)));
-		vec3f scale = Transform->GetScale();
-		m_pShape->setLocalScaling(btVector3(scale.x, scale.y, scale.z));
-		btQuaternion q;
-		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
-		m_StartTransform.setRotation(q);
-
-		m_pRigidBody->setWorldTransform(m_StartTransform);
 	}
 
 	void SphereCollider::Destory()
@@ -200,7 +241,6 @@ namespace E3DEngine
 
 	void MeshCollider::Awake()
 	{
-		m_pMotionState = nullptr;
 		std::vector<Vertex> &vertexs = gameObject->GetVertex();
 		std::vector<UINT> &indexs = gameObject->GetIndex();
 		btIndexedMesh part;

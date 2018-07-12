@@ -26,7 +26,6 @@ typedef unsigned int		uint
 #define FAR_AWAY vec3f(NO_POS)
 
 #define MATERIAL_CONFIG_ID   0xFFFFFFFFFFFFFFFF
-#define MAGIC_WORD_CONFIG_ID 0xFFFFFFFFEEEEEEEE
 #ifndef SAFE_DELETE
 #define SAFE_DELETE(p)       { /*if(p) { delete (p);     (p)=nullptr; }*/ }
 #endif
@@ -192,8 +191,6 @@ typedef enum
 	OTHER,
 }eTargetPlatform;
 
-// 随机值： 0.0f - 1.0f
-float UnitRandom();
 // 随机值： fLow - fHigh
 float RangeRandom(float fLow, float fHigh);
 // 随机值： (-1) - (1)

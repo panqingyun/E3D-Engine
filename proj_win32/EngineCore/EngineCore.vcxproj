@@ -145,7 +145,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;freetype.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;stb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;stb.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
@@ -239,6 +239,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDebug.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDelegate.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DEncoding.hpp" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h" />
@@ -318,6 +319,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp" />

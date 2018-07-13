@@ -79,6 +79,9 @@
     <Filter Include="engineCore\src\RenderSystem">
       <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engineCore\src\Source\web">
+      <UniqueIdentifier>{d9f04101-fcd7-42e9-9e5f-f01382e6d0e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
@@ -324,6 +327,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.h">
       <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h">
+      <Filter>engineCore\src\Source\web</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -538,6 +544,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.cpp">
       <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp">
+      <Filter>engineCore\src\Source\web</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

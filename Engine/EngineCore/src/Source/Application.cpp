@@ -172,7 +172,7 @@ namespace E3DEngine
 
 	void MouseButtonInfo::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(MouseButtonInfo);
 		Object::setBehaviourDefaultValue();
 	}

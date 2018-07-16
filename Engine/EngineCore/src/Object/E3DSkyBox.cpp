@@ -15,13 +15,13 @@ void E3DEngine::SkyBox::Create(float l, float w, float h)
 
 void E3DEngine::SkyBox::SetRenderer(Renderer *rd)
 {
-	SkyBoxConfig * skyBox = rd->GetMaterial()->MaterialTableManager->Select<SkyBoxConfig>(1);
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
-	textures.emplace_back(rd->GetMaterial()->MaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
+	SkyBoxConfig * skyBox = rd->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
+	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
 
 	setTextureCoord();
 	GameObject::SetRenderer(rd);

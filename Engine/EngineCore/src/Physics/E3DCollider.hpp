@@ -91,7 +91,7 @@ namespace E3DEngine
 		virtual void OnCreate()
 		{
 			Component::OnCreate();
-			gameObject->SetCollider(this);
+			mGameObject->SetCollider(this);
 		}
 	public:
 		virtual bool CheckClick(vec2d screenPoint) { return false;}

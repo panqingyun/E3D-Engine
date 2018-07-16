@@ -318,63 +318,63 @@ namespace E3DEngine
 	{		
 		for (auto & uniformKeyValue : int1UniformList)
 		{
-			glUniform1i(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value);
+			glUniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float1UniformList)
 		{
-			glUniform1f(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value);
+			glUniform1f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float2UniformList)
 		{
-			glUniform2f(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
+			glUniform2f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
 		}
 
 		for (auto & uniformKeyValue : float1UniformArrayList)
 		{
-			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			if (uniformKeyValue.second.UniformLocation == -1 || uniformKeyValue.second.Value.empty())
 			{
 				continue;
 			}
-			glUniform1fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			glUniform1fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float2UniformArrayList)
 		{
-			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			if (uniformKeyValue.second.UniformLocation == -1 || uniformKeyValue.second.Value.empty())
 			{
 				continue;
 			}
-			glUniform2fv(uniformKeyValue.second.UniformName,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
+			glUniform2fv(uniformKeyValue.second.UniformLocation,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformArrayList)
 		{
-			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			if (uniformKeyValue.second.UniformLocation == -1 || uniformKeyValue.second.Value.empty())
 			{
 				continue;
 			}
-			glUniform3fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			glUniform3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float4UniformArrayList)
 		{
-			if (uniformKeyValue.second.UniformName == -1 || uniformKeyValue.second.Value.empty())
+			if (uniformKeyValue.second.UniformLocation == -1 || uniformKeyValue.second.Value.empty())
 			{
 				continue;
 			}
-			glUniform4fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			glUniform4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformList)
 		{
-			glUniform3f(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3);
+			glUniform3f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3);
 		}
 
 		for (auto & uniformKeyValue : float4UniformList)
 		{
-			glUniform4f(uniformKeyValue.second.UniformName, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3, uniformKeyValue.second.Value4);
+			glUniform4f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3, uniformKeyValue.second.Value4);
 		}
 
 		for (auto & uniformKeyValue : matrix4UniformList)
@@ -383,7 +383,7 @@ namespace E3DEngine
 			{
 				break;
 			}
-			glUniformMatrix4fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			glUniformMatrix4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 
 		for (auto & uniformKeyValue : matrix3UniformList)
@@ -392,7 +392,7 @@ namespace E3DEngine
 			{
 				break;
 			}
-			glUniformMatrix3fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			glUniformMatrix3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 
 		for (auto & uniformKeyValue : matrix2UniformList)
@@ -401,7 +401,7 @@ namespace E3DEngine
 			{
 				break;
 			}
-			glUniformMatrix2fv(uniformKeyValue.second.UniformName, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			glUniformMatrix2fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 	}
 
@@ -419,7 +419,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			glVertexAttribPointer(attrib.AttributeName, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
+			glVertexAttribPointer(attrib.AttributeLoaction, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
 		}
 
 		EnableVertexAttribArray(vertexType);
@@ -444,7 +444,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			glEnableVertexAttribArray(attrib.AttributeName);
+			glEnableVertexAttribArray(attrib.AttributeLoaction);
 		}
 		
 	}
@@ -481,7 +481,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			attrib.AttributeName = LoadSelfDefAttribuate(attrib.VarName);
+			attrib.AttributeLoaction = LoadSelfDefAttribuate(attrib.VarName);
 		}
 	}
 
@@ -489,62 +489,62 @@ namespace E3DEngine
 	{
 		for (auto & uniformKeyValue : int1UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float1UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float2UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float3UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float4UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : matrix2UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : matrix3UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : matrix4UniformList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float1UniformArrayList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float2UniformArrayList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float3UniformArrayList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 
 		for (auto & uniformKeyValue : float4UniformArrayList)
 		{
-			uniformKeyValue.second.UniformName = LoadSelfDefUniform(uniformKeyValue.first);
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
 	}
 

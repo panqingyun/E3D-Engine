@@ -100,7 +100,7 @@ void E3DEngine::Sphere::TransformChange()
 
 void E3DEngine::Sphere::CreateBehaviour()
 {
-	m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 	NEW_INSTANCE(Sphere);
 	setBehaviourDefaultValue();
 }

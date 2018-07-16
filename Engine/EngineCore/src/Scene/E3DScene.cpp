@@ -344,8 +344,8 @@ namespace E3DEngine
 
 	void setObjectCommonValue(GameObject * go, TiXmlElement *objectElement, std::string _type)
 	{
-		go->Name = *objectElement->Attribute(_Name);
-		go->TypeName = _type;
+		go->mName = *objectElement->Attribute(_Name);
+		go->mTypeName = _type;
 		parseTransform(objectElement->FirstChildElement(_Transform), go->Transform);
 		if (_type == TP_Particle)
 		{
@@ -407,7 +407,7 @@ namespace E3DEngine
 	{
 		dontDestoryScene	= false;
 		m_SceneType		= eSceneType_defult;
-		NodeType		= eT_Scene;
+		mType		= eT_Scene;
 		rootObject		= new GameObject;
 
 		usedDirectionLight = nullptr;
@@ -444,7 +444,7 @@ namespace E3DEngine
 		GetRenderSystem()->EndFrame();
 		for (auto &node : m_vecObjList)
 		{
-			if (node.second->NodeType == eT_GameObject)
+			if (node.second->mType == eT_GameObject)
 			{
 				static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
 			}
@@ -463,7 +463,7 @@ namespace E3DEngine
 		for (int i = 0; i < childSize; i++)
 		{
 			auto node = m_vecObjList.begin()->second;
-			if (node->NodeType == eT_Camera)
+			if (node->mType == eT_Camera)
 			{
 				continue;
 			}
@@ -629,7 +629,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (node->NodeType == eT_GameObject)
+		if (node->mType == eT_GameObject)
 		{			
 			GameObject *go = static_cast<GameObject*>(node);
 			if (rootObject->FindChild(go->ID))
@@ -713,8 +713,8 @@ namespace E3DEngine
 
 	void Scene::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		m_pBehaviour->Create(NAME_SPACE, "Scene");
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->Create(NAME_SPACE, "Scene");
 		setBehaviourDefaultValue();
 	}
 

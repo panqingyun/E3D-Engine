@@ -122,17 +122,17 @@ namespace E3DEngine
 
 	void GLES_Renderer::updateEngineDefineShaderValue()
 	{
-		pMaterial->pShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
-		pMaterial->pShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
+		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
+		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
 
-		pMaterial->pShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
-		pMaterial->pShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
+		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
+		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
-			pMaterial->pShader->UpdateFloatValue(LIGHT_COLOR, dlight->Color.r, dlight->Color.g, dlight->Color.b, dlight->Color.a);
-			pMaterial->pShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
+			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, dlight->Color.r, dlight->Color.g, dlight->Color.b, dlight->Color.a);
+			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
 		}
 
 		std::map<UINT, Light*>& plights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
@@ -152,14 +152,14 @@ namespace E3DEngine
 				lightColor.emplace_back(pl.second->Color.a);
 				lightRange.emplace_back(static_cast<PointLight*>(pl.second)->Range);
 			}
-			pMaterial->pShader->UpdataFloat3ArrayUniform(POINT_LIGHT_POS, lightPos);
-			pMaterial->pShader->UpdataFloat4ArrayUniform(POINT_LIGHT_COLOR, lightColor);
-			pMaterial->pShader->UpdataFloat1ArrayUniform(POINT_LIGHT_RANGE, lightRange);
+			pMaterial->mShader->UpdataFloat3ArrayUniform(POINT_LIGHT_POS, lightPos);
+			pMaterial->mShader->UpdataFloat4ArrayUniform(POINT_LIGHT_COLOR, lightColor);
+			pMaterial->mShader->UpdataFloat1ArrayUniform(POINT_LIGHT_RANGE, lightRange);
 		}
 		if (pCamera != nullptr)
 		{
 			vec3f &pos = pCamera->Transform->Position;
-			pMaterial->pShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
+			pMaterial->mShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
 		}
 	}
 

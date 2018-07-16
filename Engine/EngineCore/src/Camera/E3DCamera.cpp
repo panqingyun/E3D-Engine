@@ -39,7 +39,7 @@ namespace E3DEngine
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_layerMask = ~0;
 		m_nDepth = 0;
-		NodeType = eT_Camera;
+		mType = eT_Camera;
 		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
@@ -64,7 +64,7 @@ namespace E3DEngine
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_layerMask = ~0;
 		m_nDepth = 0;
-		NodeType = eT_Camera;
+		mType = eT_Camera;
 		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
@@ -73,7 +73,7 @@ namespace E3DEngine
 
 	Camera::~Camera()
 	{
-		if (ParentNode != nullptr && ParentNode->NodeType == eT_Camera)
+		if (ParentNode != nullptr && ParentNode->mType == eT_Camera)
 		{
 			static_cast<GameObject*>(ParentNode)->Transform->RemoveChild(ID);
 		}
@@ -323,7 +323,7 @@ namespace E3DEngine
 
 	void Camera::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Camera);
 		setBehaviourDefaultValue();
 	}

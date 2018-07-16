@@ -302,8 +302,8 @@ namespace E3DEngine
 	
 	void CTransform::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		m_pBehaviour->Create(NAME_SPACE, "Transform");
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->Create(NAME_SPACE, "Transform");
 		setBehaviourDefaultValue();
 	}
 

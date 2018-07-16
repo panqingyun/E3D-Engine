@@ -34,6 +34,7 @@ namespace E3DEngine
 		virtual void InvalidTexture();
 		virtual void SetClampType(int tp) { }
 		virtual void SetFilterType(int tp) { }
+		virtual uint GetTextureEnum() { return m_nTextureEnum; }
 
 	protected:
 		uint			m_nTextureEnum;

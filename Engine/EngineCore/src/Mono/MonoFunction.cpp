@@ -273,7 +273,7 @@ VOID _1_PARAM_FUNCTION(GameObject, removeComponent, CS_OBJECT, cs_obj)
 		return;
 	}
 
-	com->gameObject->RemoveComponent(com);
+	com->mGameObject->RemoveComponent(com);
 }
 
 VOID _2_PARAM_FUNCTION(Object, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
@@ -285,7 +285,7 @@ VOID _2_PARAM_FUNCTION(Object, set_Name, CS_OBJECT, cs_obj, CS_STRING, name)
 		return;
 	}
 
-	go->Name = Convert::ToStdString(name);
+	go->mName = Convert::ToStdString(name);
 }
 
 CS_STRING _1_PARAM_FUNCTION(Object, get_Name, CS_OBJECT, cs_obj)
@@ -297,7 +297,7 @@ CS_STRING _1_PARAM_FUNCTION(Object, get_Name, CS_OBJECT, cs_obj)
 		return mono_string_empty(MonoScriptManager::GetInstance().GetEngineDomain());
 	}
 
-	return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), go->Name.c_str());
+	return mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), go->mName.c_str());
 }
 
 CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING, class_name)

@@ -12,7 +12,7 @@ namespace E3DEngine
 	class AnimationClip : public Component
 	{
 	public:
-		std::string		Name;
+		std::string		mName;
 		double			TimeLong;
 		int				Index;
 	private:

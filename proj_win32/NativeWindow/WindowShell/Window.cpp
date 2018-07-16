@@ -28,6 +28,7 @@ float				CameraPitch = 0;
 float				CameraYaw = 0;
 bool				MButtonDown = false;
 std::fstream		InFile;
+std::string logFileName = "E3DLog.log";
 
 HANDLE g_hConsoleHandle = 0;
 
@@ -45,7 +46,7 @@ DWORD nRet = 0;
 void LogOutput(const char* log)
 {
 	::WriteConsole(g_hConsoleHandle, log, strlen(log), &nRet, NULL);
-	//InFile << log;
+	InFile << log;
 }
 
 void InitEngine(HWND hWnd)
@@ -67,9 +68,9 @@ void InitEngine(HWND hWnd)
 #else 
 	strPath = "../../Demo.CSharp/Asset/";
 #endif
+	InFile.open(logFileName.data(), std::ios::out);
 	::SetAppDataPath(strPath.c_str()); 
-	::InitilizeEngine();
-	InFile.open("log.log");
+	::InitilizeEngine();	
 	::SetDebugLogOutFunc(LogOutput);
 	::AllocConsole();
 	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);

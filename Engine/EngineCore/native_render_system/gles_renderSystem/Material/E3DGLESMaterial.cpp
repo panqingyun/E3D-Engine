@@ -34,24 +34,23 @@ namespace E3DEngine
 		{
 			SAFE_DELETE(Textures[index]);
 		}
-		UINT textureIndex = GL_TEXTURE0 + index;
 		Textures[index] = texture;
 		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(static_cast<GLES_Texture*>(texture)->m_strTextureUniformName);
-		static_cast<GLES_Texture*>(texture)->SetTextureEnum(textureIndex);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(index, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		static_cast<GLES_Texture*>(texture)->SetTextureEnum(index + GL_TEXTURE0);
+		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(index, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
 		
 	}
 
 	void GLES_Material::createTexture(TextureData& data)
 	{
 		GLES_Texture * texture = new GLES_Texture();
-		std::string path = filePath;
+		std::string path = mFilePath;
 		path = path + data.fileName;
 		int textureSum = Textures.size();
 		texture->Create(path, data);
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
 		texture->SetTextureUniformName(data.uniformName);
-		texture->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		texture->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}
 
@@ -60,7 +59,7 @@ namespace E3DEngine
 		int textureSum = Textures.size();
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
 		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(textureUniform);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(pShader)->ShaderProgram);
+		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}
 
@@ -78,16 +77,16 @@ namespace E3DEngine
 
 	void GLES_Material::UseProgram()
 	{
-		if (pShader == nullptr)
+		if (mShader == nullptr)
 			return;
-		static_cast<GLES_Shader*>(pShader)->UseProgram();
+		static_cast<GLES_Shader*>(mShader)->UseProgram();
 	}
 
 	void GLES_Material::UseNullProgram()
 	{
-		if (pShader == nullptr)
+		if (mShader == nullptr)
 			return;
-		static_cast<GLES_Shader*>(pShader)->UseNullProgram();
+		static_cast<GLES_Shader*>(mShader)->UseNullProgram();
 	}
 
 	void GLES_Material::CreateCubeTexture(std::string dirPath, std::string xPName, std::string xNName, std::string yPName, std::string yNName, std::string zPName, std::string ZNName)
@@ -107,9 +106,9 @@ namespace E3DEngine
 			}
 			it.second->ActiveBindTexture();
 		}
-		if (pShader != nullptr)
+		if (mShader != nullptr)
 		{
-			static_cast<GLES_Shader*>(pShader)->UpdateProgramUniformValue();
+			static_cast<GLES_Shader*>(mShader)->UpdateProgramUniformValue();
 		}
 	}
 
@@ -189,7 +188,7 @@ namespace E3DEngine
 
 	void GLES_Material::UpdateShader(unsigned int vertexType)
 	{
-		static_cast<GLES_Shader*>(pShader)->UpdateAttribPointerValue(vertexType);
+		static_cast<GLES_Shader*>(mShader)->UpdateAttribPointerValue(vertexType);
 	}
 
 }

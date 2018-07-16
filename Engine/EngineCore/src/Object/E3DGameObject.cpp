@@ -83,7 +83,7 @@ namespace E3DEngine
 				return nullptr;
 			}
 			component->SetGameObject(this);
-			component->TypeName = type_name;
+			component->mTypeName = type_name;
 			component->Transform = Transform;
 			m_listComponents[type_name].push_back((Component*)component);
 		}
@@ -91,9 +91,9 @@ namespace E3DEngine
 		{
 			// 不是引擎类
 			component = new Component;
-			component->TypeName = full_name;
-			component->m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
-			component->m_pBehaviour->Create(sName.c_str(), cName.c_str());
+			component->mTypeName = full_name;
+			component->mBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
+			component->mBehaviour->Create(sName.c_str(), cName.c_str());
 			AddComponent(component);
 		}
 		
@@ -108,7 +108,7 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
-		m_listComponents[(component)->TypeName].push_back(component);
+		m_listComponents[(component)->mTypeName].push_back(component);
 		return component;
 	}
 	
@@ -123,7 +123,7 @@ namespace E3DEngine
 
 	void GameObject::RemoveComponent(Component *com)
 	{
-		std::string type_name = com->TypeName;
+		std::string type_name = com->mTypeName;
 		std::map<std::string, std::vector<Component*>>::iterator itr = m_listComponents.find(type_name);
 		if (itr != m_listComponents.end())
 		{
@@ -172,10 +172,10 @@ namespace E3DEngine
 			{
 				for (auto & itr : m_listComponent.second)
 				{
-					if (itr->NotStart)
+					if (itr->mNotStart)
 					{
 						itr->Start();
-						itr->NotStart = false;
+						itr->mNotStart = false;
 					}
 					itr->Update(deltaTime);
 				}
@@ -260,7 +260,7 @@ namespace E3DEngine
 		GameObject * _child = nullptr;
 		for (const auto &child : childNode)
 		{
-			if (child.second->Name == name)
+			if (child.second->mName == name)
 			{
 				_child = child.second;
 				break;
@@ -291,17 +291,17 @@ namespace E3DEngine
 		{
 			m_pRenderer->SetLayerMask(layerMask);
 		}
-		m_pBehaviour->SetFieldValue("layerMask", &m_layerMask);
+		mBehaviour->SetFieldValue("layerMask", &m_layerMask);
 	}
 
 	GameObject::GameObject()
 	{
 		Transform = new CTransform;
 		Transform->gameObject = this;
-		TypeName = typeid(this).name();
+		mTypeName = typeid(this).name();
 		IsEmptyObject = true;
 		DontDestoryOnLoad = false;
-		NodeType = eT_GameObject;
+		mType = eT_GameObject;
 		pCamera = nullptr;
 		IsActive = true;
 		m_pRenderer = nullptr;
@@ -376,9 +376,9 @@ namespace E3DEngine
 		{
 			childNode[node->ID] = node;
 			node->ParentNode = this;
-			if (NodeType != eT_Scene)
+			if (mType != eT_Scene)
 			{
-				if (NodeType == eT_Camera)
+				if (mType == eT_Camera)
 				{
 					SceneManager::GetInstance().GetCurrentScene()->AddCamera(static_cast<Camera*>(node));
 				}
@@ -513,7 +513,7 @@ namespace E3DEngine
 
 	void GameObject::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(GameObject);
 		setBehaviourDefaultValue();
 	}

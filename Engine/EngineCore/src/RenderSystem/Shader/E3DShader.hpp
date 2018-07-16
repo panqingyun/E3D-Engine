@@ -28,7 +28,7 @@ namespace E3DEngine
 	struct Uniform
 	{
 		std::string  VarName;
-		int		 UniformName;
+		int		 UniformLocation;
 	};
 
 	struct int1Uniform : Uniform
@@ -84,7 +84,7 @@ namespace E3DEngine
 		std::string  AttribType;		// 如 vec3
 		std::string  TypeName;			// 语义 如 POSITION 代表这个属性是用来做什么的
 		std::string  VarName;			// Shader里面的变量名
-		uint		 AttributeName;		// 变量的位置，使用glGetAttribLocation获取到的值
+		uint		 AttributeLoaction;		// 变量的位置，使用glGetAttribLocation获取到的值
 		int			 StartPosition;		// 在顶点数据结构中的起始位置
 		uint		 VarType;			// 数据类型，如 GL_FLOAT
 		uint		 Normalized;		// 是否归一化

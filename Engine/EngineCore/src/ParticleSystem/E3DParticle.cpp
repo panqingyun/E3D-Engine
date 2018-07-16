@@ -535,9 +535,9 @@ namespace E3DEngine
 
 	void ParticleGroup::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(ParticleGroup);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		GameObject::setBehaviourDefaultValue();
 	}
 
@@ -975,7 +975,7 @@ namespace E3DEngine
 			checkParticleState(deltaTime);
 			m_pRenderer->TransformChange();
 
-			m_pRenderer->GetMaterial()->pShader->UpdateFloatValue("particleSize", pSzie.x);
+			m_pRenderer->GetMaterial()->mShader->UpdateFloatValue("particleSize", pSzie.x);
 		}
 	}
 	

@@ -14,7 +14,7 @@ namespace E3DEngine
 	void PointLight::CreateBehaviour()
 	{
 		Type = ePOINT_LIGHT;
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(PointLight);
 		setBehaviourDefaultValue();
 	}
@@ -39,7 +39,7 @@ namespace E3DEngine
 
 	void DirectionLight::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(DirectionLight);
 		setBehaviourDefaultValue();
 	}
@@ -62,7 +62,7 @@ namespace E3DEngine
 
 	void SpotLight::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(SpotLight);
 		setBehaviourDefaultValue();
 	}
@@ -109,7 +109,7 @@ namespace E3DEngine
 	void Light::setBehaviourDefaultValue()
 	{
 		MonoObject * color = Convert::ToCSVector4(Color);
-		m_pBehaviour->SetFieldValue("Color", color);
+		mBehaviour->SetFieldValue("Color", color);
 		TRANSFER_FIELD_VALUE(Intensity);
 		GameObject::setBehaviourDefaultValue();
 	}

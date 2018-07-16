@@ -85,16 +85,16 @@ namespace E3DEngine
 
 	void RigidBody::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(RigidBody);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}
 
 
 	void RigidBody::OnCreateComplete()
 	{
-		Collider * collider = gameObject->GetCollider();
+		Collider * collider = mGameObject->GetCollider();
 		if (collider != nullptr)
 		{
 			btCollisionShape *shape = collider->GetCollisionShape();
@@ -109,7 +109,7 @@ namespace E3DEngine
 
 	void RigidBody::Update(float deltaTime)
 	{
-		m_pBehaviour->Update(deltaTime);
+		mBehaviour->Update(deltaTime);
 		if (mMotionState == nullptr)
 		{
 			return;
@@ -150,14 +150,14 @@ namespace E3DEngine
 		if (isDynamic)
 			shape->calculateLocalInertia(mMass, localInertia);
 
-		mMotionState = new MotionState(mStartTransform, gameObject);
+		mMotionState = new MotionState(mStartTransform, mGameObject);
 		btRigidBody::btRigidBodyConstructionInfo cInfo(mMass, mMotionState, shape, localInertia);
 
 		mRigidBody = new btRigidBody(cInfo);
 
 		mRigidBody->setUserIndex(-1);
 		mRigidBody->setFriction(mFriction); // 摩擦力
-		mRigidBody->setUserPointer(gameObject);
+		mRigidBody->setUserPointer(mGameObject);
 		mRigidBody->setRestitution(mRestitution);
 		Physics::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
 		Physics::GetInstance().AddRigidBody(mRigidBody);
@@ -166,11 +166,11 @@ namespace E3DEngine
 	void BoxCollider::Awake()
 	{
 		vec3f lwh;
-		lwh = gameObject->GetBounds();
+		lwh = mGameObject->GetBounds();
 		m_pShape = createBoxShape(btVector3(btScalar(lwh.x / 2), btScalar(lwh.z / 2), btScalar(lwh.y / 2)));
-		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
-		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Awake();
+		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
+		m_pShape->setUserPointer(mGameObject);
+		mBehaviour->Awake();
 	}
 
 	bool BoxCollider::CheckClick(vec2d screenPoint)
@@ -186,9 +186,9 @@ namespace E3DEngine
 
 	void BoxCollider::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(BoxCollider);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}
 
@@ -211,11 +211,11 @@ namespace E3DEngine
 
 	void SphereCollider::Awake()
 	{
-		float l = gameObject->GetBounds().x;
+		float l = mGameObject->GetBounds().x;
 		m_pShape = createSphereShape(l);
-		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
-		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Awake();
+		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
+		m_pShape->setUserPointer(mGameObject);
+		mBehaviour->Awake();
 	}
 
 	bool SphereCollider::CheckClick(vec2d screenPoint)
@@ -230,17 +230,17 @@ namespace E3DEngine
 
 	void SphereCollider::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(SphereCollider);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}
 
 
 	void MeshCollider::Awake()
 	{
-		std::vector<Vertex> &vertexs = gameObject->GetVertex();
-		std::vector<UINT> &indexs = gameObject->GetIndex();
+		std::vector<Vertex> &vertexs = mGameObject->GetVertex();
+		std::vector<UINT> &indexs = mGameObject->GetIndex();
 		btIndexedMesh part;
 		const int size = vertexs.size() * 3;
 		float *vertexBase = new float[size];
@@ -253,7 +253,7 @@ namespace E3DEngine
 		
 		part.m_vertexBase = (const unsigned char*)vertexBase;
 		part.m_vertexStride = sizeof(btScalar) * 3;
-		part.m_numVertices = gameObject->GetVertex().size();
+		part.m_numVertices = mGameObject->GetVertex().size();
 		part.m_triangleIndexBase = (const unsigned char*)indexs.data();
 		part.m_triangleIndexStride = sizeof(UINT) * 3;
 		part.m_numTriangles = indexs.size() / 3;
@@ -262,9 +262,9 @@ namespace E3DEngine
 		btTriangleIndexVertexArray * indexVertex = new btTriangleIndexVertexArray();
 		indexVertex->addIndexedMesh(part, PHY_INTEGER);
 		m_pShape = new btBvhTriangleMeshShape(indexVertex, true);
-		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
-		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Awake();
+		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
+		m_pShape->setUserPointer(mGameObject);
+		mBehaviour->Awake();
 	}
 
 	bool MeshCollider::CheckClick(vec2d screenPoint)
@@ -280,9 +280,9 @@ namespace E3DEngine
 
 	void MeshCollider::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(MeshCollider);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}
 
@@ -299,16 +299,16 @@ namespace E3DEngine
 	void CapsuleCollider::Awake()
 	{
 		m_pShape = createCapsuleShape(mRadius, mHeight); 
-		m_pShape->setLocalScaling(btVector3(gameObject->Transform->Scale.x, gameObject->Transform->Scale.y, gameObject->Transform->Scale.z));
-		m_pShape->setUserPointer(gameObject);
-		m_pBehaviour->Awake();
+		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
+		m_pShape->setUserPointer(mGameObject);
+		mBehaviour->Awake();
 	}
 
 	void CapsuleCollider::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(CapsuleCollider);
-		m_pBehaviour->Awake();
+		mBehaviour->Awake();
 		setBehaviourDefaultValue();
 	}
 

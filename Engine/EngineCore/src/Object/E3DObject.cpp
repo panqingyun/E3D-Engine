@@ -10,15 +10,15 @@ namespace E3DEngine
 {
 	Object::Object()
 	{
-		NodeType = eT_Object;
+		mType = eT_Object;
 		ID = EngineDelegate::GetInstance().GenObjectID();
 		//ADD_IN_SCENE(this);
-		m_pBehaviour = new MonoBehaviour;
+		mBehaviour = new MonoBehaviour;
 	}
 
 	Object::~Object()
 	{
-		SAFE_DELETE(m_pBehaviour);
+		SAFE_DELETE(mBehaviour);
 	}
 
 	void Object::Update(float deltaTime)
@@ -28,7 +28,7 @@ namespace E3DEngine
 
 	void Object::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Object);
 		setBehaviourDefaultValue();
 	}
@@ -36,23 +36,23 @@ namespace E3DEngine
 
 	void Object::SetMonoObject(MonoObject * monoObject)
 	{
-		if (m_pBehaviour->GetMonoObject() != nullptr)
+		if (mBehaviour->GetMonoObject() != nullptr)
 		{
 			return;
 		}
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		m_pBehaviour->SetMonoObject(monoObject);
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetMonoObject(monoObject);
 		setBehaviourDefaultValue();
 	}
 
 	void Object::setBehaviourDefaultValue()
 	{		
-		m_pBehaviour->SetFieldValue(CPP_OBJ_PTR_NAME, this);
+		mBehaviour->SetFieldValue(CPP_OBJ_PTR_NAME, this);
 	}
 
 	MonoBehaviour * Object::GetMonoBehaviour()
 	{
-		return m_pBehaviour;
+		return mBehaviour;
 	}
 
 }

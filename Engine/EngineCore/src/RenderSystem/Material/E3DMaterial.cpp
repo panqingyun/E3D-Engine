@@ -11,9 +11,8 @@ namespace E3DEngine
 {
 	Material::Material()
 	{
-		Color = 0xffffffff;
 		Textures.clear();
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Material);
 		Object::setBehaviourDefaultValue();
 		enablewriteDepth = true;
@@ -32,19 +31,18 @@ namespace E3DEngine
 
 	void Material::CreateMaterial(MaterialConfig * config, ShaderConfig * sCfg)
 	{
-		pMaterialConfig = config;
-		if (pMaterialConfig != nullptr)
+		mMaterialConfig = config;
+		if (mMaterialConfig != nullptr)
 		{
 			if (sCfg == nullptr)
 			{
 				return;
 			}
-			Color = Convert::_16To10(pMaterialConfig->Color);
 			CreateShader(sCfg);
 			
-			for (auto& sp : pShader->GetSamplerNameValue())
+			for (auto& sp : mShader->GetSamplerNameValue())
 			{
-				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(filePath + sp.second);
+				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(mFilePath + sp.second);
 				tData->clampType = (CLAMP_TYPE)config->TextureClampType;
 				tData->filterType = (FILTER_TYPE)config->TextureFilterType;
 				tData->fileName = sp.second;
@@ -90,7 +88,7 @@ namespace E3DEngine
 
 	MonoBehaviour * Material::GetBehaviour()
 	{
-		return m_pBehaviour;
+		return mBehaviour;
 	}
 
 	void Material::UseMaterial()

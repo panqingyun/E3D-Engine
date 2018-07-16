@@ -24,7 +24,7 @@ namespace E3DEngine
 		GLES_Material();
 		virtual void UseMaterial();
 		virtual void Destory();
-		virtual void SetTexture(Texture * texture, int index);
+		virtual void SetTexture(Texture * texture, int index = 0);
 		virtual void BindTexture();
 		virtual void UseProgram();		
 		virtual void UseNullProgram();
@@ -33,10 +33,10 @@ namespace E3DEngine
 	public:
 		virtual void CreateShader(ShaderConfig *cfg)
 		{
-			pShader = new GLES_Shader;
-			pShader->SetFileRelativeFolder(filePath);
-			static_cast<GLES_Shader*>(pShader)->InitShaderVar();
-			static_cast<GLES_Shader*>(pShader)->LoadShader(cfg);
+			mShader = new GLES_Shader;
+			mShader->SetFileRelativeFolder(mFilePath);
+			static_cast<GLES_Shader*>(mShader)->InitShaderVar();
+			static_cast<GLES_Shader*>(mShader)->LoadShader(cfg);
 		}
 		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
 									   std::string xNName,

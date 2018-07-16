@@ -143,7 +143,7 @@ void E3DEngine::Terrain::PrepareUpdate(float deltaTime)
 
 void E3DEngine::Terrain::CreateBehaviour()
 {
-	m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 	NEW_INSTANCE(Terrain);
 	setBehaviourDefaultValue();
 }

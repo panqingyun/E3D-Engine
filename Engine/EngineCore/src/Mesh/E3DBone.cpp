@@ -76,11 +76,11 @@ namespace E3DEngine
 	
 	void Bone::AddChild(Bone *pBone)
 	{
-		if (Childs.find(pBone->Name) != Childs.end())
+		if (Childs.find(pBone->mName) != Childs.end())
 		{
 			return;
 		}
-		Childs[pBone->Name] = pBone;
+		Childs[pBone->mName] = pBone;
 		Transform->AddChild(pBone->ID, pBone->Transform);
 	}
 }

@@ -46,7 +46,7 @@ namespace E3DEngine
 		// @param 纹理
 		// @param 纹理索引
 		//-----------------------------------------------
-		virtual void SetTexture(Texture * texture, int index);
+		virtual void SetTexture(Texture * texture, int index = 0);
 
 		// -----------------------------------------------
 		// 绑定纹理
@@ -65,7 +65,6 @@ namespace E3DEngine
 		virtual void UpdateShader(unsigned int vertexType) { }
 
 		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
-
 		virtual void SetBlendType(DWORD src, DWORD dst) { srcBlendFactor = src; dstBlendFactor = dst; }
 		virtual void SetEnableDepthTest(bool enable) { enableDepthTest = enable; }
 		virtual void SetEnableCullFace(bool enable) { enableDoubleSide = enable; }
@@ -108,17 +107,13 @@ namespace E3DEngine
 		bool        turnOnBlend;
 		DWORD		srcBlendFactor;
 		DWORD		dstBlendFactor;
-	public:
-		vec4f		AmbientColor;
-		vec4f		SpecularColor;
-		vec4f		DiffuseColor;
-		float		Shininess;		// 光泽度 镜面反光强度
-		long		Color;			// 颜色
-		Shader *	pShader;		// shader
-		TableManager * MaterialTableManager;
+
 		std::map<UINT, Texture*>	Textures; // 纹理
-		MaterialConfig	  *	pMaterialConfig;
-		std::string filePath;
+	public:
+		Shader			* mShader;		// shader
+		TableManager	* mMaterialTableManager;
+		MaterialConfig	* mMaterialConfig;
+		std::string		mFilePath;
 
 		
 	};

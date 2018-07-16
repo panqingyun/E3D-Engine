@@ -48,9 +48,9 @@ namespace E3DEngine
 		{
 			
 		}
-		if (gameObject != nullptr)
+		if (mGameObject != nullptr)
 		{
-			gameObject->ActiveChangeEvent += EventHandler(&TextureFrameEffect::activeChange, this);
+			mGameObject->ActiveChangeEvent += EventHandler(&TextureFrameEffect::activeChange, this);
 		}
 		m_nCurrentPos				= 0;
 		m_fCurrentFrameHasPlayTime	= 0;
@@ -89,11 +89,11 @@ namespace E3DEngine
 	
 	void TextureFrameEffect::activeChange(E3DEngine::IObject *sender, E3DEngine::EventArgs *e)
 	{
-		if (gameObject->IsActive && IsAutoPlay)
+		if (mGameObject->IsActive && IsAutoPlay)
 		{
 			Play();
 		}
-		else if(gameObject->IsActive == false)
+		else if(mGameObject->IsActive == false)
 		{
 			Stop(true);
 		}
@@ -175,7 +175,7 @@ namespace E3DEngine
 		
 		if (m_RenderObject != nullptr)
 		{
-			m_RenderObject = (RenderObject*)gameObject;
+			m_RenderObject = mGameObject->GetRenderer();
 		}
 	}
 

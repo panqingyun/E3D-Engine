@@ -43,13 +43,13 @@ template<typename T> inline T * getCppObject(CS_OBJECT obj)
 void RegisterMonoFunction();
 
 #define TRANSFER_PROPERTY(_property)\
-	m_pBehaviour->SetPropertyValue(#_property, &_property);
+	mBehaviour->SetPropertyValue(#_property, &_property);
 
 #define TRANSFER_FIELD_VALUE(_field)\
-	m_pBehaviour->SetFieldValue(#_field, &_field);
+	mBehaviour->SetFieldValue(#_field, &_field);
 
 #define TRANSFER_FIELD_OBJECT(_field)\
-	m_pBehaviour->SetFieldValue(#_field, _field->GetMonoBehaviour()->GetMonoObject());
+	mBehaviour->SetFieldValue(#_field, _field->GetMonoBehaviour()->GetMonoObject());
 
 #define _0_PARAM_FUNCTION(className, funcName)\
 	className##_##funcName()

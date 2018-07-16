@@ -38,11 +38,11 @@ namespace E3DEngine
 	protected:
 		virtual void setBehaviourDefaultValue();
 	public:
-		unsigned int			ID;
-		std::string		TypeName;
-		std::string		Name;
-		ObjectType		NodeType;
-		MonoBehaviour * m_pBehaviour;
+		unsigned int	ID;
+		std::string		mTypeName;
+		std::string		mName;
+		ObjectType		mType;
+		MonoBehaviour * mBehaviour;
 	};
 }
 

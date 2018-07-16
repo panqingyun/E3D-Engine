@@ -13,83 +13,33 @@ namespace E3DEngine
 {
     class GameObject;
 	class CTransform;
-	// 组件类， 目的是方便拓展， 可以挂在Object上
+	// 组件类， 目的是方便拓展， 可以挂在GameObject上
     class Component : public Object
     {
     public:
-		Component()
-		{
-			gameObject = nullptr;
-			Transform = nullptr;
-			NotStart = true;
-		}
+		Component();
 
 		virtual void OnCreate();
-
 		virtual void OnCreateComplete();
-
-		virtual void Awake()
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->Awake();
-			}
-		}
-        virtual void Start()
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->Start();
-			}
-        }
-        virtual void Update(float deltaTime)
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->Update(deltaTime);
-			}
-        }
-		virtual void LateUpdate(float deltaTime)
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->LateUpdate(deltaTime);
-			}
-		}
-        virtual void Destory()
-        {
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->Destory();
-			}
-        }
-		virtual void OnEnable()
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->OnEnable();
-			}
-		}
-		virtual void OnDisable()
-		{
-			if (m_pBehaviour != nullptr)
-			{
-				m_pBehaviour->OnDisable();
-			}
-		}
+		virtual void Awake();
+        virtual void Start();
+        virtual void Update(float deltaTime);
+		virtual void LateUpdate(float deltaTime);
+        virtual void Destory();
+		virtual void OnEnable();
+		virtual void OnDisable();
 		virtual void OnCollisionEnter(GameObject* go);
 		virtual void SetGameObject(GameObject *go);
-		GameObject * GetGameObject()
-		{
-			return gameObject;
-		}
-
+		GameObject * GetGameObject();
 		virtual void SetPropertyValue(void* value);
+
     public:
-        GameObject *	gameObject;
+        GameObject *	mGameObject;
 		std::string 	_Tag;
 		CTransform *    Transform;
-		bool			NotStart;
+
+	public:
+		bool			mNotStart;
     };
 }
 

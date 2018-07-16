@@ -65,9 +65,9 @@ namespace E3DEngine
 		material->SetEnableDepthTest(config->EnableDepthTest == 1);
 		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
 		material->SetEnableCullFace(config->CullFace == 0);
-		material->filePath = folder + "/";
+		material->mFilePath = folder + "/";
 		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
-		material->MaterialTableManager = tblManager;
+		material->mMaterialTableManager = tblManager;
 		material->CreateMaterial(config, sCfg);
 		m_mapIDMaterials[material->ID] = material;
 		return material;

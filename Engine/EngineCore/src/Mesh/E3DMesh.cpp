@@ -202,7 +202,7 @@ namespace E3DEngine
 
 	void Mesh::CreateBehaviour()
 	{
-		m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Mesh);
 		setBehaviourDefaultValue();
 	}
@@ -270,7 +270,7 @@ namespace E3DEngine
 				bone = new Bone();
 				bone->BoneOffset		= ConvertAiMatrix4x42Mat4f(pMesh->mBones[i]->mOffsetMatrix);
 				bone->BoneIndex			= NumBones;
-				bone->Name				= BoneName;
+				bone->mName				= BoneName;
 				
 				VecBoneMatrix.push_back(&bone->Transform->WorldMatrix);
 				

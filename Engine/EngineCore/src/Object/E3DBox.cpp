@@ -194,7 +194,7 @@ void E3DEngine::Box::TransformChange()
 
 void E3DEngine::Box::CreateBehaviour()
 {
-	m_pBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 	NEW_INSTANCE(Box);
 	setBehaviourDefaultValue();
 }

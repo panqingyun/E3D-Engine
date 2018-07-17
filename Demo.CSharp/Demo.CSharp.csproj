@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="E3DEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\E3DEngine.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>Asset\Plugin\log4net.dll</HintPath>
     </Reference>
@@ -47,12 +51,6 @@
     <Compile Include="Asset\Script\AppMain.cs" />
     <Compile Include="Asset\Script\SelfRotateSphere.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Engine\EngineCSharp\E3DEngineDll.csproj">
-      <Project>{9dd66edb-26db-4765-862d-fe5619046543}</Project>
-      <Name>E3DEngineDll</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

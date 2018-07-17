@@ -26,7 +26,13 @@ namespace E3DEngine
 
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern void getProjectionMatrix(out float[] value);
-        
+
+        private Matrix4x4 viewMatrix = new Matrix4x4();
+        private Matrix4x4 projMatrix = new Matrix4x4();
+
+        /// <summary>
+        /// 前方向
+        /// </summary>
         public Vector3 Forward
         {
             get
@@ -35,12 +41,18 @@ namespace E3DEngine
             }
         }
 
+        /// <summary>
+        /// 当前第一个摄像机
+        /// </summary>
         public static Camera MainCamera
         {
             [MethodImpl(MethodImplOptions.InternalCall)]
             get;
         }
 
+        /// <summary>
+        /// 上方向
+        /// </summary>
         public Vector3 Up
         {
             get
@@ -49,6 +61,9 @@ namespace E3DEngine
             }
         }
         
+        /// <summary>
+        /// 右方向
+        /// </summary>
         public Vector3 Right
         {
             get
@@ -56,36 +71,66 @@ namespace E3DEngine
                 return Transform.Right;
             }
         }
-        private Matrix4x4 viewMatrix = new Matrix4x4();
-        private Matrix4x4 projMatrix = new Matrix4x4();
+
+        /// <summary>
+        /// 新建一个摄像机
+        /// </summary>
+        /// <returns>
+        /// 新的Camera对象，
+        /// 默认的位置是(0, 0, 200)， 
+        /// 默认的视角是 60.0度;
+        /// 上方向是 (0.0f, 1.0f, 0.0);
+        /// 近面是 1.0f;
+        /// 远面是 3000.0f;
+        /// 目标点是 (0, 0, -1)
+        /// </returns>
         public static Camera Create()
         {
             return createCamera();
         }
 
+        /// <summary>
+        /// 渲染摄像机队列中的物体
+        /// </summary>
         public void Render()
         {
             renderCamera();
         }
 
+        /// <summary>
+        /// 设置清屏颜色
+        /// </summary>
+        /// <param name="color">颜色（r，g， b，a）</param>
         public void SetClearColor(Vector4 color)
         {
             setClearColor(color.x, color.y, color.z, color.w);
         }
 
+        /// <summary>
+        /// 把屏幕坐标转换成世界坐标
+        /// </summary>
+        /// <param name="screenPoint">屏幕坐标</param>
+        /// <returns>世界坐标</returns>
         public Vector3 ScreenToWorldPoint(Vector3 screenPoint)
         {
             float x = 0, y = 0, z = 0;
             screen2WorldPoint(ref x, ref y, ref z);
             return new Vector3(x, y, z);
         }
-
+        /// <summary>
+        /// 获取视矩阵
+        /// </summary>
+        /// <returns>视图矩阵</returns>
         public Matrix4x4 GetViewMatrix()
         {
             getViewMatrix(out viewMatrix.data);
             return viewMatrix;
         }
 
+        /// <summary>
+        /// 获取投影矩阵
+        /// </summary>
+        /// <returns>投影矩阵</returns>
         public Matrix4x4 GetProjectionMatrix()
         {
             getProjectionMatrix(out projMatrix.data);

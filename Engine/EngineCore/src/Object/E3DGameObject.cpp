@@ -59,41 +59,46 @@ namespace E3DEngine
 
 	Component * GameObject::AddComponent(const char * type_name)
 	{
-		std::string cName = "";
-		std::string sName = "";
+		std::string className = "";
+		std::string nameSpaceName = "";
 		std::string full_name = std::string(type_name);
 		int dotPos = full_name.find_last_of(".");
 
 		Component * component = nullptr;
 		if (dotPos == std::string::npos)
 		{
-			cName = type_name;
+			className = type_name;
 		}
 		else
 		{
-			cName = full_name.substr(dotPos + 1);
-			sName = full_name.substr(0, dotPos);
+			className = full_name.substr(dotPos + 1);
+			nameSpaceName = full_name.substr(0, dotPos);
 		}
-		string kName = ClassFactory::GetInstance().getTypeNameByClassName(cName);
-		if (kName != "NAN")
+		// namespace == E3DEngine 是引擎类 否则不是
+
+		if (nameSpaceName == E3D_NAME_SPACE)
 		{
-			component = (Component *)ClassFactory::GetInstance().CreateClass(kName);
-			if (component == nullptr)
+			string kName = ClassFactory::GetInstance().getTypeNameByClassName(className);
+			if (kName != "NAN")
 			{
-				return nullptr;
+				component = (Component *)ClassFactory::GetInstance().CreateClass(kName);
+				if (component == nullptr)
+				{
+					return nullptr;
+				}
+				component->SetGameObject(this);
+				component->mTypeName = type_name;
+				component->Transform = Transform;
+				m_listComponents[type_name].push_back((Component*)component);
 			}
-			component->SetGameObject(this);
-			component->mTypeName = type_name;
-			component->Transform = Transform;
-			m_listComponents[type_name].push_back((Component*)component);
-		}
+		}		
 		else
 		{
 			// 不是引擎类
 			component = new Component;
 			component->mTypeName = full_name;
 			component->mBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
-			component->mBehaviour->Create(sName.c_str(), cName.c_str());
+			component->mBehaviour->Create(nameSpaceName.c_str(), className.c_str());
 			AddComponent(component);
 		}
 		

@@ -2,12 +2,25 @@
 
 class AppMain : Component
 {
-    void Start()
+    public bool ShowDebug
     {
-        Debug.Log("--------------------------");
+        get; set;
     }
 
-    void OnCollisionEnter(E3DEngine.Object collisionObject)
+    public int ShowNumber
+    {
+        get;set;
+    }
+
+    void Start()
+    {
+        if (ShowDebug)
+        {
+            Debug.Log("--------------------------" + ShowNumber.ToString());
+        }
+    }
+
+    void OnCollisionEnter(Object collisionObject)
     {
 
     }

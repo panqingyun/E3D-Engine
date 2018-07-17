@@ -24,6 +24,8 @@ namespace E3DEngine
 		SceneManager::GetInstance().GetCurrentScene()->AddChild(obj);\
 	}
 
+#define E3D_NAME_SPACE "E3DEngine"
+
 	class CTransform;
 	class Object : public Ref
 	{

@@ -8,10 +8,10 @@ using System.Reflection;
 
 namespace E3DEngine
 {
-    public class Component : Object
+    public class EConvert
     {
         private static Dictionary<Type, bool> normalTypeMap = new Dictionary<Type, bool>();
-        public Component()
+        static EConvert()
         {
             normalTypeMap[typeof(int)] = true;
             normalTypeMap[typeof(float)] = true;
@@ -24,6 +24,38 @@ namespace E3DEngine
             normalTypeMap[typeof(ushort)] = true;
             normalTypeMap[typeof(ulong)] = true;
             normalTypeMap[typeof(sbyte)] = true;
+        }
+
+        public static object ChangeType(Type tp, string _value)
+        {
+            if (normalTypeMap.ContainsKey(tp))
+            {
+                 return Convert.ChangeType(_value, tp);
+            }
+            else if (tp == typeof(bool))
+            {
+                if (_value == "true")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                // TODO
+                return null;
+            }
+        }
+    }
+
+    public class Component : Object
+    {
+        protected Component()
+        {
+           
         }
 
         public GameObject gameObject
@@ -51,14 +83,8 @@ namespace E3DEngine
                     {
                         continue;
                     }
-                    if (normalTypeMap.ContainsKey(pfi.PropertyType))
-                    {
-                        pfi.SetValue(this, Convert.ChangeType(_value, pfi.PropertyType));
-                    }
-                    else
-                    {
-                        // TODO
-                    }
+
+                    pfi.SetValue(this, EConvert.ChangeType(pfi.PropertyType, _value));
                 }
             }
         }

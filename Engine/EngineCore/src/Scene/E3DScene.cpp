@@ -515,7 +515,10 @@ namespace E3DEngine
 	{
         for(Camera * camera : m_vecCamera)
 		{
-			camera->Render(deltaTime);
+			if (camera->IsActive)
+			{
+				camera->Render(deltaTime);
+			}
 		}
 	}
 

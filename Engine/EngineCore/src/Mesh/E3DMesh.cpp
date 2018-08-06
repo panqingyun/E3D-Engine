@@ -25,7 +25,7 @@ namespace E3DEngine
 		m_bIsSkinMesh = false;
 		mAnimation = nullptr;
 		CreateBehaviour();
-		TableManager *tbMgr = TableRegister::RegisterAllTable(filePath.c_str());
+		TableManager *tbMgr = TableRegister::GetTableManager(filePath.c_str());
 		if (tbMgr == nullptr)
 		{
 			Debug::Log(ell_Error, "Error parsing '%s': 'read table wrong'", filePath.c_str());

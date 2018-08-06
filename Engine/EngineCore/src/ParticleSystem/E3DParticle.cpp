@@ -5,6 +5,7 @@
 #include "../Source/EngineDelegate.h"
 #include "E3DParticleEmitter.hpp"
 #include "E3DParticleAffector.hpp"
+#include "../Config/TableRegister.h"
 
 namespace E3DEngine
 {
@@ -655,7 +656,7 @@ namespace E3DEngine
 		m_pRenderer = buffer;
 		m_pMaterial = buffer->GetMaterial();
 		m_pMaterial->SetEnableDepthWrite(false);
-		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+		SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);
 		m_pRenderer->GetTransform()->SetIsBillBoard(true);
@@ -1011,12 +1012,12 @@ namespace E3DEngine
 			}
 			int id = Convert::ToInt(uvID);
 			
-			TextureUVConfig * config = EngineDelegate::GetInstance().GetTableManager(ConfigName)->Select<TextureUVConfig>(id);
+			TextureUVConfig * config = TableRegister::GetTableManager(ConfigName.c_str())->Select<TextureUVConfig>(id);
 			if (config == nullptr)
 			{
 				continue;
 			}
-			
+
 			m_vecUVConfigs.push_back(config);
 		}
 	}

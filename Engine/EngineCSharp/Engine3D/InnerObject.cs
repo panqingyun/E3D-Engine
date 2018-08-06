@@ -25,6 +25,16 @@ namespace E3DEngine
         
     }
 
+    public class Sphere : GameObject
+    {
+        private Sphere()
+        {
+
+        }
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern Sphere Create(float R);
+    }
+
     public class SkyBox : GameObject
     {
         private SkyBox() { }

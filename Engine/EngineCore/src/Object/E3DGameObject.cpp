@@ -385,7 +385,7 @@ namespace E3DEngine
 			{
 				if (mType == eT_Camera)
 				{
-					SceneManager::GetInstance().GetCurrentScene()->AddCamera(static_cast<Camera*>(node));
+					SceneManager::GetCurrentScene()->AddCamera(static_cast<Camera*>(node));
 				}
 			}
 
@@ -521,6 +521,13 @@ namespace E3DEngine
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(GameObject);
 		setBehaviourDefaultValue();
+	}
+
+
+	void GameObject::Destory(GameObject *go)
+	{
+		SceneManager::GetCurrentScene()->RemoveObject(go);
+		SAFE_DELETE(go);
 	}
 
 	void GameObject::SetIsStatic(bool isStatic)

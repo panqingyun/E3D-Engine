@@ -10,6 +10,7 @@
 #include "../Source/EngineDelegate.h"
 #include "../RenderSystem/E3DRenderQueue.h"
 #include "../Source/FilePath.h"
+#include "../Config/TableRegister.h"
 
 namespace E3DEngine
 {	
@@ -295,7 +296,7 @@ namespace E3DEngine
 		{
 			return -1;
 		}
-		TableManager *tbMgr = EngineDelegate::GetInstance().GetTableManager(LAYER_CONFIAG_NAME);
+		TableManager *tbMgr = TableRegister::GetTableManager((LAYER_CONFIAG_NAME).c_str());
 		if (tbMgr == nullptr)
 		{
 			return 0;
@@ -387,30 +388,29 @@ namespace E3DEngine
 
 	void RegistScnObjCreateFunc()
 	{
-		createFun[TP_Camera] = createCamera;
-		createFun[TP_DLight] = createDLight;
-		createFun[TP_SkyBox] = createSkyBox;
-		createFun[TP_Mesh] = createMesh;
-		createFun[TP_Particle] = createParticle;
-		createFun[TP_Empty] = createEmpty;
-		createFun[TP_Cube] = createCube;
-		createFun[TP_Sphere] = createSphere;
-		createFun[TP_PLight] = createPointLight;
+		createFun[TP_Camera]	= createCamera;
+		createFun[TP_DLight]	= createDLight;
+		createFun[TP_SkyBox]	= createSkyBox;
+		createFun[TP_Mesh]		= createMesh;
+		createFun[TP_Particle]	= createParticle;
+		createFun[TP_Empty]		= createEmpty;
+		createFun[TP_Cube]		= createCube;
+		createFun[TP_Sphere]	= createSphere;
+		createFun[TP_PLight]	= createPointLight;
 
-		renderIndexMap[_RenderIndex_LowMost] = eRenderIndex::eRI_LowMost;
-		renderIndexMap[_RenderIndex_TopMost] = eRenderIndex::eRI_TopMost;
-		renderIndexMap[_RenderIndex_Normal] = eRenderIndex::eRI_Normal;
-		renderIndexMap[_RenderIndex_Transparent] = eRenderIndex::eRI_Transparent;
+		renderIndexMap[_RenderIndex_LowMost]		= eRenderIndex::eRI_LowMost;
+		renderIndexMap[_RenderIndex_TopMost]		= eRenderIndex::eRI_TopMost;
+		renderIndexMap[_RenderIndex_Normal]			= eRenderIndex::eRI_Normal;
+		renderIndexMap[_RenderIndex_Transparent]	= eRenderIndex::eRI_Transparent;
 	}
 
 	Scene::Scene()
 	{
-		dontDestoryScene	= false;
-		m_SceneType		= eSceneType_defult;
-		mType		= eT_Scene;
-		rootObject		= new GameObject;
+		m_nObjectID			= 0;
+		mType				= eT_Scene;
+		rootObject			= new GameObject;
+		usedDirectionLight	= nullptr;
 
-		usedDirectionLight = nullptr;
 		m_vecObjList[rootObject->ID] = rootObject;
 		CreateBehaviour();
 		
@@ -454,11 +454,6 @@ namespace E3DEngine
 	
 	void Scene::Destory()
 	{
-		if (dontDestoryScene)
-		{
-			return;
-		}
-
 		int childSize = m_vecObjList.size();
 		for (int i = 0; i < childSize; i++)
 		{
@@ -479,14 +474,6 @@ namespace E3DEngine
 		m_vecObjList.clear();
 		m_mapLights.clear();
 	}
-	
-	void Scene::SceneReload()
-	{
-		if (!SceneReloadEvent.empty())
-		{
-			SceneReloadEvent(nullptr, nullptr);
-		}
-	}
 
 	void Scene::DestoryAllOjectImmediately()
 	{
@@ -499,16 +486,6 @@ namespace E3DEngine
 			SAFE_DELETE(it.second);
 		}
 		m_vecObjList.clear();
-	}
-
-	void Scene::SetDontDestory(bool dontDestory)
-	{
-		dontDestoryScene = dontDestory;
-	}
-
-	void Scene::SetSceneType(eSceneType type)
-	{
-		m_SceneType = type;
 	}
 
 	void Scene::RenderScene(float deltaTime)
@@ -610,44 +587,12 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	void Scene::ChangeFrameSize(float w, float h)
+	void Scene::ChangeViewportSize(float w, float h)
 	{
-        for (auto &camera : m_vecCamera) {
-            camera->FrameSizeChange(w / h);
-        }
-//        for(Camera * camera : m_vecCamera)
-//        {
-//            camera->FrameSizeChange(w / h);
-//        }
-	}
-
-	E3DEngine::eSceneType Scene::GetSceneType()
-	{
-		return m_SceneType;
-	}
-
-	void Scene::AddChild(Object * node)
-	{
-		if (node == nullptr)
+        for (auto &camera : m_vecCamera) 
 		{
-			return;
-		}
-		if (node->mType == eT_GameObject)
-		{			
-			GameObject *go = static_cast<GameObject*>(node);
-			if (rootObject->FindChild(go->ID))
-			{
-				return;
-			}
-			if (m_vecObjList.find(go->ID) != m_vecObjList.end())
-			{
-				m_vecObjList.erase(go->ID);
-			}
-			rootObject->AddChild(go);
-			
-		}
-		m_vecObjList[node->ID] = node;
-		
+            camera->ChangeViewport(w / h);
+        }
 	}
 
 	void Scene::AddRenderObject(RenderObject* rb, UINT layer)
@@ -672,47 +617,6 @@ namespace E3DEngine
 			}
 		}
 	}
-
-	void Scene::RemoveChild(Object * node)
-	{
-		if (node == nullptr)
-		{
-			return;
-		}
-		DWORD id = node->ID;
-
-		if (rootObject->FindChild(id))
-		{
-			GameObject * go = static_cast<GameObject*>(node);
-			
-			rootObject->RemoveChild(go);
-		}
-		else
-		{
-			if (m_vecObjList.find(id) == m_vecObjList.end())
-			{
-				return;
-			}
-			m_vecObjList.erase(node->ID);
-		}
-	}
-
-	void Scene::RemoveChild(UINT ID)
-	{
-		if (rootObject->FindChild(ID))
-		{
-			rootObject->RemoveChild(ID);
-		}
-		else
-		{
-			if (m_vecObjList.find(ID) == m_vecObjList.end())
-			{
-				return;
-			}
-			m_vecObjList.erase(ID);
-		}
-	}
-
 
 	void Scene::CreateBehaviour()
 	{
@@ -775,4 +679,71 @@ namespace E3DEngine
 		return m_mapLights;
 	}
 
+	void Scene::AddObject(Object * obj)
+	{
+		if (obj == nullptr)
+		{
+			return;
+		}
+		if (obj->mType == eT_GameObject)
+		{
+			GameObject *go = static_cast<GameObject*>(obj);
+			if (rootObject->FindChild(go->ID))
+			{
+				return;
+			}
+			if (m_vecObjList.find(go->ID) != m_vecObjList.end())
+			{
+				m_vecObjList.erase(go->ID);
+			}
+			rootObject->AddChild(go);
+
+		}
+		m_vecObjList[obj->ID] = obj;
+	}
+
+	void Scene::RemoveObject(Object * node)
+	{
+		if (node == nullptr)
+		{
+			return;
+		}
+		DWORD id = node->ID;
+
+		if (rootObject->FindChild(id))
+		{
+			GameObject * go = static_cast<GameObject*>(node);
+
+			rootObject->RemoveChild(go);
+		}
+		else
+		{
+			if (m_vecObjList.find(id) == m_vecObjList.end())
+			{
+				return;
+			}
+			m_vecObjList.erase(node->ID);
+		}
+	}
+
+	void Scene::RemoveObject(UINT ID)
+	{
+		if (rootObject->FindChild(ID))
+		{
+			rootObject->RemoveChild(ID);
+		}
+		else
+		{
+			if (m_vecObjList.find(ID) == m_vecObjList.end())
+			{
+				return;
+			}
+			m_vecObjList.erase(ID);
+		}
+	}
+
+	UINT Scene::GenObjectID()
+	{
+		return  ++m_nObjectID;
+	}
 }

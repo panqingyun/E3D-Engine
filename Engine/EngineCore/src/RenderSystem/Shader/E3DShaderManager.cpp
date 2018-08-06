@@ -5,6 +5,6 @@
 
 E3DEngine::Shader * E3DEngine::ShaderManager::GetShaderContentByPath(std::string shaderPath)
 {
-
+	return nullptr;
 }
 

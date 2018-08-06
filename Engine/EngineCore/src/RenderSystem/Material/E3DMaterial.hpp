@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/3/30.
 //
 
-#ifndef _METRAIL_HPP_
-#define _METRAIL_HPP_
+#ifndef __E3D_METRAIL_HPP__
+#define __E3D_METRAIL_HPP__
 
 #include "../Shader/E3DShader.hpp"
 #include "../Texture/E3DTexture.hpp"
@@ -98,8 +98,6 @@ namespace E3DEngine
 		virtual void createTexture(Texture *texture, std::string textureUniform);
 
 	protected:
-		float       alpha;
-		int			nFaceIndex;
 		bool        enableDepthTest; //开启深度测试
 		bool        enablewriteDepth;
 		bool        enableStencilTest; //开启模版测试

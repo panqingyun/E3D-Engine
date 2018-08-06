@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>EngineLib</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>EngineCore</ProjectName>
+    <ProjectName>E3DEngine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,7 +71,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
-    <TargetName>$(ProjectName)_d</TargetName>
+    <TargetName>E3DEngine_d</TargetName>
     <OutDir>..\bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -83,6 +83,7 @@
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin</OutDir>
+    <TargetName>E3DEngine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
@@ -101,7 +102,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;FreeImage_d.lib;freetype.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -203,8 +204,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp" />
@@ -236,12 +238,12 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\ClassFactory.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDebug.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDelegate.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DEncoding.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h" />
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h" />
@@ -285,8 +287,9 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp" />
@@ -317,11 +320,12 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DScene.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp" />
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp" />

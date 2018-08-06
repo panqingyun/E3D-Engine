@@ -19,9 +19,9 @@ namespace E3DEngine
 	} ObjectType;
 
 #define ADD_IN_SCENE(obj)\
-	if (SceneManager::GetInstance().GetCurrentScene() != nullptr)\
+	if (SceneManager::GetCurrentScene() != nullptr)\
 	{\
-		SceneManager::GetInstance().GetCurrentScene()->AddChild(obj);\
+		SceneManager::GetCurrentScene()->AddObject(obj);\
 	}
 
 #define E3D_NAME_SPACE "E3DEngine"

@@ -27,13 +27,13 @@ namespace E3DEngine
 #ifdef WIN32
 		std::string priveVs = "#define __WIN32__\n";
 #endif
-		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 		{
 			priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
 			priveVs.append("uniform vec3 ").append(LIGHT_DIR).append(";\n");
 			priveVs.append("uniform vec4 ").append(LIGHT_COLOR).append(";\n");
 		}
-		std::map<UINT, Light*>& pointLights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		std::map<UINT, Light*>& pointLights = SceneManager::GetCurrentScene()->GetPointLights();
 		if (pointLights.size() != 0)
 		{
 			std::string lightCount = Convert::ToString((int)pointLights.size());
@@ -215,12 +215,12 @@ namespace E3DEngine
 		(this->*uniformSetFunc["mat4"])(MODEL_MATRIX, "", 1);
 		(this->*uniformSetFunc["vec3"])(CAMERA_POS, "", 1);
 		(this->*uniformSetFunc["vec3"])(ROTATION_VEC, "", 1);
-		if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+		if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 		{
 			(this->*uniformSetFunc["vec4"])(LIGHT_COLOR, "", 1);
 			(this->*uniformSetFunc["vec3"])(LIGHT_DIR, "", 1);
 		}
-		std::map<UINT, Light*>& pointLights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		std::map<UINT, Light*>& pointLights = SceneManager::GetCurrentScene()->GetPointLights();
 		if (pointLights.size() != 0)
 		{
 			(this->*uniformSetFunc["vec4[]"])(POINT_LIGHT_COLOR, "", pointLights.size());

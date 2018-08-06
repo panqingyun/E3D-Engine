@@ -84,7 +84,7 @@ void RegisterMonoFunction();
 		}\
 		return cpp_obj->funcName()->GetMonoBehaviour()->GetMonoObject();\
 	}
-
+using namespace std;
 #define __STRINGIFY(x)   #x
 #define REGISTER_INTERNAL_CALL(className, funcName)\
 	mono_add_internal_call((string("E3DEngine.") + __STRINGIFY(className) + "::" + __STRINGIFY(funcName)).c_str(), (const void*)className##_##funcName);
@@ -99,8 +99,6 @@ VOID _1_PARAM_FUNCTION(Debug			, log_error			, CS_STRING		, err);
 VOID _1_PARAM_FUNCTION(Debug			, log_warning		, CS_STRING		, warning);
 VOID _1_PARAM_FUNCTION(Debug			, log_info			, CS_STRING		, info);
 VOID _1_PARAM_FUNCTION(Renderer			, setVertex2Render	, CPP_OBJECT	, obj);
-VOID _1_PARAM_FUNCTION(Scene			, changeScene		, UINT			, sceneId);
-VOID _1_PARAM_FUNCTION(Scene			, destoryScene		, UINT			, sceneId);
 VOID _4_PARAM_FUNCTION(Transform		, getPosition		, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
 VOID _4_PARAM_FUNCTION(Transform		, getRotation		, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
 VOID _4_PARAM_FUNCTION(Transform		, getScale			, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);

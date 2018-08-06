@@ -42,7 +42,7 @@ namespace E3DEngine
 
 		void SetClearType(DWORD clearType);
 
-		void FrameSizeChange(float aspect);
+		void ChangeViewport(float aspect);
 
 		RenderQueue * GetRenderQueue();
 

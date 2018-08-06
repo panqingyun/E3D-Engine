@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/5/24.
 //
 
-#ifndef TextureDataManager_hpp
-#define TextureDataManager_hpp
+#ifndef __E3D_TEXTURE_DATA_MANAGER_HPP__
+#define __E3D_TEXTURE_DATA_MANAGER_HPP__
 
 #include "src/Source/Interface.h"
 
@@ -58,7 +58,7 @@ namespace E3DEngine
 		}
 	};
 
-	class TextureDataManager : public IObject
+	class TextureDataManager : public IManager
 	{
 	public:
 		// -----------------------------------------------

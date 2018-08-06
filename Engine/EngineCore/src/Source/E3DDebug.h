@@ -1,5 +1,5 @@
-#ifndef __DEBUG_H__
-#define __DEBUG_H__
+#ifndef __E3D_DEBUG_H__
+#define __E3D_DEBUG_H__
 #include "Interface.h"
 
 #ifdef __ANDROID__

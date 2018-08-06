@@ -23,7 +23,6 @@ namespace E3DEngine
 		m_bIsStop = false;
 		MonoScriptManager::GetInstance().Initialize();
 		CreatScript();
-		m_pMouseInfo = new MouseButtonInfo();
 		std::string startApp = AppDataPath + "/app.config";
 		std::string fileContent = getContentFromPath(startApp);
 		if (fileContent != empty_string)
@@ -48,6 +47,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Application::StartApp ERROR app.config");
 			assert(false);
 		}
+		m_pMouseInfo = new MouseButtonInfo();
 	}
 
 	void Application::startCSharp(std::vector<std::string> &vestr)

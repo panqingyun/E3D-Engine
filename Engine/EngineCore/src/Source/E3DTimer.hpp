@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/5/9.
 //
 
-#ifndef E3DTimer_hpp
-#define E3DTimer_hpp
+#ifndef __E3D_TIMER_HPP__
+#define __E3D_TIMER_HPP__
 
 #include <stdio.h>
 #include "Interface.h"

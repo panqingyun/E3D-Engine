@@ -4,7 +4,7 @@
 //  Created by 潘庆云 on 2017/7/17.
 //
 
-#include "E3DGLESRenderManager.hpp"
+#include "E3DGLESRender.hpp"
 #include <src/Camera/E3DCamera.h>
 #include <src/Object/E3DTransform.hpp>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
@@ -128,14 +128,14 @@ namespace E3DEngine
 		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 
-		DirectionLight * dlight = (DirectionLight *)SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight();
+		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
 			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, dlight->Color.r, dlight->Color.g, dlight->Color.b, dlight->Color.a);
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
 		}
 
-		std::map<UINT, Light*>& plights = SceneManager::GetInstance().GetCurrentScene()->GetPointLights();
+		std::map<UINT, Light*>& plights = SceneManager::GetCurrentScene()->GetPointLights();
 		if (plights.size() != 0)
 		{
 			std::vector<float> lightPos;

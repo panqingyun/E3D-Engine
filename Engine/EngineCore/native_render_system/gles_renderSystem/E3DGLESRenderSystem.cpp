@@ -26,7 +26,7 @@ namespace E3DEngine
 	{
 		m_pMaterialManager->Cleanup();
 		m_pTextureDataManager->Cleanup();
-		m_pRenderManager->Destory();
+		m_pRenderManager->Cleanup();
 		SAFE_DELETE(defaultFrameBuffer);
 	}
 

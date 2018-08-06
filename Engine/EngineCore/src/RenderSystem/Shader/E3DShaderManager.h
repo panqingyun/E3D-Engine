@@ -10,11 +10,11 @@
 namespace E3DEngine
 {
 	class Shader;
-	class ShaderManager : public IObject
+	class ShaderManager : public IManager
 	{
 	public: 
 		virtual Shader * GetShaderContentByPath(std::string shaderPath);
-
+		virtual void Cleanup() { }
 	protected:
 		std::map<std::string, std::string> mShadersMap;
 	};

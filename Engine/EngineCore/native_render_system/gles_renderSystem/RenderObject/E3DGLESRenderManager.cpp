@@ -53,4 +53,13 @@ namespace E3DEngine
 	}
 
 
+	void GLES_RendererManager::Cleanup()
+	{
+		for (auto & render : m_mapVertexBuffers)
+		{
+			SAFE_DELETE(render->second);
+		}
+		m_mapVertexBuffers.clear();
+	}
+
 }

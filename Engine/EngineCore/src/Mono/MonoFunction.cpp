@@ -45,8 +45,6 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Debug,		log_warning);
 	REGISTER_INTERNAL_CALL(Debug,		log_info);
 	REGISTER_INTERNAL_CALL(Scene,		createScene);
-	REGISTER_INTERNAL_CALL(Scene,		changeScene);
-	REGISTER_INTERNAL_CALL(Scene,		destoryScene);
 	REGISTER_INTERNAL_CALL(Renderer,	createRenderer);
 	REGISTER_INTERNAL_CALL(Renderer,	createRendererWithoutParam);
 	REGISTER_INTERNAL_CALL(Renderer,	setVertex2Render);
@@ -202,30 +200,9 @@ VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float
 
 CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 {
-	Scene * scene = SceneManager::GetInstance().CreateScene(Convert::ToStdString(path));
+	Scene * scene = SceneManager::GetInstance().LoadScene(Convert::ToStdString(path));
 
 	return scene->GetMonoBehaviour()->GetMonoObject();
-}
-
-VOID _1_PARAM_FUNCTION(Scene, changeScene, UINT, sceneId)
-{
-	Scene * scene = SceneManager::GetInstance().GetScene(sceneId);
-	if (scene == nullptr)
-	{
-		Debug::Log(ell_Error, "change scene is null");
-		return;
-	}
-	EngineDelegate::GetInstance().ChangeScene(sceneId);
-}
-
-VOID _1_PARAM_FUNCTION(Scene, destoryScene, UINT, sceneId)
-{
-	Scene * scene = SceneManager::GetInstance().GetScene(sceneId);
-	if (scene == nullptr)
-	{
-		return;
-	}
-	SceneManager::GetInstance().DestoryScene(scene);
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Renderer, createRenderer, UINT, materialID)
@@ -489,8 +466,7 @@ VOID _1_PARAM_FUNCTION(GameObject, destory, CS_OBJECT, cs_obj)
 	{
 		return;
 	}
-
-	EngineDelegate::GetInstance().DestoryObject(go);
+	GameObject::Destory(go);
 }
 
 CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithName, CS_OBJECT, cs_obj, CS_STRING, name)
@@ -754,7 +730,7 @@ VOID _2_PARAM_FUNCTION(Renderer, set_RenderIndex, CS_OBJECT, cs_boj, UINT, ri)
 
 CS_OBJECT _0_PARAM_FUNCTION(Camera, get_MainCamera)
 {
-	Camera *pCamera = SceneManager::GetInstance().GetCurrentScene()->GetMainCamera();
+	Camera *pCamera = SceneManager::GetCurrentScene()->GetMainCamera();
 	if (pCamera == nullptr)
 	{
 		return nullptr;

@@ -1,5 +1,5 @@
-#ifndef __RENDER_QUEUE_H__
-#define __RENDER_QUEUE_H__
+#ifndef __E3D_RENDER_QUEUE_H__
+#define __E3D_RENDER_QUEUE_H__
 
 #include "../Object/E3DRenderObject.hpp"
 

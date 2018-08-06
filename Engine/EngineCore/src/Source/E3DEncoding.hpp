@@ -4,10 +4,10 @@
 //  Created by 潘庆云 on 2017/5/17.
 //
 
-#ifndef E3DEncodine_hpp
-#define E3DEncodine_hpp
+#ifndef __E3D_ENCODING_HPP__
+#define __E3D_ENCODING_HPP__
 
-#include "../Utils/E3DUtil.hpp"
+#include "Interface.h"
 
 namespace E3DEngine
 {

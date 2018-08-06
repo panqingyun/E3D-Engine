@@ -4,7 +4,7 @@
 //  Created by 潘庆云 on 2017/7/17.
 //
 
-#include "E3DRenderManager.hpp"
+#include "E3DRender.hpp"
 
 namespace E3DEngine
 {

@@ -3,8 +3,8 @@
 // 
 //  Created by 潘庆云 on 2017/5/9.
 
-#ifndef E3DCubeMapTexture_hpp
-#define E3DCubeMapTexture_hpp
+#ifndef __E3D_CUBE_MAP_TEXTURE_HPP__
+#define __E3D_CUBE_MAP_TEXTURE_HPP__
 
 #include "E3DTexture.hpp"
 

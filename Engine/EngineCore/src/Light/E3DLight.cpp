@@ -85,7 +85,7 @@ namespace E3DEngine
 		switch (type)
 		{
 		case eDIRECTION_LIGHT:
-			if (SceneManager::GetInstance().GetCurrentScene()->GetDirectionalLight() != nullptr)
+			if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 			{
 				Debug::Log(ell_Warning, "there must be only one direction light in the same scene");
 				return nullptr;
@@ -101,7 +101,7 @@ namespace E3DEngine
 		default:
 			break;
 		}
-		SceneManager::GetInstance().GetCurrentScene()->AddLight(light);
+		SceneManager::GetCurrentScene()->AddLight(light);
 		//ADD_IN_SCENE(light);
 		return light;
 	}

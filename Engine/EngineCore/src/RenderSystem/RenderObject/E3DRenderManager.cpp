@@ -32,7 +32,7 @@ namespace E3DEngine
 
 	}
 
-	void RendererManager::Destory()
+	void RendererManager::Cleanup()
 	{
 		m_mapVertexBuffers.clear();
 	}

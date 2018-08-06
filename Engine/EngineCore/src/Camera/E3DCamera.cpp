@@ -40,7 +40,7 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mType = eT_Camera;
-		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
+		SceneManager::GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
@@ -65,7 +65,7 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mType = eT_Camera;
-		SceneManager::GetInstance().GetCurrentScene()->AddCamera(this);
+		SceneManager::GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
@@ -140,7 +140,7 @@ namespace E3DEngine
 	}
 
 
-	void Camera::FrameSizeChange(float aspect)
+	void Camera::ChangeViewport(float aspect)
 	{
 		if (isPerspective)
 		{
@@ -158,7 +158,7 @@ namespace E3DEngine
 	{
 		GameObject::SetLayerMask(layerMask);
 		m_RenderQueue->CullRenderObjectByLayer(layerMask);
-		SceneManager::GetInstance().GetCurrentScene()->ChangeCameraObject(this);
+		SceneManager::GetCurrentScene()->ChangeCameraObject(this);
 	}
 
 	int Camera::GetDepth()
@@ -169,7 +169,7 @@ namespace E3DEngine
 	void Camera::SetDepth(int depth)
 	{
 		m_nDepth = depth;
-		SceneManager::GetInstance().GetCurrentScene()->SortCamera();
+		SceneManager::GetCurrentScene()->SortCamera();
 	}
 
 	void Camera::SetRenderTexture(Render2Texture * rtt)

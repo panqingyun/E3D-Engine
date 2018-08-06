@@ -1,5 +1,5 @@
-#ifndef _DELEGATE_H_
-#define _DELEGATE_H_
+#ifndef __E3D_DELEGATE_H__
+#define __E3D_DELEGATE_H__
 
 #include "../Source/Interface.h"
 

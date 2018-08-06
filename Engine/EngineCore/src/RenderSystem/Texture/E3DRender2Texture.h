@@ -1,5 +1,5 @@
-#ifndef __RENDER_TEXTURE_H__
-#define __RENDER_TEXTURE_H__
+#ifndef __E3D_RENDER_TEXTURE_H__
+#define __E3D_RENDER_TEXTURE_H__
 
 #include "../Material/E3DMaterial.hpp"
 #include "../Texture/E3DTexture.hpp"

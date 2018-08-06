@@ -16,6 +16,7 @@ namespace E3DEngine
 	class RenderObject;
 	class ParticleGroup;
 	class ParticleConfig;
+	class TableManager;
 	class ParticleSystem : public ISystem
 	{
 	public:		
@@ -42,6 +43,9 @@ namespace E3DEngine
 		void createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle);
 		void initParticleRenderer(ParticleConfig *config, ParticleGroup * particle);
 		void initParticleGroup(ParticleGroup * particle, std::string cfgName, ParticleConfig *config);
+
+	private:
+		TableManager * mCurTableManager;
 
 	};
 }

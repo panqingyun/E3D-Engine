@@ -11,7 +11,10 @@ namespace E3DEngine
 	Object::Object()
 	{
 		mType = eT_Object;
-		ID = EngineDelegate::GetInstance().GenObjectID();
+		if (SceneManager::GetCurrentScene() != nullptr)
+		{
+			ID = SceneManager::GetCurrentScene()->GenObjectID();
+		}
 		//ADD_IN_SCENE(this);
 		mBehaviour = new MonoBehaviour;
 	}

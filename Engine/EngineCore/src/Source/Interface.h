@@ -208,6 +208,10 @@ namespace E3DEngine
         virtual void Destory()                  = 0;
     };
     
+	Interface IManager : public Ref
+	{
+		virtual void Cleanup() = 0;
+	};
 }
 
 #endif /* IFactory_h */

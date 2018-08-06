@@ -374,6 +374,8 @@ namespace E3DEngine
 		std::vector<Vertex>& GetVertex() { return m_vecVertex; };
 		std::vector<uint>& GetIndex() { return m_vecIndex; }
 		virtual void CreateBehaviour() override;
+		static void Destory(GameObject *go);
+
 	protected:
 		virtual void ComponentAdded(Component * component);
 		virtual void setBehaviourDefaultValue();

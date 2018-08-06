@@ -1,5 +1,5 @@
 #pragma once
-#include "E3DGLESRenderManager.hpp"
+#include "E3DGLESRender.hpp"
 #include <src/Mesh/E3DMeshRender.h>
 
 namespace E3DEngine

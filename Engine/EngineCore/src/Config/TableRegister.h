@@ -10,50 +10,51 @@
 class TableRegister
 {
 public:
-	static E3DEngine::TableManager * RegisterAllTable(const char * filePath)
+	static E3DEngine::TableManager * GetTableManager(const char * filePath)
     {
 		std::string configName = std::string(filePath);
 		TiXmlDocument * doc = nullptr;
-		if (instance().xmlConfigMap.find(configName) == instance().xmlConfigMap.end())
+		if (instance().mTableManagerMap.find(configName) == instance().mTableManagerMap.end())
 		{
 			doc = new TiXmlDocument(configName.c_str());
-			instance().xmlConfigMap[configName] = doc;  
 			bool loadOkay = doc->LoadFile();
 			if (!loadOkay)
 			{
 				return nullptr;
 			}
+
+			E3DEngine::TableManager * tableManager = new E3DEngine::TableManager;
+			instance().mTableManagerMap[configName] = tableManager;
+			E3DEngine::RegisterTableCreateInstance();
+			TiXmlElement* rootElem = nullptr;
+			rootElem = doc->RootElement();
+			bool needContinue = false;
+			for (TiXmlNode * item = rootElem->FirstChild(); item != nullptr; item = item->NextSibling())
+			{
+				std::string tableName = item->Value();
+				if (needContinue == true) {
+					needContinue = false;
+					continue;
+				}
+				tableName = ClassFactory::GetInstance().getTypeNameByClassName(tableName);
+				E3DEngine::TableBase * table = (E3DEngine::TableBase*)ClassFactory::GetInstance().CreateClass(tableName);
+				if (table == nullptr) {
+					continue;
+				}
+				table->registProperty();
+				tableManager->RegisterTable(item, tableName, table);
+				if (table->initTableParam() == false)
+				{
+					continue;
+				}
+			}
+			return tableManager;
 		}
 		else
 		{
-			doc = instance().xmlConfigMap[configName];
+			return instance().mTableManagerMap[configName];
 		}
       
-		E3DEngine::TableManager * tableManager = new E3DEngine::TableManager;
-        E3DEngine::RegisterTableCreateInstance();
-        TiXmlElement* rootElem = nullptr;
-        rootElem = doc->RootElement();
-        bool needContinue = false;
-        for(TiXmlNode * item = rootElem->FirstChild(); item != nullptr; item = item->NextSibling())
-        {
-            std::string tableName = item->Value();
-            if(needContinue == true){
-                needContinue = false;
-                continue;
-            }
-			tableName = ClassFactory::GetInstance().getTypeNameByClassName(tableName);
-            E3DEngine::TableBase * table = (E3DEngine::TableBase*)ClassFactory::GetInstance().CreateClass(tableName);
-            if(table == nullptr){
-                continue;
-            }
-            table->registProperty();
-            tableManager->RegisterTable(item, tableName, table);
-            if(table->initTableParam() == false)
-            {
-                continue;
-            }
-        }
-        return tableManager;
     }
 	
 	static void DeleteAllTable()
@@ -63,14 +64,14 @@ public:
 
 	static void Destory()
 	{
-		for (auto &xmlDoc : instance().xmlConfigMap)
+		for (auto &tbManager : instance().mTableManagerMap)
 		{
-			SAFE_DELETE(xmlDoc.second);
+			SAFE_DELETE(tbManager.second);
 		}
-		instance().xmlConfigMap.clear();
+		instance().mTableManagerMap.clear();
 	}
 private:
-	std::map<std::string, TiXmlDocument*> xmlConfigMap;
+	std::map<std::string, E3DEngine::TableManager*> mTableManagerMap;
 private:
 	static TableRegister &instance()
 	{

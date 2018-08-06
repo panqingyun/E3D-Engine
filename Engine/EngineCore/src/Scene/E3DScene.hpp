@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/7/11.
 //
 
-#ifndef E3DScene_hpp
-#define E3DScene_hpp
+#ifndef __E3D_SCENE_HPP__
+#define __E3D_SCENE_HPP__
 
 #include "../Object/E3DGameObject.h"
 #include "../Object/E3DRenderObject.hpp"
@@ -14,12 +14,6 @@
 
 namespace E3DEngine
 {
-    enum eSceneType
-    {
-        eSceneType_defult = 0,
-        eSceneType_edittext = 1,
-    };
-
 	enum RenderTargetType
 	{
 		eMainFrameBuffer	= 0,
@@ -38,45 +32,41 @@ namespace E3DEngine
 		void Create(std::string filePath);
 		void Update(float deltaTime);
 		void Destory();
-		void SetDontDestory(bool dontDestory);
-		void SceneReload();
-		void DestoryAllOjectImmediately();        
-		void SetSceneType(eSceneType type);
-		eSceneType GetSceneType();
+		void DestoryAllOjectImmediately();
 		void RenderScene(float deltaTime);
 		void ChangeRenderIndex(UINT id, eRenderIndex index);
 		void AddCamera(Camera * pCamera);
 		void SortCamera();
+		void AddObject(Object * obj);
+		void RemoveObject(Object * node);
+		UINT GenObjectID();
+	public:
 		void ChangeCameraObject(Camera *pCamera);
 		void ChangeRenderObjectLayer(RenderObject * rb);
 		Camera * GetCamera(UINT cameraID);
 		Camera * GetMainCamera();
-		void ChangeFrameSize(float w, float h);
+		void ChangeViewportSize(float w, float h);
 		void AddRenderObject(RenderObject* rb, UINT layer);
+	public:
+		void RemoveObject(UINT ID);
 		void AddLight(Light * light);
 		void DeleteLight(Light *light);
 		Light * GetDirectionalLight();
 		std::map<UINT, Light*>& GetPointLights();
 
-	public:
-		virtual void AddChild(Object * node);
-		virtual void RemoveChild(Object * node);
-		virtual void RemoveChild(UINT ID);
-
 	protected:
 		virtual void CreateBehaviour() override;
 	public:
-		bool					dontDestoryScene;
 		event EventDelegates	SceneReloadEvent;
 
 	private:
-        eSceneType		m_SceneType;
-		std::vector<Camera*> m_vecCamera;
-		std::map<DWORD, Object*> m_vecObjList;
-		GameObject		* rootObject;
-		std::map<DWORD, RenderObject*> m_mapRenders;
-		std::map<UINT ,Light*> m_mapLights;
-		DirectionLight * usedDirectionLight;
+		std::vector<Camera*>			m_vecCamera;
+		std::map<DWORD, Object*>		m_vecObjList;
+		GameObject		*				rootObject;
+		std::map<DWORD, RenderObject*>	m_mapRenders;
+		std::map<UINT ,Light*>			m_mapLights;
+		DirectionLight *				usedDirectionLight;
+		UINT							m_nObjectID;
 	};
 }
 

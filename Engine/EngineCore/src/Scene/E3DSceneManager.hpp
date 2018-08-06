@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/8/11.
 //
 
-#ifndef E3DSceneManager_hpp
-#define E3DSceneManager_hpp
+#ifndef __E3D_SCENE_MANAGER_HPP__
+#define __E3D_SCENE_MANAGER_HPP__
 
 #include "E3DScene.hpp"
 
@@ -26,18 +26,11 @@ namespace E3DEngine
 		SceneManager();
 		virtual void Initilize();
 		virtual void Destory();		
-		Scene * CreateScene(std::string filePath);
-
-		bool ChangeScene(uint sceneID);
-		bool ChangeScene(Scene * scene);
-		Scene * GetCurrentScene();
-		Scene * GetScene(uint sceneID);		
-		void DestoryScene(Scene * scene);
+		Scene * LoadScene(std::string filePath);
+		static Scene * GetCurrentScene();
 
 	private:
-		std::map<uint, Scene*>  m_mapScenes;
-		uint					m_lastSceneID;
-		uint					m_currentUseSceneID;
+		Scene * mCurScene;
 	};
 }
 #endif /* E3DSceneManager_hpp */

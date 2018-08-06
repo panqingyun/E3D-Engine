@@ -40,7 +40,7 @@ namespace E3DEngine
 
 	Material* GLES_MaterialManager::CreateMaterial(std::string path, int id)
 	{
-		TableManager* tblManager = TableRegister::RegisterAllTable(path.c_str());
+		TableManager* tblManager = TableRegister::GetTableManager(path.c_str());
 		if (tblManager == nullptr)
 		{
 			return nullptr;

@@ -24,7 +24,7 @@ namespace E3DEngine
 
 	void ParticleSystem::CreateParticleEmitter(std::string configName, uint configID, ParticleGroup * p, const char * emitterName, int emitterID, vec3f position)
 	{
-		TableBase * emitterTbl = EngineDelegate::GetInstance().GetTableManager(configName)->Select(emitterName, emitterID);
+		TableBase * emitterTbl = mCurTableManager->Select(emitterName, emitterID);
 
 		if (emitterTbl != nullptr)
 		{
@@ -40,7 +40,7 @@ namespace E3DEngine
 
 	void ParticleSystem::CreateParticleAffector(std::string configName, uint configID, E3DEngine::ParticleGroup *p, const char *affectorName, int affectorID)
 	{
-		TableBase * affectorTbl = EngineDelegate::GetInstance().GetTableManager(configName)->Select(affectorName, affectorID);
+		TableBase * affectorTbl = mCurTableManager->Select(affectorName, affectorID);
 
 		if (affectorTbl != nullptr)
 		{
@@ -70,7 +70,8 @@ namespace E3DEngine
 	std::vector<ParticleGroup*> * ParticleSystem::ActiveParticle(std::string cfgName)
 	{
 		auto activeParticle = new std::vector<ParticleGroup *>();
-		auto tblManager		= EngineDelegate::GetInstance().GetTableManager(cfgName);
+		auto tblManager = TableRegister::GetTableManager(cfgName.c_str());
+		mCurTableManager = tblManager;
 		std::vector<ParticleConfig*> * config = nullptr;
 		if (tblManager != nullptr)
 		{
@@ -133,13 +134,13 @@ namespace E3DEngine
 
 	void ParticleSystem::initParticleRenderer(ParticleConfig *config, ParticleGroup * particle)
 	{
-		auto layerConfig = EngineDelegate::GetInstance().GetTableManager(LAYER_CONFIAG_NAME)->Select<LayerConfig>(config->LayerID);
+		auto layerConfig = TableRegister::GetTableManager((LAYER_CONFIAG_NAME).c_str())->Select<LayerConfig>(config->LayerID);
 		if (layerConfig == nullptr)
 		{
 			return;
 		}
 		std::string layerName = layerConfig->Name;
-		SceneManager::GetInstance().GetCurrentScene()->AddChild(particle);
+		SceneManager::GetCurrentScene()->AddObject(particle);
 		std::vector<string> materialCfg = StringBuilder::Split(particle->m_MaterialName, ":");
 		std::string materialPath = "";
 		int materialID = 1;

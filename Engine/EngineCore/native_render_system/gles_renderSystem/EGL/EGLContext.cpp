@@ -108,12 +108,7 @@ void EGL_Context::InitGLES(EGLNativeDisplayType displayID, EGLNativeWindowType w
 		memset(pESContext, 0, sizeof(ESContext));
 	}
 	pESContext->hWnd = windowHandle;
-	Vector2 size = GetRenderSystem()->GetFrameSize();
-	pESContext->width = size.x;
-	pESContext->height = size.y;
-
 	DisplayID = displayID;
-	WindowID = windowHandle;
 	if (!CreateEGLEnv(isOffScreen))
 	{
 		assert(false);
@@ -146,7 +141,7 @@ EGLBoolean EGL_Context::createSurface(bool isOffScreen, EGLConfig config)
 	}
 	else
 	{
-		surface = eglCreateWindowSurface(pESContext->eglDisplay, config, (EGLNativeWindowType)WindowID, nullptr);
+		surface = eglCreateWindowSurface(pESContext->eglDisplay, config, (EGLNativeWindowType)pESContext->hWnd, nullptr);
 	}
 
 	if (surface == EGL_NO_SURFACE)

@@ -92,7 +92,7 @@ namespace E3DEngine
 			//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
 		}
 		IsStaticDraw = false;
-		SceneManager::GetInstance().GetCurrentScene()->AddRenderObject(this, m_layer);
+		SceneManager::GetCurrentScene()->AddRenderObject(this, m_layer);
 		//for (auto & attr : pMaterial->pShader->AttributeList)
 		//{// TODO 根据材质需要的顶点数据重新分配顶点数组
 
@@ -152,18 +152,18 @@ namespace E3DEngine
 	void RenderObject::SetRenderIndex(DWORD index)
 	{
 		RenderIndex = (eRenderIndex)index;
-		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
+		if (SceneManager::GetCurrentScene() == nullptr)
 		{
 			return;
 		}
-		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
+		SceneManager::GetCurrentScene()->ChangeRenderIndex(ID, (eRenderIndex)index);
 	}
 
 
 	void RenderObject::SetLayerMask(DWORD layer)
 	{
 		m_layer = layer;
-		SceneManager::GetInstance().GetCurrentScene()->ChangeRenderObjectLayer(this);
+		SceneManager::GetCurrentScene()->ChangeRenderObjectLayer(this);
 	}
 
 }

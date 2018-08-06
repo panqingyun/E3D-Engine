@@ -6,8 +6,8 @@
 //  Copyright © 2017年 潘庆云. All rights reserved.
 //
 
-#ifndef EngineDelegate_hpp
-#define EngineDelegate_hpp
+#ifndef __E3D_ENGINE_DELEGATE_HPP__
+#define __E3D_ENGINE_DELEGATE_HPP__
 
 #include "../Camera/E3DCamera.h"
 #include "../ParticleSystem/E3DParticleFactory.hpp"
@@ -57,42 +57,22 @@ namespace E3DEngine
 			return _ins;
 		};
 		~EngineDelegate();
-		void Initilize();
-		void InitConfig(const char * path);
-		void SetResourcePath(const char * path);
-		void DestoryTableManager(std::string id);
-		TableManager * GetTableManager(std::string id);		
-		void SetCommonResourcePath(const char * path);		
-		void DestoryScene(Scene *scene);	
+		void Initilize();	
 		void Destory();
 		
 	public:
-		UINT GenObjectID();
-		void DestoryObject(GameObject* obj);
-		void ChangeScene(Scene* scene);
-		void ChangeScene(uint sceneID);
-		void AddDonotDestory(GameObject* obj);
 		void SetEnginePause(bool bPause);
 		bool GetEnginePause();
-        void SetSceneType(int type);
 
 	private:
 		EngineDelegate();
 	private:
-		std::map<std::string, TableManager*>	m_mapTableManager;
 		eTargetPlatform							m_ePlatform;
-		std::map<std::string, ISystem*>			m_mapSystems;
-		const char *							m_strResourcePath;
 		bool									m_bIsInited;
-		UINT									m_nObjectID;
 		bool									m_bPause;
-		std::map<UINT, GameObject*>				m_mapDoNotDestoryObject;
-		Scene		*							m_pLastScene;
 		
 	public:
-		mat4f RotateMatrix;
-		event EventDelegates SceneClearEvent;
-		void Update(float deltaTime, bool selfClear = true);
+		void Update(float deltaTime);
 	};
 }
 

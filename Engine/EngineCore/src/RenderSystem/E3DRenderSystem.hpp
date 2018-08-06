@@ -5,8 +5,8 @@
 //  Created by 潘庆云 on 2017/1/22.
 //
 
-#ifndef RenderSystem_hpp
-#define RenderSystem_hpp
+#ifndef __E3D_RENDER_SYSTEM_HPP__
+#define __E3D_RENDER_SYSTEM_HPP__
 
 #include <stdio.h>
 #include <string>

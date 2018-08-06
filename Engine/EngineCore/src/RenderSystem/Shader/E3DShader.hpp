@@ -4,8 +4,8 @@
 //  Created by 潘庆云 on 2017/3/30.
 //
 
-#ifndef Shader_hpp
-#define Shader_hpp
+#ifndef __E3D_SHADER_HPP__
+#define __E3D_SHADER_HPP__
 
 #include <src/Utils/E3DUtil.hpp>
 #include "../../Config/Table.h"

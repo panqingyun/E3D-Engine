@@ -47,7 +47,7 @@ extern "C"
 		float _deltaTime = (float)(curTime - lastTime) / 1000.0f;
 		lastTime = curTime;
 		Time::deltaTime = _deltaTime;
-		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime, true);
+		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime);
 		
 	}
 
@@ -71,7 +71,7 @@ extern "C"
 	{
 		GetRenderSystem()->setFrameWidth(w);
 		GetRenderSystem()->setFrameHeight(h);
-		SceneManager::GetInstance().GetCurrentScene()->ChangeFrameSize(w, h);
+		SceneManager::GetCurrentScene()->ChangeViewportSize(w, h);
 	}
 
 	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)

@@ -76,11 +76,11 @@
     <Filter Include="engineCore\src\Mono">
       <UniqueIdentifier>{38e4a4a1-f471-4251-bc11-8810de2e0ba5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engineCore\src\RenderSystem">
-      <UniqueIdentifier>{ff24a81b-fe31-488c-ad7e-20a91b546352}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engineCore\src\Source\web">
       <UniqueIdentifier>{d9f04101-fcd7-42e9-9e5f-f01382e6d0e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engineCore\src\RenderSystem">
+      <UniqueIdentifier>{aa84fbc7-856a-4c21-82f6-9633e5813f65}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,9 +177,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h">
-      <Filter>engineCore\src\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.h">
       <Filter>engineCore\src\ParticleSystem</Filter>
     </ClInclude>
@@ -216,9 +213,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h">
-      <Filter>engineCore\src\Source</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\NetCommand.h">
       <Filter>extern\WindowsSocket</Filter>
     </ClInclude>
@@ -228,16 +222,10 @@
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.h">
       <Filter>extern\WindowsSocket</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSphere.h">
       <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h">
       <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.h">
@@ -245,36 +233,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h">
       <Filter>engineCore\src\Mono</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.h">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h">
       <Filter>engineCore\src\Object</Filter>
@@ -284,9 +242,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.h">
       <Filter>engineCore\src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h">
-      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Utils\Include.h">
       <Filter>engineCore\src\Utils</Filter>
@@ -321,14 +276,62 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Application.h">
       <Filter>engineCore\src\Source\application</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h">
+      <Filter>engineCore\src\Source\web</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.h">
+      <Filter>engineCore\src\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Interface.h">
       <Filter>engineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.h">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.h">
       <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h">
-      <Filter>engineCore\src\Source\web</Filter>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.h">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h">
+      <Filter>engineCore\src\Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -407,9 +410,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp">
       <Filter>engineCore\src\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp">
-      <Filter>engineCore\src\Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\ParticleSystem\E3DParticlePool.cpp">
       <Filter>engineCore\src\ParticleSystem</Filter>
     </ClCompile>
@@ -455,16 +455,10 @@
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.cpp">
       <Filter>extern\WindowsSocket</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSphere.cpp">
       <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp">
       <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoFunction.cpp">
@@ -472,36 +466,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp">
       <Filter>engineCore\src\Mono</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
       <Filter>engineCore\src\Object</Filter>
@@ -511,9 +475,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMeshRender.cpp">
       <Filter>engineCore\src\Mesh</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
-      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\tinyxmlparser.cpp">
       <Filter>engineCore\src\Source\txml</Filter>
@@ -542,11 +503,59 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\Application.cpp">
       <Filter>engineCore\src\Source\application</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp">
+      <Filter>engineCore\src\Source\web</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DAutoreleasePool.cpp">
+      <Filter>engineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderQueue.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\E3DRenderSystem.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterial.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Material\E3DMaterialManager.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRender.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\RenderObject\E3DRenderManager.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShader.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Shader\E3DShaderManager.cpp">
       <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp">
-      <Filter>engineCore\src\Source\web</Filter>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp">
+      <Filter>engineCore\src\Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

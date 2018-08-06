@@ -1,5 +1,5 @@
-#ifndef __REF_MANAGER_H__
-#define __REF_MANAGER_H__
+#ifndef __E3D_REF_MANAGER_H__
+#define __E3D_REF_MANAGER_H__
 #include <vector>
 
 namespace E3DEngine

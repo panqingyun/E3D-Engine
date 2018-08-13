@@ -69,11 +69,12 @@ void InitEngine(HWND hWnd)
 	strPath = "../../Demo.CSharp/Asset/";
 #endif
 	InFile.open(logFileName.data(), std::ios::out);
+	::AllocConsole();
+	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
+
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine();	
 	::SetDebugLogOutFunc(LogOutput);
-	::AllocConsole();
-	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
 	::CreateEditorGrid();

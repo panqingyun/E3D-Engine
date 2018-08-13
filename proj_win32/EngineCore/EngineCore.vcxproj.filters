@@ -324,9 +324,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp">
       <Filter>engineCore\src\RenderSystem</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.hpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp">
       <Filter>engineCore\src\Object</Filter>
     </ClInclude>
@@ -547,9 +544,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp">
       <Filter>engineCore\src\RenderSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DDynamicRectangle.cpp">
-      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp">
       <Filter>engineCore\src\Object</Filter>

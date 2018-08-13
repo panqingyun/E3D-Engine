@@ -15,58 +15,52 @@
 namespace E3DEngine
 {	
 	const std::string NM_GameObject = "GameObject";
-	const std::string TP_Camera = "Camera";
-	const std::string TP_DLight = "DirectionLight";
-	const std::string TP_PLight = "PointLight";
-	const std::string TP_SkyBox = "SkyBox";
-	const std::string TP_Mesh = "Mesh";
-	const std::string TP_Particle = "Particle";
-	const std::string TP_Cube = "Cube";
-	const std::string TP_Sphere = "Sphere";
-	const std::string TP_Empty = "Empty";
-	const string _typeName = "Type";
-	const string TP_Terrain = "Terrain";
+	const std::string TP_Camera		= "Camera";
+	const std::string TP_DLight		= "DirectionLight";
+	const std::string TP_PLight		= "PointLight";
+	const std::string TP_SkyBox		= "SkyBox";
+	const std::string TP_Mesh		= "Mesh";
+	const std::string TP_Particle	= "Particle";
+	const std::string TP_Cube		= "Cube";
+	const std::string TP_Sphere		= "Sphere";
+	const std::string TP_Empty		= "Empty";
+	const std::string _typeName		= "Type";
+	const std::string TP_Terrain	= "Terrain";
 
-	const string _Name = "Name";
-	const string material_TypeName = "Material";
-	const string _FilePath = "FilePath";
-	const string _SelectID = "SelectID";
-	const string _LayerMask = "LayerMask";
-	const string _Layer_AllLayer = "AllLayer";
-	const string _Active = "Active";
+	const std::string _Name			= "Name";
+	const std::string _FilePath		= "FilePath";
+	const std::string _SelectID		= "SelectID";
+	const std::string _LayerMask	= "LayerMask";
+	const std::string _Active		= "Active";
+	const std::string _Position		= "Posistion";
+	const std::string _Rotation		= "Rotation";
+	const std::string _Scale		= "Scale";
+	const std::string _Transform	= "Transform";
+	const std::string _Material		= "Material";
+	const std::string _Particle		= "Particle";
+	const std::string _ClearColor	= "ClearColor";
+	const std::string _Color		= "Color";
+	const std::string _RenderIndex	= "RenderIndex";
+	const std::string _Component	= "Component";
+	const std::string _Range		= "Range";
 
-	const string transform_TypeName = "Transform";
-	const string _Position = "Posistion";
-	const string _Rotation = "Rotation";
-	const string _Scale = "Scale";
+	const std::string _Layer_AllLayer				= "AllLayer";
+	const std::string _RenderIndex_Transparent		= "Transparent";
+	const std::string _RenderIndex_Normal			= "Normal";
+	const std::string _RenderIndex_LowMost			= "LowMost";
+	const std::string _RenderIndex_TopMost			= "TopMost";
+	const std::string _Component_ClassName			= "ClassName";
+	const std::string _Component_Property			= "Property";
+	const std::string _Camera_CullMask				= "CullingMask";
+	const std::string _Camera_CullMask_Everything	= "Everything";
 
-	const string _Transform = "Transform";
-	const string _Material = "Material";
-	const string _Particle = "Particle";
-
-	const string _ClearColor = "ClearColor";
-	const string _Color = "Color";
-
-	const string _RenderIndex = "RenderIndex";
-
-	const string _RenderIndex_Transparent = "Transparent";
-	const string _RenderIndex_Normal = "Normal";
-	const string _RenderIndex_LowMost = "LowMost";
-	const string _RenderIndex_TopMost = "TopMost";
-
-	const string _Component = "Component";
-	const string _Component_ClassName = "ClassName";
-	const string _Component_Property = "Property";
-
-	const string _Camera_CullMask = "CullingMask";
-	const string _Camera_CullMask_Everything = "Everything";
-	const string _Range = "Range";
-
-	using createGameObjectFun = GameObject*(*)(TiXmlElement *objectElement);
-	std::map<std::string, createGameObjectFun> createFun;
-	std::map<std::string, UINT> renderIndexMap;
-	void createObjects(GameObject * parent, TiXmlElement* rootElem);
+	using createGameObjectFun	= GameObject*(*)(TiXmlElement *objectElement);
 	std::string sceneFolderPath = "";
+
+	std::map<std::string, createGameObjectFun>	createFun;
+	std::map<std::string, UINT>					renderIndexMap;
+
+	void createObjects(GameObject * parent, TiXmlElement* rootElem);
 
 	Color4 createColor(std::string colorStr)
 	{

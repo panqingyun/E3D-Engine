@@ -128,6 +128,7 @@ namespace E3DEngine
 
 }
 
+#ifdef __GLES_2__
 void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
@@ -137,4 +138,4 @@ void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 	SetRenderSystem(renderSystem);
 	renderSystem->CreateOpenGLES(EGL_DEFAULT_DISPLAY, nativeWindow);
 }
-
+#endif

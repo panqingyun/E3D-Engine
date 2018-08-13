@@ -22,10 +22,7 @@
 
 - 将``proj_win32/RenderSystem/gles_renderSystem/GLES/dll`` 中的两个dll文件拷贝到``proj_win32/bin``中。 
 
-## 从C#编辑器启动 调试C++代码方法：
-- 在``EngineCore``项目上右键打开属性窗口，选择调试选项页，修改调试类型为混合
-- 在``EngineEditor``上右键打开属性窗口，选择调试，勾选“启用本机代码调试”
-- 完成
+## IOS 和 Android尚未完成
 
 ## Mono C#代码调试方法
 下载并安装 ``Xamarin Studio``，在系统环境变量中添加 ``MONODEVELOP_SDB_TEST`` 值为 1，

@@ -1,6 +1,6 @@
 # E3DEngine
 ![](https://github.com/panqingyun/E3D/blob/master/engine.png)  
-3D引擎 目前完成
+
 - [x] 场景
 - [x] 摄像机
 - [x] 粒子系统
@@ -13,6 +13,11 @@
 - [x] 模型读取和显示
 - [x] 物理引擎使用Bullet
 - [x] 使用Mono C#作为逻辑脚本
+
+- [] 实时阴影
+- [] 骨骼动画
+- [] UI
+- [] 脚本系统
 
 #### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。
 

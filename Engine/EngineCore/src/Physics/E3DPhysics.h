@@ -3,19 +3,32 @@
 
 #pragma once
 #include "../Source/Interface.h"
+#include "../Object/E3DGameObject.h"
 
 namespace E3DEngine
 {
-	class Physics : public  Ref
+	class RaycastHit : public Ref
+	{
+	public:
+		GameObject *mGameObject;
+	};
+
+	struct Ray : public Ref
+	{
+		vec3f From;
+		vec3f To;
+	};
+
+	class PhysicWorld : public  Ref
 	{
 	private:
-		Physics();
+		PhysicWorld();
 
 	public:
-		~Physics();
-		static Physics &GetInstance()
+		~PhysicWorld();
+		static PhysicWorld &GetInstance()
 		{
-			static Physics _ins;
+			static PhysicWorld _ins;
 			return _ins;
 		}
 		void InitPhysics();
@@ -31,6 +44,8 @@ namespace E3DEngine
 		{
 			return m_pDynamicsWorld;
 		}
+
+		bool RayCast(Ray ray, RaycastHit &hit);
 	private:
 		btDefaultCollisionConfiguration* m_pCollisionConfiguration;
 		btCollisionDispatcher* m_pDispatcher;

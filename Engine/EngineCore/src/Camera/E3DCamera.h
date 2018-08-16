@@ -12,6 +12,7 @@ namespace E3DEngine
 {
 	class RenderQueue;
 	class Render2Texture;
+	struct Ray;
 	class Camera : public GameObject
 	{
 		friend class Render2Texture;
@@ -80,6 +81,8 @@ namespace E3DEngine
 		
 		/** set a new projection matrix for the camera ( ortho, frustum, todo: add helper for creating ortho frustum)*/
 		void SetProjectionMatrix(const mat4f& projection);
+
+		Ray ScreenPointToRay(vec2f mousePos);
 	
 		float GetPitch(){return m_pitch;}
 		float GetYaw(){return m_yaw;}

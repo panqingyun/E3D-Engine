@@ -27,7 +27,7 @@ namespace E3DEngine
 			return;
 		}
 		Application::Initialize();
-		Physics::GetInstance().InitPhysics();
+		PhysicWorld::GetInstance().InitPhysics();
 		Timer::Init();
 		Debug::Init();
 		m_bIsInited = true;
@@ -36,7 +36,7 @@ namespace E3DEngine
 	void EngineDelegate::Update(float deltaTime)
 	{
 		Timer::Update(deltaTime);
-		Physics::GetInstance().Update(deltaTime);
+		PhysicWorld::GetInstance().Update(deltaTime);
 		Scene * pCurScene = SceneManager::GetCurrentScene();
 		if (pCurScene != nullptr )
 		{
@@ -62,6 +62,6 @@ namespace E3DEngine
 		EffectFactory::GetInstance().Destory();
 		Timer::Destory();
 		TableRegister::Destory();
-		Physics::GetInstance().Destory();
+		PhysicWorld::GetInstance().Destory();
 	}
 }

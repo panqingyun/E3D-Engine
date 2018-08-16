@@ -9,16 +9,16 @@
 
 namespace E3DEngine
 {
-	Physics::Physics()
+	PhysicWorld::PhysicWorld()
 	{
 		mlocalInertia = btVector3(0, 10, 0);
 	}
 
-	Physics::~Physics()
+	PhysicWorld::~PhysicWorld()
 	{
 	}
 
-	void Physics::InitPhysics()
+	void PhysicWorld::InitPhysics()
 	{
 		btVector3 worldAabbMin(-10000, -10000, -10000);
 		btVector3 worldAabbMax(10000, 10000, 10000);
@@ -38,7 +38,7 @@ namespace E3DEngine
 
 	}
 
-	void Physics::Update(float deltaTime)
+	void PhysicWorld::Update(float deltaTime)
 	{
 		m_pDynamicsWorld->stepSimulation(deltaTime);
 		//int  numManifolds = m_pDispatcher->getNumManifolds();
@@ -70,15 +70,15 @@ namespace E3DEngine
 		//		}
 		//	}
 		//}
-		m_hasCheckObjectMap.clear();
+		//m_hasCheckObjectMap.clear();
 	}
 
-	void Physics::Destory()
+	void PhysicWorld::Destory()
 	{
 
 	}
 
-	void Physics::AddRigidBody(btRigidBody * body, int group /*= 0*/, int mask /*= 0*/)
+	void PhysicWorld::AddRigidBody(btRigidBody * body, int group /*= 0*/, int mask /*= 0*/)
 	{
 		if ( group == 0)
 		{
@@ -90,7 +90,26 @@ namespace E3DEngine
 		}
 	}
 
-	void Physics::CreateGround()
+
+	bool PhysicWorld::RayCast(Ray ray, RaycastHit &hit)
+	{
+		bool isHit = false;
+
+		btVector3 from = btVector3(ray.From.x, ray.From.y, ray.From.z);
+		btVector3 to = btVector3(ray.To.x, ray.To.y, ray.To.z);
+
+		btCollisionWorld::ClosestRayResultCallback cb(from, to);
+		m_pDynamicsWorld->rayTest(from, to, cb);
+
+		if (cb.hasHit())
+		{
+			hit.mGameObject = (GameObject*)cb.m_collisionObject->getUserPointer();
+			return true;
+		}
+		return false;
+	}
+
+	void PhysicWorld::CreateGround()
 	{
 		m_pGroundShape = new  btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
 		btTransform groundTransform;

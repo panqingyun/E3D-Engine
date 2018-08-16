@@ -37,13 +37,13 @@ namespace E3DEngine
 		vec3f GetRight();
         vec3f GetPosition();
 		vec3f GetScale();
+		vec3f GetLocalPosition();
+		vec3f GetLocalScale();
 		void AddChild(unsigned int objID ,CTransform * child);
 		mat4f GetParentMatrix();
 		void Destory();
-	public:
-		Quatf getParentRotation();
-		vec3f getParentPosition();
-		vec3f getParentScale();
+
+	protected:
 		void  translation();
 		void  rotate();
 		void  scale();

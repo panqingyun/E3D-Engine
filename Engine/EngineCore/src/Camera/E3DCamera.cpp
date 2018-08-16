@@ -13,6 +13,7 @@
 #include "../RenderSystem/Texture/E3DRender2Texture.h"
 #include "../Source/EngineDelegate.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
+#include "../Physics/E3DPhysics.h"
 
 namespace E3DEngine
 {
@@ -95,7 +96,6 @@ namespace E3DEngine
 			}
 		}
 	}
-
 
 	void Camera::render(float deltaTime)
 	{
@@ -237,6 +237,26 @@ namespace E3DEngine
 		m_mProjection = projection;
 		
 		m_mProjectInverse = m_mProjection.inverse();
+	}
+
+
+	E3DEngine::Ray Camera::ScreenPointToRay(vec2f mousePos)
+	{
+		float screenWidth = GetRenderSystem()->getFrameWidth();
+		float screenHeight = GetRenderSystem()->getFrameHeight();
+
+		float mPosX = (mousePos.x / screenWidth - 0.5) * 2;
+		float mPosY = (mousePos.y / screenHeight - 0.5) * 2;
+
+		Ray ray;
+		ray.From = Transform->GetPosition();
+
+		vec3f to(0, 0, m_far);
+		to = to * GetForwardVector();
+
+		ray.To = GetWorldPointWithScreenPoint(mPosX, mPosY, to.z) + Transform->GetPosition();
+
+		return ray;
 	}
 
 	vec3f Camera::GetForwardVector()

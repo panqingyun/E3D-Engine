@@ -60,7 +60,7 @@ namespace E3DEngine
 		mMass = mass;
 		if (mRigidBody != nullptr)
 		{
-			mRigidBody->setMassProps(mass, Physics::GetInstance().GetInertia());
+			mRigidBody->setMassProps(mass, PhysicWorld::GetInstance().GetInertia());
 		}
 	}
 
@@ -127,7 +127,6 @@ namespace E3DEngine
 
 		btQuaternion q;
 		q.setEuler(Transform->RotationEuler.y * M_PI / 180, Transform->RotationEuler.x* M_PI / 180, Transform->RotationEuler.z* M_PI / 180);
-		vec3f scale = Transform->GetScale();
 		mStartTransform.setRotation(q);
 
 		mRigidBody->setWorldTransform(mStartTransform);
@@ -146,7 +145,7 @@ namespace E3DEngine
 		mStartTransform.setRotation(q);
 		
 		bool isDynamic = (mMass != 0.f);
-		btVector3 localInertia = Physics::GetInstance().GetInertia();
+		btVector3 localInertia = PhysicWorld::GetInstance().GetInertia();
 		if (isDynamic)
 			shape->calculateLocalInertia(mMass, localInertia);
 
@@ -159,8 +158,8 @@ namespace E3DEngine
 		mRigidBody->setFriction(mFriction); // 摩擦力
 		mRigidBody->setUserPointer(mGameObject);
 		mRigidBody->setRestitution(mRestitution);
-		Physics::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
-		Physics::GetInstance().AddRigidBody(mRigidBody);
+		PhysicWorld::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
+		PhysicWorld::GetInstance().AddRigidBody(mRigidBody);
 	}
 
 	void BoxCollider::Awake()
@@ -175,6 +174,7 @@ namespace E3DEngine
 
 	bool BoxCollider::CheckClick(vec2d screenPoint)
 	{
+		
 		return false;
 	}
 	

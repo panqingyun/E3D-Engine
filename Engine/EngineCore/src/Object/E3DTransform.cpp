@@ -224,6 +224,16 @@ namespace E3DEngine
 		return Scale * pScale;
 	}
 
+	vvision::vec3f CTransform::GetLocalPosition()
+	{
+		return Position;
+	}
+
+	vvision::vec3f CTransform::GetLocalScale()
+	{
+		return Scale;
+	}
+
 	mat4f CTransform::GetParentMatrix()
 	{
 		mat4f Identity;
@@ -235,27 +245,6 @@ namespace E3DEngine
 	void CTransform::Destory()
 	{
 		Childs.clear();
-	}
-
-	vec3f CTransform::getParentScale()
-	{
-		vec3f vScale(1,1,1);
-		vec3f vParentScale = Parent != nullptr ? Parent->Scale : vScale;
-		return vParentScale;
-	}
-	
-	vec3f CTransform::getParentPosition()
-	{
-		vec3f vPosition(0,0,0);
-		vec3f vParentPosition = Parent != nullptr ? Parent->Position : vPosition;
-		return vParentPosition;
-	}
-	
-	Quatf CTransform::getParentRotation()
-	{
-		Quatf qRotate = Quatf::fromEulerAngles(0, 0, 0);
-		Quatf parentRotation = Parent != nullptr ? Parent->Rotation : qRotate;
-		return parentRotation;
 	}
 	
 	void CTransform::SetMatrix(mat4f matrix)

@@ -1,0 +1,34 @@
+﻿<Window x:Class="E3DEditor.View.Setting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:E3DEditor.View"
+        mc:Ignorable="d"
+        Title="Setting" Height="300" Width="470" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+	<Grid Background="#FFD1D1D1">
+		<GroupBox x:Name="groupBox" Header="环境设置" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,18,0,37">
+			<Grid Background="#FF8B8B8B">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="69*"/>
+					<ColumnDefinition Width="5*"/>
+					<ColumnDefinition Width="123*"/>
+					<ColumnDefinition Width="20*"/>
+					<ColumnDefinition Width="9*"/>
+				</Grid.ColumnDefinitions>
+				<local:OpenFileTextBox IsOpenFolder="True" x:Name="resPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Width="246"/>
+				<local:OpenFileTextBox IsOpenFolder="True" x:Name="tabPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,55,0,0" VerticalAlignment="Top" Width="246"/>
+				<Label x:Name="label" Content="游戏资源目录" HorizontalAlignment="Right" Margin="0,20,0,0" VerticalAlignment="Top" Width="58"/>
+				<Label x:Name="label_Copy" Content="配表目录" HorizontalAlignment="Right" Margin="0,54,0,0" VerticalAlignment="Top" Width="58"/>
+				<local:OpenFileTextBox IsOpenFolder="True" x:Name="JsonPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="246"/>
+				<Label x:Name="label_Copy1" Content="Json表目录" HorizontalAlignment="Right" Margin="0,85,0,0" VerticalAlignment="Top" Width="72"/>
+				<Label x:Name="label_Copy2" Content="分辨率" HorizontalAlignment="Right" Margin="0,121,0,0" VerticalAlignment="Top" Width="47"/>
+				<local:NumberTextBox x:Name="width" Grid.Column="2" HintText="宽" HorizontalAlignment="Left" Margin="0,125,0,0" VerticalAlignment="Top" Width="123"/>
+				<local:NumberTextBox x:Name="height" Grid.Column="2" HintText="高" HorizontalAlignment="Left" Margin="134,125,0,0" VerticalAlignment="Top" Width="112"/>
+
+			</Grid>
+		</GroupBox>
+		<Button x:Name="sure" Content="确定" Margin="0,220,60,5" VerticalAlignment="Bottom" Height="28" Click="sure_Click" HorizontalAlignment="Right" Width="97"/>
+
+	</Grid>
+</Window>

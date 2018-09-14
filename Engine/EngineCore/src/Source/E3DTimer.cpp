@@ -1,4 +1,4 @@
-//
+﻿//
 //  E3DTimer.cpp
 //
 //  Created by 潘庆云 on 2017/5/9.
@@ -15,70 +15,94 @@ namespace E3DEngine
 		getInstance().m_nTimerID++;
 		stTimer * timer = new stTimer;
 		timer->isRepeat = isRepeat;
-		timer->isPause = true;
+		timer->isStop = false;
 		timer->tickTime = 0;
 		timer->timeInterval = timeInSec;
 		timer->timerCallBack += timerTickCallBack;
 		timer->param = param;
-		getInstance().timerMap[getInstance().m_nTimerID] = timer;
+		timer->ID = getInstance().m_nTimerID;
+		getInstance().mTimerMap[getInstance().m_nTimerID] = timer;
+		std::vector<std::list<stTimer*>> &timeList = getInstance().mTimerList;
+		int n = timeInSec / getInstance().deltaTime;
+		timeList[n].emplace_back(timer);
 		return getInstance().m_nTimerID;
 	}
 
 	void Timer::StartTimer(unsigned int timerID)
 	{
-		if (getInstance().timerMap.find(timerID) == getInstance().timerMap.end())
+		if (getInstance().mTimerMap.find(timerID) == getInstance().mTimerMap.end())
 		{
 			return;
 		}
-		getInstance().timerMap[timerID]->isPause = false;
+		getInstance().mTimerMap[timerID]->isStop = false;
 	}
 
 	void Timer::Update(float deltaTime)
 	{
 		Timer &t = getInstance();
-		std::map<unsigned int, stTimer*> temp;
-		std::copy(t.timerMap.begin(), t.timerMap.end(), std::inserter(temp, temp.begin()));
-		for (auto & it : temp)
+		t.deltaTime = deltaTime;
+		if (t.mTimerList.size() == 0)
 		{
-			if (it.second->isPause)
+			return;
+		}
+
+		std::list<stTimer*> &timerList = t.mTimerList[0];
+		std::list<stTimer*> temp;
+
+		std::copy(t.mTimerList[0].begin(), t.mTimerList[0].end(), std::inserter(temp, temp.begin()));
+
+		for (auto itimer : temp)
+		{
+			itimer->tickTime += deltaTime;
+			if (itimer->tickTime >= itimer->timeInterval)
 			{
-				continue;
-			}
-			it.second->tickTime += deltaTime;
-			if (it.second->tickTime >= it.second->timeInterval)
-			{
-				if (!it.second->timerCallBack.empty())
+				if (!itimer->timerCallBack.empty() && !itimer->isStop)
 				{
-					it.second->timerCallBack(nullptr, it.second->param);
+					itimer->timerCallBack(nullptr, itimer->param);
+					if (itimer->isRepeat)
+					{
+						// 循环执行的加入下一个周期链表中
+						int n = itimer->timeInterval / t.deltaTime;
+						t.mTimerList[n].emplace_back(itimer);
+						timerList.remove(itimer);
+					}
 				}
-				if (it.second->isRepeat == false)
-				{
-					StopTimer(it.first);
-				}
-				it.second->tickTime = 0;
 			}
 		}
+
+		// 舍弃这一时间片
+		for (std::list<stTimer*>::iterator itimer = timerList.begin(); itimer != timerList.end(); ++itimer)
+		{
+			getInstance().mTimerMap.erase((*itimer)->ID);
+			SAFE_DELETE((*itimer));
+		}
+
+		timerList.clear();
+		t.mTimerList.erase(t.mTimerList.begin());
 	}
 
 	void Timer::Init()
 	{
 		getInstance().m_nTimerID = 0;
+		getInstance().deltaTime = 0;
+		getInstance().mIndex = 0;
+		getInstance().mTimerList.resize(14400000);
 	}
 
 	void Timer::PauseTimer(unsigned int timerID)
 	{
-		std::map<unsigned int, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
-		if (it == getInstance().timerMap.end())
+		std::map<unsigned int, stTimer*>::iterator it = getInstance().mTimerMap.find(timerID);
+		if (it == getInstance().mTimerMap.end())
 		{
 			return;
 		}
-		it->second->isPause = true;
+		it->second->isStop = true;
 	}
 
 	void Timer::StopTimer(unsigned int timerID)
 	{
-		std::map<unsigned int, stTimer*>::iterator it = getInstance().timerMap.find(timerID);
-		if (it == getInstance().timerMap.end())
+		std::map<unsigned int, stTimer*>::iterator it = getInstance().mTimerMap.find(timerID);
+		if (it == getInstance().mTimerMap.end())
 		{
 			return;
 		}
@@ -86,17 +110,18 @@ namespace E3DEngine
 		{
 			return;
 		}
-		SAFE_DELETE(it->second);
-		getInstance().timerMap.erase(it);
+
+
+		getInstance().mTimerMap.erase(it);
 	}
 
 	void Timer::StopAllTimer()
 	{
-		for (std::map<unsigned int, stTimer *>::iterator it = getInstance().timerMap.begin(); it != getInstance().timerMap.end(); ++it)
+		for (std::map<unsigned int, stTimer *>::iterator it = getInstance().mTimerMap.begin(); it != getInstance().mTimerMap.end(); ++it)
 		{
 			SAFE_DELETE(it->second);
 		}
-		getInstance().timerMap.clear();
+		getInstance().mTimerMap.clear();
 		getInstance().m_nTimerID = 0;
 	}
 }

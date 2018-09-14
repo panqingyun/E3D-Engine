@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\BroadphaseCollision\btAxisSweep3.cpp">
@@ -678,9 +678,6 @@
     <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\NarrowPhaseCollision\btPolyhedralContactClipping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\BulletCollision\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">

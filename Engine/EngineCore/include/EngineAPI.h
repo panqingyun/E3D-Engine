@@ -28,7 +28,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #include <iterator> 
-#define __api_function_  __declspec(dllexport)
+#define __api_function_  __declspec(dllexport) 
 #else
 #define UINT unsigned int
 #define __api_function_ __attribute__ ((visibility("default")))
@@ -46,12 +46,14 @@ typedef HWND NATIVE_WINDOW_TYPE;
 //////////////////////////////////////////////////////////////////////////
 /// dll export function
 //////////////////////////////////////////////////////////////////////////
+#ifdef __cplusplus
 extern "C"
 {
+#endif
 	/// <summary>
 	/// 初始化
 	/// </summary>
-	__api_function_ void InitilizeEngine();
+	__api_function_ void  InitilizeEngine();
 	/// <summary>
 	/// 启动程序脚本
 	/// </summary>
@@ -136,6 +138,7 @@ extern "C"
 	/// </summary>
 	__api_function_ void CreateEditorCamera();
 
+#ifdef __cplusplus
 }
-
+#endif
 #endif /* GLEngineAPI_h */

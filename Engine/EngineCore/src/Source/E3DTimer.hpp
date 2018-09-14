@@ -29,11 +29,12 @@ namespace E3DEngine
 		{
 			timerCallBack.Cleanup();
 		}
+		int ID;
 		event EventDelegates timerCallBack;
 		bool isRepeat;
 		float timeInterval;
 		float tickTime;
-		bool isPause;
+		bool isStop;
 		IObject * handleClass;
 		EventArgs * param;
 	};
@@ -58,9 +59,13 @@ namespace E3DEngine
 		{
 			StopAllTimer();
 		}
+
 	private:
-		std::map<unsigned int, stTimer*> timerMap;
+		std::vector<std::list<stTimer*>> mTimerList;
+		std::map<unsigned int, stTimer*> mTimerMap;
 		unsigned int m_nTimerID;
+		float deltaTime;
+		int mIndex;
 	};
 }
 

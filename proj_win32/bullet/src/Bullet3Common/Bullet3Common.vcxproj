@@ -228,62 +228,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule ..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt</Message>
-      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -H..\..\..\../Engine/EngineCore/3rd/Physical -B..\..\..\../proj_win32/bullet --check-stamp-file ..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\../Engine/EngineCore/3rd/Physical/src/Bullet3Common/CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">..\..\..\..\proj_win32\bullet\src\Bullet3Common\CMakeFiles\generate.stamp</Outputs>
-      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\b3AlignedAllocator.h" />
     <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\b3AlignedObjectArray.h" />
     <ClInclude Include="..\..\..\..\Engine\EngineCore\3rd\Physical\src\Bullet3Common\b3CommandLineArgs.h" />

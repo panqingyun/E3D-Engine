@@ -154,7 +154,7 @@
     <OutDir>..\..\lib</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GL_Release|x64'">
-    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\lib</OutDir>
   </PropertyGroup>

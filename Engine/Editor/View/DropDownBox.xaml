@@ -1,0 +1,100 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:E3DEditor.View"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="E3DEditor.View.DropDownBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="500" Background="White" AllowDrop="True">
+	<UserControl.Resources>
+		<Style TargetType="ToggleButton" x:Key="stlToggleButton">
+			<Setter Property="Foreground" Value="White"></Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border x:Name="Back" Background="#F7FDF7" BorderThickness="1" BorderBrush="#FF555555">
+							<Path Name="PathFill" Fill="#FF555555" Width="8" Height="6" StrokeThickness="0" Data="M5,0 L10,10 L0,10 z" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
+								<Path.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform/>
+										<RotateTransform Angle="180"/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</Path.RenderTransform>
+							</Path>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="PathFill" Property="Fill" Value="White"></Setter>
+								<Setter TargetName="Back" Property="Background" Value="#FF555555"></Setter>
+								<Setter TargetName="Back" Property="BorderBrush" Value="#FF555555"></Setter>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style TargetType="ToggleButton" x:Key="stlFlipToggleButton">
+			<Setter Property="Foreground" Value="White"></Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border x:Name="Back" Background="#F7FDF7" BorderThickness="1" BorderBrush="#FF555555" RenderTransformOrigin="0.5,0.5">
+							<Border.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="180"/>
+								</TransformGroup>
+							</Border.RenderTransform>
+							<Path Name="PathFill" Fill="#FF555555" Width="8" Height="6" StrokeThickness="0" Data="M5,0 L10,10 L0,10 z" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
+								<Path.RenderTransform>
+									<TransformGroup>
+										<ScaleTransform/>
+										<SkewTransform/>
+										<RotateTransform Angle="180"/>
+										<TranslateTransform/>
+									</TransformGroup>
+								</Path.RenderTransform>
+							</Path>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="PathFill" Property="Fill" Value="White"></Setter>
+								<Setter TargetName="Back" Property="Background" Value="#FF555555"></Setter>
+								<Setter TargetName="Back" Property="BorderBrush" Value="#FF555555"></Setter>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="140"/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="0" Grid.Row="0" Background="#FF2E2E2E" >
+			<TextBlock x:Name="titleName" Foreground="White" Grid.Column="0" Margin="2,0,0,0" VerticalAlignment="Center"/>
+		</Grid>
+		<Grid Grid.Column="1" x:Name="textContent">
+			<local:NumberTextBox Background="Transparent" x:Name="textBox" AllowDrop="True"/>
+			<ToggleButton x:Name="toggle" Click="ToggleButton_Click" Style="{StaticResource stlToggleButton}" Width="30" Margin="0,0,0,2" HorizontalAlignment="Right"/>
+		</Grid>
+		<ListBox AllowDrop="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="tableList" SelectionChanged="tableList_Selected">
+			<ListBox.ItemTemplate>
+				<DataTemplate >
+					<Grid>
+						<Image HorizontalAlignment="Left" Width="25" Source="{Binding Path=FileIcon}" Height="40"/>
+						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Text="{Binding Path=ShowText}"/>
+					</Grid>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</UserControl>

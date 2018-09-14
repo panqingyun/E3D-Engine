@@ -1,0 +1,59 @@
+﻿<TabItem x:Class="E3DEditor.View.TabItemWithClose"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Loaded="TabItem_Loaded">
+	<TabItem.Resources>
+		<Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
+			<Setter Property="BorderBrush" Value="Red"></Setter>
+			<Setter Property="Background" Value="#FFFF0404"></Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid>
+							<Rectangle Width="15" Height="15" HorizontalAlignment="Center" VerticalAlignment="Center" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}"></Rectangle>
+							<TextBlock x:Name="text" FontSize="10" Text="X" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsPressed" Value="true">
+								<Setter Property="Background" Value="#FF1F5581"></Setter>
+								<Setter TargetName="text" Property="Foreground" Value="White"></Setter>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</TabItem.Resources>
+	<TabItem.Style>
+		<Style TargetType="{x:Type TabItem}">
+			<Setter Property="BorderBrush" Value="Black"></Setter>
+			<Setter Property="Background" Value="#FF292929"></Setter>
+			<Setter Property="Foreground" Value="White"></Setter>
+			<Setter Property="Padding" Value="5,0,0,0"></Setter>
+			<Setter Property="HorizontalAlignment" Value="Left"></Setter>
+			<Setter Property="VerticalAlignment" Value="Center"></Setter>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabItem}">
+						<Border CornerRadius="0" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"></ColumnDefinition>
+									<ColumnDefinition Width="20"></ColumnDefinition>
+								</Grid.ColumnDefinitions>
+								<ContentPresenter Grid.Column="0" ContentSource="Header" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"></ContentPresenter>
+								<Button Grid.Column="1" Name="btn_Close" Style="{StaticResource CloseButtonStyle}" Click="btn_Close_Click"></Button>
+							</Grid>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="true">
+								<Setter Property="Background" Value="#FF007ACC"></Setter>
+								<Setter Property="Foreground" Value="Black"></Setter>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</TabItem.Style>
+</TabItem>

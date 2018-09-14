@@ -41,7 +41,7 @@
 #include "trace.h"
 #include "ir-emit.h"
 #include "mini-amd64.h"
-#include "cpu-amd64.h"
+//#include "cpu-amd64.h"
 #include "debugger-agent.h"
 #include "mini-gc.h"
 

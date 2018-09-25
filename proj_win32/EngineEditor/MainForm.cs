@@ -49,10 +49,10 @@ namespace EngineEditor
 
         void EffectEditor_Load(object sender, EventArgs e)
         {
-            //EngineDLL.SetAppDataPath("../../Demo.CSharp/Asset/");
-            //EngineDLL.InitilizeEngine();
-            //EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
-            //EngineDLL.StartAppliaction();
+            EngineDLL.SetAppDataPath("../../Demo.CSharp/Asset/");
+            EngineDLL.InitilizeEngine();
+            EngineDLL.SetupRenderSystem(sceneContener.Handle, sceneContener.Width, sceneContener.Height);
+            EngineDLL.StartAppliaction();
             //EngineDLL.CreateEditorGrid();
             isLoaded = true;
         }
@@ -111,7 +111,7 @@ namespace EngineEditor
             {
                 return;
             }
-            //EngineDLL.EngineUpdate();
+            EngineDLL.EngineUpdate();
             frameSpeed.Text = m_fps.ToString();
             srv.Tick(0.2f);
         }

@@ -20,7 +20,7 @@ namespace EngineEditor
 #if DEBUG
         const string dllName = "EngineCore_d.dll";
 #else
-        const string dllName = "EngineCore.dll";
+        const string dllName = "E3DEngine.dll";
 #endif
         /// <summary>
         /// 初始化
@@ -122,7 +122,7 @@ namespace EngineEditor
         /// </summary>
         /// <param name="func"></param>
         [DllImport(dllName, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void setDebugLogOutFunc(LogOutPutFunc func);
+        public static extern void SetDebugLogOutFunc(LogOutPutFunc func);
 
         /// <summary>
         /// 编辑器的地格

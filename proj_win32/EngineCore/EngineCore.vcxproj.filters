@@ -10,9 +10,6 @@
     <Filter Include="engineCore">
       <UniqueIdentifier>{3cbb2a75-e461-4b39-a63a-f57560f0db9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engineCore\include">
-      <UniqueIdentifier>{ecdf0e65-bd17-4424-9df2-9f66c0a11f74}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engineCore\src">
       <UniqueIdentifier>{26922a62-3580-4a19-b762-44c850569f6d}</UniqueIdentifier>
     </Filter>
@@ -84,9 +81,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
-      <Filter>engineCore\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp">
       <Filter>engineCore\src\Animation</Filter>
     </ClInclude>
@@ -330,6 +324,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
+      <Filter>engineCore</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -549,6 +546,9 @@
       <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp">
+      <Filter>engineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\ClassFactory.cpp">
       <Filter>engineCore\src\Source</Filter>
     </ClCompile>
   </ItemGroup>

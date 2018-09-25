@@ -66,18 +66,18 @@ void InitEngine(HWND hWnd)
 	int pos = strPath.find_last_of('\\', strPath.length());
 	strPath = strPath.substr(0, pos);
 #else 
-	strPath = "../../Demo.CSharp/Asset/";
+	strPath = "../../../Demo.CSharp/Asset/";
 #endif
 	InFile.open(logFileName.data(), std::ios::out);
 	::AllocConsole();
 	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
 
 	::SetAppDataPath(strPath.c_str()); 
-	::InitilizeEngine();	
+	::InitilizeEngine(false);	
 	::SetDebugLogOutFunc(LogOutput);
 	::SetupRenderSystem(hWnd, width, height);
 	::StartAppliaction();
-	::CreateEditorGrid();
+	//::CreateEditorGrid();
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)

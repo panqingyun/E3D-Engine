@@ -23,7 +23,7 @@ namespace E3DEngine
 		unsigned int BaseIndex;
 		unsigned int MaterialIndex;
 	};
-	class Mesh : public GameObject
+	class EX_PORT Mesh : public GameObject
 	{
 	public:
 		static Mesh* Create(string path, int configID);
@@ -33,6 +33,7 @@ namespace E3DEngine
 		void Destory();
 		virtual void Update(float deltaTime) override;
 	public:
+#ifndef __EDITOR__
 		Assimp::Importer			pImporter;
 		const aiScene*				pScene;
 		vector<MeshEntity>			Entries;
@@ -50,6 +51,7 @@ namespace E3DEngine
 
 		bool m_bIsSkinMesh;
 
+#endif
 	public:	
 		vector<mat4f*>				VecBoneMatrix;
 		map<string, Bone*>			BoneMapping;

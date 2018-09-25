@@ -124,6 +124,23 @@ namespace E3DEngine
 		return Convert::Vec4ToVec3(world);
 	}
 
+
+	const vvision::mat4f& Camera::GetProjectionMatrix()
+	{
+		return m_mProjection;
+	}
+
+	const vvision::mat4f& Camera::GetViewInverseMatrix()
+	{
+		return m_mViewInverse;
+	}
+
+
+	const vvision::mat4f& Camera::GetProjectInverseMatrix()
+	{
+		return m_mProjectInverse;
+	}
+
 	void Camera::Clear()
 	{
 		GetRenderSystem()->Clear(m_clearColor, m_clearType);
@@ -257,6 +274,12 @@ namespace E3DEngine
 		ray.To = GetWorldPointWithScreenPoint(mPosX, mPosY, to.z) + Transform->GetPosition();
 
 		return ray;
+	}
+
+
+	float Camera::GetPitch()
+	{
+		return m_pitch;
 	}
 
 	vec3f Camera::GetForwardVector()
@@ -427,6 +450,23 @@ namespace E3DEngine
 		const vec3f target = vec3f(0, 0, -1);
 		E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
 		return camera;
+	}
+
+	float Camera::GetYaw()
+	{
+		return m_yaw;
+	}
+
+
+	float Camera::GetRoll()
+	{
+		return m_roll;
+	}
+
+
+	float Camera::GetFaceArea()
+	{
+		return m_facearea;
 	}
 
 }

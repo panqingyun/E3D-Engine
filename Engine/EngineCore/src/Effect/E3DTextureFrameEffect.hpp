@@ -11,7 +11,7 @@
 
 using namespace E3DEngine;
 
-struct TextureFrameConfig implement E3DEngine::IObject
+struct EX_PORT TextureFrameConfig implement E3DEngine::IObject
 {
 	std::string image;
 	float		speed;				// 序列帧播放速度
@@ -46,7 +46,7 @@ enum
 
 namespace E3DEngine
 {
-	class TextureFrameEffect extends Component
+	class EX_PORT TextureFrameEffect extends Component
 	{
 	public:
 		virtual void Start() override;

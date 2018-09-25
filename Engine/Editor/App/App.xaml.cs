@@ -83,7 +83,7 @@ namespace E3DEditor
         {
             Config.Init();
             ioFile = new IOFile();
-            if (Config.GameResourcePath == "")
+            if (Config.GamePath == "")
             {
               //  Setting();
             }

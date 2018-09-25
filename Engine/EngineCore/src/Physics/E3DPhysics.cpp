@@ -91,6 +91,11 @@ namespace E3DEngine
 	}
 
 
+	btDiscreteDynamicsWorld * PhysicWorld::GetWorld()
+	{
+		return m_pDynamicsWorld;
+	}
+
 	bool PhysicWorld::RayCast(Ray ray, RaycastHit &hit)
 	{
 		bool isHit = false;
@@ -132,6 +137,12 @@ namespace E3DEngine
 
 		//add the body to the dynamics world
 		m_pDynamicsWorld->addRigidBody(body);
+	}
+
+
+	btVector3 PhysicWorld::GetInertia()
+	{
+		return mlocalInertia;
 	}
 
 }

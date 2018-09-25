@@ -2,6 +2,7 @@
 #define __E3D_INCLUDE_H__
 
 #ifdef _WIN32
+#pragma unmanaged
 #include <windows.h>
 #include <iterator> 
 #include <windows.h>
@@ -14,14 +15,17 @@
 #include <list>
 #include <set>
 #include <queue>
+
+#ifndef __EDITOR__
+#include <btBulletDynamicsCommon.h>
+
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/cimport.h>
-
-#include <btBulletDynamicsCommon.h>
+#endif
 
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>

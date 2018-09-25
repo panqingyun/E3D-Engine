@@ -14,9 +14,11 @@ namespace E3DEngine
 {
 	void ImplCollider();
 
-	struct ColCallBack : public btCollisionWorld::ContactResultCallback
+#ifndef __EDITOR__
+	struct EX_PORT ColCallBack : public btCollisionWorld::ContactResultCallback
 	{
 	public:
+
 		virtual btScalar addSingleResult(
 			btManifoldPoint & cp,
 			const btCollisionObjectWrapper * colObj0Wrap,
@@ -24,30 +26,11 @@ namespace E3DEngine
 			int index0,
 			const btCollisionObjectWrapper * colObj1Wrap,
 			int partId1,
-			int index1) override
-		{
-			/*btVector3 posA = cp.getPositionWorldOnA();
-			btVector3 posB = cp.getPositionWorldOnB();*/
+			int index1) override;;
 
-			// obA 与 obB 发生碰撞
-			if (colObj0Wrap->getCollisionObject()->getUserPointer() == nullptr)
-			{
-				return 0;
-			}
-			else if (colObj1Wrap->getCollisionObject()->getUserPointer() == nullptr)
-			{
-				return 0;
-			}
-			GameObject *obA = static_cast<GameObject*>(colObj0Wrap->getCollisionObject()->getUserPointer());
-			GameObject *obB = static_cast<GameObject*>(colObj1Wrap->getCollisionObject()->getUserPointer());
-			obA->OnCollisionEnter(obA);
-			obB->OnCollisionEnter(obB);
-
-			return btScalar(0.f);
-		};
 	};
-
-	class RigidBody : public Component
+#endif
+	class EX_PORT RigidBody : public Component
 	{
 		DECLARE_CLASS(RigidBody)
 	public:
@@ -56,17 +39,19 @@ namespace E3DEngine
 
 	public:
 		void SetMass(float mass);
-		float GetMass() { return mMass; }
+		float GetMass();
 		void SetFriction(float friction);
-		float GetFriction() { return mFriction; }
+		float GetFriction();
 		void SetRestitution(float restitution);
-		float GetRestitution() { return mRestitution; }
+		float GetRestitution();
 
 	public:
 		virtual void CreateBehaviour() override;
 		virtual void OnCreateComplete() override;
 		virtual void Update(float deltaTime) override;
 	private:
+
+#ifndef __EDITOR__
 		void createRigidBody(btCollisionShape *shape);
 
 	private:
@@ -77,10 +62,10 @@ namespace E3DEngine
 		btTransform  mStartTransform;
 		ColCallBack	 mColCallBack;
 		btDefaultMotionState*	mMotionState;
-
+#endif
 	};
 
-	class Collider : public Component
+	class EX_PORT Collider : public Component
 	{
 	public:
 		virtual ~Collider()
@@ -94,15 +79,19 @@ namespace E3DEngine
 			mGameObject->SetCollider(this);
 		}
 	public:
-		virtual bool CheckClick(vec2d screenPoint) { return false;}
-		virtual bool CheckPress(vec2d screenPoint) { return false;}
-		virtual btCollisionShape * GetCollisionShape() { return m_pShape; }
+
+#ifndef __EDITOR__
+		virtual bool CheckClick(vec2d screenPoint);
+		virtual bool CheckPress(vec2d screenPoint);
+
+		virtual btCollisionShape * GetCollisionShape();
 	protected:
 
 		btCollisionShape*	m_pShape;
+#endif
 	};
 	
-	class BoxCollider : public  Collider
+	class EX_PORT BoxCollider : public  Collider
 	{
 		DECLARE_CLASS(BoxCollider)
 	public:
@@ -112,14 +101,15 @@ namespace E3DEngine
 		}
 		virtual void Awake() override;
 
+#ifndef __EDITOR__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
-
+#endif
 		virtual void CreateBehaviour() override;
 	};
 
-	class SphereCollider : public  Collider
+	class EX_PORT SphereCollider : public  Collider
 	{
 		DECLARE_CLASS(SphereCollider)
 	public:
@@ -130,12 +120,15 @@ namespace E3DEngine
 		virtual void Awake() override;
 
 	public:
+
+#ifndef __EDITOR__
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
+#endif
 		virtual void CreateBehaviour() override;
 	};
 
-	class MeshCollider : public Collider
+	class EX_PORT MeshCollider : public Collider
 	{
 		DECLARE_CLASS(MeshCollider)
 	public:
@@ -145,15 +138,22 @@ namespace E3DEngine
 		}
 		virtual void Awake() override;
 
+#ifndef __EDITOR__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
+#endif
 		virtual void CreateBehaviour() override;
 	};
 
-	class MotionState : public  btDefaultMotionState
+	class EX_PORT MotionState 
+#ifndef __EDITOR__
+		: public  btDefaultMotionState
+#endif
 	{
 	public:
+
+#ifndef __EDITOR__
 		MotionState(const  btTransform &initialpos, GameObject *obj)
 		{
 			mObject = obj;
@@ -179,9 +179,11 @@ namespace E3DEngine
 	protected:
 		GameObject *mObject;
 		btTransform mWorldTrans;
+#endif
+
 	};
 
-	class CapsuleCollider : public Collider
+	class EX_PORT CapsuleCollider : public Collider
 	{
 		DECLARE_CLASS(CapsuleCollider)
 	public:
@@ -193,8 +195,8 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 		void SetRadius(float radius);
 		void SetHieght(float height);
-		float GetHeight() { return mHeight; }
-		float GetRadius() { return mRadius; }
+		float GetHeight();
+		float GetRadius();
 
 	private: 
 		float mRadius;

@@ -8,6 +8,20 @@
 
 namespace E3DEngine
 {
+
+
+	ParticlePool::ParticlePool()
+	{
+		m_nMaxParticleNumber = 0;
+		bLock = false;
+	}
+
+	E3DEngine::ParticlePool & ParticlePool::GetInstance()
+	{
+		static ParticlePool _ins;
+		return _ins;
+	}
+
 	void ParticlePool::CreateParticlePool(unsigned int particleNumber)
 	{
 		for (int i = 0; i < particleNumber; i++)

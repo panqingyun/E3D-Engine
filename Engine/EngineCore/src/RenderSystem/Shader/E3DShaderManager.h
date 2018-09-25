@@ -10,7 +10,7 @@
 namespace E3DEngine
 {
 	class Shader;
-	class ShaderManager : public IManager
+	class EX_PORT ShaderManager : public IManager
 	{
 	public: 
 		virtual Shader * GetShaderContentByPath(std::string shaderPath);

@@ -9,14 +9,17 @@
 
 namespace E3DEngine
 {
-	class AnimationClip : public Component
+	class EX_PORT AnimationClip : public Component
 	{
 	public:
 		std::string		mName;
 		double			TimeLong;
 		int				Index;
 	private:
+
+#ifndef __EDITOR__
 		aiAnimation		* m_aiAnimation;
+#endif
 	};
 }
 

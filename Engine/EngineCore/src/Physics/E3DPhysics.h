@@ -19,8 +19,10 @@ namespace E3DEngine
 		vec3f To;
 	};
 
-	class PhysicWorld : public  Ref
+	class EX_PORT PhysicWorld : public  Ref
 	{
+
+#ifndef __EDITOR__
 	private:
 		PhysicWorld();
 
@@ -34,16 +36,13 @@ namespace E3DEngine
 		void InitPhysics();
 
 		void CreateGround();
-		btVector3 GetInertia() { return mlocalInertia; }
+		btVector3 GetInertia();
 
 		void Update(float deltaTime);
 		void Destory();
 		void AddRigidBody(btRigidBody* body, int group = 0, int mask = 0);
 
-		btDiscreteDynamicsWorld * GetWorld()
-		{
-			return m_pDynamicsWorld;
-		}
+		btDiscreteDynamicsWorld * GetWorld();
 
 		bool RayCast(Ray ray, RaycastHit &hit);
 	private:
@@ -57,5 +56,6 @@ namespace E3DEngine
 		btCollisionObject* objB;
 		std::map<uint, char> m_hasCheckObjectMap;
 		btVector3 mlocalInertia;
+#endif
 	};
 }

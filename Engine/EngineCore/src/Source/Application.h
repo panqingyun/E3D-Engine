@@ -3,6 +3,11 @@
 #include "Interface.h"
 #include "../Mono/MonoScriptManager.h"
 #include "../Object/E3DObject.h"
+#include "../Camera/E3DCamera.h"
+
+#ifdef __E3D_EDITOR__
+E3DEngine::Camera *GetEditorCamera();
+#endif
 
 namespace E3DEngine
 {
@@ -13,6 +18,7 @@ namespace E3DEngine
 		eMiddleButton,
 		eUnKnown
 	};
+
 
 	class MouseButtonInfo : public Object
 	{

@@ -12,7 +12,7 @@
 namespace E3DEngine
 {
     void ImplmentParticle();
-    class ParticleFactory : public IFactory
+    class EX_PORT ParticleFactory : public IFactory
     {
     public:
         static ParticleFactory& GetInstance()

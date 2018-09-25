@@ -5,7 +5,7 @@
 namespace E3DEngine
 {
 	class Ref;
-	class AutoreleasePool
+	class __declspec(dllexport) AutoreleasePool
 	{
 	private:
 		AutoreleasePool();

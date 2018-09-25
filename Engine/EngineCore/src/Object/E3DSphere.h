@@ -7,13 +7,10 @@
 namespace E3DEngine
 {
 	class Renderer;
-	class Sphere : public GameObject
+	class EX_PORT Sphere : public GameObject
 	{
 	public:
-		Sphere()
-		{
-			CreateBehaviour();
-		}
+		Sphere();
 		void Create(float r);
 		virtual void SetActive(bool isActive) override;
 		virtual void TransformChange() override;

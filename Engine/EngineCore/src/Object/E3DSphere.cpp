@@ -7,6 +7,11 @@
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Scene/E3DSceneManager.hpp"
 
+E3DEngine::Sphere::Sphere()
+{
+	CreateBehaviour();
+}
+
 void E3DEngine::Sphere::Create(float R)
 {
 	int rowNumber = 181;

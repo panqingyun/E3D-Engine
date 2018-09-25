@@ -13,14 +13,10 @@
 
 namespace E3DEngine
 {
-	class SceneManager : public IObject
+	class EX_PORT SceneManager : public IObject
 	{
 	public:
-		static SceneManager& GetInstance()
-		{
-			static SceneManager _ins;
-			return _ins;
-		}
+		static SceneManager& GetInstance();
 
 	public:
 		SceneManager();

@@ -35,7 +35,9 @@ public:
 	void OnEnable();
 	void OnDisable();
 	void LateUpdate(float deltaTime);
+#ifndef __EDITOR__
 	void OnCollisionEnter(btCollisionObject* collision);
+#endif
 	void SetFieldValue(const char *fieldName, void *value);
 	void SetPropertyValue(const char *name, void *value);
 	void *GetFieldValue(const char * fieldName);
@@ -61,11 +63,7 @@ private:
 class MonoScriptManager
 {
 public:
-  	static MonoScriptManager& GetInstance()
-	{
-		static MonoScriptManager ins;
-		return ins;
-	}
+  	static MonoScriptManager& GetInstance();
 public:
 	void Initialize();
 	void Destory();

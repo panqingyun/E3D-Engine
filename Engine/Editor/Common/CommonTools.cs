@@ -11,13 +11,13 @@ namespace E3DEditor.Common
     {
         public static string GetImageFullName(string imageName)
         {
-            if (File.Exists(Config.GameResourcePath + "/" + imageName + ".jpg"))
+            if (File.Exists(Config.GamePath + "/" + imageName + ".jpg"))
             {
-                return Config.GameResourcePath + "/" + imageName + ".jpg";
+                return Config.GamePath + "/" + imageName + ".jpg";
             }
-            if (File.Exists(Config.GameResourcePath + "/" + imageName + ".png"))
+            if (File.Exists(Config.GamePath + "/" + imageName + ".png"))
             {
-                return Config.GameResourcePath + "/" + imageName + ".png";
+                return Config.GamePath + "/" + imageName + ".png";
             }
             if (File.Exists(imageName + "jpg"))
             {

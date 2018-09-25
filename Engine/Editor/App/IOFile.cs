@@ -8,7 +8,7 @@ namespace E3DEditor
         public static string OpenFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "json文件(*.json)|*.json|所有文件|*.*";
+            ofd.Filter = "scene文件(*.scene)|*.scene|所有文件|*.*";
             ofd.ValidateNames = true;
             ofd.CheckPathExists = true;
             ofd.CheckFileExists = true;
@@ -22,7 +22,7 @@ namespace E3DEditor
         public static bool SaveFile(string fileName,string fileContent)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "json文件(*.json)|*.json|所有文件|*.*";
+            sfd.Filter = "scene文件(*.scene)|*.scenr|所有文件|*.*";
             sfd.ValidateNames = true;
             sfd.CheckFileExists = false;
             sfd.FileName = fileName;

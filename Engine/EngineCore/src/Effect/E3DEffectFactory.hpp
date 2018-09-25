@@ -9,14 +9,10 @@
 namespace E3DEngine
 {
 
-    class EffectFactory implement IFactory
+    class EX_PORT EffectFactory implement IFactory
     {
     public:
-        static EffectFactory& GetInstance()
-        {
-            static EffectFactory _ins;
-            return _ins;
-        }
+        static EffectFactory& GetInstance();
         template<typename T> T * CretateEffect()
         {
             T *t_ins = new T();

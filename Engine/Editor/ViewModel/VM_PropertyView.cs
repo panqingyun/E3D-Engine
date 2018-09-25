@@ -214,7 +214,7 @@ namespace E3DEditor.ViewModel
         private void gridAddRowDef()
         {
             var rowDef = new RowDefinition();
-            rowDef.Height = new GridLength(30);
+            rowDef.Height = new GridLength(25);
             _panelParent.RowDefinitions.Add(rowDef);
         }
 
@@ -547,7 +547,7 @@ namespace E3DEditor.ViewModel
 
                 if (fileType == FileType.eImage)
                 {
-                    createImgeProperty(new BitmapImage(new Uri(Config.GameResourcePath + "\\" + text, UriKind.Relative)), _panelParent.RowDefinitions.Count - 1, prop.Name);
+                    createImgeProperty(new BitmapImage(new Uri(Config.GamePath + "\\" + text, UriKind.Relative)), _panelParent.RowDefinitions.Count - 1, prop.Name);
                 }
                 else if (fileType == FileType.eText)
                 {
@@ -581,7 +581,7 @@ namespace E3DEditor.ViewModel
             md.VerticalAlignment = VerticalAlignment.Bottom;
             md.HorizontalAlignment = HorizontalAlignment.Stretch;
             md.Foreground = Brushes.White;
-            md.MediaSource =  new Uri(Config.GameResourcePath + "\\" + fName, UriKind.Absolute);
+            md.MediaSource =  new Uri(Config.GamePath + "\\" + fName, UriKind.Absolute);
             uiElementMap[propName] = md;
 
             _panelParent.Children.Add(md);
@@ -600,7 +600,7 @@ namespace E3DEditor.ViewModel
             _tb.Foreground = Brushes.White;
             _tb.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             _tb.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
-            _tb.Text = System.IO.File.ReadAllText(Config.GameResourcePath + "\\" + fName);
+            _tb.Text = System.IO.File.ReadAllText(Config.GamePath + "\\" + fName);
             uiElementMap[propName] = _tb;
         }
 

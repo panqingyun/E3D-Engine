@@ -218,7 +218,7 @@ namespace E3DEditor.Common
         /// <returns></returns>
         public AtlasFrame GetAtlas(string fullReName, string frameName)
         {
-            Dictionary<string, AtlasFrame> atlases = GetAtlasFrameList(Config.GameResourcePath + "/" + fullReName);
+            Dictionary<string, AtlasFrame> atlases = GetAtlasFrameList(Config.GamePath + "/" + fullReName);
 
             if (atlases.ContainsKey(frameName))
             {

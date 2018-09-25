@@ -5,7 +5,7 @@
 
 namespace E3DEngine
 {
-	class RenderQueue : public Ref
+	class EX_PORT RenderQueue : public Ref
 	{
 	public:
 		RenderQueue();

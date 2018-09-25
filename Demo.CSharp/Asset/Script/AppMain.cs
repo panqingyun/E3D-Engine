@@ -20,6 +20,11 @@ class AppMain : Component
         }
     }
 
+    void Update(float deltaTime)
+    {
+        
+    }
+
     void OnCollisionEnter(Object collisionObject)
     {
 

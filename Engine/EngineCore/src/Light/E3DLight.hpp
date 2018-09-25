@@ -17,7 +17,7 @@ namespace E3DEngine
 		eSPOT_LIGHT,
 	};
 
-	class Light : public GameObject
+	class EX_PORT Light : public GameObject
 	{
 	public:
 		static Light * Create(LightType type);
@@ -47,7 +47,7 @@ namespace E3DEngine
 		Camera * shadowCamera;
 	};
 
-	class PointLight : public Light
+	class EX_PORT PointLight : public Light
 	{
 	public:
 		PointLight();
@@ -59,7 +59,7 @@ namespace E3DEngine
 		virtual void CreateShadow() override;
 	};
 
-	class DirectionLight : public Light
+	class EX_PORT DirectionLight : public Light
 	{
 	public:
 		DirectionLight();
@@ -70,7 +70,7 @@ namespace E3DEngine
 		virtual void CreateShadow() override;
 	};
 
-	class SpotLight : public Light
+	class EX_PORT SpotLight : public Light
 	{
 	public:
 		SpotLight();

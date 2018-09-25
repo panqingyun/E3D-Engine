@@ -71,6 +71,11 @@ namespace E3DEngine
 		}
 	}
 	
+	bool Animation::IsPlay()
+	{
+		return m_bIsPlay;
+	}
+
 	void Animation::LoadAnimations()
 	{
 		if (m_pScene == nullptr)

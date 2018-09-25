@@ -115,6 +115,12 @@ namespace E3DEngine
 		pCamera = camera;
 	}
 
+
+	bool RenderObject::GetActive()
+	{
+		return m_bIsActive;
+	}
+
 	void RenderObject::SetColor(long color)
 	{
 		m_nColor = color;
@@ -130,6 +136,11 @@ namespace E3DEngine
 		return m_bIsBillboard;
 	}
 
+
+	UINT RenderObject::GetDrawModule()
+	{
+		return m_nDrawModule;
+	}
 
 	void RenderObject::SetTransform(CTransform * _transform)
 	{
@@ -160,10 +171,25 @@ namespace E3DEngine
 	}
 
 
+	E3DEngine::Material* RenderObject::GetMaterial()
+	{
+		return pMaterial;
+	}
+
 	void RenderObject::SetLayerMask(DWORD layer)
 	{
 		m_layer = layer;
 		SceneManager::GetCurrentScene()->ChangeRenderObjectLayer(this);
+	}
+
+	DWORD RenderObject::GetLayerMask()
+	{
+		return m_layer;
+	}
+
+	void RenderObject::SetNeedSortVertex(bool bNeed)
+	{
+		m_bNeedSortVertex = bNeed;
 	}
 
 }

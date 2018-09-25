@@ -10,7 +10,7 @@
 namespace E3DEngine
 {
     class GameObject;
-	class CTransform : public Object
+	class EX_PORT CTransform : public Object
     {
     public:
         CTransform();

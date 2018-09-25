@@ -32,7 +32,7 @@ namespace E3DEditor.ViewModel
 
         public VM_FleView()
         {
-            directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GameResourcePath) });
+            directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GamePath) });
         }       
         
         public void SelectedItemChanged(ItemsControl viewControl, DirectoryRecord SelectedItem)
@@ -45,29 +45,38 @@ namespace E3DEditor.ViewModel
                     continue;
                 }
                 FileRecord rec = new FileRecord();
-                if (file.Extension == ".jpg" || file.Extension == ".png")
-                {
-                    rec.FileIcon = new BitmapImage(new Uri(file.FullName));
-                }
-                else if (file.Extension == ".mp3")
-                {
-                    rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.Mp3Icon, UriKind.Relative));
-                }
-                else if (file.Extension == ".txt")
-                {
-                    if (!file.Name.Contains("Story"))
-                    {
-                        continue;
-                    }
-                    rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.TxtIcon, UriKind.Relative));
-                }
+                implFileIcon(file, rec);
                 rec.ShowText = file.Name;
-                rec.FileFullName = file.FullName.Substring(file.FullName.IndexOf("resources") + 10);
+                rec.FileFullName = file.FullName.Substring(file.FullName.IndexOf("Asset") + 6);
                 rec.DragText = rec.FileFullName;
-                rec.Description = rec.FileFullName;
+                rec.Name = rec.FileFullName;
                 rec.FileName = file.Name;
                 viewControl.Items.Add(rec);
                 showAtlas(file, rec);
+            }
+        }
+
+        private static void implFileIcon(FileInfo file, FileRecord rec)
+        {
+            if (file.Extension == ".jpg" || file.Extension == ".png")
+            {
+                rec.FileIcon = new BitmapImage(new Uri(file.FullName));
+            }
+            else if (file.Extension == ".mp3")
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.Mp3Icon, UriKind.Relative));
+            }
+            else if (file.Extension == ".txt")
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.TxtIcon, UriKind.Relative));
+            }
+            else if (file.Extension == ".scene")
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.SceneIcon, UriKind.Relative));
+            }
+            else if (file.Extension == ".particle")
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.EffectIcon, UriKind.Relative));
             }
         }
 
@@ -93,13 +102,6 @@ namespace E3DEditor.ViewModel
         {
             App.vm_MainWindow.PropertyView.DragItem = nodeItem;
             DragDropEffects effect = DragDropEffects.Link;
-            if (nodeItem is AtlasFrame)
-            {
-                if (!nodeItem.FileFullName.Contains(Config.DialogAtlasPath))
-                {
-                    effect = DragDropEffects.None;
-                }
-            }
             DragDrop.DoDragDrop(dragElement, nodeItem.DragText, effect);
         }
     }

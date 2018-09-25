@@ -44,77 +44,31 @@ using setValue = void(*)(void * t, object v);
 using namespace std;
 using createClass = void* (*)();
 
-class ClassFactory
+class EX_PORT ClassFactory
 {
 private:
 	ClassFactory() { };
-	~ClassFactory()
-	{
-		m_classMap.clear();
-	};
+	~ClassFactory();;
 	
 public:
 	virtual void Init()
 	{
 	}
-	virtual void Destory()
-	{
-		m_classMap.clear();
-	}
-	void* CreateClass(string className,string content = "")
-	{
-		className = E3DEngine::StringBuilder::Trim(className);
-		map<string, createClass>::const_iterator iter;
-		iter = m_classMap.find(className);
-		if(iter == m_classMap.end())
-		{
-			return nullptr;
-		}
-		else
-		{
-			return iter->second();
-		}
-	}
+	virtual void Destory();
+	void* CreateClass(string className,string content = "");
 	
 	static void func()
 	{
 
 	}
 
-	void registClass(string name, createClass method)
-	{
-		if (m_classMap.find(name) != m_classMap.end())
-		{
-			return;
-		}
-		m_classMap.insert(pair<string, createClass>(name, method));
-	}
+	void registClass(string name, createClass method);
 	
-	string getTypeNameByClassName(string className)
-	{
-		if (m_classNameTypeID.find(className) == m_classNameTypeID.end())
-		{
-			return "NAN";
-		}
-		
-		return m_classNameTypeID[className];
-	}
+	string getTypeNameByClassName(string className);
 	
-	void insertClassNameTypeid(string className, string typeName)
-	{
-		if (m_classNameTypeID.find(className) != m_classNameTypeID.end())
-		{
-			return;
-		}
-		
-		m_classNameTypeID[className] = typeName;
-	}
+	void insertClassNameTypeid(string className, string typeName);
 	
-	static ClassFactory &GetInstance()
-	{
-		static ClassFactory _ins;
-		return _ins;
-	}
+	static ClassFactory &GetInstance();
 private:
 	map<string, createClass> m_classMap;
 	map<string, string> m_classNameTypeID;

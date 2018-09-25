@@ -8,6 +8,11 @@
 namespace E3DEngine
 {
     
+	ParticleAffector::ParticleAffector()
+	{
+		m_pParticleGroup = nullptr;
+	}
+
 	void ParticleAffector::Initilize(ParticleGroup *pParent)
 	{
 		m_pParticleGroup = pParent;

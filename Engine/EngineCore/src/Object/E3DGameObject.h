@@ -66,7 +66,7 @@ template< param > struct trait<spec> \
 #include <cstring>
 #endif
 
-class object
+class EX_PORT object
 {
 public: // structors
     
@@ -154,7 +154,7 @@ private: // representation
     
 };
 
-class bad_object_cast : public std::bad_cast
+class EX_PORT bad_object_cast : public std::bad_cast
 {
 public:
     virtual const char * what() const throw() override;
@@ -209,7 +209,7 @@ const static std::string intType     = "int";
 const static std::string floatType   = "float";
 const static std::string doubleType  = "double";
 
-struct Convert
+struct EX_PORT Convert
 {
     static int ToInt(std::string source);
     static int ToInt(const char * source);
@@ -246,9 +246,11 @@ struct Convert
 		colorStr 如 ffabcdff
 	*/
 	static vec4f ToColorRGBA(std::string colorStr);
+#ifndef __EDITOR__
 	static vec4f ToVec4Color(aiColor4D color);
 	static vec4f ToVec4Color(aiColor3D color);
-	
+#endif
+
 	template<typename T> static vec3<T> Vec4ToVec3(vec4<T> vec)
 	{
 		return vec3<T>(vec.x, vec.y, vec.z);
@@ -283,7 +285,7 @@ namespace E3DEngine
 	class Renderer;
 	class SkyBox;
 	class Collider;
-	class GameObject : public Object
+	class EX_PORT GameObject : public Object
 	{
 	public:
 		template<typename T> T * AddComponent()
@@ -325,7 +327,7 @@ namespace E3DEngine
 
 
 		// 获取长宽高
-		virtual vec3f GetBounds() { return size; }
+		virtual vec3f GetBounds();
 		std::vector<Component*> * GetComponents(std::string type_name);
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
@@ -333,7 +335,7 @@ namespace E3DEngine
 		void RemoveComponent(UINT id);
 		void RemoveComponent(Component *com);
 		void SetIsStatic(bool isStatic);
-		bool GetIsStatic() { return m_bIsStatic; }
+		bool GetIsStatic();
 		virtual void TransferRender();
 	public:
 		virtual void PrepareUpdate(float deltaTime);
@@ -366,15 +368,13 @@ namespace E3DEngine
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
 		void SetRenderer(Renderer * renderer);
-		std::map<UINT, GameObject *> &GetChilds()
-		{
-			return childNode;
-		}
+		std::map<UINT, GameObject *> &GetChilds();
 
-		std::vector<Vertex>& GetVertex() { return m_vecVertex; };
-		std::vector<uint>& GetIndex() { return m_vecIndex; }
+		std::vector<Vertex>& GetVertex();;
+		std::vector<uint>& GetIndex();
 		virtual void CreateBehaviour() override;
 		static void Destory(GameObject *go);
+		CTransform * GetTransform();
 
 	protected:
 		virtual void ComponentAdded(Component * component);
@@ -406,7 +406,7 @@ namespace E3DEngine
 	};
 
 	
-	class StringBuilder
+	class EX_PORT StringBuilder
 	{
 	public:
 		StringBuilder();

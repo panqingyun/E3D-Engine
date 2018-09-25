@@ -4,7 +4,10 @@
 #define _TABLE_BASE_H_
 #include "../Object/E3DGameObject.h"
 #include "../Source/ClassFactory.h"
+
+#ifndef __EDITOR__
 #include "../Source/tinyxml.h"
+#endif
 
 namespace E3DEngine
 {
@@ -30,15 +33,12 @@ namespace E3DEngine
         map<string, string> * selectMap(string key, int value);
     };
 
-    class TableBase : public IObject
+    class EX_PORT TableBase : public IObject
     {
     protected:
         DECLARE_CLASS(TableBase)
     public:
-        static void* createInstance(string content = "") 
-        { 
-            return new TableBase(); 
-		}
+        static void* createInstance(string content = "");
 		TableBase() = default;
 		virtual ~TableBase();
         virtual void registProperty() { }
@@ -46,7 +46,9 @@ namespace E3DEngine
         virtual bool initTableParam(){return true;}
 		TableBase * Select(int key);
 		TableBase * Select(int key1, int key2);
+#ifndef __EDITOR__
 		void Loaded(TiXmlNode * node);
+#endif
 		void LoadTable(std::string tableName, std::map<int, std::map<std::string, std::string>> tableMap);
 
 	public:
@@ -82,14 +84,8 @@ namespace E3DEngine
     protected:
         void convertTypeSetValue(setValue &set, string value, string type);
         void processSelectResult(map<string, string> * configItem);
-        virtual std::string GetKey1()
-        {
-            return "ID";
-        }
-        virtual std::string GetKey2()
-        {
-            return "ID";
-		}
+        virtual std::string GetKey1();
+        virtual std::string GetKey2();
 
 	public:
 		std::string Name;

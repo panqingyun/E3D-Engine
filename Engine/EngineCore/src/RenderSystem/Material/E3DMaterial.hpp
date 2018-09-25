@@ -15,7 +15,7 @@
 
 namespace E3DEngine
 {
-	class Material : public  Object
+	class EX_PORT Material : public  Object
 	{
 	public:
 		Material(); 
@@ -64,10 +64,10 @@ namespace E3DEngine
 		virtual void UseNullProgram() { }
 		virtual void UpdateShader(unsigned int vertexType) { }
 
-		virtual void SetEnableDepthWrite(bool bEnable) { enablewriteDepth = bEnable; }
-		virtual void SetBlendType(DWORD src, DWORD dst) { srcBlendFactor = src; dstBlendFactor = dst; }
-		virtual void SetEnableDepthTest(bool enable) { enableDepthTest = enable; }
-		virtual void SetEnableCullFace(bool enable) { enableDoubleSide = enable; }
+		virtual void SetEnableDepthWrite(bool bEnable);
+		virtual void SetBlendType(DWORD src, DWORD dst);
+		virtual void SetEnableDepthTest(bool enable);
+		virtual void SetEnableCullFace(bool enable);
 	public:
 
 		// -----------------------------------------------

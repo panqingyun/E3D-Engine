@@ -15,7 +15,7 @@ namespace E3DEngine
 	using namespace std;
 	void RegisterTableCreateInstance();
 	//球形发射器
-	class BallEmitterConfig : public TableBase
+	class EX_PORT BallEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(BallEmitterConfig)
 	public:
@@ -61,7 +61,7 @@ namespace E3DEngine
 	};
 
 	// 点发射器
-	class PointEmitterConfig : public TableBase
+	class EX_PORT PointEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(PointEmitterConfig)
 	public:
@@ -100,7 +100,7 @@ namespace E3DEngine
 	};
 
 	// 区域发射器
-	class AreaEmitterConfig : public TableBase
+	class EX_PORT AreaEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(AreaEmitterConfig)
 	public:
@@ -145,7 +145,7 @@ namespace E3DEngine
 	};
 
 	// 线性外力影响器
-	class LinnerForceAffectorConfig : public TableBase
+	class EX_PORT LinnerForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(LinnerForceAffectorConfig)
 	public:
@@ -168,7 +168,7 @@ namespace E3DEngine
 	};
 
 	// 随机外力影响器
-	class RandomForceAffectorConfig : public TableBase
+	class EX_PORT RandomForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RandomForceAffectorConfig)
 	public:
@@ -202,7 +202,7 @@ namespace E3DEngine
 		}
 	};
 
-	class RotationForceAffectorConfig : public TableBase
+	class EX_PORT RotationForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RotationForceAffectorConfig)
 	public:
@@ -225,7 +225,7 @@ namespace E3DEngine
 	};
 
 	// 移动到发射点影响器
-	class MoveToFiringPointForceAffectorConfig : public TableBase
+	class EX_PORT MoveToFiringPointForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(MoveToFiringPointForceAffectorConfig)
 	public:
@@ -248,7 +248,7 @@ namespace E3DEngine
 	};
 
 	// 线性颜色变化影响器
-	class LinnerColorAffectorConfig : public TableBase
+	class EX_PORT LinnerColorAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(LinnerColorAffectorConfig)
 	public:
@@ -276,7 +276,7 @@ namespace E3DEngine
 
 
 	// 旋转影响器
-	class RotationAffectorConfig : public TableBase
+	class EX_PORT RotationAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RotationAffectorConfig)
 	public:
@@ -297,7 +297,7 @@ namespace E3DEngine
 	};
 
 	// 自旋影响器
-	class SelfRotateAffectorConfig : public TableBase
+	class EX_PORT SelfRotateAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(SelfRotateAffectorConfig)
 	public:
@@ -322,7 +322,7 @@ namespace E3DEngine
 	};
 
 	// 自缩放影响器
-	class SelfScalAffectorConfig : public TableBase
+	class EX_PORT SelfScalAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(SelfScalAffectorConfig)
 	public:
@@ -347,7 +347,7 @@ namespace E3DEngine
 	};
 
 	// 粒子团
-	class ParticleConfig : public TableBase
+	class EX_PORT ParticleConfig : public TableBase
 	{
 		DECLARE_CLASS(ParticleConfig)
 	public:
@@ -384,7 +384,7 @@ namespace E3DEngine
 	};
 
 	// 材质
-	class MaterialConfig : public TableBase
+	class EX_PORT MaterialConfig : public TableBase
 	{
 		DECLARE_CLASS(MaterialConfig);
 	public:
@@ -428,7 +428,7 @@ namespace E3DEngine
 	};
 
 	// UV动画
-	class TextureUVConfig : public TableBase
+	class EX_PORT TextureUVConfig : public TableBase
 	{
 		DECLARE_CLASS(TextureUVConfig);
 	public:
@@ -475,7 +475,7 @@ namespace E3DEngine
 	};
 
 	// 层
-	class LayerConfig : public TableBase
+	class EX_PORT LayerConfig : public TableBase
 	{
 		DECLARE_CLASS(LayerConfig);
 	public:
@@ -493,7 +493,7 @@ namespace E3DEngine
 	};
 
 	// 着色器
-	class ShaderConfig : public TableBase
+	class EX_PORT ShaderConfig : public TableBase
 	{
 		DECLARE_CLASS(ShaderConfig);
 	public:
@@ -514,7 +514,7 @@ namespace E3DEngine
 		}
 	};
 
-	class TextureAtlas : public TableBase
+	class EX_PORT TextureAtlas : public TableBase
 	{
 		DECLARE_CLASS(TextureAtlas);
 	public:
@@ -540,7 +540,7 @@ namespace E3DEngine
 		}
 	};
 
-	class SkyBoxConfig : public TableBase
+	class EX_PORT SkyBoxConfig : public TableBase
 	{
 		DECLARE_CLASS(SkyBoxConfig)
 	public:
@@ -566,7 +566,7 @@ namespace E3DEngine
 
 	};
 
-	class MeshConfig : public TableBase
+	class EX_PORT MeshConfig : public TableBase
 	{
 		DECLARE_CLASS(MeshConfig)
 	public:

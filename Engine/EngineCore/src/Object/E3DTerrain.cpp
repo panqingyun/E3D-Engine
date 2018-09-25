@@ -7,6 +7,14 @@
 #include "E3DTransform.hpp"
 #include "../RenderSystem/Texture/E3DTextureDataManager.hpp"
 
+
+E3DEngine::Terrain::Terrain()
+{
+	m_bIsEditorGrid = false;
+	lastSize = 1;
+	CreateBehaviour();
+}
+
 void E3DEngine::Terrain::Create(const char * heightMapFileName)
 {
 	TextureData * td = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(heightMapFileName);
@@ -139,6 +147,12 @@ void E3DEngine::Terrain::PrepareUpdate(float deltaTime)
 		m_pRenderer->TransformChange();
 		lastSize = size;
 	}
+}
+
+
+void E3DEngine::Terrain::SetIsEditorGrid(bool isEditor)
+{
+	m_bIsEditorGrid = isEditor;
 }
 
 void E3DEngine::Terrain::CreateBehaviour()

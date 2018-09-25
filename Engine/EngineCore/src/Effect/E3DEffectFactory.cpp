@@ -31,4 +31,11 @@ namespace E3DEngine
     void EffectFactory::Initilize()
     {
     }
+
+	EffectFactory& EffectFactory::GetInstance()
+	{
+		static EffectFactory _ins;
+		return _ins;
+	}
+
 }

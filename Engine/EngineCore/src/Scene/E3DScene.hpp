@@ -23,7 +23,7 @@ namespace E3DEngine
     
 	void RegistScnObjCreateFunc();
 
-	class Scene : public Object
+	class EX_PORT Scene : public Object
 	{
 	public:
 		Scene();
@@ -53,6 +53,7 @@ namespace E3DEngine
 		void DeleteLight(Light *light);
 		Light * GetDirectionalLight();
 		std::map<UINT, Light*>& GetPointLights();
+		GameObject * GetRootObject();
 
 	protected:
 		virtual void CreateBehaviour() override;

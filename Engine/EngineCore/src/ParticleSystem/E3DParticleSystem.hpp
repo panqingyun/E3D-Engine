@@ -17,14 +17,10 @@ namespace E3DEngine
 	class ParticleGroup;
 	class ParticleConfig;
 	class TableManager;
-	class ParticleSystem : public ISystem
+	class EX_PORT ParticleSystem : public ISystem
 	{
 	public:		
-		static ParticleSystem& GetInstance()
-		{
-			static ParticleSystem _ins;
-			return _ins;
-		}
+		static ParticleSystem& GetInstance();
 		ParticleSystem() = default;
 		virtual ~ParticleSystem() override;
 		virtual void Initilize() override;

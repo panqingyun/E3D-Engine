@@ -16,15 +16,11 @@
 					<ColumnDefinition Width="20*"/>
 					<ColumnDefinition Width="9*"/>
 				</Grid.ColumnDefinitions>
-				<local:OpenFileTextBox IsOpenFolder="True" x:Name="resPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Width="246"/>
-				<local:OpenFileTextBox IsOpenFolder="True" x:Name="tabPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,55,0,0" VerticalAlignment="Top" Width="246"/>
-				<Label x:Name="label" Content="游戏资源目录" HorizontalAlignment="Right" Margin="0,20,0,0" VerticalAlignment="Top" Width="58"/>
-				<Label x:Name="label_Copy" Content="配表目录" HorizontalAlignment="Right" Margin="0,54,0,0" VerticalAlignment="Top" Width="58"/>
-				<local:OpenFileTextBox IsOpenFolder="True" x:Name="JsonPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="246"/>
-				<Label x:Name="label_Copy1" Content="Json表目录" HorizontalAlignment="Right" Margin="0,85,0,0" VerticalAlignment="Top" Width="72"/>
-				<Label x:Name="label_Copy2" Content="分辨率" HorizontalAlignment="Right" Margin="0,121,0,0" VerticalAlignment="Top" Width="47"/>
-				<local:NumberTextBox x:Name="width" Grid.Column="2" HintText="宽" HorizontalAlignment="Left" Margin="0,125,0,0" VerticalAlignment="Top" Width="123"/>
-				<local:NumberTextBox x:Name="height" Grid.Column="2" HintText="高" HorizontalAlignment="Left" Margin="134,125,0,0" VerticalAlignment="Top" Width="112"/>
+				<local:OpenFileTextBox IsOpenFolder="True" x:Name="resPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" Width="246"/>
+				<Label x:Name="label" Content="游戏目录" HorizontalAlignment="Right" Margin="0,55,0,0" VerticalAlignment="Top" Width="58"/>
+				<Label x:Name="label_Copy2" Content="分辨率" HorizontalAlignment="Right" Margin="0,96,0,0" VerticalAlignment="Top" Width="47"/>
+				<local:NumberTextBox x:Name="width" Grid.Column="2" HintText="宽" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="123"/>
+				<local:NumberTextBox x:Name="height" Grid.Column="2" HintText="高" HorizontalAlignment="Left" Margin="134,100,0,0" VerticalAlignment="Top" Width="112"/>
 
 			</Grid>
 		</GroupBox>

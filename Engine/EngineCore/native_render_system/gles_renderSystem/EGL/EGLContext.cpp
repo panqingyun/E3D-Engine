@@ -58,6 +58,12 @@ EGLBoolean EGL_Context::CreateEGLEnv(bool isOffScreen)
 }
 #endif
 
+void EGL_Context::ChangeSurface(EGLNativeWindowType windowHandle)
+{
+	pESContext->hWnd = windowHandle;
+	createSurface(false, Config);
+}
+
 EGLBoolean EGL_Context::chooseConfig(bool isOffScreen, EGLConfig &config, EGLint &numConfigs)
 {
 	if (isOffScreen)

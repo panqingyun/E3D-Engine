@@ -27,14 +27,11 @@ namespace E3DEngine
 	class ParticleGroup;
 	class Particle;
 
-	class ParticleAffector : public Ref
+	class EX_PORT ParticleAffector : public Ref
 	{
 		DECLARE_CLASS(ParticleAffector);
 	public:
-		ParticleAffector()
-		{
-			m_pParticleGroup = nullptr;
-		}
+		ParticleAffector();
 		virtual void Initilize(ParticleGroup *pParent);
 		virtual ~ParticleAffector();
 		virtual void Update(float deltaTime);

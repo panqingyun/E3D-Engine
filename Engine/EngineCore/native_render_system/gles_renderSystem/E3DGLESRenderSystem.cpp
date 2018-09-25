@@ -126,8 +126,12 @@ namespace E3DEngine
 		glClear(type);
 	}
 
+	void GLES_RenderSystem::ChangeRenderSurface(EGLNativeWindowType windowHandle)
+	{
+		m_pEGL_Context->ChangeSurface(windowHandle);
+	}
 }
-
+#define __GLES_2__
 #ifdef __GLES_2__
 void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {

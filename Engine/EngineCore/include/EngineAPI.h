@@ -43,6 +43,11 @@ typedef HWND NATIVE_WINDOW_TYPE;
 #define EGL_DEFAULT_DISPLAY 0
 #endif
 
+namespace E3DEngine
+{
+	class Scene;
+}
+
 //////////////////////////////////////////////////////////////////////////
 /// dll export function
 //////////////////////////////////////////////////////////////////////////
@@ -53,7 +58,7 @@ extern "C"
 	/// <summary>
 	/// 初始化
 	/// </summary>
-	__api_function_ void  InitilizeEngine();
+	__api_function_ void  InitilizeEngine(bool isEditor);
 	/// <summary>
 	/// 启动程序脚本
 	/// </summary>
@@ -67,19 +72,10 @@ extern "C"
 	/// </summary>
 	/// <param name = "width"> 渲染视口宽度 </param>
 	/// <param name = "height"> 渲染视口高度 </param> 
-#ifdef OPEN_GL_ES
+
 	// 启动OPEN_GL_ES
 	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
-#endif
-#ifdef D3D_11
-	// TODO 启动D3D_11 渲染
-#endif
-#ifdef D3D_9
-	// TODO 启动D3D_9渲染
-#endif
-#ifdef OPEN_GL
-	// TODO 启动OPEN_GL渲染
-#endif
+
 	///------------------------------------------------------
 	/// 日志输出
 	__api_function_ void SetDebugLogOutFunc(void * func);
@@ -132,11 +128,17 @@ extern "C"
 	/// <summary>
 	/// 编辑器的地格
 	/// </summary>
-	__api_function_ void CreateEditorGrid();
+	__api_function_ void CreateEditor();
 	/// <summary>
 	/// 编辑器的摄像机
 	/// </summary>
 	__api_function_ void CreateEditorCamera();
+
+	__api_function_ E3DEngine::Scene *GetCurrentScene();
+
+	__api_function_ void RunGame(bool isRun);
+
+	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle);
 
 #ifdef __cplusplus
 }

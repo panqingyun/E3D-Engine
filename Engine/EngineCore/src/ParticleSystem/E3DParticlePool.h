@@ -12,19 +12,11 @@ namespace E3DEngine
 {
 	class Particle;
 	using particleListIterator = std::list<share_pointer<Particle>>::iterator;
-	class ParticlePool : public IObject
+	class EX_PORT ParticlePool : public IObject
 	{
 	public:
-		ParticlePool()
-		{
-			m_nMaxParticleNumber = 0;
-			bLock = false;
-		}
-		static ParticlePool & GetInstance()
-		{
-			static ParticlePool _ins;
-			return _ins;
-		}
+		ParticlePool();
+		static ParticlePool & GetInstance();
 
 		void Destory()
 		{

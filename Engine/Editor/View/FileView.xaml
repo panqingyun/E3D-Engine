@@ -15,7 +15,7 @@
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
 
-				<TreeView x:Name="folderTreeView" FontSize="15" HorizontalAlignment="Stretch" SelectedItemChanged="fileTreeView_SelectedItemChanged"  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="{x:Null}" Foreground="White">
+				<TreeView x:Name="folderTreeView" FontSize="12" HorizontalAlignment="Stretch" SelectedItemChanged="fileTreeView_SelectedItemChanged"  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="{x:Null}" Foreground="White">
 					<TreeView.Resources>
 						<HierarchicalDataTemplate DataType="{x:Type model:DirectoryRecord}" ItemsSource="{Binding Directories}" >
 							<StackPanel Orientation="Horizontal">
@@ -24,7 +24,7 @@
 						</HierarchicalDataTemplate>
 					</TreeView.Resources>
 				</TreeView>
-				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0"
+				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick"
 							  Background="{x:Null}" Foreground="White" AllowDrop="True" >
 					<TreeView.ContextMenu>
 						<ContextMenu>
@@ -37,7 +37,7 @@
 							<DockPanel Background="Transparent" PreviewMouseLeftButtonUp="fileView_PreviewMouseUp">
 								<Image  Width="35" Height="35" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
 													  Stretch="Uniform"/>
-								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" Foreground="#FFFFA507" Text="{Binding Path=ShowText}" Margin="5" FontSize="13"></TextBlock>
+								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" Foreground="#FFFFA507" Text="{Binding Path=ShowText}" Margin="5" FontSize="12"></TextBlock>
 							</DockPanel>
 						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>

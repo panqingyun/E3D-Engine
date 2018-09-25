@@ -160,6 +160,11 @@ namespace E3DEngine
 		SAFE_DELETE(Transform);
 	}
 	
+	float * Particle::GetColor()
+	{
+		return m_fColor;
+	}
+
 	eParticleLiveState Particle::getParticleState() const
 	{
 		return m_eParticleState;
@@ -1076,4 +1081,16 @@ namespace E3DEngine
 	}
 	
 	
+	particleInitConfig::particleInitConfig(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate /*= false*/)
+	{
+		ParticleNumber = particleNumber;
+		Time2Live = time2Live;
+		Pos = pos;
+		Size = size;
+		Color = color;
+		GroupID = groupID;
+		BornEmitterPos = bornEmitterPos;
+		IsFirstCreate = isFirstCreate;
+	}
+
 }

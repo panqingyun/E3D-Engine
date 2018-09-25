@@ -114,7 +114,7 @@ namespace E3DEditor.View
         private void Load()
         {
             //约定的宽度
-            double.TryParse(m_Parent.Tag.ToString(), out m_ConventionWidth);
+            double.TryParse("100", out m_ConventionWidth);
             //注册父级TabControl尺寸发生变化事件
             m_Parent.SizeChanged += m_Parent_SizeChanged;
 

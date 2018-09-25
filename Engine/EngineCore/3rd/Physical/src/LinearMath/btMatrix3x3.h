@@ -109,7 +109,6 @@ public:
 	}
 
 #else
-
 	/** @brief Copy constructor */
 	SIMD_FORCE_INLINE btMatrix3x3 (const btMatrix3x3& other)
 	{
@@ -126,7 +125,6 @@ public:
 		m_el[2] = other.m_el[2];
 		return *this;
 	}
-
 #endif
 
 	/** @brief Get a column of the matrix as a vector 

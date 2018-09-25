@@ -32,6 +32,8 @@ public:
 
 	bool UseContext();
 
+	void ChangeSurface(EGLNativeWindowType windowHandle);
+
 protected:
 	EGLBoolean CreateEGLEnv(bool isOffScreen);
 

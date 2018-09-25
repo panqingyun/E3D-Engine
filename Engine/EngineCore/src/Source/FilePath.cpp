@@ -173,4 +173,11 @@ namespace E3DEngine
 		return folder;
 	}
 
+	std::string GetFileName(std::string fullPath)
+	{
+		string folder, file;
+		StringManipulator::SplitFileName(fullPath, folder, file);
+		return file;
+	}
+
 }

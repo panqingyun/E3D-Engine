@@ -45,11 +45,11 @@ namespace E3DEngine
 		{
 			return;
 		}
-
-		std::list<stTimer*> &timerList = t.mTimerList[0];
+		int &index = t.mIndex;
+		std::list<stTimer*> &timerList = t.mTimerList[index];
 		std::list<stTimer*> temp;
 
-		std::copy(t.mTimerList[0].begin(), t.mTimerList[0].end(), std::inserter(temp, temp.begin()));
+		std::copy(t.mTimerList[index].begin(), t.mTimerList[index].end(), std::inserter(temp, temp.begin()));
 
 		for (auto itimer : temp)
 		{
@@ -62,7 +62,7 @@ namespace E3DEngine
 					if (itimer->isRepeat)
 					{
 						// 循环执行的加入下一个周期链表中
-						int n = itimer->timeInterval / t.deltaTime;
+						int n = itimer->timeInterval / t.deltaTime + index;
 						t.mTimerList[n].emplace_back(itimer);
 						timerList.remove(itimer);
 					}
@@ -78,7 +78,8 @@ namespace E3DEngine
 		}
 
 		timerList.clear();
-		t.mTimerList.erase(t.mTimerList.begin());
+		index++;
+		//t.mTimerList.erase(t.mTimerList.begin());
 	}
 
 	void Timer::Init()

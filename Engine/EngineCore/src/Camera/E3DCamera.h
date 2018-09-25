@@ -13,7 +13,7 @@ namespace E3DEngine
 	class RenderQueue;
 	class Render2Texture;
 	struct Ray;
-	class Camera : public GameObject
+	class EX_PORT Camera : public GameObject
 	{
 		friend class Render2Texture;
 	public:
@@ -58,10 +58,10 @@ namespace E3DEngine
 		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
 
 		/** return the projection matrix of the camera*/
-		const mat4f& GetProjectionMatrix() {return m_mProjection;}
+		const mat4f& GetProjectionMatrix();
 		
-		const mat4f& GetViewInverseMatrix() {return m_mViewInverse;}
-		const mat4f& GetProjectInverseMatrix() {return m_mProjectInverse;}
+		const mat4f& GetViewInverseMatrix();
+		const mat4f& GetProjectInverseMatrix();
 		
 		void TransformChange() override;
 
@@ -84,10 +84,10 @@ namespace E3DEngine
 
 		Ray ScreenPointToRay(vec2f mousePos);
 	
-		float GetPitch(){return m_pitch;}
-		float GetYaw(){return m_yaw;}
-		float GetRoll(){return m_roll;}
-		float GetFaceArea(){return m_facearea;}
+		float GetPitch();
+		float GetYaw();
+		float GetRoll();
+		float GetFaceArea();
 		
 		bool boundingBoxFrustum(vec3f position, float size);
 		virtual void CreateBehaviour() override;

@@ -22,7 +22,6 @@ subject to the following restrictions:
 
 #include "btScalar.h"
 
-
 ///BT_DEBUG_MEMORY_ALLOCATIONS preprocessor can be set in build system
 ///for regression tests to detect memory leaks
 ///#define BT_DEBUG_MEMORY_ALLOCATIONS 1

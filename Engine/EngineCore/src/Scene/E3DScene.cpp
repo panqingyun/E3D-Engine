@@ -1,4 +1,4 @@
-//
+﻿//
 //  E3DScene.cpp
 //  demo
 //
@@ -420,6 +420,7 @@ namespace E3DEngine
 		}
 
 		sceneFolderPath = GetFolder(filePath);
+		mName = GetFileName(filePath);
 		TiXmlElement* rootElem = doc->RootElement();
 		createObjects(nullptr, rootElem);
 		delete doc;
@@ -427,23 +428,36 @@ namespace E3DEngine
 
 	void Scene::Update(float deltaTime)
 	{
-        for(auto &node : m_vecObjList)
+		// 运行时执行，编辑器下不执行
+		if (!EngineDelegate::GetInstance().GetIsEditor())
 		{
-			node.second->Update(deltaTime);
+			for (auto &node : m_vecObjList)
+			{
+				node.second->Update(deltaTime);
+			}
 		}
 		rootObject->Transform->Update();
 		// 渲染场景
 		GetRenderSystem()->BeginFrame();
 		RenderScene(deltaTime);
 		GetRenderSystem()->EndFrame();
-		for (auto &node : m_vecObjList)
+
+		// 运行时执行，编辑器下不执行
+		if (!EngineDelegate::GetInstance().GetIsEditor())
 		{
-			if (node.second->mType == eT_GameObject)
+			for (auto &node : m_vecObjList)
 			{
-				static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
+				if (node.second->mType == eT_GameObject)
+				{
+					static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
+				}
 			}
 		}
+	}
 
+	GameObject* Scene::GetRootObject()
+	{
+		return rootObject;
 	}
 	
 	void Scene::Destory()
@@ -484,6 +498,9 @@ namespace E3DEngine
 
 	void Scene::RenderScene(float deltaTime)
 	{
+#ifdef __E3D_EDITOR__
+		GetEditorCamera()->Render(deltaTime);
+#else
         for(Camera * camera : m_vecCamera)
 		{
 			if (camera->IsActive)
@@ -491,6 +508,7 @@ namespace E3DEngine
 				camera->Render(deltaTime);
 			}
 		}
+#endif
 	}
 
 	void Scene::ChangeRenderIndex(UINT id, eRenderIndex index)
@@ -679,7 +697,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (obj->mType == eT_GameObject)
+		if (obj->mType == eT_GameObject || obj->mType == eT_Camera)
 		{
 			GameObject *go = static_cast<GameObject*>(obj);
 			if (rootObject->FindChild(go->ID))

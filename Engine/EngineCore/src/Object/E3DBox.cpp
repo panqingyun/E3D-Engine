@@ -7,6 +7,12 @@
 #include "../Object/E3DTransform.hpp"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 
+
+E3DEngine::Box::Box()
+{
+	CreateBehaviour();
+}
+
 void E3DEngine::Box::Create(float l, float w, float h)
 {
 	IsActive = false;

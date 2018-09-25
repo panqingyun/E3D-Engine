@@ -26,7 +26,6 @@ namespace E3DEditor.Model
         }
 
         private int _id;
-        [PropertyField(PropType = PropertyType.ReadOnlyText, DisplayIndex = 1)]
         public int ID
         {
             get { return _id; }
@@ -38,18 +37,18 @@ namespace E3DEditor.Model
         }
 
 
-        private string _descript;
-        [PropertyField(PropType = PropertyType.NormalText, DisplayIndex = 2)]
-        public string Description
+        private string _name;
+        [PropertyField(PropType = PropertyType.NormalText, DisplayIndex = 0)]
+        public string Name
         {
             get
             {
-                return _descript;
+                return _name;
             }
             set
             {
-                _descript = value;
-                OnPropertyChanged(CONST_STRING.Description);
+                _name = value;
+                OnPropertyChanged(CONST_STRING.Name);
             }
         }
 

@@ -22,7 +22,7 @@ namespace E3DEngine
     class Camera;
     class ParticleAffector;
     class ParticleEmitter;
-	class Particle : public Ref , public IActor
+	class EX_PORT Particle : public Ref , public IActor
     {
     public:
         Particle();
@@ -35,10 +35,7 @@ namespace E3DEngine
         void SetColor(float r, float g, float b, float a);
         void ReSet();
         virtual ~Particle() override;
-        float * GetColor()
-        {
-            return m_fColor;
-        }
+        float * GetColor();
 		void ActiveEffect(TextureUVConfig * cfg);
 
 	public:
@@ -134,7 +131,7 @@ namespace E3DEngine
         int			fShaderIndex;
     };
 
-	struct particleInitConfig 
+	struct EX_PORT particleInitConfig
 	{
 		unsigned int ParticleNumber;
 		float Time2Live;
@@ -149,20 +146,10 @@ namespace E3DEngine
 
 		}
 
-		particleInitConfig(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false)
-		{
-			ParticleNumber = particleNumber;
-			Time2Live = time2Live;
-			Pos = pos;
-			Size = size;
-			Color = color;
-			GroupID = groupID;
-			BornEmitterPos = bornEmitterPos;
-			IsFirstCreate = isFirstCreate;
-		}
+		particleInitConfig(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false);
 	};
 
-    class ParticleGroup : public GameObject
+    class EX_PORT ParticleGroup : public GameObject
     {
     public:
         ParticleGroup();

@@ -4,20 +4,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:E3DEditor.View"
 		xmlns:VM="clr-namespace:E3DEditor.ViewModel"
+		xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"		
+		xmlns:model="clr-namespace:E3DEditor.Model"
         x:Class="E3DEditor.View.MainWindow"
         mc:Ignorable="d"
-        Title="编辑器" Height="600" Width="982" WindowStyle="None" Background="Black" AllowsTransparency="True" WindowState="Maximized">
+        Title="编辑器" Height="952" Width="2080" WindowStyle="None" Background="Black" WindowState="Maximized">
 	<Window.Resources>
 		<!--自定义颜色-->
-		<SolidColorBrush x:Key="MyBtnBorderColor" Color="#00707070"></SolidColorBrush>
-		<SolidColorBrush x:Key="MyBtnBorderBackColor" Color="#00707070"></SolidColorBrush>
-		<SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF6CA5FB"></SolidColorBrush>
+		<SolidColorBrush x:Key="MyBtnBorderColor" Color="#00707070"/>
+		<SolidColorBrush x:Key="MyBtnBorderBackColor" Color="#00707070"/>
+		<SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF6CA5FB"/>
 		<!--END-->
 
 		<Style x:Key="MenuButton" TargetType="{x:Type Button}" >
-			<Setter Property="Background" Value="{StaticResource MyBtnBorderBackColor}"></Setter>
-			<Setter Property="Foreground" Value="#FF2C2C2C"></Setter>
-			<Setter Property="BorderBrush" Value="{StaticResource MyBtnBorderColor}"></Setter>
+			<Setter Property="Background" Value="{StaticResource MyBtnBorderBackColor}"/>
+			<Setter Property="Foreground" Value="#FF2C2C2C"/>
+			<Setter Property="BorderBrush" Value="{StaticResource MyBtnBorderColor}"/>
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
@@ -40,111 +43,90 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
+
 	</Window.Resources>
 	<Grid Background="#FF292929" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="45"/>
-			<RowDefinition Height="189*"/>
-			<RowDefinition Height="0*"/>
-			<RowDefinition Height="30"/>
+			<RowDefinition Height="661*"/>
+			<RowDefinition Height="208*"/>
+			<RowDefinition Height="20"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="360"/>
 			<ColumnDefinition/>
 			<ColumnDefinition Width="350"/>
 		</Grid.ColumnDefinitions>
-		<Grid Grid.Column="0" Grid.Row="1">
+		<Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="122*"/>
 				<RowDefinition Height="133*"/>
 			</Grid.RowDefinitions>
-			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="13" BorderBrush="{x:Null}">
-				<TreeView x:Name="segmentList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" PreviewMouseDoubleClick="segmentList_PreviewMouseDoubleClick" BorderBrush="{x:Null}">
-					<TreeView.ContextMenu>
+			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="13" BorderBrush="Transparent">
+				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" BorderBrush="Transparent">
+					<TreeView.ContextMenu >
 						<ContextMenu>
 							<MenuItem x:Name="_MenuItemNew" Header="{StaticResource New}" />
 							<MenuItem x:Name="_MenuItemDel" Header="{StaticResource Delete}"/>
 						</ContextMenu>
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
-						<DataTemplate>
-							<Grid>
-								<Image Source="{Binding Path=FileIcon}" HorizontalAlignment="Left" Width="30" Stretch="UniformToFill" />
-								<TextBlock Foreground="#FFFFA507" Text="{Binding Path=ShowText}" Margin="35, 5" FontSize="13"></TextBlock>
+						<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}"  ItemsSource="{Binding Childs}">
+							<Grid  MouseLeftButtonUp="objectList_MouseLeftButtonUp" Background="Transparent">								
+								<TextBlock Foreground="#FFFFA507" Text="{Binding ShowText}" Margin="5, 5" FontSize="12"/>
 							</Grid>
-						</DataTemplate>
+						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>
 				</TreeView>
 			</GroupBox>
-			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="13" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceDir}"/>
+			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceDir}" />
 			<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Transparent" Height="3" VerticalAlignment="Top"/>
 		</Grid>
-		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="2">
-			<TabControl Background="#FF2E2E2E" FontSize="15">
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="2" >
+			<TabControl Background="#FF2E2E2E" FontSize="12" Margin="0,10,0,0">
 				<TabItem Header="{StaticResource PropertyText}" Background="#FFC5C5C5" >
 					<local:PropertiesView HorizontalAlignment="Stretch" Margin="-2,20,0,0" VerticalAlignment="Stretch" x:Name="properties" Background="#FF2E2E2E" />
 				</TabItem>
 			</TabControl>
 		</Grid>
-		<GridSplitter x:Name="gridSplitter" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="2" Background="#FFABADB3" Margin="0,2,0,0" Grid.RowSpan="2"/>
-		<TabControl x:Name="EditorPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent" Tag="100" Margin="1">
-		</TabControl>
+		<GridSplitter x:Name="gridSplitter" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="2" Background="#FFABADB3"/>
+		<TabControl x:Name="renderPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent"></TabControl>
+		<!--<Border BorderBrush="White" BorderThickness="1" x:Name="EditorPanel" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent">
+			<local:RenderPanel IsEditor="True" x:Name="renderPanel"/>
+		</Border>-->
 		<Grid HorizontalAlignment="Stretch" Margin="0,5,0,0" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF292929">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="320"/>
-				<ColumnDefinition Width="71*"/>
+				<ColumnDefinition Width="373*"/>
+				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="40"/>
-				<ColumnDefinition Width="180*"/>
+				<ColumnDefinition Width="1151*"/>
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="60"/>
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="4" x:Name="Min" Margin="15,2,0,0" Style="{StaticResource MenuButton}" CommandParameter="Min" ToolTip="{StaticResource MinToolTip}">
+			<Button Grid.Column="5" x:Name="Min" Margin="15,2,0,0" Style="{StaticResource MenuButton}" CommandParameter="Min" ToolTip="{StaticResource MinToolTip}">
 				<Image Source="/Resources/Pic/min.png" Width="20" Height="20"/>
 			</Button>
-			<Button Grid.Column="5" x:Name="Close" Margin="0,2,15,0" CommandParameter="Close" Style="{StaticResource MenuButton}" ToolTip="{StaticResource CloseToolTip}">
+			<Button Grid.Column="6" x:Name="Close" Margin="0,2,15,0" CommandParameter="Close" Style="{StaticResource MenuButton}" ToolTip="{StaticResource CloseToolTip}">
 				<Image Source="/Resources/Pic/close.png" Height="20" Width="20" />
 			</Button>
-			<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
-					<ColumnDefinition Width="80"/>
-				</Grid.ColumnDefinitions>
-				<Button Margin="2,2,2,2" x:Name="OpenBtn" CommandParameter="OpenBtn" Style="{StaticResource MenuButton}">
-					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="76">
-						<Image Source="/Resources/Pic/Open File.ico" HorizontalAlignment="Left"/>
-						<Label Foreground="White" Content="{StaticResource Open}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-					</Grid>
-				</Button>
-				<Button Grid.Column="1" Margin="2,2,2,2" x:Name="NewBtn"  CommandParameter="NewBtn" Style="{StaticResource MenuButton}">
-					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="76">
-						<Image Source="/Resources/Pic/Tab New Raised.ico" HorizontalAlignment="Left"/>
-						<Label Foreground="White" Content="{StaticResource New}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-					</Grid>
-				</Button>
-				<Button Grid.Column="2" Margin="2,2,2,2" x:Name="SaveBtn" CommandParameter="SaveBtn" Style="{StaticResource MenuButton}">
-					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="76">
-						<Image Source="/Resources/Pic/File Save As.ico" HorizontalAlignment="Left"/>
-						<Label Foreground="White" Content="{StaticResource Save}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-					</Grid>
-				</Button>
-				<Button Grid.Column="3" Margin="2,2,2,2" x:Name="SetBtn" CommandParameter="SetBtn" Style="{StaticResource MenuButton}">
-					<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="76">
-						<Image Source="/Resources/Pic/Setting.ico" HorizontalAlignment="Left"/>
-						<Label Foreground="White" Content="{StaticResource Setting}" HorizontalAlignment="Right" Margin="0,0,10,0"/>
-					</Grid>
-				</Button>
-
-			</Grid>
-			<Button x:Name="Test" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,2,0,2" VerticalAlignment="Stretch" 
-					Style="{StaticResource MenuButton}" BorderBrush="Transparent" ToolTip="{StaticResource TestToolTip}">
+		
+			<Button x:Name="Run" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,2,0,2" VerticalAlignment="Stretch" 
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run">
 				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
-					<Image Source="/Resources/Pic/Right Arrow.ico" HorizontalAlignment="Left"/>
+					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="25" Height="20"
+						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
+						<ed:RegularPolygon.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="90"/>
+							</TransformGroup>
+						</ed:RegularPolygon.RenderTransform>
+					</ed:RegularPolygon>
 				</Grid>
 			</Button>
+			
 		</Grid>
-		<Grid HorizontalAlignment="Stretch" Margin="5,0,0,0" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
+		<Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="34"/>
 				<ColumnDefinition Width="3"/>
@@ -160,7 +142,24 @@
 
 		</Grid>
 
+		<Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+			<TabControl Background="Transparent">
+				<TabItem Header="{StaticResource LogPanel}">
+					<ListBox Background="Transparent" x:Name="logList">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Grid>
+									<TextBlock Text="{Binding LogStr}" Foreground="{Binding LogColor}" FontSize="13"/>
+								</Grid>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</TabItem>
+			</TabControl>
+		</Grid>
+		<GridSplitter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="3" VerticalAlignment="Top" Background="Transparent"/>
 		<GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="3" VerticalAlignment="Stretch" Background="Transparent"/>
 		<GridSplitter Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="3" VerticalAlignment="Stretch" Background="Transparent"/>
+
 	</Grid>
 </Window>

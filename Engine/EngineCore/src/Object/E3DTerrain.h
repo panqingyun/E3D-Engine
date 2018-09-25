@@ -7,20 +7,15 @@
 namespace E3DEngine
 {
 	// TODO  根据高度图生成地形
-	class Terrain : public GameObject
+	class EX_PORT Terrain : public GameObject
 	{
 	public:
-		Terrain()
-		{
-			m_bIsEditorGrid = false;
-			lastSize = 1;
-			CreateBehaviour();
-		}
+		Terrain();
 		void Create(const char * heightMapFileName);
 		void Create(int size);
 		virtual void SetMaterial(Material * material);
 		virtual void PrepareUpdate(float deltaTime);
-		void SetIsEditorGrid(bool isEditor) { m_bIsEditorGrid = isEditor; }
+		void SetIsEditorGrid(bool isEditor);
 
 	protected:
 		virtual void CreateBehaviour() override;

@@ -137,7 +137,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #       define ASSIMP_API __declspec(dllimport)
 #       define ASSIMP_API_WINONLY __declspec(dllimport)
 #   else
-#       define ASSIMP_API
+#       define ASSIMP_API 
 #       define ASSIMP_API_WINONLY
 #   endif
 

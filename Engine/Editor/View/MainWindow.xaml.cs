@@ -13,6 +13,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Interop;
+using System.Text;
 
 namespace E3DEditor.View
 {
@@ -25,22 +27,23 @@ namespace E3DEditor.View
         {
             InitializeComponent();
             App.vm_MainWindow._MainWindow = this;
-            segmentList.ItemsSource = App.vm_MainWindow.SegmentList;
             prograss.SetBinding(ProgressBar.ValueProperty, new Binding("PrograssBarValue") { Source = App.vm_MainWindow });
             state.SetBinding(Label.ContentProperty, new Binding("State") { Source = App.vm_MainWindow });
-            NewBtn.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
-            SaveBtn.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
-            OpenBtn.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
-            SetBtn.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
+           
             Min.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
             Close.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
+            Run.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
             _MenuItemNew.SetBinding(Button.CommandProperty, new Binding("MainMenuNewButtonCommand") { Source = App.vm_MainWindow });
             _MenuItemDel.SetBinding(Button.CommandProperty, new Binding("MainMenuDeleteButtonCommand") { Source = App.vm_MainWindow });
         }
-        
-        private void segmentList_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void objectList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-           
-        }     
+            if (objectList.SelectedItem == null)
+            {
+                return;
+            }
+            properties.SelectedObject = objectList.SelectedItem;
+        }
     }
 }

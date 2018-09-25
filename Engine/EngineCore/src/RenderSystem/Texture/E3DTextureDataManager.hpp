@@ -58,7 +58,7 @@ namespace E3DEngine
 		}
 	};
 
-	class TextureDataManager : public IManager
+	class EX_PORT TextureDataManager : public IManager
 	{
 	public:
 		// -----------------------------------------------

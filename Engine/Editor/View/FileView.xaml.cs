@@ -87,7 +87,7 @@ namespace E3DEditor.View
                 return;
             }
             ItemNodeBase file = fileView.SelectedItem as ItemNodeBase;
-            IOFile.OpenInFolder(Config.GameResourcePath + "\\" + file.FileFullName);
+            IOFile.OpenInFolder(Config.GamePath + "\\" + file.FileFullName);
         }
 
         private void TextBlock_PreviewMouseMove(object sender, MouseEventArgs e)
@@ -112,12 +112,27 @@ namespace E3DEditor.View
 
         public void ShowFileInView(string filePath)
         {
-            if (!System.IO.File.Exists(Config.GameResourcePath + "/" + filePath))
+            if (!System.IO.File.Exists(Config.GamePath + "/" + filePath))
             {
                 return;
             }
             string fileName = System.IO.Path.GetFileName(filePath);
             filePath = "resources/" + System.IO.Path.GetDirectoryName(filePath);
+        }
+
+        private void fileView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (fileView.SelectedItem == null)
+            {
+                return;
+            }
+
+            ItemNodeBase file = fileView.SelectedItem as ItemNodeBase;
+            string ext = System.IO.Path.GetExtension(file.FileFullName);
+            if (ext == ".scene")
+            {
+                App.vm_MainWindow.LoadScene(Config.GamePath + file.FileFullName);
+            }
         }
     }
 }

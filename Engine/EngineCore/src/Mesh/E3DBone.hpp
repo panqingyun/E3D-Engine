@@ -12,7 +12,7 @@ using namespace vvision;
 namespace E3DEngine
 {
 	// 骨骼
-	class Bone : public GameObject
+	class EX_PORT Bone : public GameObject
 	{
 	public:
 		Bone();
@@ -20,20 +20,26 @@ namespace E3DEngine
 		~Bone();
 
 	public:
+
+#ifndef __EDITOR__
 		void SetMetadata(aiMetadata * data);
 		void SetAiBone(aiBone * bone);
+#endif
 		void Move(vec3f position);
 		void Transformation(mat4f matrix);
 		
 		virtual void Update(float deltaTime);
 	public:
 		mat4f		BoneOffset;
+
+#ifndef __EDITOR__
 		aiBone *	data;
+		aiMetadata *					Metadata;
+#endif
 		int			BoneIndex;
 		std::vector<uint>				VerterIndex;
 		std::vector<float>				VertexWeight;
 		std::map<std::string ,Bone*>    Childs;
-		aiMetadata *					Metadata;
 		std::map<const char* ,object>   mapMetadatas;
 
 	public:

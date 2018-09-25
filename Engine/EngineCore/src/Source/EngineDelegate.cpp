@@ -16,16 +16,25 @@ namespace E3DEngine
 	{
 		m_bIsInited = false;
 		m_bPause = false;
+		m_bIsEditor = false;
+	}
+
+
+	E3DEngine::EngineDelegate & EngineDelegate::GetInstance()
+	{
+		static EngineDelegate _ins;
+		return _ins;
 	}
 
 	EngineDelegate::~EngineDelegate() = default;
 	
-	void EngineDelegate::Initilize()
+	void EngineDelegate::Initilize(bool isEditor)
 	{
 		if(m_bIsInited)
 		{
 			return;
 		}
+		m_bIsEditor = isEditor;
 		Application::Initialize();
 		PhysicWorld::GetInstance().InitPhysics();
 		Timer::Init();
@@ -35,8 +44,15 @@ namespace E3DEngine
 
 	void EngineDelegate::Update(float deltaTime)
 	{
+		if (m_bPause)
+		{
+			return;
+		}
+		if (!m_bIsEditor)
+		{
+			PhysicWorld::GetInstance().Update(deltaTime);
+		}
 		Timer::Update(deltaTime);
-		PhysicWorld::GetInstance().Update(deltaTime);
 		Scene * pCurScene = SceneManager::GetCurrentScene();
 		if (pCurScene != nullptr )
 		{
@@ -63,5 +79,15 @@ namespace E3DEngine
 		Timer::Destory();
 		TableRegister::Destory();
 		PhysicWorld::GetInstance().Destory();
+	}
+
+	bool EngineDelegate::GetIsEditor()
+	{
+		return m_bIsEditor;
+	}
+
+	void EngineDelegate::SetIsRun(bool isRun)
+	{
+		m_bIsEditor = !isRun;
 	}
 }

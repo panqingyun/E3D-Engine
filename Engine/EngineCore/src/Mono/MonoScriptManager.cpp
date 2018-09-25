@@ -29,6 +29,13 @@ static MonoBreakPolicy NeverInsertBreakpoint(MonoMethod *method)
 	return MONO_BREAK_POLICY_ALWAYS;
 }
 
+
+MonoScriptManager& MonoScriptManager::GetInstance()
+{
+	static MonoScriptManager ins;
+	return ins;
+}
+
 void MonoScriptManager::Initialize()
 {
 	mono_trace_set_log_handler(mono_logger_call, nullptr);
@@ -37,9 +44,11 @@ void MonoScriptManager::Initialize()
 	// Never insert system breakpoint for IL opcode Break and Debugger.Break () call.
 	mono_set_break_policy(NeverInsertBreakpoint);
 	
-	std::string mono_dll_path = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly";
+	std::string mono_dll_path = "Data/E3DAssembly";
+
 	std::string code_dll_file = E3DEngine::Application::AppDataPath + "../Library/AssemblyCSharp.dll";
-	std::string engine_dll_file = E3DEngine::Application::AppDataPath + "../Library/E3DAssembly/E3DEngine.dll";
+
+	std::string engine_dll_file ="Data/E3DAssembly/E3DEngine.dll";
 	//g_set_print_handler(outPrint);
 #if _DEBUG_CSHARP
 	//	"--soft-breakpoints",
@@ -205,7 +214,7 @@ void * MonoBehaviour::GetFieldValue(const char * fieldName)
 	{
 		return nullptr;
 	}
-	void * value;
+	void * value = nullptr;
 	mono_field_get_value(m_pMonoObject, field, value);
 	return value;
 }

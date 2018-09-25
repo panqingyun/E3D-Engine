@@ -152,7 +152,22 @@ namespace E3DEngine
     }
     
     
-    PointEmitter::PointEmitter()
+	void ParticleEmitter::ParseConfig(TableBase *pConfigTable)
+	{
+		m_pConfigTable = pConfigTable;
+	}
+
+	vvision::vec3f ParticleEmitter::GetEmitterPosition()
+	{
+		return m_EmitterPosition;
+	}
+
+	void ParticleEmitter::SetEnable(bool isEnable)
+	{
+		m_bEnable = isEnable;
+	}
+
+	PointEmitter::PointEmitter()
     {
         
     }

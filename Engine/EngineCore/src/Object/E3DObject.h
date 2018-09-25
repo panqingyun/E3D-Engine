@@ -27,7 +27,7 @@ namespace E3DEngine
 #define E3D_NAME_SPACE "E3DEngine"
 
 	class CTransform;
-	class Object : public Ref
+	class EX_PORT Object : public Ref
 	{
 	public:
 		Object();
@@ -37,6 +37,8 @@ namespace E3DEngine
 		MonoBehaviour * GetMonoBehaviour();
 		virtual void CreateBehaviour();
 		virtual void SetMonoObject(MonoObject * monoObject);
+
+		std::string GetName();
 	protected:
 		virtual void setBehaviourDefaultValue();
 	public:

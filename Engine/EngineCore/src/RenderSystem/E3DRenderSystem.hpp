@@ -34,7 +34,7 @@ namespace E3DEngine
 		eDM_POINTS,
 	};
 
-	class RenderSystem : public IObject
+	class EX_PORT RenderSystem : public IObject
 	{
 	public:
 		RenderSystem();
@@ -49,7 +49,8 @@ namespace E3DEngine
 		virtual void	BindDefaultBackbuffer();
 		virtual Render2Texture * CreateRtt(float width, float height);
 		Vector2	GetFrameSize();
-		
+		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle);
+
 	public:
 		RendererManager * GetRenderManager();
 		MaterialManager * GetMaterialManager();

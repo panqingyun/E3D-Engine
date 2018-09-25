@@ -7,7 +7,7 @@
 
 namespace E3DEngine
 {
-	class SkyBox : public Box
+	class EX_PORT SkyBox : public Box
 	{
 	public:
 		virtual void Create(float l, float w, float h) override;
@@ -23,7 +23,7 @@ namespace E3DEngine
 	class SkyDome : public GameObject
 	{
 	public:
-		SkyDome() { CreateBehaviour(); }
+		SkyDome();
 		virtual void Create(float R);
 		virtual void SetMaterial(Material * material);
 		virtual void SetActive(bool isActive) override;

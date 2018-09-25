@@ -12,6 +12,12 @@
 namespace E3DEngine
 {
 	
+	E3DEngine::SceneManager& SceneManager::GetInstance()
+	{
+		static SceneManager _ins;
+		return _ins;
+	}
+
 	SceneManager::SceneManager()
 	{
 		mCurScene = nullptr;

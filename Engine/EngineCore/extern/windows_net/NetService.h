@@ -6,7 +6,7 @@ void Send(std::string msg);
 void Close();
 void CreateTCP(const char *ip, int port);
 
-#define CMD_FRONT_CODE 0xF
+#define CMD_FRONT_CODE 0xFF
 #define CMD_HEADER_LENGTH 6
 #define CMD_BUFFER_LENGTH 4096
 

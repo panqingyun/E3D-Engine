@@ -81,7 +81,7 @@ namespace E3DEngine
 
 
     class CTransform;
-    class RenderObject : public Object
+    class EX_PORT RenderObject : public Object
     {
     public:
         RenderObject();
@@ -107,19 +107,19 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() { }
         
 	public:
-		virtual bool GetActive() { return m_bIsActive; }
+		virtual bool GetActive();
 		virtual void SetColor(long color);
 		virtual void SetIsBillborad(bool isBillboard);
 		virtual bool GetIsBillBoard();
-		virtual UINT GetDrawModule() { return m_nDrawModule; }
+		virtual UINT GetDrawModule();
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
 		virtual void CreateNewTransform();
 		virtual void SetRenderIndex(DWORD index);
-		virtual Material* GetMaterial() { return pMaterial; }
-		virtual void SetNeedSortVertex(bool bNeed) { m_bNeedSortVertex = bNeed; }
+		virtual Material* GetMaterial();
+		virtual void SetNeedSortVertex(bool bNeed);
 		virtual void SetLayerMask(DWORD layer);
-		virtual DWORD GetLayerMask() { return m_layer; }
+		virtual DWORD GetLayerMask();
 
 		MinMaxAABB GetBounds()
 		{

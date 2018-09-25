@@ -74,6 +74,12 @@ namespace E3DEngine
 		}
 	}
 
+
+	float RigidBody::GetFriction()
+	{
+		return mFriction;
+	}
+
 	void RigidBody::SetRestitution(float restitution)
 	{
 		mRestitution = restitution;
@@ -160,6 +166,16 @@ namespace E3DEngine
 		mRigidBody->setRestitution(mRestitution);
 		PhysicWorld::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
 		PhysicWorld::GetInstance().AddRigidBody(mRigidBody);
+	}
+
+	float RigidBody::GetMass()
+	{
+		return mMass;
+	}
+
+	float RigidBody::GetRestitution()
+	{
+		return mRestitution;
 	}
 
 	void BoxCollider::Awake()
@@ -322,6 +338,58 @@ namespace E3DEngine
 	void CapsuleCollider::SetHieght(float height)
 	{
 		mHeight = height;
+	}
+
+
+	float CapsuleCollider::GetHeight()
+	{
+		return mHeight;
+	}
+
+
+	float CapsuleCollider::GetRadius()
+	{
+		return mRadius;
+	}
+
+	btScalar ColCallBack::addSingleResult(btManifoldPoint & cp, const btCollisionObjectWrapper * colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper * colObj1Wrap, int partId1, int index1)
+	{
+		/*btVector3 posA = cp.getPositionWorldOnA();
+		btVector3 posB = cp.getPositionWorldOnB();*/
+
+		// obA 与 obB 发生碰撞
+		if (colObj0Wrap->getCollisionObject()->getUserPointer() == nullptr)
+		{
+			return 0;
+		}
+		else if (colObj1Wrap->getCollisionObject()->getUserPointer() == nullptr)
+		{
+			return 0;
+		}
+		GameObject *obA = static_cast<GameObject*>(colObj0Wrap->getCollisionObject()->getUserPointer());
+		GameObject *obB = static_cast<GameObject*>(colObj1Wrap->getCollisionObject()->getUserPointer());
+		obA->OnCollisionEnter(obA);
+		obB->OnCollisionEnter(obB);
+
+		return btScalar(0.f);
+	}
+
+
+	bool Collider::CheckClick(vec2d screenPoint)
+	{
+		return false;
+	}
+
+
+	bool Collider::CheckPress(vec2d screenPoint)
+	{
+		return false;
+	}
+
+
+	btCollisionShape * Collider::GetCollisionShape()
+	{
+		return m_pShape;
 	}
 
 }

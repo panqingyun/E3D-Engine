@@ -11,19 +11,12 @@
 
 namespace E3DEngine
 {
-    class Effect extends Ref
+    class EX_PORT Effect extends Ref
     {
         friend class EffectFactory;
     protected:
-        Effect()
-		{
-			m_pEventArgs = nullptr;
-			m_bIsPlay = false;
-		}
-		virtual ~Effect()
-		{
-			SAFE_DELETE(m_pEventArgs);
-		}
+        Effect();
+		virtual ~Effect();
     public:
         virtual void Update(float deltaTime);
         virtual void Play() = 0;

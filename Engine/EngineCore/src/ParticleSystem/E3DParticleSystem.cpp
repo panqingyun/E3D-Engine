@@ -103,6 +103,12 @@ namespace E3DEngine
 	}
 
 
+	E3DEngine::ParticleSystem& ParticleSystem::GetInstance()
+	{
+		static ParticleSystem _ins;
+		return _ins;
+	}
+
 	ParticleSystem::~ParticleSystem()
 	{
 		Destory();

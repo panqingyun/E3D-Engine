@@ -30,7 +30,7 @@ namespace E3DEngine
      发射器类提供不同的实现。
      */
     // ----------------------------------------------------------------------------------------
-    class ParticleEmitter : public Ref
+    class EX_PORT ParticleEmitter : public Ref
     {
         DECLARE_CLASS(ParticleEmitter);
     public:
@@ -48,12 +48,12 @@ namespace E3DEngine
         virtual void Initilize(ParticleGroup *p);
         virtual void Update(float deltaTime);
         virtual ~ParticleEmitter();
-        virtual void ParseConfig(TableBase *pConfigTable) { m_pConfigTable = pConfigTable; }
+        virtual void ParseConfig(TableBase *pConfigTable);
         // 初始化提供粒子对象的属性
         virtual void InitParticle( Particle *p ){ }
         virtual void SetEmitterPosition(vec3f position);
-        virtual vec3f GetEmitterPosition()  { return m_EmitterPosition; }
-        virtual void SetEnable(bool isEnable) { m_bEnable = isEnable; }
+        virtual vec3f GetEmitterPosition();
+        virtual void SetEnable(bool isEnable);
         virtual void InitCompleted();
 		// 在发射器指定的范围内产生粒子位置
 	protected:

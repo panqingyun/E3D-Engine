@@ -22,6 +22,7 @@ namespace E3DEngine
 	std::string getContentFromPath(const std::string& filepath);
 	unsigned char * getContent(const char* filepath);
 	std::string GetFolder(std::string fullPath);
+	std::string GetFileName(std::string fullPath);
 }
 
 #endif

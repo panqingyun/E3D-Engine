@@ -113,7 +113,7 @@ namespace Assimp    {
 * @note One Importer instance is not thread-safe. If you use multiple
 * threads for loading, each thread should maintain its own Importer instance.
 */
-class ASSIMP_API Importer   {
+class ASSIMP_API __declspec(dllexport) Importer   {
 public:
     /**
      *  @brief The upper limit for hints.

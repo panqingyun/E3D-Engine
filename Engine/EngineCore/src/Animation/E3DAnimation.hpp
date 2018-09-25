@@ -10,7 +10,7 @@
 
 namespace E3DEngine
 {
-	class Animation : public Object
+	class EX_PORT Animation : public Object
 	{
 	public:
 		Animation();
@@ -21,6 +21,8 @@ namespace E3DEngine
 		
 		std::map<std::string, Bone*> *	m_BoneMapping;
 	protected:
+
+#ifndef __EDITOR__
 		const aiScene *			m_pScene;
 		mat4f					m_GlobalInverseTransform;
 		float					m_fhasPlayTimeLong;
@@ -31,21 +33,22 @@ namespace E3DEngine
 		std::map<std::string, AnimationClip*>	m_mapAnimationClip;
 		std::map<std::string ,aiAnimation*>		m_mapAnimations;
 		aiAnimation *mCurrnetPlayAnimation;
-		
+#endif
 	public:
 		virtual void Play(std::string name = "", bool isRepeat = false);
-		
+
+#ifndef __EDITOR__
 		virtual void SetScene(const aiScene * pScene);
+#endif
 		virtual void LoadAnimations();
 		virtual void SetBones(std::map<std::string, Bone *> *p_MapBones);
 	public:
 		virtual void Update(float deltaTime) override;
 		
 	public:
-		bool	IsPlay()
-		{
-			return m_bIsPlay;
-		}
+		bool	IsPlay();
+
+#ifndef __EDITOR__
 	protected:
 		void			BoneTransform(float TimeInSeconds);
 		aiNodeAnim  *	FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName) const;
@@ -60,6 +63,7 @@ namespace E3DEngine
 		uint	findRotation(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		uint	findPosition(float AnimationTime, const aiNodeAnim* pNodeAnim);
 		void	readNodeHeirarchy(float AnimationTime, const aiNode* pNode, aiAnimation *pAnimation);
+#endif
 	};
 }
 

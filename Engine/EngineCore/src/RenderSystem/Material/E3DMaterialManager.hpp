@@ -5,7 +5,7 @@
 
 namespace E3DEngine
 {
-	class MaterialManager : public IManager
+	class EX_PORT MaterialManager : public IManager
 	{
 	public:
 		MaterialManager() 

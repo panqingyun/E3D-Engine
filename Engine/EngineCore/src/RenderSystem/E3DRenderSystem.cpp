@@ -105,4 +105,8 @@ namespace E3DEngine
 		return nullptr;
 	}
 
+	void E3DEngine::RenderSystem::ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle)
+	{
+
+	}
 }

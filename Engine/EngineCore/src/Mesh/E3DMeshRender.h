@@ -14,7 +14,7 @@ using namespace std;
 
 namespace E3DEngine
 {
-	class MeshRender : public Renderer
+	class EX_PORT MeshRender : public Renderer
 	{
 	public:
 		~MeshRender();

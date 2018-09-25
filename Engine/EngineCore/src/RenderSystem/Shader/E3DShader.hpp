@@ -99,7 +99,7 @@ namespace E3DEngine
 		int size;
 	};
 
-	class Shader : public IObject
+	class EX_PORT Shader : public IObject
 	{
 		using setShaderValueFunc = void(Shader::*)(std::string varName, std::string defValueFormat, int count);
 	public:

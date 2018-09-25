@@ -9,6 +9,7 @@
 #ifndef __E3D_ENGINE_DELEGATE_HPP__
 #define __E3D_ENGINE_DELEGATE_HPP__
 
+#pragma unmanaged
 #include "../Camera/E3DCamera.h"
 #include "../ParticleSystem/E3DParticleFactory.hpp"
 #include "../ParticleSystem/E3DParticleSystem.hpp"
@@ -48,21 +49,21 @@
 namespace E3DEngine
 {
 #define USE_GPU_IMAGE
-	class EngineDelegate : public IObject
+	class EX_PORT EngineDelegate : public IObject
 	{
 	public:
-		static EngineDelegate &GetInstance()
-		{
-			static EngineDelegate _ins;
-			return _ins;
-		};
+		static EngineDelegate &GetInstance();;
 		~EngineDelegate();
-		void Initilize();	
+		void Initilize(bool isEditor = false);
 		void Destory();
 		
 	public:
 		void SetEnginePause(bool bPause);
 		bool GetEnginePause();
+		bool GetIsEditor();
+		void SetIsRun(bool isRun);
+
+	public:
 
 	private:
 		EngineDelegate();
@@ -70,6 +71,7 @@ namespace E3DEngine
 		eTargetPlatform							m_ePlatform;
 		bool									m_bIsInited;
 		bool									m_bPause;
+		bool									m_bIsEditor;
 		
 	public:
 		void Update(float deltaTime);

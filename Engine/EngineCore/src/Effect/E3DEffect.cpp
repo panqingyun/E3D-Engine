@@ -29,4 +29,16 @@ namespace E3DEngine
 	{
 		m_bIsPlay = false;
 	}
+
+	Effect::~Effect()
+	{
+		SAFE_DELETE(m_pEventArgs);
+	}
+
+	Effect::Effect()
+	{
+		m_pEventArgs = nullptr;
+		m_bIsPlay = false;
+	}
+
 }

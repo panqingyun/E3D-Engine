@@ -19,9 +19,7 @@ namespace E3DEditor.View
 
         private void Setting_Loaded(object sender, RoutedEventArgs e)
         {
-            resPath.Text = Config.GameResourcePath;
-            tabPath.Text = Config.GameTableFilePath;
-            JsonPath.Text = Config.JsonTablePath;
+            resPath.Text = Config.GamePath;
             width.Text = Config.GameWidth.ToString();
             height.Text = Config.GameHeight.ToString();
         }
@@ -29,8 +27,6 @@ namespace E3DEditor.View
         private void sure_Click(object sender, RoutedEventArgs e)
         {
             Config.WriteConfig(CONST_STRING.Config_resourceFilePath, resPath.Text);
-            Config.WriteConfig(CONST_STRING.Config_tableFilePath, tabPath.Text);
-            Config.WriteConfig(CONST_STRING.Config_jsonTablePath, JsonPath.Text);
             Config.WriteConfig(CONST_STRING.Config_gameHeight, height.Text);
             Config.WriteConfig(CONST_STRING.Config_gameWidht, width.Text);
             Config.SaveConfig();

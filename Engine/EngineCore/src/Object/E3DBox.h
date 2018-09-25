@@ -10,13 +10,10 @@
 namespace E3DEngine
 {
 	class Renderer;
-	class Box : public GameObject
+	class EX_PORT Box : public GameObject
 	{
 	public:
-		Box()
-		{
-			CreateBehaviour();
-		}
+		Box();
 		virtual void Create(float l, float w, float h);
 		virtual void TransferRender() override;
 		virtual void PrepareUpdate(float deltaTime) override;

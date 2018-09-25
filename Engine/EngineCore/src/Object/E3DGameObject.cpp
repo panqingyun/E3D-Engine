@@ -57,6 +57,12 @@ namespace E3DEngine
 		return &m_listComponents[type_name];
 	}
 
+
+	vvision::vec3f GameObject::GetBounds()
+	{
+		return size;
+	}
+
 	Component * GameObject::AddComponent(const char * type_name)
 	{
 		std::string className = "";
@@ -506,6 +512,24 @@ namespace E3DEngine
 		SetActive(true);
 	}
 
+
+	std::map<UINT, GameObject *> & GameObject::GetChilds()
+	{
+		return childNode;
+	}
+
+
+	std::vector<Vertex>& GameObject::GetVertex()
+	{
+		return m_vecVertex;
+	}
+
+
+	std::vector<uint>& GameObject::GetIndex()
+	{
+		return m_vecIndex;
+	}
+
 	void GameObject::ComponentAdded(Component * component)
 	{
 
@@ -530,6 +554,12 @@ namespace E3DEngine
 		SAFE_DELETE(go);
 	}
 
+
+	E3DEngine::CTransform * GameObject::GetTransform()
+	{
+		return Transform;
+	}
+
 	void GameObject::SetIsStatic(bool isStatic)
 	{
 		// TODO
@@ -549,6 +579,11 @@ namespace E3DEngine
 	}
 
 
+
+	bool GameObject::GetIsStatic()
+	{
+		return m_bIsStatic;
+	}
 
 	void GameObject::setBehaviourDefaultValue()
 	{

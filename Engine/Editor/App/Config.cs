@@ -8,10 +8,7 @@ namespace E3DEditor
 {
     public class Config
     {
-        public static string GameResourcePath = "../";
-        public static string GameTableFilePath = "";
-        public static string JsonTablePath = "";
-        public static string DialogAtlasPath = "";
+        public static string GamePath = "../../../Demo.CSharp/Asset/";
         public static int GameWidth = 0;
         public static int GameHeight = 0;
         
@@ -25,9 +22,7 @@ namespace E3DEditor
 
         private static void readConfig()
         {
-            GameResourcePath = getAppConfig(CONST_STRING.Config_resourceFilePath);
-            GameTableFilePath = getAppConfig(CONST_STRING.Config_tableFilePath);
-            DialogAtlasPath = getAppConfig(CONST_STRING.Config_dialogAtlasFilePath);
+            GamePath = getAppConfig(CONST_STRING.Config_resourceFilePath);
             try
             {
                 GameHeight = Convert.ToInt32(getAppConfig(CONST_STRING.Config_gameHeight));
@@ -37,7 +32,6 @@ namespace E3DEditor
             {
                 App.Instance.Log(LogLevel.Error, App.Instance["ResolutionRatioWrong"]);
             }
-            JsonTablePath = getAppConfig(CONST_STRING.Config_jsonTablePath);
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace E3DEditor
         /// </summary>
         public static void SaveConfig()
         {
-            xDoc.Save(System.Windows.Forms.Application.ExecutablePath + ".config");
+            xDoc.Save(GamePath + "assets.config");
             readConfig();
         }
 
@@ -80,7 +74,7 @@ namespace E3DEditor
 
         private static string getAppConfig(string appKey)
         {
-            xDoc.Load(System.Windows.Forms.Application.ExecutablePath + ".config");
+            xDoc.Load(GamePath + "assets.config");
 
             var xNode = xDoc.SelectSingleNode("//appSettings");
 

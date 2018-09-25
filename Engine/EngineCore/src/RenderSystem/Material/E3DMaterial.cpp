@@ -80,6 +80,12 @@ namespace E3DEngine
 		}
 	}
 
+
+	void Material::SetEnableDepthWrite(bool bEnable)
+	{
+		enablewriteDepth = bEnable;
+	}
+
 	void Material::CreateCubeTexture(std::string dirPath, std::string xPName, std::string xNName, std::string yPName, std::string yNName, std::string zPName, std::string ZNName)
 	{
 
@@ -120,6 +126,21 @@ namespace E3DEngine
     {
         
     }
-    
+
+	void Material::SetBlendType(DWORD src, DWORD dst)
+	{
+		srcBlendFactor = src; dstBlendFactor = dst;
+	}
+
+	void Material::SetEnableDepthTest(bool enable)
+	{
+		enableDepthTest = enable;
+	}
+
+
+	void Material::SetEnableCullFace(bool enable)
+	{
+		enableDoubleSide = enable;
+	}
 
 }

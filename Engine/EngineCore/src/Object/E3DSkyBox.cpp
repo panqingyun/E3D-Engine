@@ -106,6 +106,11 @@ void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec
 	rightTop.y = texture->y / texture->height;
 }
 
+E3DEngine::SkyDome::SkyDome()
+{
+	CreateBehaviour();
+}
+
 void E3DEngine::SkyDome::Create(float R)
 {
 	int rowNumber = 91;

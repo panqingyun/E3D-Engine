@@ -61,6 +61,13 @@ namespace E3DEngine
 		return newMap;
 	}
 
+
+	void* TableBase::createInstance(string content /*= ""*/)
+	{
+
+		return new TableBase();
+	}
+
 	TableBase::~TableBase()
 	{
 		for (std::map<int, TableBase*>::iterator it = tablePointerMap.begin();
@@ -163,4 +170,16 @@ namespace E3DEngine
             convertTypeSetValue(m_methodMap[it.first], (*configItem)[it.first], it.second);
         }
     }
+
+	std::string TableBase::GetKey1()
+	{
+		return "ID";
+	}
+
+
+	std::string TableBase::GetKey2()
+	{
+		return "ID";
+	}
+
 }

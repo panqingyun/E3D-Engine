@@ -48,6 +48,12 @@ namespace E3DEngine
 		setBehaviourDefaultValue();
 	}
 
+
+	std::string Object::GetName()
+	{
+		return mName;
+	}
+
 	void Object::setBehaviourDefaultValue()
 	{		
 		mBehaviour->SetFieldValue(CPP_OBJ_PTR_NAME, this);

@@ -12,6 +12,8 @@
 #ifndef WIN32
 #include <sys/time.h>
 #endif
+#include "../Source/Application.h"
+#include "../Camera/E3DCamera.h"
 /*
  * 接口函数
  */
@@ -27,9 +29,9 @@ long getCurrentTime()
 }
 extern "C"
 {
-	__api_function_ void InitilizeEngine()
+	__api_function_ void InitilizeEngine(bool isEditor)
 	{
-		E3DEngine::EngineDelegate::GetInstance().Initilize();
+		E3DEngine::EngineDelegate::GetInstance().Initilize(isEditor);
 	}
 	
 	__api_function_ void StartAppliaction()
@@ -105,24 +107,28 @@ extern "C"
 		Application::KeyUp(key);
 	}
 
-	__api_function_ void CreateEditorGrid()
-	{
-		Terrain * terrain = new Terrain();
-		terrain->Create(512);
-		terrain->SetIsEditorGrid(true);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("EditorData/Material/Terrain.material", 1);
-		terrain->SetMaterial(m);
-		terrain->SetLayerMask(1);
-		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
-		ADD_IN_SCENE(terrain);
-	}
-
 	__api_function_ void CreateEditorCamera()
 	{
 
 	}
-}
 
+	__api_function_ E3DEngine::Scene *GetCurrentScene()
+	{
+		return SceneManager::GetInstance().GetCurrentScene();
+	}
+
+	__api_function_ void RunGame(bool isRun)
+	{
+		E3DEngine::EngineDelegate::GetInstance().SetIsRun(isRun);
+	}
+
+	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle)
+	{
+		GetRenderSystem()->ChangeRenderSurface(handle);
+	}
+	
+	
+}
 
 /*
  * 全局函数

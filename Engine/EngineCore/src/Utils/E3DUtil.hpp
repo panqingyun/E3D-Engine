@@ -36,6 +36,8 @@ typedef unsigned int		uint
 #define SAFE_RELEASE(p)      { if(p) { (p)->release(); (p)=nullptr; } }
 #endif
 
+#define EX_PORT __declspec(dllexport)
+
 #define NULL_RETURN(OBJ)\
 if (OBJ == nullptr)\
 {\
@@ -202,7 +204,10 @@ vec4f V32V4(vec3f vec);
 // 给给定的数圈定范围
 float RangeNumber(float &number, float max, float min);
 // 将AssimpMatrix 转为 mat4f
+
+#ifndef __EDITOR__
 mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 mat);
+#endif
 
 template <class T> int getArrayLen(T& array)
 {

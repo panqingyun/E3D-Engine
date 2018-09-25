@@ -52,7 +52,7 @@ namespace E3DEditor.View
             return baseValue;
         }
 
-        VM_FleView viewModel = null;
+        public VM_FleView viewModel = null;
 
         public FileView()
         {

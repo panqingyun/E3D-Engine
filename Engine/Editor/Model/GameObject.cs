@@ -1,9 +1,4 @@
 ﻿using E3DEditor.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using E3DEngine;
 using System.Collections.ObjectModel;
 

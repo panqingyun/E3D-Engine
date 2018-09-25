@@ -9,27 +9,6 @@ namespace E3DEditor.Common
 {
     public class CommonTools
     {
-        public static string GetImageFullName(string imageName)
-        {
-            if (File.Exists(Config.GamePath + "/" + imageName + ".jpg"))
-            {
-                return Config.GamePath + "/" + imageName + ".jpg";
-            }
-            if (File.Exists(Config.GamePath + "/" + imageName + ".png"))
-            {
-                return Config.GamePath + "/" + imageName + ".png";
-            }
-            if (File.Exists(imageName + "jpg"))
-            {
-                return imageName + ".jpg";
-            }
-            if (File.Exists(imageName + "png"))
-            {
-                return imageName + ".png";
-            }
-            return "";
-        }
-
         public static FileType GetFileType(string fileName)
         {
             int fileExtPos = fileName.LastIndexOf('.');

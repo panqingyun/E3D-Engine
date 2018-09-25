@@ -47,4 +47,27 @@ namespace E3DEditor.Common
         }
     }
 
+    public sealed class MenuItemAttribute : Attribute
+    {
+        private string _itemPath = "";
+
+        public MenuItemAttribute(string v)
+        {
+            _itemPath = v;
+        }
+
+        public string ItemPath
+        {
+            get
+            {
+                return _itemPath;
+            }
+            set
+            {
+                _itemPath = value;
+            }
+        }
+
+
+    }
 }

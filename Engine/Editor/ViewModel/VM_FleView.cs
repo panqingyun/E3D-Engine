@@ -32,9 +32,14 @@ namespace E3DEditor.ViewModel
 
         public VM_FleView()
         {
-            directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GamePath) });
+            
         }       
         
+        public void LoadDirectory()
+        {
+            directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GamePath) });
+        }
+
         public void SelectedItemChanged(ItemsControl viewControl, DirectoryRecord SelectedItem)
         {
             DirectoryRecord item = SelectedItem;

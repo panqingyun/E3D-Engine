@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Interop;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace E3DEditor.View
 {
@@ -35,6 +36,7 @@ namespace E3DEditor.View
             Run.SetBinding(Button.CommandProperty, new Binding("MainTitleButtonCommand") { Source = App.vm_MainWindow });
             _MenuItemNew.SetBinding(Button.CommandProperty, new Binding("MainMenuNewButtonCommand") { Source = App.vm_MainWindow });
             _MenuItemDel.SetBinding(Button.CommandProperty, new Binding("MainMenuDeleteButtonCommand") { Source = App.vm_MainWindow });
+            
         }
 
         private void objectList_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -44,6 +46,44 @@ namespace E3DEditor.View
                 return;
             }
             properties.SelectedObject = objectList.SelectedItem;
+        }
+
+        private void menu_Click(object sender, RoutedEventArgs e)
+        {
+            App.vm_MainWindow.MenuItemCommand((sender as MenuItem).Name);
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            HwndSource source = PresentationSource.FromVisual(this) as HwndSource;
+            source.AddHook(WndProc);
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            try
+            {
+                switch (msg)
+                {
+                    case Win32.WM_COPYDATA:
+                        {
+                            COPYDATASTRUCT data = (COPYDATASTRUCT)Marshal.PtrToStructure(lParam, typeof(COPYDATASTRUCT));
+                            App.vm_MainWindow.RevWindowsPlayerData(data);
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                App.vm_MainWindow.ShowLog(ex.Message);
+            }
+            return IntPtr.Zero;
+        }
+        
+        private void Pause_Checked(object sender, RoutedEventArgs e)
+        {
+            App.vm_MainWindow.PauseEngine = (bool)Pause.IsChecked;
         }
     }
 }

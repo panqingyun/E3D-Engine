@@ -75,11 +75,23 @@ namespace E3DEditor.Common
         public const int WM_COMPAREITEM     = 0x0039; // 发送此消息来判定combobox或listbox新增加的项的相对位置
         public const int WM_COMPACTING      = 0x0041; // 显示内存已经很少了
         public const int WM_COMMNOTIFY      = 0x0044; /* no longer suported */
-
+        public const int WM_COPYDATA        = 0x004A;
         public const int WM_WINDOWPOSCHANGING   = 0x0046; //发送此消息给那个窗口的大小和位置将要被改变时，来调用setwindowpos函数或其它窗口管理函数
         public const int WM_WINDOWPOSCHANGED    = 0x0047; //发送此消息给那个窗口的大小和位置已经被改变时，来调用setwindowpos函数或其它窗口管理函数
         public const int WM_POWER               = 0x0048; //当系统将要进入暂停状态时发送此消息                                                         
         public const uint ERROR_ALREADY_EXISTS  = 183;
+        public const int HWND_TOP               = 0;
+        public const int HWND_BOTTOM            = 1;
+        public const int HWND_TOPMOST           = -1;
+        public const int HWND_NOTOPMOST         = -2;
+
+        public const int GWL_STYLE              = -16;
+        public const int WS_BORDER              = (int)0x00800000L;
+        public const int WS_THICKFRAME          = (int)0x00040000L;
+        public const int SWP_NOMOVE             = 0x0002;
+        public const int SWP_NOSIZE             = 0x0001;
+        public const int SWP_NOZORDER           = 0x0004;
+        public const int SWP_FRAMECHANGED       = 0x0020;
         /// <summary>
         /// 内存复制
         /// </summary>
@@ -139,7 +151,7 @@ namespace E3DEditor.Common
         /// <param name="lParam"></param>
         /// <returns></returns>
         [DllImport("User32.dll", EntryPoint = "SendMessage")]      
-        public static extern int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, string lParam);
+        public static extern int SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, ref COPYDATASTRUCT IParam);
 
         /// <summary>
         /// 显示窗体
@@ -183,5 +195,80 @@ namespace E3DEditor.Common
         /// <returns></returns>
         [DllImport("Kernel32.dll", EntryPoint = "GetLastError")]
         public static extern uint GetLastError();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="hWndInsertAfter"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="cx"></param>
+        /// <param name="cy"></param>
+        /// <param name="wFlags"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint wFlags);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="lpRect"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowRect(IntPtr hWnd, out WindowRect lpRect);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="exeName"></param>
+        /// <param name="operType"></param>
+        /// <returns></returns>
+        [DllImport("kernel32.dll")]
+        public static extern int WinExec(string exeName, int operType);
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetParent(IntPtr hWndChild,  IntPtr hWndNewParent);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="nIndex"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern Int32 GetWindowLong(IntPtr hWnd, Int32 nIndex);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="nIndex"></param>
+        /// <param name="dwNewLong"></param>
+        /// <returns></returns>
+        [DllImport("user32.dll")]
+        public static extern Int32 SetWindowLong(IntPtr hWnd, Int32 nIndex, Int32 dwNewLong);
+
+    }
+    public struct WindowRect
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+    }
+
+    public enum DataType
+    {
+        eLog = 0,
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct COPYDATASTRUCT
+    {
+        public IntPtr dwData;
+        public int cbData;
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string lpData;
     }
 }

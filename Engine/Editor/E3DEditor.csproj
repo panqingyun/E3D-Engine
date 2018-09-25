@@ -105,16 +105,11 @@
     <Compile Include="App\Config.cs" />
     <Compile Include="Common\AtlasTools.cs" />
     <Compile Include="Common\CollectionHelper.cs" />
-    <Compile Include="Common\CommonTools.cs" />
-    <Compile Include="Common\CommonTypeDefine.cs" />
     <Compile Include="Common\ConstString.cs" />
     <Compile Include="Common\DragTextData.cs" />
-    <Compile Include="Common\EnumTools.cs" />
     <Compile Include="Common\Interface.cs" />
     <Compile Include="Common\MediaPlayer.cs" />
     <Compile Include="Common\PList.cs" />
-    <Compile Include="Common\PropertyFieldAttribute.cs" />
-    <Compile Include="Common\Win32.cs" />
     <Compile Include="Model\GameObject.cs" />
     <Compile Include="Model\NodeEntity.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
@@ -330,13 +325,17 @@
     <Resource Include="Resources\Pic\Icon\g8.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DLL\EditorDll\EditorDll.vcxproj">
-      <Project>{f1202232-1e69-4bd4-a088-ee079b683b94}</Project>
-      <Name>EditorDll</Name>
-    </ProjectReference>
+    <Resource Include="Resources\Pic\Icon\g4.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Pic\Icon\g4.ico" />
+    <ProjectReference Include="DLL\EditorBridgeDll\EditorBridgeDll.vcxproj">
+      <Project>{f1202232-1e69-4bd4-a088-ee079b683b94}</Project>
+      <Name>EditorBridgeDll</Name>
+    </ProjectReference>
+    <ProjectReference Include="DLL\EditorDll\EditorDll.csproj">
+      <Project>{0de1f650-7e3c-430a-98cf-b1de52199e46}</Project>
+      <Name>EditorDll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,8 +18,8 @@ LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
 HWND				MainWindowHwnd;
-int					WindowHeight = 0;
-int					WindowWidth = 0;
+int					WindowHeight = 800;
+int					WindowWidth = 1000;
 DWORD				WindowStyle = 0;
 bool				IsMouseDown = false;
 bool				IsRButtonDown = false;
@@ -41,11 +41,24 @@ HANDLE g_hConsoleHandle = 0;
 #endif
 
 #define ONE_INSTANCE 1
+std::string strPath = "";
+bool isShowWithEditor = false;
+HWND editorHandle = nullptr;
 
 DWORD nRet = 0;
 void LogOutput(const char* log)
 {
-	::WriteConsole(g_hConsoleHandle, log, strlen(log), &nRet, NULL);
+	if (isShowWithEditor)
+	{
+		COPYDATASTRUCT cds;
+		cds.dwData = 0;
+		cds.lpData = (PVOID)log;
+		SendMessage(editorHandle, WM_COPYDATA, 0, (LPARAM)&cds);
+	}
+	else
+	{
+		::WriteConsole(g_hConsoleHandle, log, strlen(log), &nRet, NULL);
+	}
 	InFile << log;
 }
 
@@ -57,26 +70,21 @@ void InitEngine(HWND hWnd)
 	::GetClientRect(hWnd, &rect);
 	int width = rect.right - rect.left;
 	int height = rect.bottom - rect.top;
-	std::string strPath = "";
-#ifdef E3D_EDITOR
-	char exeFullPath[MAX_PATH]; 
-	GetModuleFileName(NULL, exeFullPath, MAX_PATH);
 
-	strPath = exeFullPath;
-	int pos = strPath.find_last_of('\\', strPath.length());
-	strPath = strPath.substr(0, pos);
-#else 
-	strPath = "../../../Demo.CSharp/Asset/";
-#endif
 	InFile.open(logFileName.data(), std::ios::out);
-	::AllocConsole();
-	g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
-
+	if (!isShowWithEditor)
+	{
+		::AllocConsole();
+		g_hConsoleHandle = ::GetStdHandle(STD_OUTPUT_HANDLE);
+	}
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine(false);	
 	::SetDebugLogOutFunc(LogOutput);
 	::SetupRenderSystem(hWnd, width, height);
-	::StartAppliaction();
+	if (strPath != "")
+	{
+		::StartAppliaction();
+	}
 	//::CreateEditorGrid();
 }
 
@@ -116,18 +124,19 @@ int APIENTRY initWindow(LPTSTR lpCmdLine)
 	}
 #endif
 
-	std::vector<std::string> cmdLine = Split(lpCmdLine, ",");
-	if (strlen(lpCmdLine) == 0)
+	if (strlen(lpCmdLine) != 0)
 	{
-		WindowWidth = 1000;
-		WindowHeight = 800;
-		WindowStyle = WS_OVERLAPPEDWINDOW;
+		std::vector<std::string> cmdLine = Split(lpCmdLine, ",");
+		strPath = cmdLine[0];
+		int handle = atoi(cmdLine[1].c_str());
+		editorHandle = (HWND)handle;
+		isShowWithEditor = true;
+		WindowStyle = WS_POPUP;
 	}
 	else
 	{
-		WindowWidth = atoi(cmdLine[0].c_str());
-		WindowHeight = atoi(cmdLine[1].c_str());
-		WindowStyle = WS_POPUP;
+		strPath = "App_Data/";
+		WindowStyle = WS_OVERLAPPEDWINDOW;
 	}
 
 	return 0;
@@ -394,6 +403,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_SIZE:
 		{
 			SizeChange();
+		}
+		break;
+	case WM_COPYDATA:
+		{
+			COPYDATASTRUCT *data = (COPYDATASTRUCT*)lParam;
+			if (data->dwData == 1)
+			{
+				if (data->cbData)
+				{
+					::PauseEngine(true);
+				}
+				else
+				{
+					::PauseEngine(false);
+				}
+			}
 		}
 		break;
 	default:

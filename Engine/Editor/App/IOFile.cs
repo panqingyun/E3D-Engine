@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Windows.Forms;
+﻿using Microsoft.Win32;
+using System.IO;
 
 namespace E3DEditor
 {
@@ -8,11 +8,11 @@ namespace E3DEditor
         public static string OpenFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "scene文件(*.scene)|*.scene|所有文件|*.*";
+            ofd.Filter = "esln文件(*.esln)|*.esln|所有文件|*.*";
             ofd.ValidateNames = true;
             ofd.CheckPathExists = true;
             ofd.CheckFileExists = true;
-            if (ofd.ShowDialog() == DialogResult.OK)
+            if ((bool)ofd.ShowDialog())
             {
                 return ofd.FileName;
             }
@@ -22,11 +22,11 @@ namespace E3DEditor
         public static bool SaveFile(string fileName,string fileContent)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "scene文件(*.scene)|*.scenr|所有文件|*.*";
+            sfd.Filter = "esln文件(*.esln)|*.esln|所有文件|*.*";
             sfd.ValidateNames = true;
             sfd.CheckFileExists = false;
             sfd.FileName = fileName;
-            if (sfd.ShowDialog() == DialogResult.OK)
+            if ((bool)sfd.ShowDialog())
             {
                 File.WriteAllText(sfd.FileName, fileContent);
                 return true;
@@ -36,8 +36,8 @@ namespace E3DEditor
 
         public static string OpenFolder()
         {
-            FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
-            DialogResult result = m_Dialog.ShowDialog();
+            System.Windows.Forms.FolderBrowserDialog m_Dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = m_Dialog.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.Cancel)
             {

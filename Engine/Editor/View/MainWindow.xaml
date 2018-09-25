@@ -11,10 +11,59 @@
         mc:Ignorable="d"
         Title="编辑器" Height="952" Width="2080" WindowStyle="None" Background="Black" WindowState="Maximized">
 	<Window.Resources>
+		<Style x:Key="chkBullet" TargetType="CheckBox">
+			<Setter Property="IsChecked" Value="False"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="#999"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="CheckBox">
+						<Border Width="60" Height="20" CornerRadius="10" Background="{TemplateBinding Background}" >
+							<Grid>
+								<Border x:Name="border" Width="18" Height="18" CornerRadius="9" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="1 0" Background="White">
+									<Border.RenderTransform>
+										<TranslateTransform  X="0"/>
+									</Border.RenderTransform>
+								</Border>
+								<TextBlock x:Name="txt" Text="{TemplateBinding Content}" Margin="5,2" VerticalAlignment="Center" Foreground="White" >
+									<TextBlock.RenderTransform>
+										<TranslateTransform   X="18"></TranslateTransform>
+									</TextBlock.RenderTransform>
+								</TextBlock>
+							</Grid>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsChecked" Value="true">
+								<Setter Property="Text" TargetName="txt" Value="{Binding Tag,RelativeSource={RelativeSource TemplatedParent}}"/>
+								<Trigger.EnterActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="40" Duration="00:00:0.2"/>
+											<DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="3" Duration="00:00:0.2"/>
+										</Storyboard>
+									</BeginStoryboard>
+								</Trigger.EnterActions>
+								<Trigger.ExitActions>
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+											<DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="18" Duration="00:00:0.2"/>
+										</Storyboard>
+									</BeginStoryboard>
+								</Trigger.ExitActions>
+							</Trigger>
+							<Trigger Property="IsChecked" Value="False">
+								<Setter Property="Text" TargetName="txt" Value="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 		<!--自定义颜色-->
 		<SolidColorBrush x:Key="MyBtnBorderColor" Color="#00707070"/>
 		<SolidColorBrush x:Key="MyBtnBorderBackColor" Color="#00707070"/>
-		<SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF6CA5FB"/>
+		<SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF595959"/>
 		<!--END-->
 
 		<Style x:Key="MenuButton" TargetType="{x:Type Button}" >
@@ -47,9 +96,9 @@
 	</Window.Resources>
 	<Grid Background="#FF292929" >
 		<Grid.RowDefinitions>
-			<RowDefinition Height="45"/>
-			<RowDefinition Height="661*"/>
-			<RowDefinition Height="208*"/>
+			<RowDefinition Height="60"/>
+			<RowDefinition Height="331*"/>
+			<RowDefinition Height="105*"/>
 			<RowDefinition Height="20"/>
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
@@ -57,6 +106,7 @@
 			<ColumnDefinition/>
 			<ColumnDefinition Width="350"/>
 		</Grid.ColumnDefinitions>
+
 		<Grid Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="122*"/>
@@ -72,7 +122,7 @@
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}"  ItemsSource="{Binding Childs}">
-							<Grid  MouseLeftButtonUp="objectList_MouseLeftButtonUp" Background="Transparent">								
+							<Grid  MouseLeftButtonUp="objectList_MouseLeftButtonUp" Background="Transparent">
 								<TextBlock Foreground="#FFFFA507" Text="{Binding ShowText}" Margin="5, 5" FontSize="12"/>
 							</Grid>
 						</HierarchicalDataTemplate>
@@ -95,6 +145,10 @@
 			<local:RenderPanel IsEditor="True" x:Name="renderPanel"/>
 		</Border>-->
 		<Grid HorizontalAlignment="Stretch" Margin="0,5,0,0" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF292929">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="40"/>
+			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="320"/>
 				<ColumnDefinition Width="373*"/>
@@ -104,17 +158,19 @@
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="60"/>
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="5" x:Name="Min" Margin="15,2,0,0" Style="{StaticResource MenuButton}" CommandParameter="Min" ToolTip="{StaticResource MinToolTip}">
+			<Button Grid.Column="5" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" CommandParameter="Min" ToolTip="{StaticResource MinToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/min.png" Width="20" Height="20"/>
 			</Button>
-			<Button Grid.Column="6" x:Name="Close" Margin="0,2,15,0" CommandParameter="Close" Style="{StaticResource MenuButton}" ToolTip="{StaticResource CloseToolTip}">
+			<Button Grid.Column="6" x:Name="Close" Margin="0,0,0,10" CommandParameter="Close" Style="{StaticResource MenuButton}" ToolTip="{StaticResource CloseToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/close.png" Height="20" Width="20" />
 			</Button>
-		
-			<Button x:Name="Run" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,2,0,2" VerticalAlignment="Stretch" 
-					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run">
-				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
-					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="25" Height="20"
+			<CheckBox x:Name="Pause" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"
+					  Background="#5387b9" IsChecked="False" Content="{StaticResource Pause}" Tag="{StaticResource Countinue}"
+					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Checked="Pause_Checked" Unchecked="Pause_Checked"/>
+			<Button x:Name="Run" Grid.Column="3" Width="25" Height="25" 
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run" Grid.Row="1">
+				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="20" Height="20"
 						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
 						<ed:RegularPolygon.RenderTransform>
 							<TransformGroup>
@@ -124,7 +180,37 @@
 					</ed:RegularPolygon>
 				</Grid>
 			</Button>
-			
+
+			<Menu x:Name="menu" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="5">
+				<MenuItem Header="文件">
+					<MenuItem Header="打开项目" Foreground="Black" x:Name="openSln" Click="menu_Click"/>
+					<MenuItem Header="新建项目" Foreground="Black" x:Name="newSln" Click="menu_Click"/>
+					<MenuItem Header="新建场景" Foreground="Black" x:Name="newScn" Click="menu_Click"/>
+					<MenuItem Header="保存场景" Foreground="Black" x:Name="svaeScn" Click="menu_Click"/>
+				</MenuItem>
+				<MenuItem Header="编辑">
+					
+				</MenuItem>
+				<MenuItem Header="添加">
+					<MenuItem Header="GameObject" Foreground="Black"/>
+					<MenuItem Header="{StaticResource Camera}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource SkyBox}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource SkyDame}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource Cube}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource Sphere}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource Mesh}" Foreground="Black"/>
+				</MenuItem>
+				<MenuItem Header="组件">
+					<MenuItem Header="{StaticResource BoxCollider}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource SphereCollider}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource MeshCollider}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource CapCollider}" Foreground="Black"/>
+					<MenuItem Header="{StaticResource RigddBody}" Foreground="Black"/>
+				</MenuItem>
+				<MenuItem Header="帮助">
+					<MenuItem Header="关于" Foreground="Black"/>
+				</MenuItem>
+			</Menu>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
 			<Grid.ColumnDefinitions>

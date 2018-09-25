@@ -16,6 +16,17 @@ namespace E3DEditor.Common
         public bool rotated;
         public string frameName;
 
+        protected ImageSource _icon;
+        [PropertyField(PropType = PropertyType.HideInProperty)]
+        public ImageSource FileIcon
+        {
+            get { return _icon; }
+            set
+            {
+                _icon = value;
+            }
+        }
+
         [PropertyField(PropType = PropertyType.ImageSource, DisplayIndex = 5)]
         public ImageSource imageSource
         {

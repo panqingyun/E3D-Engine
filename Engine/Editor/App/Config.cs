@@ -8,7 +8,7 @@ namespace E3DEditor
 {
     public class Config
     {
-        public static string GamePath = "../../../Demo.CSharp/Asset/";
+        public static string GamePath = "";
         public static int GameWidth = 0;
         public static int GameHeight = 0;
         

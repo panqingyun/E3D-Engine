@@ -29,6 +29,17 @@
 	<system:String x:Key="LogPanel">日志</system:String>
 	<system:String x:Key="Pause">暂停</system:String>
 	<system:String x:Key="Countinue">继续</system:String>
+	<system:String x:Key="Camera">相机</system:String>
+	<system:String x:Key="SkyBox">天空盒</system:String>
+	<system:String x:Key="Cube">立方体</system:String>
+	<system:String x:Key="Sphere">球体</system:String>
+	<system:String x:Key="SkyDame">天空穹</system:String>
+	<system:String x:Key="Mesh">模型</system:String>
+	<system:String x:Key="BoxCollider">盒子碰撞器</system:String>
+	<system:String x:Key="SphereCollider">球碰撞器</system:String>
+	<system:String x:Key="MeshCollider">模型碰撞器</system:String>
+	<system:String x:Key="CapCollider">胶囊碰撞器</system:String>
+	<system:String x:Key="RigddBody">刚体</system:String>
 	<!--属性释义-->
 	<system:String x:Key="ID">编号</system:String>
 	<system:String x:Key="Name">描述</system:String>

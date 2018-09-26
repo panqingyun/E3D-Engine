@@ -202,7 +202,7 @@ void E3DEngine::SkyDome::SetActive(bool isActive)
 		{
 			mRenderer->FillIndex(m_vecIndex[i]);
 		}
-		mRenderer->FillEnd(ID, m_vecVertex.size());
+		mRenderer->FillEnd(ID, m_vecVertex.size() ,m_vecIndex.size());
 	}
 	mRenderer->TransformChange();
 }

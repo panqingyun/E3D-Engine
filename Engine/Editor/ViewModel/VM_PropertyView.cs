@@ -313,7 +313,7 @@ namespace E3DEditor.ViewModel
             var comboBox = sender as ComboBox;
             PropertyInfo pri = comboBox.Tag as PropertyInfo;
 
-            if (comboBox.SelectedValue.ToString() == "true")
+            if (comboBox.SelectedIndex == 0)
             {
                 pri.SetValue(_selectedObject, true);
             }

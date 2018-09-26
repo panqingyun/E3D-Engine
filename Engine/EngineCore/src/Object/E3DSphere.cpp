@@ -65,7 +65,6 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 	{
 		return;
 	}
-	m_pRenderer->RemoveInRenderer(ID);
 	if (isActive)
 	{
 		m_pRenderer->FillBegin(ID);
@@ -78,7 +77,11 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 		{
 			m_pRenderer->FillIndex(m_vecIndex[i]);
 		}
-		m_pRenderer->FillEnd(ID, m_vecVertex.size());
+		m_pRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
+	}
+	else
+	{
+		m_pRenderer->RemoveInRenderer(ID);
 	}
 	m_pRenderer->TransformChange();
 }

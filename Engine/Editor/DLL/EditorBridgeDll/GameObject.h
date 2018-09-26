@@ -18,6 +18,8 @@ namespace E3DEngine
 		void SetValue(GameObject *gameObject);
 		List<GameObjectRef^>^ GetChilds();
 		TransformRef ^GetTransform();
+		void SetActive(bool active);
+		bool GetActive();
 	private:
 		TransformRef ^mTransform;
 		GameObject * mGameObject;

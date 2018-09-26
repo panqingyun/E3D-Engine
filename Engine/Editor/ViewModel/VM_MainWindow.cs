@@ -218,10 +218,7 @@ namespace E3DEditor.ViewModel
             GameObjectNode node = new GameObjectNode();
             node.Name = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetName();
             node.ShowText = node.Name;
-            E3DEngine.TransformRef trans = gameRootObj.GetTransform();
-            node.Position = trans.Position;
-            node.Scale = trans.Scale;
-            node.Rotation = trans.Rotation;
+            node.mGameObject = gameRootObj;
             gameObjectList.Add(node);
             fillNodeList(_gameObjectList, node.Childs);
 
@@ -517,10 +514,7 @@ namespace E3DEditor.ViewModel
                 GameObjectNode node = new GameObjectNode();
                 node.Name = _gameObjectList[i].GetName();
                 node.ShowText = node.Name;
-                E3DEngine.TransformRef trans = _gameObjectList[i].GetTransform();
-                node.Position = trans.Position;
-                node.Scale = trans.Scale;
-                node.Rotation = trans.Rotation;
+                node.mGameObject = _gameObjectList[i];
                 fillNodeList(_gameObjectList[i].GetChilds(), node.Childs);
                 nodeList.Add(node);
             }

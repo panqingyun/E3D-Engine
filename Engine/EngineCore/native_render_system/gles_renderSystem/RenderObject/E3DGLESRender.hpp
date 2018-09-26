@@ -37,7 +37,7 @@ namespace E3DEngine
 		}
 	public:
 		virtual void updateArrayBuffer(float deltaTime);
-		virtual void FillEnd(UINT objId, uint vertexCount) override;
+		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount) override;
 		virtual void TransformChange() override;
 
 		virtual void ClearVertexIndexBuffer() override;

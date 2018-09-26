@@ -43,11 +43,11 @@ namespace E3DEngine
 				}
 			}
 		}
-		for(auto & Child : Transform->Childs)
+		for(auto & Child : childNode)
 		{
-			if(Child.second->gameObject != nullptr)
+			if(Child.second != nullptr)
 			{
-				Child.second->gameObject->SetActive(isActive);
+				Child.second->SetActive(isActive);
 			}
 		}
 	}

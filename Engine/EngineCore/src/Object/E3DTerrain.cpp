@@ -116,7 +116,7 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 	{
 		mRenderer->FillIndex(m_vecIndex[i]);
 	}
-	mRenderer->FillEnd(ID, m_vecVertex.size());
+	mRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
 
 	m_pRenderer->TransformChange();
 }

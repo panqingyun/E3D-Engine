@@ -39,5 +39,23 @@ namespace E3DEngine
 		return mTransform;
 	}
 
+	bool GameObjectRef::GetActive()
+	{
+		if (mGameObject == nullptr)
+		{
+			return false;
+		}
+		return mGameObject->IsActive;
+	}
+
+	void GameObjectRef::SetActive(bool active)
+	{
+		if (mGameObject == nullptr)
+		{
+			return;
+		}
+
+		mGameObject->SetActive(active);
+	}
 }
 #pragma unmanaged

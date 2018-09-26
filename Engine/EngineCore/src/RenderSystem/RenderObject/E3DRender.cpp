@@ -29,10 +29,10 @@ namespace E3DEngine
 		RecordCurrentIndexStartIndex(ID);
 	}
 
-	void Renderer::FillEnd(UINT objId, uint vertexCount)
+	void Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		VertexCountAdd(objId, vertexCount);
-		IndexCountAdd(objId, vertexCount);
+		IndexCountAdd(objId, indexCount);
 	}
 
 	Renderer::Renderer()
@@ -100,7 +100,11 @@ namespace E3DEngine
 			}
 		}
 		Vertices.erase(Vertices.begin() + vbuffer->second.VertextStartIndex, Vertices.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
-		mBatchVertex.erase(mBatchVertex.begin() + vbuffer->second.VertextStartIndex, mBatchVertex.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
+		if (!mBatchVertex.empty())
+		{
+			mBatchVertex.erase(mBatchVertex.begin() + vbuffer->second.VertextStartIndex, mBatchVertex.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
+		}
+		
 		Indices.erase(Indices.begin() + vbuffer->second.IndexStartIndex, Indices.begin() + vbuffer->second.IndexStartIndex + vbuffer->second.IndexNumber);
 		for (int i = 0; i < Indices.size(); i ++)
 		{

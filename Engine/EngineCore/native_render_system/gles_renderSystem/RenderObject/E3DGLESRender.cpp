@@ -40,9 +40,9 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount)
+	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
-		Renderer::FillEnd(objId, vertexCount);
+		Renderer::FillEnd(objId, vertexCount, indexCount);
 		if (pMaterial == nullptr)
 		{
 			assert(false);

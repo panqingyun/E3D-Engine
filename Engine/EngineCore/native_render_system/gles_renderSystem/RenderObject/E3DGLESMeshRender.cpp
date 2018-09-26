@@ -32,9 +32,9 @@ namespace E3DEngine
 	}
 
 
-	void GLES_MeshRender::FillEnd(UINT objId, uint vertexCount)
+	void GLES_MeshRender::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
-		pRender->FillEnd(objId, vertexCount);
+		pRender->FillEnd(objId, vertexCount, indexCount);
 	}
 
 	void GLES_MeshRender::RemoveInRenderer(UINT objId)

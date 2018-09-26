@@ -106,7 +106,6 @@ namespace E3DEngine
 		}
 		GameObject::SetActive(isActive);
 		Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-		mRenderer->RemoveInRenderer(ID);
 		if (isActive)
 		{
 			mRenderer->FillBegin(ID);
@@ -119,7 +118,11 @@ namespace E3DEngine
 			{
 				mRenderer->FillIndex(m_vecIndex[i]);
 			}
-			mRenderer->FillEnd(ID, m_vecVertex.size());
+			mRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
+		}
+		else
+		{
+			mRenderer->RemoveInRenderer(ID);
 		}
 		m_pRenderer->TransformChange();
 	}

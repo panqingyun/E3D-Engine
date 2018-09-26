@@ -783,7 +783,7 @@ namespace E3DEngine
 			}
 			ivertexTotal += 4;
 		}
-		render->FillEnd(ID, (DWORD)ivertexTotal);
+		render->FillEnd(ID, (DWORD)ivertexTotal, iindexTotal);
 	}
 	
 	void ParticleGroup::TransformChange()

@@ -20,7 +20,7 @@ namespace E3DEngine
 		virtual void FillBegin(UINT objId);
 		virtual void FillVertex(Vertex vb);
 		virtual void FillIndex(uint ib);
-		virtual void FillEnd(UINT objId, uint vertexCount);
+		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount);
 		virtual void RemoveInRenderer(UINT objId);
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 		virtual void TransformChange() override;

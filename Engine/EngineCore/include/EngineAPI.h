@@ -68,13 +68,9 @@ extern "C"
 	/// </summary>
 	__api_function_ void StopAppliaction();
 	/// <summary>
-	/// 创建RenderSystem
+	/// RenderSystem
 	/// </summary>
-	/// <param name = "width"> 渲染视口宽度 </param>
-	/// <param name = "height"> 渲染视口高度 </param> 
-
-	// 启动OPEN_GL_ES
-	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
+	__api_function_ void SetRenderSystem(void* renderSystem);
 
 	///------------------------------------------------------
 	/// 日志输出

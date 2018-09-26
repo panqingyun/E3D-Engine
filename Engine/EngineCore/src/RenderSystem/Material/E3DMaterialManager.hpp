@@ -8,10 +8,7 @@ namespace E3DEngine
 	class EX_PORT MaterialManager : public IManager
 	{
 	public:
-		MaterialManager() 
-		{
-			
-		}
+		MaterialManager();
 		virtual ~MaterialManager()= default;
 		
 	public:
@@ -25,7 +22,7 @@ namespace E3DEngine
 		// 创建材质
 		// @param 材质配置的路径
 		//-----------------------------------------------
-		virtual Material * CreateMaterial(std::string path, int id);
+		Material * CreateMaterial(std::string path, int id);
 
 		// -----------------------------------------------
 		// 清理
@@ -33,7 +30,11 @@ namespace E3DEngine
 		virtual void Cleanup();
 
 	protected:
+		virtual Material * createMatrerial();
+
+	protected:
 		std::map<int, Material*>		 m_mapIDMaterials;
+		std::map<std::string, DWORD>	 m_BlendFactorMap;
 	};
 }
 

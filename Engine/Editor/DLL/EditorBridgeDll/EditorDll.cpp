@@ -3,8 +3,8 @@
 #include "stdafx.h"
 
 #include "EditorDll.h"
-#define OPEN_GL_ES
 #include <EngineAPI.h>
+#include <RenderSystemAPI.h>
 
 #pragma managed
 void E3DEngine::EngineDelegateRef::InitilizeEngine()
@@ -24,7 +24,7 @@ void E3DEngine::EngineDelegateRef::StopAppliaction()
 
 void E3DEngine::EngineDelegateRef::SetupRenderSystem(IntPtr nativeWindow, int width, int height)
 {
-	::SetupRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
+	::SetRenderSystem(CreateRenderSystem((HWND)nativeWindow.ToInt32(), width, height));
 }
 
 void E3DEngine::EngineDelegateRef::SetDebugLogOutFunc(IntPtr func)

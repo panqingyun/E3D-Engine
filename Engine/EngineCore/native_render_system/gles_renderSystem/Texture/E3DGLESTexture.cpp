@@ -4,7 +4,7 @@
 //  Created by 潘庆云 on 2017/3/30.
 //
 #include "E3DGLESTexture.hpp"
-#include <src/RenderSystem/E3DRenderSystem.hpp>
+#include "../E3DGLESRenderSystem.hpp"
 
 namespace E3DEngine
 {
@@ -19,7 +19,7 @@ namespace E3DEngine
 
 	void GLES_Texture::Create(std::string fileName, TextureData &tData)
 	{
-		m_nTextureBuffer = GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
+		m_nTextureBuffer = GLES_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
 		glActiveTexture(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		setTextureParam(tData);

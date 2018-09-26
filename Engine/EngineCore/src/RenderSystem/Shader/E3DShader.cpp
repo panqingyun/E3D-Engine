@@ -5,10 +5,11 @@
 //
 
 #include "E3DShader.hpp"
-#include "src/Object/E3DTransform.hpp"
+#include "../../Object/E3DTransform.hpp"
 #include "../Material/E3DMaterial.hpp"
-#include "src/Source/E3DDebug.h"
+#include "../../Source/E3DDebug.h"
 #include "../../Source/E3DVertex.h"
+#include "../../Config/Table.h"
 
 namespace E3DEngine
 {
@@ -274,7 +275,7 @@ namespace E3DEngine
 	}
 
 
-	void Shader::processUniformVar(ShaderConfig * cfg)
+	void Shader::processUniformVar(string uniformVariable)
 	{
 
 	}
@@ -296,9 +297,9 @@ namespace E3DEngine
 		return samplerNameValue;
 	}
 
-	void Shader::processAttribVar(ShaderConfig * cfg)
+	void Shader::processAttribVar(string attribVariable)
 	{
-		std::vector<std::string> attribVar = StringBuilder::Split(cfg->AttribVariable, ";");
+		std::vector<std::string> attribVar = StringBuilder::Split(attribVariable, ";");
 		for (auto &attrib : attribVar)
 		{
 			std::string attribKeyValue = StringBuilder::Trim(attrib);

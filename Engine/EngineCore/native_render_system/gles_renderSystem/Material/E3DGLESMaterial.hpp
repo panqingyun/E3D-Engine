@@ -9,9 +9,6 @@
 
 #include "../Shader/E3DGLESShader.hpp"
 #include "../Texture/E3DGLESTexture.hpp"
-#include "../Texture/E3DGLESCubeMapTexture.hpp"
-#include <src/Config/Table.h>
-#include <src/Source/E3DDebug.h>
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include "../Include/Include.h"
 
@@ -31,13 +28,8 @@ namespace E3DEngine
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
 	public:
-		virtual void CreateShader(ShaderConfig *cfg)
-		{
-			mShader = new GLES_Shader;
-			mShader->SetFileRelativeFolder(mFilePath);
-			static_cast<GLES_Shader*>(mShader)->InitShaderVar();
-			static_cast<GLES_Shader*>(mShader)->LoadShader(cfg);
-		}
+		virtual void createShader(string vs, string ps, string attrVar, string unifVar) override;
+
 		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
 									   std::string xNName,
 									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);

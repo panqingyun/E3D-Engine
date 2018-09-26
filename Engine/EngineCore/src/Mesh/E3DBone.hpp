@@ -9,6 +9,9 @@
 #include "../Object/E3DTransform.hpp"
 
 using namespace vvision;
+
+class aiBone;
+class aiMetadata;
 namespace E3DEngine
 {
 	// 骨骼

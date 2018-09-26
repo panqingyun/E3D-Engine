@@ -7,6 +7,12 @@
 #include "../Animation/E3DAnimation.hpp"
 #include "E3DMesh.hpp"
 #include "../Source/EngineDelegate.h"
+#include <assimp/mesh.h> 
+#include <assimp/scene.h>
+#include <assimp/texture.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/cimport.h>
 
 namespace E3DEngine
 {
@@ -27,11 +33,11 @@ namespace E3DEngine
 	{
 	}
 
-	void MeshRender::SetAiScene(const aiScene* scene)
+	/*void MeshRender::SetAiScene(const aiScene* scene)
 	{
 		pScene = scene;
 	}
-
+*/
 
 	void MeshRender::SetBoneVector(vector<mat4f*> vecBones)
 	{
@@ -39,10 +45,10 @@ namespace E3DEngine
 	}
 
 
-	const aiScene * MeshRender::GetAiScene() const
+	/*const aiScene * MeshRender::GetAiScene() const
 	{
 		return pScene;
-	}
+	}*/
 
 
 	std::vector<mat4f*> & MeshRender::GetBoneMatrixs()

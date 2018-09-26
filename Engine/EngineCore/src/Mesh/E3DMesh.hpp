@@ -10,10 +10,22 @@
 #include "../Object/E3DComponent.hpp"
 #include "../Animation/E3DAnimation.hpp"
 
+#ifndef __EDITOR__
+#include <assimp/mesh.h> 
+#include <assimp/scene.h>
+#include <assimp/texture.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/cimport.h>
+#endif
+
 using namespace std;
 
 namespace E3DEngine
 {
+#ifndef __EDITOR__
+	mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 mat);
+#endif
 	struct MeshEntity
 	{
 		MeshEntity();

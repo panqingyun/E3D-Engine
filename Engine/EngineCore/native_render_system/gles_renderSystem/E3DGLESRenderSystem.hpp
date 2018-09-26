@@ -11,7 +11,6 @@
 #endif
 #include <stdio.h>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
-#include "EGL/EGLContext.h"
 #include "FrameBufferObject/E3DFrameBufferObject.h"
 #include "Include/Include.h"
 
@@ -30,6 +29,7 @@ namespace E3DEngine
 		virtual Render2Texture * CreateRtt(float width, float height) override;
 		void	CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle);
 		void    Clear(Color4 color, int clearType);
+		static GLES_RenderSystem * GetRenderSystem();
         
 	public:
 		virtual void BeginFrame() override;
@@ -44,4 +44,5 @@ namespace E3DEngine
 	};
 
 }
+
 #endif /* RenderSystem_hpp */

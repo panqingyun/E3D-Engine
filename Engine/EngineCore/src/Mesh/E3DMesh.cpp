@@ -9,9 +9,25 @@
 #include "../Config/TableRegister.h"
 #include "../Source/Application.h"
 #include "../Source/FilePath.h"
+#include "../Source/E3DDebug.h"
 
 namespace E3DEngine
 {
+#ifndef __EDITOR__
+	mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 aiMat)
+	{
+		mat4f mat4;
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				mat4.at(i, j) = aiMat[i][j];
+			}
+		}
+		return mat4;
+	}
+#endif
+
 	Mesh *Mesh::Create(string path, int configID)
 	{
 		Mesh * mesh = new Mesh(path, configID);
@@ -84,7 +100,7 @@ namespace E3DEngine
 	{
 		m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, MESH);
 		m_pRenderer->SetMaterial(material);
-		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
+//		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
 		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
 		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 		{

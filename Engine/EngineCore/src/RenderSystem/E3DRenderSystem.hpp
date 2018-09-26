@@ -76,7 +76,7 @@ namespace E3DEngine
 	};
 
 }
-void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
+
 void SetRenderSystem(E3DEngine::RenderSystem * rs);
 E3DEngine::RenderSystem * GetRenderSystem();
 

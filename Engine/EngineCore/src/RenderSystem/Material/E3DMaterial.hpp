@@ -10,11 +10,11 @@
 #include "../Shader/E3DShader.hpp"
 #include "../Texture/E3DTexture.hpp"
 #include "../Texture/E3DCubeMapTexture.hpp"
-#include "src/Config/Table.h"
-#include "src/Source/E3DDebug.h"
 
 namespace E3DEngine
 {
+	class TableManager;
+	class MaterialConfig;
 	class EX_PORT Material : public  Object
 	{
 	public:
@@ -74,7 +74,7 @@ namespace E3DEngine
 		// 创建Shader 
 		// @param shader配置
 		//-----------------------------------------------
-		virtual void CreateShader(ShaderConfig *cfg) { }
+		void CreateShader(ShaderConfig *cfg);
 
 		// -----------------------------------------------
 		// 创建环境贴图
@@ -90,6 +90,7 @@ namespace E3DEngine
 		MonoBehaviour * GetBehaviour();
 
 	protected:
+		virtual void createShader(string vsName, string psName, string attrVar, string unifVar) { }
 		virtual void parseShaderConfig(ShaderConfig *cfg);
 		virtual void enableStencil();
 		virtual void beforeUpdate();

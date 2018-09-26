@@ -976,16 +976,6 @@ vvision::vec4f Convert::ToColorRGBA(std::string colorStr)
 	return ToColorRGBA(color);
 }
 
-vvision::vec4f Convert::ToVec4Color(aiColor4D color)
-{
-	return vec4f(color.r, color.g, color.b, color.a);
-}
-
-vvision::vec4f Convert::ToVec4Color(aiColor3D color)
-{
-	return vec4f(color.r, color.g, color.b, 1);
-}
-
 MonoObject * Convert::ToCSVector4(vec4f vec)
 {
 	MonoClass * klass = mono_class_from_name(MonoScriptManager::GetInstance().GetEngineImage(), NAME_SPACE, "Vector4");

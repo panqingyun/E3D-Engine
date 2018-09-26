@@ -80,7 +80,8 @@ void InitEngine(HWND hWnd)
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine(false);	
 	::SetDebugLogOutFunc(LogOutput);
-	::SetupRenderSystem(hWnd, width, height);
+	void * renderSystem = CreateRenderSystem(hWnd, width, height);
+	::SetRenderSystem(renderSystem);
 	if (strPath != "")
 	{
 		::StartAppliaction();

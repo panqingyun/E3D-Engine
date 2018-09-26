@@ -246,10 +246,6 @@ struct EX_PORT Convert
 		colorStr 如 ffabcdff
 	*/
 	static vec4f ToColorRGBA(std::string colorStr);
-#ifndef __EDITOR__
-	static vec4f ToVec4Color(aiColor4D color);
-	static vec4f ToVec4Color(aiColor3D color);
-#endif
 
 	template<typename T> static vec3<T> Vec4ToVec3(vec4<T> vec)
 	{

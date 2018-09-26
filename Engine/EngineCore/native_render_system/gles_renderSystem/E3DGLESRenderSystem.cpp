@@ -11,6 +11,7 @@
 #include "RenderObject/E3DGLESRenderManager.hpp"
 #include <include/EngineAPI.h>
 
+E3DEngine::GLES_RenderSystem * g_RenderSystem = nullptr;
 namespace E3DEngine
 {
 	void GLES_RenderSystem::Initilize()
@@ -130,16 +131,20 @@ namespace E3DEngine
 	{
 		m_pEGL_Context->ChangeSurface(windowHandle);
 	}
+
+	GLES_RenderSystem* GLES_RenderSystem::GetRenderSystem()
+	{
+		return g_RenderSystem;
+	}
 }
-#define __GLES_2__
-#ifdef __GLES_2__
-void CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
+
+void* CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
 	renderSystem->Initilize();
 	renderSystem->setFrameWidth(width);
 	renderSystem->setFrameHeight(height);
-	SetRenderSystem(renderSystem);
 	renderSystem->CreateOpenGLES(EGL_DEFAULT_DISPLAY, nativeWindow);
+	g_RenderSystem = renderSystem;
+	return renderSystem;
 }
-#endif

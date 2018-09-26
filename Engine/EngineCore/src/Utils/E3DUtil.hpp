@@ -205,10 +205,6 @@ vec4f V32V4(vec3f vec);
 float RangeNumber(float &number, float max, float min);
 // 将AssimpMatrix 转为 mat4f
 
-#ifndef __EDITOR__
-mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 mat);
-#endif
-
 template <class T> int getArrayLen(T& array)
 {
 	return (sizeof(array) / sizeof(array[0]) - 1);

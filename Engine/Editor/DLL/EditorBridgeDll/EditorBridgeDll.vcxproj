@@ -67,11 +67,11 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;__EDITOR__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories>..\..\..\EngineCore\3rd\assimp-3.3.1\include;..\..\..\EngineCore\3rd\Mono;..\..\..\EngineCore\3rd\Physical\src;..\..\..\EngineCore\3rd\stb;..\..\..\EngineCore\include;..\..\..\EngineCore\src;..\..\..\EngineCore;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\EngineCore\3rd\assimp-3.3.1\include;..\..\..\EngineCore\3rd\Mono;..\..\..\EngineCore\3rd\Physical\src;..\..\..\EngineCore\3rd\stb;..\..\..\EngineCore\include;..\..\..\EngineCore\src;..\..\..\EngineCore;..\..\..\EngineCore\native_render_system\gles_renderSystem\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>E3DEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E3DEngine.lib;RenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>E:\E3D\trunk\proj_win32\bin\Editor\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

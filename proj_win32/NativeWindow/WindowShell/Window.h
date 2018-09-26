@@ -7,5 +7,6 @@
 //#define D3D_9
 //#define OPEN_GL
 #include <EngineAPI.h>
+#include <RenderSystemAPI.h>
 
 #include <fstream>

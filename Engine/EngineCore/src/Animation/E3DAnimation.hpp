@@ -8,6 +8,15 @@
 #include "../Source/E3DDelegate.h"
 #include "../Mesh/E3DBone.hpp"
 
+#ifndef __EDITOR__
+#include <assimp/mesh.h> 
+#include <assimp/scene.h>
+#include <assimp/texture.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/cimport.h>
+#endif
+
 namespace E3DEngine
 {
 	class EX_PORT Animation : public Object

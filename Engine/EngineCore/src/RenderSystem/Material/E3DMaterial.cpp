@@ -6,6 +6,7 @@
 
 #include "../Material/E3DMaterial.hpp"
 #include "src/Source/EngineDelegate.h"
+#include "src/Config/Table.h"
 
 namespace E3DEngine
 {
@@ -141,6 +142,12 @@ namespace E3DEngine
 	void Material::SetEnableCullFace(bool enable)
 	{
 		enableDoubleSide = enable;
+	}
+
+
+	void Material::CreateShader(ShaderConfig *cfg)
+	{
+		createShader(cfg->VertexShader, cfg->FragmentShader, cfg->AttribVariable, cfg->UniformVariable);
 	}
 
 }

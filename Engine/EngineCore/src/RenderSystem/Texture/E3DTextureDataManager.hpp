@@ -28,7 +28,7 @@ namespace E3DEngine
 		LINEAR_MIPMAP_LINEAR = 5
 	};
 
-	struct TextureData
+	struct EX_PORT TextureData
 	{
 		CLAMP_TYPE clampType;
 		FILTER_TYPE filterType;

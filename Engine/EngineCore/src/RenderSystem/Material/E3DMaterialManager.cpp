@@ -13,6 +13,12 @@
 
 namespace E3DEngine
 {
+
+	MaterialManager::MaterialManager()
+	{
+		
+	}
+
 	Material * MaterialManager::GetMaterial(int id)
 	{
 		return nullptr;
@@ -20,7 +26,39 @@ namespace E3DEngine
 
 	Material* MaterialManager::CreateMaterial(std::string path, int id)
 	{
-		return nullptr;
+		TableManager* tblManager = TableRegister::GetTableManager(path.c_str());
+		if (tblManager == nullptr)
+		{
+			return nullptr;
+		}
+
+		MaterialConfig * materialConfig = tblManager->Select<MaterialConfig>(id);
+		if (materialConfig is nullptr)
+		{
+			SAFE_DELETE(tblManager);
+			return nullptr;
+		}
+		std::string folder, file;
+		StringManipulator::SplitFileName(path, folder, file);
+		MaterialConfig *config = materialConfig;
+		Material * material = createMatrerial();
+		std::map<std::string, DWORD>::iterator srcItr = m_BlendFactorMap.find(config->SrcBlendFactor);
+		std::map<std::string, DWORD>::iterator dstItr = m_BlendFactorMap.find(config->DstBlendFactor);
+
+		DWORD srcFactor = 0, dstFactor = 0;
+		srcFactor = srcItr != m_BlendFactorMap.end() ? srcItr->second : 0;
+		dstFactor = dstItr != m_BlendFactorMap.end() ? dstItr->second : 0;
+		material->SetBlendType(srcFactor, dstFactor);
+
+		material->SetEnableDepthTest(config->EnableDepthTest == 1);
+		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
+		material->SetEnableCullFace(config->CullFace == 0);
+		material->mFilePath = folder + "/";
+		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
+		material->mMaterialTableManager = tblManager;
+		material->CreateMaterial(config, sCfg);
+		m_mapIDMaterials[material->ID] = material;
+		return material;
 	}
 	
 	void MaterialManager::Cleanup()
@@ -31,6 +69,12 @@ namespace E3DEngine
 			SAFE_DELETE(it.second);
 		}
 		m_mapIDMaterials.clear();
+	}
+
+
+	E3DEngine::Material * MaterialManager::createMatrerial()
+	{
+		return nullptr;
 	}
 
 }

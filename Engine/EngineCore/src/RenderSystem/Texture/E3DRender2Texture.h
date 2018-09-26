@@ -3,7 +3,6 @@
 
 #include "../Material/E3DMaterial.hpp"
 #include "../Texture/E3DTexture.hpp"
-#include <src/Camera/E3DCamera.h>
 
 namespace E3DEngine
 {

@@ -303,16 +303,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;stb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;assimp.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\WindowsPlayer\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
-    <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)..\Bin\E3DEngine.dll" "D:\test\QtTest\QtE3D\Bin"
-xcopy /y "$(ProjectDir)..\lib\E3DEngine.lib" "D:\test\QtTest\QtE3D\E3DEngine\Lib"</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'">
     <ClCompile>
@@ -330,15 +327,15 @@ xcopy /y "$(ProjectDir)..\lib\E3DEngine.lib" "D:\test\QtTest\QtE3D\E3DEngine\Lib
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem.lib;assimp.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;stb.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mono-2.0.lib;assimp.lib;Bullet2FileLoader.lib;Bullet3Collision.lib;Bullet3Common.lib;Bullet3Dynamics.lib;Bullet3Geometry.lib;Bullet3OpenCL_clew.lib;BulletCollision.lib;BulletDynamics.lib;BulletInverseDynamics.lib;BulletSoftBody.lib;LinearMath.lib;stb.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImportLibrary>..\bin\Editor\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
       <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)..\Bin\E3DEngine.dll" "D:\test\QtTest\QtE3D\Bin"
-xcopy /y "$(ProjectDir)..\lib\E3DEngine.lib" "D:\test\QtTest\QtE3D\E3DEngine\Lib"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GL_Release|Win32'">

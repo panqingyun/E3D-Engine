@@ -11,10 +11,12 @@ namespace E3DEngine
 	{
 	public:
 		GLES_MaterialManager();
-		~GLES_MaterialManager()= default;
+		~GLES_MaterialManager() = default; 
+
+	protected:
+		virtual Material * createMatrerial();
 	public:
 		virtual Material * GetMaterial(int id) override;
-		Material * CreateMaterial(std::string path, int id) override;
 	};
 }
 

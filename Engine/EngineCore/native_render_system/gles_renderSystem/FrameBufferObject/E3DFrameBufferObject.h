@@ -3,7 +3,7 @@
 #ifndef __FRAME_BUFFER_H__
 #define __FRAME_BUFFER_H__
 
-#include <src/RenderSystem/E3DRenderSystem.hpp>
+#include "../../../src/Utils/E3DUtil.hpp"
 #include "../Include/Include.h"
 
 namespace E3DEngine

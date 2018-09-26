@@ -38,9 +38,9 @@ namespace E3DEngine
 		virtual void	UpdateAttribPointerValue(UINT vertexType);
 		virtual void	EnableVertexAttribArray(UINT vertexType);
 		virtual void	InitShaderVar();
-		virtual void	LoadShader(ShaderConfig *cfg);
+		virtual void	LoadShader(std::string vs, std::string ps, std::string attrVar, std::string unifVar);
 		std::string		processVShader();
-		virtual void	processUniformVar(ShaderConfig * cfg);
+		virtual void	processUniformVar(std::string uniformName);
 	private:
 		void processEngineDefineUniform();
 

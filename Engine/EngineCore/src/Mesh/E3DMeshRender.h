@@ -12,15 +12,16 @@
 
 using namespace std;
 
+class aiScene;
 namespace E3DEngine
 {
 	class EX_PORT MeshRender : public Renderer
 	{
 	public:
 		~MeshRender();
-		virtual void SetAiScene(const aiScene* scene);
+		//virtual void SetAiScene(const aiScene* scene);
 		virtual void SetBoneVector(vector<mat4f*> vecBones);
-		virtual const aiScene *GetAiScene() const;
+		//virtual const aiScene *GetAiScene() const;
 		virtual vector<mat4f*> &GetBoneMatrixs();
 
 	private:

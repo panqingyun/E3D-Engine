@@ -4,6 +4,15 @@
 
 #include "E3DBone.hpp"
 
+#ifndef __EDITOR__
+#include <assimp/mesh.h> 
+#include <assimp/scene.h>
+#include <assimp/texture.h>
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+#include <assimp/cimport.h>
+#endif
+
 namespace E3DEngine
 {
 

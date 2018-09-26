@@ -5,7 +5,7 @@
 //
 
 #include "E3DGLESRenderManager.hpp"
-#include <src/RenderSystem/E3DRenderSystem.hpp>
+#include "../E3DGLESRenderSystem.hpp"
 #include "E3DGLESMeshRender.h"
 
 namespace E3DEngine
@@ -13,7 +13,7 @@ namespace E3DEngine
 	Renderer * GLES_RendererManager::CreateVertexRender(int materialID)
 	{
 		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(materialID);	
-		buffer->SetMaterial(GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
+		buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
 		return buffer;
 	}
 

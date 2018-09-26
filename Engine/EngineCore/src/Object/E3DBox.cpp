@@ -6,6 +6,7 @@
 #include "../Scene/E3DSceneManager.hpp"
 #include "../Object/E3DTransform.hpp"
 #include "../RenderSystem/E3DRenderSystem.hpp"
+#include "../Camera/E3DCamera.h"
 
 
 E3DEngine::Box::Box()

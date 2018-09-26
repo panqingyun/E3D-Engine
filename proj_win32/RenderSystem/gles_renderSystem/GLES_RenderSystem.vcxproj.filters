@@ -107,5 +107,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\Include.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\RenderSystemAPI.h" />
   </ItemGroup>
 </Project>

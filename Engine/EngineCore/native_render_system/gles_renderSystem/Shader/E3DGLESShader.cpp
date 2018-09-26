@@ -6,11 +6,8 @@
 
 #include "E3DGLESShader.hpp"
 #include <src/Source/E3DDebug.h>
-#include <src/Config/Table.h>
-#include <src/Source/Application.h>
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include <src/Source/Helpers.h>
-#include <src/Source/E3DVertex.h>
 #include <src/Scene/E3DSceneManager.hpp>
 
 namespace E3DEngine
@@ -97,21 +94,15 @@ namespace E3DEngine
 		return shaderContent;
 	}
 
-	void GLES_Shader::LoadShader(ShaderConfig *cfg)
+	void GLES_Shader::LoadShader(string vsName, string psName, string attrVar, string unifVar)
 	{
-		if (cfg == nullptr)
-		{
-			Debug::Log(ell_Error, "shader config is null");
-			return;
-		}
-
-		processUniformVar(cfg);
-		processAttribVar(cfg);
+		processUniformVar(unifVar);
+		processAttribVar(attrVar);
 
 		std::string path = filePath;
-		std::string shaderContent = preProcessShader(path +  cfg->VertexShader);
+		std::string shaderContent = preProcessShader(path + vsName);
 		std::string vertexShaderString = processVShader().append(shaderContent);
-		shaderContent = preProcessShader(path + cfg->FragmentShader);
+		shaderContent = preProcessShader(path + psName);
 		std::string fragmentShaderString = shaderContent;
 
 		LoadShader(vertexShaderString.c_str(), fragmentShaderString.c_str());
@@ -155,9 +146,9 @@ namespace E3DEngine
 	}
 
 
-	void GLES_Shader::processUniformVar(ShaderConfig * cfg)
+	void GLES_Shader::processUniformVar(std::string uniformVariable)
 	{
-		std::vector<std::string> uniformVar = StringBuilder::Split(cfg->UniformVariable, ";");
+		std::vector<std::string> uniformVar = StringBuilder::Split(uniformVariable, ";");
 		for (auto &uniform : uniformVar)
 		{
 			std::string uniformKeyValue = StringBuilder::Trim(uniform);

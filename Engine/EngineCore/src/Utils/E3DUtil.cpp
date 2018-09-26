@@ -52,6 +52,11 @@ extern "C"
 		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime);
 		
 	}
+	
+	__api_function_ void SetRenderSystem(void* renderSystem)
+	{
+		SetRenderSystem(static_cast<RenderSystem*>(renderSystem));
+	}
 
 	__api_function_ void DestoryEngine()
 	{
@@ -74,11 +79,6 @@ extern "C"
 		GetRenderSystem()->setFrameWidth(w);
 		GetRenderSystem()->setFrameHeight(h);
 		SceneManager::GetCurrentScene()->ChangeViewportSize(w, h);
-	}
-
-	__api_function_ void SetupRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
-	{
-		CreateRenderSystem(nativeWindow, width, height);
 	}
 
 	__api_function_ void SetDebugLogOutFunc(void * func)
@@ -236,16 +236,4 @@ float RangeNumber(float &number, float max, float min)
 		number = min;
 	}
 	return number;
-}
-mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 aiMat)
-{
-	mat4f mat4;
-	for (int i = 0; i < 4; ++ i)
-	{
-		for (int j = 0; j < 4; ++j)
-		{
-			mat4.at(i, j) = aiMat[i][j];
-		}
-	}
-	return mat4;
 }

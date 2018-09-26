@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include "../Object/E3DGameObject.h"
-#include "../Source/E3DDelegate.h"
 
 namespace E3DEngine
 {

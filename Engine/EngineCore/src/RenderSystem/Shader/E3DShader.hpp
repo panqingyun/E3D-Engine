@@ -7,8 +7,7 @@
 #ifndef __E3D_SHADER_HPP__
 #define __E3D_SHADER_HPP__
 
-#include <src/Utils/E3DUtil.hpp>
-#include "../../Config/Table.h"
+#include "../../Source/Interface.h"
 
 #define IF_AVAILABLE(value) if((int)value != -1)
 
@@ -99,6 +98,8 @@ namespace E3DEngine
 		int size;
 	};
 
+	class ShaderConfig;
+
 	class EX_PORT Shader : public IObject
 	{
 		using setShaderValueFunc = void(Shader::*)(std::string varName, std::string defValueFormat, int count);
@@ -145,8 +146,8 @@ namespace E3DEngine
 		void createAttribute(std::string	typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint	BindLocation, std::string attrType, uint type);
 
 	protected:
-		virtual void processAttribVar(ShaderConfig * cfg);
-		virtual void processUniformVar(ShaderConfig * cfg);
+		virtual void processAttribVar(std::string attribVariable);
+		virtual void processUniformVar(std::string uniformVariable);
 
 	protected:
 		std::map<std::string, Attribute> staticAttributeMap;

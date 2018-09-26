@@ -18,13 +18,6 @@
 
 #ifndef __EDITOR__
 #include <btBulletDynamicsCommon.h>
-
-#include <assimp/mesh.h> 
-#include <assimp/scene.h>
-#include <assimp/texture.h>
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <assimp/cimport.h>
 #endif
 
 #include <mono/jit/jit.h>

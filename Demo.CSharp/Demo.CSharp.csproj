@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="E3DEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\E3DEngine.dll</HintPath>
+    <Reference Include="E3DEngine">
+      <HintPath>..\proj_win32\bin\Data\E3DAssembly\E3DEngine.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>Asset\Plugin\log4net.dll</HintPath>

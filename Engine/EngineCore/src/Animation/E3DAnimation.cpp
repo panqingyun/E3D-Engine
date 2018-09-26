@@ -4,6 +4,7 @@
 //
 
 #include "E3DAnimation.hpp"
+#include "../Mesh/E3DMesh.hpp"
 namespace E3DEngine
 {
 	void Animation::SetScene(const aiScene *pScene)

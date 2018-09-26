@@ -65,7 +65,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>WIN32;NDEBUG;__EDITOR__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;__IGNORED_INCLUDE__;__E3D_EDITOR__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <AdditionalIncludeDirectories>..\..\..\EngineCore\3rd\assimp-3.3.1\include;..\..\..\EngineCore\3rd\Mono;..\..\..\EngineCore\3rd\Physical\src;..\..\..\EngineCore\3rd\stb;..\..\..\EngineCore\include;..\..\..\EngineCore\src;..\..\..\EngineCore;..\..\..\EngineCore\native_render_system\gles_renderSystem\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

@@ -7,7 +7,7 @@
 namespace E3DEngine
 {
 	// TODO  根据高度图生成地形
-	class EX_PORT Terrain : public GameObject
+	class E3D_EXPORT_DLL Terrain : public GameObject
 	{
 	public:
 		Terrain();

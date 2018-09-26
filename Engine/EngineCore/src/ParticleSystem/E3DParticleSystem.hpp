@@ -17,7 +17,7 @@ namespace E3DEngine
 	class ParticleGroup;
 	class ParticleConfig;
 	class TableManager;
-	class EX_PORT ParticleSystem : public ISystem
+	class E3D_EXPORT_DLL ParticleSystem : public ISystem
 	{
 	public:		
 		static ParticleSystem& GetInstance();

@@ -12,7 +12,7 @@ namespace E3DEngine
 {
 	class Particle;
 	using particleListIterator = std::list<share_pointer<Particle>>::iterator;
-	class EX_PORT ParticlePool : public IObject
+	class E3D_EXPORT_DLL ParticlePool : public IObject
 	{
 	public:
 		ParticlePool();

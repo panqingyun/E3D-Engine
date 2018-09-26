@@ -27,7 +27,7 @@ namespace E3DEngine
 	class ParticleGroup;
 	class Particle;
 
-	class EX_PORT ParticleAffector : public Ref
+	class E3D_EXPORT_DLL ParticleAffector : public Ref
 	{
 		DECLARE_CLASS(ParticleAffector);
 	public:

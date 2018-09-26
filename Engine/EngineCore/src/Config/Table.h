@@ -15,7 +15,7 @@ namespace E3DEngine
 	using namespace std;
 	void RegisterTableCreateInstance();
 	//球形发射器
-	class EX_PORT BallEmitterConfig : public TableBase
+	class E3D_EXPORT_DLL BallEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(BallEmitterConfig)
 	public:
@@ -61,7 +61,7 @@ namespace E3DEngine
 	};
 
 	// 点发射器
-	class EX_PORT PointEmitterConfig : public TableBase
+	class E3D_EXPORT_DLL PointEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(PointEmitterConfig)
 	public:
@@ -100,7 +100,7 @@ namespace E3DEngine
 	};
 
 	// 区域发射器
-	class EX_PORT AreaEmitterConfig : public TableBase
+	class E3D_EXPORT_DLL AreaEmitterConfig : public TableBase
 	{
 		DECLARE_CLASS(AreaEmitterConfig)
 	public:
@@ -145,7 +145,7 @@ namespace E3DEngine
 	};
 
 	// 线性外力影响器
-	class EX_PORT LinnerForceAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL LinnerForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(LinnerForceAffectorConfig)
 	public:
@@ -168,7 +168,7 @@ namespace E3DEngine
 	};
 
 	// 随机外力影响器
-	class EX_PORT RandomForceAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL RandomForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RandomForceAffectorConfig)
 	public:
@@ -202,7 +202,7 @@ namespace E3DEngine
 		}
 	};
 
-	class EX_PORT RotationForceAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL RotationForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RotationForceAffectorConfig)
 	public:
@@ -225,7 +225,7 @@ namespace E3DEngine
 	};
 
 	// 移动到发射点影响器
-	class EX_PORT MoveToFiringPointForceAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL MoveToFiringPointForceAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(MoveToFiringPointForceAffectorConfig)
 	public:
@@ -248,7 +248,7 @@ namespace E3DEngine
 	};
 
 	// 线性颜色变化影响器
-	class EX_PORT LinnerColorAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL LinnerColorAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(LinnerColorAffectorConfig)
 	public:
@@ -276,7 +276,7 @@ namespace E3DEngine
 
 
 	// 旋转影响器
-	class EX_PORT RotationAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL RotationAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(RotationAffectorConfig)
 	public:
@@ -297,7 +297,7 @@ namespace E3DEngine
 	};
 
 	// 自旋影响器
-	class EX_PORT SelfRotateAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL SelfRotateAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(SelfRotateAffectorConfig)
 	public:
@@ -322,7 +322,7 @@ namespace E3DEngine
 	};
 
 	// 自缩放影响器
-	class EX_PORT SelfScalAffectorConfig : public TableBase
+	class E3D_EXPORT_DLL SelfScalAffectorConfig : public TableBase
 	{
 		DECLARE_CLASS(SelfScalAffectorConfig)
 	public:
@@ -347,7 +347,7 @@ namespace E3DEngine
 	};
 
 	// 粒子团
-	class EX_PORT ParticleConfig : public TableBase
+	class E3D_EXPORT_DLL ParticleConfig : public TableBase
 	{
 		DECLARE_CLASS(ParticleConfig)
 	public:
@@ -384,7 +384,7 @@ namespace E3DEngine
 	};
 
 	// 材质
-	class EX_PORT MaterialConfig : public TableBase
+	class E3D_EXPORT_DLL MaterialConfig : public TableBase
 	{
 		DECLARE_CLASS(MaterialConfig);
 	public:
@@ -428,7 +428,7 @@ namespace E3DEngine
 	};
 
 	// UV动画
-	class EX_PORT TextureUVConfig : public TableBase
+	class E3D_EXPORT_DLL TextureUVConfig : public TableBase
 	{
 		DECLARE_CLASS(TextureUVConfig);
 	public:
@@ -475,7 +475,7 @@ namespace E3DEngine
 	};
 
 	// 层
-	class EX_PORT LayerConfig : public TableBase
+	class E3D_EXPORT_DLL LayerConfig : public TableBase
 	{
 		DECLARE_CLASS(LayerConfig);
 	public:
@@ -493,7 +493,7 @@ namespace E3DEngine
 	};
 
 	// 着色器
-	class EX_PORT ShaderConfig : public TableBase
+	class E3D_EXPORT_DLL ShaderConfig : public TableBase
 	{
 		DECLARE_CLASS(ShaderConfig);
 	public:
@@ -514,7 +514,7 @@ namespace E3DEngine
 		}
 	};
 
-	class EX_PORT TextureAtlas : public TableBase
+	class E3D_EXPORT_DLL TextureAtlas : public TableBase
 	{
 		DECLARE_CLASS(TextureAtlas);
 	public:
@@ -540,7 +540,7 @@ namespace E3DEngine
 		}
 	};
 
-	class EX_PORT SkyBoxConfig : public TableBase
+	class E3D_EXPORT_DLL SkyBoxConfig : public TableBase
 	{
 		DECLARE_CLASS(SkyBoxConfig)
 	public:
@@ -566,7 +566,7 @@ namespace E3DEngine
 
 	};
 
-	class EX_PORT MeshConfig : public TableBase
+	class E3D_EXPORT_DLL MeshConfig : public TableBase
 	{
 		DECLARE_CLASS(MeshConfig)
 	public:

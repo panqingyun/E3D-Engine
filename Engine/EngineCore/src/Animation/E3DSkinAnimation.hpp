@@ -9,7 +9,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT SkinAnimation : public Animation
+	class E3D_EXPORT_DLL SkinAnimation : public Animation
 	{
 	public:
 		virtual void Start();

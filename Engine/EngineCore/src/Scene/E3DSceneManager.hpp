@@ -13,7 +13,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT SceneManager : public IObject
+	class E3D_EXPORT_DLL SceneManager : public IObject
 	{
 	public:
 		static SceneManager& GetInstance();

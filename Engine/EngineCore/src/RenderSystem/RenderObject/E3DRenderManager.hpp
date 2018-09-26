@@ -7,7 +7,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT RendererManager : public IManager
+	class E3D_EXPORT_DLL RendererManager : public IManager
 	{
 	public:
 		virtual Renderer * CreateVertexRender(int materialID);

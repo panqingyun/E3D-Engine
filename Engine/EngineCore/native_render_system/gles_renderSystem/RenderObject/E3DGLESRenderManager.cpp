@@ -57,7 +57,7 @@ namespace E3DEngine
 	{
 		for (auto & render : m_mapVertexBuffers)
 		{
-			SAFE_DELETE(render->second);
+			SAFE_DELETE(render.second);
 		}
 		m_mapVertexBuffers.clear();
 	}

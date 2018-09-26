@@ -7,7 +7,7 @@
 #include "TableManager.h"
 #include "Table.h"
 
-class EX_PORT TableRegister
+class E3D_EXPORT_DLL TableRegister
 {
 public:
 	static E3DEngine::TableManager * GetTableManager(const char * filePath)

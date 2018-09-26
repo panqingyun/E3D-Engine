@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLES_RenderSystem", "Render
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Editor", "Editor", "{F6CF3703-2AA0-4093-8485-F56E111BCE66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3DEditor", "..\Engine\Editor\E3DEditor.csproj", "{EC7B8868-430E-4D5F-87D1-675ED849EA39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3DEditorWindow", "..\Engine\Editor\E3DEditorWindow.csproj", "{EC7B8868-430E-4D5F-87D1-675ED849EA39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor.CSharp", "..\Demo.CSharp\Asset\Editor\Editor.CSharp\Editor.CSharp.csproj", "{42B5C761-FD1A-4F6B-B4DF-17094E481F9D}"
 EndProject

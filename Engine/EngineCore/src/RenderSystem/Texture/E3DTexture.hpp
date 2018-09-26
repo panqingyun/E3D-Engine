@@ -15,7 +15,7 @@ namespace E3DEngine
 {
 
 	class TextureFrameEffect;
-	class EX_PORT Texture : public IObject
+	class E3D_EXPORT_DLL Texture : public IObject
 	{
 		friend class Material;
 	public:

@@ -16,7 +16,7 @@
 #include <set>
 #include <queue>
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 #include <btBulletDynamicsCommon.h>
 #endif
 

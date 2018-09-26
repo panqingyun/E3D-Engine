@@ -462,25 +462,13 @@ namespace E3DEngine
 	
 	void Scene::Destory()
 	{
-		int childSize = m_vecObjList.size();
-		for (int i = 0; i < childSize; i++)
-		{
-			auto node = m_vecObjList.begin()->second;
-			if (node->mType == eT_Camera)
-			{
-				continue;
-			}
-			m_vecObjList.erase(node->ID);
-			SAFE_DELETE(node);
-		}
-		for (Camera * camera : m_vecCamera)
-		{
-			SAFE_DELETE(camera);
-		}
+		SAFE_DELETE(rootObject);
 		GetRenderSystem()->Cleanup();
 		m_mapRenders.clear();
 		m_vecObjList.clear();
 		m_mapLights.clear();
+		m_vecCamera.clear();
+		TableRegister::Destory();
 	}
 
 	void Scene::DestoryAllOjectImmediately()

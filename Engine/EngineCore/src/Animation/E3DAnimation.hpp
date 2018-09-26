@@ -8,7 +8,7 @@
 #include "../Source/E3DDelegate.h"
 #include "../Mesh/E3DBone.hpp"
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>
@@ -19,7 +19,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT Animation : public Object
+	class E3D_EXPORT_DLL Animation : public Object
 	{
 	public:
 		Animation();
@@ -31,7 +31,7 @@ namespace E3DEngine
 		std::map<std::string, Bone*> *	m_BoneMapping;
 	protected:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		const aiScene *			m_pScene;
 		mat4f					m_GlobalInverseTransform;
 		float					m_fhasPlayTimeLong;
@@ -46,7 +46,7 @@ namespace E3DEngine
 	public:
 		virtual void Play(std::string name = "", bool isRepeat = false);
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		virtual void SetScene(const aiScene * pScene);
 #endif
 		virtual void LoadAnimations();
@@ -57,7 +57,7 @@ namespace E3DEngine
 	public:
 		bool	IsPlay();
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	protected:
 		void			BoneTransform(float TimeInSeconds);
 		aiNodeAnim  *	FindNodeAnim(const aiAnimation* pAnimation, const std::string NodeName) const;

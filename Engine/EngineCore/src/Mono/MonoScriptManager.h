@@ -35,7 +35,7 @@ public:
 	void OnEnable();
 	void OnDisable();
 	void LateUpdate(float deltaTime);
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	void OnCollisionEnter(btCollisionObject* collision);
 #endif
 	void SetFieldValue(const char *fieldName, void *value);

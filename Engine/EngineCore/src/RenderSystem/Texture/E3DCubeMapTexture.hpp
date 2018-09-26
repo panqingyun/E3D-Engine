@@ -10,7 +10,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT CubeMapTexture : public Texture
+	class E3D_EXPORT_DLL CubeMapTexture : public Texture
 	{
 	public:
 		void CreateCubeMapTexture(int textureEnum, std::string xPName,

@@ -23,7 +23,7 @@ namespace E3DEngine
     
 	void RegistScnObjCreateFunc();
 
-	class EX_PORT Scene : public Object
+	class E3D_EXPORT_DLL Scene : public Object
 	{
 	public:
 		Scene();

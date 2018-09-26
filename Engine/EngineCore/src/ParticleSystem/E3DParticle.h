@@ -22,7 +22,7 @@ namespace E3DEngine
     class Camera;
     class ParticleAffector;
     class ParticleEmitter;
-	class EX_PORT Particle : public Ref , public IActor
+	class E3D_EXPORT_DLL Particle : public Ref , public IActor
     {
     public:
         Particle();
@@ -131,7 +131,7 @@ namespace E3DEngine
         int			fShaderIndex;
     };
 
-	struct EX_PORT particleInitConfig
+	struct E3D_EXPORT_DLL particleInitConfig
 	{
 		unsigned int ParticleNumber;
 		float Time2Live;
@@ -149,7 +149,7 @@ namespace E3DEngine
 		particleInitConfig(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false);
 	};
 
-    class EX_PORT ParticleGroup : public GameObject
+    class E3D_EXPORT_DLL ParticleGroup : public GameObject
     {
     public:
         ParticleGroup();

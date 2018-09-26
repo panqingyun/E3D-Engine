@@ -7,7 +7,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT SkyBox : public Box
+	class E3D_EXPORT_DLL SkyBox : public Box
 	{
 	public:
 		virtual void Create(float l, float w, float h) override;

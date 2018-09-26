@@ -6,7 +6,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT Render2Texture : public Texture
+	class E3D_EXPORT_DLL Render2Texture : public Texture
 	{
 	public:
 		Render2Texture();

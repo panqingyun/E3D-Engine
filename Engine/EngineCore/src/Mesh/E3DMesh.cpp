@@ -13,7 +13,7 @@
 
 namespace E3DEngine
 {
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 aiMat)
 	{
 		mat4f mat4;
@@ -93,7 +93,7 @@ namespace E3DEngine
 		std::string folder = GetFolder(filePath);
 		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(folder + "/" + materialCfg[0], Convert::ToInt(materialCfg[1]));
 		SetMaterial(material);
-		SAFE_DELETE(tbMgr);
+		//SAFE_DELETE(tbMgr);
 	}
 
 	void Mesh::SetMaterial(Material *material)

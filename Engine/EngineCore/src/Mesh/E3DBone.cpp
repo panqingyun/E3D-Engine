@@ -4,7 +4,7 @@
 
 #include "E3DBone.hpp"
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>

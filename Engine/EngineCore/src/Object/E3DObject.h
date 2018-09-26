@@ -27,7 +27,7 @@ namespace E3DEngine
 #define E3D_NAME_SPACE "E3DEngine"
 
 	class CTransform;
-	class EX_PORT Object : public Ref
+	class E3D_EXPORT_DLL Object : public Ref
 	{
 	public:
 		Object();

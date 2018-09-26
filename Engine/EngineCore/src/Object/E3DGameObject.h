@@ -66,7 +66,7 @@ template< param > struct trait<spec> \
 #include <cstring>
 #endif
 
-class EX_PORT object
+class E3D_EXPORT_DLL object
 {
 public: // structors
     
@@ -154,7 +154,7 @@ private: // representation
     
 };
 
-class EX_PORT bad_object_cast : public std::bad_cast
+class E3D_EXPORT_DLL bad_object_cast : public std::bad_cast
 {
 public:
     virtual const char * what() const throw() override;
@@ -209,7 +209,7 @@ const static std::string intType     = "int";
 const static std::string floatType   = "float";
 const static std::string doubleType  = "double";
 
-struct EX_PORT Convert
+struct E3D_EXPORT_DLL Convert
 {
     static int ToInt(std::string source);
     static int ToInt(const char * source);
@@ -281,7 +281,7 @@ namespace E3DEngine
 	class Renderer;
 	class SkyBox;
 	class Collider;
-	class EX_PORT GameObject : public Object
+	class E3D_EXPORT_DLL GameObject : public Object
 	{
 	public:
 		template<typename T> T * AddComponent()
@@ -402,7 +402,7 @@ namespace E3DEngine
 	};
 
 	
-	class EX_PORT StringBuilder
+	class E3D_EXPORT_DLL StringBuilder
 	{
 	public:
 		StringBuilder();

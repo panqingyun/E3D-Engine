@@ -14,7 +14,7 @@ namespace E3DEngine
     class GameObject;
 	class CTransform;
 	// 组件类， 目的是方便拓展， 可以挂在GameObject上
-    class EX_PORT Component : public Object
+    class E3D_EXPORT_DLL Component : public Object
     {
     public:
 		Component();

@@ -8,7 +8,7 @@
 namespace E3DEngine
 {
 
-    class EX_PORT TableManager : public Ref
+    class E3D_EXPORT_DLL TableManager : public Ref
     {
     public:
         TableManager(); 
@@ -72,7 +72,7 @@ namespace E3DEngine
 		void		DeleteAllTable();
         TableBase * Select(string tableName, int ID);        
 		TableBase * Select(string tableName, int ID1, int ID2);
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		void		RegisterTable(TiXmlNode * node, const std::string name, TableBase* p);
 #endif
         

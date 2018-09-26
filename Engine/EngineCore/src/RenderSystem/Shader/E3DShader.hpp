@@ -100,7 +100,7 @@ namespace E3DEngine
 
 	class ShaderConfig;
 
-	class EX_PORT Shader : public IObject
+	class E3D_EXPORT_DLL Shader : public IObject
 	{
 		using setShaderValueFunc = void(Shader::*)(std::string varName, std::string defValueFormat, int count);
 	public:

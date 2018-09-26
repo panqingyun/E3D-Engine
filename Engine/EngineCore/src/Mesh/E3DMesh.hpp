@@ -10,7 +10,7 @@
 #include "../Object/E3DComponent.hpp"
 #include "../Animation/E3DAnimation.hpp"
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>
@@ -23,7 +23,7 @@ using namespace std;
 
 namespace E3DEngine
 {
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	mat4f ConvertAiMatrix4x42Mat4f(aiMatrix4x4 mat);
 #endif
 	struct MeshEntity
@@ -35,7 +35,7 @@ namespace E3DEngine
 		unsigned int BaseIndex;
 		unsigned int MaterialIndex;
 	};
-	class EX_PORT Mesh : public GameObject
+	class E3D_EXPORT_DLL Mesh : public GameObject
 	{
 	public:
 		static Mesh* Create(string path, int configID);
@@ -45,7 +45,7 @@ namespace E3DEngine
 		void Destory();
 		virtual void Update(float deltaTime) override;
 	public:
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		Assimp::Importer			pImporter;
 		const aiScene*				pScene;
 		vector<MeshEntity>			Entries;

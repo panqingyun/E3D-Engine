@@ -189,40 +189,16 @@ float UnitRandom()
 	return asm_rand() / asm_rand_max();
 }
 
-
 // 随机值： fLow - fHigh
 float RangeRandom( float fLow, float fHigh )
 {
 	return fLow + ( fHigh - fLow ) * UnitRandom();
 }
 
-
 // 随机值： (-1) - (1)
 float SymmetricRandom()
 {
 	return 2.f * UnitRandom() - 1.f;
-}
-
-
-void ChangeFileNameToDDS( string &name )
-{
-	basic_string <char>::size_type indexChar = name.find_last_of( '.' );
-	if( indexChar != -1 )
-	{
-		name = name.substr( 0, indexChar ) + ".dds";
-	}
-}
-
-vec3f V42V3(vec4f vec)
-{
-	vec3f v3(vec.x,vec.y,vec.z);
-	return v3;
-}
-
-vec4f V32V4(vec3f vec)
-{
-	vec4f v4(vec.x, vec.y, vec.z, 1.0f);
-	return v4;
 }
 
 float RangeNumber(float &number, float max, float min)

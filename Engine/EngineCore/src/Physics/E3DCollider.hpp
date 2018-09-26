@@ -14,8 +14,8 @@ namespace E3DEngine
 {
 	void ImplCollider();
 
-#ifndef __EDITOR__
-	struct EX_PORT ColCallBack : public btCollisionWorld::ContactResultCallback
+#ifndef __IGNORED_INCLUDE__
+	struct E3D_EXPORT_DLL ColCallBack : public btCollisionWorld::ContactResultCallback
 	{
 	public:
 
@@ -30,7 +30,7 @@ namespace E3DEngine
 
 	};
 #endif
-	class EX_PORT RigidBody : public Component
+	class E3D_EXPORT_DLL RigidBody : public Component
 	{
 		DECLARE_CLASS(RigidBody)
 	public:
@@ -51,7 +51,7 @@ namespace E3DEngine
 		virtual void Update(float deltaTime) override;
 	private:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		void createRigidBody(btCollisionShape *shape);
 
 	private:
@@ -65,13 +65,14 @@ namespace E3DEngine
 #endif
 	};
 
-	class EX_PORT Collider : public Component
+	class E3D_EXPORT_DLL Collider : public Component
 	{
 	public:
 		virtual ~Collider()
 		{
+#ifndef __IGNORED_INCLUDE__
 			SAFE_DELETE(m_pShape);
-			SAFE_DELETE(m_pMotionState);
+#endif
 		}
 		virtual void OnCreate()
 		{
@@ -80,7 +81,7 @@ namespace E3DEngine
 		}
 	public:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
 
@@ -91,7 +92,7 @@ namespace E3DEngine
 #endif
 	};
 	
-	class EX_PORT BoxCollider : public  Collider
+	class E3D_EXPORT_DLL BoxCollider : public  Collider
 	{
 		DECLARE_CLASS(BoxCollider)
 	public:
@@ -101,7 +102,7 @@ namespace E3DEngine
 		}
 		virtual void Awake() override;
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
@@ -109,7 +110,7 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 	};
 
-	class EX_PORT SphereCollider : public  Collider
+	class E3D_EXPORT_DLL SphereCollider : public  Collider
 	{
 		DECLARE_CLASS(SphereCollider)
 	public:
@@ -121,14 +122,14 @@ namespace E3DEngine
 
 	public:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
 #endif
 		virtual void CreateBehaviour() override;
 	};
 
-	class EX_PORT MeshCollider : public Collider
+	class E3D_EXPORT_DLL MeshCollider : public Collider
 	{
 		DECLARE_CLASS(MeshCollider)
 	public:
@@ -138,7 +139,7 @@ namespace E3DEngine
 		}
 		virtual void Awake() override;
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
@@ -146,14 +147,14 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 	};
 
-	class EX_PORT MotionState 
-#ifndef __EDITOR__
+	class E3D_EXPORT_DLL MotionState 
+#ifndef __IGNORED_INCLUDE__
 		: public  btDefaultMotionState
 #endif
 	{
 	public:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		MotionState(const  btTransform &initialpos, GameObject *obj)
 		{
 			mObject = obj;
@@ -183,7 +184,7 @@ namespace E3DEngine
 
 	};
 
-	class EX_PORT CapsuleCollider : public Collider
+	class E3D_EXPORT_DLL CapsuleCollider : public Collider
 	{
 		DECLARE_CLASS(CapsuleCollider)
 	public:

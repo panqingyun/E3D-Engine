@@ -38,13 +38,13 @@ E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::GetTextureDataFromF
 	char *bits = (char*)stbi_load(imageName.c_str(), &width, &height, &bpp, 0);
 	char * outByte = nullptr;
 
-	if (bpp == 3)
+	if (bpp == PixelFormat::R8G8B8)
 	{
 		imgData->rgbModule = GL_RGB;
 		outByte = (char*)malloc(width * height * 3);
 		memcpy(outByte, bits, width*height * 3);
 	}
-	else if (bpp == 4)
+	else if (bpp == PixelFormat::R8G8B8A8)
 	{
 		imgData->rgbModule = GL_RGBA;
 		outByte = (char*)malloc(width * height * 4);

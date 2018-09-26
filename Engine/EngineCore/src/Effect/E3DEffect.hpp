@@ -10,7 +10,7 @@
 
 namespace E3DEngine
 {
-    class EX_PORT Effect extends Ref
+    class E3D_EXPORT_DLL Effect extends Ref
     {
         friend class EffectFactory;
     protected:

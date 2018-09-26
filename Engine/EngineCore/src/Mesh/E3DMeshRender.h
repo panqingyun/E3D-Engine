@@ -15,7 +15,7 @@ using namespace std;
 class aiScene;
 namespace E3DEngine
 {
-	class EX_PORT MeshRender : public Renderer
+	class E3D_EXPORT_DLL MeshRender : public Renderer
 	{
 	public:
 		~MeshRender();

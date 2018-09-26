@@ -15,7 +15,7 @@ namespace E3DEngine
 {
 	class TableManager;
 	class MaterialConfig;
-	class EX_PORT Material : public  Object
+	class E3D_EXPORT_DLL Material : public  Object
 	{
 	public:
 		Material(); 

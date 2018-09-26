@@ -10,7 +10,7 @@
 namespace E3DEngine
 {
 	class Renderer;
-	class EX_PORT Box : public GameObject
+	class E3D_EXPORT_DLL Box : public GameObject
 	{
 	public:
 		Box();

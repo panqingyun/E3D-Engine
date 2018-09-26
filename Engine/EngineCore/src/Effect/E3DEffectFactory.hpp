@@ -9,7 +9,7 @@
 namespace E3DEngine
 {
 
-    class EX_PORT EffectFactory implement IFactory
+    class E3D_EXPORT_DLL EffectFactory implement IFactory
     {
     public:
         static EffectFactory& GetInstance();

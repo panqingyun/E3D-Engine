@@ -7,7 +7,7 @@
 namespace E3DEngine
 {
 	class Renderer;
-	class EX_PORT Sphere : public GameObject
+	class E3D_EXPORT_DLL Sphere : public GameObject
 	{
 	public:
 		Sphere();

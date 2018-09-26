@@ -15,7 +15,7 @@ class aiMetadata;
 namespace E3DEngine
 {
 	// 骨骼
-	class EX_PORT Bone : public GameObject
+	class E3D_EXPORT_DLL Bone : public GameObject
 	{
 	public:
 		Bone();
@@ -24,7 +24,7 @@ namespace E3DEngine
 
 	public:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		void SetMetadata(aiMetadata * data);
 		void SetAiBone(aiBone * bone);
 #endif
@@ -35,7 +35,7 @@ namespace E3DEngine
 	public:
 		mat4f		BoneOffset;
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		aiBone *	data;
 		aiMetadata *					Metadata;
 #endif

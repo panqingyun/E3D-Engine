@@ -9,8 +9,23 @@
 
 namespace E3DEngine
 {
+#define NULL_RETURN(OBJ)\
+	if (OBJ == nullptr)\
+	{\
+		return; \
+	}
+
+#define NOT_ACTIVE_RETURN(OBJ)\
+	if (OBJ != 0)\
+	{\
+		if (!OBJ->IsActive)\
+		{\
+			return; \
+		}\
+	}
+
     class GameObject;
-	class EX_PORT CTransform : public Object
+	class E3D_EXPORT_DLL CTransform : public Object
     {
     public:
         CTransform();

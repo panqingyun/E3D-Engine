@@ -89,7 +89,7 @@ namespace E3DEngine
 		Logger * nextDebugLogger;
 	};
 
-	class EX_PORT Debug : public IObject
+	class E3D_EXPORT_DLL Debug : public IObject
 	{
 	public:
 		Debug();

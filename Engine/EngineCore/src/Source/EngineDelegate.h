@@ -49,7 +49,7 @@
 namespace E3DEngine
 {
 #define USE_GPU_IMAGE
-	class EX_PORT EngineDelegate : public IObject
+	class E3D_EXPORT_DLL EngineDelegate : public IObject
 	{
 	public:
 		static EngineDelegate &GetInstance();;
@@ -68,7 +68,6 @@ namespace E3DEngine
 	private:
 		EngineDelegate();
 	private:
-		eTargetPlatform							m_ePlatform;
 		bool									m_bIsInited;
 		bool									m_bPause;
 		bool									m_bIsEditor;

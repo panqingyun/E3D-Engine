@@ -7,7 +7,7 @@
 #include "../Object/E3DComponent.hpp"
 #include "../Mesh/E3DBone.hpp"
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 #include <assimp/mesh.h> 
 #include <assimp/scene.h>
 #include <assimp/texture.h>
@@ -18,7 +18,7 @@
 
 namespace E3DEngine
 {
-	class EX_PORT AnimationClip : public Component
+	class E3D_EXPORT_DLL AnimationClip : public Component
 	{
 	public:
 		std::string		mName;
@@ -26,7 +26,7 @@ namespace E3DEngine
 		int				Index;
 	private:
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 		aiAnimation		* m_aiAnimation;
 #endif
 	};

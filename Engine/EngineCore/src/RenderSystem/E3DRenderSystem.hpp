@@ -34,7 +34,7 @@ namespace E3DEngine
 		eDM_POINTS,
 	};
 
-	class EX_PORT RenderSystem : public IObject
+	class E3D_EXPORT_DLL RenderSystem : public IObject
 	{
 	public:
 		RenderSystem();

@@ -26,7 +26,7 @@ namespace E3DEngine
 		MESH,
 	};
 
-	class EX_PORT Renderer : public RenderObject
+	class E3D_EXPORT_DLL Renderer : public RenderObject
 	{
 	public:
 		Renderer();

@@ -30,7 +30,7 @@ namespace E3DEngine
      发射器类提供不同的实现。
      */
     // ----------------------------------------------------------------------------------------
-    class EX_PORT ParticleEmitter : public Ref
+    class E3D_EXPORT_DLL ParticleEmitter : public Ref
     {
         DECLARE_CLASS(ParticleEmitter);
     public:

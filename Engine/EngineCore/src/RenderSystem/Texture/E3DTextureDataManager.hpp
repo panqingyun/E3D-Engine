@@ -28,7 +28,16 @@ namespace E3DEngine
 		LINEAR_MIPMAP_LINEAR = 5
 	};
 
-	struct EX_PORT TextureData
+	enum PixelFormat
+	{
+		Unknow,
+		L8,			// 1 byte pixel format, 1 byte luminance
+		L8A8,		// 2 byte pixel format, 1 byte luminance, 1 byte alpha
+		R8G8B8,		// 24-bit pixel format, 8 bits for red, green and blue.
+		R8G8B8A8	// 32-bit pixel format, 8 bits for red, green, blue and alpha.
+	};
+
+	struct E3D_EXPORT_DLL TextureData
 	{
 		CLAMP_TYPE clampType;
 		FILTER_TYPE filterType;
@@ -58,7 +67,7 @@ namespace E3DEngine
 		}
 	};
 
-	class EX_PORT TextureDataManager : public IManager
+	class E3D_EXPORT_DLL TextureDataManager : public IManager
 	{
 	public:
 		// -----------------------------------------------

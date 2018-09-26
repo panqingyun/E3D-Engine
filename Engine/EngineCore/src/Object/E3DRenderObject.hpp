@@ -81,7 +81,7 @@ namespace E3DEngine
 
 
     class CTransform;
-    class EX_PORT RenderObject : public Object
+    class E3D_EXPORT_DLL RenderObject : public Object
     {
     public:
         RenderObject();

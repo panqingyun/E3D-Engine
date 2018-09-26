@@ -19,10 +19,10 @@ namespace E3DEngine
 		vec3f To;
 	};
 
-	class EX_PORT PhysicWorld : public  Ref
+	class E3D_EXPORT_DLL PhysicWorld : public  Ref
 	{
 
-#ifndef __EDITOR__
+#ifndef __IGNORED_INCLUDE__
 	private:
 		PhysicWorld();
 

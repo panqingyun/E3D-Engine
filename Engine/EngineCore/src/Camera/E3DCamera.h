@@ -13,7 +13,7 @@ namespace E3DEngine
 	class RenderQueue;
 	class Render2Texture;
 	struct Ray;
-	class EX_PORT Camera : public GameObject
+	class E3D_EXPORT_DLL Camera : public GameObject
 	{
 		friend class Render2Texture;
 	public:

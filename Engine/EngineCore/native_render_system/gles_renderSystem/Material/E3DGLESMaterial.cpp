@@ -21,7 +21,7 @@ namespace E3DEngine
 		{
 			SAFE_DELETE(it->second);
 		}
-		SAFE_DELETE(pShader);
+		SAFE_DELETE(mShader);
 		Textures.clear();
 	}
 

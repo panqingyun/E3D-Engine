@@ -44,7 +44,7 @@ using setValue = void(*)(void * t, object v);
 using namespace std;
 using createClass = void* (*)();
 
-class EX_PORT ClassFactory
+class E3D_EXPORT_DLL ClassFactory
 {
 private:
 	ClassFactory() { };

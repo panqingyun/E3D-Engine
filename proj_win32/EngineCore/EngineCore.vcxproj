@@ -461,6 +461,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DObject.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h" />
@@ -543,6 +544,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRenderObject.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp" />

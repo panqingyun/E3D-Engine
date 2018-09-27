@@ -40,7 +40,7 @@ namespace E3DEngine
 				return;
 			}
 			CreateShader(sCfg);
-			
+			mColor = Convert::ToColorRGBA(config->Color);
 			for (auto& sp : mShader->GetSamplerNameValue())
 			{
 				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(mFilePath + sp.second);

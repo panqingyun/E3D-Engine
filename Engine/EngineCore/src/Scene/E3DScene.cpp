@@ -11,6 +11,7 @@
 #include "../RenderSystem/E3DRenderQueue.h"
 #include "../Source/FilePath.h"
 #include "../Config/TableRegister.h"
+#include "../Object/E3DPrefab.h"
 
 namespace E3DEngine
 {	
@@ -26,6 +27,7 @@ namespace E3DEngine
 	const std::string TP_Empty		= "Empty";
 	const std::string _typeName		= "Type";
 	const std::string TP_Terrain	= "Terrain";
+	const std::string TP_Prefab		= "Prefab";
 
 	const std::string _Name			= "Name";
 	const std::string _FilePath		= "FilePath";
@@ -270,6 +272,32 @@ namespace E3DEngine
 		return light;
 	}
 
+	GameObject *createPrefab(TiXmlElement *objectElement)
+	{
+		std::string filePath = sceneFolderPath + "/" + (*objectElement->Attribute(_FilePath));
+		return LoadPrefab(filePath);
+	}
+
+	GameObject * LoadPrefab(std::string filePath)
+	{
+		Prefab *prefab = new Prefab();
+
+		prefab->SetFilePath(filePath);
+		TiXmlDocument * doc = new TiXmlDocument(filePath.c_str());
+		bool loadOkay = doc->LoadFile();
+		if (!loadOkay)
+		{
+			return prefab;
+		}
+		std::string folderPath = sceneFolderPath;
+		sceneFolderPath = GetFolder(filePath);
+
+		TiXmlElement* rootElem = doc->RootElement();
+		createObjects(prefab, rootElem);
+		sceneFolderPath = folderPath;
+		return prefab;
+	}
+
 	GameObject * createParticle(TiXmlElement *objectElement)
 	{
 		GameObject * go = new GameObject();
@@ -391,6 +419,7 @@ namespace E3DEngine
 		createFun[TP_Cube]		= createCube;
 		createFun[TP_Sphere]	= createSphere;
 		createFun[TP_PLight]	= createPointLight;
+		createFun[TP_Prefab]	= createPrefab;
 
 		renderIndexMap[_RenderIndex_LowMost]		= eRenderIndex::eRI_LowMost;
 		renderIndexMap[_RenderIndex_TopMost]		= eRenderIndex::eRI_TopMost;

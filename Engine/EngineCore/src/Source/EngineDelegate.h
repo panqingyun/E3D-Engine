@@ -37,6 +37,7 @@
 #include "../Physics/E3DCollider.hpp"
 #include "../Object/E3DTerrain.h"
 #include "../Object/E3DSkyBox.h"
+#include "../Object/E3DPrefab.h"
 
 #define RAD2DEG(x) (x * 180.0 / M_PI)
 #define CAMERA_Z_POS 50.0

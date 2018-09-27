@@ -22,6 +22,7 @@ namespace E3DEngine
 	};
     
 	void RegistScnObjCreateFunc();
+	GameObject * LoadPrefab(std::string path);
 
 	class E3D_EXPORT_DLL Scene : public Object
 	{
@@ -54,7 +55,7 @@ namespace E3DEngine
 		Light * GetDirectionalLight();
 		std::map<UINT, Light*>& GetPointLights();
 		GameObject * GetRootObject();
-
+		
 	protected:
 		virtual void CreateBehaviour() override;
 	public:

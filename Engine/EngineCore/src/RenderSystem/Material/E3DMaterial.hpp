@@ -113,6 +113,7 @@ namespace E3DEngine
 		TableManager	* mMaterialTableManager;
 		MaterialConfig	* mMaterialConfig;
 		std::string		mFilePath;
+		vvision::vec4f	mColor;
 
 		
 	};

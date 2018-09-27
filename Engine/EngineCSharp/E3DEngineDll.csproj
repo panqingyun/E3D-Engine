@@ -69,7 +69,7 @@
     <OutputPath>bin\x86\GLES_Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EditorRelease|AnyCPU'">
-    <OutputPath>bin\EditorRelease\</OutputPath>
+    <OutputPath>..\..\proj_win32\bin\Data\E3DAssembly\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
@@ -107,6 +107,7 @@
     <Compile Include="Engine3D\Mesh.cs" />
     <Compile Include="Engine3D\Object.cs" />
     <Compile Include="Engine3D\ParticleSystem.cs" />
+    <Compile Include="Engine3D\Prefab.cs" />
     <Compile Include="Engine3D\Render.cs" />
     <Compile Include="Engine3D\RigidBody.cs" />
     <Compile Include="Engine3D\Scene.cs" />

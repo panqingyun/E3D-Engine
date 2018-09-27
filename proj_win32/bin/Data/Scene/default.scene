@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Scene>
-<!--
-	CulMask = "Everything" 表示所有层都能被看到
-	其余的写各层的名字 例如： CulMask = "defaultLayer"
-	可以看多个层可以写 CulMask = "defaultLayer|backLayer"
-	RenderIndex = LowMost | Normal | Transparent | TopMost
-	LayerMask="AllLayer" 代表所有层 其余的层参照LayerConfig 填写其Name
--->
-	<GameObject Name="MainCamera" Type="Camera" ClearColor="0.0, 0.0, 0.0, 1" CullingMask="Everything"  Active="true" >
-		<Transform Posistion="200, 35,180" Rotation="0, 90, 0" Scale="1,1,1"/>
-	</GameObject>	
+	<GameObject Name="coord" Type="Prefab" FilePath="coordinate.prefab" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0, 0,0" Rotation="0, 0, 0" Scale="1,1,1"/>
+	</GameObject>
 </Scene>

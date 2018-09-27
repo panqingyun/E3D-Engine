@@ -327,6 +327,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\include\EngineAPI.h">
       <Filter>engineCore</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.h">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -550,6 +553,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\ClassFactory.cpp">
       <Filter>engineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.cpp">
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

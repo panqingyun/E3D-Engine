@@ -10,6 +10,7 @@ namespace E3DEngine
 {
 	void Renderer::FillVertex(Vertex vb)
 	{
+		vb.SetColor(pMaterial->mColor.r, pMaterial->mColor.g, pMaterial->mColor.b,pMaterial->mColor.a);
 		Vertices.push_back(vb);
 	}
 

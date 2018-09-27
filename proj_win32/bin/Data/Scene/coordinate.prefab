@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0, 0,12.5" Rotation="0, 0, 0" Scale="1,1,25"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="3"/>
+	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="12.5,0,0" Rotation="0, 0, 0" Scale="25,1,1"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
+	</GameObject>	
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0,12.5,0" Rotation="0, 0, 0" Scale="1,25,1"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="2"/>
+	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0,-12.5,0" Rotation="0, 0, 0" Scale="1,25,1"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
+	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="-12.5,0,0" Rotation="0, 0, 0" Scale="25,1,1"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
+	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0,0,-12.5" Rotation="0, 0, 0" Scale="1,1,25"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
+	</GameObject>
+	<GameObject Name="Box" Type="Cube" LayerMask="defaultLayer"  Active="true">
+		<Transform Posistion="0,0,0" Rotation="0, 0, 0" Scale="8,8,8"/>
+		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
+	</GameObject>
+</Prefab>

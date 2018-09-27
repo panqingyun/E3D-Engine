@@ -15,7 +15,7 @@ extern "C"
 	vec3f curPos;
 	vec3f curCameraPos;
 	vec3f curCameraDir;
-	float speed = 0.1f;
+	float speed = 0.5f;
 	Camera *editorCamera = nullptr;
 	Scene *defaultScene = nullptr;
 
@@ -138,7 +138,7 @@ extern "C"
 		}
 		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
 		{
-			defaultScene = SceneManager::GetInstance().LoadScene("Data/Scene/default.scene");
+			defaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
 		}
 		editorCamera = Camera::CreateCamera();
 		editorCamera->SetLayerMask(-1);
@@ -149,12 +149,13 @@ extern "C"
 		Terrain * terrain = new Terrain();
 		terrain->Create(512);
 		terrain->SetIsEditorGrid(true);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("Data/Material/Terrain.material", 1);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
 		terrain->SetLayerMask(1);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(terrain);
-
+		GameObject *coord = LoadPrefab("../Data/Scene/coordinate.prefab");
+		ADD_IN_SCENE(coord);
 	}
 
 }

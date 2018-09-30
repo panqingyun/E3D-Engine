@@ -34,9 +34,9 @@ extern "C"
 		E3DEngine::EngineDelegate::GetInstance().Initilize(isEditor);
 	}
 	
-	__api_function_ void StartAppliaction()
+	__api_function_ void StartAppliaction(const char* startScene)
 	{
-		Application::StartApp();
+		Application::StartApp(startScene);
 	}
 	__api_function_ void StopAppliaction()
 	{
@@ -126,7 +126,6 @@ extern "C"
 	{
 		GetRenderSystem()->ChangeRenderSurface(handle);
 	}
-	
 	
 }
 

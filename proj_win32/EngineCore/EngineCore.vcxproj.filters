@@ -330,6 +330,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.h">
       <Filter>engineCore\src\Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.h">
+      <Filter>engineCore\src\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -556,6 +559,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPrefab.cpp">
       <Filter>engineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.cpp">
+      <Filter>engineCore\src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -49,7 +49,6 @@ namespace E3DEngine
 		srcFactor = srcItr != m_BlendFactorMap.end() ? srcItr->second : 0;
 		dstFactor = dstItr != m_BlendFactorMap.end() ? dstItr->second : 0;
 		material->SetBlendType(srcFactor, dstFactor);
-
 		material->SetEnableDepthTest(config->EnableDepthTest == 1);
 		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
 		material->SetEnableCullFace(config->CullFace == 0);

@@ -184,6 +184,7 @@ VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 CS_OBJECT _0_PARAM_FUNCTION(Camera, createCamera)
 {	
 	E3DEngine::Camera *camera = Camera::CreateCamera();
+	SceneManager::GetInstance().GetCurrentScene()->AddCamera(camera);
 	return camera->GetMonoBehaviour()->GetMonoObject();
 }
 
@@ -746,7 +747,7 @@ VOID _2_PARAM_FUNCTION(RigidBody, set_Mass, CS_OBJECT, rigibody, float, mass)
 		return;
 	}
 
-	rb->SetMass(mass);
+	RigidBody::SetMass(rb, mass);
 }
 
 float _1_PARAM_FUNCTION(RigidBody, get_Mass, CS_OBJECT, rigibody)
@@ -757,7 +758,7 @@ float _1_PARAM_FUNCTION(RigidBody, get_Mass, CS_OBJECT, rigibody)
 		return 0;
 	}
 
-	return rb->GetMass();
+	return object_cast<float>(RigidBody::GetMass(rb));
 }
 
 float _1_PARAM_FUNCTION(RigidBody, get_Friction, CS_OBJECT, rigibody)
@@ -768,7 +769,7 @@ float _1_PARAM_FUNCTION(RigidBody, get_Friction, CS_OBJECT, rigibody)
 		return 0;
 	}
 
-	return rb->GetFriction();
+	return object_cast<float>(RigidBody::GetFriction(rb));
 }
 
 float _1_PARAM_FUNCTION(RigidBody, get_Restitution, CS_OBJECT, rigibody)
@@ -779,7 +780,7 @@ float _1_PARAM_FUNCTION(RigidBody, get_Restitution, CS_OBJECT, rigibody)
 		return 0;
 	}
 
-	return rb->GetRestitution();
+	return object_cast<float>(RigidBody::GetRestitution(rb));
 }
 
 VOID _2_PARAM_FUNCTION(RigidBody, set_Friction, CS_OBJECT, rigibody, float, friction)
@@ -790,7 +791,7 @@ VOID _2_PARAM_FUNCTION(RigidBody, set_Friction, CS_OBJECT, rigibody, float, fric
 		return;
 	}
 
-	return rb->SetFriction(friction);
+	RigidBody::SetFriction(rb,friction);
 }
 
 VOID _2_PARAM_FUNCTION(RigidBody, set_Restitution, CS_OBJECT, rigibody, float, restitution)
@@ -801,7 +802,7 @@ VOID _2_PARAM_FUNCTION(RigidBody, set_Restitution, CS_OBJECT, rigibody, float, r
 		return;
 	}
 
-	return rb->SetRestitution(restitution);
+	RigidBody::SetRestitution(rb, restitution);
 }
 
 VOID _2_PARAM_FUNCTION(Collider, setSize, CS_OBJECT, collider, float, x, float, y, float, z)

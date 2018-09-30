@@ -228,6 +228,8 @@ struct E3D_EXPORT_DLL Convert
 	static std::string ToString(int source);
     static std::string ToString(object source);
 	static std::string ToStdString(MonoString* str);
+	static std::string ToString(bool source);
+	static std::string ToString(vec3f source);
 
 	/*
 		把16进制的字符串转换成10进制数
@@ -321,6 +323,7 @@ namespace E3DEngine
 			return retVector;
 		}
 
+		std::map<std::string, std::vector<Component*>> &GetAllComponents();
 
 		// 获取长宽高
 		virtual vec3f GetBounds();

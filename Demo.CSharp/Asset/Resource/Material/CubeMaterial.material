@@ -40,7 +40,7 @@
 					ID				= 1 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/HFZC_dizhuan01.jpg;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/HFZC_dizhuan01.jpg;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

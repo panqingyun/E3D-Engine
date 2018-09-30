@@ -8,6 +8,7 @@
 #include "../Source/EngineDelegate.h"
 #include "../Object/E3DObject.h"
 #include "../Source/FilePath.h"
+#include "E3DSceneLoader.h"
 
 namespace E3DEngine
 {
@@ -36,6 +37,7 @@ namespace E3DEngine
 
 	E3DEngine::Scene * SceneManager::LoadScene(std::string filePath)
 	{		
+		EngineDelegate::GetInstance().SetEnginePause(true);
 		if (mCurScene != nullptr)
 		{
 			mCurScene->Destory();
@@ -44,6 +46,7 @@ namespace E3DEngine
 		mCurScene = new Scene();
 		mCurScene->Create(filePath);
 
+		EngineDelegate::GetInstance().SetEnginePause(false);
 		return mCurScene;
 	}
 

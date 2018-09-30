@@ -106,6 +106,7 @@ namespace E3DEditor.ViewModel
             createNewPropertyMap[PropertyType.ImagePath] = createImagePathRow;
             createNewPropertyMap[PropertyType.Table] = createTableRow;
             createNewPropertyMap[PropertyType.NumberText] = createNumberBoxRow;
+            createNewPropertyMap[PropertyType.Vector3] = createVector3Row;
         }
 
         void PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -167,6 +168,25 @@ namespace E3DEditor.ViewModel
             return numBox;
         }
 
+        private void createVector3Row(PropertyInfo prop, int row, PropertyFieldAttribute attr)
+        {
+            gridAddTitle(prop);
+            gridAddEnd(row);
+            gridAddRowDef();
+            Vector3Control vecElement = new Vector3Control();
+            vecElement.ValueObject = (E3DEngine.Vector3)prop.GetValue(_selectedObject);
+            vecElement.SelectObject = _selectedObject;
+            vecElement.ValueProperty = prop;
+            vecElement.Margin = new Thickness(0, 2, 2, 0);
+            vecElement.BorderThickness = new Thickness(0);
+            Grid.SetColumn(vecElement, 0);
+            Grid.SetColumnSpan(vecElement, 2);
+            Grid.SetRow(vecElement, _panelParent.RowDefinitions.Count - 1);
+            var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
+            Validation.SetErrorTemplate(vecElement, template);
+
+            _panelParent.Children.Add(vecElement);
+        }
 
         private void createNumberBoxRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
@@ -237,7 +257,7 @@ namespace E3DEditor.ViewModel
         {
             var line = new Line();
             line.Style = (Style)_View.Resources["gridHorizontalLineStyle"];
-            Grid.SetRow(line, row);
+            Grid.SetRow(line, _panelParent.RowDefinitions.Count - 1);
             _panelParent.Children.Add(line);
         }
 

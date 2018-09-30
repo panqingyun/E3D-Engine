@@ -32,7 +32,7 @@ namespace E3DEngine
 		virtual void SetGameObject(GameObject *go);
 		GameObject * GetGameObject();
 		virtual void SetPropertyValue(void* value);
-
+		virtual void registProperty();
     public:
         GameObject *	mGameObject;
 		std::string 	_Tag;
@@ -40,6 +40,11 @@ namespace E3DEngine
 
 	public:
 		bool			mNotStart;
+
+		map<std::string, void*> m_setMethodMap;
+		map<std::string, void*> m_getMethodMap;
+		map<std::string, std::string> m_propertyTypeMap;
+
     };
 }
 

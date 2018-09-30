@@ -53,7 +53,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': select table wrong", filePath.c_str());
 			return;
 		}
-		std::string   fbxPath = GetFolder(filePath) + "/" + modelCfg->ModelFilePath;
+		std::string   fbxPath = Application::AppDataPath + modelCfg->ModelFilePath;
 
 		bool Ret	= false;
 		pScene		= pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
@@ -91,7 +91,7 @@ namespace E3DEngine
 			return;
 		}
 		std::string folder = GetFolder(filePath);
-		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(folder + "/" + materialCfg[0], Convert::ToInt(materialCfg[1]));
+		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::AppDataPath + materialCfg[0], Convert::ToInt(materialCfg[1]));
 		SetMaterial(material);
 		//SAFE_DELETE(tbMgr);
 	}

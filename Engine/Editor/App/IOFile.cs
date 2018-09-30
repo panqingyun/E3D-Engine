@@ -19,6 +19,21 @@ namespace E3DEditor
             return "";
         }
 
+        public static string SaveScene(string sceneName)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "scene(*.scene)|*.scene|所有文件|*.*";
+            sfd.ValidateNames = true;
+            sfd.CheckFileExists = false;
+            sfd.FileName = sceneName;
+            string retFilePath = "";
+            if ((bool)sfd.ShowDialog())
+            {
+                retFilePath = sfd.FileName;
+            }
+            return retFilePath;
+        }
+
         public static bool SaveFile(string fileName,string fileContent)
         {
             SaveFileDialog sfd = new SaveFileDialog();

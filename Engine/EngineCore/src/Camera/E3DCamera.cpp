@@ -41,7 +41,6 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mType = eT_Camera;
-		SceneManager::GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
@@ -66,7 +65,6 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mType = eT_Camera;
-		SceneManager::GetCurrentScene()->AddCamera(this);
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
@@ -78,6 +76,7 @@ namespace E3DEngine
 		{
 			static_cast<GameObject*>(ParentNode)->Transform->RemoveChild(ID);
 		}
+		delete m_RenderQueue;
 	}
 
 
@@ -99,7 +98,7 @@ namespace E3DEngine
 
 	void Camera::render(float deltaTime)
 	{
-		Clear();
+		ClearBackGround();
 		m_RenderQueue->Render(deltaTime);
 		GetRenderSystem()->BindDefaultBackbuffer();
 	}
@@ -141,7 +140,7 @@ namespace E3DEngine
 		return m_mProjectInverse;
 	}
 
-	void Camera::Clear()
+	void Camera::ClearBackGround()
 	{
 		GetRenderSystem()->Clear(m_clearColor, m_clearType);
 	}

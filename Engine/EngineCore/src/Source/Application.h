@@ -43,7 +43,7 @@ namespace E3DEngine
 			static Application _app;
 		}
 		static void CreatScript();
-		static void StartApp();
+		static void StartApp(std::string sceneName = "");
 
 		static void StopApp();
 		static void UpdateApp(float deltaTime);
@@ -60,7 +60,7 @@ namespace E3DEngine
 		static std::string ResourcePath;
 
 	private:
-		static void startCSharp(std::vector<std::string> &vestr);
+		static void startCSharp(std::vector<std::string> &vestr, std::string sceneName);
 	private:
 		static MonoBehaviour *m_pEntryBehaviour;
 		static MonoBehaviour *m_pBehaviour;

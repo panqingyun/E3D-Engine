@@ -2,15 +2,8 @@
 
 class AppMain : Component
 {
-    public bool ShowDebug
-    {
-        get; set;
-    }
-
-    public int ShowNumber
-    {
-        get;set;
-    }
+    public bool ShowDebug = false;
+    public int ShowNumber = 0;
 
     void Start()
     {

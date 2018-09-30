@@ -99,7 +99,7 @@ namespace E3DEngine
 		processUniformVar(unifVar);
 		processAttribVar(attrVar);
 
-		std::string path = filePath;
+		std::string path = mFilePath;
 		std::string shaderContent = preProcessShader(path + vsName);
 		std::string vertexShaderString = processVShader().append(shaderContent);
 		shaderContent = preProcessShader(path + psName);

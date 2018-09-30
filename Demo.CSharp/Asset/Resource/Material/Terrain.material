@@ -40,7 +40,7 @@
 					ID				= 1 
 					VertexShader	= "shader/SphereVS.shader" 
 					FragmentShader	= "shader/BoxFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/earth.png;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/earth.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

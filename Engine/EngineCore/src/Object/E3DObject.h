@@ -47,6 +47,8 @@ namespace E3DEngine
 		std::string		mName;
 		ObjectType		mType;
 		MonoBehaviour * mBehaviour;
+		std::string		mConfigPath;
+		int				mConfigID;
 	};
 }
 

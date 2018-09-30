@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 class SelfRotateSphere : Component
 {
-    public float RotateSpeed { get; set; }
+    public float RotateSpeed = 0;
 
     void Start()
     {
         //GameObject go = new GameObject();
+        Debug.Log("==============" + RotateSpeed.ToString());
     }
 
     private Vector3 rotate = new Vector3();

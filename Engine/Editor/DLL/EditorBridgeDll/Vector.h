@@ -22,6 +22,8 @@ namespace E3DEngine
 	public ref class Vector3
 	{
 	public:
+		Vector3();
+		Vector3(float _x, float _y, float _z);
 		Vector3(vvision::vec3f * vec);
 		void SetValue(vvision::vec3f *vec);
 		String^ ToString() override;

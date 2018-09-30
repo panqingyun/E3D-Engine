@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 
@@ -25,12 +26,13 @@ namespace E3DEditor.ViewModel
 {
     public class VM_MainWindow : DependencyObject, INotifyPropertyChanged
     {
-        private GameWindow game = new GameWindow();
         private LogOutPutFunc outFunc = null;
         public E3DEngine.EngineDelegateRef RenderDelegate = null;
         private IntPtr windowsPlayerHandle = IntPtr.Zero;
         private Process windowsPlayer = null;
         private Assembly externAsm = null;
+        private string curScenePath = "";
+        private bool sceneIsStart = false;
 
         public VM_MainWindow()
         {
@@ -41,6 +43,7 @@ namespace E3DEditor.ViewModel
                 outFunc = ShowLog;
                 IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
                 RenderDelegate.SetDebugLogOutFunc(ptr);
+                
             }
             catch
             {
@@ -190,7 +193,9 @@ namespace E3DEditor.ViewModel
             {
                 RenderDelegate.SetupRenderSystem(handle, (int)renderSize.Width, (int)renderSize.Height);
                 RenderDelegate.StartAppliaction();
-                RenderDelegate.CreateEditor();
+                mainWnd.objectList.ItemsSource = null;
+                loadGameObjectList();
+                curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
                 engineLoaded = true;
             }
         }
@@ -206,7 +211,18 @@ namespace E3DEditor.ViewModel
             }
 
             E3DEngine.SceneManageRef.GetInstance().LoadScene(scenePath);
-            mainWnd.objectList.Items.Clear();
+            mainWnd.objectList.ItemsSource = null;
+            loadGameObjectList();
+            curScenePath = scenePath;
+        }
+
+        private void reloadCurSene()
+        {
+            if (curScenePath == "")
+                return;
+            mainWnd.Pause.IsChecked = false;
+            E3DEngine.SceneManageRef.GetInstance().LoadScene(curScenePath);
+            mainWnd.objectList.ItemsSource = null;
             loadGameObjectList();
         }
 
@@ -274,19 +290,6 @@ namespace E3DEditor.ViewModel
             }
         }
 
-        public BaseCommand MainMenuDeleteButtonCommand
-        {
-            get
-            {
-                return new BaseCommand(MainMenuDeleteButtonCommand_Excuted);
-            }
-        }
-
-        public void MainMenuDeleteButtonCommand_Excuted(object obj)
-        {
-           
-        }
-
 
         public bool PauseEngine
         {
@@ -296,20 +299,31 @@ namespace E3DEditor.ViewModel
                 {
                     return;
                 }
-                COPYDATASTRUCT stru = new COPYDATASTRUCT();
-                stru.dwData = new IntPtr(1);
-                bool isCheck = (bool)value;
-                if (isCheck)
+                if (sceneIsStart)
                 {
-                    stru.cbData = 1;
+                    RenderDelegate.RunCurrentScene(!value);
                 }
-                else
-                {
-                    stru.cbData = 0;
-                }
-
-                SendMsg2WindowsPlayer(stru);
+                pauseGame(value);
             }
+        }
+
+        private void pauseGame(bool value)
+        {
+            if (windowsPlayer == null)
+                return;
+            COPYDATASTRUCT stru = new COPYDATASTRUCT();
+            stru.dwData = new IntPtr(1);
+            bool isCheck = (bool)value;
+            if (isCheck)
+            {
+                stru.cbData = 1;
+            }
+            else
+            {
+                stru.cbData = 0;
+            }
+
+            SendMsg2WindowsPlayer(stru);
         }
 
         private bool isEditor = true;
@@ -325,58 +339,21 @@ namespace E3DEditor.ViewModel
             }
         }
         
-        public BaseCommand MainMenuNewButtonCommand
+        public void RunCurrentScene(bool isRun)
         {
-            get
+            if (!isRun)
             {
-                return new BaseCommand(MainMenuNewButtonCommand_Excuted);
+                reloadCurSene();
             }
-        }
-
-        public void MainMenuNewButtonCommand_Excuted(object obj)
-        {
-        }
-
-        public BaseCommand MainTitleButtonCommand
-        {
-            get
-            {
-                return new BaseCommand(MainButtonCommand_Executed);
-            }
-        }
-
-        public void MainButtonCommand_Executed(object obj)
-        {
-            string pageName = obj.ToString();
-            switch (pageName)
-            {
-                case "Close":
-                    {
-                        if (windowsPlayer != null)
-                        {
-                            windowsPlayer.Kill();
-                        }
-                        Environment.Exit(0);
-                    }
-                    break;
-                case "Min":
-                    {
-                        _MainWindow.WindowState = WindowState.Minimized;
-                    }
-                    break;
-                case "Run":
-                    {
-                        runGame();
-                    }
-                    break;
-                default:break;
-            }
+            sceneIsStart = isRun;
+            RenderDelegate.RunCurrentScene(isRun);
         }
 
         private void runGame()
         {
             if (Config.GamePath == "")
                 return;
+            mainWnd.Pause.IsChecked = false;
             string path = System.Windows.Forms.Application.StartupPath;
             if (windowsPlayer != null)
             {
@@ -384,7 +361,7 @@ namespace E3DEditor.ViewModel
             }
             else
             {
-                string cmdLine = Config.GamePath + "," + (new WindowInteropHelper(mainWnd).Handle);
+                string cmdLine = Config.GamePath + "," + (new WindowInteropHelper(mainWnd).Handle) + "," + curScenePath;
                 windowsPlayer = Process.Start(path + "/../WindowsPlayer/Client.exe", cmdLine);
                 windowsPlayer.Exited += WindowsPlayer_Exited;
                 while (windowsPlayer.MainWindowHandle == IntPtr.Zero)
@@ -551,6 +528,10 @@ namespace E3DEditor.ViewModel
         private void openSln()
         {
             string filePath = IOFile.OpenFile();
+            if (filePath == "")
+            {
+                return;
+            }
             string[] fileContents = System.IO.File.ReadAllLines(filePath);
             for (int i = 0; i < fileContents.Length; i++)
             {
@@ -565,5 +546,88 @@ namespace E3DEditor.ViewModel
                 }
             }
         }
+
+        #region ... Command
+        public void ExecuteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Save)
+            {
+                if (curScenePath == "")
+                {
+                    string filePath = IOFile.SaveScene("scene.scene");
+                    curScenePath = filePath;
+                }
+            }
+        }
+
+        public void CanExecuteCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Save)
+            {
+                e.CanExecute = true;
+            }
+        }
+
+        public BaseCommand MainMenuDeleteButtonCommand
+        {
+            get
+            {
+                return new BaseCommand(MainMenuDeleteButtonCommand_Excuted);
+            }
+        }
+
+        public void MainMenuDeleteButtonCommand_Excuted(object obj)
+        {
+
+        }
+
+        public BaseCommand MainMenuNewButtonCommand
+        {
+            get
+            {
+                return new BaseCommand(MainMenuNewButtonCommand_Excuted);
+            }
+        }
+
+        public void MainMenuNewButtonCommand_Excuted(object obj)
+        {
+        }
+
+        public BaseCommand MainTitleButtonCommand
+        {
+            get
+            {
+                return new BaseCommand(MainButtonCommand_Executed);
+            }
+        }
+
+        public void MainButtonCommand_Executed(object obj)
+        {
+            string pageName = obj.ToString();
+            switch (pageName)
+            {
+                case "Close":
+                    {
+                        if (windowsPlayer != null)
+                        {
+                            windowsPlayer.Kill();
+                        }
+                        Environment.Exit(0);
+                    }
+                    break;
+                case "Min":
+                    {
+                        _MainWindow.WindowState = WindowState.Minimized;
+                    }
+                    break;
+                case "Run":
+                    {
+                        runGame();
+                    }
+                    break;
+                default: break;
+            }
+        }
+        #endregion
     }
 }

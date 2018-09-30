@@ -42,7 +42,7 @@
 					ID				= 1 
 					VertexShader	= "shader/ParticleVertex.shader" 
 					FragmentShader	= "shader/ParticleFragment.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/particleTexture.png;
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/particleTexture.png;
 									   float:particleSize;" 
 									   
 					AttribVariable	= "POSITION:position;

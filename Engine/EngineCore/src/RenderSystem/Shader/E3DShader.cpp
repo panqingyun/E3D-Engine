@@ -283,13 +283,13 @@ namespace E3DEngine
 
 	std::string Shader::GetFileRelativeFolder()
 	{
-		return filePath;
+		return mFilePath;
 	}
 
 
 	void Shader::SetFileRelativeFolder(std::string path)
 	{
-		filePath = path;
+		mFilePath = path;
 	}
 
 	std::map<std::string, std::string> & Shader::GetSamplerNameValue()

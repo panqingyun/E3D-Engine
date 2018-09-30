@@ -42,8 +42,8 @@
 			<ScrollViewer x:Name="_gridContainer" VerticalScrollBarVisibility="Auto">
                 <Grid x:Name="_grid">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="140"/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="150*"/>
                     </Grid.ColumnDefinitions>
                     
                     <!--<Line Name="_vLine" Grid.Column="0" Grid.RowSpan="1000" Style="{StaticResource gridVerticalLineStyle}"/>-->

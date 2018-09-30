@@ -61,7 +61,7 @@ namespace E3DEngine
 	public:
 		void SetEnginePause(bool bPause);
 		bool GetEnginePause();
-		bool GetIsEditor();
+		bool GetIsRun();
 		void SetIsRun(bool isRun);
 
 	public:
@@ -71,7 +71,7 @@ namespace E3DEngine
 	private:
 		bool									m_bIsInited;
 		bool									m_bPause;
-		bool									m_bIsEditor;
+		bool									m_bRun;
 		
 	public:
 		void Update(float deltaTime);

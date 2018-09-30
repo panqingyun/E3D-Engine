@@ -16,7 +16,7 @@ namespace E3DEngine
 	{
 		m_bIsInited = false;
 		m_bPause = false;
-		m_bIsEditor = false;
+		m_bRun = true;
 	}
 
 
@@ -34,7 +34,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		m_bIsEditor = isEditor;
+		m_bRun = !isEditor;
 		Application::Initialize();
 		PhysicWorld::GetInstance().InitPhysics();
 		Timer::Init();
@@ -48,7 +48,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (!m_bIsEditor)
+		if (m_bRun)
 		{
 			PhysicWorld::GetInstance().Update(deltaTime);
 		}
@@ -81,13 +81,13 @@ namespace E3DEngine
 		PhysicWorld::GetInstance().Destory();
 	}
 
-	bool EngineDelegate::GetIsEditor()
+	bool EngineDelegate::GetIsRun()
 	{
-		return m_bIsEditor;
+		return m_bRun;
 	}
 
 	void EngineDelegate::SetIsRun(bool isRun)
 	{
-		m_bIsEditor = !isRun;
+		m_bRun = isRun;
 	}
 }

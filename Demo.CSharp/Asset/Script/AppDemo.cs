@@ -10,10 +10,10 @@ namespace Game
         string mainScenePath = "Scene/MainEntry.scene";
         Camera MainCamera = null;
 
-        public void Main(string[] args)
+        public void Main()
         {
             Scene.LoadScene(Application.ResourcePath + mainScenePath);
-            MainCamera = Camera.MainCamera;      
+            MainCamera = Camera.MainCamera;
         }
 
         public void MouseButtonDown(MouseButtonInfo mouseInfo)
@@ -28,7 +28,7 @@ namespace Game
         
         public void MouseMove(MouseButtonInfo mouseInfo)
         {
-           
+            
         }
 
         public void Update(float deltaTime)

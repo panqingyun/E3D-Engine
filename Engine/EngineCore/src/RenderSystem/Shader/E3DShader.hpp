@@ -149,6 +149,9 @@ namespace E3DEngine
 		virtual void processAttribVar(std::string attribVariable);
 		virtual void processUniformVar(std::string uniformVariable);
 
+	public:
+		std::string mFilePath;
+
 	protected:
 		std::map<std::string, Attribute> staticAttributeMap;
 		std::map<std::string, Attribute> dynamicAttributeMap;
@@ -169,7 +172,6 @@ namespace E3DEngine
 		std::vector<Attribute> StaticAttributeList;
 		std::vector<Attribute> DynamicAttributeList;
 
-		std::string filePath;
 
 	};
 }

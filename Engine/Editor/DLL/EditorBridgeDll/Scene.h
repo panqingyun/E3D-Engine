@@ -14,6 +14,8 @@ namespace E3DEngine
 		GameObjectRef ^ GetRootObject();
 		void SetValue(Scene *scene);
 		String ^GetName();
+		String ^GetScenePath();
+		void SaveScene(String ^path);
 	private:
 		Scene *mScene;
 		GameObjectRef ^mRootObject;

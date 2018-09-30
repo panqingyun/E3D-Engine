@@ -62,7 +62,7 @@ extern "C"
 	/// <summary>
 	/// 启动程序脚本
 	/// </summary>
-	__api_function_ void StartAppliaction();
+	__api_function_ void StartAppliaction(const char* startScene = "");
 	/// <summary>
 	/// 关闭程序脚本
 	/// </summary>

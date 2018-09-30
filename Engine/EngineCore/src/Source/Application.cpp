@@ -2,11 +2,11 @@
 #include "EngineDelegate.h"
 #include "../Utils/Include.h"
 #include "FilePath.h"
+#include "../Scene/E3DSceneLoader.h"
 
 #ifdef __E3D_EDITOR__
 extern "C"
 {
-
 	float cameraRotateX = 0, cameraRotateY = 0;
 	bool mouseRButtonDown = false, mouseMButtonDown = false;
 	vec2f curMousePosition;
@@ -22,6 +22,8 @@ extern "C"
 	void editorMouseButtonDown(MouseButtonInfo* mouseInfo)
 	{
 		if (editorCamera == nullptr)
+			return;
+		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
 		lastMousePosition.x = mouseInfo->mPositionX;
 		lastMousePosition.y = mouseInfo->mPositionY;
@@ -39,6 +41,8 @@ extern "C"
 	{
 		if (editorCamera == nullptr)
 			return;
+		if (EngineDelegate::GetInstance().GetIsRun())
+			return;
 		if (mouseInfo->mButton == eRightButton)
 		{
 			mouseRButtonDown = false;
@@ -52,6 +56,8 @@ extern "C"
 	void editorMouseMove(MouseButtonInfo* mouseInfo)
 	{
 		if (editorCamera == nullptr)
+			return;
+		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
 		curMousePosition.x = mouseInfo->mPositionX;
 		curMousePosition.y = mouseInfo->mPositionY;
@@ -83,6 +89,8 @@ extern "C"
 	void editorKeyDown(KeyCode keyCode)
 	{
 		if (editorCamera == nullptr)
+			return;
+		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
 		curCameraPos = editorCamera->Transform->Position;
 		if (keyCode == KeyW)
@@ -125,9 +133,10 @@ extern "C"
 
 	void editorKeyUp(KeyCode keyCode)
 	{
-		if (editorCamera == nullptr)
+		/*if (editorCamera == nullptr)
 			return;
-
+		if (EngineDelegate::GetInstance().GetIsRun())
+			return;*/
 	}
 
 	__api_function_ void CreateEditor()
@@ -140,12 +149,14 @@ extern "C"
 		{
 			defaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
 		}
-		editorCamera = Camera::CreateCamera();
-		editorCamera->SetLayerMask(-1);
-		ADD_IN_SCENE(editorCamera);
-		cameraRotateX = 0;
-		cameraRotateY = 0;
-		editorCamera->Transform->SetPosition(0, 100, 200);
+
+		if (editorCamera == nullptr)
+		{
+			editorCamera = Camera::CreateCamera();
+			editorCamera->SetLayerMask(-1);
+			editorCamera->Transform->SetPosition(0, 100, 200);
+		}
+
 		Terrain * terrain = new Terrain();
 		terrain->Create(512);
 		terrain->SetIsEditorGrid(true);
@@ -156,6 +167,7 @@ extern "C"
 		ADD_IN_SCENE(terrain);
 		GameObject *coord = LoadPrefab("../Data/Scene/coordinate.prefab");
 		ADD_IN_SCENE(coord);
+		
 	}
 
 }
@@ -183,7 +195,7 @@ namespace E3DEngine
         mono_add_internal_call("E3DEngine.Application::getResourcePath", (const void *)Application::getResourcePath);
 	}
 
-	void Application::StartApp()
+	void Application::StartApp(std::string sceneName)
 	{
 		m_bIsStop = false;
 		MonoScriptManager::GetInstance().Initialize();
@@ -192,14 +204,13 @@ namespace E3DEngine
 		std::string fileContent = getContentFromPath(startApp);
 		if (fileContent != empty_string)
 		{
-#ifndef __E3D_EDITOR__
 			std::vector<std::string> vestr = E3DEngine::StringBuilder::Split(fileContent, "\n");
 			for (auto &cfg : vestr)
 			{
 				if (cfg.find("entryClass") != std::string::npos)
 				{
 					std::vector<std::string> entryConfig = E3DEngine::StringBuilder::Split(cfg, "=");
-					startCSharp(entryConfig);
+					startCSharp(entryConfig, sceneName);
 				}
 				else if (cfg.find("debugWindow") != std::string::npos)
 				{
@@ -207,7 +218,6 @@ namespace E3DEngine
 				}
 
 			}
-#endif
 		}
 		else
 		{
@@ -217,7 +227,7 @@ namespace E3DEngine
 		m_pMouseInfo = new MouseButtonInfo();
 	}
 
-	void Application::startCSharp(std::vector<std::string> &vestr)
+	void Application::startCSharp(std::vector<std::string> &vestr, std::string sceneName)
 	{
 		if (vestr.size() == 2)
 		{
@@ -237,7 +247,14 @@ namespace E3DEngine
 			m_pEntryBehaviour = new MonoBehaviour;
 			m_pEntryBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
 			m_pEntryBehaviour->Create(entryNameSpce.c_str(), entryClassName.c_str());
-			m_pEntryBehaviour->CallMethod("Main");
+			if (sceneName == "")
+			{
+				m_pEntryBehaviour->CallMethod("Main");
+			}
+			else
+			{
+				SceneManager::GetInstance().LoadScene(sceneName);
+			}
 		}
 	}
 
@@ -299,55 +316,105 @@ namespace E3DEngine
 	void Application::MouseButtonDown(MouseButton btn, vec2f pos)
 	{
 		m_pMouseInfo->Set(btn, pos.x, pos.y);
-#ifndef __E3D_EDITOR__
-		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_DOWN, &args);
-#else
-		editorMouseButtonDown(m_pMouseInfo);
+
+		if (m_pEntryBehaviour == nullptr)
+		{
+			return;
+		}
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+			m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_DOWN, &args);
+		}
+#ifdef __E3D_EDITOR__
+		else
+		{
+			editorMouseButtonDown(m_pMouseInfo);
+		}
 #endif
 	}
 
 	void Application::MouseButtonUp(MouseButton btn, vec2f pos)
 	{
 		m_pMouseInfo->Set(btn, pos.x, pos.y);
-#ifndef __E3D_EDITOR__
-		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_UP, &args);
-#else
-		editorMouseButtonUp(m_pMouseInfo);
+
+		if (m_pEntryBehaviour == nullptr)
+		{
+			return;
+		}
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+			m_pEntryBehaviour->CallMethod(MOUSE_BUTTON_UP, &args);
+		}
+#ifdef __E3D_EDITOR__
+		else
+		{
+			editorMouseButtonUp(m_pMouseInfo);
+		}
 #endif
 	}
 
 	void Application::MouseMove(vec2f pos)
 	{
 		m_pMouseInfo->Set(eUnKnown, pos.x, pos.y);
-#ifndef __E3D_EDITOR__
-		void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
-		m_pEntryBehaviour->CallMethod(MOUSE_MOVE, &args);
-#else
-		editorMouseMove(m_pMouseInfo);
+
+		if (m_pEntryBehaviour == nullptr)
+		{
+			return;
+		}
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			void * args = m_pMouseInfo->GetMonoBehaviour()->GetMonoObject();
+			m_pEntryBehaviour->CallMethod(MOUSE_MOVE, &args);
+		}
+#ifdef __E3D_EDITOR__
+		else
+		{
+			editorMouseMove(m_pMouseInfo);
+		}
 #endif
 	}
 
 	void Application::KeyDown(char key)
 	{
 		KeyCode keyCode = NativeSystem::GetKeyCode(key);
-#ifndef __E3D_EDITOR__
-		void *keyChar = &keyCode;
-		m_pEntryBehaviour->CallMethod(KEY_DOWN, &keyChar);
-#else
-		editorKeyDown(keyCode);
+
+		if (m_pEntryBehaviour == nullptr)
+		{
+			return;
+		}
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			void *keyChar = &keyCode;
+			m_pEntryBehaviour->CallMethod(KEY_DOWN, &keyChar);
+		}
+#ifdef __E3D_EDITOR__
+		else
+		{
+			editorKeyDown(keyCode);
+		}
 #endif
 	}
 
 	void Application::KeyUp(char key)
 	{
 		KeyCode keyCode = NativeSystem::GetKeyCode(key);
-#ifndef __E3D_EDITOR__
-		void *keyChar = &keyCode;
-		m_pEntryBehaviour->CallMethod(KEY_UP, &keyChar);
-#else
-		editorKeyUp(keyCode);
+
+		if (m_pEntryBehaviour == nullptr)
+		{
+			return;
+		}
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			void *keyChar = &keyCode;
+			m_pEntryBehaviour->CallMethod(KEY_UP, &keyChar);
+		}
+#ifdef __E3D_EDITOR__
+		else
+		{
+			editorKeyUp(keyCode);
+		}
 #endif
 	}
 

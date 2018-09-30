@@ -38,12 +38,12 @@ namespace E3DEngine
 		~RigidBody();
 
 	public:
-		void SetMass(float mass);
-		float GetMass();
-		void SetFriction(float friction);
-		float GetFriction();
-		void SetRestitution(float restitution);
-		float GetRestitution();
+			static void SetMass(void *cp, object mass);
+			static object GetMass(void *cp);
+			static void SetFriction(void *cp, object friction);
+			static object GetFriction(void *cp);
+			static void SetRestitution(void *cp, object restitution);
+			static object GetRestitution(void *cp);
 
 	public:
 		virtual void CreateBehaviour() override;
@@ -54,10 +54,18 @@ namespace E3DEngine
 #ifndef __IGNORED_INCLUDE__
 		void createRigidBody(btCollisionShape *shape);
 
-	private:
-		float mMass;
-		float mFriction;
-		float mRestitution;
+	public:
+		virtual void registProperty() override
+		{
+			SAVE_METHOD(Mass, float);
+			SAVE_METHOD(Friction, float);
+			SAVE_METHOD(Restitution, float);
+		}
+
+	protected:
+		float Mass;
+		float Friction;
+		float Restitution;
 		btRigidBody* mRigidBody;
 		btTransform  mStartTransform;
 		ColCallBack	 mColCallBack;

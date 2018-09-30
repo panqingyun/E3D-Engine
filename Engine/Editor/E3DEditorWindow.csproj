@@ -107,7 +107,6 @@
     <Compile Include="Common\CollectionHelper.cs" />
     <Compile Include="Common\ConstString.cs" />
     <Compile Include="Common\DragTextData.cs" />
-    <Compile Include="Common\Interface.cs" />
     <Compile Include="Common\MediaPlayer.cs" />
     <Compile Include="Common\PList.cs" />
     <Compile Include="Model\GameObject.cs" />
@@ -160,9 +159,15 @@
     <Compile Include="View\TabItemWithClose.xaml.cs">
       <DependentUpon>TabItemWithClose.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Vector3Control.xaml.cs">
+      <DependentUpon>Vector3Control.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\ViewString.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ViewStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
     <Page Include="View\AutoSizeImage.xaml">
       <SubType>Designer</SubType>
@@ -213,6 +218,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TabItemWithClose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Vector3Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -47,11 +47,11 @@
 					ID				= 1 
 					VertexShader	= "shader/MeshVS.shader" 
 					FragmentShader	= "shader/MeshFS.shader" 	
-					UniformVariable	= "sampler2D:_Splat0-texture/BH_zhuandi.tga;
-									   sampler2D:_Splat1-texture/wls_caodi02.png;
-									   sampler2D:_Splat2-texture/demo_tudi02_01.jpg;
-									   sampler2D:_Splat3-texture/YZW_shanshi01.png;
-									   sampler2D:_Control-texture/BHCS.png;" 
+					UniformVariable	= "sampler2D:_Splat0-Resource/Material/texture/BH_zhuandi.tga;
+									   sampler2D:_Splat1-Resource/Material/texture/wls_caodi02.png;
+									   sampler2D:_Splat2-Resource/Material/texture/demo_tudi02_01.jpg;
+									   sampler2D:_Splat3-Resource/Material/texture/YZW_shanshi01.png;
+									   sampler2D:_Control-Resource/Material/texture/BHCS.png;" 
 					
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -64,7 +64,7 @@
 					ID				= 2 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/WLS_shanshi02_02.png;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/WLS_shanshi02_02.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -75,11 +75,11 @@
 					ID				= 3 
 					VertexShader	= "shader/MeshVS.shader" 
 					FragmentShader	= "shader/MeshFS.shader" 	
-					UniformVariable	= "sampler2D:_Splat0-texture/demo_caodi08.jpg;
-									   sampler2D:_Splat1-texture/HFZC_dizhuan01.jpg;
-									   sampler2D:_Splat2-texture/XWD_shitou01.png;
-									   sampler2D:_Splat3-texture/zcyw_tu.png;
-									   sampler2D:_Control-texture/FHZC.png;" 
+					UniformVariable	= "sampler2D:_Splat0-Resource/Material/texture/demo_caodi08.jpg;
+									   sampler2D:_Splat1-Resource/Material/texture/HFZC_dizhuan01.jpg;
+									   sampler2D:_Splat2-Resource/Material/texture/XWD_shitou01.png;
+									   sampler2D:_Splat3-Resource/Material/texture/zcyw_tu.png;
+									   sampler2D:_Control-Resource/Material/texture/FHZC.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -90,7 +90,7 @@
 					ID				= 4
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/water.jpg;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/water.jpg;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -101,7 +101,7 @@
 					ID				= 5 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/cz_chengqiang01.jpg;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/cz_chengqiang01.jpg;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -112,7 +112,7 @@
 					ID				= 6 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/LH_changshiqiao01.jpg;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/LH_changshiqiao01.jpg;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -123,7 +123,7 @@
 					ID				= 7 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/b_0000_shengmu_001.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/b_0000_shengmu_001.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -133,7 +133,7 @@
 					ID				= 8 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/huaFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/rose2_D.png;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/rose2_D.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

@@ -21,7 +21,7 @@ namespace E3DEditor.Model
             }
         }
 
-        [PropertyField(PropType = PropertyType.NormalText, DisplayIndex = 2)]
+        [PropertyField(PropType = PropertyType.Vector3, DisplayIndex = 2)]
         public Vector3 Position
         {
             get
@@ -34,7 +34,7 @@ namespace E3DEditor.Model
             }
         }
 
-        [PropertyField(PropType = PropertyType.NormalText, DisplayIndex = 3)]
+        [PropertyField(PropType = PropertyType.Vector3, DisplayIndex = 3)]
         public Vector3 Rotation
         {
             get
@@ -47,7 +47,7 @@ namespace E3DEditor.Model
             }
         }
 
-        [PropertyField(PropType = PropertyType.NormalText, DisplayIndex = 4)]
+        [PropertyField(PropType = PropertyType.Vector3, DisplayIndex = 4)]
         public Vector3 Scale
         {
             get

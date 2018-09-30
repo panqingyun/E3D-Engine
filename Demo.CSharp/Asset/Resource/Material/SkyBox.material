@@ -51,7 +51,7 @@
 					ID				= 1 
 					VertexShader	= "shader/SkyBoxVertex.shader" 
 					FragmentShader	= "shader/SkyBoxFragment.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/skyBox.jpg;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/skyBox.jpg;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

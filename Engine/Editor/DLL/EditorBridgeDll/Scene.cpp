@@ -18,6 +18,20 @@ namespace E3DEngine
 		return gcnew String(mScene->mName.c_str());
 	}
 
+	System::String ^ SceneRef::GetScenePath()
+	{
+		return gcnew String(mScene->GetScenePath().c_str());
+	}
+
+	void SceneRef::SaveScene(String ^path)
+	{
+		if (mScene->GetScenePath() == "")
+		{
+			mScene->SetScenePath(marshal_as<std::string>(path));
+		}
+		mScene->Save();
+	}
+
 	E3DEngine::GameObjectRef ^ SceneRef::GetRootObject()
 	{
 		return mRootObject;

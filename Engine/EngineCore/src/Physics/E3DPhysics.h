@@ -40,6 +40,7 @@ namespace E3DEngine
 
 		void Update(float deltaTime);
 		void Destory();
+		void Cleanup();
 		void AddRigidBody(btRigidBody* body, int group = 0, int mask = 0);
 
 		btDiscreteDynamicsWorld * GetWorld();

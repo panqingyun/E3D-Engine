@@ -58,6 +58,11 @@ namespace E3DEngine
 	}
 
 
+	std::map<std::string, std::vector<Component*>> & GameObject::GetAllComponents()
+	{
+		return m_listComponents;
+	}
+
 	vvision::vec3f GameObject::GetBounds()
 	{
 		return size;
@@ -912,6 +917,25 @@ std::string Convert::ToString(object source)
 	return ret;
 }
 
+
+std::string Convert::ToString(bool source)
+{
+	if (source)
+	{
+		return "true";
+	}
+	return "false";
+}
+
+
+std::string Convert::ToString(vec3f source)
+{
+	std::string &str1 = ToString(source.x);
+	std::string &str2 = ToString(source.y);
+	std::string &str3 = ToString(source.z);
+
+	return str1 + "," + str2 + "," + str3;
+}
 
 std::string Convert::ToStdString(MonoString* str)
 {

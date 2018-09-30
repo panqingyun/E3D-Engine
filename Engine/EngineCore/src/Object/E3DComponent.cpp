@@ -112,3 +112,8 @@ void E3DEngine::Component::SetPropertyValue(void* value)
 {
 	mBehaviour->SetPropertyValue("descPropertyValue", value);
 }
+
+void E3DEngine::Component::registProperty()
+{
+
+}

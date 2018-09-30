@@ -44,6 +44,7 @@ HANDLE g_hConsoleHandle = 0;
 std::string strPath = "";
 bool isShowWithEditor = false;
 HWND editorHandle = nullptr;
+std::string startScenePath = "";
 
 DWORD nRet = 0;
 void LogOutput(const char* log)
@@ -82,10 +83,7 @@ void InitEngine(HWND hWnd)
 	::SetDebugLogOutFunc(LogOutput);
 	void * renderSystem = CreateRenderSystem(hWnd, width, height);
 	::SetRenderSystem(renderSystem);
-	if (strPath != "")
-	{
-		::StartAppliaction();
-	}
+	::StartAppliaction(startScenePath.c_str());
 	//::CreateEditorGrid();
 }
 
@@ -132,6 +130,7 @@ int APIENTRY initWindow(LPTSTR lpCmdLine)
 		int handle = atoi(cmdLine[1].c_str());
 		editorHandle = (HWND)handle;
 		isShowWithEditor = true;
+		startScenePath = cmdLine[2];
 		WindowStyle = WS_POPUP;
 	}
 	else

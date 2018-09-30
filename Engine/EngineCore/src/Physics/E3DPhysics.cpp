@@ -75,7 +75,28 @@ namespace E3DEngine
 
 	void PhysicWorld::Destory()
 	{
+		Cleanup();
+		delete m_pDynamicsWorld;
+		delete m_pCollisionConfiguration;
+		delete m_pOverlappingPairCache;
+		delete m_pSolver;
+		delete m_pDispatcher;
+		delete m_pCollisionConfiguration;
+	}
 
+	void PhysicWorld::Cleanup()
+	{
+		for (int i = m_pDynamicsWorld->getNumCollisionObjects() - 1; i >= 0; i--)
+		{
+			btCollisionObject* obj = m_pDynamicsWorld->getCollisionObjectArray()[i];
+			btRigidBody* body = btRigidBody::upcast(obj);
+			if (body && body->getMotionState())
+			{
+				delete body->getMotionState();
+			}
+			m_pDynamicsWorld->removeCollisionObject(obj);
+			delete obj;
+		}
 	}
 
 	void PhysicWorld::AddRigidBody(btRigidBody * body, int group /*= 0*/, int mask /*= 0*/)

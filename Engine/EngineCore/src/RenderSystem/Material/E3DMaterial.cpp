@@ -43,7 +43,7 @@ namespace E3DEngine
 			mColor = Convert::ToColorRGBA(config->Color);
 			for (auto& sp : mShader->GetSamplerNameValue())
 			{
-				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(mFilePath + sp.second);
+				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + sp.second);
 				tData->clampType = (CLAMP_TYPE)config->TextureClampType;
 				tData->filterType = (FILTER_TYPE)config->TextureFilterType;
 				tData->fileName = sp.second;

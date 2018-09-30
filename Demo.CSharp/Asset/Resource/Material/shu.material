@@ -44,7 +44,7 @@
 					ID				= 1 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/shu_fs.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_01.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -55,7 +55,7 @@
 					ID				= 2 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/shu_fs.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_01.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -66,7 +66,7 @@
 					ID				= 3 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/shu_fs.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/WD_zhiwu_03.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_03.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -77,7 +77,7 @@
 					ID				= 4 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/shu_fs.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/Demo_zw_lvzhi001_diffuse.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;
@@ -88,7 +88,7 @@
 					ID				= 5 
 					VertexShader	= "shader/huaVS.shader" 
 					FragmentShader	= "shader/shu_fs.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/xt_zhuzi01_01.tga;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/xt_zhuzi01_01.tga;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

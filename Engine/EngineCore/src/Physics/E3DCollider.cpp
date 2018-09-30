@@ -43,9 +43,9 @@ namespace E3DEngine
 
 	RigidBody::RigidBody()
 	{
-		mMass = 0;
-		mFriction = 500;
-		mRestitution = 0.1;
+		Mass = 0;
+		Friction = 500;
+		Restitution = 0.1;
 		mRigidBody = nullptr;
 		mMotionState = nullptr;
 		CreateBehaviour();
@@ -55,37 +55,44 @@ namespace E3DEngine
 	{
 	}
 
-	void RigidBody::SetMass(float mass)
+	void RigidBody::SetMass(void *cp, object mass)
 	{
-		mMass = mass;
-		if (mRigidBody != nullptr)
+		RigidBody *rb = (RigidBody*)cp;
+		float mValue = object_cast<float>(mass);
+		rb->Mass = mValue;
+		if (rb->mRigidBody != nullptr)
 		{
-			mRigidBody->setMassProps(mass, PhysicWorld::GetInstance().GetInertia());
+			rb->mRigidBody->setMassProps(mValue, PhysicWorld::GetInstance().GetInertia());
 		}
 	}
 
 
-	void RigidBody::SetFriction(float friction)
+	void RigidBody::SetFriction(void *cp, object friction)
 	{
-		mFriction = friction;
-		if (mRigidBody != nullptr)
+		RigidBody *rb = (RigidBody*)cp;
+		float mValue = object_cast<float>(friction);
+		rb->Friction = mValue;
+		if (rb->mRigidBody != nullptr)
 		{
-			mRigidBody->setFriction(friction);
+			rb->mRigidBody->setFriction(mValue);
 		}
 	}
 
 
-	float RigidBody::GetFriction()
+	object RigidBody::GetFriction(void *cp)
 	{
-		return mFriction;
+		RigidBody *rb = (RigidBody*)cp;
+		return rb->Friction;
 	}
 
-	void RigidBody::SetRestitution(float restitution)
+	void RigidBody::SetRestitution(void *cp, object restitution)
 	{
-		mRestitution = restitution;
-		if (mRigidBody != nullptr)
+		RigidBody *rb = (RigidBody*)cp;
+		float mValue = object_cast<float>(restitution);
+		rb->Restitution = mValue;
+		if (rb->mRigidBody != nullptr)
 		{
-			mRigidBody->setRestitution(restitution);
+			rb->mRigidBody->setRestitution(mValue);
 		}
 	}
 
@@ -120,7 +127,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (mMass != 0)
+		if (Mass != 0)
 		{
 			return;
 		}
@@ -150,32 +157,34 @@ namespace E3DEngine
 
 		mStartTransform.setRotation(q);
 		
-		bool isDynamic = (mMass != 0.f);
+		bool isDynamic = (Mass != 0.f);
 		btVector3 localInertia = PhysicWorld::GetInstance().GetInertia();
 		if (isDynamic)
-			shape->calculateLocalInertia(mMass, localInertia);
+			shape->calculateLocalInertia(Mass, localInertia);
 
 		mMotionState = new MotionState(mStartTransform, mGameObject);
-		btRigidBody::btRigidBodyConstructionInfo cInfo(mMass, mMotionState, shape, localInertia);
+		btRigidBody::btRigidBodyConstructionInfo cInfo(Mass, mMotionState, shape, localInertia);
 
 		mRigidBody = new btRigidBody(cInfo);
 
 		mRigidBody->setUserIndex(-1);
-		mRigidBody->setFriction(mFriction); // 摩擦力
+		mRigidBody->setFriction(Friction); // 摩擦力
 		mRigidBody->setUserPointer(mGameObject);
-		mRigidBody->setRestitution(mRestitution);
+		mRigidBody->setRestitution(Restitution);
 		PhysicWorld::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
 		PhysicWorld::GetInstance().AddRigidBody(mRigidBody);
 	}
 
-	float RigidBody::GetMass()
+	object RigidBody::GetMass(void *cp)
 	{
-		return mMass;
+		RigidBody *rb = (RigidBody*)cp;
+		return rb->Mass;
 	}
 
-	float RigidBody::GetRestitution()
+	object RigidBody::GetRestitution(void *cp)
 	{
-		return mRestitution;
+		RigidBody *rb = (RigidBody*)cp;
+		return rb->Restitution;
 	}
 
 	void BoxCollider::Awake()

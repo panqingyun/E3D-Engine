@@ -92,4 +92,10 @@ void E3DEngine::EngineDelegateRef::ChangeSurface(IntPtr nativeWindow)
 {
 	::ChangeRenderSurface((HWND)nativeWindow.ToInt32());
 }
+
+void E3DEngine::EngineDelegateRef::RunCurrentScene(bool run)
+{
+	::RunGame(run);
+}
+
 #pragma unmanaged

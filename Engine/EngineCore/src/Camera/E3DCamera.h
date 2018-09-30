@@ -34,68 +34,41 @@ namespace E3DEngine
 		
 		/** destructor*/
 		~Camera();
-		
+
+	public:
 		void Render(float deltaTime);
-
-		void Clear();
-
+		void ClearBackGround();
 		void SetClearColor(Color4 color);
-
 		void SetClearType(DWORD clearType);
-
 		void ChangeViewport(float aspect);
-
 		RenderQueue * GetRenderQueue();
-
 		virtual void SetLayerMask(DWORD layerMask) override;
-
 		int GetDepth();
-
 		void SetDepth(int depth);
-
 		void SetRenderTexture(Render2Texture * rtt);
-
 		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
-
-		/** return the projection matrix of the camera*/
-		const mat4f& GetProjectionMatrix();
-		
+		const mat4f& GetProjectionMatrix();		
 		const mat4f& GetViewInverseMatrix();
-		const mat4f& GetProjectInverseMatrix();
-		
+		const mat4f& GetProjectInverseMatrix();		
 		void TransformChange() override;
-
-		/** return the view matrix  ( this is extracted from the quaternion*/
-		const mat4f& GetViewMatrix();
-		
-		/** forward vector*/
-		vec3f GetForwardVector();
-		
-		/** the up vector*/
-		vec3f GetUpVector();
-		
-		vec4f GetWorldPoint(float x,float y,float z);
-		
-		/** get right vector*/
-		vec3f GetRigthVector();
-		
-		/** set a new projection matrix for the camera ( ortho, frustum, todo: add helper for creating ortho frustum)*/
+		const mat4f& GetViewMatrix();		
+		vec3f GetForwardVector();		
+		vec3f GetUpVector();		
+		vec4f GetWorldPoint(float x,float y,float z);	
+		vec3f GetRigthVector();		
 		void SetProjectionMatrix(const mat4f& projection);
-
-		Ray ScreenPointToRay(vec2f mousePos);
-	
+		Ray ScreenPointToRay(vec2f mousePos);	
 		float GetPitch();
 		float GetYaw();
 		float GetRoll();
-		float GetFaceArea();
-		
+		float GetFaceArea();		
 		bool boundingBoxFrustum(vec3f position, float size);
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue() override;
+
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
-		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);
-		
+		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		
 		//剪裁
 		bool boundingBoxFrustum(float x,float y,float z,float size);
 		void calculateFrustumPlanes();
@@ -103,11 +76,8 @@ namespace E3DEngine
 		void render(float deltaTime);
 		//int GetFacePos(vec3f v1,vec3f v2,vec3f v3);
 	private:
-		/** view matrix*/
 		mat4f m_mView;
-		/** projection*/
-		mat4f m_mProjection;
-		
+		mat4f m_mProjection;		
 		mat4f m_mViewInverse;
 		mat4f m_mProjectInverse;
 		

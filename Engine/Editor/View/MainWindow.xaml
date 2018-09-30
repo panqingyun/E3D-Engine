@@ -10,90 +10,6 @@
         x:Class="E3DEditor.View.MainWindow"
         mc:Ignorable="d"
         Title="编辑器" Height="952" Width="2080" WindowStyle="None" Background="Black" WindowState="Maximized">
-	<Window.Resources>
-		<Style x:Key="chkBullet" TargetType="CheckBox">
-			<Setter Property="IsChecked" Value="False"/>
-			<Setter Property="Background" Value="Transparent"/>
-			<Setter Property="Foreground" Value="#999"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="CheckBox">
-						<Border Width="60" Height="20" CornerRadius="10" Background="{TemplateBinding Background}" >
-							<Grid>
-								<Border x:Name="border" Width="18" Height="18" CornerRadius="9" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="1 0" Background="White">
-									<Border.RenderTransform>
-										<TranslateTransform  X="0"/>
-									</Border.RenderTransform>
-								</Border>
-								<TextBlock x:Name="txt" Text="{TemplateBinding Content}" Margin="5,2" VerticalAlignment="Center" Foreground="White" >
-									<TextBlock.RenderTransform>
-										<TranslateTransform   X="18"></TranslateTransform>
-									</TextBlock.RenderTransform>
-								</TextBlock>
-							</Grid>
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsChecked" Value="true">
-								<Setter Property="Text" TargetName="txt" Value="{Binding Tag,RelativeSource={RelativeSource TemplatedParent}}"/>
-								<Trigger.EnterActions>
-									<BeginStoryboard>
-										<Storyboard>
-											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="40" Duration="00:00:0.2"/>
-											<DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="3" Duration="00:00:0.2"/>
-										</Storyboard>
-									</BeginStoryboard>
-								</Trigger.EnterActions>
-								<Trigger.ExitActions>
-									<BeginStoryboard>
-										<Storyboard>
-											<DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
-											<DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="18" Duration="00:00:0.2"/>
-										</Storyboard>
-									</BeginStoryboard>
-								</Trigger.ExitActions>
-							</Trigger>
-							<Trigger Property="IsChecked" Value="False">
-								<Setter Property="Text" TargetName="txt" Value="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<!--自定义颜色-->
-		<SolidColorBrush x:Key="MyBtnBorderColor" Color="#00707070"/>
-		<SolidColorBrush x:Key="MyBtnBorderBackColor" Color="#00707070"/>
-		<SolidColorBrush x:Key="MyBtnHoverBackgroundColor" Color="#FF595959"/>
-		<!--END-->
-
-		<Style x:Key="MenuButton" TargetType="{x:Type Button}" >
-			<Setter Property="Background" Value="{StaticResource MyBtnBorderBackColor}"/>
-			<Setter Property="Foreground" Value="#FF2C2C2C"/>
-			<Setter Property="BorderBrush" Value="{StaticResource MyBtnBorderColor}"/>
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="{x:Type Button}">
-						<Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" 
-                                SnapsToDevicePixels="true" CornerRadius="0,0,0,0">
-							<ContentPresenter x:Name="contentPresenter" 
-                                              Focusable="False" 
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                              Margin="{TemplateBinding Padding}" 
-                                              RecognizesAccessKey="True" 
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
-						</Border>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="true">
-								<Setter Property="Background" TargetName="border" Value="{StaticResource MyBtnHoverBackgroundColor}"/>
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-
-	</Window.Resources>
 	<Grid Background="#FF292929" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="60"/>
@@ -112,24 +28,24 @@
 				<RowDefinition Height="122*"/>
 				<RowDefinition Height="133*"/>
 			</Grid.RowDefinitions>
-			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="13" BorderBrush="Transparent">
-				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" BorderBrush="Transparent">
+			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="12" BorderBrush="Transparent">
+				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
 					<TreeView.ContextMenu >
 						<ContextMenu>
-							<MenuItem x:Name="_MenuItemNew" Header="{StaticResource New}" />
-							<MenuItem x:Name="_MenuItemDel" Header="{StaticResource Delete}"/>
+							<MenuItem x:Name="_MenuItemNew" Command="{Binding MainMenuNewButtonCommand}" Header="{StaticResource New}" />
+							<MenuItem x:Name="_MenuItemDel" Command="{Binding MainMenuDeleteButtonCommand}" Header="{StaticResource Delete}"/>
 						</ContextMenu>
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}"  ItemsSource="{Binding Childs}">
 							<Grid  MouseLeftButtonUp="objectList_MouseLeftButtonUp" Background="Transparent">
-								<TextBlock Foreground="#FFFFA507" Text="{Binding ShowText}" Margin="5, 5" FontSize="12"/>
+								<TextBlock Foreground="White" Text="{Binding ShowText}" FontSize="12" Height="20"/>
 							</Grid>
 						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>
 				</TreeView>
 			</GroupBox>
-			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceDir}" />
+			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceView}" />
 			<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Transparent" Height="3" VerticalAlignment="Top"/>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="2" >
@@ -151,26 +67,43 @@
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="320"/>
-				<ColumnDefinition Width="373*"/>
+				<ColumnDefinition Width="125*"/>
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="40"/>
-				<ColumnDefinition Width="1151*"/>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="371*"/>
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="60"/>
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="5" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" CommandParameter="Min" ToolTip="{StaticResource MinToolTip}" Grid.RowSpan="2">
+			<Button Grid.Column="6" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" Command="{Binding MainTitleButtonCommand}"
+					CommandParameter="Min" ToolTip="{StaticResource MinToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/min.png" Width="20" Height="20"/>
 			</Button>
-			<Button Grid.Column="6" x:Name="Close" Margin="0,0,0,10" CommandParameter="Close" Style="{StaticResource MenuButton}" ToolTip="{StaticResource CloseToolTip}" Grid.RowSpan="2">
+			<Button Grid.Column="7" x:Name="Close" Margin="0,0,0,10" Command="{Binding MainTitleButtonCommand}" CommandParameter="Close" Style="{StaticResource MenuButton}" 
+					ToolTip="{StaticResource CloseToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/close.png" Height="20" Width="20" />
 			</Button>
 			<CheckBox x:Name="Pause" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"
 					  Background="#5387b9" IsChecked="False" Content="{StaticResource Pause}" Tag="{StaticResource Countinue}"
-					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Checked="Pause_Checked" Unchecked="Pause_Checked"/>
-			<Button x:Name="Run" Grid.Column="3" Width="25" Height="25" 
-					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run" Grid.Row="1">
+					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Checked="Pause_Checked" Unchecked="Pause_Checked" Margin="0,10"/>
+			<Button x:Name="RunScene" Grid.Column="3" Width="25" Height="25" Click="RunScene_Click"					
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run" Grid.Row="1" Margin="7,8">
 				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="20" Height="20"
+					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="20" Height="20" x:Name="runScene"
+						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
+						<ed:RegularPolygon.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="90"/>
+							</TransformGroup>
+						</ed:RegularPolygon.RenderTransform>
+					</ed:RegularPolygon>
+					<Rectangle Fill="#FF5387B9" x:Name="stopRunScene" Visibility="Hidden"/>
+				</Grid>
+			</Button>
+			<Button x:Name="RunGame" Grid.Column="4" Width="25" Height="25" Command="{Binding MainTitleButtonCommand}"
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource RunToolTip}" CommandParameter="Run" Grid.Row="1" Margin="7,8">
+				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<ed:RegularPolygon Fill="Green" InnerRadius="1" Width="20" Height="20"
 						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
 						<ed:RegularPolygon.RenderTransform>
 							<TransformGroup>
@@ -180,8 +113,7 @@
 					</ed:RegularPolygon>
 				</Grid>
 			</Button>
-
-			<Menu x:Name="menu" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="5">
+			<Menu x:Name="menu" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="6">
 				<MenuItem Header="文件">
 					<MenuItem Header="打开项目" Foreground="Black" x:Name="openSln" Click="menu_Click"/>
 					<MenuItem Header="新建项目" Foreground="Black" x:Name="newSln" Click="menu_Click"/>
@@ -189,7 +121,7 @@
 					<MenuItem Header="保存场景" Foreground="Black" x:Name="svaeScn" Click="menu_Click"/>
 				</MenuItem>
 				<MenuItem Header="编辑">
-					
+
 				</MenuItem>
 				<MenuItem Header="添加">
 					<MenuItem Header="GameObject" Foreground="Black"/>
@@ -223,19 +155,25 @@
 				<ColumnDefinition Width="181*"/>
 			</Grid.ColumnDefinitions>
 			<Label Content="{StaticResource StateText}" Margin="0,-4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Height="24" Width="37" Grid.ColumnSpan="2" />
-			<Label x:Name="state" Content="..." Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,-4,0,0" VerticalAlignment="Center" Foreground="White" Height="24"/>
-			<ProgressBar x:Name="prograss" Grid.Column="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+			<Label x:Name="state" Content="{Binding State}" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,-4,0,0" VerticalAlignment="Center" Foreground="White" Height="24"/>
+			<ProgressBar x:Name="prograss" Grid.Column="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Value="{Binding PrograssBarValue}"/>
 
 		</Grid>
 
 		<Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
 			<TabControl Background="Transparent">
 				<TabItem Header="{StaticResource LogPanel}">
-					<ListBox Background="Transparent" x:Name="logList">
+					<ListBox Background="Transparent" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
+						<ListBox.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header="{StaticResource empty}" x:Name="emptyLog" Click="menu_Click"/>
+								<MenuItem Header="{StaticResource copy}" x:Name="copyLog"/>
+							</ContextMenu>
+						</ListBox.ContextMenu>
 						<ListBox.ItemTemplate>
 							<DataTemplate>
 								<Grid>
-									<TextBlock Text="{Binding LogStr}" Foreground="{Binding LogColor}" FontSize="13"/>
+									<TextBlock Text="{Binding LogStr}" Foreground="{Binding LogColor}" FontSize="13" x:Name="log" VerticalAlignment="Center"/>
 								</Grid>
 							</DataTemplate>
 						</ListBox.ItemTemplate>
@@ -246,6 +184,5 @@
 		<GridSplitter Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Height="3" VerticalAlignment="Top" Background="Transparent"/>
 		<GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="3" VerticalAlignment="Stretch" Background="Transparent"/>
 		<GridSplitter Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Width="3" VerticalAlignment="Stretch" Background="Transparent"/>
-
 	</Grid>
 </Window>

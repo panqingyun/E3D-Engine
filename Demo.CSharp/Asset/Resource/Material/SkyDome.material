@@ -40,7 +40,7 @@
 					ID				= 1 
 					VertexShader	= "shader/SkyDomeVS.shader" 
 					FragmentShader	= "shader/SkyDomeFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-texture/sky.png;" 
+					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/sky.png;" 
 									   
 					AttribVariable	= "POSITION:position;
 									   COLOR:color;

@@ -26,7 +26,6 @@ void E3DEngine::SkyBox::SetRenderer(Renderer *rd)
 	setTextureCoord();
 	GameObject::SetRenderer(rd);
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
-
 }
 
 void E3DEngine::SkyBox::PrepareUpdate(float deltaTime)

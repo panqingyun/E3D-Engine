@@ -114,8 +114,6 @@ namespace E3DEngine
 		MaterialConfig	* mMaterialConfig;
 		std::string		mFilePath;
 		vvision::vec4f	mColor;
-
-		
 	};
 }
 

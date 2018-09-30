@@ -5,6 +5,10 @@
 #include "../Source/Interface.h"
 #include "../Object/E3DGameObject.h"
 
+using namespace std;
+using setValue = void(*)(void * t, object v);
+using getValue = object(*)(void *t);
+
 #define DECLARE_CLASS(className) \
 public:\
 static void * createInstance()\
@@ -25,23 +29,44 @@ ClassFactory::GetInstance().insertClassNameTypeid(#className, typeid(className).
 #define DECLARE_MEMBER(classType, varType, varName)\
 public:\
 varType varName;\
-static void set##varName(void * cp, object value)\
+static void Set##varName(void * cp, object value)\
 {\
-classType* tp = (classType*)cp; \
-tp->varName = object_cast<varType>(value); \
+	classType* tp = (classType*)cp; \
+	tp->varName = object_cast<varType>(value); \
 }\
-varType get##varName(void) const \
+varType Get##varName(void) const \
 {\
 return varName; \
 }
 
 #define SAVE_MEMBER(var, type)\
-m_methodMap.insert(pair<string, setValue>(#var, set##var));\
-m_propertyTypeMap.insert(pair<string, string>(#var, #type));
+if (m_methodMap.find(#var) == m_methodMap.end())\
+{\
+	m_methodMap.insert(pair<std::string, setValue>(#var, Set##var));\
+	m_propertyTypeMap.insert(pair<std::string, std::string>(#var, #type));\
+}
 
-using setValue = void(*)(void * t, object v);
 
-using namespace std;
+#define DECLARE_METHOD(classType, varType, varName)\
+public:\
+varType varName;\
+static void Set##varName(void * cp, object value)\
+{\
+	classType* tp = (classType*)cp; \
+	tp->varName = object_cast<varType>(value); \
+}\
+static  varType Get##varName(void * cp) const \
+{\
+	classType* tp = (classType*)cp; \
+	return tp->varName; \
+}
+
+
+#define SAVE_METHOD(var, type)\
+m_setMethodMap.insert(pair<std::string, setValue>(#var, Set##var));\
+m_propertyTypeMap.insert(pair<std::string, std::string>(#var, #type));\
+m_getMethodMap.insert(pair<std::string, getValue>(#var, Get##var));\
+
 using createClass = void* (*)();
 
 class E3D_EXPORT_DLL ClassFactory

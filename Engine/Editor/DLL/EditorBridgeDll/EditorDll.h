@@ -28,6 +28,7 @@ namespace E3DEngine
 		void KeyUp(char key);
 		void CreateEditor();
 		void ChangeSurface(IntPtr nativeWindow);
+		void RunCurrentScene(bool run);
 	};
 }
 #pragma unmanaged

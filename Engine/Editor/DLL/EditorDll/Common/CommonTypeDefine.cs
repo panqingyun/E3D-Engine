@@ -33,7 +33,8 @@ namespace E3DEditor.Common
         ImagePath,
         Position,
         NumberText,
-        Table
+        Table,
+        Vector3,
     }
 
     public enum LogLevel

@@ -8,20 +8,6 @@
 
 namespace E3DEngine
 {
-	const std::string NM_GameObject = "GameObject";
-	const std::string TP_Camera = "Camera";
-	const std::string TP_DLight = "DirectionLight";
-	const std::string TP_PLight = "PointLight";
-	const std::string TP_SkyBox = "SkyBox";
-	const std::string TP_Mesh = "Mesh";
-	const std::string TP_Particle = "Particle";
-	const std::string TP_Cube = "Cube";
-	const std::string TP_Sphere = "Sphere";
-	const std::string TP_Empty = "Empty";
-	const std::string _typeName = "Type";
-	const std::string TP_Terrain = "Terrain";
-	const std::string TP_Prefab = "Prefab";
-
 	const std::string _Name = "Name";
 	const std::string _FilePath = "FilePath";
 	const std::string _SelectID = "SelectID";
@@ -44,7 +30,6 @@ namespace E3DEngine
 	const std::string _Component_Field = "Field";
 	const std::string _Camera_CullMask = "CullingMask";
 	const std::string _Camera_CullMask_Everything = "Everything";
-	const std::string _ParticleGroupName = "<particle-group>";
 
 	using createGameObjectFun = GameObject*(*)(TiXmlElement *objectElement);
 	using createTiXmlElementFun = void(*)(TiXmlElement *objectElement, GameObject *gameObject);
@@ -90,11 +75,6 @@ namespace E3DEngine
 		float z = Convert::ToFloat(colorS[2]);
 
 		return vec3f(x, y, z);
-	}
-
-	void convert2DestType(std::string value, DWORD type, void * retValue)
-	{
-
 	}
 
 	void convertTypeSetValue(Component *component, setValue set, string value, string type)
@@ -221,30 +201,30 @@ namespace E3DEngine
 		go->SetRenderIndex(Convert::ToInt(rd));
 	}
 
-	void setCameraCullMask(TiXmlElement *objectElement, GameObject *go)
+	void setLayerMask(TiXmlElement *objectElement, GameObject * go)
 	{
 		if (objectElement == nullptr)
 		{
 			return;
 		}
-		if (objectElement->Attribute(_Camera_CullMask) == nullptr)
+		if (objectElement->Attribute(_LayerMask) == nullptr)
 		{
 			return;
 		}
-		std::string cullMask = *objectElement->Attribute(_Camera_CullMask);
-
-		unsigned int layer = 0;
-		if (cullMask == _Camera_CullMask_Everything)
+		std::string layerStr = *objectElement->Attribute(_LayerMask);
+		if (layerStr == _Layer_AllLayer)
 		{
 			go->SetLayerMask(-1);
 		}
 		else
 		{
-			std::vector<std::string> layers = StringBuilder::Split(cullMask, "|");
-			for (auto &layerMsk : layers)
+			std::vector<std::string> layers = StringBuilder::Split(layerStr, "|");
+			int layer = 0;
+			for (int i = 0; i < layers.size(); i++)
 			{
-				int _layer = Convert::ToInt(layerMsk);
-				layer |= (1 << _layer);
+				if (StringBuilder::Trim(layers[i]) == "")
+					return;
+				layer |= (1 << Convert::ToInt(layers[i]));
 			}
 			go->SetLayerMask(layer);
 		}
@@ -256,7 +236,7 @@ namespace E3DEngine
 
 		SceneManager::GetCurrentScene()->AddCamera(pCamera);
 		pCamera->SetClearColor(createColor(*objectElement->Attribute(_ClearColor)));
-		setCameraCullMask(objectElement, pCamera);
+		setLayerMask(objectElement, pCamera);
 		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
 		CreateObjects(pCamera, objectElement);
 		return pCamera;
@@ -392,35 +372,7 @@ namespace E3DEngine
 		return go;
 	}
 
-	void setLayerMask(TiXmlElement *objectElement, GameObject * go)
-	{
-		if (objectElement == nullptr)
-		{
-			return;
-		}
-		if (objectElement->Attribute(_LayerMask) == nullptr)
-		{
-			return;
-		}
-		std::string layerStr = *objectElement->Attribute(_LayerMask);
-		if (layerStr == _Layer_AllLayer)
-		{
-			go->SetLayerMask(-1);
-		}
-		else
-		{
-			std::vector<std::string> layers = StringBuilder::Split(layerStr, "|");
-			int layer = 0;
-			for (int i = 0; i < layers.size(); i++)
-			{
-				if (StringBuilder::Trim(layers[i]) == "")
-					return;
-				layer |= (1 << Convert::ToInt(layers[i]));
-			}
-			go->SetLayerMask(layer);
-		}
-	}
-
+	
 	void setGameObjectActive(TiXmlElement *objectElement, GameObject * go)
 	{
 		if (objectElement == nullptr)
@@ -667,7 +619,11 @@ namespace E3DEngine
 		{
 			objectElement->SetAttribute(_FilePath, gameObject->mConfigPath);
 		}
-
+		if (gameObject->mTypeName == TP_Camera)
+		{
+			Camera *pCamera = (Camera*)gameObject;
+			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
+		}
 		saveTransformElement(objectElement, gameObject->Transform);
 		saveComponentElement(objectElement, gameObject);
 

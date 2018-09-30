@@ -9,6 +9,7 @@
 
 E3DEngine::Sphere::Sphere()
 {
+	mTypeName = TP_Sphere;
 	CreateBehaviour();
 }
 

@@ -36,6 +36,7 @@ namespace E3DEngine
 
 	Mesh::Mesh(std::string filePath, int cfgID)
 	{
+		mTypeName = TP_Camera;
 		NumBones = 0;
 		m_bIsBufferData = false;
 		m_bIsSkinMesh = false;

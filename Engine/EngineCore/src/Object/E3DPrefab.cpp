@@ -3,6 +3,7 @@
 
 E3DEngine::Prefab::Prefab()
 {
+	mTypeName = TP_Prefab;
 	CreateBehaviour();
 }
 

@@ -312,6 +312,7 @@ namespace E3DEngine
 
 	GameObject::GameObject()
 	{
+		mTypeName = TP_Empty;
 		Transform = new CTransform;
 		Transform->gameObject = this;
 		mTypeName = typeid(this).name();
@@ -935,6 +936,17 @@ std::string Convert::ToString(vec3f source)
 	std::string &str3 = ToString(source.z);
 
 	return str1 + "," + str2 + "," + str3;
+}
+
+
+std::string Convert::ToString(vec4f source)
+{
+	std::string &str1 = ToString(source.x);
+	std::string &str2 = ToString(source.y);
+	std::string &str3 = ToString(source.z);
+	std::string &str4 = ToString(source.w);
+
+	return str1 + "," + str2 + "," + str3 + "," + str4;
 }
 
 std::string Convert::ToStdString(MonoString* str)

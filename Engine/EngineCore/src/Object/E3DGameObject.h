@@ -230,6 +230,7 @@ struct E3D_EXPORT_DLL Convert
 	static std::string ToStdString(MonoString* str);
 	static std::string ToString(bool source);
 	static std::string ToString(vec3f source);
+	static std::string ToString(vec4f source);
 
 	/*
 		把16进制的字符串转换成10进制数

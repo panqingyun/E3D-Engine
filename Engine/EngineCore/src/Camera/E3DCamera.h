@@ -65,6 +65,7 @@ namespace E3DEngine
 		bool boundingBoxFrustum(vec3f position, float size);
 		virtual void CreateBehaviour() override;
 		virtual void setBehaviourDefaultValue() override;
+		vec4f GetClearColor();
 
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);

@@ -19,6 +19,7 @@ namespace E3DEngine
 {
 	Camera::Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect)
 	{
+		mTypeName = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size() ;i++)
 		{
@@ -47,6 +48,7 @@ namespace E3DEngine
 	
 	Camera::Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar)
 	{
+		mTypeName = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size(); i++)
 		{
@@ -374,6 +376,12 @@ namespace E3DEngine
 	void Camera::setBehaviourDefaultValue()
 	{
 		GameObject::setBehaviourDefaultValue();
+	}
+
+
+	vvision::vec4f Camera::GetClearColor()
+	{
+		return vec4f(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
 	}
 
 	float * Camera::normal(float *plans) {

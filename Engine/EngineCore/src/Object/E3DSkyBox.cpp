@@ -10,6 +10,7 @@
 
 void E3DEngine::SkyBox::Create(float l, float w, float h)
 {
+	mTypeName = TP_SkyBox;
 	Box::Create(l, w, h);	
 }
 
@@ -107,6 +108,7 @@ void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec
 
 E3DEngine::SkyDome::SkyDome()
 {
+	mTypeName = TP_SkyDome;
 	CreateBehaviour();
 }
 

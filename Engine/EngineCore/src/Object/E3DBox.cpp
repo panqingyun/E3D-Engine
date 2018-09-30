@@ -137,6 +137,7 @@ void E3DEngine::Box::Create(float l, float w, float h)
 	};
 
 	memcpy(m_vecIndex.data(), index, sizeof(UINT) * 36);
+	mTypeName = TP_Cube;
 }
 
 

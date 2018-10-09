@@ -1,51 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<!--
-			TextureClampType 0 CLAMP_TO_EDGE 1 REPEAT 2 MIRRORED_REPEAT
-			TextureFilterType 0 LINEAR, 1 NEAREST, 2 NEAREST_MIPMAP_NEAREST, 3 LINEAR_MIPMAP_NEAREST , 4 NEAREST_MIPMAP_LINEAR , 5 LINEAR_MIPMAP_LINEAR 
-			CullFace 0 不剔除背面 1 剔除背面
-			EnableDepthTest 0 关闭深度测试和深度缓冲区 1 开启深度测试与深度缓冲区
-			SrcBlendFactor DstBlendFactor = ZERO,  ONE ,SRC_COLOR, ONE_MINUS_SRC_COLOR, SRC_ALPHA, ONE_MINUS_SRC_ALPHA, DST_ALPHA, ONE_MINUS_DST_ALPHA, DST_COLOR, ONE_MINUS_DST_COLOR 
-		-->
-		<Item ID=1 ShaderID = 1 Color="ffffffff" EnableDepthTest=1 CullFace = 0/>
+		<Item ID="1" ShaderID = "1" Color="ffffffff" EnableDepthTest="1" CullFace ="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<!--
-			uniform 类型 
-			mat4 	四阶矩阵
-			mat3 	三阶矩阵
-			mat2 	二阶矩阵
-			vec2 	二维浮点数
-			vec3 	三维浮点数
-			vec4 	四维浮点数
-			float 	浮点数
-			int 	整数
-			sampler2D 纹理
-				
-			attribute 类型 
-			POSITION		顶点坐标
-			NORMAL			法线
-			COLOR			颜色
-			TRANSPOSITION	顶点位移坐标 有批次合并的使用
-			TRANSSCALE		顶点缩放值 有批次合并的使用
-			TRANSROTATE		顶点旋转值 有批次合并的使用
-			SHADERINDEX		使用的片段着色器的序号
-			TANGENT			切线
-			BONEINDEX		骨骼索引
-			BONEWEIGHT		骨骼权重
-			TEXTURECOORD   纹理坐标
-		--> 
-		<Item 
-					ID				= 1 
-					VertexShader	= "shader/SphereVS.shader" 
-					FragmentShader	= "shader/BoxFS.shader" 	
-					UniformVariable	= "sampler2D:myTexture0-Resource/Material/texture/earth.png;" 
-									   
-					AttribVariable	= "POSITION:position;
-									   COLOR:color;
-									   TEXTURECOORD:inputTextureCoordinate;
-									   NORMAL:attr_normal;"
-		/>
+		<Item ID= "1" VertexShader= "shader/SphereVS.shader" FragmentShader="shader/BoxFS.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/earth.png;" AttribVariable= "POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
 	</ShaderConfig>
 </ConfigSystem>

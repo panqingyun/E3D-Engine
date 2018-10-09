@@ -208,6 +208,7 @@ const static std::string stringType  = "string";
 const static std::string intType     = "int";
 const static std::string floatType   = "float";
 const static std::string doubleType  = "double";
+const static std::string boolType	 = "bool";
 
 struct E3D_EXPORT_DLL Convert
 {
@@ -287,12 +288,14 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL GameObject : public Object
 	{
 	public:
+		GameObject();
+
 		template<typename T> T * AddComponent()
 		{
 			std::string type_id = GetClassName<T>();
 			T *_t = new T();
 			((Component*)_t)->SetGameObject(this);
-			((Component*)_t)->mTypeName = type_id;
+			((Component*)_t)->mSceneObjectType = type_id;
 			((Component*)_t)->Transform = Transform;
 			m_listComponents[type_id].push_back((Component*)_t);
 			ComponentAdded((Component*)_t);
@@ -307,7 +310,6 @@ namespace E3DEngine
 			}
 			return nullptr;
 		}
-
 		template<typename T> std::vector<T*> * GetComponents()
 		{
 			std::vector<T*> * retVector = nullptr;
@@ -324,10 +326,8 @@ namespace E3DEngine
 			return retVector;
 		}
 
+	public:
 		std::map<std::string, std::vector<Component*>> &GetAllComponents();
-
-		// 获取长宽高
-		virtual vec3f GetBounds();
 		std::vector<Component*> * GetComponents(std::string type_name);
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
@@ -336,43 +336,44 @@ namespace E3DEngine
 		void RemoveComponent(Component *com);
 		void SetIsStatic(bool isStatic);
 		bool GetIsStatic();
-		virtual void TransferRender();
+
 	public:
+		virtual void TransferRender();
 		virtual void PrepareUpdate(float deltaTime);
 		virtual void AfterUpdate(float deltaTime);
 		virtual void Create(Object * parentNode = nullptr);
 		virtual void Update(float deltaTime) override;
-		GameObject();
-		virtual ~GameObject() override;
 		virtual void SetParent(GameObject * parent);
-
-		virtual GameObject * FindChild(UINT id);
-		virtual GameObject * FindChild(std::string name);
-
-		DWORD GetLayerMask();
 		virtual void SetLayerMask(DWORD layerMask);
-
 		virtual void SetActive(bool isActive);
 		virtual void SetCamera(Camera * camera);
 		virtual void SetDontDestory(bool dontDestory);
 		virtual void OnCollisionEnter(GameObject* other);
 		virtual void TransformChange();
-		static bool IsRenderObject(GameObject * node);
 		virtual void AddChild(GameObject * node);
+		// RemoveChild 并不会回收内存，需要调用者回收内存
 		virtual void RemoveChild(GameObject * node);
 		virtual void RemoveChild(UINT ID);
 		virtual void DestoryAllChild();
-		virtual Collider * GetCollider();
 		virtual void SetCollider(Collider * collider);
 		virtual void Render(float deltaTime);
+		virtual void CreateBehaviour() override;
+
+		virtual Collider * GetCollider();
+		virtual ~GameObject() override;
+		virtual GameObject * FindChild(UINT id);
+		virtual GameObject * FindChild(std::string name);
+		// 获取长宽高
+		virtual vec3f GetBounds();
+
+	public:
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
+		DWORD GetLayerMask();
 		void SetRenderer(Renderer * renderer);
 		std::map<UINT, GameObject *> &GetChilds();
-
 		std::vector<Vertex>& GetVertex();;
 		std::vector<uint>& GetIndex();
-		virtual void CreateBehaviour() override;
 		static void Destory(GameObject *go);
 		CTransform * GetTransform();
 
@@ -380,6 +381,7 @@ namespace E3DEngine
 		virtual void ComponentAdded(Component * component);
 		virtual void setBehaviourDefaultValue();
 		virtual bool removeComponentFromListByID(std::vector<Component*> &comList, UINT id);
+
 	public:
 		object			Tag;
 		bool			IsActive;
@@ -391,8 +393,7 @@ namespace E3DEngine
 		CTransform	*			Transform;
 		// 渲染层级
 		DWORD					RenderIndex;
-	protected:
-		std::map<std::string, std::vector<Component*>> m_listComponents;
+
 	protected:
 		std::map<UINT, GameObject *> childNode;
 		DWORD m_layerMask;
@@ -403,6 +404,7 @@ namespace E3DEngine
 		std::vector<uint> m_vecIndex;
 		bool	m_bIsStatic;
 		Collider	* mCollider;
+		std::map<std::string, std::vector<Component*>> m_listComponents;
 	};
 
 	

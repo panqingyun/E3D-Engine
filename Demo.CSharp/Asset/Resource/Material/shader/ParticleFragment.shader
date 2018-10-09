@@ -9,6 +9,6 @@ void main(void)
 
 	vec4 color = texture2D(myTexture0, v_coord);
 	color.a = color.a * DestinationColor.a;
-	gl_FragColor = vec4(DestinationColor.rgb, color.a);
+	gl_FragColor = vec4(1.0,1.0,1.0, 1.0);
 	
 }

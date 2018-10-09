@@ -18,21 +18,26 @@ namespace E3DEngine
 		eT_RenderObject
 	} ObjectType;
 
+	enum SceneObjectType
+	{
+		TP_NONE = 0,
+		TP_Camera = 1,
+		TP_DLight = 2,
+		TP_PLight = 3,
+		TP_SkyBox = 4,
+		TP_Mesh	  = 5,
+		TP_Particle = 6,
+		TP_Cube = 7,
+		TP_Sphere = 8,
+		TP_Empty = 9,
+		TP_Terrain  = 10,
+		TP_Prefab = 11,
+		TP_SkyDome = 12,
+	};
+
 	const std::string NM_GameObject = "GameObject";
-	const std::string TP_Camera = "Camera";
-	const std::string TP_DLight = "DirectionLight";
-	const std::string TP_PLight = "PointLight";
-	const std::string TP_SkyBox = "SkyBox";
-	const std::string TP_Mesh = "Mesh";
-	const std::string TP_Particle = "Particle";
-	const std::string TP_Cube = "Cube";
-	const std::string TP_Sphere = "Sphere";
-	const std::string TP_Empty = "Empty";
-	const std::string _typeName = "Type";
-	const std::string TP_Terrain = "Terrain";
-	const std::string TP_Prefab = "Prefab";
-	const std::string TP_SkyDome = "SkyDome";
 	const std::string _ParticleGroupName = "<particle-group>";
+	const std::string _TypeName = "Type";
 
 
 #define ADD_IN_SCENE(obj)\
@@ -43,7 +48,6 @@ namespace E3DEngine
 
 #define E3D_NAME_SPACE "E3DEngine"
 
-	class CTransform;
 	class E3D_EXPORT_DLL Object : public Ref
 	{
 	public:
@@ -60,9 +64,9 @@ namespace E3DEngine
 		virtual void setBehaviourDefaultValue();
 	public:
 		unsigned int	ID;
-		std::string		mTypeName;
+		unsigned int	mSceneObjectType;
 		std::string		mName;
-		ObjectType		mType;
+		ObjectType		mObjectType;
 		MonoBehaviour * mBehaviour;
 		std::string		mConfigPath;
 		int				mConfigID;

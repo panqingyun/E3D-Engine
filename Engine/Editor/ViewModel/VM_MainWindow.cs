@@ -34,6 +34,15 @@ namespace E3DEditor.ViewModel
         private string curScenePath = "";
         private bool sceneIsStart = false;
 
+        public void ShowMainWindow()
+        {
+            if (mainWnd == null)
+            {
+                mainWnd = new MainWindow();
+            }
+            mainWnd.ShowDialog();
+        }
+
         public VM_MainWindow()
         {
             try

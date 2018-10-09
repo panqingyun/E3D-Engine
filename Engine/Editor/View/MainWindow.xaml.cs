@@ -20,7 +20,6 @@ namespace E3DEditor.View
         {
             InitializeComponent();
             DataContext = App.vm_MainWindow;
-            App.vm_MainWindow._MainWindow = this;
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Save, App.vm_MainWindow.ExecuteCommand, App.vm_MainWindow.CanExecuteCommand));
         }
 

@@ -36,7 +36,7 @@ namespace E3DEngine
 
 	std::string sceneFolderPath = "";
 
-	std::map<std::string, createGameObjectFun>	createObjectFun;
+	std::map<UINT, createGameObjectFun>	createObjectFun;
 
 	void CreateObjects(GameObject * parent, TiXmlElement* rootElem);
 
@@ -79,17 +79,21 @@ namespace E3DEngine
 
 	void convertTypeSetValue(Component *component, setValue set, string value, string type)
 	{
-		if (type == stringType) {
+		if (type == stringType) 
+		{
 			set(component, value);
 		}
-		else if (type == intType) {
+		else if (type == intType)
+		{
 			set(component, Convert::ToInt(value));
 		}
-		else if (type == floatType) {
+		else if (type == floatType)
+		{
 			set(component, Convert::ToFloat(value));
 		}
-		else if (type == doubleType) {
-			set(component, Convert::ToDouble(value));
+		else if (type == boolType)
+		{
+			set(component, Convert::ToBoolean(value));
 		}
 	}
 
@@ -106,24 +110,24 @@ namespace E3DEngine
 		int typeType = mono_type_get_type(type);
 		switch (typeType)
 		{
-		case MONO_TYPE_STRING:
+		case MONO_TYPE_STRING: // string
 		{
 			mono_field_set_value(monoObj, field, mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), valueStr));
 		}
 		break;
-		case MONO_TYPE_I4:
+		case MONO_TYPE_I4: // int
 		{
 			int retValue = Convert::ToInt(valueStr);
 			mono_field_set_value(monoObj, field, &retValue);
 		}
 		break;
-		case MONO_TYPE_BOOLEAN:
+		case MONO_TYPE_BOOLEAN: // bool
 		{
 			int retValue = Convert::ToBoolean(valueStr) ? 1 : 0;
 			mono_field_set_value(monoObj, field, &retValue);
 		}
 		break;
-		case MONO_TYPE_R4:
+		case MONO_TYPE_R4: // float
 		{
 			float retValue = Convert::ToFloat(valueStr);
 			mono_field_set_value(monoObj, field, &retValue);
@@ -332,7 +336,8 @@ namespace E3DEngine
 
 	GameObject *createPrefab(TiXmlElement *objectElement)
 	{
-		std::string filePath = sceneFolderPath + "/" + (*objectElement->Attribute(_FilePath));
+		std::string filePath = (*objectElement->Attribute(_FilePath));
+		filePath = getFileFullPath(filePath);
 		return LoadPrefab(filePath);
 	}
 
@@ -362,7 +367,7 @@ namespace E3DEngine
 		go->CreateBehaviour();
 		std::string _path = *objectElement->Attribute(_FilePath);
 		go->mConfigPath = _path;
-		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(sceneFolderPath + "/" + _path);
+		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(getFileFullPath( _path));
 		for (auto & particle : *particles)
 		{
 			particle->mName = _ParticleGroupName;
@@ -388,10 +393,10 @@ namespace E3DEngine
 		go->SetActive(active);
 	}
 
-	void setObjectCommonValue(GameObject * go, TiXmlElement *objectElement, std::string _type)
+	void setObjectCommonValue(GameObject * go, TiXmlElement *objectElement,unsigned int _type)
 	{
 		go->mName = *objectElement->Attribute(_Name);
-		go->mTypeName = _type;
+		go->mSceneObjectType = _type;
 		parseTransform(objectElement->FirstChildElement(_Transform), go->Transform);
 		if (_type == TP_Particle)
 		{
@@ -426,7 +431,8 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			std::string _type = *item->ToElement()->Attribute(_typeName);
+			unsigned int _type = Convert::ToInt(*item->ToElement()->Attribute(_TypeName));
+			 
 			if (createObjectFun.find(_type) == createObjectFun.end())
 			{
 				continue;
@@ -533,7 +539,7 @@ namespace E3DEngine
 				{
 					continue;
 				}
-				if (type == MONO_TYPE_I4)
+				if (type == MONO_TYPE_I4) // int
 				{
 					componentElement->SetAttribute(name, Convert::ToString(*(int*)fieldValue));
 				}
@@ -545,7 +551,7 @@ namespace E3DEngine
 				{
 					componentElement->SetAttribute(name, (const char*)fieldValue);
 				}
-				else if (type == MONO_TYPE_R4)
+				else if (type == MONO_TYPE_R4) // float
 				{
 					componentElement->SetAttribute(name, Convert::ToString(*(float*)fieldValue));
 				}
@@ -608,18 +614,18 @@ namespace E3DEngine
 	void saveGameObjectElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
 		objectElement->SetAttribute(_Name, gameObject->mName);
-		objectElement->SetAttribute(_typeName, gameObject->mTypeName);
+		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));
 		objectElement->SetAttribute(_Active, Convert::ToString(gameObject->IsActive));
 		if (gameObject->GetRenderer() != nullptr)
 		{
 			objectElement->SetAttribute(_RenderIndex, gameObject->GetRenderer()->RenderIndex);
 		}	
-		if (gameObject->mTypeName == TP_Particle || gameObject->mTypeName == TP_Mesh)
+		if (gameObject->mSceneObjectType == TP_Particle || gameObject->mSceneObjectType == TP_Mesh)
 		{
 			objectElement->SetAttribute(_FilePath, gameObject->mConfigPath);
 		}
-		if (gameObject->mTypeName == TP_Camera)
+		if (gameObject->mSceneObjectType == TP_Camera)
 		{
 			Camera *pCamera = (Camera*)gameObject;
 			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
@@ -631,7 +637,7 @@ namespace E3DEngine
 		for (auto gameObj : gameObject->GetChilds())
 		{
 			GameObject *childObject = gameObj.second;
-			if (gameObject->mTypeName == TP_Particle && childObject->mName == _ParticleGroupName)
+			if (gameObject->mSceneObjectType == TP_Particle && childObject->mName == _ParticleGroupName)
 			{ // Particle Group ²»ÄÜ±£´æ
 				continue;
 			}
@@ -663,6 +669,7 @@ namespace E3DEngine
 		}
 
 		doc->SaveFile(pScene->GetScenePath());
+		delete doc;
 	}
 
 

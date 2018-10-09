@@ -19,7 +19,7 @@ namespace E3DEngine
 {
 	Camera::Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect)
 	{
-		mTypeName = TP_Camera;
+		mSceneObjectType = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size() ;i++)
 		{
@@ -41,14 +41,14 @@ namespace E3DEngine
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_layerMask = ~0;
 		m_nDepth = 0;
-		mType = eT_Camera;
+		mObjectType = eT_Camera;
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
 	
 	Camera::Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar)
 	{
-		mTypeName = TP_Camera;
+		mSceneObjectType = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size(); i++)
 		{
@@ -66,7 +66,7 @@ namespace E3DEngine
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_layerMask = ~0;
 		m_nDepth = 0;
-		mType = eT_Camera;
+		mObjectType = eT_Camera;
 		CreateBehaviour();
 		Transform->SetNeedUpdate(false);
 	}
@@ -74,7 +74,7 @@ namespace E3DEngine
 
 	Camera::~Camera()
 	{
-		if (ParentNode != nullptr && ParentNode->mType == eT_Camera)
+		if (ParentNode != nullptr && ParentNode->mObjectType == eT_Camera)
 		{
 			static_cast<GameObject*>(ParentNode)->Transform->RemoveChild(ID);
 		}

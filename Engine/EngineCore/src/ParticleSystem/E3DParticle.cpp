@@ -529,7 +529,7 @@ namespace E3DEngine
 
 	ParticleGroup::ParticleGroup()
 	{
-		mTypeName = _ParticleGroupName;
+		mName				= _ParticleGroupName;
 		m_particleIndex		= 0;
 		m_pMaterial			= nullptr;
 		m_bIsPause			= false;

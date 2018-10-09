@@ -98,7 +98,7 @@ namespace E3DEngine
 					return nullptr;
 				}
 				component->SetGameObject(this);
-				component->mTypeName = type_name;
+				component->mName = type_name;
 				component->Transform = Transform;
 				m_listComponents[type_name].push_back((Component*)component);
 			}
@@ -107,7 +107,7 @@ namespace E3DEngine
 		{
 			// 不是引擎类
 			component = new Component;
-			component->mTypeName = full_name;
+			component->mName = full_name;
 			component->mBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
 			component->mBehaviour->Create(nameSpaceName.c_str(), className.c_str());
 			AddComponent(component);
@@ -124,7 +124,7 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
-		m_listComponents[(component)->mTypeName].push_back(component);
+		m_listComponents[(component)->mName].push_back(component);
 		return component;
 	}
 	
@@ -139,7 +139,7 @@ namespace E3DEngine
 
 	void GameObject::RemoveComponent(Component *com)
 	{
-		std::string type_name = com->mTypeName;
+		std::string type_name = com->mName;
 		std::map<std::string, std::vector<Component*>>::iterator itr = m_listComponents.find(type_name);
 		if (itr != m_listComponents.end())
 		{
@@ -247,8 +247,7 @@ namespace E3DEngine
 			parent->AddChild(this);
 		}
 	}
-
-
+	
 	E3DEngine::GameObject * GameObject::FindChild(UINT id)
 	{
 		if (childNode.find(id) == childNode.end())
@@ -312,13 +311,12 @@ namespace E3DEngine
 
 	GameObject::GameObject()
 	{
-		mTypeName = TP_Empty;
+		mSceneObjectType = TP_Empty;
 		Transform = new CTransform;
 		Transform->gameObject = this;
-		mTypeName = typeid(this).name();
 		IsEmptyObject = true;
 		DontDestoryOnLoad = false;
-		mType = eT_GameObject;
+		mObjectType = eT_GameObject;
 		pCamera = nullptr;
 		IsActive = true;
 		m_pRenderer = nullptr;
@@ -348,7 +346,7 @@ namespace E3DEngine
 		{
 			for (auto & com : it->second)
 			{
-				static_cast<Component*>(com)->OnCollisionEnter(other);
+				com->OnCollisionEnter(other);
 			}
 		}
 	}
@@ -361,16 +359,6 @@ namespace E3DEngine
 			m_pRenderer->TransformChange();
 		}
 	}
-
-	bool GameObject::IsRenderObject(GameObject * go)
-	{
-		if (go->GetRenderer() != nullptr)
-		{
-			return true;
-		}
-		return false;
-	}
-
 
 	void GameObject::AddChild(GameObject * node)
 	{
@@ -393,9 +381,9 @@ namespace E3DEngine
 		{
 			childNode[node->ID] = node;
 			node->ParentNode = this;
-			if (mType != eT_Scene)
+			if (mObjectType != eT_Scene)
 			{
-				if (mType == eT_Camera)
+				if (mObjectType == eT_Camera)
 				{
 					SceneManager::GetCurrentScene()->AddCamera(static_cast<Camera*>(node));
 				}

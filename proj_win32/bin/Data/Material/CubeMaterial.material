@@ -8,10 +8,10 @@
 			SrcBlendFactor DstBlendFactor = ZERO,  ONE ,SRC_COLOR, ONE_MINUS_SRC_COLOR, SRC_ALPHA, ONE_MINUS_SRC_ALPHA, DST_ALPHA, ONE_MINUS_DST_ALPHA, DST_COLOR, ONE_MINUS_DST_COLOR
 		-->
 	<MaterialConfig>
-		<Item ID=1 ShaderID=1 Color="ff0000ff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace=1 TextureClampType=1 TextureFilterType=5/>
-		<Item ID=2 ShaderID=1 Color="00ff00ff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace=1 TextureClampType=1 TextureFilterType=5/>
-		<Item ID=3 ShaderID=1 Color="0000ffff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace=1 TextureClampType=1 TextureFilterType=5/>
-		<Item ID=4 ShaderID=1 Color="aaaaaaff" SrcBlendFactor="SRC_ALPHA" DstBlendFactor="ONE_MINUS_SRC_ALPHA" EnableDepthTest=1 CullFace=1 TextureClampType=1 TextureFilterType=5/>
+		<Item ID="1" ShaderID="1" Color="ff0000ff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
+		<Item ID="2" ShaderID="1" Color="00ff00ff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
+		<Item ID="3" ShaderID="1" Color="0000ffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
+		<Item ID="4" ShaderID="1" Color="aaaaaaff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -40,7 +40,7 @@
 			TEXTURECOORD    纹理坐标
 		--> 
 		<Item 
-					ID				= 1 
+					ID				= "1" 
 					VertexShader	= "shader/BoxVS.shader" 
 					FragmentShader	= "shader/BoxFS.shader" 	
 					UniformVariable	= "" 

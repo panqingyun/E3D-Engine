@@ -42,8 +42,8 @@ namespace E3DEngine
 		StringManipulator::SplitFileName(path, folder, file);
 		MaterialConfig *config = materialConfig;
 		Material * material = createMatrerial();
-		std::map<std::string, DWORD>::iterator srcItr = m_BlendFactorMap.find(config->SrcBlendFactor);
-		std::map<std::string, DWORD>::iterator dstItr = m_BlendFactorMap.find(config->DstBlendFactor);
+		std::map<int, DWORD>::iterator srcItr = m_BlendFactorMap.find(config->SrcBlendFactor);
+		std::map<int, DWORD>::iterator dstItr = m_BlendFactorMap.find(config->DstBlendFactor);
 
 		DWORD srcFactor = 0, dstFactor = 0;
 		srcFactor = srcItr != m_BlendFactorMap.end() ? srcItr->second : 0;

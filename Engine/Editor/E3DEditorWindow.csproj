@@ -128,6 +128,9 @@
     <Compile Include="View\GameWindow.xaml.cs">
       <DependentUpon>GameWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Load.xaml.cs">
+      <DependentUpon>Load.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MediaControl.xaml.cs">
       <DependentUpon>MediaControl.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Load.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,6 +262,7 @@
     <None Include="App\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Logo.png" />
     <Resource Include="Resources\Pic\Open File.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
 
 E3DEngine::Terrain::Terrain()
 {
-	mTypeName = TP_Terrain;
+	mSceneObjectType = TP_Terrain;
 	m_bIsEditorGrid = false;
 	lastSize = 1;
 	CreateBehaviour();

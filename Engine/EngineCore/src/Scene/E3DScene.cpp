@@ -19,7 +19,7 @@ namespace E3DEngine
 	Scene::Scene()
 	{
 		m_nObjectID = 0;
-		mType = eT_Scene;
+		mObjectType = eT_Scene;
 		rootObject = new GameObject;
 		usedDirectionLight = nullptr;
 
@@ -56,7 +56,7 @@ namespace E3DEngine
 		{
 			for (auto &node : m_vecObjList)
 			{
-				if (node.second->mType == eT_GameObject)
+				if (node.second->mObjectType == eT_GameObject)
 				{
 					static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
 				}
@@ -316,7 +316,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (obj->mType == eT_GameObject || obj->mType == eT_Camera)
+		if (obj->mObjectType == eT_GameObject || obj->mObjectType == eT_Camera)
 		{
 			GameObject *go = static_cast<GameObject*>(obj);
 			if (rootObject->FindChild(go->ID))

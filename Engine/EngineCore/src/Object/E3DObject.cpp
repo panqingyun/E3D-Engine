@@ -10,7 +10,7 @@ namespace E3DEngine
 {
 	Object::Object()
 	{
-		mType = eT_Object;
+		mObjectType = eT_Object;
 		if (SceneManager::GetCurrentScene() != nullptr)
 		{
 			ID = SceneManager::GetCurrentScene()->GenObjectID();

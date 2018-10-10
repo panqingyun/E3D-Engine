@@ -17,5 +17,5 @@ void main(void)
 	
 	mat4 transMatrix = getTransformMatrix(pos, transformRotate,transformScale);
 	
-    gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel * transMatrix * vec4(0.0,0.0,0.0,1.0);//* BillboardMatrix();* roateMatrix * scaleMat *
+    gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel  * transMatrix * vec4(0.0,0.0,0.0,1.0);//* BillboardMatrix();* roateMatrix * scaleMat *
 }

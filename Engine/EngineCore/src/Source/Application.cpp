@@ -149,6 +149,11 @@ extern "C"
 		{
 			defaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
 		}
+		else
+		{
+			GameObject *coord = LoadPrefab("../Data/Scene/coordinate.prefab");
+			ADD_IN_SCENE(coord);
+		}
 
 		if (editorCamera == nullptr)
 		{
@@ -162,12 +167,9 @@ extern "C"
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
-		terrain->SetLayerMask(1);
+		terrain->SetLayerMask(-1);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(terrain);
-		GameObject *coord = LoadPrefab("../Data/Scene/coordinate.prefab");
-		ADD_IN_SCENE(coord);
-		
 	}
 
 }

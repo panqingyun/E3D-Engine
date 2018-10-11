@@ -84,14 +84,14 @@ namespace E3DEngine
 			createAnimation();
 		}
 
-		std::string materialPath = modelCfg->Materials;
-		std::vector<std::string> materialCfg = StringBuilder::Split(materialPath, ":");
+		std::string &materialPath = modelCfg->Materials;
+		std::vector<std::string> &&materialCfg = StringBuilder::Split(materialPath, ":");
 		if (materialCfg.size() != 2)
 		{
 			Debug::Log(ell_Error, "Error parsing '%s': split config wrong", filePath.c_str());
 			return;
 		}
-		std::string folder = GetFolder(filePath);
+		std::string &&folder = GetFolder(filePath);
 		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::AppDataPath + materialCfg[0], Convert::ToInt(materialCfg[1]));
 		SetMaterial(material);
 		//SAFE_DELETE(tbMgr);
@@ -171,7 +171,7 @@ namespace E3DEngine
 	
 	void Mesh::createBoneTree(aiNode * pNode)
 	{
-		std::string boneName = pNode->mName.data;
+		std::string &&boneName = pNode->mName.data;
 		int sPos = boneName.find("_$");
 		if (sPos != std::string::npos)
 		{

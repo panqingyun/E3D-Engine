@@ -47,7 +47,7 @@ namespace E3DEngine
     
     ParticleEmitter * ParticleFactory::CreateParticleEmitter(E3DEngine::ParticleGroup *p, std::string name)
     {
-		std::string type_name = ClassFactory::GetInstance().getTypeNameByClassName(name);
+		std::string &&type_name = ClassFactory::GetInstance().getTypeNameByClassName(name);
         ParticleEmitter * emitter = (ParticleEmitter *)ClassFactory::GetInstance().CreateClass(type_name);
         emitter->Initilize(p);
         return emitter;
@@ -55,7 +55,7 @@ namespace E3DEngine
     
     ParticleAffector * ParticleFactory::CreateParticleAffector(E3DEngine::ParticleGroup *p, std::string name)
 	{
-		std::string type_name = ClassFactory::GetInstance().getTypeNameByClassName(name);
+		std::string &&type_name = ClassFactory::GetInstance().getTypeNameByClassName(name);
         ParticleAffector * affector = (ParticleAffector *)ClassFactory::GetInstance().CreateClass(type_name);
         affector->Initilize(p);
         return affector;

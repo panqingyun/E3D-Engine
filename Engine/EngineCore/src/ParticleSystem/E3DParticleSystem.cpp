@@ -145,9 +145,9 @@ namespace E3DEngine
 		{
 			return;
 		}
-		std::string layerName = layerConfig->Name;
+		std::string &layerName = layerConfig->Name;
 		SceneManager::GetCurrentScene()->AddObject(particle);
-		std::vector<string> materialCfg = StringBuilder::Split(particle->m_MaterialName, ":");
+		std::vector<string> &&materialCfg = StringBuilder::Split(particle->m_MaterialName, ":");
 		std::string materialPath = "";
 		int materialID = 1;
 		if (materialCfg.size() == 2)
@@ -171,13 +171,13 @@ namespace E3DEngine
 
 	void ParticleSystem::createParticleEmitter(ParticleConfig *config, std::string cfgName, ParticleGroup * particle)
 	{
-		auto emitters = StringBuilder::Split(config->Emitter, ";"); // name1:ID1,ID2;name2:ID1,ID2
+		auto &&emitters = StringBuilder::Split(config->Emitter, ";"); // name1:ID1,ID2;name2:ID1,ID2
 		int emitterID = 0;
 		for (auto & emitter : emitters)
 		{
-			auto emitterNameIDs = StringBuilder::Split(emitter, ":");
-			auto name			= StringBuilder::Trim(emitterNameIDs[0]);
-			auto ids			= StringBuilder::Split(emitterNameIDs[1], ",");
+			auto &&emitterNameIDs	= StringBuilder::Split(emitter, ":");
+			auto &&name				= StringBuilder::Trim(emitterNameIDs[0]);
+			auto &&ids				= StringBuilder::Split(emitterNameIDs[1], ",");
 
 			for (auto & id : ids)
 			{
@@ -195,9 +195,9 @@ namespace E3DEngine
 		int affectorID = 0;
 		for (auto & affector : affectors)
 		{
-			auto affectorNameIDs	= StringBuilder::Split(affector, ":");
-			auto name				= StringBuilder::Trim(affectorNameIDs[0]);
-			auto ids				= StringBuilder::Split(affectorNameIDs[1], ",");
+			auto &&affectorNameIDs	= StringBuilder::Split(affector, ":");
+			auto &&name				= StringBuilder::Trim(affectorNameIDs[0]);
+			auto &&ids				= StringBuilder::Split(affectorNameIDs[1], ",");
 			for (auto & id : ids)
 			{
 				affectorID = Convert::ToInt(StringBuilder::Trim(id));

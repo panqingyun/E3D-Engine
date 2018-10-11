@@ -111,19 +111,19 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 
 void E3DEngine::GLES_ShaderManager::processUniformVar(GLES_Shader *shader, std::string &shaderContent)
 {
-	size_t pos = shaderContent.find("uniform");
+	size_t&& pos = shaderContent.find("uniform");
 	while (pos != std::string::npos)
 	{
-		size_t endPos = shaderContent.find(";", pos + 1);
+		size_t&& endPos = shaderContent.find(";", pos + 1);
 		if (endPos == std::string::npos)
 		{
 			pos = shaderContent.find("uniform", pos + 1);
 			continue;
 		}
-		std::string uniformString = shaderContent.substr(pos, endPos - pos);
+		std::string&& uniformString = shaderContent.substr(pos, endPos - pos);
 
 		StringBuilder::ReplaceAll(uniformString, "\t", " ");
-		std::vector<std::string> uniformVar = StringBuilder::Split(uniformString, " ");
+		std::vector<std::string> &&uniformVar = StringBuilder::Split(uniformString, " ");
 		std::string uniformType = "";
 		std::string uniformName = "";
 		int size = 0;
@@ -142,7 +142,7 @@ void E3DEngine::GLES_ShaderManager::processUniformVar(GLES_Shader *shader, std::
 				uniformName = uniformVar[i];
 				if (uniformName.find("[") != std::string::npos) //数组
 				{
-					std::vector<std::string> values = StringBuilder::Split(uniformName, "[");
+					std::vector<std::string> &&values = StringBuilder::Split(uniformName, "[");
 					uniformType += "[]";
 
 					size_t pos = values[1].find("]");
@@ -192,7 +192,7 @@ std::string E3DEngine::GLES_ShaderManager::preProcessShader(GLES_Shader *shader,
 	
 	std::ostringstream tmp;
 	tmp << infile.rdbuf();
-	std::string str = tmp.str();
+	std::string &&str = tmp.str();
 
 	getVertex(shader, str, folder, vs_content);
 	getFragment(shader, str, folder, fs_content);
@@ -213,7 +213,7 @@ void E3DEngine::GLES_ShaderManager::appendInclude(std::string &strLine, std::str
 
 		std::ostringstream tmp;
 		tmp << infile.rdbuf();
-		std::string str = tmp.str();
+		std::string &&str = tmp.str();
 
 		strLine.erase(strLine.begin() + pos, strLine.begin() + endPos + 1);
 		appendInclude(str, folder);
@@ -228,11 +228,11 @@ void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std
 	StringBuilder::ReplaceAll(attri, "\t", "");
 	StringBuilder::ReplaceAll(attri, " ", "");
 	StringBuilder::ReplaceAll(attri, "\n", "");
-	std::vector<std::string> attriVec = StringBuilder::Split(attri, ";");
+	std::vector<std::string> &&attriVec = StringBuilder::Split(attri, ";");
 	std::string attributeVari = "";
 	for (int i = 0; i < attriVec.size(); i++)
 	{
-		std::vector<std::string> attribute = StringBuilder::Split(attriVec[i], ":");
+		std::vector<std::string> &&attribute = StringBuilder::Split(attriVec[i], ":");
 		if (attribute.empty())
 		{
 			continue;
@@ -241,7 +241,7 @@ void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std
 		if (staticAttributeMap.find(attribute[0]) != staticAttributeMap.end())
 		{
 			int typeSize = staticAttributeMap[attribute[0]].AttributeSize;
-			Attribute attr = staticAttributeMap[attribute[0]];
+			Attribute &attr = staticAttributeMap[attribute[0]];
 			staticAttributeMap[attribute[0]].VarName = attribute[1];
 			attr.VarName = attribute[1];
 			attr.TypeName = attribute[0];
@@ -251,7 +251,7 @@ void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std
 		else if (dynamicAttributeMap.find(attribute[0]) != dynamicAttributeMap.end())
 		{
 			int typeSize = dynamicAttributeMap[attribute[0]].AttributeSize;
-			Attribute attr = dynamicAttributeMap[attribute[0]];
+			Attribute &attr = dynamicAttributeMap[attribute[0]];
 			dynamicAttributeMap[attribute[0]].VarName = attribute[1];
 			attr.VarName = attribute[1];
 			attr.TypeName = attribute[0];

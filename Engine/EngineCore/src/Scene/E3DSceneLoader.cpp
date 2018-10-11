@@ -59,10 +59,10 @@ namespace E3DEngine
 	Color4 createColor(std::string colorStr)
 	{
 		std::vector<std::string> colorS = StringBuilder::Split(colorStr, ",");
-		float r = Convert::ToFloat(colorS[0]);
-		float g = Convert::ToFloat(colorS[1]);
-		float b = Convert::ToFloat(colorS[2]);
-		float a = Convert::ToFloat(colorS[3]);
+		float &&r = Convert::ToFloat(colorS[0]);
+		float &&g = Convert::ToFloat(colorS[1]);
+		float &&b = Convert::ToFloat(colorS[2]);
+		float &&a = Convert::ToFloat(colorS[3]);
 
 		return Color4(r, g, b, a);
 	}
@@ -70,9 +70,9 @@ namespace E3DEngine
 	vec3f getVector3(std::string vecStr)
 	{
 		std::vector<std::string> colorS = StringBuilder::Split(vecStr, ",");
-		float x = Convert::ToFloat(colorS[0]);
-		float y = Convert::ToFloat(colorS[1]);
-		float z = Convert::ToFloat(colorS[2]);
+		float &&x = Convert::ToFloat(colorS[0]);
+		float &&y = Convert::ToFloat(colorS[1]);
+		float &&z = Convert::ToFloat(colorS[2]);
 
 		return vec3f(x, y, z);
 	}
@@ -200,7 +200,7 @@ namespace E3DEngine
 		{
 			return;
 		}
-		std::string  rd = *objectElement->Attribute(_RenderIndex);
+		std::string rd = *objectElement->Attribute(_RenderIndex);
 		StringBuilder::Trim(rd);
 		go->SetRenderIndex(Convert::ToInt(rd));
 	}
@@ -431,7 +431,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			unsigned int _type = Convert::ToInt(*item->ToElement()->Attribute(_TypeName));
+			unsigned int &&_type = Convert::ToInt(*item->ToElement()->Attribute(_TypeName));
 			 
 			if (createObjectFun.find(_type) == createObjectFun.end())
 			{
@@ -569,7 +569,7 @@ namespace E3DEngine
 			std::string componentName = componentListPair.first;
 			std::string className = "";
 			std::string nameSpaceName = "";
-			std::string full_name = std::string(componentName);
+			std::string full_name = componentName;
 			int dotPos = full_name.find_last_of(".");
 
 			if (dotPos == std::string::npos)

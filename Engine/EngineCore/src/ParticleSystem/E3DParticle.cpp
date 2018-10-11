@@ -451,7 +451,7 @@ namespace E3DEngine
 		{
 			m_FrameEffect->Play();
 			m_FrameEffect->AddSource(this);
-			vec2f uvpos = m_FrameEffect->GetTextureFrameCoord(0);
+			vec2f &&uvpos = m_FrameEffect->GetTextureFrameCoord(0);
 			SetTextureUVCoord(uvpos.x, uvpos.y, m_FrameEffect->GetTextureFrameScale());
 		}
 	}

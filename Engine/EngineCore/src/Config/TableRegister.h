@@ -12,7 +12,7 @@ class E3D_EXPORT_DLL TableRegister
 public:
 	static E3DEngine::TableManager * GetTableManager(const char * filePath)
     {
-		std::string configName = std::string(filePath);
+		std::string configName = filePath;
 		TiXmlDocument * doc = nullptr;
 		if (instance().mTableManagerMap.find(configName) == instance().mTableManagerMap.end())
 		{
@@ -31,7 +31,7 @@ public:
 			bool needContinue = false;
 			for (TiXmlNode * item = rootElem->FirstChild(); item != nullptr; item = item->NextSibling())
 			{
-				std::string tableName = item->Value();
+				std::string &&tableName = item->Value();
 				if (needContinue == true) {
 					needContinue = false;
 					continue;

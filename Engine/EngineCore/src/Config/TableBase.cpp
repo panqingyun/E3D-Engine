@@ -83,15 +83,18 @@ namespace E3DEngine
 	void TableBase::Loaded(TiXmlNode * node)
 	{
         std::map<int, std::map<std::string, std::string>> tableMap;
-        for(TiXmlNode *item = node->FirstChild("Item"); item != nullptr; item = item->NextSibling("Item")){
+        for(TiXmlNode *item = node->FirstChild("Item"); item != nullptr; item = item->NextSibling("Item"))
+		{
             map<string, string> node_map;
-            for(TiXmlAttribute * attr = item->ToElement()->FirstAttribute(); attr != nullptr; attr = attr->Next()){
+            for(TiXmlAttribute * attr = item->ToElement()->FirstAttribute(); attr != nullptr; attr = attr->Next())
+			{
                 string _name(attr->Name());
                 string _value(attr->Value());
                 node_map.insert(pair<string, string>(_name, _value));
             }
             int key = Convert::ToInt(node_map[GetKey1()]);
-            if(GetKey1() != GetKey2()){
+            if(GetKey1() != GetKey2())
+			{
                 key = Convert::ToInt(node_map[GetKey1()]) * 10000 + Convert::ToInt(node_map[GetKey2()]);
             }
             tableMap.insert(pair<int, map<string, string>>(key, node_map));
@@ -160,11 +163,14 @@ namespace E3DEngine
 
     void TableBase::processSelectResult(map<string, string> *configItem)
     {
-        for(auto & it : m_propertyTypeMap){
-            if(configItem->find(it.first) == configItem->end()){
+        for(auto & it : m_propertyTypeMap)
+		{
+            if(configItem->find(it.first) == configItem->end())
+			{
                 continue;
             }
-            if(m_methodMap.find(it.first) == m_methodMap.end()){
+            if(m_methodMap.find(it.first) == m_methodMap.end())
+			{
                 continue;
             }
             convertTypeSetValue(m_methodMap[it.first], (*configItem)[it.first], it.second);

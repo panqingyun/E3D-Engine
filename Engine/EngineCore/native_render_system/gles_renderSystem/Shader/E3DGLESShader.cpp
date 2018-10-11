@@ -34,8 +34,8 @@ namespace E3DEngine
 	void GLES_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
 	{
 		ShaderProgram = glCreateProgram();
-		GLuint vertexShaderHandle = compileShader(vertexShader, GL_VERTEX_SHADER);
-		GLuint fragmentShaderHandle = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
+		GLuint &&vertexShaderHandle = compileShader(vertexShader, GL_VERTEX_SHADER);
+		GLuint &&fragmentShaderHandle = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
 
 		glAttachShader(ShaderProgram, vertexShaderHandle);
 		glAttachShader(ShaderProgram, fragmentShaderHandle);

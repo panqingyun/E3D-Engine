@@ -67,9 +67,9 @@ namespace E3DEngine
 		if (ptr->bFristUpdte)
         {
 			ptr->bFristUpdte = false;
-            float x = RangeRandom(m_xRandomRange[0], m_xRandomRange[1]);
-            float y = RangeRandom(m_yRandomRange[0], m_yRandomRange[1]);
-            float z = RangeRandom(m_zRandomRange[0], m_zRandomRange[1]);
+            float&& x = RangeRandom(m_xRandomRange[0], m_xRandomRange[1]);
+            float&& y = RangeRandom(m_yRandomRange[0], m_yRandomRange[1]);
+            float&& z = RangeRandom(m_zRandomRange[0], m_zRandomRange[1]);
             m_vForceDirection = vec3f(x, y, z);
             m_vForceDirection.normalize();
 			ptr->SetMoveDirction(m_vForceDirection);
@@ -109,7 +109,7 @@ namespace E3DEngine
         }
         else
         {
-			vec3f dir = ptr->GetMoveDirection();
+			vec3f&& dir = ptr->GetMoveDirection();
             if (m_pParticleGroup->m_isLock == 2)
             {
                 dir.x += m_pParticleGroup->m_ParticleDir.x;
@@ -212,7 +212,7 @@ namespace E3DEngine
             int r = rand()%2;
             ptr->SetRotateSpeed(r > 0?m_fRotateWithEmitterAngle:(-1.0*m_fRotateWithEmitterAngle));
         }
-        float hasLiveTime = ptr->getLiveTime();
+        float &&hasLiveTime = ptr->getLiveTime();
         float totalTime = ptr->getTotleLiveTime();
         float offset = 0.0f;
         float p = hasLiveTime/totalTime;

@@ -1,5 +1,5 @@
 # E3DEngine
-![](https://github.com/panqingyun/E3D/blob/master/engine.png)  
+![](https://github.com/panqingyun/E3D/blob/master/editor.png)  
 
 - [x] 场景
 - [x] 摄像机

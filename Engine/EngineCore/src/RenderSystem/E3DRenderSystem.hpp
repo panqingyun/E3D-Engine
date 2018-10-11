@@ -15,6 +15,7 @@
 #include "Texture/E3DTextureDataManager.hpp"
 #include "Texture/E3DRender2Texture.h"
 #include "../../include/EngineAPI.h"
+#include "Shader/E3DShaderManager.h"
 
 namespace E3DEngine
 {	
@@ -55,6 +56,7 @@ namespace E3DEngine
 		RendererManager * GetRenderManager();
 		MaterialManager * GetMaterialManager();
 		TextureDataManager *GetTextureDataManager();
+		ShaderManager * GetShaderManager();
 
 	public:
 		virtual void BeginFrame();
@@ -73,6 +75,7 @@ namespace E3DEngine
 		RendererManager * m_pRenderManager;
 		MaterialManager * m_pMaterialManager;
 		TextureDataManager * m_pTextureDataManager;
+		ShaderManager	* m_pShaderManager;
 	};
 
 }

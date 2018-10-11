@@ -30,26 +30,40 @@ namespace E3DEngine
 		SAFE_DELETE(mShader);
 	}
 
-	void Material::CreateMaterial(MaterialConfig * config, ShaderConfig * sCfg)
+	void Material::CreateMaterial(MaterialConfig * config)
 	{
 		mMaterialConfig = config;
 		if (mMaterialConfig != nullptr)
 		{
+			ShaderConfig * sCfg = mMaterialTableManager->Select<ShaderConfig>(config->ShaderID);
 			if (sCfg == nullptr)
 			{
 				return;
 			}
-			CreateShader(sCfg);
+			mShader = GetRenderSystem()->GetShaderManager()->GetShader(sCfg, mFilePath);
 			mColor = Convert::ToColorRGBA(config->Color);
-			for (auto& sp : mShader->GetSamplerNameValue())
+			std::string &uniformVarDefault = sCfg->UniformVariable;
+			std::vector<std::string> uniformVarDefaultValue = StringBuilder::Split(uniformVarDefault, ";");
+
+			for (auto& sp : uniformVarDefaultValue)
 			{
-				TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + sp.second);
-				tData->clampType = (CLAMP_TYPE)config->TextureClampType;
-				tData->filterType = (FILTER_TYPE)config->TextureFilterType;
-				tData->fileName = sp.second;
-				tData->uniformName = sp.first;
-				createTexture(*tData);
-				SAFE_DELETE(tData);
+				std::vector<std::string> varValues = StringBuilder::Split(sp, "-");
+				if (varValues.empty())
+				{
+					continue;
+				}
+
+				if (mShader->GetUniformType(varValues[0]) == "sampler2D") // create texture
+				{
+					TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
+					tData->clampType = (CLAMP_TYPE)config->TextureClampType;
+					tData->filterType = (FILTER_TYPE)config->TextureFilterType;
+					tData->fileName = varValues[1];
+					tData->uniformName = varValues[0];
+					createTexture(*tData);
+					SAFE_DELETE(tData);
+				}
+				
 			}
 		}
 	}
@@ -147,7 +161,7 @@ namespace E3DEngine
 
 	void Material::CreateShader(ShaderConfig *cfg)
 	{
-		createShader(cfg->VertexShader, cfg->FragmentShader, cfg->AttribVariable, cfg->UniformVariable);
+		
 	}
 
 }

@@ -10,6 +10,7 @@
 #include "../../Source/E3DDebug.h"
 #include "../../Source/E3DVertex.h"
 #include "../../Config/Table.h"
+#include "../E3DRenderSystem.hpp"
 
 namespace E3DEngine
 {
@@ -24,13 +25,13 @@ namespace E3DEngine
 		matrix3UniformList.clear();
 		matrix2UniformList.clear();
 		int1UniformList.clear();
-		StaticAttributeList.clear();
 	}
 
 	void Shader::UpdateFloatValue(std::string name, float value)
 	{
 		if (float1UniformList.find(name) == float1UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -41,6 +42,7 @@ namespace E3DEngine
 	{
 		if (float2UniformList.find(name) == float2UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -54,6 +56,7 @@ namespace E3DEngine
 	{
 		if (float3UniformList.find(name) == float3UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -66,6 +69,7 @@ namespace E3DEngine
 	{
 		if (float4UniformList.find(name) == float4UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -79,6 +83,7 @@ namespace E3DEngine
 	{
 		if (int1UniformList.find(name) == int1UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -89,6 +94,7 @@ namespace E3DEngine
 	{
 		if (matrix2UniformList.find(name) == matrix2UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -100,6 +106,7 @@ namespace E3DEngine
 	{
 		if (matrix3UniformList.find(name) == matrix3UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -111,6 +118,7 @@ namespace E3DEngine
 	{
 		if (matrix4UniformList.find(name) == matrix4UniformList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 
@@ -123,6 +131,7 @@ namespace E3DEngine
 	{
 		if (float1UniformArrayList.find(name) == float1UniformArrayList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 		float1UniformArrayList[name].Value = value;
@@ -132,6 +141,7 @@ namespace E3DEngine
 	{
 		if (float2UniformArrayList.find(name) == float2UniformArrayList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 		float2UniformArrayList[name].Value = value;
@@ -141,6 +151,7 @@ namespace E3DEngine
 	{
 		if (float3UniformArrayList.find(name) == float3UniformArrayList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 		float3UniformArrayList[name].Value = value;
@@ -150,9 +161,17 @@ namespace E3DEngine
 	{
 		if (float4UniformArrayList.find(name) == float4UniformArrayList.end())
 		{
+			Debug::Log(ell_Error, "uniform not defined %s", name.c_str());
 			return;
 		}
 		float4UniformArrayList[name].Value = value;
+	}
+
+
+	void Shader::RunUniformFunc(std::string uniformType, std::string uniformName, std::string defaultVale, int size)
+	{
+		(this->*uniformSetFunc[uniformType])(uniformName.c_str(), defaultVale, size);
+		uniformTypeMap[uniformName] = uniformType;
 	}
 
 	void Shader::createInt1Uniform(std::string varName, std::string defValueFormat, int count)
@@ -252,44 +271,9 @@ namespace E3DEngine
 		float4UniformArrayList[varName] = uni;
 	}
 
-	void Shader::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType, uint type)
-	{
-		Attribute attribute;
-		attribute.AttributeSize = AttributeSize;
-		attribute.BindLocation = BindLocation;
-		attribute.Normalized = Normalized;
-		attribute.StartPosition = StartPosition;
-		attribute.VarName = "";
-		attribute.VarType = VarType;
-		attribute.AttribType = attrType;
-
-		attribute.VertexStructSize = VertexStructSize;
-		if (type == DYNAMIC_VERTEX)
-		{
-			dynamicAttributeMap[typeName] = attribute;
-		}
-		else
-		{
-			staticAttributeMap[typeName] = attribute;
-		}
-	}
-
-
 	void Shader::processUniformVar(string uniformVariable)
 	{
 
-	}
-
-
-	std::string Shader::GetFileRelativeFolder()
-	{
-		return mFilePath;
-	}
-
-
-	void Shader::SetFileRelativeFolder(std::string path)
-	{
-		mFilePath = path;
 	}
 
 	std::map<std::string, std::string> & Shader::GetSamplerNameValue()
@@ -297,49 +281,13 @@ namespace E3DEngine
 		return samplerNameValue;
 	}
 
-	void Shader::processAttribVar(string attribVariable)
+	std::string Shader::GetUniformType(std::string uniformName)
 	{
-		std::vector<std::string> attribVar = StringBuilder::Split(attribVariable, ";");
-		for (auto &attrib : attribVar)
+		if (uniformTypeMap.find(uniformName) == uniformTypeMap.end())
 		{
-			std::string attribKeyValue = StringBuilder::Trim(attrib);
-			if (attrib == empty_string)
-			{
-				continue;
-			}
-			std::vector<std::string> attribKey = StringBuilder::Split(attribKeyValue, ":");
-			if (attribKey.size() != 2)
-			{
-				Debug::Log(ell_Error, "attribute varible format is wrong!");
-				assert(false);
-			}
-
-			std::string attribTypeName = attribKey[0];
-			std::string attribVarName = attribKey[1];
-
-			if (staticAttributeMap.find(attribTypeName) != staticAttributeMap.end())
-			{
-				int typeSize = staticAttributeMap[attribTypeName].AttributeSize;
-				Attribute attr = staticAttributeMap[attribTypeName];
-				staticAttributeMap[attribTypeName].VarName = attribVarName;
-				attr.VarName = attribVarName;
-				attr.TypeName = attribTypeName;
-				StaticAttributeList.emplace_back(attr);
-			}
-			else if (dynamicAttributeMap.find(attribTypeName) != dynamicAttributeMap.end())
-			{
-				int typeSize = dynamicAttributeMap[attribTypeName].AttributeSize;
-				Attribute attr = dynamicAttributeMap[attribTypeName];
-				dynamicAttributeMap[attribTypeName].VarName = attribVarName;
-				attr.VarName = attribVarName;
-				attr.TypeName = attribTypeName;
-				DynamicAttributeList.emplace_back(attr);
-			}
-			else
-			{
-				Debug::Log(ell_Error, "attribute varible type is wrong!");
-				assert(false);
-			}
+			return empty_string;
 		}
+		return uniformTypeMap[uniformName];
 	}
+
 }

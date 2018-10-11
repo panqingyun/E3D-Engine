@@ -10,6 +10,7 @@
 #include "Texture/E3DGLESRender2Texture.h"
 #include "RenderObject/E3DGLESRenderManager.hpp"
 #include <include/EngineAPI.h>
+#include "Shader/E3DGLESShaderManager.h"
 
 E3DEngine::GLES_RenderSystem * g_RenderSystem = nullptr;
 namespace E3DEngine
@@ -17,9 +18,9 @@ namespace E3DEngine
 	void GLES_RenderSystem::Initilize()
 	{
 		m_pTextureDataManager = dynamic_cast<TextureDataManager*>(new GLES_TextureDataManager);
-		m_pTextureDataManager->Init();
 		m_pMaterialManager = dynamic_cast<MaterialManager*>(new GLES_MaterialManager);
 		m_pRenderManager = dynamic_cast<RendererManager*>(new GLES_RendererManager);
+		m_pShaderManager = dynamic_cast<ShaderManager*>(new GLES_ShaderManager);
 	}
 
 

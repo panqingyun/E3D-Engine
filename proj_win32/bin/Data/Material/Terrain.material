@@ -31,13 +31,8 @@
 		--> 
 		<Item 
 					ID				= 1 
-					VertexShader	= "shader/TerrainVS.shader" 
-					FragmentShader	= "shader/TerrainFS.shader" 	
+					ShaderPath	= "shader/TerrainVS.shader" 
 					UniformVariable	= "" 
-									   
-					AttribVariable	= "POSITION:position;
-									   COLOR:color;
-									   NORMAL:attr_normal;"
 		/>
 	</ShaderConfig>
 </ConfigSystem>

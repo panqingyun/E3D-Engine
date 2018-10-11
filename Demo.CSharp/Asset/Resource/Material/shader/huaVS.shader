@@ -1,5 +1,14 @@
-#include "Standard.shader"
+#Vertex_Begin
 
+#Attribute
+{
+	POSITION:position;
+	COLOR:color;
+	TEXTURECOORD:inputTextureCoordinate;
+	NORMAL:attr_normal;
+}
+
+#include "Standard.shader"
 varying vec2 v_coord;
 varying vec4 DestinationColor;
 
@@ -16,3 +25,30 @@ void main(void)
 	initFogNeedVar(position);
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
+
+#Vertex_End
+
+#Framgent_Begin
+
+precision highp float;
+#include "Fragment.shader"
+varying highp vec2 v_coord;
+uniform sampler2D myTexture0;
+varying vec4 DestinationColor;
+
+void main(void) 
+{ 
+	vec4 color = texture2D(myTexture0, v_coord);
+	
+	if(color.a < 0.1)
+	{
+		discard;
+	}
+	else
+	{
+		vec4 fogColor = mixFogColor(color,vec4(1.0,1.0,1.0,1.0));
+		gl_FragColor = fogColor * DestinationColor;
+	}
+}
+
+#Framgent_End

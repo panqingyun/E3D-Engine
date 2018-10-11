@@ -15,7 +15,6 @@ namespace E3DEngine
 	class GLES_TextureDataManager : public TextureDataManager
 	{
 	public:
-		virtual void Init() override;
 		virtual unsigned int GetTextureBuffer(std::string imageName) override;
 
 		virtual TextureData * GetTextureDataFromFile(std::string imageName) override;

@@ -16,7 +16,8 @@
 				</Grid.ColumnDefinitions>
 
 				<TreeView x:Name="folderTreeView" FontSize="12" HorizontalAlignment="Stretch" SelectedItemChanged="fileTreeView_SelectedItemChanged"
-						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="{x:Null}" Foreground="White" ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
+						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="{x:Null}" 
+						  Foreground="White" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.Resources>
 						<HierarchicalDataTemplate DataType="{x:Type model:DirectoryRecord}" ItemsSource="{Binding Directories}" >
 							<StackPanel Orientation="Horizontal">
@@ -26,7 +27,8 @@
 					</TreeView.Resources>
 				</TreeView>
 				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick"
-							  Background="{x:Null}" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
+						  PreviewMouseLeftButtonUp="fileView_PreviewMouseUp"
+							  Background="{x:Null}" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.ContextMenu>
 						<ContextMenu>
 							<MenuItem x:Name="MenuItemNewFile" Header="{StaticResource New}" Click="_FileViewMenuItemNewFile_Click"/>
@@ -35,7 +37,7 @@
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate ItemsSource="{Binding SubRecords}" >
-							<DockPanel Background="Transparent" PreviewMouseLeftButtonUp="fileView_PreviewMouseUp">
+							<DockPanel Background="Transparent">
 								<Image  Width="20" Height="20" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
 													  Stretch="Uniform"/>
 								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" 

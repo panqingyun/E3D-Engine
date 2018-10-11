@@ -28,7 +28,6 @@ namespace E3DEngine
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
 	public:
-		virtual void createShader(string vs, string ps, string attrVar, string unifVar) override;
 
 		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
 									   std::string xNName,

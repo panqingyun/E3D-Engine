@@ -1,3 +1,12 @@
+#Vertex_Begin
+
+#Attribute
+{
+	POSITION:position;
+	COLOR:color;
+	NORMAL:attr_normal;
+}
+
 #include "Standard.shader"
 
 varying highp vec3 vPosition;
@@ -16,3 +25,27 @@ void main(void)
 	mCameraPos = _e3d_CameraPos;
     gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;//* BillboardMatrix();* roateMatrix * scaleMat *
 }
+
+#Vertex_End
+
+#Framgent_Begin
+
+precision highp float;
+varying lowp vec4 DestinationColor; // 1
+varying highp vec3 vPosition;
+varying highp vec3 mCameraPos;
+
+void main(void) 
+{ 
+	// 虚化远处的网格
+	float dist = abs(distance(mCameraPos, vPosition));
+	float maxDist = 800.0;
+	float minDist = 1.0;
+    float factor = (maxDist - dist) / (maxDist - minDist);  
+    factor = clamp( factor, 0.0, 1.0 );  
+	
+    vec4 mColor = mix( vec4(0.0,0.0,0.0,0.5), DestinationColor, factor );  
+	gl_FragColor = mColor;
+}
+
+#Framgent_End

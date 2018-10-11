@@ -53,9 +53,8 @@ namespace E3DEngine
 		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
 		material->SetEnableCullFace(config->CullFace == 0);
 		material->mFilePath = folder + "/";
-		ShaderConfig * sCfg = tblManager->Select<ShaderConfig>(config->ShaderID);
 		material->mMaterialTableManager = tblManager;
-		material->CreateMaterial(config, sCfg);
+		material->CreateMaterial(config);
 		m_mapIDMaterials[material->ID] = material;
 		return material;
 	}

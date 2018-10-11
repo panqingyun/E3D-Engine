@@ -39,7 +39,7 @@ namespace E3DEngine
 		// @param 材质配置
 		// @param Shader配置
 		//-----------------------------------------------
-		virtual void CreateMaterial(MaterialConfig * config, ShaderConfig * sCfg);
+		virtual void CreateMaterial(MaterialConfig * config);
 
 		// -----------------------------------------------
 		// 给材质设置纹理

@@ -71,11 +71,6 @@ namespace E3DEngine
 	{
 	public:
 		// -----------------------------------------------
-		// 
-		//-----------------------------------------------
-		virtual void Init();
-
-		// -----------------------------------------------
 		// 创建纹理缓冲区
 		// @return 纹理缓冲区ID
 		// @param 图片名字
@@ -93,7 +88,6 @@ namespace E3DEngine
 		// 清理
 		//-----------------------------------------------
 		virtual void Cleanup();
-		std::string DEFAULT_TEXTURE_FILE;
 
 	protected:
 		std::map<std::string, unsigned int> m_mapTextureBuffer;

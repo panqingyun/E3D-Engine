@@ -8,10 +8,10 @@
 		<Item ID="5" ShaderID = "5" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID= 1 VertexShader="shader/huaVS.shader" FragmentShader= "shader/shu_fs.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;" AttribVariable	= "POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
-		<Item ID= 2 VertexShader="shader/huaVS.shader" FragmentShader= "shader/shu_fs.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;" AttribVariable	= "POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
-		<Item ID= 3 VertexShader="shader/huaVS.shader" FragmentShader= "shader/shu_fs.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/WD_zhiwu_03.tga;" AttribVariable	= "POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
-		<Item ID= 4 VertexShader="shader/huaVS.shader" FragmentShader= "shader/shu_fs.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;" AttribVariable	= "POSITION:positionCOLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
-		<Item ID= 5 VertexShader="shader/huaVS.shader" FragmentShader= "shader/shu_fs.shader" UniformVariable="sampler2D:myTexture0-Resource/Material/texture/xt_zhuzi01_01.tga;" AttribVariable	= "POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate; NORMAL:attr_normal;"/>
+		<Item ID= "1" ShaderPath="shader/huaVS.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;"/>
+		<Item ID= "2" ShaderPath="shader/huaVS.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;"/>
+		<Item ID= "3" ShaderPath="shader/huaVS.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_03.tga;"/>
+		<Item ID= "4" ShaderPath="shader/huaVS.shader" UniformVariable="myTexture0-Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;"/>
+		<Item ID= "5" ShaderPath="shader/huaVS.shader" UniformVariable="myTexture0-Resource/Material/texture/xt_zhuzi01_01.tga;"/>
 	</ShaderConfig>
 </ConfigSystem>

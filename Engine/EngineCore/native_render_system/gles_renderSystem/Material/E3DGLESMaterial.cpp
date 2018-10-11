@@ -187,15 +187,4 @@ namespace E3DEngine
 	{
 		static_cast<GLES_Shader*>(mShader)->UpdateAttribPointerValue(vertexType);
 	}
-
-
-	void GLES_Material::createShader(string vs, string ps, string attrVar, string unifVar)
-	{
-		mShader = new GLES_Shader;
-		mShader->SetFileRelativeFolder(mFilePath);
-
-		static_cast<GLES_Shader*>(mShader)->InitShaderVar();
-		static_cast<GLES_Shader*>(mShader)->LoadShader(vs, ps, attrVar, unifVar);
-	}
-
 }

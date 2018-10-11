@@ -9,7 +9,7 @@
 	<system:String x:Key="New">新建</system:String>
 	<system:String x:Key="Delete">删除</system:String>
 	<system:String x:Key="Hierarchy">层次面板</system:String>
-	<system:String x:Key="PropertyText">属性</system:String>
+	<system:String x:Key="PropertyText">属性检查器</system:String>
 	<system:String x:Key="StateText">状态:</system:String>
 	<system:String x:Key="ResourceView">文件视图</system:String>
 	<system:String x:Key="OpenInFolder">打开所在文件夹</system:String>

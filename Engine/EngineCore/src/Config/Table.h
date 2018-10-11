@@ -498,18 +498,14 @@ namespace E3DEngine
 		DECLARE_CLASS(ShaderConfig);
 	public:
 		DECLARE_MEMBER(ShaderConfig, int, ID);
-		DECLARE_MEMBER(ShaderConfig, string, VertexShader);
-		DECLARE_MEMBER(ShaderConfig, string, FragmentShader);
+		DECLARE_MEMBER(ShaderConfig, string, ShaderPath);
 		DECLARE_MEMBER(ShaderConfig, string, UniformVariable);
-		DECLARE_MEMBER(ShaderConfig, string, AttribVariable);
 
 		virtual void registProperty() override
 		{
 			SAVE_MEMBER(ID, int);
-			SAVE_MEMBER(VertexShader, string);
-			SAVE_MEMBER(FragmentShader, string);
+			SAVE_MEMBER(ShaderPath, string);
 			SAVE_MEMBER(UniformVariable, string);
-			SAVE_MEMBER(AttribVariable, string);
 
 		}
 	};

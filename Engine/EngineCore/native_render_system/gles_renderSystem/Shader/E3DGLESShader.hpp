@@ -38,6 +38,20 @@ namespace E3DEngine
 
 	};
 
+	struct Attribute
+	{
+		std::string  AttribType;		// 如 vec3
+		std::string  TypeName;			// 语义 如 POSITION 代表这个属性是用来做什么的
+		std::string  VarName;			// Shader里面的变量名
+		uint		 AttributeLoaction;		// 变量的位置，使用glGetAttribLocation获取到的值
+		int			 StartPosition;		// 在顶点数据结构中的起始位置
+		uint		 VarType;			// 数据类型，如 GL_FLOAT
+		uint		 Normalized;		// 是否归一化
+		uint		 VertexStructSize;	// 顶点结构大小
+		uint		 AttributeSize;		// 该属性的大小
+		uint		 BindLocation;		// 绑定到Shader中的位置
+	};
+
 	class GLES_Shader : public Shader
 	{
 	public:
@@ -62,18 +76,21 @@ namespace E3DEngine
 		virtual void	UpdateAttribPointerValue(UINT vertexType);
 		virtual void	EnableVertexAttribArray(UINT vertexType);
 		virtual void	InitShaderVar();
-		virtual void	LoadShader(std::string vs, std::string ps, std::string attrVar, std::string unifVar);
-		std::string		processVShader();
-		virtual void	processUniformVar(std::string uniformName);
-	private:
-		void processEngineDefineUniform();
 
+		void AddAttriList(Attribute attri, bool isStatic);
+		
+	private:
+		int location;
 	protected:
 		virtual GLuint	compileShader(const char*  shaderName, GLenum shaderType);
 		virtual void	compileShaders();
 		virtual void	loadAttribLocation(UINT vertexType);
 		virtual void	loadUniformLocation();
 		virtual void	bindAttribLoaction(UINT vertexType);
+
+	protected:
+		std::vector<Attribute> staticAttributeList;
+		std::vector<Attribute> dynamicAttributeList;
 	};
 }
 

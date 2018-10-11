@@ -1,7 +1,16 @@
+#Vertex_Begin
+
+#Attribute
+{
+	POSITION:position;
+	COLOR:color;
+	TEXTURECOORD:inputTextureCoordinate;
+	NORMAL:attr_normal;
+}
+
 #include "Standard.shader"
 
 varying lowp vec2 v_coord;
-
 
 void main(void)
 {
@@ -13,3 +22,17 @@ void main(void)
 	// DestinationColor = getLightColor(_pos.xyz, _normal.xyz);
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
+
+#Vertex_End
+
+#Framgent_Begin
+
+precision highp float;
+varying highp vec2 v_coord;
+uniform sampler2D myTexture0;
+void main(void) 
+{ 
+	gl_FragColor = texture2D(myTexture0, v_coord);	
+}
+
+#Framgent_End

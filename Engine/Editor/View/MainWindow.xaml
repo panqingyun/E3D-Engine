@@ -29,7 +29,8 @@
 				<RowDefinition Height="133*"/>
 			</Grid.RowDefinitions>
 			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="12" BorderBrush="Transparent">
-				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
+				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" 
+						  BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle}" MouseLeftButtonUp="objectList_MouseLeftButtonUp">
 					<TreeView.ContextMenu >
 						<ContextMenu>
 							<MenuItem x:Name="_MenuItemNew" Command="{Binding MainMenuNewButtonCommand}" Header="{StaticResource New}" />
@@ -38,7 +39,7 @@
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}"  ItemsSource="{Binding Childs}">
-							<Grid  MouseLeftButtonUp="objectList_MouseLeftButtonUp" Background="Transparent">
+							<Grid >
 								<TextBlock Foreground="White" Text="{Binding ShowText}" FontSize="12" Height="20"/>
 							</Grid>
 						</HierarchicalDataTemplate>
@@ -49,8 +50,14 @@
 			<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Transparent" Height="3" VerticalAlignment="Top"/>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="2" >
-			<TabControl Background="#FF2E2E2E" FontSize="12" Margin="0,10,0,0">
-				<TabItem Header="{StaticResource PropertyText}" Background="#FFC5C5C5" >
+			<TabControl Background="#FF2E2E2E" FontSize="12">
+				<TabItem  Background="#FF474646" >
+					<TabItem.Header>
+						<Grid>
+							<Image Source="/E3DEditor;component/Resources/Pic/Setting.ico" Height="20" Width="20" HorizontalAlignment="Left"/>
+							<TextBlock Text="{StaticResource PropertyText}" Margin="30,0,0,0" VerticalAlignment="Center"/>
+						</Grid>
+					</TabItem.Header>
 					<local:PropertiesView HorizontalAlignment="Stretch" Margin="-2,20,0,0" VerticalAlignment="Stretch" x:Name="properties" Background="#FF2E2E2E" />
 				</TabItem>
 			</TabControl>
@@ -162,7 +169,13 @@
 
 		<Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
 			<TabControl Background="Transparent">
-				<TabItem Header="{StaticResource LogPanel}">
+				<TabItem>
+					<TabItem.Header>
+						<Grid>
+							<Image Height="20" HorizontalAlignment="Left" Width="20" Source="/Resources/Pic/text.ico"/>
+							<TextBlock Text="{StaticResource LogPanel}" Margin="30,0,0,0" VerticalAlignment="Center"/>
+						</Grid>
+					</TabItem.Header>
 					<ListBox Background="Transparent" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
 						<ListBox.ContextMenu>
 							<ContextMenu>

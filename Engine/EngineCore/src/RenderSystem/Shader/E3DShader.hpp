@@ -78,20 +78,6 @@ namespace E3DEngine
 		}
 	};
 
-	struct Attribute  
-	{
-		std::string  AttribType;		// 如 vec3
-		std::string  TypeName;			// 语义 如 POSITION 代表这个属性是用来做什么的
-		std::string  VarName;			// Shader里面的变量名
-		uint		 AttributeLoaction;		// 变量的位置，使用glGetAttribLocation获取到的值
-		int			 StartPosition;		// 在顶点数据结构中的起始位置
-		uint		 VarType;			// 数据类型，如 GL_FLOAT
-		uint		 Normalized;		// 是否归一化
-		uint		 VertexStructSize;	// 顶点结构大小
-		uint		 AttributeSize;		// 该属性的大小
-		uint		 BindLocation;		// 绑定到Shader中的位置
-	};
-
 	struct VertexData
 	{
 		float * Data;
@@ -121,12 +107,12 @@ namespace E3DEngine
 		void UpdataFloat2ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat3ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat4ArrayUniform(std::string name, std::vector<float> value);
+		void RunUniformFunc(std::string uniformType, std::string uniformName, std::string defaultVale, int size);
 
 	public:
 		virtual void	DeleteShader() { }
-		std::string GetFileRelativeFolder();
-		void SetFileRelativeFolder(std::string path);
 		std::map<std::string, std::string> &GetSamplerNameValue();
+		std::string GetUniformType(std::string uniformName);
 
 	public:
 		void createInt1Uniform(std::string varName, std::string defValueFormat, int count);
@@ -143,18 +129,10 @@ namespace E3DEngine
 		void createFloat3ArrayUniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat4ArrayUniform(std::string varName, std::string defValueFormat, int count);
 
-		void createAttribute(std::string	typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint	BindLocation, std::string attrType, uint type);
-
 	protected:
-		virtual void processAttribVar(std::string attribVariable);
 		virtual void processUniformVar(std::string uniformVariable);
 
-	public:
-		std::string mFilePath;
-
 	protected:
-		std::map<std::string, Attribute> staticAttributeMap;
-		std::map<std::string, Attribute> dynamicAttributeMap;
 		std::map<std::string, setShaderValueFunc> uniformSetFunc;
 		std::map<std::string, std::string> samplerNameValue;
 		std::map<std::string, float1Uniform> float1UniformList;
@@ -169,10 +147,8 @@ namespace E3DEngine
 		std::map<std::string, floatUniformArray> float2UniformArrayList;
 		std::map<std::string, floatUniformArray> float3UniformArrayList;
 		std::map<std::string, floatUniformArray> float4UniformArrayList;
-		std::vector<Attribute> StaticAttributeList;
-		std::vector<Attribute> DynamicAttributeList;
 
-
+		std::map<std::string, std::string> uniformTypeMap;
 	};
 }
 

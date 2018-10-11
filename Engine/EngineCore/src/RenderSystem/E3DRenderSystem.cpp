@@ -60,6 +60,12 @@ namespace E3DEngine
 		return m_pTextureDataManager;
 	}
 
+
+	E3DEngine::ShaderManager * RenderSystem::GetShaderManager()
+	{
+		return m_pShaderManager;
+	}
+
 	std::string RenderSystem::GetName()
 	{
 		return "RenderSystem";

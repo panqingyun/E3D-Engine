@@ -1,3 +1,17 @@
+#Vertex_Begin
+
+#Attribute
+{
+	POSITION:position; 
+	DYNAMICCOLOR:color;
+	TEXTURECOORD:inputTextureCoordinate;
+	TRANSPOSITION:transformPosition;
+	TRANSSCALE:transformScale;
+	TRANSROTATE:transformRotate;
+	NORMAL:attr_normal;
+	TANGENT:tangent;
+}
+
 #include "Standard.shader"
 varying vec4 DestinationColor;
 varying lowp vec2 v_coord;
@@ -17,5 +31,26 @@ void main(void)
 	
 	mat4 transMatrix = getTransformMatrix(pos, transformRotate,transformScale);
 	
-    gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel  * transMatrix * vec4(0.0,0.0,0.0,1.0);//* BillboardMatrix();* roateMatrix * scaleMat *
+    gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel  * transMatrix * vec4(0.0,0.0,0.0,1.0);//* BillboardMatrix();*  roateMatrix * scaleMat *
 }
+
+#Vertex_End
+
+#Framgent_Begin
+
+precision highp float;
+varying lowp vec4 DestinationColor; 
+varying lowp vec2 v_coord;
+
+varying vec3 cameraRight;
+uniform sampler2D myTexture0;
+void main(void) 
+{
+
+	vec4 color = texture2D(myTexture0, v_coord);
+	color.a = color.a * DestinationColor.a;
+	gl_FragColor = vec4(DestinationColor.rgb, color.a);
+	
+}
+
+#Framgent_End

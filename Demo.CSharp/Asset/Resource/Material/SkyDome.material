@@ -4,6 +4,6 @@
       	<Item ID="1" ShaderID="1" Color="ffffffff" EnableDepthTest="0" CullFace="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1"  VertexShader="shader/SkyDomeVS.shader"  FragmentShader="shader/SkyDomeFS.shader"  UniformVariable="sampler2D:myTexture0-Resource/Material/texture/sky.png;" AttribVariable="POSITION:position;COLOR:color;TEXTURECOORD:inputTextureCoordinate;NORMAL:attr_normal;"/>
+		<Item ID="1"  ShaderPath="shader/SkyDomeVS.shader"  UniformVariable="myTexture0-Resource/Material/texture/sky.png;"/>
 	</ShaderConfig>
 </ConfigSystem>

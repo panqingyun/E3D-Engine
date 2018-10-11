@@ -15,6 +15,6 @@
       	<Item ID=1 ShaderID ="1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="0" CullFace = "0" TextureClampType="0" TextureFilterType = "1"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/SkyBoxVertex.shader" UniformVariable="myTexture0-Resource/Material/texture/skyBox.jpg;"/>
+		<Item ID="1" ShaderPath="shader/SkyBox.shader" UniformVariable="myTexture0-Resource/Material/texture/skyBox.jpg;"/>
 	</ShaderConfig>
 </ConfigSystem>

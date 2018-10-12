@@ -123,20 +123,28 @@ int APIENTRY initWindow(LPTSTR lpCmdLine)
 	}
 #endif
 
+	WindowStyle = WS_OVERLAPPEDWINDOW;
 	if (strlen(lpCmdLine) != 0)
 	{
 		std::vector<std::string> cmdLine = Split(lpCmdLine, ",");
-		strPath = cmdLine[0];
-		int handle = atoi(cmdLine[1].c_str());
-		editorHandle = (HWND)handle;
-		isShowWithEditor = true;
-		startScenePath = cmdLine[2];
-		WindowStyle = WS_POPUP;
+		if (cmdLine.size() > 0)
+		{
+			strPath = cmdLine[0];
+		}
+		if (cmdLine.size() > 1)
+		{
+			int handle = atoi(cmdLine[1].c_str());
+			editorHandle = (HWND)handle;
+			isShowWithEditor = true;
+		}
+		if (cmdLine.size() > 2)
+		{
+			startScenePath = cmdLine[2];
+		}
 	}
 	else
 	{
 		strPath = "App_Data/";
-		WindowStyle = WS_OVERLAPPEDWINDOW;
 	}
 
 	return 0;

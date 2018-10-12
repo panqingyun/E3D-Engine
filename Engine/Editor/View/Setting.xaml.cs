@@ -17,19 +17,18 @@ namespace E3DEditor.View
             Loaded += Setting_Loaded;
         }
 
+        public string ProjectPath = "";
+        public string ProjectName = "";
+
         private void Setting_Loaded(object sender, RoutedEventArgs e)
         {
             resPath.Text = Config.GamePath;
-            width.Text = Config.GameWidth.ToString();
-            height.Text = Config.GameHeight.ToString();
         }
 
         private void sure_Click(object sender, RoutedEventArgs e)
         {
-            Config.WriteConfig(CONST_STRING.Config_resourceFilePath, resPath.Text);
-            Config.WriteConfig(CONST_STRING.Config_gameHeight, height.Text);
-            Config.WriteConfig(CONST_STRING.Config_gameWidht, width.Text);
-            Config.SaveConfig();
+            ProjectPath = resPath.Text;
+            ProjectName = projName.Text;
             Close();
         }
         

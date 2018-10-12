@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:E3DEditor.View"
         mc:Ignorable="d"
-        Title="Setting" Height="300" Width="470" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="New" Height="300" Width="470" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 	<Grid Background="#FFD1D1D1">
-		<GroupBox x:Name="groupBox" Header="环境设置" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,18,0,37">
+		<GroupBox x:Name="groupBox" Header="新建项目" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,18,0,37">
 			<Grid Background="#FF8B8B8B">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="69*"/>
@@ -17,10 +17,9 @@
 					<ColumnDefinition Width="9*"/>
 				</Grid.ColumnDefinitions>
 				<local:OpenFileTextBox IsOpenFolder="True" x:Name="resPath" Grid.Column="2" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top" Width="246"/>
-				<Label x:Name="label" Content="游戏目录" HorizontalAlignment="Right" Margin="0,55,0,0" VerticalAlignment="Top" Width="58"/>
-				<Label x:Name="label_Copy2" Content="分辨率" HorizontalAlignment="Right" Margin="0,96,0,0" VerticalAlignment="Top" Width="47"/>
-				<local:NumberTextBox x:Name="width" Grid.Column="2" HintText="宽" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="123"/>
-				<local:NumberTextBox x:Name="height" Grid.Column="2" HintText="高" HorizontalAlignment="Left" Margin="134,100,0,0" VerticalAlignment="Top" Width="112"/>
+				<Label x:Name="label" Content="选择目录" HorizontalAlignment="Right" Margin="0,55,0,0" VerticalAlignment="Top" Width="58"/>
+				<Label x:Name="label_Copy2" Content="项目名称" HorizontalAlignment="Right" Margin="0,96,0,0" VerticalAlignment="Top" Width="58"/>
+				<TextBox x:Name="projName" Grid.Column="2" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="246"/>
 
 			</Grid>
 		</GroupBox>

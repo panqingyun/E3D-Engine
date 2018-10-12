@@ -62,6 +62,10 @@ namespace E3DEngine
 	E3DEngine::SceneRef^ SceneManageRef::GetCurScene()
 	{
 		Scene *scene = SceneManager::GetInstance().GetCurrentScene();
+		if (scene == nullptr)
+		{
+			return nullptr;
+		}
 		if (mCurScene == nullptr)
 		{
 			mCurScene = gcnew SceneRef(scene);

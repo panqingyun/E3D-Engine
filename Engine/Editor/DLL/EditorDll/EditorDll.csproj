@@ -7,7 +7,7 @@
     <ProjectGuid>{0DE1F650-7E3C-430A-98CF-B1DE52199E46}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EditorDll</RootNamespace>
+    <RootNamespace>E3DEditor</RootNamespace>
     <AssemblyName>EditorDll</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows" />
@@ -43,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Common\CommonTools.cs" />
     <Compile Include="Common\CommonTypeDefine.cs" />
+    <Compile Include="Common\Debug.cs" />
     <Compile Include="Common\EnumTools.cs" />
     <Compile Include="Common\Interface.cs" />
+    <Compile Include="Common\ZipUtil.cs" />
     <Compile Include="Editor.cs" />
     <Compile Include="Model\NodeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,13 +20,11 @@ public class LogEntiry
     public SolidColorBrush LogColor { get; set; }
 }
 
-public delegate void LogOutPutFunc(string log);
-
 namespace E3DEditor.ViewModel
 {
     public class VM_MainWindow : DependencyObject, INotifyPropertyChanged
     {
-        private LogOutPutFunc outFunc = null;
+        private ShowLogDelegate outFunc = null;
         public E3DEngine.EngineDelegateRef RenderDelegate = null;
         private IntPtr windowsPlayerHandle = IntPtr.Zero;
         private Process windowsPlayer = null;
@@ -45,19 +43,12 @@ namespace E3DEditor.ViewModel
 
         public VM_MainWindow()
         {
-            try
-            {
-                RenderDelegate = new E3DEngine.EngineDelegateRef();
-                RenderDelegate.InitilizeEngine();
-                outFunc = ShowLog;
-                IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
-                RenderDelegate.SetDebugLogOutFunc(ptr);
-                
-            }
-            catch
-            {
-                App.Instance.Setting();
-            }
+            RenderDelegate = new E3DEngine.EngineDelegateRef();
+            RenderDelegate.InitilizeEngine();
+            outFunc = ShowLog;
+            IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
+            RenderDelegate.SetDebugLogOutFunc(ptr);
+            Common.Debug.ShowLogHandle = ShowLog;
         }
 
         private bool engineLoaded = false;
@@ -203,6 +194,10 @@ namespace E3DEditor.ViewModel
                 RenderDelegate.SetupRenderSystem(handle, (int)renderSize.Width, (int)renderSize.Height);
                 RenderDelegate.StartAppliaction();
                 mainWnd.objectList.ItemsSource = null;
+                if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
+                {
+                    E3DEngine.SceneManageRef.GetInstance().LoadScene("../Data/Scene/default.scene");
+                }
                 loadGameObjectList();
                 curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
                 engineLoaded = true;
@@ -298,7 +293,6 @@ namespace E3DEditor.ViewModel
                 OnPropertyChanged("State");
             }
         }
-
 
         public bool PauseEngine
         {
@@ -510,11 +504,12 @@ namespace E3DEditor.ViewModel
         {
             if (menuName == "openSln")
             {
-                openSln();
+                string filePath = IOFile.OpenSlnFile();
+                openSln(filePath);
             }
             else if(menuName == "newSln")
             {
-
+                createProject();
             }
         }
 
@@ -534,25 +529,46 @@ namespace E3DEditor.ViewModel
             }
         }
 
-        private void openSln()
+        private void openSln(string filePath)
         {
-            string filePath = IOFile.OpenFile();
             if (filePath == "")
             {
                 return;
             }
-            string[] fileContents = System.IO.File.ReadAllLines(filePath);
-            for (int i = 0; i < fileContents.Length; i++)
+            try
             {
-                if (fileContents[i].Contains("assets"))
+                string[] fileContents = System.IO.File.ReadAllLines(filePath);
+                for (int i = 0; i < fileContents.Length; i++)
                 {
-                    Config.GamePath = System.IO.Path.GetDirectoryName(filePath) + "/" + fileContents[i].Split('=')[1] + "/";
+                    if (fileContents[i].Contains("assets"))
+                    {
+                        Config.GamePath = System.IO.Path.GetDirectoryName(filePath) + "/" + fileContents[i].Split('=')[1] + "/";
 
-                    RenderDelegate.SetAppDataPath(Config.GamePath);
-                    createRenderPanel();
-                    mainWnd.fileView.viewModel.LoadDirectory();
-                    loadEditorMenuItem();
+                        RenderDelegate.SetAppDataPath(Config.GamePath);
+                        createRenderPanel();
+                        mainWnd.fileView.viewModel.LoadDirectory();
+                       // loadEditorMenuItem();
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void createProject()
+        {
+            Setting set = new Setting();
+            set.ShowDialog();
+
+            string project_path = set.ProjectPath;
+            string project_name = set.ProjectName;
+
+            bool ret = ZipHelper.UnZip("../Data/project_template", project_path + "/" + project_name);
+            if (ret)
+            {
+                openSln(project_path + "/" + project_name + "/project.esln");
             }
         }
 

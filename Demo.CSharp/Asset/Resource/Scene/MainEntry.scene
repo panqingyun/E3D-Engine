@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Scene>
 	<GameObject Name="MainCamera" Type="1" ClearColor="0.0, 0.0, 0.0, 1" LayerMask="AllLayer"  Active="true" >
 		<Transform Posistion="200, 35,180" Rotation="0, 90, 0" Scale="1,1,1"/>			

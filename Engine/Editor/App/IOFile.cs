@@ -1,11 +1,10 @@
 ﻿using Microsoft.Win32;
 using System.IO;
-
 namespace E3DEditor
 {
     public class IOFile
     {
-        public static string OpenFile()
+        public static string OpenSlnFile()
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "esln文件(*.esln)|*.esln|所有文件|*.*";

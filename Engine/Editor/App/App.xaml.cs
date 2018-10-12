@@ -72,13 +72,7 @@ namespace E3DEditor
             ShowState(this["SaveDone"]);
             MessageBox.Show(this["SaveDone"], this["Info"], MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
-        public void Setting()
-        {
-            Setting set = new E3DEditor.View.Setting();
-            set.ShowDialog();
-        }
-
+        
         public void InitEnv()
         {
             Config.Init();

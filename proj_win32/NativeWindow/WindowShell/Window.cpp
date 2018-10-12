@@ -141,6 +141,7 @@ int APIENTRY initWindow(LPTSTR lpCmdLine)
 		{
 			startScenePath = cmdLine[2];
 		}
+		
 	}
 	else
 	{

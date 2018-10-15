@@ -577,11 +577,18 @@ namespace E3DEditor.ViewModel
         {
             if (e.Command == ApplicationCommands.Save)
             {
+                if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
+                {
+                    return;
+                }
+
                 if (curScenePath == "")
                 {
                     string filePath = IOFile.SaveScene("scene.scene");
                     curScenePath = filePath;
                 }
+
+                E3DEngine.SceneManageRef.GetInstance().GetCurScene().SaveScene(curScenePath);
             }
         }
 

@@ -4,7 +4,7 @@
 #include "../Source/ClassFactory.h"
 #include "../Source/EngineDelegate.h"
 #include "../Source/FilePath.h"
-#include <../../3rd/Mono/mono/metadata/tabledefs.h>
+#include <mono/metadata/tabledefs.h>
 
 namespace E3DEngine
 {
@@ -242,11 +242,11 @@ namespace E3DEngine
 		pCamera->SetClearColor(createColor(*objectElement->Attribute(_ClearColor)));
 		setLayerMask(objectElement, pCamera);
 		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
-		CreateObjects(pCamera, objectElement);
+
 		return pCamera;
 	}
 
-	Renderer * createRenderer(TiXmlElement *objectElement)
+	Renderer * createRenderer(TiXmlElement *objectElement, DWORD renderType = NORMAL)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
@@ -254,7 +254,7 @@ namespace E3DEngine
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(getFileFullPath(_path), _id);
 		m->mConfigPath = _path;
 		m->mConfigID = _id;
-		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, (RENDER_TYPE)renderType);
 		renderer->SetMaterial(m);
 		return renderer;
 	}
@@ -265,19 +265,19 @@ namespace E3DEngine
 		SkyBox *skb = new SkyBox();
 		skb->Create(50, 50, 50);
 		skb->SetRenderer(rd);
-		CreateObjects(skb, objectElement);
+
 		return skb;
 	}
 
 	GameObject* createMesh(TiXmlElement *objectElement)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
-		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
 
-		Mesh *mesh = Mesh::Create(getFileFullPath(_path), _id);
+		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), MESH);
+		Mesh *mesh = new Mesh(_path);
 		mesh->mConfigPath = _path;
-		setRenderIndex(objectElement, mesh);
-		CreateObjects(mesh, objectElement);
+		mesh->SetRenderer(rd);
+
 		return mesh;
 	}
 
@@ -286,7 +286,7 @@ namespace E3DEngine
 		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
 		Color4 color = createColor(*objectElement->Attribute(_Color));
 		light->Color = vec4f(color.r, color.g, color.b, color.a);
-		CreateObjects(light, objectElement);
+
 		return light;
 	}
 
@@ -304,7 +304,6 @@ namespace E3DEngine
 		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
 
 		box->SetRenderer(rd);
-		CreateObjects(box, objectElement);
 
 		return box;
 	}
@@ -315,7 +314,6 @@ namespace E3DEngine
 		sphere->Create(1);
 		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
 		sphere->SetRenderer(rd);
-		CreateObjects(sphere, objectElement);
 
 		return sphere;
 	}
@@ -329,7 +327,6 @@ namespace E3DEngine
 		{
 			static_cast<PointLight*>(light)->Range = Convert::ToFloat(*objectElement->Attribute(_Range));
 		}
-		CreateObjects(light, objectElement);
 
 		return light;
 	}
@@ -356,7 +353,7 @@ namespace E3DEngine
 		sceneFolderPath = GetFolder(filePath);
 
 		TiXmlElement* rootElem = doc->RootElement();
-		CreateObjects(prefab, rootElem);
+		
 		sceneFolderPath = folderPath;
 		return prefab;
 	}
@@ -449,6 +446,7 @@ namespace E3DEngine
 				{
 					parent->AddChild(go);
 				}
+				CreateObjects(go, item->ToElement());
 			}
 		}
 	}
@@ -496,25 +494,32 @@ namespace E3DEngine
 		for (auto component : componentList)
 		{
 			TiXmlElement *componentElement = new TiXmlElement(_Component);
+			componentElement->SetAttribute(_Component_ClassName,  std::string(NAME_SPACE) + "." + className);
 			std::map<std::string, std::string> &fieldMap = component->m_propertyTypeMap;
+			objectElement->LinkEndChild(componentElement);
+			if (fieldMap.empty())
+			{
+				continue;
+			}
+			TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
 			for (auto fieldPair : fieldMap)
 			{
 				getValue get = (getValue)(component->m_getMethodMap[fieldPair.first]);
 
 				if (fieldPair.second == stringType)
 				{
-					componentElement->SetAttribute(fieldPair.first, Convert::ToString(get(component)));
+					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(get(component)));
 				}
 				else if (fieldPair.second == intType)
 				{
-					componentElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<int>(get(component))));
+					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<int>(get(component))));
 				}
 				else if (fieldPair.second == floatType)
 				{
-					componentElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<float>(get(component))));
+					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<float>(get(component))));
 				}
 			}
-			objectElement->LinkEndChild(componentElement);
+			componentElement->LinkEndChild(fieldElement);
 		}
 	}
 
@@ -527,35 +532,44 @@ namespace E3DEngine
 			MonoClassField * field = nullptr;
 			void * iter = nullptr;
 			TiXmlElement *componentElement = new TiXmlElement(_Component);
+			componentElement->SetAttribute(_Component_ClassName, className);
+			TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
+			//int count = mono_class_get_field_count(mono_class); 
 			while (field = mono_class_get_fields(mono_class, &iter))
 			{
 				const char * name = mono_field_get_name(field);
 				MonoType *mono_type = mono_field_get_type(field);
-				void *fieldValue = nullptr;
-				mono_field_get_value(mono_obj, field, fieldValue);
+				void *fieldValue;
 				int type = mono_type_get_type(mono_type);
+
 				int flags = mono_field_get_flags(field);
 				if ((flags & FIELD_ATTRIBUTE_FIELD_ACCESS_MASK) != FIELD_ATTRIBUTE_PUBLIC)
 				{
 					continue;
 				}
+				mono_field_get_value(mono_obj, field, &fieldValue);
 				if (type == MONO_TYPE_I4) // int
 				{
-					componentElement->SetAttribute(name, Convert::ToString(*(int*)fieldValue));
+					int * p = ((int*)&fieldValue);
+					fieldElement->SetAttribute(name, Convert::ToString(*p));
 				}
 				else if (type == MONO_TYPE_BOOLEAN)
 				{
-					componentElement->SetAttribute(name, (*(int*)fieldValue) == 1 ? "true" : "false");
+					int * p = ((int*)&fieldValue);
+					fieldElement->SetAttribute(name, (*p) == 1 ? "true" : "false");
 				}
 				else if (type == MONO_TYPE_STRING)
 				{
-					componentElement->SetAttribute(name, (const char*)fieldValue);
+					const char * p = ((const char*)&fieldValue);
+					componentElement->SetAttribute(name, p);
 				}
 				else if (type == MONO_TYPE_R4) // float
 				{
-					componentElement->SetAttribute(name, Convert::ToString(*(float*)fieldValue));
+					float * p = ((float*)&fieldValue);
+					componentElement->SetAttribute(name, Convert::ToString(*p));
 				}
 			}
+			componentElement->LinkEndChild(fieldElement);
 			objectElement->LinkEndChild(componentElement);
 		}
 	}
@@ -588,7 +602,7 @@ namespace E3DEngine
 			}
 			else
 			{ // ×Ô¶¨Òå
-				exportOuterComponent(objectElement, className, componentListPair.second);
+				exportOuterComponent(objectElement, full_name, componentListPair.second);
 			}
 		}
 	}
@@ -620,15 +634,21 @@ namespace E3DEngine
 		if (gameObject->GetRenderer() != nullptr)
 		{
 			objectElement->SetAttribute(_RenderIndex, gameObject->GetRenderer()->RenderIndex);
+			saveMaterialElement(objectElement, gameObject->GetRenderer()->GetMaterial());
 		}	
 		if (gameObject->mSceneObjectType == TP_Particle || gameObject->mSceneObjectType == TP_Mesh)
 		{
 			objectElement->SetAttribute(_FilePath, gameObject->mConfigPath);
 		}
-		if (gameObject->mSceneObjectType == TP_Camera)
+		else if (gameObject->mSceneObjectType == TP_Camera)
 		{
 			Camera *pCamera = (Camera*)gameObject;
 			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
+		}
+		else if (gameObject->mSceneObjectType == TP_DLight || gameObject->mSceneObjectType == TP_PLight)
+		{
+			Light * light = (Light*)gameObject;
+			objectElement->SetAttribute(_Color, Convert::ToString(light->Color));
 		}
 		saveTransformElement(objectElement, gameObject->Transform);
 		saveComponentElement(objectElement, gameObject);
@@ -647,6 +667,32 @@ namespace E3DEngine
 		}
 	}
 
+	void SavePrefab(Prefab *prefab)
+	{
+		std::map<UINT, GameObject*> &objects = prefab->GetChilds();
+
+		TiXmlDocument *doc = new TiXmlDocument();
+		TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "UTF-8", "yes");
+		doc->LinkEndChild(decl);
+		TiXmlElement *rootElement = new TiXmlElement("Prefab");
+		doc->LinkEndChild(rootElement);
+
+		for (auto gameObj : objects)
+		{
+			if (gameObj.second->Flag & DONT_SAVE)
+			{
+				continue;
+			}
+			TiXmlElement *childElement = new TiXmlElement(NM_GameObject);
+			GameObject *childObject = gameObj.second;
+			saveGameObjectElement(childElement, childObject);
+			rootElement->LinkEndChild(childElement);
+		}
+
+		doc->SaveFile(prefab->GetFilePath());
+		delete doc;
+	}
+
 	void SaveCurrentScene()
 	{
 		Scene *pScene = SceneManager::GetInstance().GetCurrentScene();
@@ -662,6 +708,10 @@ namespace E3DEngine
 
 		for (auto gameObj : objects)
 		{
+			if (gameObj.second->Flag & DONT_SAVE)
+			{
+				continue;
+			}
 			TiXmlElement *childElement = new TiXmlElement(NM_GameObject);
 			GameObject *childObject = gameObj.second;
 			saveGameObjectElement(childElement, childObject);

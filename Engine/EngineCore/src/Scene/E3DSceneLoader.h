@@ -5,6 +5,7 @@
 
 namespace E3DEngine
 {
+	class Prefab;
 	/*
 		加载预设
 	*/
@@ -24,4 +25,9 @@ namespace E3DEngine
 		保存当前场景
 	*/
 	void SaveCurrentScene();
+
+	/*
+		保存预设
+	*/
+	void SavePrefab(Prefab *prefab);
 }

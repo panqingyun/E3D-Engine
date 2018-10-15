@@ -702,7 +702,7 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int, cfgID)
 {
 	std::string filePath = Convert::ToStdString(path);
-	Mesh * mh = Mesh::Create(filePath, cfgID);
+	Mesh * mh = new Mesh(filePath);
 	ADD_IN_SCENE(mh);
 	return mh->GetMonoBehaviour()->GetMonoObject();
 }

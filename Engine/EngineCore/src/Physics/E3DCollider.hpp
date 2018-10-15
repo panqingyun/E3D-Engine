@@ -87,8 +87,8 @@ namespace E3DEngine
 			Component::OnCreate();
 			mGameObject->SetCollider(this);
 		}
-	public:
 
+	public:
 #ifndef __IGNORED_INCLUDE__
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
@@ -109,7 +109,10 @@ namespace E3DEngine
 			CreateBehaviour();
 		}
 		virtual void Awake() override;
+		virtual void registProperty() override
+		{
 
+		}
 #ifndef __IGNORED_INCLUDE__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
@@ -129,7 +132,10 @@ namespace E3DEngine
 		virtual void Awake() override;
 
 	public:
+		virtual void registProperty() override
+		{
 
+		}
 #ifndef __IGNORED_INCLUDE__
 		virtual bool CheckClick(vec2d screenPoint);
 		virtual bool CheckPress(vec2d screenPoint);
@@ -146,7 +152,10 @@ namespace E3DEngine
 			CreateBehaviour();
 		}
 		virtual void Awake() override;
+		virtual void registProperty() override
+		{
 
+		}
 #ifndef __IGNORED_INCLUDE__
 	public:
 		virtual bool CheckClick(vec2d screenPoint);
@@ -161,7 +170,6 @@ namespace E3DEngine
 #endif
 	{
 	public:
-
 #ifndef __IGNORED_INCLUDE__
 		MotionState(const  btTransform &initialpos, GameObject *obj)
 		{
@@ -206,7 +214,10 @@ namespace E3DEngine
 		void SetHieght(float height);
 		float GetHeight();
 		float GetRadius();
+		virtual void registProperty() override
+		{
 
+		}
 	private: 
 		float mRadius;
 		float mHeight;

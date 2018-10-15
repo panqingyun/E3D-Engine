@@ -28,34 +28,16 @@ namespace E3DEngine
 	}
 #endif
 
-	Mesh *Mesh::Create(string path, int configID)
+	Mesh::Mesh(std::string filePath)
 	{
-		Mesh * mesh = new Mesh(path, configID);
-		return mesh;
-	}
-
-	Mesh::Mesh(std::string filePath, int cfgID)
-	{
-		mSceneObjectType = TP_Camera;
+		mSceneObjectType = TP_Mesh;
 		NumBones = 0;
 		m_bIsBufferData = false;
 		m_bIsSkinMesh = false;
 		mAnimation = nullptr;
 		CreateBehaviour();
-		TableManager *tbMgr = TableRegister::GetTableManager(filePath.c_str());
-		if (tbMgr == nullptr)
-		{
-			Debug::Log(ell_Error, "Error parsing '%s': 'read table wrong'", filePath.c_str());
-			return;
-		}
-		MeshConfig * modelCfg = tbMgr->Select<MeshConfig>(cfgID);
-		if (modelCfg == nullptr)
-		{
-			Debug::Log(ell_Error, "Error parsing '%s': select table wrong", filePath.c_str());
-			return;
-		}
-		std::string   fbxPath = Application::AppDataPath + modelCfg->ModelFilePath;
 
+		std::string   fbxPath = Application::AppDataPath + filePath;
 		bool Ret	= false;
 		pScene		= pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
 		if (pScene)
@@ -84,24 +66,13 @@ namespace E3DEngine
 			createAnimation();
 		}
 
-		std::string &materialPath = modelCfg->Materials;
-		std::vector<std::string> &&materialCfg = StringBuilder::Split(materialPath, ":");
-		if (materialCfg.size() != 2)
-		{
-			Debug::Log(ell_Error, "Error parsing '%s': split config wrong", filePath.c_str());
-			return;
-		}
-		std::string &&folder = GetFolder(filePath);
-		Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::AppDataPath + materialCfg[0], Convert::ToInt(materialCfg[1]));
-		SetMaterial(material);
 		//SAFE_DELETE(tbMgr);
 	}
 
-	void Mesh::SetMaterial(Material *material)
+
+	void Mesh::TransferRender()
 	{
-		m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, MESH);
-		m_pRenderer->SetMaterial(material);
-//		static_cast<MeshRender*>(m_pRenderer)->SetAiScene(pScene);
+		GameObject::TransferRender();
 		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
 		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
 		{

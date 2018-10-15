@@ -215,7 +215,7 @@ void * MonoBehaviour::GetFieldValue(const char * fieldName)
 		return nullptr;
 	}
 	void * value = nullptr;
-	mono_field_get_value(m_pMonoObject, field, value);
+	mono_field_get_value(m_pMonoObject, field, &value);
 	return value;
 }
 

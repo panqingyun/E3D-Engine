@@ -12,6 +12,7 @@ namespace E3DEngine
 		std::string GetFilePath();
 		virtual void CreateBehaviour() override;
 		static Prefab *LoadPrefab(std::string path);
+		void Save();
 	private:
 		std::string mFilePath;
 	};

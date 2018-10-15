@@ -323,6 +323,7 @@ namespace E3DEngine
 		ParentNode = nullptr;
 		m_layerMask = -1;
 		m_bIsStatic = false;
+		Flag = 0;
 	}
 	
 	void GameObject::SetCamera(E3DEngine::Camera *camera)

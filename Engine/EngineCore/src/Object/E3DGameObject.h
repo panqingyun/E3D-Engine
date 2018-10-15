@@ -272,6 +272,10 @@ struct E3D_EXPORT_DLL Convert
 
 namespace E3DEngine
 {
+	enum GameObjectFlags
+	{
+		DONT_SAVE = 1,
+	};
 
 	template<typename  T> std::string GetClassName()
 	{
@@ -393,7 +397,7 @@ namespace E3DEngine
 		CTransform	*			Transform;
 		// 渲染层级
 		DWORD					RenderIndex;
-
+		unsigned int			Flag;
 	protected:
 		std::map<UINT, GameObject *> childNode;
 		DWORD m_layerMask;

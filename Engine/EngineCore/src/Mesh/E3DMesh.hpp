@@ -38,9 +38,8 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL Mesh : public GameObject
 	{
 	public:
-		static Mesh* Create(string path, int configID);
-		Mesh(std::string filePath, int cfgID);
-		virtual void SetMaterial(Material *material);
+		Mesh(std::string filePath);
+		virtual void TransferRender() override;
 		virtual void SetActive(bool isActive) override;
 		void Destory();
 		virtual void Update(float deltaTime) override;

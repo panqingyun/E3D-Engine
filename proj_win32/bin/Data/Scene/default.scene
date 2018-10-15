@@ -1,5 +1,2 @@
 <Scene>
-	<GameObject Name="coord" Type="11" FilePath="coordinate.prefab" LayerMask="AllLayer"  Active="true">
-		<Transform Posistion="0, 0,0" Rotation="0, 0, 0" Scale="1,1,1"/>
-	</GameObject>
 </Scene>

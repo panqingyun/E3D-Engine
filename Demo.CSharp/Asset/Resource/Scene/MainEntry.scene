@@ -1,108 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Scene>
-	<GameObject Name="MainCamera" Type="1" ClearColor="0.0, 0.0, 0.0, 1" LayerMask="AllLayer"  Active="true" >
-		<Transform Posistion="200, 35,180" Rotation="0, 90, 0" Scale="1,1,1"/>			
-		<Component ClassName="AppMain">
-			<Field ShowDebug="true" ShowNumber="1000"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="Light" Type="2" Color="1, 1, 1, 1.0" LayerMask="AllLayer"  Active="true">
-		<Transform Posistion="50, 50, -50" Rotation="0, 0, 0" Scale="1,1,1"/>
-	</GameObject>
-	<GameObject Name="SkyBox" Type="4" LayerMask="0"   Active="true" >
-		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1,1,1"/>
-		<Material FilePath="Resource/Material/SkyBox.material" SelectID="1"/>
-	</GameObject>
-	<GameObject Name="Box" Type="7" LayerMask="0"  Active="true">
-		<Transform Posistion="160, 66,176" Rotation="0, 0, 0" Scale="2,2,2"/>
-		<Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="E3DEngine.BoxCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="10"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="Box" Type="7" LayerMask="0"  Active="true">
-		<Transform Posistion="110, 66,155" Rotation="0, 0, 50" Scale="3,3,3"/>
-		<Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1"/>
-		<Component ClassName="E3DEngine.BoxCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="10"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="Sphere" Type="8" LayerMask="0"  Active="true">
-		<Transform Posistion="160, 60,176" Rotation="0, 0, 50" Scale="1,1,1"/>
-		<Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="E3DEngine.SphereCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="30"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="Sphere" Type="8" LayerMask="0"  Active="true">
-		<Transform Posistion="160, 31,172" Rotation="0, 0, 50" Scale="1,1,1"/>
-		<Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="SelfRotateSphere">
-			<Field RotateSpeed="2"/>
-		</Component>
-		<Component ClassName="E3DEngine.SphereCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			< Field Mass="0"/>
-		</Component>		
-		<GameObject Name="Sphere" Type="8" LayerMask="0"  Active="true">
-			<Transform Posistion="3.5, 0 ,0" Rotation="0, 0, 0" Scale="0.5,0.5,0.5"/>
-			<Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1"/>		
-			<Component ClassName="SelfRotateSphere">
-				<Field RotateSpeed = "1"/>
-			</Component>
-			<Component ClassName="E3DEngine.SphereCollider"/>
-			<Component ClassName="E3DEngine.RigidBody">
-				<Field Mass="0"/>
-			</Component>			
-		</GameObject>
-		<GameObject Name="particle" Type="6" FilePath="Resource/Particle/ParticleFire.particle" RenderIndex="3" LayerMask="0"  Active="true">
-			<Transform Posistion="0, 3, 0" Rotation="0, 0, 0" Scale="0.5, 0.5, 0.5"/>
-		</GameObject>
-	</GameObject>.
-	<GameObject Name="Sphere" Type="8" LayerMask="0"  Active="true">
-		<Transform Posistion="110, 80,155" Rotation="0, 0, 50" Scale="1,1,1"/>
-		<Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1"/>
-		<Component ClassName="E3DEngine.SphereCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="30"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="Dimian" Type="5" FilePath="Resource/Mesh/bhcs.mesh" SelectID="3" LayerMask="0"  Active="true">
-		<Transform Posistion="0, 0, 0" Rotation="0, 0, 0" Scale="1, 1, 1"/>
-		<Component ClassName="E3DEngine.MeshCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="0" Friction="1000"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="fangzi" Type="5" FilePath="Resource/Mesh/bhcs.mesh" SelectID="5" LayerMask="0"  Active="true">
-		<Transform Posistion="80, 30, 100" Rotation="-90, 0, 0" Scale="0.01, 0.01, 0.01"/>
-		<Component ClassName="E3DEngine.MeshCollider"/>
-		<Component ClassName="E3DEngine.RigidBody" >
-			<Field Mass="0"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="qiao" Type="5" FilePath="Resource/Mesh/bhcs.mesh" SelectID="6" LayerMask="0"  Active="true">
-		<Transform Posistion="138, 30.1, 164" Rotation="-90, 0, 0" Scale="0.010, 0.007, 0.010"/>
-		<Component ClassName="E3DEngine.MeshCollider"/>
-		<Component ClassName="E3DEngine.RigidBody">
-			<Field Mass="0" Friction="1000"/>
-		</Component>
-	</GameObject>
-	<GameObject Name="shu1" Type="5" FilePath="Resource/Mesh/shu.mesh" SelectID="1" RenderIndex="3" LayerMask="0"  Active="true">
-		<Transform Posistion="142, 30.1, 159" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>
-	</GameObject>
-	<GameObject Name="shu2" Type="5" FilePath="Resource/Mesh/shu.mesh" SelectID="3" RenderIndex="3" LayerMask="0"  Active="true">
-		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>
-	</GameObject>
-	<GameObject Name="huaye" Type="5" FilePath="Resource/Mesh/bhcs.mesh" SelectID="7" RenderIndex="3" LayerMask="0"  Active="true">
-		<Transform Posistion="125, 30, 160" Rotation="-90, 0, 0" Scale="0.005, 0.005, 0.005"/>
-	</GameObject>
-	<GameObject Name="shu3" Type="5" FilePath="Resource/Mesh/shu.mesh" SelectID="1" RenderIndex="3" LayerMask="0"  Active="true">
-		<Transform Posistion="185, 30, 170" Rotation="-90, 0, 0" Scale="0.008, 0.008, 0.008"/>
-	</GameObject>
-	<GameObject Name="shu4" Type="5" FilePath="Resource/Mesh/shu.mesh" SelectID="6" RenderIndex="3" LayerMask="0"  Active="true">
-		<Transform Posistion="110, 30, 160" Rotation="-90, 0, 0" Scale="0.008, 0.008, 0.008"/>
-	</GameObject>
+    <GameObject Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,1.000000">
+        <Transform Posistion="200.000000,35.000000,180.000000" Rotation="0.000000,90.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component ClassName="AppMain">
+            <Field ShowDebug="false" ShowNumber="1000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="1.000000,1.000000,1.000000,1.000000">
+        <Transform Posistion="50.000000,50.000000,-50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+    </GameObject>
+    <GameObject Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">
+        <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
+        <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+    </GameObject>
+    <GameObject Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
+        <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
+        <Transform Posistion="160.000000,66.000000,176.000000" Rotation="0.000000,0.000000,0.000000" Scale="2.000000,2.000000,2.000000" />
+        <Component ClassName="E3DEngine.BoxCollider" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
+        <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
+        <Transform Posistion="110.000000,66.000000,155.000000" Rotation="0.000000,0.000000,50.000000" Scale="3.000000,3.000000,3.000000" />
+        <Component ClassName="E3DEngine.BoxCollider" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
+        <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
+        <Transform Posistion="160.000000,60.000000,176.000000" Rotation="0.000000,0.000000,50.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="30.000000" Restitution="0.100000" />
+        </Component>
+        <Component ClassName="E3DEngine.SphereCollider" />
+    </GameObject>
+    <GameObject Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
+        <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
+        <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,0.000000,50.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component ClassName="E3DEngine.RigidBody" />
+        <Component ClassName="E3DEngine.SphereCollider" />
+        <Component ClassName="SelfRotateSphere" RotateSpeed="2.000000">
+            <Field />
+        </Component>
+        <GameObject Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
+            <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
+            <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
+            <Component ClassName="E3DEngine.RigidBody">
+                <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
+            </Component>
+            <Component ClassName="E3DEngine.SphereCollider" />
+            <Component ClassName="SelfRotateSphere" RotateSpeed="1.000000">
+                <Field />
+            </Component>
+        </GameObject>
+        <GameObject Name="particle" Type="6" LayerMask="0" Active="true" FilePath="Resource/Particle/ParticleFire.particle">
+            <Transform Posistion="0.000000,3.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
+        </GameObject>
+    </GameObject>
+    <GameObject Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
+        <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
+        <Transform Posistion="110.000000,80.000000,155.000000" Rotation="0.000000,0.000000,50.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="30.000000" Restitution="0.100000" />
+        </Component>
+        <Component ClassName="E3DEngine.SphereCollider" />
+    </GameObject>
+    <GameObject Name="Dimian" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj">
+        <Material FilePath="Resource/Material/Mesh.material" SelectID="3" />
+        <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component ClassName="E3DEngine.MeshCollider" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="fangzi" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/cz_chengqiang01.fbx">
+        <Material FilePath="Resource/Material/Mesh.material" SelectID="5" />
+        <Transform Posistion="80.000000,30.000000,100.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.010000,0.010000" />
+        <Component ClassName="E3DEngine.MeshCollider" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="qiao" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/LH_changshiqiao01.fbx">
+        <Material FilePath="Resource/Material/Mesh.material" SelectID="6" />
+        <Transform Posistion="138.000000,30.100000,164.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.007000,0.010000" />
+        <Component ClassName="E3DEngine.MeshCollider" />
+        <Component ClassName="E3DEngine.RigidBody">
+            <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
+        </Component>
+    </GameObject>
+    <GameObject Name="shu1" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_01.fbx">
+        <Material FilePath="Resource/Material/shu.material" SelectID="1" />
+        <Transform Posistion="142.000000,30.100000,159.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.005000,0.005000,0.005000" />
+    </GameObject>
+    <GameObject Name="shu2" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_03.fbx">
+        <Material FilePath="Resource/Material/shu.material" SelectID="3" />
+        <Transform Posistion="125.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.005000,0.005000,0.005000" />
+    </GameObject>
+    <GameObject Name="shu3" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_01.fbx">
+        <Material FilePath="Resource/Material/shu.material" SelectID="1" />
+        <Transform Posistion="185.000000,30.000000,170.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
+    </GameObject>
+    <GameObject Name="shu4" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/Demo_zw_lvzhi001.fbx">
+        <Material FilePath="Resource/Material/shu.material" SelectID="5" />
+        <Transform Posistion="110.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
+    </GameObject>
 </Scene>

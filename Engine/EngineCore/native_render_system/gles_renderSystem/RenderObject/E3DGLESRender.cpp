@@ -131,7 +131,12 @@ namespace E3DEngine
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
-			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, dlight->Color.r, dlight->Color.g, dlight->Color.b, dlight->Color.a);
+			vec4f color = dlight->Color;
+			if (!dlight->IsActive)
+			{
+				color.r = 0; color.g = 0; color.b = 0; color.a = 1;
+			}
+			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
 		}
 

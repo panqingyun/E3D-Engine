@@ -35,7 +35,7 @@ namespace E3DEngine
 		m_bIsBufferData = false;
 		m_bIsSkinMesh = false;
 		mAnimation = nullptr;
-		CreateBehaviour();
+		CREATE_BEHAVIOUR(Mesh);
 
 		std::string   fbxPath = Application::AppDataPath + filePath;
 		bool Ret	= false;
@@ -189,13 +189,6 @@ namespace E3DEngine
 			mAnimation->LoadAnimations();
 			mAnimation->Play("Take 001", true);
 		}
-	}
-
-	void Mesh::CreateBehaviour()
-	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(Mesh);
-		setBehaviourDefaultValue();
 	}
 
 	void Mesh::initMesh(uint MeshIndex, const aiMesh* paiMesh)

@@ -111,7 +111,7 @@ namespace E3DEngine
 		if (collider != nullptr)
 		{
 			btCollisionShape *shape = collider->GetCollisionShape();
-			createRigidBody(shape);
+			CreateRigidBody(shape);
 		}
 		else
 		{
@@ -145,7 +145,7 @@ namespace E3DEngine
 		mRigidBody->setWorldTransform(mStartTransform);
 	}
 
-	void  RigidBody::createRigidBody(btCollisionShape *shape)
+	void  RigidBody::CreateRigidBody(btCollisionShape *shape)
 	{
 		mStartTransform.setIdentity();
 		mStartTransform.setOrigin(btVector3(
@@ -198,8 +198,7 @@ namespace E3DEngine
 	}
 
 	bool BoxCollider::CheckClick(vec2d screenPoint)
-	{
-		
+	{		
 		return false;
 	}
 	
@@ -207,7 +206,6 @@ namespace E3DEngine
 	{
 		return false;
 	}
-
 
 	void BoxCollider::CreateBehaviour()
 	{
@@ -383,6 +381,11 @@ namespace E3DEngine
 		return btScalar(0.f);
 	}
 
+	void Collider::OnCreate()
+	{
+		Component::OnCreate();
+		mGameObject->SetCollider(this);
+	}
 
 	bool Collider::CheckClick(vec2d screenPoint)
 	{

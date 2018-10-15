@@ -42,7 +42,7 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
-		CreateBehaviour();
+		CREATE_BEHAVIOUR(Camera);
 		Transform->SetNeedUpdate(false);
 	}
 	
@@ -67,7 +67,7 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
-		CreateBehaviour();
+		CREATE_BEHAVIOUR(Camera);
 		Transform->SetNeedUpdate(false);
 	}
 
@@ -363,21 +363,6 @@ namespace E3DEngine
 		}
 		return true;
 	}
-
-
-	void Camera::CreateBehaviour()
-	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(Camera);
-		setBehaviourDefaultValue();
-	}
-
-
-	void Camera::setBehaviourDefaultValue()
-	{
-		GameObject::setBehaviourDefaultValue();
-	}
-
 
 	vvision::vec4f Camera::GetClearColor()
 	{

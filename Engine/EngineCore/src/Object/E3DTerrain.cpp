@@ -13,7 +13,7 @@ E3DEngine::Terrain::Terrain()
 	mSceneObjectType = TP_Terrain;
 	m_bIsEditorGrid = false;
 	lastSize = 1;
-	CreateBehaviour();
+	CREATE_BEHAVIOUR(Terrain);
 }
 
 void E3DEngine::Terrain::Create(const char * heightMapFileName)
@@ -154,16 +154,4 @@ void E3DEngine::Terrain::PrepareUpdate(float deltaTime)
 void E3DEngine::Terrain::SetIsEditorGrid(bool isEditor)
 {
 	m_bIsEditorGrid = isEditor;
-}
-
-void E3DEngine::Terrain::CreateBehaviour()
-{
-	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-	NEW_INSTANCE(Terrain);
-	setBehaviourDefaultValue();
-}
-
-void E3DEngine::Terrain::setBehaviourDefaultValue()
-{
-	GameObject::setBehaviourDefaultValue();
 }

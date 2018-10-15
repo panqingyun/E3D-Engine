@@ -48,6 +48,9 @@ namespace E3DEngine
 
 	protected:
 		void updateEngineDefineShaderValue();
+
+		void descPointLight();
+
 		virtual void afterRender(float deltaTime);
 
 	private:
@@ -57,6 +60,7 @@ namespace E3DEngine
 			glGenBuffers(1, &m_IndexBuffer);
 			glGenBuffers(1, &m_BatchVertexBuffer);
 		}
+	private:
 
 		GLuint	m_VertexBuffer;
 		GLuint	m_IndexBuffer;

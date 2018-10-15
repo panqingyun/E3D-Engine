@@ -44,7 +44,13 @@ namespace E3DEngine
 
 	Texture::Texture()
 	{
-		
+		CreateBehaviour();
 	}
 
+	void Texture::CreateBehaviour()
+	{
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(Texture);
+		setBehaviourDefaultValue();
+	}
 }

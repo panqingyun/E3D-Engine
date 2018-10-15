@@ -161,7 +161,6 @@ namespace E3DEngine
 		void CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false);
 		
 		virtual void TransformChange() override;
-		virtual void CreateBehaviour() override;
 		std::list<share_pointer<Particle>> *GetActiveParticles();
 	public:
         void	AddParticleEmitter(ParticleEmitter * emitter);
@@ -177,9 +176,6 @@ namespace E3DEngine
 		virtual void	SetMaxParticleNumber(UINT number);
 		virtual void	SetCamera(Camera * camera) override;
 		virtual void	AfterUpdate(float deltaTime) override;
-
-		void makeBillboard();
-
 		virtual void	SetDontDestory(bool dontDestory) override;
 		virtual void	SetActive(bool isActive) override;
 

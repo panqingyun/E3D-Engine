@@ -226,8 +226,24 @@ namespace E3DEditor.ViewModel
                 return;
             mainWnd.Pause.IsChecked = false;
             E3DEngine.SceneManageRef.GetInstance().LoadScene(curScenePath);
-            mainWnd.objectList.ItemsSource = null;
-            loadGameObjectList();
+            E3DEngine.GameObjectRef gameRootObj = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetRootObject();
+            List<E3DEngine.GameObjectRef> _gameObjectList = gameRootObj.GetChilds();
+            ObservableCollection<GameObjectNode> listObject = gameObjectList[0].Childs;
+            for (int i = 0; i < listObject.Count; i++)
+            {
+                listObject[i].mGameObject = _gameObjectList[i];
+                refillObjectList(_gameObjectList[i].GetChilds(), listObject[i].Childs);
+            }
+            RenderDelegate.CreateEditor();
+        }
+
+        private void refillObjectList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
+        {
+            for (int i = 0; i < nodeList.Count; i++)
+            {
+                nodeList[i].mGameObject = _gameObjectList[i];
+                refillObjectList(_gameObjectList[i].GetChilds(), nodeList[i].Childs);
+            }
         }
 
         private void loadGameObjectList()
@@ -347,6 +363,10 @@ namespace E3DEditor.ViewModel
             if (!isRun)
             {
                 reloadCurSene();
+            }
+            else
+            {
+                saveCurrentScene();
             }
             sceneIsStart = isRun;
             RenderDelegate.RunCurrentScene(isRun);
@@ -572,23 +592,28 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        private void saveCurrentScene()
+        {
+            if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
+            {
+                return;
+            }
+
+            if (curScenePath == "")
+            {
+                string filePath = IOFile.SaveScene("scene.scene");
+                curScenePath = filePath;
+            }
+
+            E3DEngine.SceneManageRef.GetInstance().GetCurScene().SaveScene(curScenePath);
+        }
+
         #region ... Command
         public void ExecuteCommand(object sender, ExecutedRoutedEventArgs e)
         {
             if (e.Command == ApplicationCommands.Save)
             {
-                if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
-                {
-                    return;
-                }
-
-                if (curScenePath == "")
-                {
-                    string filePath = IOFile.SaveScene("scene.scene");
-                    curScenePath = filePath;
-                }
-
-                E3DEngine.SceneManageRef.GetInstance().GetCurScene().SaveScene(curScenePath);
+                saveCurrentScene();
             }
         }
 
@@ -654,6 +679,7 @@ namespace E3DEditor.ViewModel
                     break;
                 case "Run":
                     {
+                        saveCurrentScene();
                         runGame();
                     }
                     break;

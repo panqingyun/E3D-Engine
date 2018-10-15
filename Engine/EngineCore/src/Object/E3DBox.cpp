@@ -11,7 +11,7 @@
 
 E3DEngine::Box::Box()
 {
-	CreateBehaviour();
+	CREATE_BEHAVIOUR(Box);
 }
 
 void E3DEngine::Box::Create(float l, float w, float h)
@@ -201,17 +201,5 @@ void E3DEngine::Box::TransformChange()
 		return;
 	}
 	m_pRenderer->SetTransform(Transform);
-}
-
-void E3DEngine::Box::CreateBehaviour()
-{
-	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-	NEW_INSTANCE(Box);
-	setBehaviourDefaultValue();
-}
-
-void E3DEngine::Box::setBehaviourDefaultValue()
-{
-	GameObject::setBehaviourDefaultValue();
 }
 

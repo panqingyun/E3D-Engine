@@ -29,21 +29,18 @@ namespace E3DEngine
 		{
 			ActiveChangeEvent(this,nullptr);
 		}
-		for (auto & m_listComponent : m_listComponents)
-		{
-			for (auto & itr : m_listComponent.second)
+		for (auto & component : m_listComponents)
+		{			
+			if (isActive)
 			{
-				if (isActive)
-				{
-					itr->OnEnable();
-				}
-				else
-				{
-					itr->OnDisable();
-				}
+				component.second->OnEnable();
+			}
+			else
+			{
+				component.second->OnDisable();
 			}
 		}
-		for(auto & Child : childNode)
+		for(auto & Child : mChildGameObject)
 		{
 			if(Child.second != nullptr)
 			{
@@ -52,13 +49,7 @@ namespace E3DEngine
 		}
 	}
 	
-	std::vector<Component*> * GameObject::GetComponents(std::string type_name)
-	{
-		return &m_listComponents[type_name];
-	}
-
-
-	std::map<std::string, std::vector<Component*>> & GameObject::GetAllComponents()
+	std::map<std::string, Component*> & GameObject::GetAllComponents()
 	{
 		return m_listComponents;
 	}
@@ -98,16 +89,16 @@ namespace E3DEngine
 					return nullptr;
 				}
 				component->SetGameObject(this);
-				component->mName = type_name;
+				component->mTypeName = type_name;
 				component->Transform = Transform;
-				m_listComponents[type_name].push_back((Component*)component);
+				m_listComponents[type_name] = component;
 			}
 		}		
 		else
 		{
 			// 不是引擎类
 			component = new Component;
-			component->mName = full_name;
+			component->mTypeName = full_name;
 			component->mBehaviour->SetImage(MonoScriptManager::GetInstance().GetCodeImage());
 			component->mBehaviour->Create(nameSpaceName.c_str(), className.c_str());
 			AddComponent(component);
@@ -124,7 +115,7 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
-		m_listComponents[(component)->mName].push_back(component);
+		m_listComponents[(component)->mTypeName] = component;
 		return component;
 	}
 	
@@ -132,15 +123,15 @@ namespace E3DEngine
 	{
 		if (m_listComponents.find(type_name) != m_listComponents.end())
 		{
-			return m_listComponents[type_name][0];
+			return m_listComponents[type_name];
 		}
 		return nullptr;
 	}
 
 	void GameObject::RemoveComponent(Component *com)
 	{
-		std::string type_name = com->mName;
-		std::map<std::string, std::vector<Component*>>::iterator itr = m_listComponents.find(type_name);
+		std::string type_name = com->mTypeName;
+		std::map<std::string, Component*>::iterator itr = m_listComponents.find(type_name);
 		if (itr != m_listComponents.end())
 		{
 			m_listComponents.erase(itr);
@@ -154,14 +145,11 @@ namespace E3DEngine
 
 	void GameObject::AfterUpdate(float deltaTime)
 	{
-		for (auto & m_listComponent : m_listComponents)
+		for (auto & component : m_listComponents)
 		{
-			for (auto & itr : m_listComponent.second)
-			{
-				itr->LateUpdate(deltaTime);
-			}
+			component.second->LateUpdate(deltaTime);
 		}
-		for (auto &node : childNode)
+		for (auto &node : mChildGameObject)
 		{
 			if (!node.second->IsActive)
 			{
@@ -184,19 +172,16 @@ namespace E3DEngine
 		if (IsActive)
 		{
 			PrepareUpdate(deltaTime);
-			for (auto & m_listComponent : m_listComponents)
+			for (auto & component : m_listComponents)
 			{
-				for (auto & itr : m_listComponent.second)
+				if (component.second->mNotStart)
 				{
-					if (itr->mNotStart)
-					{
-						itr->Start();
-						itr->mNotStart = false;
-					}
-					itr->Update(deltaTime);
+					component.second->Start();
+					component.second->mNotStart = false;
 				}
+				component.second->Update(deltaTime);
 			}
-			for (auto &node : childNode)
+			for (auto &node : mChildGameObject)
 			{
 				if (!node.second->IsActive)
 				{
@@ -209,24 +194,21 @@ namespace E3DEngine
 	
 	GameObject::~GameObject()
 	{
-		for (auto & m_listComponent : m_listComponents)
+		for (auto & component : m_listComponents)
 		{
-			for (auto & itr : m_listComponent.second)
-			{
-				itr->Destory();
-				SAFE_DELETE(itr);
-			}
+			component.second->Destory();
+			SAFE_DELETE(component.second);
 		}
 		if (ParentNode != nullptr)
 		{
 			ParentNode->RemoveChild(ID);
 			ParentNode->Transform->RemoveChild(ID);
 		}
-		int childSize = childNode.size();
+		int childSize = mChildGameObject.size();
 		for (int i = 0; i < childSize; i++)
 		{
-			auto node = childNode.begin()->second;
-			childNode.erase(node->ID);
+			auto node = mChildGameObject.begin()->second;
+			mChildGameObject.erase(node->ID);
 			SAFE_DELETE(node);
 		}
 		m_listComponents.clear();
@@ -250,10 +232,10 @@ namespace E3DEngine
 	
 	E3DEngine::GameObject * GameObject::FindChild(UINT id)
 	{
-		if (childNode.find(id) == childNode.end())
+		if (mChildGameObject.find(id) == mChildGameObject.end())
 		{
 			GameObject * _child = nullptr;
-			for (auto & child : childNode)
+			for (auto & child : mChildGameObject)
 			{
 				_child = child.second->FindChild(id);
 				if (_child != nullptr)
@@ -265,7 +247,7 @@ namespace E3DEngine
 		}
 		else
 		{
-			return childNode[id];
+			return mChildGameObject[id];
 		}
 	}
 
@@ -273,9 +255,9 @@ namespace E3DEngine
 	E3DEngine::GameObject * GameObject::FindChild(std::string name)
 	{
 		GameObject * _child = nullptr;
-		for (const auto &child : childNode)
+		for (const auto &child : mChildGameObject)
 		{
-			if (child.second->mName == name)
+			if (child.second->mTypeName == name)
 			{
 				_child = child.second;
 				break;
@@ -342,13 +324,10 @@ namespace E3DEngine
 
 	void GameObject::OnCollisionEnter(GameObject * other)
 	{
-		for (std::map<std::string, std::vector<Component*>>::iterator it = m_listComponents.begin();
+		for (std::map<std::string, Component*>::iterator it = m_listComponents.begin();
 			it != m_listComponents.end(); it ++)
-		{
-			for (auto & com : it->second)
-			{
-				com->OnCollisionEnter(other);
-			}
+		{			
+			it->second->OnCollisionEnter(other);
 		}
 	}
 
@@ -378,9 +357,9 @@ namespace E3DEngine
 		{
 			node->ParentNode->RemoveChild(node);
 		}
-		if (childNode.find(node->ID) == childNode.end())
+		if (mChildGameObject.find(node->ID) == mChildGameObject.end())
 		{
-			childNode[node->ID] = node;
+			mChildGameObject[node->ID] = node;
 			node->ParentNode = this;
 			if (mObjectType != eT_Scene)
 			{
@@ -402,11 +381,11 @@ namespace E3DEngine
 		}
 
 		Transform->RemoveChild(node->ID);
-		if (childNode.find(node->ID) == childNode.end())
+		if (mChildGameObject.find(node->ID) == mChildGameObject.end())
 		{
 			return;
 		}
-		childNode.erase(childNode.find(node->ID));		
+		mChildGameObject.erase(mChildGameObject.find(node->ID));
 		node->ParentNode = nullptr;
 		//SAFE_DELETE(node);
 	}
@@ -415,37 +394,37 @@ namespace E3DEngine
 	void GameObject::RemoveChild(UINT ID)
 	{
 		Transform->RemoveChild(ID);
-		if (childNode.find(ID) == childNode.end())
+		if (mChildGameObject.find(ID) == mChildGameObject.end())
 		{
 			return;
 		}
 		
-		childNode[ID]->ParentNode = nullptr;
-		childNode.erase(childNode.find(ID));
+		mChildGameObject[ID]->ParentNode = nullptr;
+		mChildGameObject.erase(mChildGameObject.find(ID));
 		//SAFE_DELETE(childNode[ID]);
 	}
 
 
 	void GameObject::DestoryAllChild()
 	{
-		for (auto &node : childNode)
+		for (auto &node : mChildGameObject)
 		{
 			Transform->RemoveChild(node.second->ID);
 			SAFE_DELETE(node.second);
 		}
 
-		childNode.clear();
+		mChildGameObject.clear();
 	}
 
 
 	E3DEngine::Collider * GameObject::GetCollider()
 	{
-		return mCollider;
+		return m_pCollider;
 	}
 
 	void GameObject::SetCollider(Collider * collider)
 	{
-		mCollider = collider;
+		m_pCollider = collider;
 	}
 
 	void GameObject::Render(float deltaTime)
@@ -457,39 +436,17 @@ namespace E3DEngine
 	}
 
 
+	void GameObject::CreateComplete()
+	{
+
+	}
+
 	void GameObject::SetRenderIndex(DWORD index)
 	{
 		if (m_pRenderer!= nullptr)
 		{
 			m_pRenderer->SetRenderIndex(index);
 		}
-	}
-
-	void GameObject::RemoveComponent(UINT id)
-	{
-		for (auto &comList : m_listComponents)
-		{
-			if (removeComponentFromListByID(comList.second, id))
-			{
-				break;
-			}
-		}
-	}
-
-	bool GameObject::removeComponentFromListByID(std::vector<Component*> &comList, UINT id)
-	{
-		bool isRemove = false;
-		for (std::vector<Component*>::iterator itr = comList.begin();
-			itr != comList.end() ;++itr)
-		{
-			if ((*itr)->ID == id)
-			{
-				comList.erase(itr);
-				isRemove = true;
-				break;
-			}
-		}
-		return isRemove;
 	}
 
 	E3DEngine::RenderObject * GameObject::GetRenderer()
@@ -510,7 +467,7 @@ namespace E3DEngine
 
 	std::map<UINT, GameObject *> & GameObject::GetChilds()
 	{
-		return childNode;
+		return mChildGameObject;
 	}
 
 
@@ -541,7 +498,6 @@ namespace E3DEngine
 		NEW_INSTANCE(GameObject);
 		setBehaviourDefaultValue();
 	}
-
 
 	void GameObject::Destory(GameObject *go)
 	{
@@ -578,12 +534,6 @@ namespace E3DEngine
 	bool GameObject::GetIsStatic()
 	{
 		return m_bIsStatic;
-	}
-
-	void GameObject::setBehaviourDefaultValue()
-	{
-		Object::setBehaviourDefaultValue();
-		TRANSFER_FIELD_OBJECT(Transform);
 	}
 
 	StringBuilder::StringBuilder() = default;

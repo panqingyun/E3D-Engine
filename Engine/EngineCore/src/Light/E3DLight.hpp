@@ -54,8 +54,6 @@ namespace E3DEngine
 		float Range;
 
 	public:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue();
 		virtual void CreateShadow() override;
 	};
 
@@ -65,9 +63,15 @@ namespace E3DEngine
 		DirectionLight();
 
 	public:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue();
 		virtual void CreateShadow() override;
+		virtual void CreateComplete() override;
+		virtual void TransformChange() override;
+
+		void SetDirection(vec3f dir);
+		vec3f &GetDirection();
+
+	private:
+		vec3f mDirection;
 	};
 
 	class E3D_EXPORT_DLL SpotLight : public Light
@@ -78,8 +82,6 @@ namespace E3DEngine
 		int   SpotAngle;
 
 	public:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue();
 		virtual void CreateShadow() override;
 	};
 	

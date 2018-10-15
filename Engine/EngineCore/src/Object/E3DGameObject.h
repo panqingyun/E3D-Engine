@@ -282,6 +282,14 @@ namespace E3DEngine
 		return typeid(T).name();
 	}
 
+#define CREATE_BEHAVIOUR(name) \
+	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());\
+	mBehaviour->Create(NAME_SPACE, #name);\
+	setBehaviourDefaultValue();\
+	Object::setBehaviourDefaultValue();\
+	TRANSFER_FIELD_OBJECT(Transform);\
+
+
 	class Camera;
 	class CTransform;
 	class Material;
@@ -289,6 +297,7 @@ namespace E3DEngine
 	class Renderer;
 	class SkyBox;
 	class Collider;
+	class RigidBody;
 	class E3D_EXPORT_DLL GameObject : public Object
 	{
 	public:
@@ -331,12 +340,10 @@ namespace E3DEngine
 		}
 
 	public:
-		std::map<std::string, std::vector<Component*>> &GetAllComponents();
-		std::vector<Component*> * GetComponents(std::string type_name);
+		std::map<std::string, Component*> &GetAllComponents();
 		Component * AddComponent(const char * type_name);
 		Component * AddComponent(Component * component);
 		Component * GetComponent(const char * type_name);
-		void RemoveComponent(UINT id);
 		void RemoveComponent(Component *com);
 		void SetIsStatic(bool isStatic);
 		bool GetIsStatic();
@@ -361,6 +368,7 @@ namespace E3DEngine
 		virtual void DestoryAllChild();
 		virtual void SetCollider(Collider * collider);
 		virtual void Render(float deltaTime);
+		virtual void CreateComplete();
 		virtual void CreateBehaviour() override;
 
 		virtual Collider * GetCollider();
@@ -383,8 +391,6 @@ namespace E3DEngine
 
 	protected:
 		virtual void ComponentAdded(Component * component);
-		virtual void setBehaviourDefaultValue();
-		virtual bool removeComponentFromListByID(std::vector<Component*> &comList, UINT id);
 
 	public:
 		object			Tag;
@@ -398,17 +404,19 @@ namespace E3DEngine
 		// 渲染层级
 		DWORD					RenderIndex;
 		unsigned int			Flag;
+
 	protected:
-		std::map<UINT, GameObject *> childNode;
-		DWORD m_layerMask;
-		Renderer * m_pRenderer;
-		vec3f		size;
-		std::vector<Vertex> m_vecVertex;
-		std::vector<BatchVertex> m_vecBatchVertex;
-		std::vector<uint> m_vecIndex;
-		bool	m_bIsStatic;
-		Collider	* mCollider;
-		std::map<std::string, std::vector<Component*>> m_listComponents;
+		DWORD						m_layerMask;
+		Renderer *					m_pRenderer;
+		vec3f						size;
+		std::vector<Vertex>			m_vecVertex;
+		std::vector<BatchVertex>	m_vecBatchVertex;
+		std::vector<uint>			m_vecIndex;
+		bool						m_bIsStatic;
+		std::map<std::string, Component*> m_listComponents;
+		Collider	* m_pCollider;
+
+		std::map<UINT, GameObject *> mChildGameObject;
 	};
 
 	

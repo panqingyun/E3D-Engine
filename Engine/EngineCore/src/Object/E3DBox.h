@@ -20,8 +20,5 @@ namespace E3DEngine
 		virtual void SetActive(bool isActive) override;
 		virtual void AfterUpdate(float deltaTime) override;
 		virtual void TransformChange() override;
-	protected:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue() override;
 	};
 }

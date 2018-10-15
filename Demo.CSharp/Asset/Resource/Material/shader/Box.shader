@@ -16,7 +16,7 @@ void main(void)
 {
     v_coord = inputTextureCoordinate;
 	vec4 interpolatedPosition = vec4(position ,1.0);	
-	
+	//position.x = position.x + 1.0;
 	mat4 rotateMatrix = getRotateMatrix();
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	v_coord = inputTextureCoordinate;

@@ -137,16 +137,31 @@ namespace E3DEngine
 				color.r = 0; color.g = 0; color.b = 0; color.a = 1;
 			}
 			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
-			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, dlight->Transform->Position.x, dlight->Transform->Position.y, dlight->Transform->Position.z);
+			vec3f direction = dlight->GetDirection();
+			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, direction.x, direction.y, direction.z);
 		}
 
-		std::map<UINT, Light*>& plights = SceneManager::GetCurrentScene()->GetPointLights();
-		if (plights.size() != 0)
+		descPointLight();		
+
+		if (pCamera != nullptr)
 		{
-			std::vector<float> lightPos;
-			std::vector<float> lightColor;
-			std::vector<float> lightRange;
-			for (auto & pl : plights)
+			vec3f &pos = pCamera->Transform->Position;
+			pMaterial->mShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
+		}
+	}
+
+
+	void GLES_Renderer::descPointLight()
+	{
+		std::map<UINT, Light*>& plights = SceneManager::GetCurrentScene()->GetPointLights();
+
+		std::vector<float> lightPos;
+		std::vector<float> lightColor;
+		std::vector<float> lightRange;
+
+		for (auto & pl : plights)
+		{			
+			if (pl.second->IsActive)
 			{
 				lightPos.emplace_back(pl.second->Transform->Position.x);
 				lightPos.emplace_back(pl.second->Transform->Position.y);
@@ -157,14 +172,20 @@ namespace E3DEngine
 				lightColor.emplace_back(pl.second->Color.a);
 				lightRange.emplace_back(static_cast<PointLight*>(pl.second)->Range);
 			}
+			else
+			{
+				lightColor.emplace_back(0);
+				lightColor.emplace_back(0);
+				lightColor.emplace_back(0);
+				lightColor.emplace_back(1);
+			}
+		}
+
+		if (!plights.empty())
+		{
 			pMaterial->mShader->UpdataFloat3ArrayUniform(POINT_LIGHT_POS, lightPos);
 			pMaterial->mShader->UpdataFloat4ArrayUniform(POINT_LIGHT_COLOR, lightColor);
 			pMaterial->mShader->UpdataFloat1ArrayUniform(POINT_LIGHT_RANGE, lightRange);
-		}
-		if (pCamera != nullptr)
-		{
-			vec3f &pos = pCamera->Transform->Position;
-			pMaterial->mShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
 		}
 	}
 

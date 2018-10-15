@@ -66,6 +66,7 @@ namespace E3DEngine
 		unsigned int	ID;
 		unsigned int	mSceneObjectType;
 		std::string		mName;
+		std::string		mTypeName;
 		ObjectType		mObjectType;
 		MonoBehaviour * mBehaviour;
 		std::string		mConfigPath;

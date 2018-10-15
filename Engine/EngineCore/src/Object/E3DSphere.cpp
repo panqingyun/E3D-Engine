@@ -10,7 +10,7 @@
 E3DEngine::Sphere::Sphere()
 {
 	mSceneObjectType = TP_Sphere;
-	CreateBehaviour();
+	CREATE_BEHAVIOUR(Sphere);
 }
 
 void E3DEngine::Sphere::Create(float R)
@@ -106,16 +106,3 @@ void E3DEngine::Sphere::TransformChange()
 	}*/
 	//m_pRenderer->TransformChange();
 }
-
-void E3DEngine::Sphere::CreateBehaviour()
-{
-	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-	NEW_INSTANCE(Sphere);
-	setBehaviourDefaultValue();
-}
-
-void E3DEngine::Sphere::setBehaviourDefaultValue()
-{
-	GameObject::setBehaviourDefaultValue();
-}
-

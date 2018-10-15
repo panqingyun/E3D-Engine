@@ -58,8 +58,6 @@ namespace E3DEngine
 		void	createAnimation();
 
 	protected:
-		virtual void CreateBehaviour() override;
-
 		bool m_bIsSkinMesh;
 
 #endif

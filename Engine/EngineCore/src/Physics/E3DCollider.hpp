@@ -49,10 +49,10 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 		virtual void OnCreateComplete() override;
 		virtual void Update(float deltaTime) override;
-	private:
-
+	
 #ifndef __IGNORED_INCLUDE__
-		void createRigidBody(btCollisionShape *shape);
+
+		void CreateRigidBody(btCollisionShape *shape);
 
 	public:
 		virtual void registProperty() override
@@ -82,11 +82,7 @@ namespace E3DEngine
 			SAFE_DELETE(m_pShape);
 #endif
 		}
-		virtual void OnCreate()
-		{
-			Component::OnCreate();
-			mGameObject->SetCollider(this);
-		}
+		virtual void OnCreate();
 
 	public:
 #ifndef __IGNORED_INCLUDE__

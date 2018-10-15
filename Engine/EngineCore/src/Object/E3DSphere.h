@@ -14,8 +14,5 @@ namespace E3DEngine
 		void Create(float r);
 		virtual void SetActive(bool isActive) override;
 		virtual void TransformChange() override;
-	protected:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue() override;
 	};
 }

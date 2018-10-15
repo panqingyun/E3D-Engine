@@ -1,11 +1,13 @@
 #include "E3DPrefab.h"
 #include "../Scene/E3DScene.hpp"
 #include "../Scene/E3DSceneLoader.h"
+#include "E3DGameObject.h"
+#include "E3DTransform.hpp"
 
 E3DEngine::Prefab::Prefab()
 {
 	mSceneObjectType = TP_Prefab;
-	CreateBehaviour();
+	CREATE_BEHAVIOUR(Prefab);
 }
 
 void E3DEngine::Prefab::SetFilePath(std::string path)

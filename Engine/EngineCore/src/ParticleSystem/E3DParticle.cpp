@@ -537,15 +537,7 @@ namespace E3DEngine
 		beGetFromLocalPool	= false;
 		bIsEnable			= true;
 		bLockEnable			= false;
-		CreateBehaviour();
-	}
-
-	void ParticleGroup::CreateBehaviour()
-	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(ParticleGroup);
-		mBehaviour->Awake();
-		GameObject::setBehaviourDefaultValue();
+		CREATE_BEHAVIOUR(ParticleGroup);
 	}
 
 	ParticleGroup::~ParticleGroup()

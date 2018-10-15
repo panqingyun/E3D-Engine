@@ -6,7 +6,7 @@
             <Field ShowDebug="false" ShowNumber="1000" />
         </Component>
     </GameObject>
-    <GameObject Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="1.000000,1.000000,1.000000,1.000000">
+    <GameObject Name="Light" Type="2" LayerMask="AllLayer" Active="false" Color="1.000000,1.000000,1.000000,1.000000">
         <Transform Posistion="50.000000,50.000000,-50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">
@@ -42,8 +42,8 @@
         <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,0.000000,50.000000" Scale="1.000000,1.000000,1.000000" />
         <Component ClassName="E3DEngine.RigidBody" />
         <Component ClassName="E3DEngine.SphereCollider" />
-        <Component ClassName="SelfRotateSphere" RotateSpeed="2.000000">
-            <Field />
+        <Component ClassName="SelfRotateSphere">
+            <Field RotateSpeed="2.000000" />
         </Component>
         <GameObject Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
             <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
@@ -52,8 +52,8 @@
                 <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
             </Component>
             <Component ClassName="E3DEngine.SphereCollider" />
-            <Component ClassName="SelfRotateSphere" RotateSpeed="1.000000">
-                <Field />
+            <Component ClassName="SelfRotateSphere">
+                <Field RotateSpeed="1.000000" />
             </Component>
         </GameObject>
         <GameObject Name="particle" Type="6" LayerMask="0" Active="true" FilePath="Resource/Particle/ParticleFire.particle">
@@ -68,7 +68,7 @@
         </Component>
         <Component ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject Name="Dimian" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj">
+    <GameObject Name="Dimian" Type="5" LayerMask="0" Active="false" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj">
         <Material FilePath="Resource/Material/Mesh.material" SelectID="3" />
         <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component ClassName="E3DEngine.MeshCollider" />

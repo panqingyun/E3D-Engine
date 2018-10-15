@@ -174,7 +174,6 @@ namespace E3DEngine
 		Component * component = go->AddComponent(comName.c_str());
 		setComponentFieldValue(objectElement->FirstChildElement(_Component_Field), component);
 		component->OnCreate();
-		component->OnCreateComplete();
 		createComponent(objectElement->NextSiblingElement(_Component), go);
 	}
 
@@ -402,6 +401,10 @@ namespace E3DEngine
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		setGameObjectActive(objectElement, go);
+		for (auto & component : go->GetAllComponents())
+		{
+			component.second->OnCreateComplete();
+		}
 	}
 
 	void LoadSceneObjects(string sceneFilePath)
@@ -447,6 +450,7 @@ namespace E3DEngine
 					parent->AddChild(go);
 				}
 				CreateObjects(go, item->ToElement());
+				go->CreateComplete();
 			}
 		}
 	}
@@ -483,7 +487,7 @@ namespace E3DEngine
 		return retLayeStr;
 	}
 
-	void exportInnerComponent(TiXmlElement *objectElement, std::string className, std::vector<Component *> &componentList)
+	void exportInnerComponent(TiXmlElement *objectElement, std::string className,Component *component)
 	{
 		string kName = ClassFactory::GetInstance().getTypeNameByClassName(className);
 		bool isInEngine = false;
@@ -491,96 +495,92 @@ namespace E3DEngine
 		{
 			return;
 		}
-		for (auto component : componentList)
+		TiXmlElement *componentElement = new TiXmlElement(_Component);
+		componentElement->SetAttribute(_Component_ClassName, std::string(NAME_SPACE) + "." + className);
+		std::map<std::string, std::string> &fieldMap = component->m_propertyTypeMap;
+		objectElement->LinkEndChild(componentElement);
+		if (fieldMap.empty())
 		{
-			TiXmlElement *componentElement = new TiXmlElement(_Component);
-			componentElement->SetAttribute(_Component_ClassName,  std::string(NAME_SPACE) + "." + className);
-			std::map<std::string, std::string> &fieldMap = component->m_propertyTypeMap;
-			objectElement->LinkEndChild(componentElement);
-			if (fieldMap.empty())
+			return;
+		}
+		TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
+		for (auto fieldPair : fieldMap)
+		{
+			getValue get = (getValue)(component->m_getMethodMap[fieldPair.first]);
+
+			if (fieldPair.second == stringType)
+			{
+				fieldElement->SetAttribute(fieldPair.first, Convert::ToString(get(component)));
+			}
+			else if (fieldPair.second == intType)
+			{
+				fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<int>(get(component))));
+			}
+			else if (fieldPair.second == floatType)
+			{
+				fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<float>(get(component))));
+			}
+		}
+		componentElement->LinkEndChild(fieldElement);
+		
+	}
+
+	void exportOuterComponent(TiXmlElement *objectElement, std::string className, Component *component)
+	{
+		MonoObject * mono_obj = component->GetMonoBehaviour()->GetMonoObject();
+		MonoClass * mono_class = component->GetMonoBehaviour()->GetClass();
+		MonoClassField * field = nullptr;
+		void * iter = nullptr;
+		TiXmlElement *componentElement = new TiXmlElement(_Component);
+		componentElement->SetAttribute(_Component_ClassName, className);
+		TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
+		//int count = mono_class_get_field_count(mono_class); 
+		while (field = mono_class_get_fields(mono_class, &iter))
+		{
+			const char * name = mono_field_get_name(field);
+			MonoType *mono_type = mono_field_get_type(field);
+			void *fieldValue;
+			int type = mono_type_get_type(mono_type);
+
+			int flags = mono_field_get_flags(field);
+			if ((flags & FIELD_ATTRIBUTE_FIELD_ACCESS_MASK) != FIELD_ATTRIBUTE_PUBLIC)
 			{
 				continue;
 			}
-			TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
-			for (auto fieldPair : fieldMap)
+			mono_field_get_value(mono_obj, field, &fieldValue);
+			if (type == MONO_TYPE_I4) // int
 			{
-				getValue get = (getValue)(component->m_getMethodMap[fieldPair.first]);
-
-				if (fieldPair.second == stringType)
-				{
-					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(get(component)));
-				}
-				else if (fieldPair.second == intType)
-				{
-					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<int>(get(component))));
-				}
-				else if (fieldPair.second == floatType)
-				{
-					fieldElement->SetAttribute(fieldPair.first, Convert::ToString(object_cast<float>(get(component))));
-				}
+				int * p = ((int*)&fieldValue);
+				fieldElement->SetAttribute(name, Convert::ToString(*p));
 			}
-			componentElement->LinkEndChild(fieldElement);
-		}
-	}
-
-	void exportOuterComponent(TiXmlElement *objectElement, std::string className, std::vector<Component *> componentList)
-	{
-		for (auto component : componentList)
-		{
-			MonoObject * mono_obj = component->GetMonoBehaviour()->GetMonoObject();
-			MonoClass * mono_class = component->GetMonoBehaviour()->GetClass();
-			MonoClassField * field = nullptr;
-			void * iter = nullptr;
-			TiXmlElement *componentElement = new TiXmlElement(_Component);
-			componentElement->SetAttribute(_Component_ClassName, className);
-			TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
-			//int count = mono_class_get_field_count(mono_class); 
-			while (field = mono_class_get_fields(mono_class, &iter))
+			else if (type == MONO_TYPE_BOOLEAN)
 			{
-				const char * name = mono_field_get_name(field);
-				MonoType *mono_type = mono_field_get_type(field);
-				void *fieldValue;
-				int type = mono_type_get_type(mono_type);
-
-				int flags = mono_field_get_flags(field);
-				if ((flags & FIELD_ATTRIBUTE_FIELD_ACCESS_MASK) != FIELD_ATTRIBUTE_PUBLIC)
-				{
-					continue;
-				}
-				mono_field_get_value(mono_obj, field, &fieldValue);
-				if (type == MONO_TYPE_I4) // int
-				{
-					int * p = ((int*)&fieldValue);
-					fieldElement->SetAttribute(name, Convert::ToString(*p));
-				}
-				else if (type == MONO_TYPE_BOOLEAN)
-				{
-					int * p = ((int*)&fieldValue);
-					fieldElement->SetAttribute(name, (*p) == 1 ? "true" : "false");
-				}
-				else if (type == MONO_TYPE_STRING)
-				{
-					const char * p = ((const char*)&fieldValue);
-					componentElement->SetAttribute(name, p);
-				}
-				else if (type == MONO_TYPE_R4) // float
-				{
-					float * p = ((float*)&fieldValue);
-					componentElement->SetAttribute(name, Convert::ToString(*p));
-				}
+				int * p = ((int*)&fieldValue);
+				fieldElement->SetAttribute(name, (*p) == 1 ? "true" : "false");
 			}
-			componentElement->LinkEndChild(fieldElement);
-			objectElement->LinkEndChild(componentElement);
+			else if (type == MONO_TYPE_STRING)
+			{
+				const char * p = ((const char*)&fieldValue);
+				fieldElement->SetAttribute(name, p);
+			}
+			else if (type == MONO_TYPE_R4) // float
+			{
+				float * p = ((float*)&fieldValue);
+				fieldElement->SetAttribute(name, Convert::ToString(*p));
+			}
 		}
+		componentElement->LinkEndChild(fieldElement);
+		objectElement->LinkEndChild(componentElement);
+		
 	}
 
 	void saveComponentElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
-		std::map<std::string, std::vector<Component*>> &componentsMap = gameObject->GetAllComponents();
+		std::map<std::string, Component*> &componentsMap = gameObject->GetAllComponents();
 
-		for (auto componentListPair : componentsMap)
+		for (auto componentPair : componentsMap)
 		{
-			std::string componentName = componentListPair.first;
+			std::string componentName = componentPair.first;
 			std::string className = "";
 			std::string nameSpaceName = "";
 			std::string full_name = componentName;
@@ -598,11 +598,11 @@ namespace E3DEngine
 
 			if (nameSpaceName == E3D_NAME_SPACE)
 			{ // 引擎定义
-				exportInnerComponent(objectElement, className, componentListPair.second);
+				exportInnerComponent(objectElement, className, componentPair.second);
 			}
 			else
 			{ // 自定义
-				exportOuterComponent(objectElement, full_name, componentListPair.second);
+				exportOuterComponent(objectElement, full_name, componentPair.second);
 			}
 		}
 	}
@@ -721,7 +721,6 @@ namespace E3DEngine
 		doc->SaveFile(pScene->GetScenePath());
 		delete doc;
 	}
-
 
 	void RegistScnObjCreateFunc()
 	{

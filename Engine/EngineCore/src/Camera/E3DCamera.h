@@ -63,8 +63,6 @@ namespace E3DEngine
 		float GetRoll();
 		float GetFaceArea();		
 		bool boundingBoxFrustum(vec3f position, float size);
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue() override;
 		vec4f GetClearColor();
 
 	private:

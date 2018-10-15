@@ -17,10 +17,6 @@ namespace E3DEngine
 		virtual void PrepareUpdate(float deltaTime);
 		void SetIsEditorGrid(bool isEditor);
 
-	protected:
-		virtual void CreateBehaviour() override;
-		virtual void setBehaviourDefaultValue() override;
-
 	private:
 		bool m_bIsEditorGrid;
 		int lastSize;

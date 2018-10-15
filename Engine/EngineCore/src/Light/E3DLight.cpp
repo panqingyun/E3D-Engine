@@ -3,27 +3,17 @@
 #include "E3DLight.hpp"
 #include "../Scene/E3DSceneManager.hpp"
 #include "../Source/E3DDebug.h"
+#include "../Object/E3DTransform.hpp"
 
 namespace E3DEngine
 {
 	PointLight::PointLight()
 	{
 		Range = 0;
-		CreateBehaviour();
-	}
-
-	void PointLight::CreateBehaviour()
-	{
 		Type = ePOINT_LIGHT;
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(PointLight);
-		setBehaviourDefaultValue();
-	}
-
-	void PointLight::setBehaviourDefaultValue()
-	{
-		Light::setBehaviourDefaultValue();
+		CREATE_BEHAVIOUR(PointLight);
 		TRANSFER_FIELD_VALUE(Range);
+		Light::setBehaviourDefaultValue();
 	}
 
 	void PointLight::CreateShadow()
@@ -35,19 +25,7 @@ namespace E3DEngine
 	DirectionLight::DirectionLight()
 	{
 		Type = eDIRECTION_LIGHT;
-		CreateBehaviour();
-	}
-
-	void DirectionLight::CreateBehaviour()
-	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(DirectionLight);
-		setBehaviourDefaultValue();
-	}
-
-	void DirectionLight::setBehaviourDefaultValue()
-	{
-		Light::setBehaviourDefaultValue();
+		CREATE_BEHAVIOUR(DirectionLight);
 	}
 
 	void DirectionLight::CreateShadow()
@@ -55,24 +33,34 @@ namespace E3DEngine
 		// 平行光 创建正交投影摄像机
 	}
 
+
+	void DirectionLight::CreateComplete()
+	{
+		SetDirection(Transform->Position);
+	}
+
+	void DirectionLight::TransformChange()
+	{
+		mDirection = Transform->Rotation * mDirection;
+	}
+
+	void DirectionLight::SetDirection(vec3f dir)
+	{
+		mDirection = dir;
+	}
+
+	vvision::vec3f &DirectionLight::GetDirection()
+	{
+		return mDirection;
+	}
+
 	SpotLight::SpotLight()
 	{
 		Type = ePOINT_LIGHT;
-		CreateBehaviour();
-	}
-
-	void SpotLight::CreateBehaviour()
-	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(SpotLight);
-		setBehaviourDefaultValue();
-	}
-
-	void SpotLight::setBehaviourDefaultValue()
-	{
-		Light::setBehaviourDefaultValue();
+		CREATE_BEHAVIOUR(SpotLight);
 		TRANSFER_FIELD_VALUE(Range);
 		TRANSFER_FIELD_VALUE(SpotAngle);
+		Light::setBehaviourDefaultValue();
 	}
 
 	void SpotLight::CreateShadow()

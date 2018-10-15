@@ -109,7 +109,7 @@ void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec
 E3DEngine::SkyDome::SkyDome()
 {
 	mSceneObjectType = TP_SkyDome;
-	CreateBehaviour();
+	CREATE_BEHAVIOUR(SkyDome);
 }
 
 void E3DEngine::SkyDome::Create(float R)

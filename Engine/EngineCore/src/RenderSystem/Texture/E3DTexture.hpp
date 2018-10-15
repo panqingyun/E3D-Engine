@@ -15,7 +15,7 @@ namespace E3DEngine
 {
 
 	class TextureFrameEffect;
-	class E3D_EXPORT_DLL Texture : public IObject
+	class E3D_EXPORT_DLL Texture : public Object
 	{
 		friend class Material;
 	public:
@@ -35,6 +35,7 @@ namespace E3DEngine
 		virtual void SetClampType(int tp) { }
 		virtual void SetFilterType(int tp) { }
 		virtual uint GetTextureEnum() { return m_nTextureEnum; }
+		virtual void CreateBehaviour() override;
 
 	protected:
 		uint			m_nTextureEnum;

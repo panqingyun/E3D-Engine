@@ -38,6 +38,7 @@ namespace E3DEditor.ViewModel
             {
                 mainWnd = new MainWindow();
             }
+            
             mainWnd.ShowDialog();
         }
 

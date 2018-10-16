@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Runtime.InteropServices;
 using System.Windows.Controls.Primitives;
+using E3DEditor.Model;
 
 namespace E3DEditor.View
 {
@@ -29,7 +30,12 @@ namespace E3DEditor.View
             {
                 return;
             }
+            if(objectList.SelectedItem != null)
+            {
+                (objectList.SelectedItem as GameObjectNode).IsSelected = false;
+            }
             properties.SelectedObject = objectList.SelectedItem;
+            (objectList.SelectedItem as GameObjectNode).IsSelected = true;
         }
 
         private void menu_Click(object sender, RoutedEventArgs e)

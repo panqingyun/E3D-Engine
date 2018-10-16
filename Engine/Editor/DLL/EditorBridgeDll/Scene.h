@@ -7,6 +7,7 @@ using namespace System;
 
 namespace E3DEngine
 {
+	void TransformChange(int ID);
 	public ref class SceneRef
 	{
 	public:
@@ -16,6 +17,11 @@ namespace E3DEngine
 		String ^GetName();
 		String ^GetScenePath();
 		void SaveScene(String ^path);
+		GameObjectRef ^GetGameObject(int ID);
+
+	private:
+		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
+
 	private:
 		Scene *mScene;
 		GameObjectRef ^mRootObject;

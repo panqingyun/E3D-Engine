@@ -7,6 +7,18 @@ using namespace msclr::interop;
 using namespace System;
 namespace E3DEngine
 {
+	void TransformChange(int ID)
+	{
+		GameObjectRef ^refObj = SceneManageRef::GetInstance()->GetCurScene()->GetGameObject(ID);
+		if (refObj == nullptr)
+		{
+			return;
+		}
+		if (refObj->TransformChangeHandle != nullptr)
+		{
+			refObj->TransformChangeHandle(refObj, nullptr);
+		}
+	}
 
 	SceneRef::SceneRef(Scene *scene)
 	{
@@ -32,6 +44,34 @@ namespace E3DEngine
 		mScene->Save();
 	}
 
+	E3DEngine::GameObjectRef ^ SceneRef::GetGameObject(int ID)
+	{
+		List<GameObjectRef ^>^ childList = mRootObject->GetChilds();
+		return findGameObject(childList, ID);
+	}
+
+	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)
+	{
+		GameObjectRef ^ retObj = nullptr;
+		for (int i = 0; i < childList->Count; i++)
+		{
+			if (childList[i]->GetID() == ID)
+			{
+				retObj = childList[i];
+			}
+			else
+			{
+				retObj = findGameObject(childList[i]->GetChilds(), ID);
+			}
+
+			if (retObj != nullptr)
+			{
+				break;
+			}
+		}
+		return retObj;
+	}
+
 	E3DEngine::GameObjectRef ^ SceneRef::GetRootObject()
 	{
 		return mRootObject;
@@ -49,6 +89,7 @@ namespace E3DEngine
 			mRootObject->SetValue(scene->GetRootObject());
 		}
 	}
+
 
 	E3DEngine::SceneManageRef^ SceneManageRef::GetInstance()
 	{

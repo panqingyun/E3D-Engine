@@ -33,6 +33,7 @@ namespace E3DEngine
 		TP_Terrain  = 10,
 		TP_Prefab = 11,
 		TP_SkyDome = 12,
+		TP_Line = 13,
 	};
 
 	const std::string NM_GameObject = "GameObject";

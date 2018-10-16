@@ -38,11 +38,17 @@ namespace E3DEngine
 		TransformRef ^GetTransform();
 		void SetActive(bool active);
 		bool GetActive();
+		int GetID();
+
+	public:
+		System::EventHandler  ^TransformChangeHandle;
+
 	private:
 		TransformRef ^mTransform;
 		GameObject * mGameObject;
 		String ^ mName;
-
+		List<GameObjectRef ^>^ mChildList;
+		int mID;
 	};
 }
 #pragma unmanaged

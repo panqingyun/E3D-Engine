@@ -1,12 +1,37 @@
 ﻿using E3DEditor.Common;
 using E3DEngine;
 using System.Collections.ObjectModel;
+using System;
 
 namespace E3DEditor.Model
 {
     public class GameObjectNode : ItemNodeBase
     {
-        public GameObjectRef mGameObject;
+        public bool IsSelected = false;
+
+        private GameObjectRef gameObject;
+        public GameObjectRef mGameObject
+        {
+            set
+            {
+                gameObject = value;
+                gameObject.TransformChangeHandle = objectTransChange;
+            }
+            get
+            {
+                return gameObject;
+            }
+        }
+
+        private void objectTransChange(object sender, EventArgs e)
+        {
+            if (IsSelected)
+            {
+                Position = mGameObject.GetTransform().Position;
+                Rotation = mGameObject.GetTransform().Rotation;
+                Scale = mGameObject.GetTransform().Scale;
+            }
+        }
 
         [PropertyField(PropType = PropertyType.Boolean, DisplayIndex = 1)]
         public bool Active
@@ -30,7 +55,11 @@ namespace E3DEditor.Model
             }
             set
             {
-                mGameObject.GetTransform().Position = value;
+                if (mGameObject.GetTransform().Position != value)
+                {
+                    mGameObject.GetTransform().Position = value;
+                }
+                OnPropertyChanged("Position");
             }
         }
 
@@ -43,7 +72,11 @@ namespace E3DEditor.Model
             }
             set
             {
-                mGameObject.GetTransform().Rotation = value;
+                if (mGameObject.GetTransform().Rotation != value)
+                {
+                    mGameObject.GetTransform().Rotation = value;
+                }
+                OnPropertyChanged("Rotation");
             }
         }
 
@@ -56,7 +89,11 @@ namespace E3DEditor.Model
             }
             set
             {
-                mGameObject.GetTransform().Scale = value;
+                if (mGameObject.GetTransform().Scale != value)
+                {
+                    mGameObject.GetTransform().Scale = value;
+                }
+                OnPropertyChanged("Scale");
             }
         }
 

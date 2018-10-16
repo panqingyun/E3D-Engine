@@ -272,6 +272,7 @@ struct E3D_EXPORT_DLL Convert
 
 namespace E3DEngine
 {
+	using TransformChangeFunc = void(*)(int ID);
 	enum GameObjectFlags
 	{
 		DONT_SAVE = 1,
@@ -404,7 +405,7 @@ namespace E3DEngine
 		// 渲染层级
 		DWORD					RenderIndex;
 		unsigned int			Flag;
-
+		TransformChangeFunc		TransChangeFun;
 	protected:
 		DWORD						m_layerMask;
 		Renderer *					m_pRenderer;

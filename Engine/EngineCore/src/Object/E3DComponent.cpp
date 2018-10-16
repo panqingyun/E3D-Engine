@@ -157,11 +157,6 @@ std::string E3DEngine::Component::GetFieldValueStr(std::string fieldName)
 	{
 		return empty_string;
 	}
-	void * field = mBehaviour->GetFieldValue(fieldName.c_str());
-	if (field == nullptr)
-	{
-		return empty_string;
-	}
 	if (m_getMethodMap.find(fieldName) == m_getMethodMap.end())
 	{
 		return getMonoFieldValueStr(fieldName);

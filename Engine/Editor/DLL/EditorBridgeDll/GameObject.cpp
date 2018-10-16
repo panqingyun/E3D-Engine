@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 #include "GameObject.h"
+#include "Scene.h"
 
 #pragma managed
 namespace E3DEngine
@@ -18,20 +19,25 @@ namespace E3DEngine
 	void GameObjectRef::SetValue(GameObject *gameObject)
 	{
 		mGameObject = gameObject;
+		mID = gameObject->ID;
 		mTransform = gcnew TransformRef(gameObject->Transform);
 		mName = gcnew String(gameObject->mName.c_str());
 	}
 
 	System::Collections::Generic::List<GameObjectRef^> ^ GameObjectRef::GetChilds()
 	{
-		List<GameObjectRef ^>^ lst = gcnew List<GameObjectRef ^>();
-		std::map<UINT, GameObject*> childs = mGameObject->GetChilds();
-		for (auto child : childs)
+		if (mChildList == nullptr)
 		{
-			GameObjectRef ^ obj = gcnew GameObjectRef(child.second);
-			lst->Add(obj);
+			mChildList = gcnew List<GameObjectRef ^>();
+			std::map<UINT, GameObject*> childs = mGameObject->GetChilds();
+			for (auto child : childs)
+			{
+				GameObjectRef ^ obj = gcnew GameObjectRef(child.second);
+				child.second->TransChangeFun = TransformChange;
+				mChildList->Add(obj);
+			}
 		}
-		return lst;
+		return mChildList;
 	}
 
 	E3DEngine::TransformRef ^ GameObjectRef::GetTransform()
@@ -48,6 +54,11 @@ namespace E3DEngine
 		return mGameObject->IsActive;
 	}
 
+	int GameObjectRef::GetID()
+	{
+		return mID;
+	}
+
 	void GameObjectRef::SetActive(bool active)
 	{
 		if (mGameObject == nullptr)
@@ -57,5 +68,6 @@ namespace E3DEngine
 
 		mGameObject->SetActive(active);
 	}
+
 }
 #pragma unmanaged

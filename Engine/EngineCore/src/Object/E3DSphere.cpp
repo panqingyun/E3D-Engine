@@ -94,6 +94,7 @@ void E3DEngine::Sphere::TransformChange()
 		return;
 	}
 	m_pRenderer->SetTransform(Transform);
+	GameObject::TransformChange();
 	/*Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
 	int vertexStartIndex = mRenderer->GetRendererBuffer(ID)->VertextStartIndex;
 	std::vector<Vertex>::iterator it = m_vecVertex.begin();

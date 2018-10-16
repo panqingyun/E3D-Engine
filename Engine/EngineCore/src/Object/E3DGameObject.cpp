@@ -338,6 +338,10 @@ namespace E3DEngine
 		{
 			m_pRenderer->TransformChange();
 		}
+		if (TransChangeFun != nullptr)
+		{
+			TransChangeFun(ID);
+		}
 	}
 
 	void GameObject::AddChild(GameObject * node)
@@ -756,7 +760,7 @@ int Convert::ToInt(std::string source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	source = StringBuilder::Trim(source);
 	return atoi(source.c_str());
@@ -767,7 +771,7 @@ int Convert::ToInt(const char * source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return atoi(source);
 }
@@ -777,7 +781,7 @@ int Convert::ToInt(const char source)
 	if (!StringBuilder::IsNumber(&source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return atoi(&source);
 }
@@ -797,7 +801,7 @@ float Convert::ToFloat(std::string source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return atof(source.c_str());
 }
@@ -807,7 +811,7 @@ float Convert::ToFloat(const char * source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return atof(source);
 }
@@ -822,7 +826,7 @@ double Convert::ToDouble(std::string source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return strtod(source.c_str(), nullptr);
 }
@@ -832,7 +836,7 @@ double Convert::ToDouble(const char * source)
 	if (!StringBuilder::IsNumber(source))
 	{
 		Debug::Log(ell_Error, "source string is not a number!");
-		assert(false);
+		return 0;
 	}
 	return strtod(source, nullptr);
 }

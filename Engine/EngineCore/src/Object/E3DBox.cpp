@@ -34,7 +34,7 @@ void E3DEngine::Box::Create(float l, float w, float h)
 	m_vecVertex[3].SetPosition(l / 2, h / 2, w / 2);
 	m_vecVertex[3].SetColor(1, 0, 1, 1);
 	m_vecVertex[3].SetNormal(0, 0, 1);
-	m_vecVertex[2].SettextureCoord1(1, 1);
+	m_vecVertex[3].SettextureCoord1(1, 1);
 	// ио
 	m_vecVertex[4].SetPosition(-l / 2, h / 2, w / 2);
 	m_vecVertex[4].SetColor(1, 1, 1, 1);
@@ -192,6 +192,10 @@ void E3DEngine::Box::AfterUpdate(float deltaTime)
 
 void E3DEngine::Box::TransformChange()
 {
+	if (TransChangeFun != nullptr)
+	{
+		TransChangeFun(ID);
+	}
 	if (!m_bIsStatic)
 	{
 		return;

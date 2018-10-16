@@ -782,7 +782,8 @@ namespace E3DEngine
 	void ParticleGroup::TransformChange()
 	{
 		m_pRenderer->SetTransform(Transform);	
-		m_pRenderer->TransformChange();
+		
+		GameObject::TransformChange();
 	}
 
 	void ParticleGroup::UpdateParticles(float deltaTime)

@@ -84,7 +84,6 @@ namespace E3DEditor.ViewModel
             for (int i = 0; i < properties.Count; i++)
             {
                 var attr = getSelectObjectAttributes(properties[i]);
-
                 if (attr.Length != 0 && (attr[0] as PropertyFieldAttribute).PropType != PropertyType.HideInProperty)
                 {
                     displayProperty(properties[i], row, attr[0] as PropertyFieldAttribute);
@@ -113,11 +112,11 @@ namespace E3DEditor.ViewModel
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                if (e.PropertyName == "Type")
+                PropertyInfo property = _selectedObject.GetType().GetProperty(e.PropertyName);
+                var attr = getSelectObjectAttributes(property);
+                if (attr.Length != 0 && (attr[0] as PropertyFieldAttribute).PropType != PropertyType.HideInProperty)
                 {
-                    uiElementMap.Clear();
-                    _View.ClearGrid();
-                    createPropertyUI();
+                    displayProperty(property, 0, attr[0] as PropertyFieldAttribute);
                 }
             });
         }
@@ -170,37 +169,49 @@ namespace E3DEditor.ViewModel
 
         private void createVector3Row(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
-            gridAddTitle(prop);
-            gridAddEnd(row);
-            gridAddRowDef();
-            Vector3Control vecElement = new Vector3Control();
-            vecElement.ValueObject = (E3DEngine.Vector3)prop.GetValue(_selectedObject);
-            vecElement.SelectObject = _selectedObject;
-            vecElement.ValueProperty = prop;
-            vecElement.Margin = new Thickness(0, 2, 2, 0);
-            vecElement.BorderThickness = new Thickness(0);
-            Grid.SetColumn(vecElement, 0);
-            Grid.SetColumnSpan(vecElement, 2);
-            Grid.SetRow(vecElement, _panelParent.RowDefinitions.Count - 1);
-            var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
-            Validation.SetErrorTemplate(vecElement, template);
-
-            _panelParent.Children.Add(vecElement);
+            Vector3Control vecElement = null;
+            if (uiElementMap.ContainsKey(prop.Name))
+            {
+                vecElement = uiElementMap[prop.Name] as Vector3Control;
+                vecElement.ValueObject = (E3DEngine.Vector3)prop.GetValue(_selectedObject);
+            }
+            else
+            {
+                gridAddTitle(prop);
+                gridAddEnd(row);
+                gridAddRowDef();
+                vecElement = new Vector3Control();
+                vecElement.ValueObject = (E3DEngine.Vector3)prop.GetValue(_selectedObject);
+                vecElement.SelectObject = _selectedObject;
+                vecElement.ValueProperty = prop;
+                vecElement.Margin = new Thickness(0, 2, 2, 0);
+                vecElement.BorderThickness = new Thickness(0);
+                Grid.SetColumn(vecElement, 0);
+                Grid.SetColumnSpan(vecElement, 2);
+                Grid.SetRow(vecElement, _panelParent.RowDefinitions.Count - 1);
+                var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
+                Validation.SetErrorTemplate(vecElement, template);
+                uiElementMap[prop.Name] = vecElement;
+                _panelParent.Children.Add(vecElement);
+            }
         }
 
         private void createNumberBoxRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
-            gridAddTitle(prop);
-            var numBox = createNumberTextBox(row);
-            numBox.Tag = prop;
-            var binding = new Binding(prop.Name);
-            binding.Source = _selectedObject;
-            binding.ValidatesOnExceptions = true;
-            binding.Mode = BindingMode.OneWay;
+            if (!uiElementMap.ContainsKey(prop.Name))
+            {
+                gridAddTitle(prop);
+                var numBox = createNumberTextBox(row);
+                numBox.Tag = prop;
+                var binding = new Binding(prop.Name);
+                binding.Source = _selectedObject;
+                binding.ValidatesOnExceptions = true;
+                binding.Mode = BindingMode.OneWay;
 
-            numBox.tbx.SetBinding(TextBox.TextProperty, binding);
-
-            numBox.KeyUp += NumBox_KeyUp;
+                numBox.tbx.SetBinding(TextBox.TextProperty, binding);
+                uiElementMap[prop.Name] = numBox;
+                numBox.KeyUp += NumBox_KeyUp;
+            }
         }
 
         private void NumBox_KeyUp(object sender, KeyEventArgs e)
@@ -241,7 +252,12 @@ namespace E3DEditor.ViewModel
         private void gridAddTitle(PropertyInfo prop)
         {
             TextBlock tb = null;
-            if (!uiElementMap.ContainsKey(prop.Name))
+            if (uiElementMap.ContainsKey(prop.Name))
+            {
+                tb = uiElementMap[prop.Name] as TextBlock;
+                tb.Text = CONST_STRING.GetTitleText(prop.ReflectedType, prop.Name);
+            }
+            else
             {
                 tb = new TextBlock() { Text = CONST_STRING.GetTitleText(prop.ReflectedType, prop.Name) };
                 tb.Foreground = new SolidColorBrush(Colors.White);
@@ -249,6 +265,7 @@ namespace E3DEditor.ViewModel
                 Grid.SetColumn(tb, 0);
                 Grid.SetRow(tb, _panelParent.RowDefinitions.Count - 1);
                 _panelParent.Children.Add(tb);
+                uiElementMap[prop.Name] = tb;
             }
 
         }
@@ -263,10 +280,15 @@ namespace E3DEditor.ViewModel
 
         private void createNewTextRow(PropertyInfo prop, int row, bool isReadOnly)
         {
-            gridAddTitle(prop);
-            if (!uiElementMap.ContainsKey(prop.Name))
+            TextBox ed = null;
+            if (uiElementMap.ContainsKey(prop.Name))
             {
-                var ed = createTextBox(row, isReadOnly);
+                //ed = uiElementMap[prop.Name] as TextBox; 
+            }
+            else
+            {
+                gridAddTitle(prop);
+                ed = createTextBox(row, isReadOnly);
                 ed.AllowDrop = false;
                 ed.Tag = prop;
 
@@ -294,10 +316,15 @@ namespace E3DEditor.ViewModel
 
         private void createNewBooleanRow(PropertyInfo prop, int row, bool isReadonly)
         {
-            gridAddTitle(prop);
-            if (!uiElementMap.ContainsKey(prop.Name))
+            ComboBox cb = null;
+            if (uiElementMap.ContainsKey(prop.Name))
             {
-                var cb = new ComboBox();
+                cb = uiElementMap[prop.Name] as ComboBox;
+            }
+            else
+            {
+                cb = new ComboBox();
+                gridAddTitle(prop);
                 cb.Items.Add("是");
                 cb.Items.Add("否");
                 cb.Margin = new Thickness(0, 2, 2, 0);
@@ -306,17 +333,7 @@ namespace E3DEditor.ViewModel
                 Grid.SetColumn(cb, 1);
                 Grid.SetRow(cb, _panelParent.RowDefinitions.Count - 1);
                 cb.Tag = prop;
-                bool propValue = false;
-
-                if (prop.PropertyType == typeof(int))
-                    propValue = (int)prop.GetValue(_selectedObject) == 1;
-                else
-                    propValue = (bool)prop.GetValue(_selectedObject);
-
-                if (propValue)
-                    cb.SelectedIndex = 0;
-                else
-                    cb.SelectedIndex = 1;
+               
 
                 var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
                 Validation.SetErrorTemplate(cb, template);
@@ -326,6 +343,17 @@ namespace E3DEditor.ViewModel
                 cb.SelectionChanged += boolComb_SelectionChanged;
                 uiElementMap[prop.Name] = cb;
             }
+
+            bool propValue = false;
+            if (prop.PropertyType == typeof(int))
+                propValue = (int)prop.GetValue(_selectedObject) == 1;
+            else
+                propValue = (bool)prop.GetValue(_selectedObject);
+
+            if (propValue)
+                cb.SelectedIndex = 0;
+            else
+                cb.SelectedIndex = 1;
         }
 
         private void boolComb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -393,10 +421,10 @@ namespace E3DEditor.ViewModel
 
         private void createImagePathRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
-            gridAddTitle(prop);
-
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddTitle(prop);
+
                 var ed = createTextBox(row, false);
 
                 ed.Tag = prop;
@@ -582,7 +610,6 @@ namespace E3DEditor.ViewModel
                     _panelParent.RowDefinitions.RemoveAt(_panelParent.RowDefinitions.Count - 1);
                     return;
                 }
-                
             }
         }
 
@@ -650,9 +677,9 @@ namespace E3DEditor.ViewModel
 
         private void createNewEnumRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
-            gridAddTitle(prop);
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddTitle(prop);
                 var cb = new ComboBox();
                 Type type = prop.PropertyType;
                 if (attr.EnumType != null) type = attr.EnumType;
@@ -675,7 +702,7 @@ namespace E3DEditor.ViewModel
                 });
                 var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
                 Validation.SetErrorTemplate(cb, template);
-
+                uiElementMap[prop.Name] = cb;
                 _panelParent.Children.Add(cb);
             }
         }
@@ -688,10 +715,15 @@ namespace E3DEditor.ViewModel
             {
                 return;
             }
-
-            gridAddRowDef();
+            if (!uiElementMap.ContainsKey(prop.Name))
+            {
+                gridAddRowDef();
+            }
             createNewPropertyMap[prf.PropType](prop, row, prf);
-            gridAddEnd(row);
+            if (!uiElementMap.ContainsKey(prop.Name))
+            {
+                gridAddEnd(row);
+            }
         }
 
     }

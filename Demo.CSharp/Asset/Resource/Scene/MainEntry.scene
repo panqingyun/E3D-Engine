@@ -3,7 +3,7 @@
     <GameObject Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,1.000000">
         <Transform Posistion="200.000000,35.000000,180.000000" Rotation="0.000000,90.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component ClassName="AppMain">
-            <Field ShowDebug="false" ShowNumber="1000" />
+            <Field ShowDebug="" ShowNumber="1000" />
         </Component>
     </GameObject>
     <GameObject Name="Light" Type="2" LayerMask="AllLayer" Active="false" Color="1.000000,1.000000,1.000000,1.000000">
@@ -68,7 +68,7 @@
         </Component>
         <Component ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject Name="Dimian" Type="5" LayerMask="0" Active="false" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj">
+    <GameObject Name="Dimian" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj">
         <Material FilePath="Resource/Material/Mesh.material" SelectID="3" />
         <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component ClassName="E3DEngine.MeshCollider" />

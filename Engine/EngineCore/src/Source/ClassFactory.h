@@ -63,9 +63,9 @@ static  varType Get##varName(void * cp) const \
 
 
 #define SAVE_METHOD(var, type)\
-m_setMethodMap.insert(pair<std::string, setValue>(#var, Set##var));\
-m_propertyTypeMap.insert(pair<std::string, std::string>(#var, #type));\
-m_getMethodMap.insert(pair<std::string, getValue>(#var, Get##var));\
+m_setMethodMap.insert(std::pair<std::string, setValue>(#var, Set##var));\
+m_propertyTypeMap.insert(std::pair<std::string, DWORD>(#var, type));\
+m_getMethodMap.insert(std::pair<std::string, getValue>(#var, Get##var));\
 
 using createClass = void* (*)();
 

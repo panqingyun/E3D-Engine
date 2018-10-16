@@ -35,6 +35,7 @@ namespace E3DEditor.Common
         NumberText,
         Table,
         Vector3,
+        ComponentList,
     }
 
     public enum LogLevel

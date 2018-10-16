@@ -45,6 +45,9 @@
     <ClInclude Include="Vector.h">
       <Filter>E3DEngine</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>E3DEngine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -69,6 +72,9 @@
       <Filter>E3DEngine</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
+      <Filter>E3DEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
       <Filter>E3DEngine</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:E3DEditor.View"
         mc:Ignorable="d"
-        Title="Load" Height="256" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen">
+        Title="Load" Height="256" Width="1000" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
 	<Grid Background="Transparent">
 		<Image Source="/Resources/Logo.png" HorizontalAlignment="Center"/>
 	</Grid>

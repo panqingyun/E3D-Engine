@@ -38,12 +38,12 @@ namespace E3DEngine
 		~RigidBody();
 
 	public:
-			static void SetMass(void *cp, object mass);
-			static object GetMass(void *cp);
-			static void SetFriction(void *cp, object friction);
-			static object GetFriction(void *cp);
-			static void SetRestitution(void *cp, object restitution);
-			static object GetRestitution(void *cp);
+		static void SetMass(void *cp, object mass);
+		static object GetMass(void *cp);
+		static void SetFriction(void *cp, object friction);
+		static object GetFriction(void *cp);
+		static void SetRestitution(void *cp, object restitution);
+		static object GetRestitution(void *cp);
 
 	public:
 		virtual void CreateBehaviour() override;
@@ -57,9 +57,9 @@ namespace E3DEngine
 	public:
 		virtual void registProperty() override
 		{
-			SAVE_METHOD(Mass, float);
-			SAVE_METHOD(Friction, float);
-			SAVE_METHOD(Restitution, float);
+			SAVE_METHOD(Mass, FT_FLOAT);
+			SAVE_METHOD(Friction, FT_FLOAT);
+			SAVE_METHOD(Restitution, FT_FLOAT);
 		}
 
 	protected:

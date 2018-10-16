@@ -60,6 +60,8 @@ namespace E3DEditor.Model
             }
         }
 
+
+
         private ObservableCollection<GameObjectNode> _subList = new ObservableCollection<GameObjectNode>();
         public ObservableCollection<GameObjectNode> Childs
         {

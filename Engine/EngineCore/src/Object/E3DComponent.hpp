@@ -11,6 +11,15 @@
 
 namespace E3DEngine
 {
+	enum FieldTypeEnum
+	{
+		FT_INT		= 0,
+		FT_FLOAT	= 1,
+		FT_STRING	= 2,
+		FT_BOOLEAN	= 3,
+		FT_OBJECT	= 4,
+	};
+
     class GameObject;
 	class CTransform;
 	// 组件类， 目的是方便拓展， 可以挂在GameObject上
@@ -33,7 +42,14 @@ namespace E3DEngine
 		GameObject * GetGameObject();
 		virtual void SetPropertyValue(void* value);
 		virtual void registProperty();
-    public:
+
+		virtual std::string GetFieldValueStr(std::string fieldName);
+
+
+		virtual void SetFieldValue(std::string fieldName, std::string fieldValueStr);
+
+
+	public:
         GameObject *	mGameObject;
 		std::string 	_Tag;
 		CTransform *    Transform;
@@ -43,7 +59,13 @@ namespace E3DEngine
 
 		map<std::string, void*> m_setMethodMap;
 		map<std::string, void*> m_getMethodMap;
-		map<std::string, std::string> m_propertyTypeMap;
+		map<std::string, DWORD> m_propertyTypeMap;
+
+	private: 
+		std::string getMonoFieldValueStr(std::string fieldName);
+		std::string getEngineFieldValueStr(std::string fieldName);
+		void setMonoFieldVale(std::string fieldName, std::string fieldValueStr);
+		void setEngineFieldValue(std::string fieldName, std::string fieldValueStr);
 
     };
 }

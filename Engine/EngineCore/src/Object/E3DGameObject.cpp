@@ -64,7 +64,7 @@ namespace E3DEngine
 		std::string className = "";
 		std::string nameSpaceName = "";
 		std::string full_name = std::string(type_name);
-		int dotPos = full_name.find_last_of(".");
+		int dotPos = full_name.find_last_of('.');
 
 		Component * component = nullptr;
 		if (dotPos == std::string::npos)

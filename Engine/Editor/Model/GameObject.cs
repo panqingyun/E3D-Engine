@@ -28,9 +28,9 @@ namespace E3DEditor.Model
         {
             if (IsSelected)
             {
-                Position = mGameObject.GetTransform().Position;
-                Rotation = mGameObject.GetTransform().Rotation;
-                Scale = mGameObject.GetTransform().Scale;
+                OnPropertyChanged("Position");
+                OnPropertyChanged("Rotation");
+                OnPropertyChanged("Scale");
             }
         }
 
@@ -56,14 +56,10 @@ namespace E3DEditor.Model
             }
             set
             {
-                if (mGameObject.GetTransform().Position != value)
-                {
-                    mGameObject.GetTransform().Position = value;
-                }
-                OnPropertyChanged("Position");
+                mGameObject.GetTransform().Position = value;
             }
         }
-
+        
         [PropertyField(PropType = PropertyType.Vector3, DisplayIndex = 3)]
         public Vector3 Rotation
         {
@@ -73,11 +69,7 @@ namespace E3DEditor.Model
             }
             set
             {
-                if (mGameObject.GetTransform().Rotation != value)
-                {
-                    mGameObject.GetTransform().Rotation = value;
-                }
-                OnPropertyChanged("Rotation");
+                mGameObject.GetTransform().Rotation = value;
             }
         }
 
@@ -90,11 +82,7 @@ namespace E3DEditor.Model
             }
             set
             {
-                if (mGameObject.GetTransform().Scale != value)
-                {
-                    mGameObject.GetTransform().Scale = value;
-                }
-                OnPropertyChanged("Scale");
+                mGameObject.GetTransform().Scale = value;
             }
         }
 

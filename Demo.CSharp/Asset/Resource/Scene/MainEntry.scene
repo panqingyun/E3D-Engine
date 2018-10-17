@@ -23,7 +23,7 @@
     </GameObject>
     <GameObject ID="5" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
-        <Transform Posistion="110.000000,66.000000,155.000000" Rotation="0.000000,0.000000,50.000000" Scale="3.000000,3.000000,3.000000" />
+        <Transform Posistion="110.000000,66.000000,155.000000" Rotation="20.000000,50.000000,5.000000" Scale="3.000000,3.000000,3.000000" />
         <Component ClassName="E3DEngine.BoxCollider" />
         <Component ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />

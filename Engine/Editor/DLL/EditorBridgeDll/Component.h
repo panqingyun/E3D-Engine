@@ -5,11 +5,12 @@
 
 namespace E3DEngine
 {
-
 	public ref class ComponentRef
 	{
-	private:
+	public:
 
+	private:
+		Component * mComponent;
 	};
 }
 #pragma unmanaged

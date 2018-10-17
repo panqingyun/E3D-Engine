@@ -19,11 +19,11 @@ namespace E3DEditor.Common
 
             string ext = fileName.Substring(fileExtPos);
             ext = ext.ToLower();
-            if (ext == ".jpg" || ext == ".png")
+            if (ext == ".jpg" || ext == ".png" || ext == ".tga" || ext == ".bmp" || ext == ".dds")
             {
                 return FileType.eImage;
             }
-            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".cs" || ext == ".json")
+            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".cs" || ext == ".json" || ext == ".shader")
             {
                 return FileType.eText;
             }
@@ -31,7 +31,7 @@ namespace E3DEditor.Common
             {
                 return FileType.ePrefab;
             }
-            if (ext == ".fire" || ext == ".unity")
+            if (ext == ".scene")
             {
                 return FileType.eScene;
             }

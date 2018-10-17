@@ -11,6 +11,7 @@ namespace E3DEditor.Common
     {
         eUnKnown,
         eImage,
+        eTga,
         eText,
         ePrefab,
         eScene,

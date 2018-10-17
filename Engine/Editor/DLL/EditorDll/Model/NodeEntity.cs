@@ -93,7 +93,7 @@ namespace E3DEditor.Model
         }
 
         private string _dragText = "";
-        [PropertyField(PropType = PropertyType.HideInProperty, DisplayIndex = 20)]
+        [PropertyField(PropType = PropertyType.File, DisplayIndex = 20)]
         public string DragText
         {
             get

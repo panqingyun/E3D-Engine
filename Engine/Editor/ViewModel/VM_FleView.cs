@@ -21,6 +21,8 @@ namespace E3DEditor.ViewModel
             get;set;
         }
 
+       static  Dictionary<string, System.Windows.Media.ImageSource> imageSources = new Dictionary<string, System.Windows.Media.ImageSource>();
+
         private ObservableCollection<DirectoryRecord> directory = new ObservableCollection<DirectoryRecord>();
         public ObservableCollection<DirectoryRecord> Directory
         {
@@ -38,6 +40,7 @@ namespace E3DEditor.ViewModel
         public void LoadDirectory()
         {
             directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GamePath) });
+            imageSources.Clear();
         }
 
         public void SelectedItemChanged(ItemsControl viewControl, DirectoryRecord SelectedItem)
@@ -61,21 +64,31 @@ namespace E3DEditor.ViewModel
             }
         }
 
-        private static void implFileIcon(FileInfo file, FileRecord rec)
+        private void implFileIcon(FileInfo file, FileRecord rec)
         {
-            if (file.Extension == ".jpg" || file.Extension == ".png")
+            FileType fileType = CommonTools.GetFileType(file.Name);
+            if (fileType == FileType.eImage)
             {
-                rec.FileIcon = new BitmapImage(new Uri(file.FullName));
+                if (imageSources.ContainsKey(file.FullName))
+                {
+                    rec.FileIcon = imageSources[file.FullName];
+                }
+                else
+                {
+                    System.Drawing.Bitmap bitmap = FreeImageToBitmap.LoadImageFormFreeImage(file.FullName);
+                    rec.FileIcon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    imageSources[file.FullName] = rec.FileIcon;
+                }
             }
-            else if (file.Extension == ".mp3")
+            else if (fileType == FileType.eAudio)
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.Mp3Icon, UriKind.Relative));
             }
-            else if (file.Extension == ".txt")
+            else if (fileType == FileType.eText)
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.TxtIcon, UriKind.Relative));
             }
-            else if (file.Extension == ".scene")
+            else if (fileType == FileType.eScene)
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.SceneIcon, UriKind.Relative));
             }

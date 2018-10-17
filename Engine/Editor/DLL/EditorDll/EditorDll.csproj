@@ -28,14 +28,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FreeImageNET">
+      <HintPath>..\FreeImageNET.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +55,7 @@
     <Compile Include="Common\CommonTypeDefine.cs" />
     <Compile Include="Common\Debug.cs" />
     <Compile Include="Common\EnumTools.cs" />
+    <Compile Include="Common\FreeImageToBitmap.cs" />
     <Compile Include="Common\Interface.cs" />
     <Compile Include="Common\ZipUtil.cs" />
     <Compile Include="Editor.cs" />
@@ -63,6 +71,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /c /y "$(ProjectDir)..\FreeImage.dll"  "$(ProjectDir)..\..\..\..\proj_win32\bin\Editor\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

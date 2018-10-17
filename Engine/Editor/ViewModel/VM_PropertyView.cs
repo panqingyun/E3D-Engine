@@ -8,8 +8,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace E3DEditor.ViewModel
@@ -411,7 +411,7 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(propName))
             {
-                var img = new Image();
+                var img = new System.Windows.Controls.Image();
                 img.Source = src;
                 Grid.SetColumn(img, 0);
                 Grid.SetColumnSpan(img, 2);
@@ -607,7 +607,11 @@ namespace E3DEditor.ViewModel
 
                 if (fileType == FileType.eImage)
                 {
-                    createImgeProperty(new BitmapImage(new Uri(Config.GamePath + "\\" + text, UriKind.Relative)), _panelParent.RowDefinitions.Count - 1, prop.Name);
+                    System.Drawing.Bitmap bitmap = FreeImageToBitmap.LoadImageFormFreeImage(Config.GamePath + "\\" + text);
+                    System.Windows.Media.Imaging.BitmapSource bs = Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), 
+                        IntPtr.Zero, Int32Rect.Empty, System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+                 
+                    createImgeProperty(bs, _panelParent.RowDefinitions.Count - 1, prop.Name);
                 }
                 else if (fileType == FileType.eText)
                 {
@@ -652,6 +656,7 @@ namespace E3DEditor.ViewModel
             _row.Height = new GridLength(820);
 
             TextBox _tb = createTextBox(_panelParent.RowDefinitions.Count - 1, true);
+            _tb.FontFamily = new FontFamily("Consolas");
             Grid.SetColumn(_tb, 0);
             Grid.SetColumnSpan(_tb, 2);
             _tb.Margin = new Thickness(0, 2, 0, 0);

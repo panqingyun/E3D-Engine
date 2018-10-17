@@ -40,7 +40,7 @@
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}"  ItemsSource="{Binding Childs}">
 							<Grid >
-								<TextBlock Foreground="White" Text="{Binding ShowText}" FontSize="12" Height="20"/>
+								<TextBlock Foreground="#FFE6E6E6" Text="{Binding ShowText}" FontSize="13" Height="20" FontFamily="Consolas"/>
 							</Grid>
 						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>

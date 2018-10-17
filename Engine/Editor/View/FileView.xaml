@@ -21,7 +21,7 @@
 					<TreeView.Resources>
 						<HierarchicalDataTemplate DataType="{x:Type model:DirectoryRecord}" ItemsSource="{Binding Directories}" >
 							<StackPanel Orientation="Horizontal">
-								<TextBlock Foreground="White" Text="{Binding Info.Name}" Height="20"/>
+								<TextBlock Foreground="#FFE6E6E6" FontSize="13" FontFamily="Consolas" Text="{Binding Info.Name}" Height="20"/>
 							</StackPanel>
 						</HierarchicalDataTemplate>
 					</TreeView.Resources>
@@ -41,7 +41,7 @@
 								<Image  Width="20" Height="20" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
 													  Stretch="Uniform"/>
 								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" 
-										   Foreground="White" Text="{Binding Path=ShowText}" Margin="5,0,0,0" FontSize="12"  Height="20"></TextBlock>
+										   Text="{Binding Path=ShowText}" Margin="5,0,0,0" Foreground="#FFE6E6E6" FontSize="13" FontFamily="Consolas"></TextBlock>
 							</DockPanel>
 						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>

@@ -30,12 +30,14 @@ namespace E3DEditor.View
             {
                 return;
             }
+
             if(objectList.SelectedItem != null)
             {
                 (objectList.SelectedItem as GameObjectNode).IsSelected = false;
             }
             properties.SelectedObject = objectList.SelectedItem;
             (objectList.SelectedItem as GameObjectNode).IsSelected = true;
+            (objectList.SelectedItem as GameObjectNode).mGameObject.Selected();
         }
 
         private void menu_Click(object sender, RoutedEventArgs e)

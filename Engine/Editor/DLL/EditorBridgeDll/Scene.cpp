@@ -50,6 +50,21 @@ namespace E3DEngine
 		return findGameObject(childList, ID);
 	}
 
+	void SceneRef::ShowCoord(CTransform *transform)
+	{
+		if (mCoord == nullptr)
+		{
+			mCoord = CreateCoordinate("../Data/Material/coordinate.material", 1);
+		}
+		mCoord->SetTransform(transform);
+	}
+
+	void SceneRef::Loaded()
+	{
+		mCoord = nullptr;
+		mRootObject->Reset();
+	}
+
 	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)
 	{
 		GameObjectRef ^ retObj = nullptr;
@@ -130,7 +145,7 @@ namespace E3DEngine
 		{
 			mCurScene->SetValue(scene);
 		}
-
+		mCurScene->Loaded();
 		return mCurScene;
 	}
 }

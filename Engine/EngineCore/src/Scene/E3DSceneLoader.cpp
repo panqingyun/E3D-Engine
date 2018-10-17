@@ -24,6 +24,7 @@ namespace E3DEngine
 	const std::string _RenderIndex = "RenderIndex";
 	const std::string _Component = "Component";
 	const std::string _Range = "Range";
+	const std::string _InnerID = "ID";
 
 	const std::string _Layer_AllLayer = "AllLayer";
 	const std::string _Component_ClassName = "ClassName";
@@ -333,6 +334,7 @@ namespace E3DEngine
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		setGameObjectActive(objectElement, go);
+		go->SceneInnerID = Convert::ToInt(*objectElement->Attribute(_InnerID));
 		for (auto & component : go->GetAllComponents())
 		{
 			component.second->OnCreateComplete();
@@ -504,6 +506,7 @@ namespace E3DEngine
 
 	void saveGameObjectElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
+		objectElement->SetAttribute(_InnerID, gameObject->SceneInnerID);
 		objectElement->SetAttribute(_Name, gameObject->mName);
 		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));
@@ -529,7 +532,6 @@ namespace E3DEngine
 		}
 		saveTransformElement(objectElement, gameObject->Transform);
 		saveComponentElement(objectElement, gameObject);
-
 		for (auto gameObj : gameObject->GetChilds())
 		{
 			GameObject *childObject = gameObj.second;

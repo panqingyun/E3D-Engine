@@ -430,18 +430,26 @@ namespace E3DEngine
 		m_Plans[5] = normal(m_Plans[5]);
 	}
 
-	Camera * Camera::CreateCamera()
+	Camera * Camera::CreateCamera(bool isPerspective)
 	{
-		const float32 fov = 60.0f;
+		const vec3f position = vec3f(0, 0, 200);
+		const vec3f target = vec3f(0, 0, -1);
 		const vec3f up = vec3f(0.0f, 1.0f, 0.0);
 		const float32 zNear = 1.0f;
 		const float32 zFar = 3000.0f;
 		Vector2 frameSize = GetRenderSystem()->GetFrameSize();
-		const float32 aspect = frameSize.x / frameSize.y;
-		const vec3f position = vec3f(0, 0, 200);
-		const vec3f target = vec3f(0, 0, -1);
-		E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
-		return camera;
+		if (isPerspective)
+		{
+			const float32 fov = 60.0f;
+			const float32 aspect = frameSize.x / frameSize.y;
+			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
+			return camera;
+		}
+		else
+		{
+			E3DEngine::Camera *camera = new E3DEngine::Camera(-position, target, up, -1, 1, -1, 1,zNear,zFar );
+			return camera;
+		}
 	}
 
 	float Camera::GetYaw()

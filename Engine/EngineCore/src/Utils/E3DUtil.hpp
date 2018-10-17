@@ -17,7 +17,7 @@ using WORD = unsigned short;
 #endif
 using ULONG = unsigned long;
 
-#define Interface struct
+//#define Interface struct
 #define PI 180
 #define NO_POS 9999,9999,9999
 #define FAR_AWAY vec3f(NO_POS)

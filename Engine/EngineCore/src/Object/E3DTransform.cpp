@@ -224,6 +224,11 @@ namespace E3DEngine
 		return Scale * pScale;
 	}
 
+	vvision::vec3f CTransform::GetRotation()
+	{
+		return WorldMatrix * RotationEuler;
+	}
+
 	vvision::vec3f CTransform::GetLocalPosition()
 	{
 		return Position;

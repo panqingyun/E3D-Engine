@@ -230,20 +230,34 @@ namespace E3DEditor.ViewModel
             E3DEngine.GameObjectRef gameRootObj = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetRootObject();
             List<E3DEngine.GameObjectRef> _gameObjectList = gameRootObj.GetChilds();
             ObservableCollection<GameObjectNode> listObject = gameObjectList[0].Childs;
-            for (int i = 0; i < listObject.Count; i++)
+            for (int i = 0; i < _gameObjectList.Count; i++)
             {
-                listObject[i].mGameObject = _gameObjectList[i];
-                refillObjectList(_gameObjectList[i].GetChilds(), listObject[i].Childs);
+                for (int j = 0; j < listObject.Count; j++)
+                {
+                    if (listObject[j].SceneInnerID == _gameObjectList[i].GetSceneInnerID())
+                    {
+                        listObject[j].mGameObject = _gameObjectList[i];
+                        refillObjectList(_gameObjectList[i].GetChilds(), listObject[j].Childs);
+                        break;
+                    }
+                }
             }
             RenderDelegate.CreateEditor();
         }
 
         private void refillObjectList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
         {
-            for (int i = 0; i < nodeList.Count; i++)
+            for (int i = 0; i < _gameObjectList.Count; i++)
             {
-                nodeList[i].mGameObject = _gameObjectList[i];
-                refillObjectList(_gameObjectList[i].GetChilds(), nodeList[i].Childs);
+                for (int j = 0; j < nodeList.Count; j++)
+                {
+                    if (nodeList[j].SceneInnerID == _gameObjectList[i].GetSceneInnerID())
+                    {
+                        nodeList[j].mGameObject = _gameObjectList[i];
+                        refillObjectList(_gameObjectList[i].GetChilds(), nodeList[j].Childs);
+                        break;
+                    }
+                }
             }
         }
 

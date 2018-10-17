@@ -46,6 +46,7 @@ typedef HWND NATIVE_WINDOW_TYPE;
 namespace E3DEngine
 {
 	class Scene;
+	class Coordinate;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -135,6 +136,8 @@ extern "C"
 	__api_function_ void RunGame(bool isRun);
 
 	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle);
+
+	__api_function_ E3DEngine::Coordinate *CreateCoordinate(std::string materilPath, int selectID);
 
 #ifdef __cplusplus
 }

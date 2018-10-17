@@ -39,6 +39,9 @@ namespace E3DEngine
 		void SetActive(bool active);
 		bool GetActive();
 		int GetID();
+		void Selected();
+		int GetSceneInnerID();
+		void Reset();
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;
@@ -49,6 +52,7 @@ namespace E3DEngine
 		String ^ mName;
 		List<GameObjectRef ^>^ mChildList;
 		int mID;
+		int mInnerID;
 	};
 }
 #pragma unmanaged

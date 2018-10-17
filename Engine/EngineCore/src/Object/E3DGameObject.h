@@ -397,6 +397,7 @@ namespace E3DEngine
 		object			Tag;
 		bool			IsActive;
 		Camera *		pCamera;
+		int				SceneInnerID;
 		GameObject		*		ParentNode;
 		event EventDelegates	ActiveChangeEvent;
 		bool					IsEmptyObject;

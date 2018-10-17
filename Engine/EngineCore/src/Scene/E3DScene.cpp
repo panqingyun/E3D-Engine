@@ -188,6 +188,15 @@ namespace E3DEngine
 				camera->GetRenderQueue()->Remove(rb);
 			}
 		}
+
+#if __E3D_EDITOR__
+		if (GetEditorCamera() == nullptr)
+			return;
+		if (GetEditorCamera()->GetLayerMask() & rb->GetLayerMask())
+		{
+			GetEditorCamera()->GetRenderQueue()->Add(rb);
+		}
+#endif
 	}
 
 
@@ -245,7 +254,11 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		if (GetEditorCamera() == nullptr)
 			return;
-		GetEditorCamera()->GetRenderQueue()->Add(rb);
+		if (GetEditorCamera()->GetLayerMask() & layer)
+		{
+			GetEditorCamera()->GetRenderQueue()->Add(rb);
+		}
+
 #endif
 	}
 

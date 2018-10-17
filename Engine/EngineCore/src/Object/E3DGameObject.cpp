@@ -288,7 +288,10 @@ namespace E3DEngine
 		{
 			m_pRenderer->SetLayerMask(layerMask);
 		}
-		mBehaviour->SetFieldValue("layerMask", &m_layerMask);
+		if (mBehaviour != nullptr)
+		{
+			mBehaviour->SetFieldValue("layerMask", &m_layerMask);
+		}
 	}
 
 	GameObject::GameObject()
@@ -306,6 +309,7 @@ namespace E3DEngine
 		m_layerMask = -1;
 		m_bIsStatic = false;
 		Flag = 0;
+		SceneInnerID = 0;
 	}
 	
 	void GameObject::SetCamera(E3DEngine::Camera *camera)

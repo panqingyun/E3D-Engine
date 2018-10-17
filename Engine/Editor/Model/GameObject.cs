@@ -8,14 +8,15 @@ namespace E3DEditor.Model
     public class GameObjectNode : ItemNodeBase
     {
         public bool IsSelected = false;
-
+        public int SceneInnerID = 0;
         private GameObjectRef gameObject;
         public GameObjectRef mGameObject
         {
             set
             {
                 gameObject = value;
-                gameObject.TransformChangeHandle = objectTransChange;
+                SceneInnerID = gameObject.GetSceneInnerID();
+                value.TransformChangeHandle = objectTransChange;
             }
             get
             {

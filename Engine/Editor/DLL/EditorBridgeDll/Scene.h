@@ -1,6 +1,7 @@
 #pragma once
 #include <Scene/E3DSceneManager.hpp>
 #include "GameObject.h"
+#include <Object/E3DCoordinate.h>
 
 #pragma managed
 using namespace System;
@@ -18,6 +19,8 @@ namespace E3DEngine
 		String ^GetScenePath();
 		void SaveScene(String ^path);
 		GameObjectRef ^GetGameObject(int ID);
+		void ShowCoord(CTransform *transform);
+		void Loaded();
 
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
@@ -25,6 +28,7 @@ namespace E3DEngine
 	private:
 		Scene *mScene;
 		GameObjectRef ^mRootObject;
+		Coordinate *mCoord;
 	};
 
 	public ref class SceneManageRef

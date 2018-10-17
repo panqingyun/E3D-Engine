@@ -19,6 +19,19 @@ extern "C"
 	Camera *editorCamera = nullptr;
 	Scene *defaultScene = nullptr;
 
+	__api_function_ E3DEngine::Coordinate* CreateCoordinate(std::string materilPath, int selectID)
+	{
+		Coordinate *coord = new Coordinate();
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		rd->SetMaterial(m);
+		coord->SetLayerMask(1 << 30);
+		coord->SetRenderer(rd);
+		ADD_IN_SCENE(coord);
+
+		return coord;
+	}
+
 	void editorMouseButtonDown(MouseButtonInfo* mouseInfo)
 	{
 		if (editorCamera == nullptr)
@@ -167,7 +180,7 @@ extern "C"
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
-		terrain->SetLayerMask(-1);
+		terrain->SetLayerMask(1 << 29);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		terrain->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(terrain);

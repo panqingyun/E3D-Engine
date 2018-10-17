@@ -12,6 +12,8 @@
 #include <typeinfo>
 namespace E3DEngine
 {
+#define Interface struct
+
 	Interface IObject
 	{
 

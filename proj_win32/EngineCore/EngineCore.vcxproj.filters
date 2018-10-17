@@ -333,6 +333,12 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.h">
       <Filter>engineCore\src\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DLine.h">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DCoordinate.h">
+      <Filter>engineCore\src\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -562,6 +568,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.cpp">
       <Filter>engineCore\src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DLine.cpp">
+      <Filter>engineCore\src\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DCoordinate.cpp">
+      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

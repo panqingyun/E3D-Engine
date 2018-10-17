@@ -17,6 +17,7 @@ namespace E3DEngine
 		NEW_INSTANCE(Material);
 		Object::setBehaviourDefaultValue();
 		enablewriteDepth = true;
+		mColor = vec4f(1, 1, 1, 1);
 	}
 	
 	void Material::Destory()
@@ -41,7 +42,10 @@ namespace E3DEngine
 				return;
 			}
 			mShader = GetRenderSystem()->GetShaderManager()->GetShader(sCfg, mFilePath);
-			mColor = Convert::ToColorRGBA(config->Color);
+			if (config->Color != empty_string)
+			{
+				mColor = Convert::ToColorRGBA(config->Color);
+			}
 			std::string &uniformVarDefault = sCfg->UniformVariable;
 			std::vector<std::string> uniformVarDefaultValue = StringBuilder::Split(uniformVarDefault, ";");
 

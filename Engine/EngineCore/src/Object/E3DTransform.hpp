@@ -52,6 +52,7 @@ namespace E3DEngine
 		vec3f GetRight();
         vec3f GetPosition();
 		vec3f GetScale();
+		vec3f GetRotation();
 		vec3f GetLocalPosition();
 		vec3f GetLocalScale();
 		void AddChild(unsigned int objID ,CTransform * child);

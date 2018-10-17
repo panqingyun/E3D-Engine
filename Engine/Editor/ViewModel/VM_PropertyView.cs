@@ -320,6 +320,17 @@ namespace E3DEditor.ViewModel
             if (uiElementMap.ContainsKey(prop.Name))
             {
                 cb = uiElementMap[prop.Name] as ComboBox;
+
+                bool propValue = false;
+                if (prop.PropertyType == typeof(int))
+                    propValue = (int)prop.GetValue(_selectedObject) == 1;
+                else
+                    propValue = (bool)prop.GetValue(_selectedObject);
+
+                if (propValue)
+                    cb.SelectedIndex = 0;
+                else
+                    cb.SelectedIndex = 1;
             }
             else
             {
@@ -340,20 +351,21 @@ namespace E3DEditor.ViewModel
 
                 _panelParent.Children.Add(cb);
 
+                bool propValue = false;
+                if (prop.PropertyType == typeof(int))
+                    propValue = (int)prop.GetValue(_selectedObject) == 1;
+                else
+                    propValue = (bool)prop.GetValue(_selectedObject);
+
+                if (propValue)
+                    cb.SelectedIndex = 0;
+                else
+                    cb.SelectedIndex = 1;
+
                 cb.SelectionChanged += boolComb_SelectionChanged;
                 uiElementMap[prop.Name] = cb;
             }
 
-            bool propValue = false;
-            if (prop.PropertyType == typeof(int))
-                propValue = (int)prop.GetValue(_selectedObject) == 1;
-            else
-                propValue = (bool)prop.GetValue(_selectedObject);
-
-            if (propValue)
-                cb.SelectedIndex = 0;
-            else
-                cb.SelectedIndex = 1;
         }
 
         private void boolComb_SelectionChanged(object sender, SelectionChangedEventArgs e)

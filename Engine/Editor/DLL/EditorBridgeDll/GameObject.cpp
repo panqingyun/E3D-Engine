@@ -2,12 +2,14 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include <Object/E3DCoordinate.h>
 
 #pragma managed
 namespace E3DEngine
 {
 	GameObjectRef::GameObjectRef(GameObject *gameObject)
 	{
+		mChildList = gcnew List<GameObjectRef ^>();
 		SetValue(gameObject);
 	}
 
@@ -20,13 +22,14 @@ namespace E3DEngine
 	{
 		mGameObject = gameObject;
 		mID = gameObject->ID;
+		mInnerID = gameObject->SceneInnerID;
 		mTransform = gcnew TransformRef(gameObject->Transform);
 		mName = gcnew String(gameObject->mName.c_str());
 	}
 
 	System::Collections::Generic::List<GameObjectRef^> ^ GameObjectRef::GetChilds()
 	{
-		if (mChildList == nullptr)
+		if (mChildList->Count == 0)
 		{
 			mChildList = gcnew List<GameObjectRef ^>();
 			std::map<UINT, GameObject*> childs = mGameObject->GetChilds();
@@ -57,6 +60,21 @@ namespace E3DEngine
 	int GameObjectRef::GetID()
 	{
 		return mID;
+	}
+
+	void GameObjectRef::Selected()
+	{
+		SceneManageRef::GetInstance()->GetCurScene()->ShowCoord(mGameObject->Transform);
+	}
+
+	int GameObjectRef::GetSceneInnerID()
+	{
+		return mInnerID;
+	}
+
+	void GameObjectRef::Reset()
+	{
+		mChildList->Clear();
 	}
 
 	void GameObjectRef::SetActive(bool active)

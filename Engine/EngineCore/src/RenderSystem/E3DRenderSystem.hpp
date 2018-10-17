@@ -21,9 +21,10 @@ namespace E3DEngine
 {	
 	enum ClearType
 	{
-		eCT_Color	= 1,
-		eCT_Depth	= 1 << 1,
-		eCT_Stencil = 1 << 2,
+		eCT_NotClear = 0,
+		eCT_Color	 = 1,
+		eCT_Depth	 = 1 << 1,
+		eCT_Stencil  = 1 << 2,
 	};
 
 	enum DrawModule

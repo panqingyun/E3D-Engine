@@ -17,7 +17,7 @@ namespace E3DEngine
 		m_vecVertex[2].SetColor(1, 1, 1, 1);
 
 		m_vecIndex.resize(3);
-		UINT index[36] =
+		UINT index[3] =
 		{
 			0 , 1, 2
 		};

@@ -122,6 +122,10 @@ namespace E3DEngine
 
 	void RigidBody::Update(float deltaTime)
 	{
+		if (mGameObject->GetCollider() == nullptr)
+		{
+			return;
+		}
 		mBehaviour->Update(deltaTime);
 		if (mMotionState == nullptr)
 		{
@@ -144,6 +148,7 @@ namespace E3DEngine
 
 		mRigidBody->setWorldTransform(mStartTransform);
 	}
+
 
 	void  RigidBody::CreateRigidBody(btCollisionShape *shape)
 	{
@@ -171,7 +176,7 @@ namespace E3DEngine
 		mRigidBody->setFriction(Friction); // 摩擦力
 		mRigidBody->setUserPointer(mGameObject);
 		mRigidBody->setRestitution(Restitution);
-		PhysicWorld::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
+	//	PhysicWorld::GetInstance().GetWorld()->contactTest(this->mRigidBody, mColCallBack);
 		PhysicWorld::GetInstance().AddRigidBody(mRigidBody);
 	}
 
@@ -385,6 +390,13 @@ namespace E3DEngine
 	{
 		Component::OnCreate();
 		mGameObject->SetCollider(this);
+	}
+
+
+	void Collider::SetActive(bool active)
+	{
+		Component::SetActive(active);
+		// TODO
 	}
 
 	bool Collider::CheckClick(vec2d screenPoint)

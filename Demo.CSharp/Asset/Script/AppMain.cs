@@ -9,7 +9,7 @@ class AppMain : Component
     {
         if (ShowDebug)
         {
-            Debug.Log("--------------------------" + ShowNumber.ToString());
+            Debug.LogError("-------------gdsjfjfjkshfruihfih vhlfvnjkbnvbkjjjjjjjjjjjjjjjjjjjjjjjjj jjjjjjjjjjjjjjjjjjjnvdssssss ssssssssssssssfxvvvvccccccccccccccccc ccccccccccccccccccccccnjkdsaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaa aaaaaaaaa anjjjjjjjjjjjcxxxxvvv nmsdfuiiiwereiwafhdjsksssssssssssssssssssssssssssssssssssssss-------------" + ShowNumber.ToString());
         }
     }
 
@@ -18,8 +18,4 @@ class AppMain : Component
         
     }
 
-    void OnCollisionEnter(Object collisionObject)
-    {
-
-    }
 }

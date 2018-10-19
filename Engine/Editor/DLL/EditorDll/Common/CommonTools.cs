@@ -23,9 +23,13 @@ namespace E3DEditor.Common
             {
                 return FileType.eImage;
             }
-            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".cs" || ext == ".json" || ext == ".shader")
+            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".json" || ext == ".shader")
             {
                 return FileType.eText;
+            }
+            if(ext == ".cs")
+            {
+                return FileType.eScript;
             }
             if (ext == ".prefab")
             {

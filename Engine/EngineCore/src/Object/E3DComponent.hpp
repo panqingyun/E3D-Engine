@@ -44,15 +44,14 @@ namespace E3DEngine
 		virtual void registProperty();
 
 		virtual std::string GetFieldValueStr(std::string fieldName);
-
-
 		virtual void SetFieldValue(std::string fieldName, std::string fieldValueStr);
-
+		virtual void SetActive(bool active);
 
 	public:
         GameObject *	mGameObject;
 		std::string 	_Tag;
 		CTransform *    Transform;
+		bool			IsActive;
 
 	public:
 		bool			mNotStart;

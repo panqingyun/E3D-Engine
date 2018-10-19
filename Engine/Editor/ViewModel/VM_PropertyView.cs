@@ -1,5 +1,6 @@
 ﻿using E3DEditor.Common;
 using E3DEditor.View;
+using E3DEngine;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -106,6 +107,7 @@ namespace E3DEditor.ViewModel
             createNewPropertyMap[PropertyType.Table] = createTableRow;
             createNewPropertyMap[PropertyType.NumberText] = createNumberBoxRow;
             createNewPropertyMap[PropertyType.Vector3] = createVector3Row;
+            createNewPropertyMap[PropertyType.ComponentList] = createComponentRow;
         }
 
         void PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -134,25 +136,156 @@ namespace E3DEditor.ViewModel
 
         private void createNewNormalText(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
+            gridAddRowDef();
             createNewTextRow(prop, row, false);
+            gridAddEnd();
         }
 
         private void createNewReadonlyText(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
+            gridAddRowDef();
             createNewTextRow(prop, row, true);
+            gridAddEnd();
         }
 
         private void createNewNormalBooleanRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
+            gridAddRowDef();
             createNewBooleanRow(prop, row, false);
+            gridAddEnd();
         }
 
         private void createNewReadonlyBooleanRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
+            gridAddRowDef();
             createNewBooleanRow(prop, row, true);
+            gridAddEnd();
         }
 
-        private NumberTextBox createNumberTextBox(int row)
+        void gridAddTitle(float left, string title)
+        {
+            TextBlock tb = new TextBlock() { Text = title };
+            tb.Foreground = new SolidColorBrush(Colors.White);
+            tb.Margin = new Thickness(left + 4, 4, 4, 4);
+
+            Grid.SetColumn(tb, 0);
+            Grid.SetRow(tb, _panelParent.RowDefinitions.Count - 1);
+            _panelParent.Children.Add(tb);
+            uiElementMap[title] = tb;
+
+        }
+
+        private CheckBox createCheckBox()
+        {
+            CheckBox cb = new CheckBox();
+            cb.Margin = new Thickness(4, 0, 0, 0);
+            cb.HorizontalAlignment = HorizontalAlignment.Left;
+            cb.VerticalAlignment = VerticalAlignment.Center;
+            Grid.SetColumn(cb, 0);
+            Grid.SetRow(cb, _panelParent.RowDefinitions.Count - 1);
+            _panelParent.Children.Add(cb);
+
+            return cb;
+        }
+
+        private void Check_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox check = sender as CheckBox;
+            ComponentRef com = check.Tag as ComponentRef;
+            com.SetActive(false);
+        }
+
+        private void Check_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox check = sender as CheckBox;
+            ComponentRef com = check.Tag as ComponentRef;
+            com.SetActive(true);
+        }
+
+        private void createComponentRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
+        {
+            IList<ComponentRef> componentList = prop.GetValue(_selectedObject) as IList<ComponentRef>;
+            Type comType = typeof(ComponentRef);
+            for (int i = 0; i < componentList.Count; i++)
+            {
+                gridAddRowDef();
+                CheckBox check = createCheckBox();
+                check.IsChecked = componentList[i].GetIsActive();
+                check.Tag = componentList[i];
+                check.Checked += Check_Checked;
+                check.Unchecked += Check_Unchecked;
+                gridAddTitle(15, componentList[i].GetName());
+                gridAddEnd();
+                ComponentRef com = componentList[i];
+                List<ComponentField> fieldList = com.GetFields();
+                for (int j = 0; j < fieldList.Count; j++)
+                {
+                    gridAddRowDef();
+                    gridAddTitle(30, fieldList[j].Name);
+                    if (fieldList[j].Type == ComponentFieldType.FT_FLOAT || fieldList[j].Type == ComponentFieldType.FT_INT)
+                    {
+                        NumberTextBox tb = createNumberTextBox();
+                        tb.Text = fieldList[j].Value;
+                        tb.Tag = fieldList[j];
+                        tb._KeyUp += comNumTb__KeyUp;
+                    }
+                    else if (fieldList[j].Type == ComponentFieldType.FT_OBJECT)
+                    {
+                        TextBox tb = createTextBox(true);
+                        tb.Tag = fieldList[j];
+                        tb.KeyUp += comTb_KeyUp;
+                        tb.Text = fieldList[j].Value;
+                    }
+                    else if (fieldList[j].Type == ComponentFieldType.FT_BOOLEAN)
+                    {
+                        ComboBox cb = createBoolControl();
+                        cb.Tag = fieldList[j];
+                        cb.SelectionChanged += comCb_SelectionChanged;
+                        cb.SelectedIndex = fieldList[j].Value == "true" ? 0 : 1;
+                    }
+                    else
+                    {
+                        TextBox tb = createTextBox(false);
+                        tb.Tag = fieldList[j];
+                        tb.KeyUp += comTb_KeyUp;
+                        tb.Text = fieldList[j].Value;
+                    }
+                    gridAddEnd();
+
+                }
+            }
+        }
+
+        private void comCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            ComponentField cf = cb.Tag as ComponentField;
+            cf.SetValue(cb.SelectedIndex == 0 ? "true" : "false");
+        }
+
+        private void comTb_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.Key != Key.Enter)
+            {
+                return;
+            }
+            TextBox tb = sender as TextBox;
+            ComponentField cf = tb.Tag as ComponentField;
+            cf.SetValue(tb.Text);
+        }
+
+        private void comNumTb__KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+            NumberTextBox tb = sender as NumberTextBox;
+            ComponentField cf = tb.Tag as ComponentField;
+            cf.SetValue(tb.Text);
+        }
+
+        private NumberTextBox createNumberTextBox()
         {
             var numBox = new NumberTextBox();
             numBox.Margin = new Thickness(0, 2, 2, 0);
@@ -177,8 +310,9 @@ namespace E3DEditor.ViewModel
             }
             else
             {
+                gridAddRowDef();
                 gridAddTitle(prop);
-                gridAddEnd(row);
+                gridAddEnd();
                 gridAddRowDef();
                 vecElement = new Vector3Control();
                 vecElement.ValueObject = (E3DEngine.Vector3)prop.GetValue(_selectedObject);
@@ -193,6 +327,7 @@ namespace E3DEditor.ViewModel
                 Validation.SetErrorTemplate(vecElement, template);
                 uiElementMap[prop.Name] = vecElement;
                 _panelParent.Children.Add(vecElement);
+                gridAddEnd();
             }
         }
 
@@ -200,8 +335,9 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 gridAddTitle(prop);
-                var numBox = createNumberTextBox(row);
+                var numBox = createNumberTextBox();
                 numBox.Tag = prop;
                 var binding = new Binding(prop.Name);
                 binding.Source = _selectedObject;
@@ -211,6 +347,7 @@ namespace E3DEditor.ViewModel
                 numBox.tbx.SetBinding(TextBox.TextProperty, binding);
                 uiElementMap[prop.Name] = numBox;
                 numBox.KeyUp += NumBox_KeyUp;
+                gridAddEnd();
             }
         }
 
@@ -225,8 +362,23 @@ namespace E3DEditor.ViewModel
             }
 
         }
+        private ComboBox createBoolControl()
+        {
+            ComboBox cb = new ComboBox();
+            cb.Items.Add("是");
+            cb.Items.Add("否");
+            cb.Margin = new Thickness(0, 2, 2, 0);
+            cb.BorderThickness = new Thickness(0);
+            Grid.SetColumn(cb, 1);
+            Grid.SetRow(cb, _panelParent.RowDefinitions.Count - 1);
+            var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
+            Validation.SetErrorTemplate(cb, template);
 
-        private TextBox createTextBox(int row, bool isReadOnly)
+            _panelParent.Children.Add(cb);
+            return cb;
+        }
+
+        private TextBox createTextBox(bool isReadOnly)
         {
             var ed = new TextBox();
             ed.Margin = new Thickness(0, 2, 2, 0);
@@ -270,7 +422,7 @@ namespace E3DEditor.ViewModel
 
         }
 
-        private void gridAddEnd(int row)
+        private void gridAddEnd()
         {
             var line = new Line();
             line.Style = (Style)_View.Resources["gridHorizontalLineStyle"];
@@ -288,7 +440,7 @@ namespace E3DEditor.ViewModel
             else
             {
                 gridAddTitle(prop);
-                ed = createTextBox(row, isReadOnly);
+                ed = createTextBox(isReadOnly);
                 ed.AllowDrop = false;
                 ed.Tag = prop;
 
@@ -334,22 +486,9 @@ namespace E3DEditor.ViewModel
             }
             else
             {
-                cb = new ComboBox();
                 gridAddTitle(prop);
-                cb.Items.Add("是");
-                cb.Items.Add("否");
-                cb.Margin = new Thickness(0, 2, 2, 0);
-                cb.BorderThickness = new Thickness(0);
-                cb.IsReadOnly = isReadonly;
-                Grid.SetColumn(cb, 1);
-                Grid.SetRow(cb, _panelParent.RowDefinitions.Count - 1);
-                cb.Tag = prop;
-               
-
-                var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
-                Validation.SetErrorTemplate(cb, template);
-
-                _panelParent.Children.Add(cb);
+                cb = createBoolControl();
+                cb.Tag = prop;              
 
                 bool propValue = false;
                 if (prop.PropertyType == typeof(int))
@@ -387,6 +526,7 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 MultTextBox mutb = new MultTextBox();
                 mutb.Margin = new Thickness(0, 2, 2, 0);
                 mutb.BorderThickness = new Thickness(0);
@@ -404,6 +544,7 @@ namespace E3DEditor.ViewModel
 
                 mutb.EnterComplete += Mutb_EnterComplete;
                 uiElementMap[prop.Name] = mutb;
+                gridAddEnd();
             }
         }
 
@@ -428,16 +569,19 @@ namespace E3DEditor.ViewModel
 
         private void createNewImageRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
+            gridAddRowDef();
             createImgeProperty(prop.GetValue(_selectedObject) as ImageSource, row, prop.Name);
+            gridAddEnd();
         }
 
         private void createImagePathRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 gridAddTitle(prop);
 
-                var ed = createTextBox(row, false);
+                var ed = createTextBox(false);
 
                 ed.Tag = prop;
 
@@ -449,6 +593,8 @@ namespace E3DEditor.ViewModel
                 ed.SetBinding(TextBox.TextProperty, binding);
 
                 uiElementMap[prop.Name] = ed;
+
+                gridAddEnd();
             }
         }
         
@@ -473,6 +619,7 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 var ed = createDropDownBox(row);
                 ed.Title = CONST_STRING.GetTitleText(prop.ReflectedType, prop.Name);
                 ed.AllowDrop = true;
@@ -492,6 +639,7 @@ namespace E3DEditor.ViewModel
                     table_PreviewDrop(sender, e.Data.GetData(typeof(string)).ToString(), attr.Param.ToString());
                 });
                 uiElementMap[prop.Name] = ed;
+                gridAddEnd();
             }
         }
 
@@ -600,6 +748,7 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 string text = prop.GetValue(_selectedObject) as string;
                 if (text == "")
                     return;
@@ -613,7 +762,7 @@ namespace E3DEditor.ViewModel
                  
                     createImgeProperty(bs, _panelParent.RowDefinitions.Count - 1, prop.Name);
                 }
-                else if (fileType == FileType.eText)
+                else if (fileType == FileType.eText || fileType == FileType.eScript)
                 {
                     showTxt(text, prop.Name);
                 }
@@ -626,6 +775,7 @@ namespace E3DEditor.ViewModel
                     _panelParent.RowDefinitions.RemoveAt(_panelParent.RowDefinitions.Count - 1);
                     return;
                 }
+                gridAddEnd();
             }
         }
 
@@ -655,7 +805,7 @@ namespace E3DEditor.ViewModel
             RowDefinition _row = _panelParent.RowDefinitions[_panelParent.RowDefinitions.Count - 1];
             _row.Height = new GridLength(820);
 
-            TextBox _tb = createTextBox(_panelParent.RowDefinitions.Count - 1, true);
+            TextBox _tb = createTextBox(true);
             _tb.FontFamily = new FontFamily("Consolas");
             Grid.SetColumn(_tb, 0);
             Grid.SetColumnSpan(_tb, 2);
@@ -696,6 +846,7 @@ namespace E3DEditor.ViewModel
         {
             if (!uiElementMap.ContainsKey(prop.Name))
             {
+                gridAddRowDef();
                 gridAddTitle(prop);
                 var cb = new ComboBox();
                 Type type = prop.PropertyType;
@@ -721,6 +872,7 @@ namespace E3DEditor.ViewModel
                 Validation.SetErrorTemplate(cb, template);
                 uiElementMap[prop.Name] = cb;
                 _panelParent.Children.Add(cb);
+                gridAddEnd();
             }
         }
 
@@ -732,15 +884,7 @@ namespace E3DEditor.ViewModel
             {
                 return;
             }
-            if (!uiElementMap.ContainsKey(prop.Name))
-            {
-                gridAddRowDef();
-            }
             createNewPropertyMap[prf.PropType](prop, row, prf);
-            if (!uiElementMap.ContainsKey(prop.Name))
-            {
-                gridAddEnd(row);
-            }
         }
 
     }

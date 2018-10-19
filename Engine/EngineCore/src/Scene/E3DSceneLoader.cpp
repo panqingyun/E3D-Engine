@@ -104,7 +104,9 @@ namespace E3DEngine
 		}
 
 		std::string comName = *objectElement->Attribute(_Component_ClassName);
+		bool &&active = Convert::ToBoolean(*objectElement->Attribute(_Active));
 		Component * component = go->AddComponent(comName.c_str());
+		component->IsActive = active;
 		setComponentFieldValue(objectElement->FirstChildElement(_Component_Field), component);
 		component->OnCreate();
 		createComponent(objectElement->NextSiblingElement(_Component), go);
@@ -424,14 +426,14 @@ namespace E3DEngine
 	void exportComponent(TiXmlElement *objectElement, std::string className,Component *component)
 	{
 		TiXmlElement *componentElement = new TiXmlElement(_Component);
-		componentElement->SetAttribute(_Component_ClassName,  className);
+		componentElement->SetAttribute(_Active, component->IsActive ? "true" : "false");
+		componentElement->SetAttribute(_Component_ClassName, className);
 		std::map<std::string, DWORD> &fieldMap = component->m_propertyTypeMap;
 		objectElement->LinkEndChild(componentElement);
 		if (fieldMap.empty())
 		{
 			return;
 		}
-
 		TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
 		for (auto fieldPair : fieldMap)
 		{

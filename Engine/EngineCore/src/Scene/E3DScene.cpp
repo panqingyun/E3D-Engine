@@ -228,6 +228,9 @@ namespace E3DEngine
 		{
             camera->ChangeViewport(w / h);
         }
+#ifdef __E3D_EDITOR__
+		GetEditorCamera()->ChangeViewport(w / h);
+#endif
 	}
 
 	void Scene::AddRenderObject(RenderObject* rb, UINT layer)

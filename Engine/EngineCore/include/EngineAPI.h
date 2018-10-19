@@ -137,7 +137,9 @@ extern "C"
 
 	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle);
 
-	__api_function_ E3DEngine::Coordinate *CreateCoordinate(std::string materilPath, int selectID);
+	__api_function_ void UpdatePhysics();
+
+	__api_function_ void SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath);
 
 #ifdef __cplusplus
 }

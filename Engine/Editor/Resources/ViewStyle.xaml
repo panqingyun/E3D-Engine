@@ -342,4 +342,17 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style x:Key="Test_TextBox" TargetType="{x:Type TextBox}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type TextBox}">
+					<Border x:Name="border" Width="Auto" Height="Auto" BorderThickness="1" BorderBrush="Transparent">
+						<Grid x:Name="grid" Background="Transparent">
+							<ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+						</Grid>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

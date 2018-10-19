@@ -9,7 +9,7 @@ namespace E3DEngine
 {
 	void TransformChange(int ID)
 	{
-		GameObjectRef ^refObj = SceneManageRef::GetInstance()->GetCurScene()->GetGameObject(ID);
+		GameObjectRef ^refObj = SceneManageRef::GetInstance()->GetCurScene()->GetCurSelObject();
 		if (refObj == nullptr)
 		{
 			return;
@@ -63,6 +63,16 @@ namespace E3DEngine
 	{
 		mCoord = nullptr;
 		mRootObject->Reset();
+	}
+
+	void SceneRef::SetSelectObject(GameObjectRef ^obj)
+	{
+		mCurSelObject = obj;
+	}
+
+	E3DEngine::GameObjectRef ^ SceneRef::GetCurSelObject()
+	{
+		return mCurSelObject;
 	}
 
 	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)

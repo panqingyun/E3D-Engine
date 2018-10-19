@@ -13,11 +13,13 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 public class LogEntiry
 {
     public string LogStr { get; set; }
     public SolidColorBrush LogColor { get; set; }
+    public ImageSource LogIcon { get; set; }
 }
 
 namespace E3DEditor.ViewModel
@@ -38,7 +40,6 @@ namespace E3DEditor.ViewModel
             {
                 mainWnd = new MainWindow();
             }
-            
             mainWnd.ShowDialog();
         }
 
@@ -375,16 +376,13 @@ namespace E3DEditor.ViewModel
         
         public void RunCurrentScene(bool isRun)
         {
-            if (!isRun)
-            {
-                reloadCurSene();
-            }
-            else
+            if (isRun)
             {
                 saveCurrentScene();
             }
             sceneIsStart = isRun;
             RenderDelegate.RunCurrentScene(isRun);
+            reloadCurSene();
         }
 
         private void runGame()
@@ -463,8 +461,15 @@ namespace E3DEditor.ViewModel
         {
             if (windowsPlayer == null)
                 return;
-            windowsPlayer.Kill();
-            windowsPlayer = null;
+            try
+            {
+                windowsPlayer.Kill();
+                windowsPlayer = null;
+            }
+            catch(Exception ex)
+            {
+                Common.Debug.Error(ex.ToString());
+            }
         }
 
         private void WindowsPlayer_Exited(object sender, EventArgs e)
@@ -505,20 +510,26 @@ namespace E3DEditor.ViewModel
             if (log == null)
                 return;
             LogEntiry loge = new LogEntiry();
-            loge.LogStr = log;
             if (log.Contains("[error]"))
             {
+                loge.LogStr = log.Replace("[error]", "");
                 loge.LogColor = Brushes.Red;
+                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.ErrorIcon, UriKind.Relative));
             }
             else if (log.Contains("[warning]"))
             {
+                loge.LogStr = log.Replace("[warning]", "");
                 loge.LogColor = Brushes.Yellow;
+                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.WarningIcon, UriKind.Relative));
             }
             else
             {
+                loge.LogStr = log;
                 loge.LogColor = Brushes.White;
+                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.InfoIcon, UriKind.Relative));
             }
             _MainWindow.logList.Items.Add(loge);
+            State = loge.LogStr;
             _MainWindow.logList.ScrollIntoView(loge);
         }
 
@@ -580,6 +591,7 @@ namespace E3DEditor.ViewModel
                         Config.GamePath = System.IO.Path.GetDirectoryName(filePath) + "/" + fileContents[i].Split('=')[1] + "/";
 
                         RenderDelegate.SetAppDataPath(Config.GamePath);
+                        RenderDelegate.SetMonoPath("../Data/E3DAssembly", Config.GamePath + "../Library/AssemblyCSharp.dll", Config.GamePath + "../Library/E3DEngine.dll");
                         createRenderPanel();
                         mainWnd.fileView.viewModel.LoadDirectory();
                        // loadEditorMenuItem();

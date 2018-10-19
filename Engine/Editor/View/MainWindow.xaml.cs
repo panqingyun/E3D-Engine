@@ -36,8 +36,10 @@ namespace E3DEditor.View
                 (objectList.SelectedItem as GameObjectNode).IsSelected = false;
             }
             properties.SelectedObject = objectList.SelectedItem;
-            (objectList.SelectedItem as GameObjectNode).IsSelected = true;
-            (objectList.SelectedItem as GameObjectNode).mGameObject.Selected();
+            GameObjectNode node = objectList.SelectedItem as GameObjectNode;
+            E3DEngine.SceneManageRef.GetInstance().GetCurScene().SetSelectObject(node.mGameObject);
+            node.IsSelected = true;
+            node.mGameObject.Selected();
         }
 
         private void menu_Click(object sender, RoutedEventArgs e)
@@ -100,6 +102,11 @@ namespace E3DEditor.View
 
             isInRun = !isInRun;
             App.vm_MainWindow.RunCurrentScene(isInRun);
+        }
+
+        private void logList_Selected(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

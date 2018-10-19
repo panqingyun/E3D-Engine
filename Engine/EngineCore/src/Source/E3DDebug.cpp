@@ -67,7 +67,7 @@ namespace E3DEngine
 
 	void DebugLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[debug]:\t%s\n", log);
+		std::string outLog = StringBuilder::Format("[debug]%s\n", log);
 
 		if (Debug::OutputLogFunc != nullptr)
 		{
@@ -77,7 +77,7 @@ namespace E3DEngine
 
 	void WarningLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[warning]:\t%s\n", log);
+		std::string outLog = StringBuilder::Format("[warning]%s\n", log);
 
 		if (Debug::OutputLogFunc != nullptr)
 		{
@@ -87,7 +87,7 @@ namespace E3DEngine
 
 	void ErrorLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[error]:\t%s\n", log);
+		std::string outLog = StringBuilder::Format("[error]%s\n", log);
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
@@ -96,7 +96,7 @@ namespace E3DEngine
 
 	void InfoLogger::Log(const char * log)
 	{
-		std::string outLog = StringBuilder::Format("[info]:\t%s\n", log);
+		std::string outLog = StringBuilder::Format("%s\n", log);
 
 		if (Debug::OutputLogFunc != nullptr)
 		{

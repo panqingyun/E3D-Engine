@@ -10,6 +10,8 @@
 extern "C"
 {
 	E3DEngine::Camera *GetEditorCamera();
+
+	E3D_EXPORT_DLL E3DEngine::Coordinate *CreateCoordinate(std::string materilPath, int selectID);
 }
 #endif
 

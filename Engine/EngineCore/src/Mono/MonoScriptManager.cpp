@@ -44,11 +44,7 @@ void MonoScriptManager::Initialize()
 	// Never insert system breakpoint for IL opcode Break and Debugger.Break () call.
 	mono_set_break_policy(NeverInsertBreakpoint);
 	
-	std::string mono_dll_path = "../Data/E3DAssembly";
-
-	std::string code_dll_file = E3DEngine::Application::AppDataPath + "../Library/AssemblyCSharp.dll";
-
-	std::string engine_dll_file ="../Data/E3DAssembly/E3DEngine.dll";
+	
 	//g_set_print_handler(outPrint);
 #if _DEBUG_CSHARP
 	//	"--soft-breakpoints",
@@ -113,6 +109,16 @@ MonoImage * MonoScriptManager::GetCodeImage()
 MonoAssembly * MonoScriptManager::GetCodeAssembly()
 {
 	return m_pCodeAssembly;
+}
+
+
+void MonoScriptManager::SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath)
+{
+	mono_dll_path = env_dllPath;// "../Data/E3DAssembly";
+
+	code_dll_file = assembly_dllPath;// E3DEngine::Application::AppDataPath + "../Library/AssemblyCSharp.dll";
+
+	engine_dll_file = engine_dllPath;// "../Data/E3DAssembly/E3DEngine.dll";
 }
 
 void MonoScriptManager::registerInternalCall()

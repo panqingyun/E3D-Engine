@@ -127,6 +127,20 @@ extern "C"
 		GetRenderSystem()->ChangeRenderSurface(handle);
 	}
 	
+	__api_function_ void UpdatePhysics()
+	{
+		static DWORD _lastTime = getCurrentTime();
+		DWORD curTime = getCurrentTime();
+		float _deltaTime = (float)(curTime - _lastTime) / 1000.0f;
+		_lastTime = curTime;
+
+		EngineDelegate::GetInstance().UpdatePhysics(_deltaTime);
+	}
+
+	__api_function_ void SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath)
+	{
+		MonoScriptManager::GetInstance().SetMonoPath(env_dllPath, assembly_dllPath, engine_dllPath);
+	}
 }
 
 /*

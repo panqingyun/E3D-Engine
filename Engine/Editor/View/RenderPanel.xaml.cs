@@ -27,6 +27,8 @@ namespace E3DEditor.View
         public event System.Windows.Input.KeyEventHandler _KeyUp;
         public event EventHandler _SizeChange;
         public bool NeedUpdate = true;
+
+        private object lock_object = new object();
         public IntPtr Handle
         {
             get
@@ -35,7 +37,7 @@ namespace E3DEditor.View
             }
         }
 
-
+        private System.Threading.Thread physicsThread = null;
         public event RenderHandler RenderLoaded;
 
         public RenderPanel()
@@ -43,6 +45,18 @@ namespace E3DEditor.View
             InitializeComponent();
             editorContent.SizeChanged += EditorContent_SizeChanged;
             Loaded += RenderPanel_Loaded;
+        }
+
+        private void physicsUpdate()
+        {
+            while(true)
+            {
+                lock (lock_object)
+                {
+                    App.vm_MainWindow.RenderDelegate.UpdatePhysics();
+                }
+                System.Threading.Thread.Sleep(1);
+            }
         }
 
         private void RenderPanel_Loaded(object sender, RoutedEventArgs e)
@@ -57,10 +71,12 @@ namespace E3DEditor.View
             }
             if (NeedUpdate)
             {
+                physicsThread = new System.Threading.Thread(physicsUpdate);
                 myTimer.Tick += new EventHandler(update);
                 myTimer.Enabled = true;
                 myTimer.Interval = 10;
                 myTimer.Start();
+                physicsThread.Start();
             }
         }
         
@@ -68,6 +84,7 @@ namespace E3DEditor.View
         {
             if (App.vm_MainWindow.EngineLoaded)
             {
+                //App.vm_MainWindow.RenderDelegate.UpdatePhysics();
                 App.vm_MainWindow.RenderDelegate.EngineUpdate();
             }
         }

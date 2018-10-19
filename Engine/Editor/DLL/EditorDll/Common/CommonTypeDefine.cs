@@ -13,6 +13,7 @@ namespace E3DEditor.Common
         eImage,
         eTga,
         eText,
+        eScript,
         ePrefab,
         eScene,
         eAudio,

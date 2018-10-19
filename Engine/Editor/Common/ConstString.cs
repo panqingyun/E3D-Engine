@@ -30,6 +30,9 @@ namespace E3DEditor.Common
         public const string PlayIcon = "/Resources/Pic/Player Play.ico";
         public const string PauseIcon = "/Resources/Pic/Player Pause.ico";
         public const string SceneIcon = "/Resources/Window.ico";
+        public const string WarningIcon = "/Resources/Pic/Symbols Warning.ico";
+        public const string ErrorIcon = "/Resources/Pic/Symbols Error.ico";
+        public const string InfoIcon = "/Resources/Pic/Symbols Tips.ico";
         public const string DefaultBackImagPath = "/Pic/";
 
         public static string GetTitleText(Type type, string propertyName)

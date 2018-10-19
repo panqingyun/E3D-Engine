@@ -162,8 +162,8 @@
 				<ColumnDefinition Width="181*"/>
 			</Grid.ColumnDefinitions>
 			<Label Content="{StaticResource StateText}" Margin="0,-4,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Height="24" Width="37" Grid.ColumnSpan="2" />
-			<Label x:Name="state" Content="{Binding State}" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,-4,0,0" VerticalAlignment="Center" Foreground="White" Height="24"/>
-			<ProgressBar x:Name="prograss" Grid.Column="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Value="{Binding PrograssBarValue}"/>
+			<Label x:Name="state" Content="{Binding Path=State}" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,-4,0,0" VerticalAlignment="Center" Foreground="White" Height="24"/>
+			<ProgressBar x:Name="prograss" Grid.Column="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Value="{Binding Path=PrograssBarValue}"/>
 
 		</Grid>
 
@@ -176,21 +176,33 @@
 							<TextBlock Text="{StaticResource LogPanel}" Margin="30,0,0,0" VerticalAlignment="Center"/>
 						</Grid>
 					</TabItem.Header>
-					<ListBox Background="Transparent" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}">
-						<ListBox.ContextMenu>
-							<ContextMenu>
-								<MenuItem Header="{StaticResource empty}" x:Name="emptyLog" Click="menu_Click"/>
-								<MenuItem Header="{StaticResource copy}" x:Name="copyLog"/>
-							</ContextMenu>
-						</ListBox.ContextMenu>
-						<ListBox.ItemTemplate>
-							<DataTemplate>
-								<Grid>
-									<TextBlock Text="{Binding LogStr}" Foreground="{Binding LogColor}" FontSize="13" x:Name="log" VerticalAlignment="Center"/>
-								</Grid>
-							</DataTemplate>
-						</ListBox.ItemTemplate>
-					</ListBox>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="25*"/>
+							<RowDefinition Height="18*"/>
+						</Grid.RowDefinitions>
+						<ListBox Background="Transparent" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" 
+								 VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+							<ListBox.ContextMenu>
+								<ContextMenu>
+									<MenuItem Header="{StaticResource empty}" x:Name="emptyLog" Click="menu_Click"/>
+									<MenuItem Header="{StaticResource copy}" x:Name="copyLog"/>
+								</ContextMenu>
+							</ListBox.ContextMenu>
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<Grid VerticalAlignment="Center">
+										<Image HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Source="{Binding Path=LogIcon}" Width="25"/>
+										<TextBlock Text="{Binding Path=LogStr}" Foreground="{Binding Path=LogColor}" FontFamily="Consolas" FontSize="13"
+												   x:Name="log" VerticalAlignment="Center" Margin="30,0,0,0" Background="Transparent" TextTrimming="WordEllipsis"/>
+									</Grid>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+						</ListBox>
+						<GridSplitter Grid.Row="0" Background="Transparent" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+						<TextBox Grid.Row="1" Background="Transparent" TextWrapping="Wrap" IsReadOnly="True" Foreground="White" HorizontalScrollBarVisibility="Hidden" 
+								 BorderThickness="1" Text="{Binding Path=SelectedValue.LogStr,ElementName=logList}" FontFamily="Consolas" FontSize="13"/>
+					</Grid>
 				</TabItem>
 			</TabControl>
 		</Grid>

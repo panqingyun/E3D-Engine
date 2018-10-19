@@ -209,6 +209,12 @@ void E3DEngine::Component::SetFieldValue(std::string fieldName, std::string fiel
 
 }
 
+
+void E3DEngine::Component::SetActive(bool active)
+{
+	IsActive = active;
+}
+
 void E3DEngine::Component::setEngineFieldValue(std::string fieldName, std::string fieldValueStr)
 {
 	setValue set = (setValue)(m_setMethodMap[fieldName]);

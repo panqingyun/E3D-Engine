@@ -10,3 +10,7 @@
 #include <RenderSystemAPI.h>
 
 #include <fstream>
+
+#include <MMSystem.h>
+#include <windows.h>
+#include <process.h>

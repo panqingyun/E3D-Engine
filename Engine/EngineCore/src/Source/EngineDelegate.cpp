@@ -48,10 +48,10 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (m_bRun)
+		/*if (m_bRun)
 		{
 			PhysicWorld::GetInstance().Update(deltaTime);
-		}
+		}*/
 		Timer::Update(deltaTime);
 		Scene * pCurScene = SceneManager::GetCurrentScene();
 		if (pCurScene != nullptr )
@@ -61,6 +61,19 @@ namespace E3DEngine
 
 		AutoreleasePool::GetInstance().Update();
 		Application::UpdateApp(deltaTime);
+	}
+
+
+	void EngineDelegate::UpdatePhysics(float deltaTime)
+	{
+		if (m_bPause)
+		{
+			return;
+		}
+		if (m_bRun)
+		{
+			PhysicWorld::GetInstance().Update(deltaTime);
+		}
 	}
 
 	void EngineDelegate::SetEnginePause(bool bPause)

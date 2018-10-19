@@ -19,7 +19,7 @@ extern "C"
 	Camera *editorCamera = nullptr;
 	Scene *defaultScene = nullptr;
 
-	__api_function_ E3DEngine::Coordinate* CreateCoordinate(std::string materilPath, int selectID)
+	E3D_EXPORT_DLL E3DEngine::Coordinate* CreateCoordinate(std::string materilPath, int selectID)
 	{
 		Coordinate *coord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
@@ -27,6 +27,7 @@ extern "C"
 		rd->SetMaterial(m);
 		coord->SetLayerMask(1 << 30);
 		coord->SetRenderer(rd);
+		coord->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(coord);
 
 		return coord;

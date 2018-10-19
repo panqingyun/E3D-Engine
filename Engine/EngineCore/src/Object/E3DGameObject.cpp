@@ -59,7 +59,7 @@ namespace E3DEngine
 		return size;
 	}
 
-	Component * GameObject::AddComponent(const char * type_name)
+	Component * GameObject::AddComponent(std::string type_name)
 	{
 		std::string className = "";
 		std::string nameSpaceName = "";
@@ -103,7 +103,7 @@ namespace E3DEngine
 			component->mBehaviour->Create(nameSpaceName.c_str(), className.c_str());
 			AddComponent(component);
 		}
-		
+		component->mName = className;
 		return component;
 	}
 	
@@ -130,12 +130,27 @@ namespace E3DEngine
 
 	void GameObject::RemoveComponent(Component *com)
 	{
+		if (com == nullptr)
+		{
+			return;
+		}
 		std::string type_name = com->mTypeName;
 		std::map<std::string, Component*>::iterator itr = m_listComponents.find(type_name);
 		if (itr != m_listComponents.end())
 		{
 			m_listComponents.erase(itr);
 		}
+		SAFE_DELETE(com);
+	}
+
+	void GameObject::RemoveComponent(std::string fullName)
+	{
+		std::map<std::string, Component*>::iterator itr = m_listComponents.find(fullName);
+		if (itr != m_listComponents.end())
+		{
+			m_listComponents.erase(itr);
+		}
+		SAFE_DELETE(itr->second);
 	}
 
 	void GameObject::PrepareUpdate(float deltaTime)
@@ -147,7 +162,10 @@ namespace E3DEngine
 	{
 		for (auto & component : m_listComponents)
 		{
-			component.second->LateUpdate(deltaTime);
+			if (component.second->IsActive)
+			{
+				component.second->LateUpdate(deltaTime);
+			}
 		}
 		for (auto &node : mChildGameObject)
 		{
@@ -174,6 +192,10 @@ namespace E3DEngine
 			PrepareUpdate(deltaTime);
 			for (auto & component : m_listComponents)
 			{
+				if (!component.second->IsActive)
+				{
+					continue;
+				}
 				if (component.second->mNotStart)
 				{
 					component.second->Start();

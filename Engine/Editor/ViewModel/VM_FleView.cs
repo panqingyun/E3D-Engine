@@ -14,6 +14,20 @@ using System.Windows.Media.Imaging;
 
 namespace E3DEditor.ViewModel
 {
+    enum symbolType
+    {
+        eNameSpace,
+        eClassName,
+        eLeft,
+        eRight,
+    }
+
+    class nameSpaceTree
+    {
+        public string Name;
+        public int leftNumber;
+    }
+
     public class VM_FleView
     {
         public FileView _View
@@ -21,7 +35,7 @@ namespace E3DEditor.ViewModel
             get;set;
         }
 
-       static  Dictionary<string, System.Windows.Media.ImageSource> imageSources = new Dictionary<string, System.Windows.Media.ImageSource>();
+        private Dictionary<string, FileRecord> fileSources = new Dictionary<string, FileRecord>();
 
         private ObservableCollection<DirectoryRecord> directory = new ObservableCollection<DirectoryRecord>();
         public ObservableCollection<DirectoryRecord> Directory
@@ -40,9 +54,9 @@ namespace E3DEditor.ViewModel
         public void LoadDirectory()
         {
             directory.Add(new DirectoryRecord { Info = new DirectoryInfo(Config.GamePath) });
-            imageSources.Clear();
+            fileSources.Clear();
         }
-
+        
         public void SelectedItemChanged(ItemsControl viewControl, DirectoryRecord SelectedItem)
         {
             DirectoryRecord item = SelectedItem;
@@ -52,13 +66,22 @@ namespace E3DEditor.ViewModel
                 {
                     continue;
                 }
-                FileRecord rec = new FileRecord();
-                implFileIcon(file, rec);
-                rec.ShowText = file.Name;
-                rec.FileFullName = file.FullName.Substring(file.FullName.IndexOf("Asset") + 6);
-                rec.DragText = rec.FileFullName;
-                rec.Name = rec.FileFullName;
-                rec.FileName = file.Name;
+                FileRecord rec = null;
+                if (fileSources.ContainsKey(file.FullName))
+                {
+                    rec = fileSources[file.FullName];
+                }
+                else
+                {
+                    rec = new FileRecord();
+                    fileSources[file.FullName] = rec;
+                    rec.ShowText = file.Name;
+                    rec.FileFullName = file.FullName.Substring(file.FullName.IndexOf("Asset") + 6);
+                    rec.DragText = rec.FileFullName;
+                    rec.Name = rec.FileFullName;
+                    rec.FileName = file.Name;
+                    implFileIcon(file, rec);
+                }
                 viewControl.Items.Add(rec);
                 showAtlas(file, rec);
             }
@@ -66,22 +89,18 @@ namespace E3DEditor.ViewModel
 
         private void implFileIcon(FileInfo file, FileRecord rec)
         {
+            if (rec.IconLoaded)
+            {
+                return;
+            }
             FileType fileType = CommonTools.GetFileType(file.Name);
             if (fileType == FileType.eImage)
             {
-                if (imageSources.ContainsKey(file.FullName))
-                {
-                    rec.FileIcon = imageSources[file.FullName];
-                }
-                else
-                {
-                    System.Drawing.Bitmap bitmap = FreeImageToBitmap.LoadImageFormFreeImage(file.FullName);
-                    rec.FileIcon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                    imageSources[file.FullName] = rec.FileIcon;
-                }
+                System.Drawing.Bitmap bitmap = FreeImageToBitmap.LoadImageFormFreeImage(file.FullName);
+                rec.FileIcon = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             }
             else if (fileType == FileType.eAudio)
-            {
+            {                
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.Mp3Icon, UriKind.Relative));
             }
             else if (fileType == FileType.eText)
@@ -96,11 +115,91 @@ namespace E3DEditor.ViewModel
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.EffectIcon, UriKind.Relative));
             }
+            else if(fileType == FileType.eScript)
+            {
+                showScript(file, rec);
+            }
+        }
+        
+        private void showScript(FileInfo file, FileRecord rec)
+        {
+            string text = "";
+            FileStream fs = new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs, Encoding.Default);
+            List<string> namespaceList = new List<string>();
+            List<string> classNameList = new List<string>();
+            int leftNumber = 0;
+            
+            while(true)
+            {
+                text = sr.ReadLine();
+                if (text == null)
+                {
+                    break;
+                }
+                int posNameSpace = text.IndexOf("namespace");
+                int posClass = text.IndexOf("class");
+                int leftPos = text.IndexOf("{");
+                int rightPos = text.IndexOf("}");
+                if (posNameSpace != -1)
+                {
+                    int pos2 = text.IndexOf("{");
+                    string ns = "";
+                    if(pos2 == -1)
+                    {
+                        ns = text.Substring(posNameSpace + 9 + 1, pos2 - posNameSpace - 10).Trim();
+                        leftNumber++;
+                    }
+                    else
+                    {
+                        ns = text.Substring(posNameSpace + 9 + 1).Trim();
+                    }
+                    namespaceList.Add(ns);
+                }
+                if(leftPos != -1)
+                {
+                    leftNumber++;
+                }
+                if (posClass != -1)
+                {
+                    // TODO 
+                    int pos2 = text.IndexOf("{");
+                    string className = "";
+                    if (pos2 == -1)
+                    {
+                        className = text.Substring(posClass + 5 + 1, pos2 - posClass - 6).Trim();
+                        leftNumber++;
+                    }
+                    else
+                    {
+                        className = text.Substring(posClass + 9 + 1).Trim();
+                    }
+                    string nsName = "";
+                    for(int i = 0; i < namespaceList.Count;i++)
+                    {
+                        nsName = nsName + namespaceList[i] + ".";
+                    }
+                    className = nsName + className;
+                    classNameList.Add(className);
+                }
+                if(rightPos != -1)
+                {
+                    leftNumber--;
+                    if(namespaceList.Count > leftNumber)
+                    {
+                        namespaceList.RemoveAt(leftNumber);
+                    }
+                }
+
+            }
+
+            sr.Close();
+            
         }
 
         private void showAtlas(FileInfo file, FileRecord rec)
         {
-            if (file.Extension != ".plist")
+            if (file.Extension != ".atlas")
             {
                 return;
             }

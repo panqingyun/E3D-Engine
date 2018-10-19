@@ -25,4 +25,9 @@ class SelfRotateSphere : Component
         }
         this.gameObject.Transform.Rotation = rotate;
     }
+
+    void OnCollisionEnter(E3DEngine.Object collisionObject)
+    {
+        Debug.LogWarning(collisionObject.Name + " Has Drop");
+    }
 }

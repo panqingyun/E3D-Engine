@@ -7,6 +7,8 @@
 #include <RenderSystemAPI.h>
 
 #pragma managed
+#include <msclr\marshal_cppstd.h>
+using namespace msclr::interop;
 void E3DEngine::EngineDelegateRef::InitilizeEngine()
 {
 	::InitilizeEngine(true);
@@ -96,6 +98,18 @@ void E3DEngine::EngineDelegateRef::ChangeSurface(IntPtr nativeWindow)
 void E3DEngine::EngineDelegateRef::RunCurrentScene(bool run)
 {
 	::RunGame(run);
+}
+
+void E3DEngine::EngineDelegateRef::UpdatePhysics()
+{
+	::UpdatePhysics();
+}
+
+void E3DEngine::EngineDelegateRef::SetMonoPath(System::String^ env_dllPath, System::String^ assembly_dllPath, System::String^ engine_dllPath)
+{
+	::SetMonoPath(marshal_as<std::string>(env_dllPath),
+		marshal_as<std::string>(assembly_dllPath),
+		marshal_as<std::string>(engine_dllPath));
 }
 
 #pragma unmanaged

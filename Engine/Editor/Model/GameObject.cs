@@ -2,6 +2,7 @@
 using E3DEngine;
 using System.Collections.ObjectModel;
 using System;
+using System.Collections.Generic;
 
 namespace E3DEditor.Model
 {
@@ -9,6 +10,9 @@ namespace E3DEditor.Model
     {
         public bool IsSelected = false;
         public int SceneInnerID = 0;
+        int iupdateTimes = 0;
+        int iupdateNeedNumber = 60;
+
         private GameObjectRef gameObject;
         public GameObjectRef mGameObject
         {
@@ -28,6 +32,12 @@ namespace E3DEditor.Model
         {
             if (IsSelected)
             {
+                iupdateTimes++;
+                if (iupdateTimes < iupdateNeedNumber)
+                {
+                    return;
+                }
+                iupdateTimes = 0;
                 OnPropertyChanged("Position");
                 OnPropertyChanged("Rotation");
                 OnPropertyChanged("Scale");
@@ -86,7 +96,14 @@ namespace E3DEditor.Model
             }
         }
 
-
+        [PropertyField(PropType = PropertyType.ComponentList, DisplayIndex = 5)]
+        public List<ComponentRef> Component
+        {
+            get
+            {
+                return mGameObject.GetComponents();
+            }
+        }
 
         private ObservableCollection<GameObjectNode> _subList = new ObservableCollection<GameObjectNode>();
         public ObservableCollection<GameObjectNode> Childs

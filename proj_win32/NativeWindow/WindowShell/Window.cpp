@@ -27,10 +27,13 @@ POINT				LastMousePoint;
 float				CameraPitch = 0;
 float				CameraYaw = 0;
 bool				MButtonDown = false;
+bool				bExit = false;
 std::fstream		InFile;
+unsigned int		threadID = 0;
 std::string logFileName = "E3DLog.log";
-
 HANDLE g_hConsoleHandle = 0;
+CRITICAL_SECTION            gPhysicsSection;
+HANDLE						hPhysicsThread = NULL;
 
 
 #ifdef _DEBUG
@@ -65,6 +68,7 @@ void LogOutput(const char* log)
 
 void InitEngine(HWND hWnd)
 {
+	InitializeCriticalSection(&gPhysicsSection);
 	MainWindowHwnd = hWnd;
 
 	RECT rect;
@@ -80,11 +84,12 @@ void InitEngine(HWND hWnd)
 	}
 	::SetAppDataPath(strPath.c_str()); 
 	::InitilizeEngine(false);	
+	// TODO
+	::SetMonoPath("../Data/E3DAssembly",strPath + "../Library/AssemblyCSharp.dll", "../Data/E3DAssembly/E3DEngine.dll");
 	::SetDebugLogOutFunc(LogOutput);
 	void * renderSystem = CreateRenderSystem(hWnd, width, height);
 	::SetRenderSystem(renderSystem);
 	::StartAppliaction(startScenePath.c_str());
-	//::CreateEditorGrid();
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)
@@ -194,11 +199,23 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 			::EngineUpdate();
 		}
 	}
+	bExit = true;
+	CloseHandle(hPhysicsThread);
 	DestoryEngine();
 	return (int) msg.wParam;
 }
 
-
+unsigned __stdcall PhysicsMain(void*)
+{
+	while (!bExit)
+	{
+		EnterCriticalSection(&gPhysicsSection);
+		::UpdatePhysics();
+		LeaveCriticalSection(&gPhysicsSection);
+		Sleep(1);
+	}
+	return 0;
+}
 
 POINT GetMousePosition()
 {
@@ -259,6 +276,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
    
    InitEngine(hWnd);
+   hPhysicsThread = (HANDLE)_beginthreadex(NULL, 0, &PhysicsMain, NULL, 0, &threadID);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

@@ -83,7 +83,7 @@ namespace E3DEngine
 #endif
 		}
 		virtual void OnCreate();
-
+		virtual void SetActive(bool active) override;
 	public:
 #ifndef __IGNORED_INCLUDE__
 		virtual bool CheckClick(vec2d screenPoint);

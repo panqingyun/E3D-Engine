@@ -21,6 +21,8 @@ namespace E3DEngine
 		GameObjectRef ^GetGameObject(int ID);
 		void ShowCoord(CTransform *transform);
 		void Loaded();
+		void SetSelectObject(GameObjectRef ^obj);
+		GameObjectRef ^GetCurSelObject();
 
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
@@ -29,6 +31,7 @@ namespace E3DEngine
 		Scene *mScene;
 		GameObjectRef ^mRootObject;
 		Coordinate *mCoord;
+		GameObjectRef ^mCurSelObject;
 	};
 
 	public ref class SceneManageRef

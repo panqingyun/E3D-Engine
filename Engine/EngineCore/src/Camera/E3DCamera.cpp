@@ -430,7 +430,7 @@ namespace E3DEngine
 		m_Plans[5] = normal(m_Plans[5]);
 	}
 
-	Camera * Camera::CreateCamera(bool isPerspective)
+	Camera * Camera::CreateCamera(bool _isPerspective)
 	{
 		const vec3f position = vec3f(0, 0, 200);
 		const vec3f target = vec3f(0, 0, -1);
@@ -438,7 +438,7 @@ namespace E3DEngine
 		const float32 zNear = 1.0f;
 		const float32 zFar = 3000.0f;
 		Vector2 frameSize = GetRenderSystem()->GetFrameSize();
-		if (isPerspective)
+		if (_isPerspective)
 		{
 			const float32 fov = 60.0f;
 			const float32 aspect = frameSize.x / frameSize.y;

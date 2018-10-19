@@ -3,6 +3,7 @@
 
 #include "Transform.h"
 #include "GameObject.h"
+#include "Component.h"
 
 #pragma managed
 using namespace System;
@@ -35,6 +36,9 @@ namespace E3DEngine
 		String^ GetName();
 		void SetValue(GameObject *gameObject);
 		List<GameObjectRef^>^ GetChilds();
+		List<ComponentRef^>^ GetComponents();
+		ComponentRef^ AddComponent(System::String^ fullName);
+		void RemoveComponent(ComponentRef ^component);
 		TransformRef ^GetTransform();
 		void SetActive(bool active);
 		bool GetActive();
@@ -47,10 +51,15 @@ namespace E3DEngine
 		System::EventHandler  ^TransformChangeHandle;
 
 	private:
+		void getChilds();
+		void getComponents();
+
+	private:
 		TransformRef ^mTransform;
 		GameObject * mGameObject;
 		String ^ mName;
 		List<GameObjectRef ^>^ mChildList;
+		List<ComponentRef^>^ mComponentList;
 		int mID;
 		int mInnerID;
 	};

@@ -74,6 +74,7 @@ public:
 
 	MonoImage * GetCodeImage();
 	MonoAssembly * GetCodeAssembly();
+	void SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath);
 
 private:
 	void registerInternalCall();
@@ -86,6 +87,9 @@ private:
 	MonoAssembly *m_pCodeAssembly;
 	MonoAssembly *m_pEngineAssembly;
 	std::vector<MonoAssembly *> m_assemblyLists;
+	std::string  mono_dll_path;
+	std::string  code_dll_file;
+	std::string  engine_dll_file;
 };
 
 

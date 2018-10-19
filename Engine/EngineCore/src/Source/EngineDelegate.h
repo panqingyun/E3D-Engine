@@ -75,6 +75,7 @@ namespace E3DEngine
 		
 	public:
 		void Update(float deltaTime);
+		void UpdatePhysics(float deltaTime);
 	};
 }
 

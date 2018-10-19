@@ -342,10 +342,11 @@ namespace E3DEngine
 
 	public:
 		std::map<std::string, Component*> &GetAllComponents();
-		Component * AddComponent(const char * type_name);
+		Component * AddComponent(std::string type_name);
 		Component * AddComponent(Component * component);
 		Component * GetComponent(const char * type_name);
 		void RemoveComponent(Component *com);
+		void RemoveComponent(std::string fullName);
 		void SetIsStatic(bool isStatic);
 		bool GetIsStatic();
 

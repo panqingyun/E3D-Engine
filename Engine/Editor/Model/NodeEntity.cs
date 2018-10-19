@@ -19,9 +19,11 @@ namespace E3DEditor.Model
             set
             {
                 _icon = value;
+                IconLoaded = true;
             }
         }
-
+        public System.Drawing.Bitmap bitmMap;
+        public bool IconLoaded = false;
         public int FileID { get; set; }
 
         [PropertyField(PropType = PropertyType.HideInProperty)]

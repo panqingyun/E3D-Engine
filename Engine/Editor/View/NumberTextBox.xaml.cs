@@ -71,7 +71,7 @@ namespace E3DEditor.View
 
         private void tbx_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex re = new Regex("[^0-9-]+");
+            Regex re = new Regex(@"^[-+]?\d+(\.\d+)?$");
             e.Handled = re.IsMatch(e.Text);
         }
     }

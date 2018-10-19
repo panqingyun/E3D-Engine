@@ -29,6 +29,8 @@ namespace E3DEngine
 		void CreateEditor();
 		void ChangeSurface(IntPtr nativeWindow);
 		void RunCurrentScene(bool run);
+		void UpdatePhysics();
+		void SetMonoPath(System::String^ env_dllPath, System::String^ assembly_dllPath, System::String^ engine_dllPath);
 	};
 }
 #pragma unmanaged

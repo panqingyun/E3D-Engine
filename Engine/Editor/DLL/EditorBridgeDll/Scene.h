@@ -30,7 +30,7 @@ namespace E3DEngine
 	private:
 		Scene *mScene;
 		GameObjectRef ^mRootObject;
-		Coordinate *mCoord;
+		Coordinate *mObjectCoord;
 		GameObjectRef ^mCurSelObject;
 	};
 

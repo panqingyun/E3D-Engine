@@ -49,6 +49,7 @@ namespace E3DEngine
 				mTransform->SetRotation(value->x, value->y, value->z);
 			}
 		}
+		CTransform *GetTransformPtr();
 	private:
 		CTransform * mTransform;
 		Vector3^ mPosition;

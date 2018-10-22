@@ -86,6 +86,10 @@ namespace E3DEngine
 
 	void Coordinate::PrepareUpdate(float deltaTime)
 	{
+		if (m_PobjTransform == nullptr)
+		{
+			return;
+		}
 		Transform->WorldMatrix = m_PobjTransform->WorldMatrix;
 		mat4f scale = mat4f::createScaleMatrix(1.0 / m_PobjTransform->Scale.x, 1.0 / m_PobjTransform->Scale.y, 1.0 / m_PobjTransform->Scale.z);
 		Transform->WorldMatrix = Transform->WorldMatrix * scale;

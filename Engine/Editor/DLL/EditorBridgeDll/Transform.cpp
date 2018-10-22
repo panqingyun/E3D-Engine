@@ -13,6 +13,11 @@ namespace E3DEngine
 		mScale = gcnew Vector3(&mTransform->Scale);
 	}
 
+	E3DEngine::CTransform * TransformRef::GetTransformPtr()
+	{
+		return mTransform;
+	}
+
 }
 
 #pragma unmanaged

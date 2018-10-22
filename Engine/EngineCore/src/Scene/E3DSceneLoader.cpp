@@ -286,7 +286,7 @@ namespace E3DEngine
 		sceneFolderPath = GetFolder(filePath);
 
 		TiXmlElement* rootElem = doc->RootElement();
-		
+		CreateObjects(prefab, rootElem);
 		sceneFolderPath = folderPath;
 		return prefab;
 	}
@@ -335,7 +335,10 @@ namespace E3DEngine
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		setGameObjectActive(objectElement, go);
-		go->SceneInnerID = Convert::ToInt(*objectElement->Attribute(_InnerID));
+		if (objectElement->Attribute(_InnerID) != nullptr)
+		{
+			go->SceneInnerID = Convert::ToInt(*objectElement->Attribute(_InnerID));
+		}
 		for (auto & component : go->GetAllComponents())
 		{
 			component.second->OnCreateComplete();

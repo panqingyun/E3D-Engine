@@ -52,16 +52,16 @@ namespace E3DEngine
 
 	void SceneRef::ShowCoord(CTransform *transform)
 	{
-		if (mCoord == nullptr)
+		if (mObjectCoord == nullptr)
 		{
-			mCoord = CreateCoordinate("../Data/Material/coordinate.material", 1);
+			mObjectCoord = CreateCoordinate("../Data/Material/coordinate.material", 1);
 		}
-		mCoord->SetTransform(transform);
+		mObjectCoord->SetTransform(transform);
 	}
 
 	void SceneRef::Loaded()
 	{
-		mCoord = nullptr;
+		mObjectCoord = nullptr;
 		mRootObject->Reset();
 	}
 

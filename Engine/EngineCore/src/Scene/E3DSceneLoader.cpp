@@ -84,7 +84,6 @@ namespace E3DEngine
 		{
 			return;
 		}
-		component->registProperty();
 		MonoClass *klass = component->GetMonoBehaviour()->GetClass();
 		for (TiXmlAttribute * attribute = fieldElement->FirstAttribute(); attribute != nullptr; attribute = attribute->Next())
 		{
@@ -466,25 +465,7 @@ namespace E3DEngine
 		for (auto componentPair : componentsMap)
 		{
 			std::string componentName = componentPair.first;
-			std::string className = "";
-			std::string nameSpaceName = "";
-			std::string full_name = componentName;
-			int dotPos = full_name.find_last_of('.');
-
-			if (dotPos == std::string::npos)
-			{
-				className = componentName;
-			}
-			else
-			{
-				className = full_name.substr(dotPos + 1);
-				nameSpaceName = full_name.substr(0, dotPos);
-			}
-			if (nameSpaceName == NAME_SPACE)
-			{
-				className = std::string(NAME_SPACE) + "." + className;
-			}
-			exportComponent(objectElement, className, componentPair.second);
+			exportComponent(objectElement, componentName, componentPair.second);
 		}
 	}
 

@@ -26,8 +26,7 @@
 						</HierarchicalDataTemplate>
 					</TreeView.Resources>
 				</TreeView>
-				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick"
-						  PreviewMouseLeftButtonUp="fileView_PreviewMouseUp"
+				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick"						 
 							  Background="{x:Null}" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.ContextMenu>
 						<ContextMenu>
@@ -37,7 +36,7 @@
 					</TreeView.ContextMenu>
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate ItemsSource="{Binding SubRecords}" >
-							<DockPanel Background="Transparent">
+							<DockPanel Background="Transparent"  PreviewMouseLeftButtonUp="fileView_PreviewMouseUp">
 								<Image  Width="20" Height="20" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
 													  Stretch="Uniform"/>
 								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" 

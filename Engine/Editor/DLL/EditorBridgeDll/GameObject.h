@@ -46,6 +46,7 @@ namespace E3DEngine
 		void Selected();
 		int GetSceneInnerID();
 		void Reset();
+		bool GetHasComponent(String ^fullName);
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;

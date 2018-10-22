@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using E3DEditor.Model;
 using System.Collections.ObjectModel;
 using E3DEditor.ViewModel;
+using E3DEngine;
 
 namespace E3DEditor.View
 {
@@ -37,6 +38,14 @@ namespace E3DEditor.View
                 if (_selectedObject != value)
                 {
                     _selectedObject = value;
+                    if (_selectedObject is GameObjectNode)
+                    {
+                        AllowDrop = true;
+                    }
+                    else
+                    {
+                        AllowDrop = false;
+                    }
                     ClearGrid();
                     viewModel.SelectObjectChange(_selectedObject, _grid);
                     if (_grid.RowDefinitions.Count != 0)
@@ -51,9 +60,45 @@ namespace E3DEditor.View
 		{
 			InitializeComponent();
             viewModel._View = this;
+
+            PreviewDragOver += PropertiesView_PreviewDragOver;
+            PreviewDrop += PropertiesView_PreviewDrop;
+            PreviewDragLeave += PropertiesView_PreviewDragLeave;
+            BorderThickness = new Thickness(3);
         }
-        
-		public void ClearGrid()
+
+        private void PropertiesView_PreviewDragLeave(object sender, DragEventArgs e)
+        {
+            BorderBrush = Brushes.Transparent;
+        }
+
+        private void PropertiesView_PreviewDrop(object sender, DragEventArgs e)
+        {
+            GameObjectNode gameObjNode = _selectedObject as GameObjectNode;
+            GameObjectRef gameObj = gameObjNode.mGameObject;
+            gameObj.AddComponent(DragItem.DragText);
+            BorderBrush = Brushes.Transparent;
+            SelectedObject = null;
+            SelectedObject = gameObjNode;
+        }
+
+        private void PropertiesView_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            GameObjectNode gameObjNode = _selectedObject as GameObjectNode;
+            GameObjectRef gameObj = gameObjNode.mGameObject;
+            if (DragItem is ScriptNode && !gameObj.GetHasComponent(DragItem.DragText))
+            {
+                e.Handled = true;
+                BorderBrush = Brushes.LightGreen;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+                BorderBrush = Brushes.Red;
+            }
+        }
+
+        public void ClearGrid()
         {
             _grid.RowDefinitions.Clear();
 			for (int i = _grid.Children.Count - 1; i >= 0; i--)

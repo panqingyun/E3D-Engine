@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="300" AllowDrop="True"  Background="White">
 	<Grid>
-		<TextBox x:Name="tbx" AllowDrop="True" Background="Transparent" Style="{StaticResource WarkTextBoxStyle}" PreviewTextInput="tbx_PreviewTextInput" InputMethod.IsInputMethodEnabled="False" />
+		<TextBox x:Name="tbx" AllowDrop="True" Background="Transparent" Style="{StaticResource WarkTextBoxStyle}" 
+				 PreviewKeyDown="tbx_PreviewKeyDown" InputMethod.IsInputMethodEnabled="False" />
 	</Grid>
 </UserControl>

@@ -31,3 +31,23 @@ class SelfRotateSphere : Component
         Debug.LogWarning(collisionObject.Name + " Has Drop");
     }
 }
+
+namespace Game
+{
+    class BaseApp : Component
+    {
+        public int Number = 0;
+        void Start()
+        {
+            Debug.LogWarning(" qaq " + Number);
+        }
+    }
+    namespace Bpp
+    {
+        class ABase
+        {
+
+        }
+    }
+
+}

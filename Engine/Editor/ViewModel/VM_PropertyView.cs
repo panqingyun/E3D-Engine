@@ -164,14 +164,22 @@ namespace E3DEditor.ViewModel
 
         void gridAddTitle(float left, string title)
         {
-            TextBlock tb = new TextBlock() { Text = title };
-            tb.Foreground = new SolidColorBrush(Colors.White);
-            tb.Margin = new Thickness(left + 4, 4, 4, 4);
+            TextBlock tb = null;
+            if (uiElementMap.ContainsKey(title))
+            {
+                tb = uiElementMap[title] as TextBlock;
+            }
+            else
+            {
+                tb = new TextBlock() { Text = title };
+                uiElementMap[title] = tb;
+                tb.Foreground = new SolidColorBrush(Colors.White);
+                tb.Margin = new Thickness(left + 4, 4, 4, 4);
 
-            Grid.SetColumn(tb, 0);
-            Grid.SetRow(tb, _panelParent.RowDefinitions.Count - 1);
-            _panelParent.Children.Add(tb);
-            uiElementMap[title] = tb;
+                Grid.SetColumn(tb, 0);
+                Grid.SetRow(tb, _panelParent.RowDefinitions.Count - 1);
+                _panelParent.Children.Add(tb);
+            }
 
         }
 
@@ -394,11 +402,12 @@ namespace E3DEditor.ViewModel
             return ed;
         }
 
-        private void gridAddRowDef()
+        private RowDefinition gridAddRowDef()
         {
             var rowDef = new RowDefinition();
             rowDef.Height = new GridLength(25);
             _panelParent.RowDefinitions.Add(rowDef);
+            return rowDef;
         }
 
         private void gridAddTitle(PropertyInfo prop)

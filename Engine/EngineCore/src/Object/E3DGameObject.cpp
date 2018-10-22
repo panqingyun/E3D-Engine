@@ -84,6 +84,7 @@ namespace E3DEngine
 			if (kName != "NAN")
 			{
 				component = (Component *)ClassFactory::GetInstance().CreateClass(kName);
+				component->registProperty();
 				if (component == nullptr)
 				{
 					return nullptr;
@@ -115,6 +116,7 @@ namespace E3DEngine
 		}
 		component->SetGameObject(this);
 		component->Transform = Transform;
+		component->registProperty();
 		m_listComponents[(component)->mTypeName] = component;
 		return component;
 	}

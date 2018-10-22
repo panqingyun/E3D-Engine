@@ -44,6 +44,11 @@ namespace E3DEditor.Model
             }
         }
 
+        public void RefreshComponent()
+        {
+            OnPropertyChanged("Component");
+        }
+
         [PropertyField(PropType = PropertyType.Boolean, DisplayIndex = 1)]
         public bool Active
         {

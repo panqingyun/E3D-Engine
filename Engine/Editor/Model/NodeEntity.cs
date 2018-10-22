@@ -70,4 +70,8 @@ namespace E3DEditor.Model
         }
     }
 
+    public class ScriptNode : ItemNodeBase
+    {
+
+    }
 }

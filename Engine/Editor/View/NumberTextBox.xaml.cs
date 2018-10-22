@@ -74,5 +74,23 @@ namespace E3DEditor.View
             Regex re = new Regex(@"^[-+]?\d+(\.\d+)?$");
             e.Handled = re.IsMatch(e.Text);
         }
+
+        private void tbx_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
+                           (e.Key >= Key.D0 && e.Key <= Key.D9) ||
+                           e.Key == Key.Back ||
+                           e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Enter)
+            {
+                if (e.KeyboardDevice.Modifiers != ModifierKeys.None)
+                {
+                    e.Handled = true;
+                }
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

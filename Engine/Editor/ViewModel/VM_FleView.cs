@@ -126,11 +126,11 @@ namespace E3DEditor.ViewModel
             string text = "";
             FileStream fs = new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs, Encoding.Default);
-            List<string> namespaceList = new List<string>();
-            List<string> classNameList = new List<string>();
+
             int leftNumber = 0;
-            
-            while(true)
+            List<string> namespaceList = new List<string>();
+
+            while (true)
             {
                 text = sr.ReadLine();
                 if (text == null)
@@ -141,48 +141,63 @@ namespace E3DEditor.ViewModel
                 int posClass = text.IndexOf("class");
                 int leftPos = text.IndexOf("{");
                 int rightPos = text.IndexOf("}");
+                bool b = false;
                 if (posNameSpace != -1)
                 {
-                    int pos2 = text.IndexOf("{");
+                    int pos2 = text.IndexOf("{", posNameSpace + 1);
                     string ns = "";
-                    if(pos2 == -1)
+                    if(pos2 != -1)
                     {
-                        ns = text.Substring(posNameSpace + 9 + 1, pos2 - posNameSpace - 10).Trim();
+                        b = true;
+                        ns = text.Substring(posNameSpace + 10, pos2 - posNameSpace - 10).Trim();
                         leftNumber++;
                     }
                     else
                     {
-                        ns = text.Substring(posNameSpace + 9 + 1).Trim();
+                        ns = text.Substring(posNameSpace + 10).Trim();
                     }
                     namespaceList.Add(ns);
                 }
-                if(leftPos != -1)
+                if(leftPos != -1 && !b)
                 {
                     leftNumber++;
                 }
+                b = false;
                 if (posClass != -1)
                 {
-                    // TODO 
                     int pos2 = text.IndexOf("{");
                     string className = "";
-                    if (pos2 == -1)
+                    if (pos2 != -1)
                     {
-                        className = text.Substring(posClass + 5 + 1, pos2 - posClass - 6).Trim();
+                        b = true;
+                        className = text.Substring(posClass + 6, pos2 - posClass - 6).Trim();
                         leftNumber++;
                     }
                     else
                     {
-                        className = text.Substring(posClass + 9 + 1).Trim();
+                        className = text.Substring(posClass + 6).Trim();
                     }
                     string nsName = "";
                     for(int i = 0; i < namespaceList.Count;i++)
                     {
                         nsName = nsName + namespaceList[i] + ".";
                     }
-                    className = nsName + className;
-                    classNameList.Add(className);
+                    if (className.IndexOf(":") != -1)
+                    {
+                        int comPos = className.IndexOf(":");
+                        string compStr = className.Substring(comPos + 1);
+                        if (compStr.Trim() == "Component")
+                        {
+                            className = className.Substring(0, comPos);
+                            className = nsName + className;
+                            ScriptNode r = new ScriptNode();
+                            r.ShowText = className.Trim();
+                            r.DragText = className.Trim();
+                            rec.SubRecords.Add(r);
+                        }
+                    }
                 }
-                if(rightPos != -1)
+                if(rightPos != -1 && !b)
                 {
                     leftNumber--;
                     if(namespaceList.Count > leftNumber)

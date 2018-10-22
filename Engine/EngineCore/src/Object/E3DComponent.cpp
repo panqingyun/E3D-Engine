@@ -13,6 +13,7 @@ E3DEngine::Component::Component()
 	mGameObject = nullptr;
 	Transform = nullptr;
 	mNotStart = true;
+	IsActive = true;
 }
 
 void E3DEngine::Component::OnCreate()

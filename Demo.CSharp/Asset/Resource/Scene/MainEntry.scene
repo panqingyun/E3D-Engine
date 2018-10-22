@@ -33,14 +33,19 @@
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
         <Transform Posistion="160.000000,58.643066,176.000000" Rotation="0.000000,-0.000000,50.000015" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
-            <Field Friction="500.000000" Mass="30.000000" Restitution="0.100000" />
+            <Field Friction="501.000000" Mass="30.000000" Restitution="0.100000" />
         </Component>
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
+        <Component Active="true" ClassName="Game.BaseApp">
+            <Field Number="100" />
+        </Component>
     </GameObject>
     <GameObject ID="7" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
         <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,0.000000,50.000000" Scale="1.000000,1.000000,1.000000" />
-        <Component Active="true" ClassName="E3DEngine.RigidBody" />
+        <Component Active="true" ClassName="E3DEngine.RigidBody">
+            <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
+        </Component>
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
         <Component Active="true" ClassName="SelfRotateSphere">
             <Field RotateSpeed="2.000000" />

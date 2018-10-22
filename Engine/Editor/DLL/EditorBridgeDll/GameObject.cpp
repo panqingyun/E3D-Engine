@@ -112,6 +112,15 @@ namespace E3DEngine
 		mChildList->Clear();
 	}
 
+	bool GameObjectRef::GetHasComponent(String ^fullName)
+	{
+		if (mGameObject->GetAllComponents().find(marshal_as<std::string>(fullName)) == mGameObject->GetAllComponents().end())
+		{
+			return false;
+		}
+		return true;
+	}
+
 	void GameObjectRef::SetActive(bool active)
 	{
 		if (mGameObject == nullptr)

@@ -162,7 +162,6 @@ namespace E3DEngine
 
 		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialPath, materialID);
 		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
-		render->SetMaterial(mMaterial);
 		particle->SetRenderer(render);
 		particle->SetLayerMask(1 << layerConfig->ID);
 		particle->SetActive(true);

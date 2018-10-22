@@ -80,9 +80,10 @@ namespace E3DEngine
 		m_vecCamera.clear();
 		TableRegister::Destory();
 #ifdef __E3D_EDITOR__
-		if (GetEditorCamera() != nullptr)
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
 		{
-			GetEditorCamera()->GetRenderQueue()->Clear();
+			camera->GetRenderQueue()->Clear();
 		}
 #endif
 	}
@@ -115,7 +116,11 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		else
 		{
-			GetEditorCamera()->Render(deltaTime);
+			const std::vector<Camera*> &cameras = GetEditorCameras();
+			for (auto &camera : cameras)
+			{
+				camera->Render(deltaTime);
+			}
 		}
 #endif
 	}
@@ -144,9 +149,11 @@ namespace E3DEngine
 			ChangeCameraObject(pCamera);
 		}
 #if __E3D_EDITOR__
-		if (GetEditorCamera() == nullptr)
-			return;
-		ChangeCameraObject(GetEditorCamera());
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
+		{
+			ChangeCameraObject(camera);
+		}
 #endif
 	}
 
@@ -190,11 +197,17 @@ namespace E3DEngine
 		}
 
 #if __E3D_EDITOR__
-		if (GetEditorCamera() == nullptr)
-			return;
-		if (GetEditorCamera()->GetLayerMask() & rb->GetLayerMask())
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
 		{
-			GetEditorCamera()->GetRenderQueue()->Add(rb);
+			if (camera->GetLayerMask() & rb->GetLayerMask())
+			{
+				camera->GetRenderQueue()->Add(rb);
+			}
+			else
+			{
+				camera->GetRenderQueue()->Remove(rb);
+			}
 		}
 #endif
 	}
@@ -229,7 +242,11 @@ namespace E3DEngine
             camera->ChangeViewport(w / h);
         }
 #ifdef __E3D_EDITOR__
-		GetEditorCamera()->ChangeViewport(w / h);
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
+		{
+			camera->ChangeViewport(w / h);
+		}
 #endif
 	}
 
@@ -255,13 +272,14 @@ namespace E3DEngine
 			}
 		}
 #ifdef __E3D_EDITOR__
-		if (GetEditorCamera() == nullptr)
-			return;
-		if (GetEditorCamera()->GetLayerMask() & layer)
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
 		{
-			GetEditorCamera()->GetRenderQueue()->Add(rb);
+			if (camera->GetLayerMask() & layer)
+			{
+				camera->GetRenderQueue()->Add(rb);
+			}
 		}
-
 #endif
 	}
 

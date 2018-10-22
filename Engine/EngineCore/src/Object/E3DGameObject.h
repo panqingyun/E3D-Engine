@@ -371,6 +371,7 @@ namespace E3DEngine
 		virtual void SetCollider(Collider * collider);
 		virtual void Render(float deltaTime);
 		virtual void CreateComplete();
+		virtual void SetRenderer(Renderer * renderer);
 		virtual void CreateBehaviour() override;
 
 		virtual Collider * GetCollider();
@@ -384,7 +385,6 @@ namespace E3DEngine
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
 		DWORD GetLayerMask();
-		void SetRenderer(Renderer * renderer);
 		std::map<UINT, GameObject *> &GetChilds();
 		std::vector<Vertex>& GetVertex();;
 		std::vector<uint>& GetIndex();

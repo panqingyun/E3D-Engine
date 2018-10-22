@@ -24,3 +24,13 @@ void E3DEngine::Render2Texture::Bind()
 {
 	
 }
+
+float E3DEngine::Render2Texture::GetWidth()
+{
+	return m_nWidth;
+}
+
+float E3DEngine::Render2Texture::GetHeight()
+{
+	return m_nHeight;
+}

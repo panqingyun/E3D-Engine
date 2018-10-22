@@ -26,7 +26,6 @@ namespace E3DEngine
 		void MouseMove(float xPos, float yPos);
 		void KeyDown(char key);
 		void KeyUp(char key);
-		void CreateEditor();
 		void ChangeSurface(IntPtr nativeWindow);
 		void RunCurrentScene(bool run);
 		void UpdatePhysics();

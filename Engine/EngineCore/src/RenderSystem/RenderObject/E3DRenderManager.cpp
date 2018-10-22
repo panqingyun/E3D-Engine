@@ -10,7 +10,7 @@
 
 namespace E3DEngine
 {
-	Renderer * RendererManager::CreateVertexRender(int materialID)
+	Renderer * RendererManager::CreateRender(Material* material)
 	{
 		return nullptr;
 	}

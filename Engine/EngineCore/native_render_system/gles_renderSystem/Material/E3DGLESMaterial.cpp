@@ -31,10 +31,13 @@ namespace E3DEngine
 		{
 			SAFE_DELETE(Textures[index]);
 		}
+		else
+		{
+			index = Textures.size();
+		}
 		Textures[index] = texture;
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(static_cast<GLES_Texture*>(texture)->m_strTextureUniformName);
-		static_cast<GLES_Texture*>(texture)->SetTextureEnum(index + GL_TEXTURE0);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(index, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
+		texture->SetTextureEnum(index + GL_TEXTURE0);
+		texture->SetTextureUniformIndex(index, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
 		
 	}
 

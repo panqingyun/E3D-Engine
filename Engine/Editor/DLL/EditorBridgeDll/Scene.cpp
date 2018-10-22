@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "stdafx.h"
+#include <Scene/E3DSceneLoader.h>
 
 #pragma managed
 #include <msclr\marshal_cppstd.h>
@@ -54,7 +55,7 @@ namespace E3DEngine
 	{
 		if (mObjectCoord == nullptr)
 		{
-			mObjectCoord = CreateCoordinate("../Data/Material/coordinate.material", 1);
+			createCoordinate("../Data/Material/coordinate.material", 1);
 		}
 		mObjectCoord->SetTransform(transform);
 	}
@@ -158,6 +159,79 @@ namespace E3DEngine
 		mCurScene->Loaded();
 		return mCurScene;
 	}
+
+	void SceneManageRef::LoadEditorObject()
+	{
+		if (mDefaultScene != nullptr)
+		{
+			mDefaultScene = nullptr;
+		}
+		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
+		{
+			mDefaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
+		}
+
+		if (mEditorCamera == nullptr)
+		{
+			mEditorCamera = Camera::CreateCamera();
+			SetEditorCamera(mEditorCamera, true);
+			mEditorCamera->SetLayerMask(-1 & ~(1<<30));
+			mEditorCamera->Transform->SetPosition(0, 100, 200);
+			mEditorCamera->Flag |= DONT_SAVE;
+		}
+
+		Terrain * terrain = new Terrain();
+		terrain->Create(512);
+		terrain->SetIsEditorGrid(true);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
+		terrain->SetMaterial(m);
+		terrain->SetLayerMask(1 << 29);
+		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
+		terrain->Flag |= DONT_SAVE;
+		ADD_IN_SCENE(terrain);
+		createCoord();
+	}
+
+	void SceneManageRef::createCoord()
+	{
+		if (mCoordCamera == nullptr)
+		{
+			mCoordCamera = Camera::CreateCamera();
+			SetEditorCamera(mCoordCamera, false);
+			mCoordCamera->SetLayerMask(1 << 30);
+			mCoordCamera->Transform->SetPosition(0, 0, 150);
+			mCoordCamera->Flag |= DONT_SAVE;
+		}
+
+		Rectangle *rc = new Rectangle;
+		rc->CreateShape(200, 200);
+		rc->SetLayerMask(1);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
+		Render2Texture *rtt = m->GetRtt();
+		m->SetTexture(rtt);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		rc->SetRenderer(rd);
+		ADD_IN_SCENE(rc);
+		mCoordCamera->SetRenderTexture(rtt);
+
+		CoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
+		CoordPrefab->SetLayerMask(1 << 30);
+		CoordPrefab->Flag |= DONT_SAVE;
+		ADD_IN_SCENE(CoordPrefab);
+
+	}
+
+	void SceneRef::createCoordinate(std::string materilPath, int selectID)
+	{
+		mObjectCoord = new Coordinate();
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		mObjectCoord->SetLayerMask(1 << 30);
+		mObjectCoord->SetRenderer(rd);
+		mObjectCoord->Flag |= DONT_SAVE;
+		ADD_IN_SCENE(mObjectCoord);
+	}
+
 }
 
 #pragma unmanaged

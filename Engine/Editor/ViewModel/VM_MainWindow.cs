@@ -243,7 +243,7 @@ namespace E3DEditor.ViewModel
                     }
                 }
             }
-            RenderDelegate.CreateEditor();
+            E3DEngine.SceneManageRef.GetInstance().LoadEditorObject();
         }
 
         private void refillObjectList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
@@ -275,7 +275,7 @@ namespace E3DEditor.ViewModel
             fillNodeList(_gameObjectList, node.Childs);
 
             mainWnd.objectList.ItemsSource = gameObjectList;
-            RenderDelegate.CreateEditor();
+            E3DEngine.SceneManageRef.GetInstance().LoadEditorObject();
         }
 
         private Dictionary<int, TabItemWithClose> editorItemMap = new Dictionary<int, TabItemWithClose>();

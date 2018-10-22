@@ -45,13 +45,6 @@ namespace E3DEngine
 
 	}
 
-	E3DEngine::Render2Texture * GLES_RenderSystem::CreateRtt(float width, float height)
-	{
-		GLES_Render2Texture * rtt = new GLES_Render2Texture();
-		rtt->CreateRenderTarget(width, height);
-		return rtt;
-	}
-
 	void GLES_RenderSystem::SetupDefaultFrameBuffer()
 	{
 		defaultFrameBuffer = new FrameBufferObject();

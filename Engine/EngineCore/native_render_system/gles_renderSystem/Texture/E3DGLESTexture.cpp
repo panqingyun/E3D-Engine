@@ -106,11 +106,6 @@ namespace E3DEngine
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::SetTextureEnum(unsigned int enumNumber)
-	{
-		m_nTextureEnum = enumNumber;
-	}
-	
 	void GLES_Texture::SetTextureUniformIndex(int i, GLuint ProgramHandle)
 	{
 		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
@@ -140,11 +135,6 @@ namespace E3DEngine
 	void GLES_Texture::SetFilterType(int tp)
 	{
 
-	}
-
-	void GLES_Texture::SetTextureUniformName(std::string name)
-	{
-		m_strTextureUniformName = name;
 	}
 
 	GLES_Texture::GLES_Texture()

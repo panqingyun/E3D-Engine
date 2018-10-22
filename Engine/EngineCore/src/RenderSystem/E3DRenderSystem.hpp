@@ -49,7 +49,6 @@ namespace E3DEngine
 		virtual void	Cleanup(); 
 		virtual void    Clear(Color4 color, int clearType);
 		virtual void	BindDefaultBackbuffer();
-		virtual Render2Texture * CreateRtt(float width, float height);
 		Vector2	GetFrameSize();
 		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle);
 
@@ -82,6 +81,6 @@ namespace E3DEngine
 }
 
 void SetRenderSystem(E3DEngine::RenderSystem * rs);
-E3DEngine::RenderSystem * GetRenderSystem();
+E3D_EXPORT_DLL E3DEngine::RenderSystem * GetRenderSystem();
 
 #endif /* RenderSystem_hpp */

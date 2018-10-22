@@ -84,8 +84,11 @@ extern "C"
 	/// <summary>
 	/// 更新
 	/// </summary>
-	/// <param name = "deltaTime"> 时间 </param>
 	__api_function_ void EngineUpdate();
+	/// <summary>
+	/// 更新物理
+	/// </summary>
+	__api_function_ void UpdatePhysics();
 	/// <summary>
 	/// 销毁
 	/// </summary>
@@ -123,22 +126,16 @@ extern "C"
 	/// <param name = "key">按键字符值</param>
 	__api_function_ void KeyUp(char key);	
 	/// <summary>
-	/// 编辑器的地格
+	/// 使场景更新或停止更新
 	/// </summary>
-	__api_function_ void CreateEditor();
-	/// <summary>
-	/// 编辑器的摄像机
-	/// </summary>
-	__api_function_ void CreateEditorCamera();
-
-	__api_function_ E3DEngine::Scene *GetCurrentScene();
-
 	__api_function_ void RunGame(bool isRun);
-
+	/// <summary>
+	/// 更新渲染设备
+	/// </summary>
 	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle);
-
-	__api_function_ void UpdatePhysics();
-
+	/// <summary>
+	/// 设置Mono环境
+	/// </summary>
 	__api_function_ void SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath);
 
 #ifdef __cplusplus

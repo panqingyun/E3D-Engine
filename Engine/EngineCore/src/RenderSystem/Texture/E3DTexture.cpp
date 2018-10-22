@@ -32,6 +32,11 @@ namespace E3DEngine
 		m_nTextureEnum = enumNumber;
 	}
 	
+	std::string Texture::GetUniformName()
+	{
+		return m_strTextureUniformName;
+	}
+
 	void Texture::ActiveBindTexture()
 	{
 		
@@ -53,4 +58,10 @@ namespace E3DEngine
 		NEW_INSTANCE(Texture);
 		setBehaviourDefaultValue();
 	}
+
+	void Texture::SetTextureUniformName(std::string name)
+	{
+		m_strTextureUniformName = name;
+	}
+
 }

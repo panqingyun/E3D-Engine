@@ -11,6 +11,7 @@
 #define  STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #endif
+#include "E3DGLESRender2Texture.h"
 
 GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
 {
@@ -25,6 +26,13 @@ GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageNam
 	return TextureBuffer;
 }
 
+
+E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::CreateRender2Texture(float width, float height)
+{
+	GLES_Render2Texture *rtt = new GLES_Render2Texture;
+	rtt->CreateRenderTarget(width, height);
+	return rtt;
+}
 
 E3DEngine::TextureData * E3DEngine::GLES_TextureDataManager::GetTextureDataFromFile(std::string imageName)
 {

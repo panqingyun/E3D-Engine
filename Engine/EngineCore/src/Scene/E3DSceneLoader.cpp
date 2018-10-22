@@ -5,6 +5,7 @@
 #include "../Source/EngineDelegate.h"
 #include "../Source/FilePath.h"
 #include <mono/metadata/tabledefs.h>
+#include "../Config/TableRegister.h"
 
 namespace E3DEngine
 {
@@ -41,7 +42,7 @@ namespace E3DEngine
 
 	void CreateObjects(GameObject * parent, TiXmlElement* rootElem);
 
-	std::string getFileFullPath(string path)
+	std::string GetFileFullPath(string path)
 	{
 		if (path.empty())
 		{
@@ -184,11 +185,10 @@ namespace E3DEngine
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
 
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(getFileFullPath(_path), _id);
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(GetFileFullPath(_path), _id);
 		m->mConfigPath = _path;
 		m->mConfigID = _id;
 		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, (RENDER_TYPE)renderType);
-		renderer->SetMaterial(m);
 		return renderer;
 	}
 
@@ -267,11 +267,11 @@ namespace E3DEngine
 	GameObject *createPrefab(TiXmlElement *objectElement)
 	{
 		std::string filePath = (*objectElement->Attribute(_FilePath));
-		filePath = getFileFullPath(filePath);
+		filePath = GetFileFullPath(filePath);
 		return LoadPrefab(filePath);
 	}
 
-	GameObject * LoadPrefab(std::string filePath)
+	E3D_EXPORT_DLL GameObject * LoadPrefab(std::string filePath)
 	{
 		Prefab *prefab = new Prefab();
 		
@@ -297,7 +297,7 @@ namespace E3DEngine
 		go->CreateBehaviour();
 		std::string _path = *objectElement->Attribute(_FilePath);
 		go->mConfigPath = _path;
-		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(getFileFullPath( _path));
+		std::vector<ParticleGroup*> *particles = ParticleSystem::GetInstance().ActiveParticle(GetFileFullPath( _path));
 		for (auto & particle : *particles)
 		{
 			particle->mName = _ParticleGroupName;
@@ -345,7 +345,7 @@ namespace E3DEngine
 		}
 	}
 
-	void LoadSceneObjects(string sceneFilePath)
+	E3D_EXPORT_DLL void LoadSceneObjects(string sceneFilePath)
 	{
 		TiXmlDocument * doc = new TiXmlDocument(sceneFilePath.c_str());
 		bool loadOkay = doc->LoadFile();
@@ -531,7 +531,7 @@ namespace E3DEngine
 		}
 	}
 
-	void SavePrefab(Prefab *prefab)
+	E3D_EXPORT_DLL void SavePrefab(Prefab *prefab)
 	{
 		std::map<UINT, GameObject*> &objects = prefab->GetChilds();
 
@@ -557,7 +557,7 @@ namespace E3DEngine
 		delete doc;
 	}
 
-	void SaveCurrentScene()
+	E3D_EXPORT_DLL void SaveCurrentScene()
 	{
 		Scene *pScene = SceneManager::GetInstance().GetCurrentScene();
 

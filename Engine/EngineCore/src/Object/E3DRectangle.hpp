@@ -8,14 +8,11 @@
 
 namespace E3DEngine
 {
-	class Rectangle : public GameObject
+	class E3D_EXPORT_DLL Rectangle : public GameObject
 	{
 	public:
-		void CreateShape(float width, float height, bool up2down = false);
-		void SetZWriteEnable(bool bEnable);
-
-	private: 
-		bool					m_ZWriteEnable;
+		void CreateShape(float width, float height);
+		virtual void SetActive(bool isActive) override;
 	};
 }
 

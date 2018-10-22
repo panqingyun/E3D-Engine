@@ -16,27 +16,11 @@ extern "C"
 	vec3f curCameraPos;
 	vec3f curCameraDir;
 	float speed = 0.5f;
-	Camera *editorCamera = nullptr;
-	Scene *defaultScene = nullptr;
-
-	E3D_EXPORT_DLL E3DEngine::Coordinate* CreateCoordinate(std::string materilPath, int selectID)
-	{
-		Coordinate *coord = new Coordinate();
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
-		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
-		rd->SetMaterial(m);
-		coord->SetLayerMask(1 << 30);
-		coord->SetRenderer(rd);
-		coord->Flag |= DONT_SAVE;
-		ADD_IN_SCENE(coord);
-
-		return coord;
-	}
+	std::vector<Camera *> editorCameras;
+	Camera *mainEditorCamera = nullptr;
 
 	void editorMouseButtonDown(MouseButtonInfo* mouseInfo)
 	{
-		if (editorCamera == nullptr)
-			return;
 		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
 		lastMousePosition.x = mouseInfo->mPositionX;
@@ -53,8 +37,6 @@ extern "C"
 
 	void editorMouseButtonUp(MouseButtonInfo *mouseInfo)
 	{
-		if (editorCamera == nullptr)
-			return;
 		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
 		if (mouseInfo->mButton == eRightButton)
@@ -69,7 +51,7 @@ extern "C"
 
 	void editorMouseMove(MouseButtonInfo* mouseInfo)
 	{
-		if (editorCamera == nullptr)
+		if (mainEditorCamera == nullptr)
 			return;
 		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
@@ -86,62 +68,62 @@ extern "C"
 			cameraRotateX += rotaX * 0.2f;
 			cameraRotateY += rotaY * 0.2f;
 			cameraRotation = vec3f(-cameraRotateX, -cameraRotateY, 0);
-			editorCamera->Transform->SetRotation(cameraRotation);
+			mainEditorCamera->Transform->SetRotation(cameraRotation);
 		}
 		else if (mouseMButtonDown)
 		{
 			curPos = vec3f(-curMousePosition.x + lastMousePosition.x, curMousePosition.y - lastMousePosition.y, 0);
 
-			vec3f dir = editorCamera->GetViewInverseMatrix() * curPos;
+			vec3f dir = mainEditorCamera->GetViewInverseMatrix() * curPos;
 			dir.normalize();
-			vec3f newPos = editorCamera->Transform->Position + dir;
+			vec3f newPos = mainEditorCamera->Transform->Position + dir;
 			lastMousePosition = curMousePosition;
-			editorCamera->Transform->SetPosition(newPos);
+			mainEditorCamera->Transform->SetPosition(newPos);
 		}
 	}
 
 	void editorKeyDown(KeyCode keyCode)
 	{
-		if (editorCamera == nullptr)
+		if (mainEditorCamera == nullptr)
 			return;
 		if (EngineDelegate::GetInstance().GetIsRun())
 			return;
-		curCameraPos = editorCamera->Transform->Position;
+		curCameraPos = mainEditorCamera->Transform->Position;
 		if (keyCode == KeyW)
 		{
-			curCameraDir = editorCamera->GetForwardVector();
+			curCameraDir = mainEditorCamera->GetForwardVector();
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir* speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir* speed);
 		}
 		else if (keyCode == KeyS)
 		{
-			curCameraDir = editorCamera->GetForwardVector() * -1;
+			curCameraDir = mainEditorCamera->GetForwardVector() * -1;
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyA)
 		{
-			curCameraDir = editorCamera->GetRigthVector() * -1 * speed;
+			curCameraDir = mainEditorCamera->GetRigthVector() * -1 * speed;
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyD)
 		{
-			curCameraDir = editorCamera->GetRigthVector() * speed;
+			curCameraDir = mainEditorCamera->GetRigthVector() * speed;
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyE)
 		{
-			curCameraDir = editorCamera->GetUpVector() * speed;
+			curCameraDir = mainEditorCamera->GetUpVector() * speed;
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyQ)
 		{
-			curCameraDir = editorCamera->GetUpVector() * -1 * speed;
+			curCameraDir = mainEditorCamera->GetUpVector() * -1 * speed;
 			curCameraDir.normalize();
-			editorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
 		}
 	}
 
@@ -153,46 +135,32 @@ extern "C"
 			return;*/
 	}
 
-	__api_function_ void CreateEditor()
+	E3D_EXPORT_DLL void SetEditorCamera(E3DEngine::Camera *eCamera, bool isMainCamera)
 	{
-		if (defaultScene != nullptr)
+		if (isMainCamera)
 		{
-			defaultScene = nullptr;
+			mainEditorCamera = eCamera;
 		}
-		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
+		bool bCanInsert = true;
+		for (auto &camera : editorCameras)
 		{
-			defaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
+			if (camera->ID == eCamera->ID)
+			{
+				bCanInsert = false;
+				break;
+			}
 		}
-
-		GameObject *coord = LoadPrefab("../Data/Scene/coordinate.prefab");
-		coord->Flag |= DONT_SAVE;
-		ADD_IN_SCENE(coord);
-
-		if (editorCamera == nullptr)
+		if (bCanInsert)
 		{
-			editorCamera = Camera::CreateCamera();
-			editorCamera->SetLayerMask(-1);
-			editorCamera->Transform->SetPosition(0, 100, 200);
-			editorCamera->Flag |= DONT_SAVE;
+			editorCameras.emplace_back(eCamera);
 		}
-
-		Terrain * terrain = new Terrain();
-		terrain->Create(512);
-		terrain->SetIsEditorGrid(true);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
-		terrain->SetMaterial(m);
-		terrain->SetLayerMask(1 << 29);
-		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
-		terrain->Flag |= DONT_SAVE;
-		ADD_IN_SCENE(terrain);
 	}
-
+	const std::vector<E3DEngine::Camera *> &GetEditorCameras()
+	{
+		return editorCameras;
+	}
 }
 
-Camera *GetEditorCamera()
-{
-	return editorCamera;
-}
 
 #endif
 

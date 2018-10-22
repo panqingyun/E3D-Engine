@@ -16,7 +16,7 @@ namespace E3DEngine
 	class GLES_RendererManager : public RendererManager
 	{
 	public:
-		virtual Renderer * CreateVertexRender(int materialID) override;
+		virtual Renderer * CreateRender(Material* material) override;
 		virtual Renderer * GetRenderer(int materialID, RENDER_TYPE type = NORMAL) override;
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual Renderer * GenRender() override;

@@ -98,7 +98,6 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 {
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
 	m_pRenderer->SetRenderIndex(eRI_Normal);
-	m_pRenderer->SetMaterial(material);
 	//SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 
 	GameObject::TransferRender();

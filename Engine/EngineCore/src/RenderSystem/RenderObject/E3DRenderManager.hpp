@@ -10,7 +10,7 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL RendererManager : public IManager
 	{
 	public:
-		virtual Renderer * CreateVertexRender(int materialID);
+		virtual Renderer * CreateRender(Material* material);
 		virtual Renderer * GetRenderer(int materialID, RENDER_TYPE type = NORMAL);
 		virtual Renderer * GenRender();
 		virtual void AddRenderer(int materialID, Renderer * rd);

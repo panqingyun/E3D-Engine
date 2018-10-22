@@ -85,11 +85,6 @@ void E3DEngine::EngineDelegateRef::KeyUp(char key)
 	::KeyUp(key);
 }
 
-void E3DEngine::EngineDelegateRef::CreateEditor()
-{
-	::CreateEditor();
-}
-
 void E3DEngine::EngineDelegateRef::ChangeSurface(IntPtr nativeWindow)
 {
 	::ChangeRenderSurface((HWND)nativeWindow.ToInt32());

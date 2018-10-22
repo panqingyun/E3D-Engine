@@ -26,6 +26,7 @@ namespace E3DEngine
 
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
+		void createCoordinate(std::string materilPath, int selectID);
 
 	private:
 		Scene *mScene;
@@ -46,8 +47,18 @@ namespace E3DEngine
 		static SceneManageRef^ GetInstance();
 		SceneRef^ GetCurScene();
 		SceneRef^ LoadScene(String^ path);
+		void LoadEditorObject();
+
+	private:
+		void createCoord();
 	private:
 		SceneRef ^ mCurScene;
+
+	private:
+		Camera *mEditorCamera;
+		Camera *mCoordCamera;
+		Scene *mDefaultScene;
+		Prefab *CoordPrefab;
 	};
 }
 

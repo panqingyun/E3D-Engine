@@ -577,6 +577,22 @@ namespace E3DEngine
 			SAVE_MEMBER(Materials, string);
 		}
 	};
+
+	class RenderTextureConfig : public TableBase
+	{
+		DECLARE_CLASS(RenderTextureConfig)
+	public:
+		DECLARE_MEMBER(RenderTextureConfig, int, ID);
+		DECLARE_MEMBER(RenderTextureConfig, float, Width);
+		DECLARE_MEMBER(RenderTextureConfig, float, Height);
+
+		virtual void registProperty() override
+		{
+			SAVE_MEMBER(ID, int);
+			SAVE_MEMBER(Width, float);
+			SAVE_MEMBER(Height, float);
+		}
+	};
 }
 
 #endif /* Table_hpp */

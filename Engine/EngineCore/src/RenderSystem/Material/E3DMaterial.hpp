@@ -68,6 +68,7 @@ namespace E3DEngine
 		virtual void SetBlendType(DWORD src, DWORD dst);
 		virtual void SetEnableDepthTest(bool enable);
 		virtual void SetEnableCullFace(bool enable);
+
 	public:
 
 		// -----------------------------------------------
@@ -84,6 +85,7 @@ namespace E3DEngine
 									   std::string xNName,
 									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
 
+		Render2Texture *GetRtt();
 		// -----------------------------------------------
 		// 创建Mono对象
 		//-----------------------------------------------
@@ -97,6 +99,8 @@ namespace E3DEngine
 		virtual void afterUpdate();
 		virtual void createTexture(TextureData& data);
 		virtual void createTexture(Texture *texture, std::string textureUniform);
+		void initUniformValue(ShaderConfig * sCfg, MaterialConfig * config);
+		void createRtt(std::vector<std::string>& varValues);
 
 	protected:
 		bool        enableDepthTest; //开启深度测试
@@ -106,7 +110,7 @@ namespace E3DEngine
 		bool        turnOnBlend;
 		DWORD		srcBlendFactor;
 		DWORD		dstBlendFactor;
-
+		Render2Texture *Rtt;
 		std::map<UINT, Texture*>	Textures; // 纹理
 	public:
 		Shader			* mShader;		// shader

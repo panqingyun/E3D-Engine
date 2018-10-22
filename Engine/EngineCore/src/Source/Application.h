@@ -9,9 +9,8 @@
 #ifdef __E3D_EDITOR__
 extern "C"
 {
-	E3DEngine::Camera *GetEditorCamera();
-
-	E3D_EXPORT_DLL E3DEngine::Coordinate *CreateCoordinate(std::string materilPath, int selectID);
+	const std::vector<E3DEngine::Camera *> &GetEditorCameras();
+	E3D_EXPORT_DLL void SetEditorCamera(E3DEngine::Camera *eCamera, bool isMainCamera);
 }
 #endif
 
@@ -63,6 +62,7 @@ namespace E3DEngine
 	public:
 		static std::string AppDataPath;
 		static std::string ResourcePath;
+		static std::string EditorDataPath;
 
 	private:
 		static void startCSharp(std::vector<std::string> &vestr, std::string sceneName);

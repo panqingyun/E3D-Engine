@@ -8,13 +8,16 @@ namespace E3DEngine
 {
 	class E3D_EXPORT_DLL Render2Texture : public Texture
 	{
-	public:
+	protected:
 		Render2Texture();
+	public:
 		virtual void CreateRenderTarget(float width, float height);
 	public:
 		virtual ~Render2Texture();
 
 		virtual void  Bind();
+		float GetWidth();
+		float GetHeight();
 
 	public:
 		virtual void Update(float deltaTime);
@@ -22,6 +25,8 @@ namespace E3DEngine
 	protected:
 		Camera				*   m_pCamera; 
 		unsigned int			m_nTextureBuffer;
+		float					m_nWidth;
+		float					m_nHeight;
 	};
 
 }

@@ -7,6 +7,7 @@
 #include "../Material/E3DMaterial.hpp"
 #include "src/Source/EngineDelegate.h"
 #include "src/Config/Table.h"
+#include "../../Config/TableRegister.h"
 
 namespace E3DEngine
 {
@@ -23,10 +24,6 @@ namespace E3DEngine
 	void Material::Destory()
 	{
 		SAFE_DELETE(mMaterialTableManager);
-		for (std::map<UINT, Texture*>::iterator it = Textures.begin(); it != Textures.end(); ++it)
-		{
-			SAFE_DELETE(it->second);
-		}
 		Textures.clear();
 		SAFE_DELETE(mShader);
 	}
@@ -46,29 +43,8 @@ namespace E3DEngine
 			{
 				mColor = Convert::ToColorRGBA(config->Color);
 			}
-			std::string &uniformVarDefault = sCfg->UniformVariable;
-			std::vector<std::string> uniformVarDefaultValue = StringBuilder::Split(uniformVarDefault, ";");
+			initUniformValue(sCfg, config);
 
-			for (auto& sp : uniformVarDefaultValue)
-			{
-				std::vector<std::string> varValues = StringBuilder::Split(sp, "-");
-				if (varValues.empty())
-				{
-					continue;
-				}
-
-				if (mShader->GetUniformType(varValues[0]) == "sampler2D") // create texture
-				{
-					TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
-					tData->clampType = (CLAMP_TYPE)config->TextureClampType;
-					tData->filterType = (FILTER_TYPE)config->TextureFilterType;
-					tData->fileName = varValues[1];
-					tData->uniformName = varValues[0];
-					createTexture(*tData);
-					SAFE_DELETE(tData);
-				}
-				
-			}
 		}
 	}
 
@@ -166,6 +142,76 @@ namespace E3DEngine
 	void Material::CreateShader(ShaderConfig *cfg)
 	{
 		
+	}
+
+	void Material::initUniformValue(ShaderConfig * sCfg, MaterialConfig * config)
+	{
+		std::string &uniformVarDefault = sCfg->UniformVariable;
+		std::vector<std::string> uniformVarDefaultValue = StringBuilder::Split(uniformVarDefault, ";");
+
+		for (auto& sp : uniformVarDefaultValue)
+		{
+			std::vector<std::string> varValues = StringBuilder::Split(sp, "-");
+			if (varValues.empty())
+			{
+				continue;
+			}
+
+			if (mShader->GetUniformType(varValues[0]) == "sampler2D") // create texture
+			{
+				size_t pointPos = varValues[1].find_last_of('.');
+				std::string extention = varValues[1].substr(pointPos);
+				if (extention.find(".renderTexture") != std::string::npos)
+				{
+					createRtt(varValues);
+				}
+				else
+				{
+					TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
+					tData->clampType = (CLAMP_TYPE)config->TextureClampType;
+					tData->filterType = (FILTER_TYPE)config->TextureFilterType;
+					tData->fileName = varValues[1];
+					tData->uniformName = varValues[0];
+					createTexture(*tData);
+					SAFE_DELETE(tData);
+				}
+			}
+
+		}
+	}
+
+	Render2Texture *Material::GetRtt()
+	{
+		return Rtt;
+	}
+
+	void Material::createRtt(std::vector<std::string>& varValues)
+	{
+		std::vector<std::string> vec = StringBuilder::Split(varValues[1], ":");
+		if (vec.empty())
+		{
+			return;
+		}
+		std::string fName = vec[0];
+		std::string _path = Application::AppDataPath + fName;
+
+		if (varValues[1][0] == '.' && varValues[1][0] == varValues[1][1])
+		{ // 相对目录， 相程序运行目录
+			_path = fName;
+		}
+		TableManager * rttTabMgr = TableRegister::GetTableManager(_path.c_str());
+
+		int &&Id = Convert::ToInt(vec[1]);
+
+		RenderTextureConfig* rttCfg = rttTabMgr->Select<RenderTextureConfig>(Id);
+		if (rttCfg != nullptr)
+		{
+			Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(rttCfg->Width, rttCfg->Height);
+			rtt->SetTextureUniformName(varValues[0]);
+			SetTexture(rtt);
+			Rtt = rtt;
+		}
+		delete rttTabMgr;
 	}
 
 }

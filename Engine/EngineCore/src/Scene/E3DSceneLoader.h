@@ -1,20 +1,21 @@
 //********************************** Effect 3D Engine **************************************************//
 //******************* Copyright (c) 2018-9-29  PanQingyun. All rights reserved. ************************//
 #pragma once
-#include "../Config/TableRegister.h"
+#include "..\Utils\E3DUtil.hpp"
 
 namespace E3DEngine
 {
 	class Prefab;
+	class GameObject;
 	/*
 		加载预设
 	*/
-	GameObject * LoadPrefab(std::string path);
+	E3D_EXPORT_DLL GameObject * LoadPrefab(std::string path);
 
 	/*
 		加载场景
 	*/
-	void LoadSceneObjects(string sceneFilePath);
+	E3D_EXPORT_DLL void LoadSceneObjects(std::string sceneFilePath);
 
 	/*
 		注册解析函数
@@ -24,10 +25,10 @@ namespace E3DEngine
 	/*
 		保存当前场景
 	*/
-	void SaveCurrentScene();
+	E3D_EXPORT_DLL void SaveCurrentScene();
 
 	/*
 		保存预设
 	*/
-	void SavePrefab(Prefab *prefab);
+	E3D_EXPORT_DLL void SavePrefab(Prefab *prefab);
 }

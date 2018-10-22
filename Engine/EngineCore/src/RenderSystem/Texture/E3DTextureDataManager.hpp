@@ -66,7 +66,8 @@ namespace E3DEngine
 			free(imgData);
 		}
 	};
-
+	class Render2Texture;
+	class Texture;
 	class E3D_EXPORT_DLL TextureDataManager : public IManager
 	{
 	public:
@@ -76,6 +77,11 @@ namespace E3DEngine
 		// @param 图片名字
 		//-----------------------------------------------
 		virtual unsigned int GetTextureBuffer(std::string imageName);
+
+		// -----------------------------------------------
+		// 创建RTT
+		//-----------------------------------------------
+		virtual Render2Texture* CreateRender2Texture(float width, float height) { return nullptr; }
 
 		// -----------------------------------------------
 		// 创建图像数据
@@ -91,6 +97,7 @@ namespace E3DEngine
 
 	protected:
 		std::map<std::string, unsigned int> m_mapTextureBuffer;
+		std::map<std::string, Texture*> m_mapRender2Texture;
 	};
 }
 

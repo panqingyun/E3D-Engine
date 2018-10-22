@@ -10,10 +10,10 @@
 
 namespace E3DEngine
 {
-	Renderer * GLES_RendererManager::CreateVertexRender(int materialID)
+	Renderer * GLES_RendererManager::CreateRender(Material* material)
 	{
-		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(materialID);	
-		buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
+		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(material->ID);	
+		buffer->SetMaterial(material);
 		return buffer;
 	}
 
@@ -33,6 +33,7 @@ namespace E3DEngine
 			}
 			buffer->RenderIndex = eRI_Normal;
 			m_mapVertexBuffers[materialID] = buffer;
+			buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
 			return buffer;
 		}
 		return m_mapVertexBuffers[materialID];

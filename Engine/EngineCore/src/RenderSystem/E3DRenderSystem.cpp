@@ -13,7 +13,7 @@ void SetRenderSystem(E3DEngine::RenderSystem * rs)
 }
 
 
-E3DEngine::RenderSystem * GetRenderSystem()
+E3D_EXPORT_DLL E3DEngine::RenderSystem * GetRenderSystem()
 {
 	return g_pRenderSystem;
 }
@@ -103,12 +103,6 @@ namespace E3DEngine
 	void RenderSystem::BindDefaultBackbuffer()
 	{
 
-	}
-
-
-	E3DEngine::Render2Texture * RenderSystem::CreateRtt(float width, float height)
-	{
-		return nullptr;
 	}
 
 	void E3DEngine::RenderSystem::ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle)

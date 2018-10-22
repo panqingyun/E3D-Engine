@@ -26,7 +26,6 @@ namespace E3DEngine
 		virtual void Cleanup() override;
 		virtual void BindDefaultBackbuffer() override;
 		virtual void ChangeRenderSurface(EGLNativeWindowType windowHandle) override;
-		virtual Render2Texture * CreateRtt(float width, float height) override;
 		void	CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle);
 		void    Clear(Color4 color, int clearType);
 		static GLES_RenderSystem * GetRenderSystem();

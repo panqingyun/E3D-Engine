@@ -107,16 +107,6 @@ extern "C"
 		Application::KeyUp(key);
 	}
 
-	__api_function_ void CreateEditorCamera()
-	{
-
-	}
-
-	__api_function_ E3DEngine::Scene *GetCurrentScene()
-	{
-		return SceneManager::GetInstance().GetCurrentScene();
-	}
-
 	__api_function_ void RunGame(bool isRun)
 	{
 		E3DEngine::EngineDelegate::GetInstance().SetIsRun(isRun);

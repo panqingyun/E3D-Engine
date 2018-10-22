@@ -26,6 +26,7 @@ namespace E3DEngine
 	DECLARE_CLASS_NAME(ShaderConfig)
 	DECLARE_CLASS_NAME(TextureAtlas)
 	DECLARE_CLASS_NAME(SkyBoxConfig)
+	DECLARE_CLASS_NAME(RenderTextureConfig)
 	
     void RegisterTableCreateInstance()
     {
@@ -48,5 +49,6 @@ namespace E3DEngine
 		REGIST_CLASS(ShaderConfig);
 		REGIST_CLASS(TextureAtlas);
 		REGIST_CLASS(SkyBoxConfig);
+		REGIST_CLASS(RenderTextureConfig);
     }
 }

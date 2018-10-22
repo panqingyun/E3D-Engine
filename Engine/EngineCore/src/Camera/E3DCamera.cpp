@@ -200,6 +200,7 @@ namespace E3DEngine
 			}
 		}
 		RTTs.push_back(rtt);
+		ChangeViewport(rtt->GetWidth() / rtt->GetHeight());
 	}
 
 	void Camera::TransformChange()

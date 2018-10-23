@@ -312,26 +312,26 @@ namespace E3DEngine
 	}
 	
     void CTransform::Update()
-    {		
-		if (!m_bNeedUpdate)
-		{
-			return;
-		}
-		WorldMatrix.identity();
-        // 旋转
-		WorldMatrix = WorldMatrix * Rotation.transform();
-        scale();
-		translation();
+	{
 		mat4f parentMatrix = GetParentMatrix();
-		if (m_IsBillBoard)
-		{ // 公告板 只要父级矩阵的平移
-			mat4f wMatrix;
-			wMatrix.identity();
-			wMatrix.at(3, 0) = parentMatrix.at(3, 0);
-			wMatrix.at(3, 1) = parentMatrix.at(3, 1);
-			wMatrix.at(3, 2) = parentMatrix.at(3, 2);
-			parentMatrix = wMatrix;
+		if (m_bNeedUpdate)
+		{
+			WorldMatrix.identity();
+			// 旋转
+			WorldMatrix = WorldMatrix * Rotation.transform();
+			scale();
+			translation();
+			if (m_IsBillBoard)
+			{ // 公告板 只要父级矩阵的平移
+				mat4f wMatrix;
+				wMatrix.identity();
+				wMatrix.at(3, 0) = parentMatrix.at(3, 0);
+				wMatrix.at(3, 1) = parentMatrix.at(3, 1);
+				wMatrix.at(3, 2) = parentMatrix.at(3, 2);
+				parentMatrix = wMatrix;
+			}
 		}
+
 		WorldMatrix = parentMatrix * WorldMatrix;
 		for (auto & Child : Childs)
 		{

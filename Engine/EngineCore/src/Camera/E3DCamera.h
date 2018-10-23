@@ -52,6 +52,7 @@ namespace E3DEngine
 		const mat4f& GetProjectInverseMatrix();		
 		void TransformChange() override;
 		const mat4f& GetViewMatrix();		
+		void SetViewMatrix(mat4f viewMat);
 		vec3f GetForwardVector();		
 		vec3f GetUpVector();		
 		vec4f GetWorldPoint(float x,float y,float z);	

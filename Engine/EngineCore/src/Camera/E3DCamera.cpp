@@ -133,6 +133,7 @@ namespace E3DEngine
 
 	const vvision::mat4f& Camera::GetViewInverseMatrix()
 	{
+		m_mViewInverse = m_mView.inverse();
 		return m_mViewInverse;
 	}
 
@@ -160,7 +161,7 @@ namespace E3DEngine
 
 	void Camera::ChangeViewport(float aspect)
 	{
-		if (isPerspective)
+		if (isPerspective && RTTs.size() == 0)
 		{
 			m_mProjection = mat4f::createPerspective(m_fov, aspect, m_near, m_far);
 			m_mProjectInverse = m_mProjection.inverse();
@@ -199,8 +200,9 @@ namespace E3DEngine
 				return;
 			}
 		}
-		RTTs.push_back(rtt);
-		ChangeViewport(rtt->GetWidth() / rtt->GetHeight());
+		RTTs.push_back(rtt); 
+		m_mProjection = mat4f::createPerspective(m_fov, rtt->GetWidth() / rtt->GetHeight(), m_near, m_far);
+		m_mProjectInverse = m_mProjection.inverse();
 	}
 
 	void Camera::TransformChange()
@@ -212,22 +214,18 @@ namespace E3DEngine
 		Transform->WorldMatrix[14] = Transform->Position.z;
 		m_mView = Transform->WorldMatrix.inverse();
 
-		m_mViewInverse = m_mView.inverse();
 	}
 
 
 	const mat4f& Camera::GetViewMatrix()
-	{
-		//get the view matrix of the camera
-		Transform->WorldMatrix = Transform->Rotation.transform();
-		Transform->WorldMatrix[12] = Transform->Position.x;
-		Transform->WorldMatrix[13] = Transform->Position.y;
-		Transform->WorldMatrix[14] = Transform->Position.z;
-		m_mView = Transform->WorldMatrix.inverse();
-		
-		m_mViewInverse = m_mView.inverse();
-		
+	{		
 		return m_mView;
+	}
+
+
+	void Camera::SetViewMatrix(mat4f viewMat)
+	{
+
 	}
 
 	// 根据投影归一化后的x,y，以及世界坐标中的z，得到视空间下的(x',y',z')

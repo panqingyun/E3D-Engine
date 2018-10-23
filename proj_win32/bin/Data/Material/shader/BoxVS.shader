@@ -15,7 +15,9 @@ varying vec4 DestinationColor;
 void main(void)
 {	
 	vec4 interpolatedPosition = vec4(position ,1.0);
-	DestinationColor =  color;
+	
+	vec4 _pos = _e3d_matModel * interpolatedPosition;
+	DestinationColor = getLightColor(_pos.xyz, attr_normal.xyz) * color;
 	
     gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;
 }

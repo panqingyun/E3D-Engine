@@ -175,7 +175,7 @@ namespace E3DEngine
 		{
 			mEditorCamera = Camera::CreateCamera();
 			SetEditorCamera(mEditorCamera, true);
-			mEditorCamera->SetLayerMask(-1 & ~(1<<30));
+			mEditorCamera->SetLayerMask(-1 & ~(1<<30) & ~(1<<29));
 			mEditorCamera->Transform->SetPosition(0, 100, 200);
 			mEditorCamera->Flag |= DONT_SAVE;
 		}
@@ -185,11 +185,29 @@ namespace E3DEngine
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
 		terrain->SetMaterial(m);
-		terrain->SetLayerMask(1 << 29);
+		terrain->SetLayerMask(1);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
 		terrain->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(terrain);
 		createCoord();
+	}
+
+	mat4f rotation180 = Quatf::fromEulerAngles(0, 180, 0).transform();
+	mat4f trans = mat4f::createTranslation(0, 0, -100);
+
+	void SceneManageRef::Update()
+	{
+		mat4f rot = mEditorCamera->Transform->Rotation.transform();
+		mat4f world = rot * trans * rotation180;
+
+		mCoordCamera->Transform->WorldMatrix = world;
+	}
+
+	void SceneManageRef::OnFrameSizeChange()
+	{
+		vec3f newPos = mLookCoordCamera->GetWorldPointWithScreenPoint(1, 1, 0);
+
+		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
 
 	void SceneManageRef::createCoord()
@@ -199,25 +217,36 @@ namespace E3DEngine
 			mCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mCoordCamera, false);
 			mCoordCamera->SetLayerMask(1 << 30);
-			mCoordCamera->Transform->SetPosition(0, 0, 150);
+			mCoordCamera->Transform->SetPosition(0, 0, -100);
+			mCoordCamera->Transform->SetRotation(0, 180, 0);
 			mCoordCamera->Flag |= DONT_SAVE;
+
+			mLookCoordCamera = Camera::CreateCamera();
+			SetEditorCamera(mLookCoordCamera, false);
+			mLookCoordCamera->SetLayerMask(1 << 29);
+			mLookCoordCamera->Transform->SetPosition(0, 0, 150);
+			mLookCoordCamera->Flag |= DONT_SAVE;
+			mLookCoordCamera->SetClearType(eCT_NotClear);
 		}
 
-		Rectangle *rc = new Rectangle;
-		rc->CreateShape(200, 200);
-		rc->SetLayerMask(1);
+		mCoordRt = new Rectangle;
+		mCoordRt->CreateShape(30, 30);
+		mCoordRt->SetLayerMask(1 << 29);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
 		Render2Texture *rtt = m->GetRtt();
 		m->SetTexture(rtt);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
-		rc->SetRenderer(rd);
-		ADD_IN_SCENE(rc);
+		mCoordRt->SetRenderer(rd);
+		vec3f newPos = mLookCoordCamera->GetWorldPointWithScreenPoint(1, 1, 0);
+		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
+		ADD_IN_SCENE(mCoordRt);
 		mCoordCamera->SetRenderTexture(rtt);
 
-		CoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
-		CoordPrefab->SetLayerMask(1 << 30);
-		CoordPrefab->Flag |= DONT_SAVE;
-		ADD_IN_SCENE(CoordPrefab);
+		mCoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
+		mCoordPrefab->SetLayerMask(1 << 30);
+		mCoordPrefab->Flag |= DONT_SAVE;
+		mCoordPrefab->Transform->SetNeedUpdate(false);
+		ADD_IN_SCENE(mCoordPrefab);
 
 	}
 

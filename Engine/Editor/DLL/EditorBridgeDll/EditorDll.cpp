@@ -5,6 +5,7 @@
 #include "EditorDll.h"
 #include <EngineAPI.h>
 #include <RenderSystemAPI.h>
+#include "Scene.h"
 
 #pragma managed
 #include <msclr\marshal_cppstd.h>
@@ -43,6 +44,7 @@ void E3DEngine::EngineDelegateRef::SetAppDataPath(String^  path)
 void E3DEngine::EngineDelegateRef::EngineUpdate()
 {
 	::EngineUpdate();
+	SceneManageRef::GetInstance()->Update();
 }
 
 void E3DEngine::EngineDelegateRef::DestoryEngine()
@@ -58,6 +60,7 @@ void E3DEngine::EngineDelegateRef::PauseEngine(bool bPause)
 void E3DEngine::EngineDelegateRef::ChageFrameSize(int w, int h)
 {
 	::ChageFrameSize(w, h);
+	SceneManageRef::GetInstance()->OnFrameSizeChange();
 }
 
 void E3DEngine::EngineDelegateRef::MouseDown(int mouseButtonID, float xPos, float yPos)

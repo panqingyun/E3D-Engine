@@ -48,7 +48,8 @@ namespace E3DEngine
 		SceneRef^ GetCurScene();
 		SceneRef^ LoadScene(String^ path);
 		void LoadEditorObject();
-
+		void Update();
+		void OnFrameSizeChange();
 	private:
 		void createCoord();
 	private:
@@ -57,8 +58,10 @@ namespace E3DEngine
 	private:
 		Camera *mEditorCamera;
 		Camera *mCoordCamera;
+		Camera *mLookCoordCamera;
 		Scene *mDefaultScene;
-		Prefab *CoordPrefab;
+		Prefab *mCoordPrefab; 
+		Rectangle *mCoordRt;
 	};
 }
 

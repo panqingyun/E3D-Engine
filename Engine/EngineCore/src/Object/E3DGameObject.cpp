@@ -334,6 +334,7 @@ namespace E3DEngine
 		m_bIsStatic = false;
 		Flag = 0;
 		SceneInnerID = 0;
+		TransChangeFun = nullptr;
 	}
 	
 	void GameObject::SetCamera(E3DEngine::Camera *camera)

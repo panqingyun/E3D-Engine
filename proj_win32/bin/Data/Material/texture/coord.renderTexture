@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<RenderTextureConfig>
+		<Item ID="1" Width="512" Height="512"/>
+	</RenderTextureConfig>
+</ConfigSystem>

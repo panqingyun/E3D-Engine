@@ -65,7 +65,7 @@ namespace E3DEngine
 		float GetFaceArea();		
 		bool boundingBoxFrustum(vec3f position, float size);
 		vec4f GetClearColor();
-
+		void ClearRT();
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		

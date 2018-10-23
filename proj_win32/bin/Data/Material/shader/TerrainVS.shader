@@ -44,7 +44,7 @@ void main(void)
     float factor = (maxDist - dist) / (maxDist - minDist);  
     factor = clamp( factor, 0.0, 1.0 );  
 	
-    vec4 mColor = mix( vec4(0.0,0.0,0.0,0.5), DestinationColor, factor );  
+    vec4 mColor = mix( vec4(0.0,0.0,0.0,0.0), DestinationColor, factor );  
 	gl_FragColor = mColor;
 }
 

@@ -8,6 +8,9 @@ using namespace msclr::interop;
 using namespace System;
 namespace E3DEngine
 {
+	const int gCoordLayer = 31;
+	const int gLookCoordLayer = 30;
+
 	void TransformChange(int ID)
 	{
 		GameObjectRef ^refObj = SceneManageRef::GetInstance()->GetCurScene()->GetCurSelObject();
@@ -23,6 +26,7 @@ namespace E3DEngine
 
 	SceneRef::SceneRef(Scene *scene)
 	{
+		mCurSelObject = nullptr;
 		SetValue(scene);
 	}
 
@@ -62,6 +66,7 @@ namespace E3DEngine
 
 	void SceneRef::Loaded()
 	{
+		mCurSelObject = nullptr;
 		mObjectCoord = nullptr;
 		mRootObject->Reset();
 	}
@@ -74,6 +79,22 @@ namespace E3DEngine
 	E3DEngine::GameObjectRef ^ SceneRef::GetCurSelObject()
 	{
 		return mCurSelObject;
+	}
+
+	void SceneRef::Update(float deltaTime)
+	{
+		if (mCurSelObject != nullptr)
+		{
+			mCurSelObject->Update(deltaTime);
+		}
+	}
+
+	void SceneRef::AfterUpdate(float deltaTime)
+	{
+		if (mCurSelObject != nullptr)
+		{
+			mCurSelObject->AfterUpdate(deltaTime);
+		}
 	}
 
 	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)
@@ -117,6 +138,11 @@ namespace E3DEngine
 	}
 
 
+	SceneManageRef::SceneManageRef()
+	{
+		mCurScene = nullptr;
+	}
+
 	E3DEngine::SceneManageRef^ SceneManageRef::GetInstance()
 	{
 		if (_ins == nullptr)
@@ -127,12 +153,8 @@ namespace E3DEngine
 	}
 
 	E3DEngine::SceneRef^ SceneManageRef::GetCurScene()
-	{
+	{		
 		Scene *scene = SceneManager::GetInstance().GetCurrentScene();
-		if (scene == nullptr)
-		{
-			return nullptr;
-		}
 		if (mCurScene == nullptr)
 		{
 			mCurScene = gcnew SceneRef(scene);
@@ -175,7 +197,7 @@ namespace E3DEngine
 		{
 			mEditorCamera = Camera::CreateCamera();
 			SetEditorCamera(mEditorCamera, true);
-			mEditorCamera->SetLayerMask(-1 & ~(1<<30) & ~(1<<29));
+			mEditorCamera->SetLayerMask(-1 & ~(1<<gCoordLayer) & ~(1<<gLookCoordLayer));
 			mEditorCamera->Transform->SetPosition(0, 100, 200);
 			mEditorCamera->Flag |= DONT_SAVE;
 		}
@@ -195,17 +217,18 @@ namespace E3DEngine
 	mat4f rotation180 = Quatf::fromEulerAngles(0, 180, 0).transform();
 	mat4f trans = mat4f::createTranslation(0, 0, -100);
 
-	void SceneManageRef::Update()
+	void SceneManageRef::Update(float deltaTime)
 	{
 		mat4f rot = mEditorCamera->Transform->Rotation.transform();
 		mat4f world = rot * trans * rotation180;
 
 		mCoordCamera->Transform->WorldMatrix = world;
+		mCoordCamera->SetViewMatrix(world.inverse());
 	}
 
 	void SceneManageRef::OnFrameSizeChange()
 	{
-		vec3f newPos = mLookCoordCamera->GetWorldPointWithScreenPoint(1, 1, 0);
+		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
 
 		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
@@ -216,14 +239,14 @@ namespace E3DEngine
 		{
 			mCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mCoordCamera, false);
-			mCoordCamera->SetLayerMask(1 << 30);
+			mCoordCamera->SetLayerMask(1 << gCoordLayer);
 			mCoordCamera->Transform->SetPosition(0, 0, -100);
 			mCoordCamera->Transform->SetRotation(0, 180, 0);
 			mCoordCamera->Flag |= DONT_SAVE;
 
 			mLookCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mLookCoordCamera, false);
-			mLookCoordCamera->SetLayerMask(1 << 29);
+			mLookCoordCamera->SetLayerMask(1 << gLookCoordLayer);
 			mLookCoordCamera->Transform->SetPosition(0, 0, 150);
 			mLookCoordCamera->Flag |= DONT_SAVE;
 			mLookCoordCamera->SetClearType(eCT_NotClear);
@@ -231,19 +254,19 @@ namespace E3DEngine
 
 		mCoordRt = new Rectangle;
 		mCoordRt->CreateShape(30, 30);
-		mCoordRt->SetLayerMask(1 << 29);
+		mCoordRt->SetLayerMask(1 << gLookCoordLayer);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
 		Render2Texture *rtt = m->GetRtt();
-		m->SetTexture(rtt);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
 		mCoordRt->SetRenderer(rd);
-		vec3f newPos = mLookCoordCamera->GetWorldPointWithScreenPoint(1, 1, 0);
+		mCoordRt->Flag |= DONT_SAVE;
+		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
 		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 		ADD_IN_SCENE(mCoordRt);
 		mCoordCamera->SetRenderTexture(rtt);
 
 		mCoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
-		mCoordPrefab->SetLayerMask(1 << 30);
+		mCoordPrefab->SetLayerMask(1 << gCoordLayer);
 		mCoordPrefab->Flag |= DONT_SAVE;
 		mCoordPrefab->Transform->SetNeedUpdate(false);
 		ADD_IN_SCENE(mCoordPrefab);
@@ -255,7 +278,7 @@ namespace E3DEngine
 		mObjectCoord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
-		mObjectCoord->SetLayerMask(1 << 30);
+		mObjectCoord->SetLayerMask(1);
 		mObjectCoord->SetRenderer(rd);
 		mObjectCoord->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(mObjectCoord);

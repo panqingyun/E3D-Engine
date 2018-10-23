@@ -84,6 +84,7 @@ namespace E3DEngine
 		for (auto &camera : cameras)
 		{
 			camera->GetRenderQueue()->Clear();
+			camera->ClearRT();
 		}
 #endif
 	}
@@ -131,6 +132,14 @@ namespace E3DEngine
 		{
 			camera->GetRenderQueue()->ChangeRenderQueue(id, index);
 		}
+
+#if __E3D_EDITOR__
+		const std::vector<Camera*> &cameras = GetEditorCameras();
+		for (auto &camera : cameras)
+		{
+			camera->GetRenderQueue()->ChangeRenderQueue(id, index);
+		}
+#endif
 	}
 
 	void Scene::AddCamera(Camera * pCamera)

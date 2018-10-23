@@ -114,8 +114,8 @@ namespace E3DEngine
 
 		vec4f projNormal = vec4f();
 		vec4f proj;
-		projNormal.x = x;
-		projNormal.y = y;
+		projNormal.x = x / GetRenderSystem()->getFrameWidth() * 2.0f - 1;
+		projNormal.y = y / GetRenderSystem()->getFrameHeight() * 2.0f - 1;
 		projNormal.z = zProj / wView;
 		projNormal.w = 1.0;
 		proj = vec4f(projNormal.x*wView, projNormal.y*wView, zProj, projNormal.w*wView);
@@ -225,7 +225,7 @@ namespace E3DEngine
 
 	void Camera::SetViewMatrix(mat4f viewMat)
 	{
-
+		m_mView = viewMat;
 	}
 
 	// 根据投影归一化后的x,y，以及世界坐标中的z，得到视空间下的(x',y',z')
@@ -366,6 +366,12 @@ namespace E3DEngine
 	vvision::vec4f Camera::GetClearColor()
 	{
 		return vec4f(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
+	}
+
+
+	void Camera::ClearRT()
+	{
+		RTTs.clear();
 	}
 
 	float * Camera::normal(float *plans) {

@@ -47,6 +47,8 @@ namespace E3DEngine
 		int GetSceneInnerID();
 		void Reset();
 		bool GetHasComponent(String ^fullName);
+		void Update(float deltaTime);
+		void AfterUpdate(float deltaTime);
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;

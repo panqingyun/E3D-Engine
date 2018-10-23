@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Prefab>
-	<GameObject ID="1" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="1" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="0, 0,-12.5" Rotation="0, 0, 0" Scale="3,3,25"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="3"/>
 	</GameObject>
-	<GameObject ID="2" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="2" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="-12.5,0,0" Rotation="0, 0, 0" Scale="25,3,3"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="1"/>
 	</GameObject>	
-	<GameObject ID="3" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="3" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="0,-12.5,0" Rotation="0, 0, 0" Scale="3,25,3"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="2"/>
 	</GameObject>
-	<GameObject ID="4" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="4" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="0,12.5,0" Rotation="0, 0, 0" Scale="3,25,3"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
 	</GameObject>
-	<GameObject ID="5" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="5" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="12.5,0,0" Rotation="0, 0, 0" Scale="25,3,3"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
 	</GameObject>
-	<GameObject ID="6" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="6" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="0,0,12.5" Rotation="0, 0, 0" Scale="3,3,25"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
 	</GameObject>
-	<GameObject ID="7" Name="Box" Type="7" LayerMask="30"  Active="true">
+	<GameObject ID="7" Name="Box" Type="7" LayerMask="31"  Active="true">
 		<Transform Posistion="0,0,0" Rotation="0, 0, 0" Scale="10,10,10"/>
 		<Material FilePath="../Material/CubeMaterial.material" SelectID="4"/>
 	</GameObject>

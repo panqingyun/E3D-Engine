@@ -121,6 +121,22 @@ namespace E3DEngine
 		return true;
 	}
 
+	void GameObjectRef::Update(float deltaTime)
+	{
+		if (mGameObject != nullptr)
+		{
+			mGameObject->Update(deltaTime);
+		}
+	}
+
+	void GameObjectRef::AfterUpdate(float deltaTime)
+	{
+		if (mGameObject != nullptr)
+		{
+			mGameObject->AfterUpdate(deltaTime);
+		}
+	}
+
 	void GameObjectRef::SetActive(bool active)
 	{
 		if (mGameObject == nullptr)

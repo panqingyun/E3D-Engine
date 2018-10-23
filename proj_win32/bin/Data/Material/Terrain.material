@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<Item ID="1" ShaderID = "1" Color="888888ff"/>
+		<Item ID="1" ShaderID = "1" Color="888888ff" SrcBlendFactor="4" DstBlendFactor="5"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<Item 

@@ -60,7 +60,10 @@ namespace E3DEngine
 		}
 
 		AutoreleasePool::GetInstance().Update();
-		Application::UpdateApp(deltaTime);
+		if (m_bRun)
+		{
+			Application::UpdateApp(deltaTime);
+		}
 	}
 
 

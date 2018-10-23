@@ -30,6 +30,9 @@ namespace E3DEngine
 		void RunCurrentScene(bool run);
 		void UpdatePhysics();
 		void SetMonoPath(System::String^ env_dllPath, System::String^ assembly_dllPath, System::String^ engine_dllPath);
+
+	private:
+		bool mInRun;
 	};
 }
 #pragma unmanaged

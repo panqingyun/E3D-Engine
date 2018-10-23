@@ -23,6 +23,8 @@ namespace E3DEngine
 		void Loaded();
 		void SetSelectObject(GameObjectRef ^obj);
 		GameObjectRef ^GetCurSelObject();
+		void Update(float deltaTime);
+		void AfterUpdate(float deltaTime);
 
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
@@ -38,17 +40,14 @@ namespace E3DEngine
 	public ref class SceneManageRef
 	{
 	private:
-		SceneManageRef()
-		{
-
-		}
+		SceneManageRef();
 		static SceneManageRef^ _ins;
 	public:
 		static SceneManageRef^ GetInstance();
 		SceneRef^ GetCurScene();
 		SceneRef^ LoadScene(String^ path);
 		void LoadEditorObject();
-		void Update();
+		void Update(float deltaTime);
 		void OnFrameSizeChange();
 	private:
 		void createCoord();

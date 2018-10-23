@@ -211,7 +211,6 @@ namespace E3DEngine
 			SetTexture(rtt);
 			Rtt = rtt;
 		}
-		delete rttTabMgr;
 	}
 
 }

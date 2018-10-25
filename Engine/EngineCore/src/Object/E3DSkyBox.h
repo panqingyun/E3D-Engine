@@ -25,6 +25,9 @@ namespace E3DEngine
 	public:
 		SkyDome();
 		virtual void Create(float R);
+
+		void fillVertex(float R);
+
 		virtual void SetMaterial(Material * material);
 		virtual void SetActive(bool isActive) override;
 

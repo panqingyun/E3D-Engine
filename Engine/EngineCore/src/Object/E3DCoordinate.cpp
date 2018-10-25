@@ -5,41 +5,49 @@
 #include "E3DTransform.hpp"
 #include "E3DGameObject.h"
 #include "../Camera/E3DCamera.h"
+#include "../Source/E3DDebug.h"
+#include "../Source/E3DVertexManager.h"
 
 namespace E3DEngine
 {
 	Coordinate::Coordinate()
 	{
 		IsActive = false;
-		m_vecVertex.resize(6);
-		// x r
-		m_vecVertex[0].SetPosition(0, 0, 0);
-		m_vecVertex[0].SetColor(1, 0, 0, 1);
-		m_vecVertex[1].SetPosition(5, 0, 0);
-		m_vecVertex[1].SetColor(1, 0, 0, 1);
-		// y g
-		m_vecVertex[2].SetPosition(0, 0, 0);
-		m_vecVertex[2].SetColor(0, 1, 0, 1);
-		m_vecVertex[3].SetPosition(0, 5, 0);
-		m_vecVertex[3].SetColor(0, 1, 0, 1);
-		// z b
-		m_vecVertex[4].SetPosition(0, 0, 0);
-		m_vecVertex[4].SetColor(0, 0, 1, 1);
-		m_vecVertex[5].SetPosition(0, 0, 5);
-		m_vecVertex[5].SetColor(0, 0, 1, 1);
-
-
-		m_vecIndex.resize(9);
-		UINT index[9] =
+		VertexBufferName = "Coordinate";
+		if (VertexManager::GetVertex(VertexBufferName).empty())
 		{
-			0, 1, 0,
-			2, 2, 3,
-			4, 5, 4
-		};
+			std::vector<Vertex> vecVertex;
+			vecVertex.resize(6);
+			// x r
+			vecVertex[0].SetPosition(0, 0, 0);
+			vecVertex[0].SetColor(1, 0, 0, 1);
+			vecVertex[1].SetPosition(10, 0, 0);
+			vecVertex[1].SetColor(1, 0, 0, 1);
+			// y g
+			vecVertex[2].SetPosition(0, 0, 0);
+			vecVertex[2].SetColor(0, 1, 0, 1);
+			vecVertex[3].SetPosition(0, 10, 0);
+			vecVertex[3].SetColor(0, 1, 0, 1);
+			// z b
+			vecVertex[4].SetPosition(0, 0, 0);
+			vecVertex[4].SetColor(0, 0, 1, 1);
+			vecVertex[5].SetPosition(0, 0, 10);
+			vecVertex[5].SetColor(0, 0, 1, 1);
 
-		memcpy(m_vecIndex.data(), index, sizeof(UINT) * 9);
+			std::vector<UINT> vecIndex;
+			vecIndex.resize(9);
+			UINT index[9] =
+			{
+				0, 1, 0,
+				2, 2, 3,
+				4, 5, 4
+			};
+
+			memcpy(vecIndex.data(), index, sizeof(UINT) * 9);
+
+			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+		}
 		mSceneObjectType = TP_Line;
-		Transform->SetNeedUpdate(false);
 		CreateBehaviour();
 	}
 
@@ -49,11 +57,6 @@ namespace E3DEngine
 		m_pRenderer->SetDrawModule(eDM_LINES);
 	}
 
-	void Coordinate::TransferRender()
-	{
-		
-	}
-
 	void Coordinate::SetActive(bool isActive)
 	{
 		if (isActive == IsActive)
@@ -61,50 +64,7 @@ namespace E3DEngine
 			return;
 		}
 		GameObject::SetActive(isActive);
-		Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-		if (isActive)
-		{
-			mRenderer->FillBegin(ID);
-			for (int i = 0; i < m_vecVertex.size(); i++)
-			{
-				mRenderer->FillVertex(m_vecVertex[i]);
-			}
-
-			for (int i = 0; i < m_vecIndex.size(); i++)
-			{
-				mRenderer->FillIndex(m_vecIndex[i]);
-			}
-
-			mRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
-		}
-		else
-		{
-			mRenderer->RemoveInRenderer(ID);
-		}
-		m_pRenderer->TransformChange();
-	}
-
-	void Coordinate::PrepareUpdate(float deltaTime)
-	{
-		if (m_PobjTransform == nullptr)
-		{
-			return;
-		}
-		Transform->WorldMatrix = m_PobjTransform->WorldMatrix;
-		mat4f scale = mat4f::createScaleMatrix(1.0 / m_PobjTransform->Scale.x, 1.0 / m_PobjTransform->Scale.y, 1.0 / m_PobjTransform->Scale.z);
-		Transform->WorldMatrix = Transform->WorldMatrix * scale;
-	}
-
-	void Coordinate::SetTransform(CTransform * objTransform)
-	{
-		if (objTransform != nullptr)
-		{
-			m_PobjTransform = objTransform;
-			Transform->WorldMatrix = objTransform->WorldMatrix;	
-			mat4f scale = mat4f::createScaleMatrix(1.0 / objTransform->Scale.x, 1.0 / objTransform->Scale.y, 1.0 / objTransform->Scale.z);
-			Transform->WorldMatrix = Transform->WorldMatrix * scale;
-			m_pRenderer->SetTransform(Transform);
-		}
+		fillRender(isActive);
 	}
 
 }

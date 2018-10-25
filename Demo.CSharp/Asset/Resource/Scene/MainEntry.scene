@@ -11,7 +11,7 @@
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
-        <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="0.000000,100.000000,200.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
@@ -24,8 +24,8 @@
     <GameObject ID="5" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
         <Transform Posistion="110.000000,64.643074,155.000000" Rotation="52.295994,9.017948,0.033294" Scale="3.000000,3.000000,3.000000" />
-        <Component Active="false" ClassName="E3DEngine.BoxCollider" />
-        <Component Active="false" ClassName="E3DEngine.RigidBody">
+        <Component Active="true" ClassName="E3DEngine.BoxCollider" />
+        <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
@@ -42,7 +42,7 @@
     </GameObject>
     <GameObject ID="7" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-        <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,304.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,332.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
@@ -52,7 +52,7 @@
         </Component>
         <GameObject ID="8" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
             <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-            <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,352.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
+            <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,166.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
             <Component Active="true" ClassName="E3DEngine.RigidBody">
                 <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
             </Component>
@@ -84,16 +84,16 @@
     <GameObject ID="12" Name="fangzi" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/cz_chengqiang01.fbx">
         <Material FilePath="Resource/Material/Mesh.material" SelectID="5" />
         <Transform Posistion="80.000000,30.000000,100.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.010000,0.010000" />
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
-        <Component Active="true" ClassName="E3DEngine.RigidBody">
+        <Component Active="false" ClassName="E3DEngine.MeshCollider" />
+        <Component Active="false" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
     <GameObject ID="13" Name="qiao" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/LH_changshiqiao01.fbx">
         <Material FilePath="Resource/Material/Mesh.material" SelectID="6" />
         <Transform Posistion="138.000000,30.100000,164.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.007000,0.010000" />
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
-        <Component Active="true" ClassName="E3DEngine.RigidBody">
+        <Component Active="false" ClassName="E3DEngine.MeshCollider" />
+        <Component Active="false" ClassName="E3DEngine.RigidBody">
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
     </GameObject>

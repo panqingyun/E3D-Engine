@@ -6,6 +6,7 @@
 #include "../Camera/E3DCamera.h"
 #include "E3DTransform.hpp"
 #include "../RenderSystem/Texture/E3DTextureDataManager.hpp"
+#include "../Source/E3DVertexManager.h"
 
 
 E3DEngine::Terrain::Terrain()
@@ -19,43 +20,49 @@ E3DEngine::Terrain::Terrain()
 void E3DEngine::Terrain::Create(const char * heightMapFileName)
 {
 	TextureData * td = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(heightMapFileName);
-
+	VertexBufferName = "Terrain";
 	if (td != nullptr)
 	{
-		int mapWidth = td->width;
-		int mapHeight = td->height;
-		unsigned char * mapContent = (unsigned char *)td->imgData;
-		m_vecVertex.resize(mapWidth * mapHeight);
-		m_vecIndex.resize((mapWidth - 1) * (mapHeight - 1) * 6);
-		int vertexIndex = 0, index = 0;
-		float x, y = 0, z;
-		for (int i = 0; i < mapWidth; i ++)
+		if (VertexManager::GetVertex(VertexBufferName).empty())
 		{
-			for (int j = 0; j < mapHeight; j++)
+			int mapWidth = td->width;
+			int mapHeight = td->height;
+			unsigned char * mapContent = (unsigned char *)td->imgData;
+			std::vector<Vertex>  vecVertex;
+			std::vector<UINT> vecIndex;
+			vecVertex.resize(mapWidth * mapHeight);
+			vecIndex.resize((mapWidth - 1) * (mapHeight - 1) * 6);
+			int vertexIndex = 0, index = 0;
+			float x, y = 0, z;
+			for (int i = 0; i < mapWidth; i++)
 			{
-				x = (float)i - mapWidth / 2.0f;
-				z = -((float)j - mapHeight / 2.0f);
-				// [TODO] 
-				char r = mapContent[i * mapWidth + j + 0];
-				char g = mapContent[i * mapWidth + j + 1];
-				char b = mapContent[i * mapWidth + j + 2];
-				y =  ((r + g + b) / 3.0) / 10;
-				m_vecVertex[vertexIndex].SetPosition(x * 5, y , z * 5);
-				m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
-				m_vecVertex[vertexIndex].SetColor(1, 1, 1, 1);
-				m_vecVertex[vertexIndex].SettextureCoord1((float)i / (mapWidth - 1), (float)j / (mapHeight - 1));
-				vertexIndex++;
-				if (i < mapWidth - 1 && j < mapWidth - 1)
+				for (int j = 0; j < mapHeight; j++)
 				{
-					m_vecIndex[index++] = (i * mapWidth + j); // 0
-					m_vecIndex[index++] = ((i + 1) * mapWidth + j);// 360
-					m_vecIndex[index++] = ((i + 1) * mapWidth + j + 1);
+					x = (float)i - mapWidth / 2.0f;
+					z = -((float)j - mapHeight / 2.0f);
+					// [TODO] 
+					char r = mapContent[i * mapWidth + j + 0];
+					char g = mapContent[i * mapWidth + j + 1];
+					char b = mapContent[i * mapWidth + j + 2];
+					y = ((r + g + b) / 3.0) / 10;
+					vecVertex[vertexIndex].SetPosition(x * 5, y, z * 5);
+					vecVertex[vertexIndex].SetNormal(0, 1, 0);
+					vecVertex[vertexIndex].SetColor(1, 1, 1, 1);
+					vecVertex[vertexIndex].SettextureCoord1((float)i / (mapWidth - 1), (float)j / (mapHeight - 1));
+					vertexIndex++;
+					if (i < mapWidth - 1 && j < mapWidth - 1)
+					{
+						vecIndex[index++] = (i * mapWidth + j); // 0
+						vecIndex[index++] = ((i + 1) * mapWidth + j);// 360
+						vecIndex[index++] = ((i + 1) * mapWidth + j + 1);
 
-					m_vecIndex[index++] = ((i + 1) * mapWidth + j + 1);
-					m_vecIndex[index++] = (i * mapWidth + j); // 1
-					m_vecIndex[index++] = (i * mapWidth + j + 1);
+						vecIndex[index++] = ((i + 1) * mapWidth + j + 1);
+						vecIndex[index++] = (i * mapWidth + j); // 1
+						vecIndex[index++] = (i * mapWidth + j + 1);
+					}
 				}
 			}
+			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
 		}
 	}
 }
@@ -63,33 +70,41 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 
 void E3DEngine::Terrain::Create(int size)
 {
-	m_vecVertex.resize(size * size);
-	m_vecIndex.resize((size - 1) * (size - 1) * 6);
-	int vertexIndex = 0, index = 0;
-	float x, y = 0, z;
-	for (int i = 0; i < size; i++)
+	VertexBufferName = "_Terrain";
+	if (VertexManager::GetVertex(VertexBufferName).empty())
 	{
-		for (int j = 0; j < size; j++)
+		std::vector<Vertex>  vecVertex;
+		std::vector<UINT> vecIndex;
+		vecVertex.resize(size * size);
+		vecIndex.resize((size - 1) * (size - 1) * 6);
+		int vertexIndex = 0, index = 0;
+		float x, y = 0, z;
+		for (int i = 0; i < size; i++)
 		{
-			x = (float)i - size / 2.0f;
-			z = -((float)j - size / 2.0f);
-			y = 0;
-			m_vecVertex[vertexIndex].SetPosition(x * 20, y, z * 20);
-			m_vecVertex[vertexIndex].SetNormal(0, 1, 0);
-			m_vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 1);
-			m_vecVertex[vertexIndex].SettextureCoord1((float)i / (size - 1), (float)j / (size - 1));
-			vertexIndex++;
-			if (i < size - 1 && j < size - 1)
+			for (int j = 0; j < size; j++)
 			{
-				m_vecIndex[index++] = (i * size + j); // 0
-				m_vecIndex[index++] = ((i + 1) * size + j);// 360
-				m_vecIndex[index++] = ((i + 1) * size + j + 1);
+				x = (float)i - size / 2.0f;
+				z = -((float)j - size / 2.0f);
+				y = 0;
+				vecVertex[vertexIndex].SetPosition(x * 20, y, z * 20);
+				vecVertex[vertexIndex].SetNormal(0, 1, 0);
+				vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 1);
+				vecVertex[vertexIndex].SettextureCoord1((float)i / (size - 1), (float)j / (size - 1));
+				vertexIndex++;
+				if (i < size - 1 && j < size - 1)
+				{
+					vecIndex[index++] = (i * size + j); // 0
+					vecIndex[index++] = ((i + 1) * size + j);// 360
+					vecIndex[index++] = ((i + 1) * size + j + 1);
 
-				m_vecIndex[index++] = ((i + 1) * size + j + 1);
-				m_vecIndex[index++] = (i * size + j); // 1
-				m_vecIndex[index++] = (i * size + j + 1);
+					vecIndex[index++] = ((i + 1) * size + j + 1);
+					vecIndex[index++] = (i * size + j); // 1
+					vecIndex[index++] = (i * size + j + 1);
+				}
 			}
 		}
+
+		VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
 	}
 	Transform->SetNeedUpdate(true);
 }
@@ -99,54 +114,16 @@ void E3DEngine::Terrain::SetMaterial(Material * material)
 	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
 	m_pRenderer->SetRenderIndex(eRI_Normal);
 	//SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-
+	m_pRenderer->SetTransform(Transform);
 	GameObject::TransferRender();
 	m_pRenderer->IsStaticDraw = false;
-	Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-	m_pRenderer->SetTransform(Transform);
-	mRenderer->RemoveInRenderer(ID);
-
-	mRenderer->FillBegin(ID);
-	for (int i = 0; i < m_vecVertex.size(); i++)
-	{
-		mRenderer->FillVertex(m_vecVertex[i]);
-	}
-
-	for (int i = 0; i < m_vecIndex.size(); i++)
-	{
-		mRenderer->FillIndex(m_vecIndex[i]);
-	}
-	mRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
-
-	m_pRenderer->TransformChange();
+	fillRender(true);
 }
 
 
 void E3DEngine::Terrain::PrepareUpdate(float deltaTime)
 {
 	GameObject::PrepareUpdate(deltaTime);
-	if (m_bIsEditorGrid && m_pRenderer->pCamera != nullptr)
-	{
-		int size = m_pRenderer->pCamera->Transform->Position.y / 50;
-		size = size == 0 ? 1 : size * 2;
-
-		if (lastSize == size)
-		{
-			return;
-		}
-		Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-		int vertexStartIndex = mRenderer->GetRendererBuffer(ID)->VertextStartIndex;
-
-		for (int i = 0; i < m_vecVertex.size(); i++)
-		{
-			vec3f pos = vec3f(m_vecVertex[i].Position[0] * size, m_vecVertex[i].Position[1], m_vecVertex[i].Position[2] * size);
-		//	m_vecVertex[i]
-			mRenderer->Vertices[vertexStartIndex + i].SetPosition(pos.x, pos.y, pos.z);
-		}
-
-		m_pRenderer->TransformChange();
-		lastSize = size;
-	}
 }
 
 

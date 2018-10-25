@@ -49,18 +49,20 @@ namespace E3DEngine
 		void LoadEditorObject();
 		void Update(float deltaTime);
 		void OnFrameSizeChange();
+		Camera *GetEditorMainCamera();
+		Camera *GetLookCoordCamera();
 	private:
 		void createCoord();
-	private:
-		SceneRef ^ mCurScene;
 
 	private:
+
 		Camera *mEditorCamera;
 		Camera *mCoordCamera;
 		Camera *mLookCoordCamera;
 		Scene *mDefaultScene;
 		Prefab *mCoordPrefab; 
 		Rectangle *mCoordRt;
+		SceneRef ^ mCurScene;
 	};
 }
 

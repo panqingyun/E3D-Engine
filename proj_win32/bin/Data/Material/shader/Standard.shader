@@ -8,7 +8,7 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
 	//--- π‚’’
 	vec3 N = normalize((vec4(normal, 1.0)).xyz);
-	vec3 L = vec3(-1.0,-1.0,-1.0); // Dir
+	vec3 L = vec3(1.0,1.0,-1.0); // Dir
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec3 H = normalize(V + L);
 	vec3 _color = vec3(0.7,0.7,0.7);

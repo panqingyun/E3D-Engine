@@ -504,6 +504,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\FilePath.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\Helpers.h" />
@@ -587,6 +588,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\EngineDelegate.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\FilePath.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\NativeSystem.cpp" />

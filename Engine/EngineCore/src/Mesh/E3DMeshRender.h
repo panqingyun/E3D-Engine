@@ -23,6 +23,7 @@ namespace E3DEngine
 		virtual void SetBoneVector(vector<mat4f*> vecBones);
 		//virtual const aiScene *GetAiScene() const;
 		virtual vector<mat4f*> &GetBoneMatrixs();
+		virtual Camera *GetCamera() override;
 
 	private:
 		const aiScene*				pScene;

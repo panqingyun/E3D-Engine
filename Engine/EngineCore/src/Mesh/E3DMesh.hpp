@@ -52,14 +52,13 @@ namespace E3DEngine
 		
 	private:
 		bool	initFromScene(const aiScene* pScene, const string& Filename);
-		void	initMesh(uint MeshIndex, const aiMesh* paiMesh);
+		void	initMesh(uint MeshIndex, const aiMesh* paiMesh, std::vector<Vertex> &vecVertex, std::vector<UINT> &vecIndex);
 		void	loadBones(uint MeshIndex, const aiMesh* paiMesh);
 		void	createBoneTree(aiNode * pNode);
 		void	createAnimation();
 
 	protected:
 		bool m_bIsSkinMesh;
-
 #endif
 	public:	
 		vector<mat4f*>				VecBoneMatrix;

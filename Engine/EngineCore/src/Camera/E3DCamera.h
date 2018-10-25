@@ -47,6 +47,8 @@ namespace E3DEngine
 		void SetDepth(int depth);
 		void SetRenderTexture(Render2Texture * rtt);
 		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
+		vec3f GetScreenPointWithWorlPoint(const vec3f& worldPoint);
+		vec3f GetClipPoint(const vec3f &worldPoint);
 		const mat4f& GetProjectionMatrix();		
 		const mat4f& GetViewInverseMatrix();
 		const mat4f& GetProjectInverseMatrix();		

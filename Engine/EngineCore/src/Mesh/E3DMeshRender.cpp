@@ -56,4 +56,9 @@ namespace E3DEngine
 		return VecBoneMatrix;
 	}
 
+	Camera * MeshRender::GetCamera()
+	{
+		return nullptr;
+	}
+
 }

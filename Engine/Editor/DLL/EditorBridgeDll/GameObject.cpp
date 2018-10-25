@@ -137,6 +137,11 @@ namespace E3DEngine
 		}
 	}
 
+	E3DEngine::GameObject * GameObjectRef::GetGameObjectPtr()
+	{
+		return mGameObject;
+	}
+
 	void GameObjectRef::SetActive(bool active)
 	{
 		if (mGameObject == nullptr)

@@ -386,13 +386,14 @@ namespace E3DEngine
 		RenderObject * GetRenderer();
 		DWORD GetLayerMask();
 		std::map<UINT, GameObject *> &GetChilds();
-		std::vector<Vertex>& GetVertex();;
+		std::vector<Vertex>& GetVertex();
 		std::vector<uint>& GetIndex();
 		static void Destory(GameObject *go);
 		CTransform * GetTransform();
 
 	protected:
 		virtual void ComponentAdded(Component * component);
+		virtual void fillRender(bool isActive);
 
 	public:
 		object			Tag;
@@ -408,13 +409,12 @@ namespace E3DEngine
 		DWORD					RenderIndex;
 		unsigned int			Flag;
 		TransformChangeFunc		TransChangeFun;
+		std::string				VertexBufferName;
 	protected:
 		DWORD						m_layerMask;
 		Renderer *					m_pRenderer;
 		vec3f						size;
-		std::vector<Vertex>			m_vecVertex;
 		std::vector<BatchVertex>	m_vecBatchVertex;
-		std::vector<uint>			m_vecIndex;
 		bool						m_bIsStatic;
 		std::map<std::string, Component*> m_listComponents;
 		Collider	* m_pCollider;

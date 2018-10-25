@@ -28,7 +28,8 @@
 				<RowDefinition Height="122*"/>
 				<RowDefinition Height="133*"/>
 			</Grid.RowDefinitions>
-			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="12" BorderBrush="Transparent">
+			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="13" BorderBrush="#FF009FFF" 
+					  Style="{StaticResource GroupboxWithoutWhiteBorder}">
 				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" 
 						  BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle}" MouseLeftButtonUp="objectList_MouseLeftButtonUp">
 					<TreeView.ContextMenu >
@@ -49,8 +50,8 @@
 			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceView}" />
 			<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Transparent" Height="3" VerticalAlignment="Top"/>
 		</Grid>
-		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="2" >
-			<TabControl Background="#FF2E2E2E" FontSize="12">
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,7,0,0" Grid.Row="1" Grid.Column="2" >
+			<TabControl Background="#FF2E2E2E" FontSize="12" BorderBrush="#FF009FFF" BorderThickness="2">
 				<TabItem  Background="#FF474646" >
 					<TabItem.Header>
 						<Grid>
@@ -58,12 +59,13 @@
 							<TextBlock Text="{StaticResource PropertyText}" Margin="30,0,0,0" VerticalAlignment="Center"/>
 						</Grid>
 					</TabItem.Header>
-					<local:PropertiesView HorizontalAlignment="Stretch" Margin="-2,20,0,0" VerticalAlignment="Stretch" x:Name="properties" Background="#FF2E2E2E" />
+					<local:PropertiesView HorizontalAlignment="Stretch" Margin="-2,20,0,0" VerticalAlignment="Stretch" x:Name="properties" BorderThickness="0" Background="#FF2E2E2E" />
 				</TabItem>
 			</TabControl>
 		</Grid>
 		<GridSplitter x:Name="gridSplitter" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="2" Background="#FFABADB3"/>
-		<TabControl x:Name="renderPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent"></TabControl>
+		<TabControl x:Name="renderPanel" Margin="0,7,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"
+					Background="Transparent" BorderThickness="2" BorderBrush="#FF009FFF"></TabControl>
 		<!--<Border BorderBrush="White" BorderThickness="1" x:Name="EditorPanel" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent">
 			<local:RenderPanel IsEditor="True" x:Name="renderPanel"/>
 		</Border>-->
@@ -168,7 +170,7 @@
 		</Grid>
 
 		<Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
-			<TabControl Background="Transparent">
+			<TabControl Background="Transparent" BorderBrush="#FF009FFF" BorderThickness="2">
 				<TabItem>
 					<TabItem.Header>
 						<Grid>
@@ -181,7 +183,7 @@
 							<RowDefinition Height="25*"/>
 							<RowDefinition Height="18*"/>
 						</Grid.RowDefinitions>
-						<ListBox Background="Transparent" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" 
+						<ListBox Background="Transparent" BorderBrush="Black" BorderThickness="0" x:Name="logList" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" 
 								 VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 							<ListBox.ContextMenu>
 								<ContextMenu>
@@ -199,9 +201,9 @@
 								</DataTemplate>
 							</ListBox.ItemTemplate>
 						</ListBox>
-						<GridSplitter Grid.Row="0" Background="Transparent" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+						<GridSplitter Grid.Row="0" Margin="-5,0" Background="#FF009FFF" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
 						<TextBox Grid.Row="1" Background="Transparent" TextWrapping="Wrap" IsReadOnly="True" Foreground="White" HorizontalScrollBarVisibility="Hidden" 
-								 BorderThickness="1" Text="{Binding Path=SelectedValue.LogStr,ElementName=logList}" FontFamily="Consolas" FontSize="13"/>
+								 BorderThickness="0" BorderBrush="Black" Text="{Binding Path=SelectedValue.LogStr,ElementName=logList}" FontFamily="Consolas" FontSize="13"/>
 					</Grid>
 				</TabItem>
 			</TabControl>

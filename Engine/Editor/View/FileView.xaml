@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-		<GroupBox Header="" Foreground="White" Grid.Row="1" x:Name="header" BorderBrush="{x:Null}">
+		<GroupBox Header="" Foreground="White" Grid.Row="1" x:Name="header" BorderBrush="#FF009FFF" Style="{StaticResource GroupboxWithoutWhiteBorder}">
 			<Grid ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,0,0,0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="120"/>
@@ -16,7 +16,7 @@
 				</Grid.ColumnDefinitions>
 
 				<TreeView x:Name="folderTreeView" FontSize="12" HorizontalAlignment="Stretch" SelectedItemChanged="fileTreeView_SelectedItemChanged"
-						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="{x:Null}" 
+						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="Transparent" BorderThickness="0" BorderBrush="#FF009FFF"
 						  Foreground="White" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.Resources>
 						<HierarchicalDataTemplate DataType="{x:Type model:DirectoryRecord}" ItemsSource="{Binding Directories}" >
@@ -26,8 +26,8 @@
 						</HierarchicalDataTemplate>
 					</TreeView.Resources>
 				</TreeView>
-				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick"						 
-							  Background="{x:Null}" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
+				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick" BorderThickness="0" BorderBrush="#FF009FFF"					 
+							  Background="Transparent" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.ContextMenu>
 						<ContextMenu>
 							<MenuItem x:Name="MenuItemNewFile" Header="{StaticResource New}" Click="_FileViewMenuItemNewFile_Click"/>
@@ -46,7 +46,7 @@
 					</TreeView.ItemTemplate>
 				</TreeView>
 
-				<GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Left" Margin="0,1,0,1" Background="Transparent" />
+				<GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Left" Margin="0,-5" Background="#FF009FFF" />
 			</Grid>
 		</GroupBox>
 	</Grid>

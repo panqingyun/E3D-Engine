@@ -49,6 +49,7 @@ namespace E3DEngine
 		bool GetHasComponent(String ^fullName);
 		void Update(float deltaTime);
 		void AfterUpdate(float deltaTime);
+		GameObject * GetGameObjectPtr();
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;

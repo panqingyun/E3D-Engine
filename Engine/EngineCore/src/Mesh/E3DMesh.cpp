@@ -10,6 +10,7 @@
 #include "../Source/Application.h"
 #include "../Source/FilePath.h"
 #include "../Source/E3DDebug.h"
+#include "../Source/E3DVertexManager.h"
 
 namespace E3DEngine
 {
@@ -36,7 +37,7 @@ namespace E3DEngine
 		m_bIsSkinMesh = false;
 		mAnimation = nullptr;
 		CREATE_BEHAVIOUR(Mesh);
-
+		VertexBufferName = filePath;
 		std::string   fbxPath = Application::AppDataPath + filePath;
 		bool Ret	= false;
 		pScene		= pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
@@ -49,7 +50,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", filePath.c_str(), pImporter.GetErrorString());
 			return;
 		}
-
+		mName = filePath;
 		if (m_bIsSkinMesh)
 		{
 			// 构建骨骼树
@@ -81,6 +82,7 @@ namespace E3DEngine
 		}
 		m_pRenderer->IsStaticDraw = false;
 		m_pRenderer->SetTransform(Transform);
+		m_pRenderer->mName = mName;
 		GameObject::TransferRender();
 		IsActive = false;
 		SetActive(true);
@@ -93,26 +95,7 @@ namespace E3DEngine
 			return;
 		}
 		GameObject::SetActive(isActive);
-		Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-		if (isActive)
-		{
-			mRenderer->FillBegin(ID);
-			for (int i = 0; i < m_vecVertex.size(); i++)
-			{
-				mRenderer->FillVertex(m_vecVertex[i]);
-			}
-
-			for (int i = 0; i < m_vecIndex.size(); i++)
-			{
-				mRenderer->FillIndex(m_vecIndex[i]);
-			}
-			mRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
-		}
-		else
-		{
-			mRenderer->RemoveInRenderer(ID);
-		}
-		m_pRenderer->TransformChange();
+		fillRender(isActive);
 	}
 
 	bool Mesh::initFromScene(const aiScene *pScene, const string &Filename)
@@ -131,12 +114,23 @@ namespace E3DEngine
 			NumVertices += pScene->mMeshes[i]->mNumVertices;
 			NumIndices  += Entries[i].NumIndices;
 		}
-		for (uint i = 0 ; i < Entries.size() ; i++)
+		if (VertexManager::GetVertex(VertexBufferName).empty())
+		{
+			std::vector<Vertex> vecVertex;
+			std::vector<UINT> vecIndex;
+			for (uint i = 0; i < Entries.size(); i++)
+			{
+				const aiMesh* paiMesh = pScene->mMeshes[i];
+				initMesh(i, paiMesh, vecVertex, vecIndex);
+			}
+
+			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+		}
+		for (uint i = 0; i < Entries.size(); i++)
 		{
 			const aiMesh* paiMesh = pScene->mMeshes[i];
-			initMesh(i, paiMesh);
+			loadBones(i, paiMesh);
 		}
-		
 		return true;
 	}
 	
@@ -191,7 +185,7 @@ namespace E3DEngine
 		}
 	}
 
-	void Mesh::initMesh(uint MeshIndex, const aiMesh* paiMesh)
+	void Mesh::initMesh(uint MeshIndex, const aiMesh* paiMesh, std::vector<Vertex> &vecVertex, std::vector<UINT> &vecIndex)
 	{
 		const aiVector3D Zero3D(0.0f, 0.0f, 0.0f);
 		const aiColor4D Default4D(1.0f,1.0f, 1.0f, 1.0f);
@@ -223,19 +217,18 @@ namespace E3DEngine
 			vertex.SetNormal(pNormal->x, pNormal->y, pNormal->z);
 			vertex.SetColor(pColor->r, pColor->g, pColor->b, pColor->a);
 			vertex.SetTangent(pTangent->x, pTangent->y, pTangent->z);
-			m_vecVertex.push_back(vertex);
+			vecVertex.push_back(vertex);
 		}
-		
-		loadBones(MeshIndex, paiMesh);
 		
 		for (uint i = 0 ; i < paiMesh->mNumFaces ; i++)
 		{
 			const aiFace& Face = paiMesh->mFaces[i];
 			assert(Face.mNumIndices == 3);
-			m_vecIndex.push_back(Face.mIndices[0] + Entries[MeshIndex].BaseVertex);
-			m_vecIndex.push_back(Face.mIndices[1] + Entries[MeshIndex].BaseVertex);
-			m_vecIndex.push_back(Face.mIndices[2] + Entries[MeshIndex].BaseVertex);
+			vecIndex.push_back(Face.mIndices[0] + Entries[MeshIndex].BaseVertex);
+			vecIndex.push_back(Face.mIndices[1] + Entries[MeshIndex].BaseVertex);
+			vecIndex.push_back(Face.mIndices[2] + Entries[MeshIndex].BaseVertex);
 		}
+
 	}
 	
 	void Mesh::loadBones(uint MeshIndex, const aiMesh* pMesh)
@@ -266,13 +259,15 @@ namespace E3DEngine
 			{
 				bone = BoneMapping[BoneName];
 			}
+
+			std::vector<Vertex> &vecVertex = VertexManager::GetVertex(VertexBufferName);
 			
 			for (uint j = 0 ; j < pMesh->mBones[i]->mNumWeights ; j++)
 			{
 				uint VertexID = Entries[MeshIndex].BaseVertex + pMesh->mBones[i]->mWeights[j].mVertexId;
 				float Weight  = pMesh->mBones[i]->mWeights[j].mWeight;
 				bone->AddVertexAndWeight(VertexID, Weight);
-				m_vecVertex[VertexID].SetBoneIndexWeight(bone->BoneIndex, Weight);
+				vecVertex[VertexID].SetBoneIndexWeight(bone->BoneIndex, Weight);
 			}
 		}
 	}
@@ -280,8 +275,6 @@ namespace E3DEngine
 	void Mesh::Destory()
 	{
 		aiDetachAllLogStreams();
-		m_vecVertex.clear();
-		m_vecIndex.clear();
 		VecBoneMatrix.clear();
 		BoneMapping.clear();
 	}

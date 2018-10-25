@@ -6,6 +6,7 @@
 #include "../Camera/E3DCamera.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Scene/E3DSceneManager.hpp"
+#include "../Source/E3DVertexManager.h"
 
 E3DEngine::Sphere::Sphere()
 {
@@ -15,39 +16,46 @@ E3DEngine::Sphere::Sphere()
 
 void E3DEngine::Sphere::Create(float R)
 {
-	int rowNumber = 181;
-	int colNumber = 181;
-	m_vecVertex.resize(rowNumber * colNumber);
-	int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
-	m_vecIndex.resize(indexSize);
-	int index = 0;
-	int vIndex = 0;
-	float dAlpha = 0, dBeta = 0;
-	for (int alpha = 0; alpha < rowNumber; alpha ++)
+	VertexBufferName = "Sphere";
+	if (VertexManager::GetVertex(VertexBufferName).empty())
 	{
-		dAlpha = DEG2RAD((90 - alpha));
-		for (int beta = 0; beta < colNumber; beta++)
+		std::vector<Vertex> vecVertex;
+		int rowNumber = 181;
+		int colNumber = 181;
+		vecVertex.resize(rowNumber * colNumber);
+		int indexSize = (rowNumber - 1) * (colNumber - 1) * 6;
+		std::vector<unsigned int> vecIndex;
+		vecIndex.resize(indexSize);
+		int index = 0;
+		int vIndex = 0;
+		float dAlpha = 0, dBeta = 0;
+		for (int alpha = 0; alpha < rowNumber; alpha++)
 		{
-			dBeta = DEG2RAD(beta * 2);
-			float z = R * cos(dBeta) * cos(dAlpha);
-			float x = R * sin(dBeta) * cos(dAlpha);
-			float y = R * sin(dAlpha);
-			m_vecVertex[vIndex].SetPosition(x, y, z);
-			m_vecVertex[vIndex].SetColor(1, 1, 1, 1);
-			m_vecVertex[vIndex].SetNormal(x, y, z);
-			m_vecVertex[vIndex].SettextureCoord1((float)beta / (colNumber - 1), (float)alpha/ (rowNumber - 1));
-			vIndex++;
-			if (alpha < rowNumber - 1 && beta < colNumber - 1)
+			dAlpha = DEG2RAD((90 - alpha));
+			for (int beta = 0; beta < colNumber; beta++)
 			{
-				m_vecIndex[index++] = (alpha * rowNumber + beta); // 0
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta);// 360
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
+				dBeta = DEG2RAD(beta * 2);
+				float z = R * cos(dBeta) * cos(dAlpha);
+				float x = R * sin(dBeta) * cos(dAlpha);
+				float y = R * sin(dAlpha);
+				vecVertex[vIndex].SetPosition(x, y, z);
+				vecVertex[vIndex].SetColor(1, 1, 1, 1);
+				vecVertex[vIndex].SetNormal(x, y, z);
+				vecVertex[vIndex].SettextureCoord1((float)beta / (colNumber - 1), (float)alpha / (rowNumber - 1));
+				vIndex++;
+				if (alpha < rowNumber - 1 && beta < colNumber - 1)
+				{
+					vecIndex[index++] = (alpha * rowNumber + beta); // 0
+					vecIndex[index++] = ((alpha + 1) * rowNumber + beta);// 360
+					vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
 
-				m_vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
-				m_vecIndex[index++] = (alpha * rowNumber + beta + 1);
-				m_vecIndex[index++] = (alpha * rowNumber + beta); // 1
+					vecIndex[index++] = ((alpha + 1) * rowNumber + beta + 1);
+					vecIndex[index++] = (alpha * rowNumber + beta + 1);
+					vecIndex[index++] = (alpha * rowNumber + beta); // 1
+				}
 			}
 		}
+		VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
 	}
 	size.x = R;
 	size.y = R;
@@ -62,29 +70,7 @@ void E3DEngine::Sphere::SetActive(bool isActive)
 		return;
 	}
 	GameObject::SetActive(isActive);
-	if (m_pRenderer == nullptr)
-	{
-		return;
-	}
-	if (isActive)
-	{
-		m_pRenderer->FillBegin(ID);
-		for (int i = 0; i < m_vecVertex.size(); i++)
-		{
-			m_pRenderer->FillVertex(m_vecVertex[i]);
-		}
-
-		for (int i = 0; i < m_vecIndex.size(); i++)
-		{
-			m_pRenderer->FillIndex(m_vecIndex[i]);
-		}
-		m_pRenderer->FillEnd(ID, m_vecVertex.size(), m_vecIndex.size());
-	}
-	else
-	{
-		m_pRenderer->RemoveInRenderer(ID);
-	}
-	m_pRenderer->TransformChange();
+	fillRender(isActive);
 }
 
 void E3DEngine::Sphere::TransformChange()

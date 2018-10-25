@@ -10,6 +10,7 @@
 #include <src/RenderSystem/E3DRenderSystem.hpp>
 #include <src/Scene/E3DSceneManager.hpp>
 #include <src/Light/E3DLight.hpp>
+#include "../../../src/Source/E3DDebug.h"
 
 namespace E3DEngine
 {
@@ -124,7 +125,6 @@ namespace E3DEngine
 	{
 		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
-
 		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 

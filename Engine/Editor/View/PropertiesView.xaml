@@ -37,7 +37,7 @@
 
     </UserControl.Resources>
     
-    <Border BorderThickness="1" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Border BorderThickness="0" BorderBrush="Black" ScrollViewer.VerticalScrollBarVisibility="Auto">
 		<DockPanel x:Name="_panel">
 			<ScrollViewer x:Name="_gridContainer" VerticalScrollBarVisibility="Auto">
                 <Grid x:Name="_grid">

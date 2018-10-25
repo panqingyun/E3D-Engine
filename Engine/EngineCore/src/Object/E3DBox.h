@@ -15,10 +15,16 @@ namespace E3DEngine
 	public:
 		Box();
 		virtual void Create(float l, float w, float h);
+
 		virtual void TransferRender() override;
 		virtual void PrepareUpdate(float deltaTime) override;
 		virtual void SetActive(bool isActive) override;
+
 		virtual void AfterUpdate(float deltaTime) override;
 		virtual void TransformChange() override;
+
+	protected:
+		void fillVertex(float l, float h, float w);
+
 	};
 }

@@ -10,6 +10,7 @@ namespace E3DEngine
 		GLES_MeshRender()
 		{
 			pRender = new GLES_Renderer;
+			pRender->mName = mName;
 		}
 		virtual ~GLES_MeshRender() override
 		{
@@ -44,6 +45,7 @@ namespace E3DEngine
 		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
 		virtual void SetActive(bool active) { pRender->SetActive(active); }
 		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
+		virtual Camera *GetCamera() override;
 	protected:
 		GLES_Renderer * pRender;
 	};

@@ -115,7 +115,7 @@ namespace E3DEngine
 		vec4f projNormal = vec4f();
 		vec4f proj;
 		projNormal.x = x / GetRenderSystem()->getFrameWidth() * 2.0f - 1;
-		projNormal.y = y / GetRenderSystem()->getFrameHeight() * 2.0f - 1;
+		projNormal.y = -y / GetRenderSystem()->getFrameHeight() * 2.0f - 1;
 		projNormal.z = zProj / wView;
 		projNormal.w = 1.0;
 		proj = vec4f(projNormal.x*wView, projNormal.y*wView, zProj, projNormal.w*wView);
@@ -123,6 +123,28 @@ namespace E3DEngine
 		vec4f world = GetViewInverseMatrix() * view;
 
 		return Convert::Vec4ToVec3(world);
+	}
+
+	vec3f Camera::GetScreenPointWithWorlPoint(const vec3f &worldPoint)
+	{
+		vec3f retPos;
+		vec4f &&point = GetProjectionMatrix()  * GetViewMatrix() * Convert::Vec3ToVec4(worldPoint);
+		retPos.x = ((point.x / point.w) + 1) / 2.0 * GetRenderSystem()->getFrameWidth();
+		retPos.y = -((point.y / point.w) + 1) / 2.0 * GetRenderSystem()->getFrameHeight();
+		retPos.z /= point.z / point.w;
+
+		return retPos;
+	}
+
+	vec3f Camera::GetClipPoint(const vec3f &worldPoint)
+	{
+		vec3f retPos;
+		vec4f &&point = GetProjectionMatrix()  * GetViewMatrix() * Convert::Vec3ToVec4(worldPoint);
+		retPos.x = point.x / point.w;
+		retPos.y = point.y / point.w;
+		retPos.z /= point.z / point.w;
+
+		return retPos;
 	}
 
 

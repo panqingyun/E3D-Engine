@@ -9,12 +9,6 @@ namespace E3DEngine
 	public:
 		Coordinate();
 		virtual void SetRenderer(Renderer * renderer);
-		virtual void TransferRender() override;
 		virtual void SetActive(bool isActive) override;
-		virtual void PrepareUpdate(float deltaTime) override;
-		void SetTransform(CTransform * objTransform);
-	private:
-		CTransform * m_PobjTransform;
-		mat4f		 m_OrthoMatrix;
 	};
 }

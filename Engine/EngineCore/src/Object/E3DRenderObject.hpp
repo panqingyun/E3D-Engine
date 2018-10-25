@@ -120,6 +120,7 @@ namespace E3DEngine
 		virtual void SetNeedSortVertex(bool bNeed);
 		virtual void SetLayerMask(DWORD layer);
 		virtual DWORD GetLayerMask();
+		virtual Camera *GetCamera();
 
 		MinMaxAABB GetBounds()
 		{

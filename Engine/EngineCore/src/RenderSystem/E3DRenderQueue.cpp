@@ -33,15 +33,19 @@ namespace E3DEngine
 			_renderQueue.push_back(rb);
 			return;
 		}
-		for (int i = _renderQueue.size() - 1; i >= 0; i--)
+		for (int i = _renderQueue.size() - 1; i >= 0; )
 		{
-			if (_renderQueue[i]->RenderIndex == rb->RenderIndex || i == 0)
+			if (_renderQueue[i]->RenderIndex <= rb->RenderIndex)
 			{
 				_renderQueue.insert(_renderQueue.begin() + i + 1, rb);
 				return;
 			}
+			else
+			{
+				i--;
+			}
 		}
-		_renderQueue.emplace_back(rb);
+		_renderQueue.insert(_renderQueue.begin(), rb);
 	}
 
 	bool RenderQueue::Remove(RenderObject * rb)

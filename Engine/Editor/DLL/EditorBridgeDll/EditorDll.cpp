@@ -43,15 +43,9 @@ void E3DEngine::EngineDelegateRef::SetAppDataPath(String^  path)
 
 void E3DEngine::EngineDelegateRef::EngineUpdate()
 {
-	if (!mInRun)
-	{
-		SceneManageRef::GetInstance()->GetCurScene()->Update(0.02f);
-	}
+	SceneManageRef::GetInstance()->GetCurScene()->Update(0.02f);
 	::EngineUpdate();
-	if (!mInRun)
-	{
-		SceneManageRef::GetInstance()->GetCurScene()->AfterUpdate(0.02f);
-	}
+	SceneManageRef::GetInstance()->GetCurScene()->AfterUpdate(0.02f);
 	SceneManageRef::GetInstance()->Update(0.02f);
 }
 

@@ -10,6 +10,7 @@
 #include "E3DRenderObject.hpp"
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 #include "../Physics/E3DCollider.hpp"
+#include "../Source/E3DVertexManager.h"
 
 namespace E3DEngine
 {
@@ -335,6 +336,7 @@ namespace E3DEngine
 		Flag = 0;
 		SceneInnerID = 0;
 		TransChangeFun = nullptr;
+		VertexBufferName = "";
 	}
 	
 	void GameObject::SetCamera(E3DEngine::Camera *camera)
@@ -403,6 +405,33 @@ namespace E3DEngine
 			}
 
 		}
+	}
+
+
+	void GameObject::fillRender(bool isActive)
+	{
+		std::vector<Vertex> &vecVertex = VertexManager::GetVertex(VertexBufferName);
+		std::vector<UINT> &vecIndex = VertexManager::GetIndex(VertexBufferName);
+		if (isActive)
+		{
+			m_pRenderer->FillBegin(ID);
+			for (int i = 0; i < vecVertex.size(); i++)
+			{
+				m_pRenderer->FillVertex(vecVertex[i]);
+			}
+
+			for (int i = 0; i < vecIndex.size(); i++)
+			{
+				m_pRenderer->FillIndex(vecIndex[i]);
+			}
+
+			m_pRenderer->FillEnd(ID, vecVertex.size(), vecIndex.size());
+		}
+		else
+		{
+			m_pRenderer->RemoveInRenderer(ID);
+		}
+		m_pRenderer->TransformChange();
 	}
 
 
@@ -493,6 +522,7 @@ namespace E3DEngine
 		m_pRenderer = renderer;
 		m_pRenderer->SetTransform(Transform);
 		m_pRenderer->SetLayerMask(m_layerMask);
+		m_pRenderer->mName = mName;
 		TransferRender();
 		SetActive(true);
 	}
@@ -506,13 +536,13 @@ namespace E3DEngine
 
 	std::vector<Vertex>& GameObject::GetVertex()
 	{
-		return m_vecVertex;
+		return VertexManager::GetVertex(VertexBufferName);
 	}
 
 
 	std::vector<uint>& GameObject::GetIndex()
 	{
-		return m_vecIndex;
+		return VertexManager::GetIndex(VertexBufferName);
 	}
 
 	void GameObject::ComponentAdded(Component * component)

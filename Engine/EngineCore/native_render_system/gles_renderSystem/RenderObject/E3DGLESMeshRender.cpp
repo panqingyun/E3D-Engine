@@ -113,4 +113,10 @@ namespace E3DEngine
 		pRender->SetMaterial(material);
 	}
 
+
+	E3DEngine::Camera * GLES_MeshRender::GetCamera()
+	{
+		return pRender->GetCamera();
+	}
+
 }

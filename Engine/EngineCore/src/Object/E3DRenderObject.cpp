@@ -187,6 +187,11 @@ namespace E3DEngine
 		return m_layer;
 	}
 
+	E3DEngine::Camera * RenderObject::GetCamera()
+	{
+		return pCamera;
+	}
+
 	void RenderObject::SetNeedSortVertex(bool bNeed)
 	{
 		m_bNeedSortVertex = bNeed;

@@ -10,6 +10,7 @@ namespace E3DEngine
 {
 	const int gCoordLayer = 31;
 	const int gLookCoordLayer = 30;
+	const int objectCoordLayer = 29;
 
 	void TransformChange(int ID)
 	{
@@ -61,7 +62,6 @@ namespace E3DEngine
 		{
 			createCoordinate("../Data/Material/coordinate.material", 1);
 		}
-		mObjectCoord->SetTransform(transform);
 	}
 
 	void SceneRef::Loaded()
@@ -85,7 +85,28 @@ namespace E3DEngine
 	{
 		if (mCurSelObject != nullptr)
 		{
-			mCurSelObject->Update(deltaTime);
+			if (!EngineDelegate::GetInstance().GetIsRun())
+			{
+				mCurSelObject->Update(deltaTime);
+				mObjectCoord->Update(deltaTime);
+			}
+			const vec3f &objePos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
+			if (mCurSelObject->GetGameObjectPtr()->GetRenderer() != nullptr &&
+				mCurSelObject->GetGameObjectPtr()->GetRenderer()->GetCamera() != nullptr
+				&& mObjectCoord->GetRenderer() != nullptr && mObjectCoord->GetRenderer()->GetCamera() != nullptr)
+			{
+				vec3f clipPoint = mCurSelObject->GetGameObjectPtr()->GetRenderer()->GetCamera()->GetClipPoint(objePos);
+				vec4f worlPoint = mObjectCoord->GetRenderer()->GetCamera()->GetWorldPoint(clipPoint.x, clipPoint.y, 0);
+				mObjectCoord->Transform->SetPosition(worlPoint.x, worlPoint.y, worlPoint.z);
+				mObjectCoord->Transform->SetRotation(mCurSelObject->GetTransform()->GetTransformPtr()->Rotation);
+			}
+			else
+			{
+				vec3f clipPoint = SceneManageRef::GetInstance()->GetEditorMainCamera()->GetClipPoint(objePos);
+				vec4f worlPoint = SceneManageRef::GetInstance()->GetLookCoordCamera()->GetWorldPoint(clipPoint.x, clipPoint.y, 0);
+				mObjectCoord->Transform->SetPosition(worlPoint.x, worlPoint.y, worlPoint.z);
+				mObjectCoord->Transform->SetRotation(mCurSelObject->GetTransform()->GetTransformPtr()->Rotation);
+			}
 		}
 	}
 
@@ -93,7 +114,11 @@ namespace E3DEngine
 	{
 		if (mCurSelObject != nullptr)
 		{
-			mCurSelObject->AfterUpdate(deltaTime);
+			if (!EngineDelegate::GetInstance().GetIsRun())
+			{
+				mCurSelObject->AfterUpdate(deltaTime);
+				mObjectCoord->AfterUpdate(deltaTime);
+			}
 		}
 	}
 
@@ -141,6 +166,9 @@ namespace E3DEngine
 	SceneManageRef::SceneManageRef()
 	{
 		mCurScene = nullptr;
+		mLookCoordCamera = nullptr;
+		mCoordCamera = nullptr;
+		mEditorCamera = nullptr;
 	}
 
 	E3DEngine::SceneManageRef^ SceneManageRef::GetInstance()
@@ -197,7 +225,7 @@ namespace E3DEngine
 		{
 			mEditorCamera = Camera::CreateCamera();
 			SetEditorCamera(mEditorCamera, true);
-			mEditorCamera->SetLayerMask(-1 & ~(1<<gCoordLayer) & ~(1<<gLookCoordLayer));
+			mEditorCamera->SetLayerMask(-1 & ~(1 << gCoordLayer) & ~(1 << gLookCoordLayer) & ~(1<< objectCoordLayer));
 			mEditorCamera->Transform->SetPosition(0, 100, 200);
 			mEditorCamera->Flag |= DONT_SAVE;
 		}
@@ -214,13 +242,12 @@ namespace E3DEngine
 		createCoord();
 	}
 
-	mat4f rotation180 = Quatf::fromEulerAngles(0, 180, 0).transform();
-	mat4f trans = mat4f::createTranslation(0, 0, -100);
+	mat4f trans = mat4f::createTranslation(0, 0, 100);
 
 	void SceneManageRef::Update(float deltaTime)
 	{
 		mat4f rot = mEditorCamera->Transform->Rotation.transform();
-		mat4f world = rot * trans * rotation180;
+		mat4f world = rot * trans;
 
 		mCoordCamera->Transform->WorldMatrix = world;
 		mCoordCamera->SetViewMatrix(world.inverse());
@@ -233,6 +260,16 @@ namespace E3DEngine
 		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
 
+	E3DEngine::Camera * SceneManageRef::GetEditorMainCamera()
+	{
+		return mEditorCamera;
+	}
+
+	E3DEngine::Camera * SceneManageRef::GetLookCoordCamera()
+	{
+		return mLookCoordCamera;
+	}
+
 	void SceneManageRef::createCoord()
 	{
 		if (mCoordCamera == nullptr)
@@ -240,13 +277,12 @@ namespace E3DEngine
 			mCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mCoordCamera, false);
 			mCoordCamera->SetLayerMask(1 << gCoordLayer);
-			mCoordCamera->Transform->SetPosition(0, 0, -100);
-			mCoordCamera->Transform->SetRotation(0, 180, 0);
+			mCoordCamera->Transform->SetPosition(0, 0, 100);
 			mCoordCamera->Flag |= DONT_SAVE;
 
 			mLookCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mLookCoordCamera, false);
-			mLookCoordCamera->SetLayerMask(1 << gLookCoordLayer);
+			mLookCoordCamera->SetLayerMask((1 << gLookCoordLayer) | (1 << objectCoordLayer));
 			mLookCoordCamera->Transform->SetPosition(0, 0, 150);
 			mLookCoordCamera->Flag |= DONT_SAVE;
 			mLookCoordCamera->SetClearType(eCT_NotClear);
@@ -273,12 +309,13 @@ namespace E3DEngine
 
 	}
 
+
 	void SceneRef::createCoordinate(std::string materilPath, int selectID)
 	{
 		mObjectCoord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
-		mObjectCoord->SetLayerMask(1);
+		mObjectCoord->SetLayerMask(1 << objectCoordLayer);
 		mObjectCoord->SetRenderer(rd);
 		mObjectCoord->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(mObjectCoord);

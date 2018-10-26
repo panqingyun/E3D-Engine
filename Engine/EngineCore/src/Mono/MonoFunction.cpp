@@ -294,6 +294,7 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, addComponent, CS_OBJECT, obj, CS_STRING,
 	{
 		return nullptr;
 	}
+
 	component->OnCreate();
 	component->OnCreateComplete();
 	return component->GetMonoBehaviour()->GetMonoObject();

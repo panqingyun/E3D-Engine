@@ -6,7 +6,13 @@
 #include "../Object/E3DGameObject.h"
 #include <../../3rd/Mono/mono/metadata/tabledefs.h>
 #include "../Source/ClassFactory.h"
+#include "../Source/EngineDelegate.h"
 
+#define NOT_RUN_RETURN \
+if(!E3DEngine::EngineDelegate::GetInstance().GetIsRun())\
+{\
+	return;\
+}
 
 E3DEngine::Component::Component()
 {
@@ -18,6 +24,7 @@ E3DEngine::Component::Component()
 
 void E3DEngine::Component::OnCreate()
 {
+	NOT_RUN_RETURN
 	Awake();
 	OnEnable();
 }
@@ -30,6 +37,7 @@ void E3DEngine::Component::OnCreateComplete()
 
 void E3DEngine::Component::Awake()
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->Awake();
@@ -39,6 +47,7 @@ void E3DEngine::Component::Awake()
 
 void E3DEngine::Component::Start()
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->Start();
@@ -48,6 +57,7 @@ void E3DEngine::Component::Start()
 
 void E3DEngine::Component::Update(float deltaTime)
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->Update(deltaTime);
@@ -57,6 +67,7 @@ void E3DEngine::Component::Update(float deltaTime)
 
 void E3DEngine::Component::LateUpdate(float deltaTime)
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->LateUpdate(deltaTime);
@@ -66,6 +77,7 @@ void E3DEngine::Component::LateUpdate(float deltaTime)
 
 void E3DEngine::Component::Destory()
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->Destory();
@@ -75,6 +87,7 @@ void E3DEngine::Component::Destory()
 
 void E3DEngine::Component::OnEnable()
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->OnEnable();
@@ -84,6 +97,7 @@ void E3DEngine::Component::OnEnable()
 
 void E3DEngine::Component::OnDisable()
 {
+	NOT_RUN_RETURN
 	if (mBehaviour != nullptr)
 	{
 		mBehaviour->OnDisable();
@@ -92,6 +106,7 @@ void E3DEngine::Component::OnDisable()
 
 void E3DEngine::Component::OnCollisionEnter(GameObject* go)
 {
+	NOT_RUN_RETURN
 	MonoObject * mObj = go->GetMonoBehaviour()->GetMonoObject();
 	mBehaviour->CallMethod("OnCollisionEnter", (void**)&mObj);
 }

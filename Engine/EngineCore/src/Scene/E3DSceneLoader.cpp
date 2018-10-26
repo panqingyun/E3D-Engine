@@ -108,7 +108,10 @@ namespace E3DEngine
 		Component * component = go->AddComponent(comName.c_str());
 		component->IsActive = active;
 		setComponentFieldValue(objectElement->FirstChildElement(_Component_Field), component);
-		component->OnCreate();
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			component->OnCreate();
+		}
 		createComponent(objectElement->NextSiblingElement(_Component), go);
 	}
 
@@ -341,6 +344,10 @@ namespace E3DEngine
 		}
 		for (auto & component : go->GetAllComponents())
 		{
+			if (!EngineDelegate::GetInstance().GetIsRun())
+			{
+				continue;
+			}
 			component.second->OnCreateComplete();
 		}
 	}

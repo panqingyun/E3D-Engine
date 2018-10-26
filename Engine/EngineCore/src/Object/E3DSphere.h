@@ -12,7 +12,5 @@ namespace E3DEngine
 	public:
 		Sphere();
 		void Create(float r);
-		virtual void SetActive(bool isActive) override;
-		virtual void TransformChange() override;
 	};
 }

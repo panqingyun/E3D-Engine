@@ -91,6 +91,8 @@ namespace E3DEngine
 		//-----------------------------------------------
 		MonoBehaviour * GetBehaviour();
 
+		void SetColor(Color4 color);
+
 	protected:
 		virtual void createShader(string vsName, string psName, string attrVar, string unifVar) { }
 		virtual void parseShaderConfig(ShaderConfig *cfg);

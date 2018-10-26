@@ -8,7 +8,6 @@ namespace E3DEngine
 	{
 	public:
 		Coordinate();
-		virtual void SetRenderer(Renderer * renderer);
-		virtual void SetActive(bool isActive) override;
+		virtual void TransferRender() override;
 	};
 }

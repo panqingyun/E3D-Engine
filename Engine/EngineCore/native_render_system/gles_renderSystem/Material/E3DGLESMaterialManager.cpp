@@ -29,13 +29,4 @@ namespace E3DEngine
 	{
 		return new GLES_Material();
 	}
-
-	Material * GLES_MaterialManager::GetMaterial(int id)
-	{
-		if (m_mapIDMaterials.find(id) == m_mapIDMaterials.end())
-		{
-			return nullptr;
-		}
-		return m_mapIDMaterials[id];
-	}
 }

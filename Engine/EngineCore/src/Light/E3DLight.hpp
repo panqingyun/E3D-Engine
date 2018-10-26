@@ -23,7 +23,6 @@ namespace E3DEngine
 		static Light * Create(LightType type);
 	public:
 		LightType   Type;
-		vec4f		Color;				// 颜色
 		float		Intensity;			// 强度
 
 	public:

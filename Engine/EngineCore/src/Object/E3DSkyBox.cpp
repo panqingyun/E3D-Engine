@@ -16,18 +16,17 @@ void E3DEngine::SkyBox::Create(float l, float w, float h)
 	fillVertex(l, w, h);	
 }
 
-void E3DEngine::SkyBox::SetRenderer(Renderer *rd)
+void E3DEngine::SkyBox::TransferRender()
 {
-	SkyBoxConfig * skyBox = rd->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
-	textures.emplace_back(rd->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
+	SkyBoxConfig * skyBox = m_pRenderer->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
 
 	setTextureCoord();
-	GameObject::SetRenderer(rd);
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
 }
 
@@ -174,17 +173,6 @@ void E3DEngine::SkyDome::fillVertex(float R)
 	VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
 }
 
-void E3DEngine::SkyDome::SetMaterial(Material * material)
-{
-	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);	
-	GameObject::TransferRender();
-	m_pRenderer->SetTransform(Transform);
-	m_pRenderer->IsStaticDraw = true;
-	m_pRenderer->SetRenderIndex(eRI_LowMost);
-	IsActive = false;
-	SetActive(true);
-}
-
 void E3DEngine::SkyDome::PrepareUpdate(float deltaTime)
 {
 	if (m_pRenderer != nullptr && m_pRenderer->pCamera != nullptr)
@@ -193,17 +181,4 @@ void E3DEngine::SkyDome::PrepareUpdate(float deltaTime)
 	}
 }
 
-void E3DEngine::SkyDome::SetActive(bool isActive)
-{
-	if (isActive == IsActive)
-	{
-		return;
-	}
-	GameObject::SetActive(isActive);
-	if (m_pRenderer == nullptr)
-	{
-		return;
-	}
-	fillRender(isActive);
-}
 

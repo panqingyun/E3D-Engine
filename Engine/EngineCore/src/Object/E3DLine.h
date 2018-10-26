@@ -10,7 +10,6 @@ namespace E3DEngine
 		~Line();
 
 		virtual void TransferRender() override;
-		virtual void SetActive(bool isActive) override;
 	private:
 
 	};

@@ -75,11 +75,6 @@ namespace E3DEngine
 	{
 		GameObject::TransferRender();
 		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
-		if (m_pRenderer->RenderIndex != eRI_None && m_pRenderer->RenderIndex != RenderIndex)
-		{
-			// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
-			//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
-		}
 		m_pRenderer->IsStaticDraw = false;
 		m_pRenderer->SetTransform(Transform);
 		m_pRenderer->mName = mName;

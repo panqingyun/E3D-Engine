@@ -4,6 +4,7 @@
 
 #include "MonoFunction.h"
 #include "../Source/EngineDelegate.h"
+#include "../Source/E3DVertexManager.h"
 
 void RegisterMonoFunction()
 {
@@ -208,7 +209,8 @@ CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 
 CS_OBJECT _1_PARAM_FUNCTION(Renderer, createRenderer, UINT, materialID)
 {
-	Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(materialID);
+	// TODO
+	Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(materialID, 0);
 
 	return render->GetMonoBehaviour()->GetMonoObject();
 }
@@ -238,7 +240,7 @@ CS_OBJECT _3_PARAM_FUNCTION(Box, Create, float, l, float, w, float, h)
 	Box *box = new Box;
 	ADD_IN_SCENE(box);
 	box->Create(l, w, h);
-
+	
 	return box->GetMonoBehaviour()->GetMonoObject();
 }
 
@@ -571,9 +573,9 @@ VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox, CS_OBJECT, material)
 	Material * m = getCppObject<Material>(material);
 	SkyBox *skyBox = new SkyBox();
 	skyBox->Create(50, 50, 50);
-	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(skyBox->VertexBufferName).size());
 	skyBox->SetRenderer(rd);
-
+	skyBox->SetActive(true);
 	ADD_IN_SCENE(skyBox);
 }
 
@@ -595,7 +597,10 @@ VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, f
 	{
 		return;
 	}
-	light->Color = vec4f(r, g, b, a);
+	light->Color.r = r;
+	light->Color.g = g;
+	light->Color.b = b;
+	light->Color.a = a;
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getForward, CS_OBJECT, obj, float&, x, float&, y, float&, z)
@@ -675,7 +680,9 @@ VOID _1_PARAM_FUNCTION(SkyDome, CreateSkyDome, CS_OBJECT, material)
 	SkyDome * skyDome = new SkyDome;
 	skyDome->Create(50);
 	Material * m = getCppObject<Material>(material);
-	skyDome->SetMaterial(m);
+	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(skyDome->VertexBufferName).size());
+	skyDome->SetRenderer(rd);
+	skyDome->SetActive(true);
 	ADD_IN_SCENE(skyDome);
 }
 

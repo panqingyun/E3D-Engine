@@ -6,6 +6,7 @@
 #include "../Source/FilePath.h"
 #include <mono/metadata/tabledefs.h>
 #include "../Config/TableRegister.h"
+#include "../Source/E3DVertexManager.h"
 
 namespace E3DEngine
 {
@@ -26,6 +27,8 @@ namespace E3DEngine
 	const std::string _Component = "Component";
 	const std::string _Range = "Range";
 	const std::string _InnerID = "ID";
+	const std::string _Static = "IsStatic";
+	const std::string _VertexColor = "Color";
 
 	const std::string _Layer_AllLayer = "AllLayer";
 	const std::string _Component_ClassName = "ClassName";
@@ -129,6 +132,7 @@ namespace E3DEngine
 		transform->SetPosition(getVector3(*objectElement->Attribute(_Position)));
 		transform->SetRotation(getVector3(*objectElement->Attribute(_Rotation)));
 		transform->SetScale(getVector3(*objectElement->Attribute(_Scale)));
+		transform->Update();
 	}
 
 	void setRenderIndex(TiXmlElement *objectElement, GameObject * go)
@@ -183,7 +187,7 @@ namespace E3DEngine
 		return pCamera;
 	}
 
-	Renderer * createRenderer(TiXmlElement *objectElement, DWORD renderType = NORMAL)
+	Renderer * createRenderer(TiXmlElement *objectElement, int vertxSize, bool isStaticObject, DWORD renderType = NORMAL)
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
 		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
@@ -191,16 +195,14 @@ namespace E3DEngine
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(GetFileFullPath(_path), _id);
 		m->mConfigPath = _path;
 		m->mConfigID = _id;
-		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, (RENDER_TYPE)renderType);
+		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, vertxSize,(RENDER_TYPE)renderType, isStaticObject);
 		return renderer;
 	}
 
 	GameObject* createSkyBox(TiXmlElement *objectElement)
 	{
-		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
 		SkyBox *skb = new SkyBox();
 		skb->Create(50, 50, 50);
-		skb->SetRenderer(rd);
 
 		return skb;
 	}
@@ -209,10 +211,8 @@ namespace E3DEngine
 	{
 		std::string _path = *objectElement->Attribute(_FilePath);
 
-		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), MESH);
-		Mesh *mesh = new Mesh(_path);
+		Mesh *mesh = new Mesh(_path);	
 		mesh->mConfigPath = _path;
-		mesh->SetRenderer(rd);
 
 		return mesh;
 	}
@@ -220,8 +220,7 @@ namespace E3DEngine
 	GameObject* createDLight(TiXmlElement *objectElement)
 	{
 		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
-		Color4 color = createColor(*objectElement->Attribute(_Color));
-		light->Color = vec4f(color.r, color.g, color.b, color.a);
+		light->Color = createColor(*objectElement->Attribute(_Color));
 
 		return light;
 	}
@@ -237,9 +236,6 @@ namespace E3DEngine
 	{
 		Box * box = new Box();
 		box->Create(1, 1, 1);
-		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
-
-		box->SetRenderer(rd);
 
 		return box;
 	}
@@ -248,17 +244,13 @@ namespace E3DEngine
 	{
 		Sphere * sphere = new Sphere();
 		sphere->Create(1);
-		Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material));
-		sphere->SetRenderer(rd);
-
 		return sphere;
 	}
 
 	GameObject *createPointLight(TiXmlElement *objectElement)
 	{
 		Light *light = Light::Create(LightType::ePOINT_LIGHT);
-		Color4 color = createColor(*objectElement->Attribute(_Color));
-		light->Color = vec4f(color.r, color.g, color.b, color.a);
+		light->Color = createColor(*objectElement->Attribute(_Color));
 		if (objectElement->Attribute(_Range) != nullptr)
 		{
 			static_cast<PointLight*>(light)->Range = Convert::ToFloat(*objectElement->Attribute(_Range));
@@ -277,7 +269,7 @@ namespace E3DEngine
 	E3D_EXPORT_DLL GameObject * LoadPrefab(std::string filePath)
 	{
 		Prefab *prefab = new Prefab();
-		
+		prefab->SetActive(true);
 		prefab->SetFilePath(filePath);
 		TiXmlDocument * doc = new TiXmlDocument(filePath.c_str());
 		bool loadOkay = doc->LoadFile();
@@ -330,14 +322,19 @@ namespace E3DEngine
 	{
 		go->mName = *objectElement->Attribute(_Name);
 		go->mSceneObjectType = _type;
+		go->IsActive = true;
 		parseTransform(objectElement->FirstChildElement(_Transform), go->Transform);
+		go->IsActive = false;
 		if (_type == TP_Particle)
 		{
 			go->Transform->SetIsBillBoard(true);
 		}
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
-		setGameObjectActive(objectElement, go);
+		if (objectElement->Attribute(_VertexColor) != nullptr)
+		{
+			go->SetColor(createColor(*objectElement->Attribute(_VertexColor)));
+		}
 		if (objectElement->Attribute(_InnerID) != nullptr)
 		{
 			go->SceneInnerID = Convert::ToInt(*objectElement->Attribute(_InnerID));
@@ -349,6 +346,13 @@ namespace E3DEngine
 				continue;
 			}
 			component.second->OnCreateComplete();
+		}
+		setGameObjectActive(objectElement, go);
+		if (objectElement->FirstChildElement(_Material) != nullptr)
+		{
+			DWORD type = go->mSceneObjectType == TP_Mesh ? MESH : NORMAL;
+			Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), VertexManager::GetVertex(go->VertexBufferName).size(), go->GetIsStatic(), type);
+			go->SetRenderer(rd);
 		}
 	}
 
@@ -382,10 +386,15 @@ namespace E3DEngine
 			{
 				continue;
 			}
+			bool isStatic = false;
+			if (item->ToElement()->Attribute(_Static) != nullptr)
+			{
+				isStatic = Convert::ToBoolean(*item->ToElement()->Attribute(_Static));
+			}
 			GameObject *go = createObjectFun[_type](item->ToElement());
 			if (go != nullptr)
 			{
-				setObjectCommonValue(go, item->ToElement(), _type);
+				go->SetIsStatic(isStatic);
 				if (parent == nullptr)
 				{
 					ADD_IN_SCENE(go);
@@ -394,6 +403,7 @@ namespace E3DEngine
 				{
 					parent->AddChild(go);
 				}
+				setObjectCommonValue(go, item->ToElement(), _type);
 				CreateObjects(go, item->ToElement());
 				go->CreateComplete();
 			}

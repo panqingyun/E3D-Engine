@@ -11,7 +11,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual Renderer * CreateRender(Material* material);
-		virtual Renderer * GetRenderer(int materialID, RENDER_TYPE type = NORMAL);
+		virtual Renderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false);
 		virtual Renderer * GenRender();
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual void Cleanup();

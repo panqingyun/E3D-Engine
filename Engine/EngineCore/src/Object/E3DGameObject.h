@@ -359,7 +359,6 @@ namespace E3DEngine
 		virtual void SetParent(GameObject * parent);
 		virtual void SetLayerMask(DWORD layerMask);
 		virtual void SetActive(bool isActive);
-		virtual void SetCamera(Camera * camera);
 		virtual void SetDontDestory(bool dontDestory);
 		virtual void OnCollisionEnter(GameObject* other);
 		virtual void TransformChange();
@@ -378,6 +377,8 @@ namespace E3DEngine
 		virtual ~GameObject() override;
 		virtual GameObject * FindChild(UINT id);
 		virtual GameObject * FindChild(std::string name);
+		virtual std::vector<Vertex>& GetVertex();
+		virtual std::vector<uint>& GetIndex();
 		// 获取长宽高
 		virtual vec3f GetBounds();
 
@@ -386,30 +387,26 @@ namespace E3DEngine
 		RenderObject * GetRenderer();
 		DWORD GetLayerMask();
 		std::map<UINT, GameObject *> &GetChilds();
-		std::vector<Vertex>& GetVertex();
-		std::vector<uint>& GetIndex();
+		
 		static void Destory(GameObject *go);
 		CTransform * GetTransform();
+		void SetColor(Color4 color);
 
 	protected:
 		virtual void ComponentAdded(Component * component);
 		virtual void fillRender(bool isActive);
 
 	public:
-		object			Tag;
-		bool			IsActive;
-		Camera *		pCamera;
-		int				SceneInnerID;
+		object					Tag;
+		bool					IsActive;
+		int						SceneInnerID;
 		GameObject		*		ParentNode;
-		event EventDelegates	ActiveChangeEvent;
-		bool					IsEmptyObject;
 		bool					DontDestoryOnLoad;
 		CTransform	*			Transform;
-		// 渲染层级
-		DWORD					RenderIndex;
 		unsigned int			Flag;
 		TransformChangeFunc		TransChangeFun;
 		std::string				VertexBufferName;
+		Color4					Color;
 	protected:
 		DWORD						m_layerMask;
 		Renderer *					m_pRenderer;

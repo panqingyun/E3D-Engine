@@ -60,36 +60,4 @@ void E3DEngine::Sphere::Create(float R)
 	size.x = R;
 	size.y = R;
 	size.z = R;
-	IsActive = false;
-}
-
-void E3DEngine::Sphere::SetActive(bool isActive)
-{
-	if (isActive == IsActive)
-	{
-		return;
-	}
-	GameObject::SetActive(isActive);
-	fillRender(isActive);
-}
-
-void E3DEngine::Sphere::TransformChange()
-{
-	if (pCamera && !pCamera->boundingBoxFrustum(Transform->Position, 100))
-	{
-		return;
-	}
-	m_pRenderer->SetTransform(Transform);
-	GameObject::TransformChange();
-	/*Renderer* mRenderer = static_cast<Renderer*>(m_pRenderer);
-	int vertexStartIndex = mRenderer->GetRendererBuffer(ID)->VertextStartIndex;
-	std::vector<Vertex>::iterator it = m_vecVertex.begin();
-	for (int i = 0; i < m_vecVertex.size(); i++)
-	{
-		m_vecVertex[i].SetTransformPosition(Transform->Position.x, Transform->Position.y, Transform->Position.z);
-		m_vecVertex[i].SetTransformScale(Transform->Scale.x, Transform->Scale.y, Transform->Scale.z);;
-		m_vecVertex[i].SetTransformRotate(Transform->RotationEuler.x, Transform->RotationEuler.y, Transform->RotationEuler.z);
-		mRenderer->Vertices[vertexStartIndex + i] = m_vecVertex[i];
-	}*/
-	//m_pRenderer->TransformChange();
 }

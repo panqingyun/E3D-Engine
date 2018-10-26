@@ -15,7 +15,7 @@ namespace E3DEngine
 		return nullptr;
 	}
 
-	Renderer * RendererManager::GetRenderer(int materialID, RENDER_TYPE type)
+	Renderer * RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
 		return nullptr;
 	}

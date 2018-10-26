@@ -26,10 +26,6 @@ namespace E3DEngine
 		{
 			m_pRenderer->SetActive(isActive);
 		}
-		if (ActiveChangeEvent.empty() == false)
-		{
-			ActiveChangeEvent(this,nullptr);
-		}
 		for (auto & component : m_listComponents)
 		{			
 			if (isActive)
@@ -48,6 +44,8 @@ namespace E3DEngine
 				Child.second->SetActive(isActive);
 			}
 		}
+
+		fillRender(isActive);
 	}
 	
 	std::map<std::string, Component*> & GameObject::GetAllComponents()
@@ -324,11 +322,9 @@ namespace E3DEngine
 		mSceneObjectType = TP_Empty;
 		Transform = new CTransform;
 		Transform->gameObject = this;
-		IsEmptyObject = true;
 		DontDestoryOnLoad = false;
 		mObjectType = eT_GameObject;
-		pCamera = nullptr;
-		IsActive = true;
+		IsActive = false;
 		m_pRenderer = nullptr;
 		ParentNode = nullptr;
 		m_layerMask = -1;
@@ -337,15 +333,7 @@ namespace E3DEngine
 		SceneInnerID = 0;
 		TransChangeFun = nullptr;
 		VertexBufferName = "";
-	}
-	
-	void GameObject::SetCamera(E3DEngine::Camera *camera)
-	{
-		pCamera = camera;
-		if (m_pRenderer != nullptr)
-		{
-			m_pRenderer->SetCamera(camera);
-		}
+		Color = Color4(1, 1, 1, 1);
 	}
 	
 	void GameObject::SetDontDestory(bool dontDestory)
@@ -365,7 +353,7 @@ namespace E3DEngine
 
 	void GameObject::TransformChange()
 	{
-		if (m_pRenderer != nullptr)
+		if (m_pRenderer != nullptr && !m_bIsStatic)
 		{
 			m_pRenderer->TransformChange();
 		}
@@ -410,6 +398,10 @@ namespace E3DEngine
 
 	void GameObject::fillRender(bool isActive)
 	{
+		if (m_pRenderer == nullptr)
+		{
+			return;
+		}
 		std::vector<Vertex> &vecVertex = VertexManager::GetVertex(VertexBufferName);
 		std::vector<UINT> &vecIndex = VertexManager::GetIndex(VertexBufferName);
 		if (isActive)
@@ -417,6 +409,11 @@ namespace E3DEngine
 			m_pRenderer->FillBegin(ID);
 			for (int i = 0; i < vecVertex.size(); i++)
 			{
+				if (m_bIsStatic)
+				{
+					vec3f pos = Transform->WorldMatrix * vec3f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2]);
+					vecVertex[i].SetPosition(pos.x, pos.y, pos.z);
+				}
 				m_pRenderer->FillVertex(vecVertex[i]);
 			}
 
@@ -426,6 +423,15 @@ namespace E3DEngine
 			}
 
 			m_pRenderer->FillEnd(ID, vecVertex.size(), vecIndex.size());
+
+			if (m_bIsStatic)
+			{
+				m_pRenderer->CreateNewTransform();
+			}
+			else
+			{
+				m_pRenderer->SetTransform(Transform);
+			}
 		}
 		else
 		{
@@ -523,8 +529,9 @@ namespace E3DEngine
 		m_pRenderer->SetTransform(Transform);
 		m_pRenderer->SetLayerMask(m_layerMask);
 		m_pRenderer->mName = mName;
+		m_pRenderer->GetMaterial()->SetColor(Color);
 		TransferRender();
-		SetActive(true);
+		fillRender(true);
 	}
 
 
@@ -574,25 +581,20 @@ namespace E3DEngine
 		return Transform;
 	}
 
-	void GameObject::SetIsStatic(bool isStatic)
+
+	void GameObject::SetColor(Color4 color)
 	{
-		// TODO
-		if (isStatic == m_bIsStatic)
-		{
-			return;
-		}
-		m_bIsStatic = isStatic;
+		Color = color;
 		if (m_pRenderer != nullptr)
 		{
-			m_pRenderer->IsStaticDraw = !isStatic;
-			if(!isStatic)
-				m_pRenderer->SetTransform(Transform);
+			m_pRenderer->GetMaterial()->SetColor(color);
 		}
-		Transform->SetNeedUpdate(!isStatic);
-		Transform->WorldMatrix.identity();
 	}
 
-
+	void GameObject::SetIsStatic(bool isStatic)
+	{
+		m_bIsStatic = isStatic;
+	}
 
 	bool GameObject::GetIsStatic()
 	{

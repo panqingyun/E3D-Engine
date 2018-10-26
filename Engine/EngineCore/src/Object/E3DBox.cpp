@@ -25,7 +25,6 @@ void E3DEngine::Box::Create(float l, float w, float h)
 
 void E3DEngine::Box::fillVertex(float l, float h, float w)
 {
-	IsActive = false;
 	if (VertexManager::GetVertex(VertexBufferName).empty())
 	{
 		std::vector<Vertex> vecVertex;
@@ -152,51 +151,5 @@ void E3DEngine::Box::fillVertex(float l, float h, float w)
 	size.x = l;
 	size.y = w;
 	size.z = h;
-}
-
-void E3DEngine::Box::TransferRender()
-{
-	GameObject::TransferRender();
-	IsActive = false;
-	SetActive(true);
-}
-
-
-void E3DEngine::Box::PrepareUpdate(float deltaTime)
-{
-
-}
-
-void E3DEngine::Box::SetActive(bool isActive)
-{
-	if (isActive == IsActive)
-	{
-		return;
-	}
-	GameObject::SetActive(isActive);
-	fillRender(isActive);
-
-}
-
-void E3DEngine::Box::AfterUpdate(float deltaTime)
-{
-
-}
-
-void E3DEngine::Box::TransformChange()
-{
-	if (TransChangeFun != nullptr)
-	{
-		TransChangeFun(ID);
-	}
-	if (!m_bIsStatic)
-	{
-		return;
-	}
-	if (pCamera && !pCamera->boundingBoxFrustum(Transform->Position, 100))
-	{
-		return;
-	}
-	m_pRenderer->SetTransform(Transform);
 }
 

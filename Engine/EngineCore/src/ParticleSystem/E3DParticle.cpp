@@ -14,7 +14,6 @@ namespace E3DEngine
 		autoRelease();
 		m_bIsBillBoard = true;
 		Transform = new CTransform();
-		m_MainCamera = nullptr;
 		m_FrameEffect = new TextureFrameEffect();
 		m_FrameEffect->IsParticleEffect = false;
 	}
@@ -235,27 +234,6 @@ namespace E3DEngine
 	{
 		
 	}
-	vec4f Particle::cumputBillboardCoord(int index)
-	{
-		vec4f point;
-		vec3f forward = -m_MainCamera->GetForwardVector();
-		vec3f up = m_MainCamera->GetUpVector();
-		//vec3f(0, m_MainCamera->GetUpVector().y, -abs(m_MainCamera->GetUpVector().z));
-		
-		//		if ( m_MainCamera->GetUpVector().z < 0.5 && m_MainCamera->GetUpVector().z > -0.5)
-		//		{
-		//			up	= vec3f(0, m_MainCamera->GetUpVector().y, -abs(m_MainCamera->GetUpVector().x));
-		//		}
-		vec3f right = forward.crossProduct(up);
-		up.normalize();
-		right.normalize();
-		vec3f pos = m_Point[index];
-		pos += right * rudis;
-		pos += up * rudis;
-
-		point = vec4f(0, 0, 0, 1.0);
-		return point;
-	}
 	
 	// 根据旋转和 位移计算 顶点 新的坐标
 	void Particle::updateVertexCoord()
@@ -384,13 +362,6 @@ namespace E3DEngine
 	{
 		return Convert::Vec4ToVec3<float>(m_Point[3] - m_Point[0]);
 	}
-
-
-	void Particle::SetCamera(Camera * camera)
-	{
-		m_MainCamera = camera;
-	}
-
 
 	float Particle::getLiveTime()
 	{
@@ -639,6 +610,11 @@ namespace E3DEngine
 		GameObject::SetActive(isActive);
 	}
 	
+	int ParticleGroup::GetVertexSize()
+	{
+		return m_ParticlePool.size() * 4;
+	}
+
 	std::vector<ParticleEmitter*> * ParticleGroup::GetEmitter()
 	{
 		return &m_particleEmitters;
@@ -658,13 +634,6 @@ namespace E3DEngine
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);
 		m_pRenderer->GetTransform()->SetIsBillBoard(true);
-		GameObject::SetRenderer(buffer);
-	}
-	
-	void ParticleGroup::SetCamera(Camera * camera)
-	{
-		pCamera = camera;
-		m_pRenderer->SetCamera(camera);
 	}
 	
 	void ParticleGroup::CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID,vec3f bornEmitterPos, bool isFirstCreate)
@@ -781,6 +750,10 @@ namespace E3DEngine
 	
 	void ParticleGroup::TransformChange()
 	{
+		if (m_pRenderer == nullptr)
+		{
+			return;
+		}
 		m_pRenderer->SetTransform(Transform);	
 		
 		GameObject::TransformChange();
@@ -902,7 +875,6 @@ namespace E3DEngine
 			{
 				itr ++;
 			}
-			particle.get_ptr()->SetCamera(m_pRenderer->pCamera);
 			particle.get_ptr()->Update(deltaTime);
 			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
 			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
@@ -1043,7 +1015,6 @@ namespace E3DEngine
 			sp_P.get_ptr()->Index = m_particleIndex;
 			sp_P.get_ptr()->SetColor(m_nColor);
 			sp_P.get_ptr()->SetMoveSpeed(0);
-			sp_P.get_ptr()->SetCamera(pCamera);
 			sp_P.get_ptr()->setAlpha(color);
 			sp_P.get_ptr()->SetBornEmitterPos(bornEmitterPos);
 			m_ParticlePool.emplace_back(sp_P);

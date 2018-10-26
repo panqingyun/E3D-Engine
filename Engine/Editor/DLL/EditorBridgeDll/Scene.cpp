@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "stdafx.h"
+#include "Source/E3DVertexManager.h"
 #include <Scene/E3DSceneLoader.h>
 
 #pragma managed
@@ -15,7 +16,7 @@ namespace E3DEngine
 	void TransformChange(int ID)
 	{
 		GameObjectRef ^refObj = SceneManageRef::GetInstance()->GetCurScene()->GetCurSelObject();
-		if (refObj == nullptr)
+		if (refObj == nullptr || ID != refObj->GetGameObjectPtr()->ID)
 		{
 			return;
 		}
@@ -293,8 +294,9 @@ namespace E3DEngine
 		mCoordRt->SetLayerMask(1 << gLookCoordLayer);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
 		Render2Texture *rtt = m->GetRtt();
-		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, 4);
 		mCoordRt->SetRenderer(rd);
+		mCoordRt->SetActive(true);
 		mCoordRt->Flag |= DONT_SAVE;
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
 		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
@@ -302,9 +304,7 @@ namespace E3DEngine
 		mCoordCamera->SetRenderTexture(rtt);
 
 		mCoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
-		mCoordPrefab->SetLayerMask(1 << gCoordLayer);
 		mCoordPrefab->Flag |= DONT_SAVE;
-		mCoordPrefab->Transform->SetNeedUpdate(false);
 		ADD_IN_SCENE(mCoordPrefab);
 
 	}
@@ -314,10 +314,11 @@ namespace E3DEngine
 	{
 		mObjectCoord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
-		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(mObjectCoord->VertexBufferName).size());
 		mObjectCoord->SetLayerMask(1 << objectCoordLayer);
 		mObjectCoord->SetRenderer(rd);
 		mObjectCoord->Flag |= DONT_SAVE;
+		mObjectCoord->SetActive(true);
 		ADD_IN_SCENE(mObjectCoord);
 	}
 

@@ -42,18 +42,5 @@ namespace E3DEngine
 	{
 		GameObject::TransferRender();
 		m_pRenderer->SetDrawModule(eDM_LINES);
-		IsActive = false;
-		SetActive(true);
 	}
-
-	void Line::SetActive(bool isActive)
-	{
-		if (isActive == IsActive)
-		{
-			return;
-		}
-		GameObject::SetActive(isActive);
-		fillRender(isActive);
-	}
-
 }

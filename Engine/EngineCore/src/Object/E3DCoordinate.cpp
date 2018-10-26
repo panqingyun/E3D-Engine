@@ -12,7 +12,6 @@ namespace E3DEngine
 {
 	Coordinate::Coordinate()
 	{
-		IsActive = false;
 		VertexBufferName = "Coordinate";
 		if (VertexManager::GetVertex(VertexBufferName).empty())
 		{
@@ -51,20 +50,8 @@ namespace E3DEngine
 		CreateBehaviour();
 	}
 
-	void Coordinate::SetRenderer(Renderer * renderer)
+	void Coordinate::TransferRender()
 	{
-		GameObject::SetRenderer(renderer);
 		m_pRenderer->SetDrawModule(eDM_LINES);
 	}
-
-	void Coordinate::SetActive(bool isActive)
-	{
-		if (isActive == IsActive)
-		{
-			return;
-		}
-		GameObject::SetActive(isActive);
-		fillRender(isActive);
-	}
-
 }

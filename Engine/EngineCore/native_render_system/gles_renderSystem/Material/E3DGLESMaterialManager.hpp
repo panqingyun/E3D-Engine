@@ -15,8 +15,6 @@ namespace E3DEngine
 
 	protected:
 		virtual Material * createMatrerial();
-	public:
-		virtual Material * GetMaterial(int id) override;
 	};
 }
 

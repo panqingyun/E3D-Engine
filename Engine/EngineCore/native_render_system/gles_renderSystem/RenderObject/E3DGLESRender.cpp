@@ -125,13 +125,14 @@ namespace E3DEngine
 	{
 		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
+		//Debug::Log(ell_None, "%f,%f,%f", GetTransform()->Position.x, GetTransform()->Position.y, GetTransform()->Position.z);
 		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
-			vec4f color = dlight->Color;
+			Color4 color = dlight->Color;
 			if (!dlight->IsActive)
 			{
 				color.r = 0; color.g = 0; color.b = 0; color.a = 1;

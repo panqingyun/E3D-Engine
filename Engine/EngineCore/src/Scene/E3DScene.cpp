@@ -21,6 +21,7 @@ namespace E3DEngine
 		m_nObjectID = 0;
 		mObjectType = eT_Scene;
 		rootObject = new GameObject;
+		rootObject->SetActive(true);
 		usedDirectionLight = nullptr;
 
 		m_vecObjList[rootObject->ID] = rootObject;

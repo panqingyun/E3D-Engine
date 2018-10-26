@@ -111,7 +111,7 @@ void E3DEngine::Terrain::Create(int size)
 
 void E3DEngine::Terrain::SetMaterial(Material * material)
 {
-	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID);
+	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, VertexManager::GetVertex(VertexBufferName).size());
 	m_pRenderer->SetRenderIndex(eRI_Normal);
 	//SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 	m_pRenderer->SetTransform(Transform);

@@ -11,7 +11,7 @@ namespace E3DEngine
 	{
 	public:
 		virtual void Create(float l, float w, float h) override;
-		virtual void SetRenderer(Renderer *rd);
+		virtual void TransferRender() override;
 		virtual void PrepareUpdate(float deltaTime) override;
 	private:
 		void setTextureCoord();
@@ -27,10 +27,6 @@ namespace E3DEngine
 		virtual void Create(float R);
 
 		void fillVertex(float R);
-
-		virtual void SetMaterial(Material * material);
-		virtual void SetActive(bool isActive) override;
-
 		virtual void PrepareUpdate(float deltaTime) override;
 
 	};

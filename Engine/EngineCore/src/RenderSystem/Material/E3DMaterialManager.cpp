@@ -21,11 +21,22 @@ namespace E3DEngine
 
 	Material * MaterialManager::GetMaterial(int id)
 	{
-		return nullptr;
+		if (m_mapIDMaterials.find(id) == m_mapIDMaterials.end())
+		{
+			return nullptr;
+		}
+		return m_mapIDMaterials[id];
 	}
 
 	Material* MaterialManager::CreateMaterial(std::string path, int id)
 	{
+		if (m_mapConfigMaterial.find(path) != m_mapConfigMaterial.end())
+		{
+			if (m_mapConfigMaterial[path].find(id) != m_mapConfigMaterial[path].end())
+			{
+				return m_mapConfigMaterial[path][id];
+			}
+		}
 		TableManager* tblManager = TableRegister::GetTableManager(path.c_str());
 		if (tblManager == nullptr)
 		{
@@ -56,6 +67,7 @@ namespace E3DEngine
 		material->mMaterialTableManager = tblManager;
 		material->CreateMaterial(config);
 		m_mapIDMaterials[material->ID] = material;
+		m_mapConfigMaterial[path][id] = material;
 		return material;
 	}
 	
@@ -67,6 +79,7 @@ namespace E3DEngine
 			SAFE_DELETE(it.second);
 		}
 		m_mapIDMaterials.clear();
+		m_mapConfigMaterial.clear();
 	}
 
 

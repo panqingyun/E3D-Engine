@@ -50,7 +50,7 @@ namespace E3DEngine
 		}
 		if (mGameObject != nullptr)
 		{
-			mGameObject->ActiveChangeEvent += EventHandler(&TextureFrameEffect::activeChange, this);
+//			mGameObject->ActiveChangeEvent += EventHandler(&TextureFrameEffect::activeChange, this);
 		}
 		m_nCurrentPos				= 0;
 		m_fCurrentFrameHasPlayTime	= 0;

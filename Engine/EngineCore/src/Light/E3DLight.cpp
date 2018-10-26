@@ -97,7 +97,7 @@ namespace E3DEngine
 
 	void Light::setBehaviourDefaultValue()
 	{
-		MonoObject * color = Convert::ToCSVector4(Color);
+		MonoObject * color = Convert::ToCSVector4(vec4f(Color.r, Color.g,Color.b,Color.a));
 		mBehaviour->SetFieldValue("Color", color);
 		TRANSFER_FIELD_VALUE(Intensity);
 		GameObject::setBehaviourDefaultValue();

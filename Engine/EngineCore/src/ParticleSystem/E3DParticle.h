@@ -58,7 +58,6 @@ namespace E3DEngine
         void				SetMoveSpeed(float speed);
         float				GetMoveSpeed();
         vec3f				GetReightVector();
-        void				SetCamera(Camera * camera);
         float				getLiveTime();
         float				getTotleLiveTime();
         
@@ -93,7 +92,6 @@ namespace E3DEngine
     private:
         void	updateVertexCoord();
         void	move2Position(vec3f newPos);
-		vec4f	cumputBillboardCoord(int index);
 		void    initVertex();
 
     private:
@@ -123,7 +121,6 @@ namespace E3DEngine
         vec3f		m_vRight;
         vec3f		m_vUp;
         eParticleLiveState		m_eParticleState;
-        Camera		*	m_MainCamera;
         vec2f		m_NotChangeTextureCoord[4];
         TextureFrameEffect * m_FrameEffect;
         vec2f       m_uv;
@@ -174,11 +171,11 @@ namespace E3DEngine
 		void			SetParticleDir(vec3f TouchPos, vec3f EmitterPos);
 		void			SetParticleSize(vec2f size) { pSzie = size; }
 		virtual void	SetMaxParticleNumber(UINT number);
-		virtual void	SetCamera(Camera * camera) override;
 		virtual void	AfterUpdate(float deltaTime) override;
 		virtual void	SetDontDestory(bool dontDestory) override;
 		virtual void	SetActive(bool isActive) override;
 
+		int				GetVertexSize();
 		std::vector<ParticleEmitter*> *  GetEmitter();
 		std::vector<ParticleAffector*> * GetAffector();
     public:

@@ -419,13 +419,14 @@ namespace E3DEngine
 		m_Plans[0][1] = mMvpgMatrix[ 7] - mMvpgMatrix[ 4];
 		m_Plans[0][2] = mMvpgMatrix[11] - mMvpgMatrix[ 8];
 		m_Plans[0][3] = mMvpgMatrix[15] - mMvpgMatrix[12];
+		Debug::Log(ell_Warning, "first %f, %f, %f, %f", m_Plans[0][0], m_Plans[0][1], m_Plans[0][2], m_Plans[0][3]);
 		m_Plans[0] = normal(m_Plans[0]);
 		//第二个面
 		m_Plans[1][0] = mMvpgMatrix[ 3] + mMvpgMatrix[ 0];
 		m_Plans[1][1] = mMvpgMatrix[ 7] + mMvpgMatrix[ 4];
 		m_Plans[1][2] = mMvpgMatrix[11] + mMvpgMatrix[ 8];
 		m_Plans[1][3] = mMvpgMatrix[15] + mMvpgMatrix[12];
-		
+		Debug::Log(ell_Warning, "sceond %f, %f, %f, %f", m_Plans[1][0], m_Plans[1][1], m_Plans[1][2], m_Plans[1][3]);
 		m_Plans[1] = normal(m_Plans[1]);
 		//第三个面
 		m_Plans[2][0] = mMvpgMatrix[ 3] + mMvpgMatrix[ 1];
@@ -433,6 +434,7 @@ namespace E3DEngine
 		m_Plans[2][2] = mMvpgMatrix[11] + mMvpgMatrix[ 9];
 		m_Plans[2][3] = mMvpgMatrix[15] + mMvpgMatrix[13];
 		
+		Debug::Log(ell_Warning, "third %f, %f, %f, %f", m_Plans[2][0], m_Plans[2][1], m_Plans[2][2], m_Plans[2][3]);
 		m_Plans[2] = normal(m_Plans[2]);
 		//第四个面
 		m_Plans[3][0] = mMvpgMatrix[ 3] - mMvpgMatrix[ 1];
@@ -440,6 +442,7 @@ namespace E3DEngine
 		m_Plans[3][2] = mMvpgMatrix[11] - mMvpgMatrix[ 9];
 		m_Plans[3][3] = mMvpgMatrix[15] - mMvpgMatrix[13];
 		
+		Debug::Log(ell_Warning, "fourth %f, %f, %f, %f", m_Plans[3][0], m_Plans[3][1], m_Plans[3][2], m_Plans[3][3]);
 		m_Plans[3] = normal(m_Plans[3]);
 		//第五个面
 		m_Plans[4][0] = mMvpgMatrix[ 3] - mMvpgMatrix[ 2];
@@ -447,13 +450,15 @@ namespace E3DEngine
 		m_Plans[4][2] = mMvpgMatrix[11] - mMvpgMatrix[10];
 		m_Plans[4][3] = mMvpgMatrix[15] - mMvpgMatrix[14];
 		
+		Debug::Log(ell_Warning, "fiveth %f, %f, %f, %f", m_Plans[4][0], m_Plans[4][1], m_Plans[4][2], m_Plans[4][3]);
 		m_Plans[4] = normal(m_Plans[4]);
 		//第六个面
 		m_Plans[5][0] = mMvpgMatrix[ 3] + mMvpgMatrix[ 2];
 		m_Plans[5][1] = mMvpgMatrix[ 7] + mMvpgMatrix[ 6];
 		m_Plans[5][2] = mMvpgMatrix[11] + mMvpgMatrix[10];
 		m_Plans[5][3] = mMvpgMatrix[15] + mMvpgMatrix[14];
-		
+
+		Debug::Log(ell_Warning, "sixth %f, %f, %f, %f", m_Plans[5][0], m_Plans[5][1], m_Plans[5][2], m_Plans[5][3]);
 		m_Plans[5] = normal(m_Plans[5]);
 	}
 
@@ -470,11 +475,13 @@ namespace E3DEngine
 			const float32 fov = 60.0f;
 			const float32 aspect = frameSize.x / frameSize.y;
 			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
+			camera->SetActive(true);
 			return camera;
 		}
 		else
 		{
-			E3DEngine::Camera *camera = new E3DEngine::Camera(-position, target, up, -1, 1, -1, 1,zNear,zFar );
+			E3DEngine::Camera *camera = new E3DEngine::Camera(-position, target, up, -1, 1, -1, 1, zNear, zFar);
+			camera->SetActive(true);
 			return camera;
 		}
 	}

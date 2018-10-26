@@ -11,6 +11,12 @@
 
 namespace E3DEngine
 {
+#if (defined __E3D_EDITOR__) || (defined WIN32)
+	#define MAX_VERTEX_NUMBER 4294967295
+#else
+	#define MAX_VERTEX_NUMBER 65535
+#endif
+
 	struct RendererBuffer
 	{
 		UINT ObjectID;
@@ -41,7 +47,7 @@ namespace E3DEngine
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 
 		virtual void TransformChange() override;
-
+		DWORD GetVertextCount() { return m_vertexCount; }
 	public:
 		std::vector<BatchVertex> mBatchVertex;
 

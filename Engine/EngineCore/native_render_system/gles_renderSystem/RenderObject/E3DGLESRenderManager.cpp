@@ -10,33 +10,32 @@
 
 namespace E3DEngine
 {
-	Renderer * GLES_RendererManager::CreateRender(Material* material)
+	Renderer * GLES_RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
-		GLES_Renderer * buffer = (GLES_Renderer *)GetRenderer(material->ID);	
-		buffer->SetMaterial(material);
-		return buffer;
-	}
-
-	Renderer * GLES_RendererManager::GetRenderer(int materialID, RENDER_TYPE type)
-	{
-		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
+		if (!isStatic)
 		{
-			Renderer * buffer = nullptr;
-			switch (type)
-			{
-			case E3DEngine::MESH:
-				buffer = new GLES_MeshRender;
-				break;
-			default:
-				buffer = new GLES_Renderer;
-				break;
-			}
-			buffer->RenderIndex = eRI_Normal;
-			m_mapVertexBuffers[materialID] = buffer;
-			buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
-			return buffer;
+			return newRenderer(type, materialID);
 		}
-		return m_mapVertexBuffers[materialID];
+		Renderer * buffer = nullptr;
+		int rendererID = -1;
+		if (m_mapMaterialID2RendererID.find(materialID) != m_mapMaterialID2RendererID.end())
+		{
+			rendererID = m_mapMaterialID2RendererID[materialID];
+		}
+		if (m_mapVertexBuffers.find(rendererID) == m_mapVertexBuffers.end())
+		{
+			buffer = newRenderer(type, materialID);
+		}
+		else
+		{
+			buffer = m_mapVertexBuffers[rendererID];
+			if (buffer->GetVertextCount() + vertexSize > MAX_VERTEX_NUMBER)
+			{
+				buffer = newRenderer(type, materialID);
+			}
+		}
+		m_mapMaterialID2RendererID[materialID] = buffer->ID;
+		return buffer;
 	}
 
 
@@ -61,6 +60,24 @@ namespace E3DEngine
 			SAFE_DELETE(render.second);
 		}
 		m_mapVertexBuffers.clear();
+	}
+
+	E3DEngine::Renderer * GLES_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)
+	{
+		Renderer * buffer = nullptr;
+		switch (type)
+		{
+		case E3DEngine::MESH:
+			buffer = new GLES_MeshRender;
+			break;
+		default:
+			buffer = new GLES_Renderer;
+			break;
+		}
+		buffer->RenderIndex = eRI_Normal;
+		m_mapVertexBuffers[buffer->ID] = buffer;
+		buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));	
+		return buffer;
 	}
 
 }

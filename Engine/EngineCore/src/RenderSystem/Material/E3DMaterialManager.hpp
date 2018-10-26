@@ -48,6 +48,7 @@ namespace E3DEngine
 
 	protected:
 		std::map<int, Material*>		 m_mapIDMaterials;
+		std::map<std::string, std::map<int, Material*>> m_mapConfigMaterial;
 		std::map<int, DWORD>			 m_BlendFactorMap;
 	};
 }

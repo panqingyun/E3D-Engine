@@ -12,7 +12,6 @@ namespace E3DEngine
 	{
 	public:
 		void CreateShape(float width, float height);
-		virtual void SetActive(bool isActive) override;
 	};
 }
 

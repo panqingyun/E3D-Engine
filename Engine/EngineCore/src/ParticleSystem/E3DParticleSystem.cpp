@@ -88,10 +88,10 @@ namespace E3DEngine
 				}
 				// 初始化粒子团属性
 				initParticleGroup(particle, cfgName, it);
-				// 初始化粒子团渲染器
-				initParticleRenderer(it, particle);
 				// 创建发射器
 				createParticleEmitter(it, cfgName, particle);
+				// 初始化粒子团渲染器
+				initParticleRenderer(it, particle);
 				// 创建影响器
 				createParticleAffector(it, cfgName, particle);
 				activeParticle->push_back(particle);
@@ -161,9 +161,10 @@ namespace E3DEngine
 		}
 
 		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialPath, materialID);
-		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID);
+		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID, particle->GetVertexSize(),NORMAL, true);
 		particle->SetRenderer(render);
 		particle->SetLayerMask(1 << layerConfig->ID);
+		particle->IsActive = false;
 		particle->SetActive(true);
 		render->SetRenderIndex(eRI_TopMost);
 	}

@@ -92,6 +92,15 @@ namespace E3DEngine
 		return mBehaviour;
 	}
 
+
+	void Material::SetColor(Color4 color)
+	{
+		mColor.r *= color.r;
+		mColor.g *= color.g;
+		mColor.b *= color.b;
+		mColor.a *= color.a;
+	}
+
 	void Material::UseMaterial()
 	{
 		

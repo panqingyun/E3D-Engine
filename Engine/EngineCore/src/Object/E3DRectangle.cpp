@@ -43,17 +43,6 @@ namespace E3DEngine
 			vecIndex[5] = 0;
 			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
 		}
-		IsActive = false;
 		CreateBehaviour();
-	}
-	
-	void Rectangle::SetActive(bool isActive)
-	{
-		if (isActive == IsActive)
-		{
-			return;
-		}
-		GameObject::SetActive(isActive);
-		fillRender(isActive);
 	}
 }

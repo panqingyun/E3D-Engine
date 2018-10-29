@@ -815,6 +815,7 @@ namespace E3DEngine
 			}
 			p->Update(deltaTime);
 			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
+
 			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
 			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
 			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
@@ -830,6 +831,7 @@ namespace E3DEngine
 		}
 		for (auto & m_particleEmitter : m_particleEmitters)
 		{
+			m_particleEmitter->SetEmitterPosition(Transform->GetPosition());
 			m_particleEmitter->Update(deltaTime);
 		}		
 		

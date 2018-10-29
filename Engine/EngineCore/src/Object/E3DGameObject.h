@@ -246,6 +246,7 @@ struct E3D_EXPORT_DLL Convert
 	static bool IsBig_Endian();
 
 	static vec4f ToColorRGBA(long color);
+	static Color4 ToColor4(std::string colorStr);
 	/*
 		colorStr 如 ffabcdff
 	*/

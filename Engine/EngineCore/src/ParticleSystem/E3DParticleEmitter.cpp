@@ -108,8 +108,10 @@ namespace E3DEngine
     void ParticleEmitter::SetEmitterPosition(vec3f position)
     {
         m_pParticleGroup->SetParticleDir(position, m_EmitterPosition);
-        if (m_pParticleGroup->m_isLock == 0)
-            m_EmitterPosition = position;
+		if (m_pParticleGroup->m_isLock == 0)
+		{
+			m_EmitterPosition = position;
+		}
     }
     
     void ParticleEmitter::_CreateParticle()

@@ -61,17 +61,6 @@ namespace E3DEngine
 		}
 	}
 
-	Color4 createColor(std::string colorStr)
-	{
-		std::vector<std::string> colorS = StringBuilder::Split(colorStr, ",");
-		float &&r = Convert::ToFloat(colorS[0]);
-		float &&g = Convert::ToFloat(colorS[1]);
-		float &&b = Convert::ToFloat(colorS[2]);
-		float &&a = Convert::ToFloat(colorS[3]);
-
-		return Color4(r, g, b, a);
-	}
-
 	vec3f getVector3(std::string vecStr)
 	{
 		std::vector<std::string> colorS = StringBuilder::Split(vecStr, ",");
@@ -180,7 +169,7 @@ namespace E3DEngine
 		Camera *pCamera = Camera::CreateCamera();
 
 		SceneManager::GetCurrentScene()->AddCamera(pCamera);
-		pCamera->SetClearColor(createColor(*objectElement->Attribute(_ClearColor)));
+		pCamera->SetClearColor(Convert::ToColor4(*objectElement->Attribute(_ClearColor)));
 		setLayerMask(objectElement, pCamera);
 		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
 
@@ -220,7 +209,8 @@ namespace E3DEngine
 	GameObject* createDLight(TiXmlElement *objectElement)
 	{
 		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
-		light->Color = createColor(*objectElement->Attribute(_Color));
+		
+		light->Color = Convert::ToColor4(*objectElement->Attribute(_Color));
 
 		return light;
 	}
@@ -250,7 +240,7 @@ namespace E3DEngine
 	GameObject *createPointLight(TiXmlElement *objectElement)
 	{
 		Light *light = Light::Create(LightType::ePOINT_LIGHT);
-		light->Color = createColor(*objectElement->Attribute(_Color));
+		light->Color = Convert::ToColor4(*objectElement->Attribute(_Color));
 		if (objectElement->Attribute(_Range) != nullptr)
 		{
 			static_cast<PointLight*>(light)->Range = Convert::ToFloat(*objectElement->Attribute(_Range));
@@ -333,7 +323,7 @@ namespace E3DEngine
 		setLayerMask(objectElement, go);
 		if (objectElement->Attribute(_VertexColor) != nullptr)
 		{
-			go->SetColor(createColor(*objectElement->Attribute(_VertexColor)));
+			go->SetColor(Convert::ToColor4(*objectElement->Attribute(_VertexColor)));
 		}
 		if (objectElement->Attribute(_InnerID) != nullptr)
 		{

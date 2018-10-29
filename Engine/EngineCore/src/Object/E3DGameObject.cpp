@@ -409,12 +409,16 @@ namespace E3DEngine
 			m_pRenderer->FillBegin(ID);
 			for (int i = 0; i < vecVertex.size(); i++)
 			{
+				Vertex ver = vecVertex[i];
+				ver.SetColor(Color.r * m_pRenderer->GetMaterial()->mColor.r, 
+					Color.g * m_pRenderer->GetMaterial()->mColor.g, Color.b * m_pRenderer->GetMaterial()->mColor.b,
+					Color.a  * m_pRenderer->GetMaterial()->mColor.a);
 				if (m_bIsStatic)
 				{
-					vec3f pos = Transform->WorldMatrix * vec3f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2]);
-					vecVertex[i].SetPosition(pos.x, pos.y, pos.z);
+					vec4f pos = Transform->WorldMatrix * vec4f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2], 1.0);
+					ver.SetPosition(pos.x, pos.y, pos.z);
 				}
-				m_pRenderer->FillVertex(vecVertex[i]);
+				m_pRenderer->FillVertex(ver);
 			}
 
 			for (int i = 0; i < vecIndex.size(); i++)
@@ -526,10 +530,8 @@ namespace E3DEngine
 	void GameObject::SetRenderer(Renderer * renderer)
 	{
 		m_pRenderer = renderer;
-		m_pRenderer->SetTransform(Transform);
 		m_pRenderer->SetLayerMask(m_layerMask);
 		m_pRenderer->mName = mName;
-		m_pRenderer->GetMaterial()->SetColor(Color);
 		TransferRender();
 		fillRender(true);
 	}
@@ -585,10 +587,6 @@ namespace E3DEngine
 	void GameObject::SetColor(Color4 color)
 	{
 		Color = color;
-		if (m_pRenderer != nullptr)
-		{
-			m_pRenderer->GetMaterial()->SetColor(color);
-		}
 	}
 
 	void GameObject::SetIsStatic(bool isStatic)
@@ -1014,6 +1012,13 @@ vvision::vec4f Convert::ToColorRGBA(std::string colorStr)
 {
 	long color = _16To10(colorStr);
 	return ToColorRGBA(color);
+}
+
+Color4 Convert::ToColor4(std::string colorStr)
+{
+	long color = _16To10(colorStr);
+	vec4f &&_v_color = ToColorRGBA(color);
+	return Color4(_v_color.r, _v_color.g, _v_color.b, _v_color.a);
 }
 
 MonoObject * Convert::ToCSVector4(vec4f vec)

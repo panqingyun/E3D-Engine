@@ -5,6 +5,7 @@
 //
 
 #include "E3DGLESMaterial.hpp"
+#include "..\Texture\E3DGLESCubeMapTexture.hpp"
 
 namespace E3DEngine
 {
@@ -41,9 +42,9 @@ namespace E3DEngine
 		
 	}
 
-	void GLES_Material::createTexture(TextureData& data)
+	void GLES_Material::createTexture2D(TextureData& data)
 	{
-		GLES_Texture * texture = new GLES_Texture();
+		GLES_Texture2D * texture = new GLES_Texture2D();
 		std::string path = mFilePath;
 		path = path + data.fileName;
 		int textureSum = Textures.size();
@@ -58,8 +59,20 @@ namespace E3DEngine
 	{
 		int textureSum = Textures.size();
 		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformName(textureUniform);
-		static_cast<GLES_Texture*>(texture)->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
+		texture->SetTextureUniformName(textureUniform);
+		texture->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
+		Textures[textureSum] = ((E3DEngine::Texture*)texture);
+	}
+
+
+	void GLES_Material::createCubeTexture(std::string filePath,int selectID, std::string uniformName)
+	{
+		GLES_CubeMapTexture * texture = new GLES_CubeMapTexture;
+		texture->Create(filePath, selectID);
+		int textureSum = Textures.size();
+		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
+		texture->SetTextureUniformName(uniformName);
+		texture->SetTextureUniformIndex(textureSum, static_cast<GLES_Shader*>(mShader)->ShaderProgram);
 		Textures[textureSum] = ((E3DEngine::Texture*)texture);
 	}
 

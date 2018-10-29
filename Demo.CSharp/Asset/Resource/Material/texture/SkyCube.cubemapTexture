@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<CubeMapTextureConfig>
+		<Item ID="1" Front="Resource\Material\texture\skybox\front.jpg" Back="Resource\Material\texture\skybox\back.jpg" Left="Resource\Material\texture\skybox\left.jpg" Right="Resource\Material\texture\skybox\right.jpg" Top="Resource\Material\texture\skybox\top.jpg" Down="Resource\Material\texture\skybox\down.jpg"/>
+	</CubeMapTextureConfig>
+</ConfigSystem>

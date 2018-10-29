@@ -395,7 +395,7 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESCubeMapTexture.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESRender2Texture.cpp" />
-    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture2D.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTextureDataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -413,7 +413,7 @@
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Shader\E3DGLESShaderManager.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESCubeMapTexture.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESRender2Texture.h" />
-    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture2D.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTextureDataManager.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

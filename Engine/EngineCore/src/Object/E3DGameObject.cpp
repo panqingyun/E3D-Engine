@@ -410,9 +410,10 @@ namespace E3DEngine
 			for (int i = 0; i < vecVertex.size(); i++)
 			{
 				Vertex ver = vecVertex[i];
-				ver.SetColor(Color.r * m_pRenderer->GetMaterial()->mColor.r, 
-					Color.g * m_pRenderer->GetMaterial()->mColor.g, Color.b * m_pRenderer->GetMaterial()->mColor.b,
-					Color.a  * m_pRenderer->GetMaterial()->mColor.a);
+				ver.SetColor(Color.r * m_pRenderer->GetMaterial()->mColor.r * vecVertex[i].Color[0],
+					Color.g * m_pRenderer->GetMaterial()->mColor.g * vecVertex[i].Color[1],
+					Color.b * m_pRenderer->GetMaterial()->mColor.b * vecVertex[i].Color[2],
+					Color.a * m_pRenderer->GetMaterial()->mColor.a * vecVertex[i].Color[3]);
 				if (m_bIsStatic)
 				{
 					vec4f pos = Transform->WorldMatrix * vec4f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2], 1.0);

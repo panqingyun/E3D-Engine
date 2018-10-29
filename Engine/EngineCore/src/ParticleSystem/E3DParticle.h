@@ -18,6 +18,7 @@ typedef enum
 
 namespace E3DEngine
 {
+	class TextureFrameEffect;
 	class Renderer;
     class Camera;
     class ParticleAffector;

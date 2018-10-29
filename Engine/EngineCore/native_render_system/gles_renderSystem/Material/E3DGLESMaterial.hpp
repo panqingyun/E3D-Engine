@@ -8,7 +8,7 @@
 #define _GLES_METRAIL_HPP_
 
 #include "../Shader/E3DGLESShader.hpp"
-#include "../Texture/E3DGLESTexture.hpp"
+#include "../Texture/E3DGLESTexture2D.hpp"
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include "../Include/Include.h"
 
@@ -35,8 +35,9 @@ namespace E3DEngine
 	protected:
 		void enableStencil()override;
 		virtual void openState();
-		virtual void createTexture(TextureData& data)override;
-		virtual void createTexture(Texture *texture, std::string textureUniform)override;
+		virtual void createTexture2D(TextureData& data) override;
+		virtual void createTexture(Texture *texture, std::string textureUniform) override;
+		virtual void createCubeTexture(std::string filePath, int selectID, std::string uniformName) override;
 		
 	};
 }

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
-	<TextureAtlas>
-		<Item ID="1" n="back.jpg" x="1027" y="1027" w="1024" h="1024" width="4096" height="4096"/>
-		<Item ID="2" n="down.jpg" x="2053" y="1" w="1024" h="1024" width="4096" height="4096"/>
-		<Item ID="3" n="front.jpg" x="1027" y="1" w="1024" h="1024" width="4096" height="4096"/>
-		<Item ID="4" n="left.jpg" x="1" y="2053" w="1024" h="1024" width="4096" height="4096"/>
-		<Item ID="5" n="right.jpg" x="1" y="1027" w="1024" h="1024" width="4096" height="4096"/>
-		<Item ID="6" n="top.jpg" x="1" y="1" w="1024" h="1024" width="4096" height="4096"/>
-	</TextureAtlas>
+	<TextureAtlasConfig>
+		<Item ID="1" Name="back.jpg" x="1027" y="1027" w="1024" h="1024" width="4096" height="4096"/>
+		<Item ID="2" Name="down.jpg" x="2053" y="1" w="1024" h="1024" width="4096" height="4096"/>
+		<Item ID="3" Name="front.jpg" x="1027" y="1" w="1024" h="1024" width="4096" height="4096"/>
+		<Item ID="4" Name="left.jpg" x="1" y="2053" w="1024" h="1024" width="4096" height="4096"/>
+		<Item ID="5" Name="right.jpg" x="1" y="1027" w="1024" h="1024" width="4096" height="4096"/>
+		<Item ID="6" Name="top.jpg" x="1" y="1" w="1024" h="1024" width="4096" height="4096"/>
+	</TextureAtlasConfig>
 	<SkyBoxConfig>
 		<Item ID="1" Front="3" Back="1" Left="4" Right="5" Top="6" Down="2"/>
 	</SkyBoxConfig>

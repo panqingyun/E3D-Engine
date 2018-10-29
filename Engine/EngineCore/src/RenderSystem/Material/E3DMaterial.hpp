@@ -9,7 +9,6 @@
 
 #include "../Shader/E3DShader.hpp"
 #include "../Texture/E3DTexture.hpp"
-#include "../Texture/E3DCubeMapTexture.hpp"
 
 namespace E3DEngine
 {
@@ -85,7 +84,7 @@ namespace E3DEngine
 									   std::string xNName,
 									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
 
-		Render2Texture *GetRtt();
+		Render2Texture *GetRenderTexture();
 		// -----------------------------------------------
 		// 创建Mono对象
 		//-----------------------------------------------
@@ -99,9 +98,12 @@ namespace E3DEngine
 		virtual void enableStencil();
 		virtual void beforeUpdate();
 		virtual void afterUpdate();
-		virtual void createTexture(TextureData& data);
+		virtual void createTexture2D(TextureData& data);
+		virtual void createCubeTexture(std::string filePath, int selectID, std::string uniformName);
 		virtual void createTexture(Texture *texture, std::string textureUniform);
 		void initUniformValue(ShaderConfig * sCfg, MaterialConfig * config);
+		void createSampler2D(std::vector<std::string> &varValues, MaterialConfig * config);
+
 		void createRtt(std::vector<std::string>& varValues);
 
 	protected:

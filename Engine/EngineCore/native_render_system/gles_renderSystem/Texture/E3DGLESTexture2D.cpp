@@ -3,13 +3,13 @@
 //
 //  Created by 潘庆云 on 2017/3/30.
 //
-#include "E3DGLESTexture.hpp"
+#include "E3DGLESTexture2D.hpp"
 #include "../E3DGLESRenderSystem.hpp"
 
 namespace E3DEngine
 {
 
-	GLES_Texture::~GLES_Texture()
+	GLES_Texture2D::~GLES_Texture2D()
 	{
 		if (m_nTextureBuffer != 0)
 		{
@@ -17,7 +17,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Texture::Create(std::string fileName, TextureData &tData)
+	void GLES_Texture2D::Create(std::string fileName, TextureData &tData)
 	{
 		m_nTextureBuffer = GLES_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
 		glActiveTexture(GL_TEXTURE_2D);
@@ -31,7 +31,7 @@ namespace E3DEngine
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::setTextureParam(TextureData &tData)
+	void GLES_Texture2D::setTextureParam(TextureData &tData)
 	{
 		unsigned int clampType = 0;
 		unsigned int filterType = 0;
@@ -84,14 +84,14 @@ namespace E3DEngine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
-	void GLES_Texture::SetTextureData(TextureData &tData)
+	void GLES_Texture2D::SetTextureData(TextureData &tData)
 	{
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::Create(TextureData &tData)
+	void GLES_Texture2D::Create(TextureData &tData)
 	{
 		glGenTextures(1, &m_nTextureBuffer);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
@@ -106,43 +106,31 @@ namespace E3DEngine
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture::SetTextureUniformIndex(int i, GLuint ProgramHandle)
+	void GLES_Texture2D::SetTextureUniformIndex(int i, GLuint ProgramHandle)
 	{
 		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
 		glUniform1i(m_nTextureUniform, i);
 		m_nTextureIndex = i;
 	}
 		
-	void GLES_Texture::ActiveBindTexture()
+	void GLES_Texture2D::ActiveBindTexture()
 	{
 		glActiveTexture(m_nTextureEnum);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		glUniform1i(m_nTextureUniform, m_nTextureIndex);
 	}
 
-	void GLES_Texture::InvalidTexture()
+	void GLES_Texture2D::InvalidTexture()
 	{
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-
-	void GLES_Texture::SetClampType(int tp)
-	{
-
-	}
-
-
-	void GLES_Texture::SetFilterType(int tp)
-	{
-
-	}
-
-	GLES_Texture::GLES_Texture()
+	GLES_Texture2D::GLES_Texture2D()
 	{
 		m_nTextureBuffer = 0;
 	}
 
-	GLuint & GLES_Texture::GetTextureBuffer()
+	GLuint & GLES_Texture2D::GetTextureBuffer()
 	{
 		return m_nTextureBuffer;
 	}

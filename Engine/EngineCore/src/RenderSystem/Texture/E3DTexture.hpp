@@ -13,8 +13,6 @@
 
 namespace E3DEngine
 {
-
-	class TextureFrameEffect;
 	class E3D_EXPORT_DLL Texture : public Object
 	{
 		friend class Material;
@@ -23,12 +21,7 @@ namespace E3DEngine
 		virtual ~Texture();
 
 	public:
-		TextureFrameEffect * TextureEffect;
-		
-	public:
 		virtual void Create(std::string fileName);
-		virtual void SetTextureData(TextureData &tData);
-		virtual void Create(TextureData &tData);
 		virtual void SetTextureEnum(uint enumNumber);
 		virtual void ActiveBindTexture();
 		virtual void InvalidTexture();

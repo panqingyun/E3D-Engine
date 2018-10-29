@@ -5,112 +5,48 @@
 //
 
 #include "E3DGLESCubeMapTexture.hpp"
+#include <src/Source/E3DDebug.h>
 
 namespace E3DEngine
-{	
-	void GLES_CubeMapTexture::CreateCubeMapTexture(int textureEnum,
-											  std::string xPName,
-											  std::string xNName,
-											  std::string yPName,
-											  std::string yNName,
-											  std::string zPName,
-											  std::string zNName)
+{		
+	void GLES_CubeMapTexture::ActiveBindTexture()
 	{
-		void * xpData = createImageData(xPName, &m_nImageWidth, &m_nImageHeight);
-		void * xnData = createImageData(xNName, &m_nImageWidth, &m_nImageHeight);
-		void * ypData = createImageData(yPName, &m_nImageWidth, &m_nImageHeight);
-		void * ynData = createImageData(yNName, &m_nImageWidth, &m_nImageHeight);
-		void * zpData = createImageData(zPName, &m_nImageWidth, &m_nImageHeight);
-		void * znData = createImageData(zNName, &m_nImageWidth, &m_nImageHeight);
-		m_nTextureEnum = textureEnum;
+		glBindTexture(GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
+		glActiveTexture(m_nTextureIndex);
+		glUniform1i(m_nTextureUniform, m_nTextureIndex);
+	}
+
+	void GLES_CubeMapTexture::SetTextureUniformIndex(int i, GLuint ProgramHandle)
+	{
+		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
+		glUniform1i(m_nTextureUniform, i);
+		m_nTextureIndex = i;
+	}
+
+	void GLES_CubeMapTexture::InvalidTexture()
+	{
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+	}
+
+	void GLES_CubeMapTexture::createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back)
+	{
 		glGenTextures(1, &m_nTextureBuffer);
 		{
 			// Allocate and bind an OpenGL texture
 			glEnable(GL_TEXTURE_CUBE_MAP);
 			//glActiveTexture(textureEnum);
-			glBindTexture (GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
-
-			// Load the cube face - Positive X
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_POSITIVE_X,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-						  GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  xpData );
-					
-			// Load the cube face - Negative X
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-						  GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  xnData );
-					
-			// Load the cube face - Positive Y
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_POSITIVE_Y,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-					      GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  ypData );
-				
-			// Load the cube face - Negative Y
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-					      GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  ynData );
-				
-			// Load the cube face - Positive Z
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-					 
-						  GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  zpData );
-				
-			// Load the cube face - Negative Z
-			glTexImage2D ( GL_TEXTURE_CUBE_MAP_NEGATIVE_Z,
-						  0,
-						  GL_RGBA,
-						  m_nImageWidth,
-						  m_nImageHeight,
-						  0,
-					 
-						  GL_RGBA,
-						  GL_UNSIGNED_BYTE,
-						  znData );
-				
-			// Set the filtering mode
-			glTexParameteri ( GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST );
-			glTexParameteri ( GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
-			glBindTexture (GL_TEXTURE_CUBE_MAP, 0);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, right->rgbModule, right->width, right->height, 0, right->rgbModule, GL_UNSIGNED_BYTE, right->imgData);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, left->rgbModule, left->width, left->height, 0, left->rgbModule, GL_UNSIGNED_BYTE, left->imgData);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, up->rgbModule,  up->width, up->height, 0, up->rgbModule, GL_UNSIGNED_BYTE, up->imgData);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, down->rgbModule, down->width, down->height, 0, down->rgbModule, GL_UNSIGNED_BYTE, down->imgData);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, back->rgbModule, back->width, back->height, 0, back->rgbModule, GL_UNSIGNED_BYTE, back->imgData);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, front->rgbModule, front->width, front->height, 0, front->rgbModule, GL_UNSIGNED_BYTE, front->imgData);
+			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+			glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 			glGenerateMipmap(GL_LINEAR_MIPMAP_LINEAR);//GL_LINEAR_MIPMAP_LINEAR
 		}
 	}
-	
-	void GLES_CubeMapTexture::ActiveBindTexture()
-	{
-		glActiveTexture(GL_TEXTURE3);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
-		glUniform1i(m_nTextureUniform, 3);
 
-	}
 }

@@ -17,7 +17,7 @@ namespace E3DEngine
 		void setTextureCoord();
 		void getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown);
 	private:
-		std::vector<TextureAtlas*> textures;
+		std::vector<TextureAtlasConfig*> textures;
 	};
 
 	class SkyDome : public GameObject

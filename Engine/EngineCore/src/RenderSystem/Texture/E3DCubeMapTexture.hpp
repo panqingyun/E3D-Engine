@@ -10,21 +10,18 @@
 
 namespace E3DEngine
 {
+	class CubeMapTextureConfig;
 	class E3D_EXPORT_DLL CubeMapTexture : public Texture
 	{
 	public:
-		void CreateCubeMapTexture(int textureEnum, std::string xPName,
-												   std::string xNName,
-								  std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
+		void Create(std::string fileName, int selectID);
 	
 		virtual void ActiveBindTexture() override;
 
 	protected:
-		void * createImageData(std::string imageName, int * width, int * height);
+		void createTexture(CubeMapTextureConfig *cubeMap);
+		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back);
 
-		int m_nImageWidth;
-		int m_nImageHeight;
-		int m_nTextureUniform;
 	};
 }
 

@@ -17,16 +17,6 @@ namespace E3DEngine
 	{
 	}
 	
-	void Texture::SetTextureData(TextureData &tData)
-	{
-		
-	}
-
-	void Texture::Create(TextureData &tData)
-	{
-		
-	}
-
 	void Texture::SetTextureEnum(uint enumNumber)
 	{
 		m_nTextureEnum = enumNumber;

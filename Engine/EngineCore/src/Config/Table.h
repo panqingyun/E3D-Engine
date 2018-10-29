@@ -510,23 +510,23 @@ namespace E3DEngine
 		}
 	};
 
-	class E3D_EXPORT_DLL TextureAtlas : public TableBase
+	class E3D_EXPORT_DLL TextureAtlasConfig : public TableBase
 	{
-		DECLARE_CLASS(TextureAtlas);
+		DECLARE_CLASS(TextureAtlasConfig);
 	public:
-		DECLARE_MEMBER(TextureAtlas, int, ID);
-		DECLARE_MEMBER(TextureAtlas, string, n);
-		DECLARE_MEMBER(TextureAtlas, float, x);
-		DECLARE_MEMBER(TextureAtlas, float, y);
-		DECLARE_MEMBER(TextureAtlas, float, w);
-		DECLARE_MEMBER(TextureAtlas, float, h);
-		DECLARE_MEMBER(TextureAtlas, float, width);
-		DECLARE_MEMBER(TextureAtlas, float, height);
+		DECLARE_MEMBER(TextureAtlasConfig, int, ID);
+		DECLARE_MEMBER(TextureAtlasConfig, string, Name);
+		DECLARE_MEMBER(TextureAtlasConfig, float, x);
+		DECLARE_MEMBER(TextureAtlasConfig, float, y);
+		DECLARE_MEMBER(TextureAtlasConfig, float, w);
+		DECLARE_MEMBER(TextureAtlasConfig, float, h);
+		DECLARE_MEMBER(TextureAtlasConfig, float, width);
+		DECLARE_MEMBER(TextureAtlasConfig, float, height);
 
 		virtual void registProperty() override
 		{
 			SAVE_MEMBER(ID, int);
-			SAVE_MEMBER(n, string);
+			SAVE_MEMBER(Name, string);
 			SAVE_MEMBER(x, float);
 			SAVE_MEMBER(y, float);
 			SAVE_MEMBER(w, float);
@@ -591,6 +591,30 @@ namespace E3DEngine
 			SAVE_MEMBER(ID, int);
 			SAVE_MEMBER(Width, float);
 			SAVE_MEMBER(Height, float);
+		}
+	};
+
+	class CubeMapTextureConfig : public TableBase
+	{
+		DECLARE_CLASS(CubeMapTextureConfig)
+	public:
+		DECLARE_MEMBER(CubeMapTextureConfig, int, ID);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Front);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Back);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Top);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Down);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Left);
+		DECLARE_MEMBER(CubeMapTextureConfig, string, Right);
+
+		virtual void registProperty() override
+		{
+			SAVE_MEMBER(ID,		int);
+			SAVE_MEMBER(Front,	string);
+			SAVE_MEMBER(Back,	string);
+			SAVE_MEMBER(Top,	string);
+			SAVE_MEMBER(Down,	string);
+			SAVE_MEMBER(Left,	string);
+			SAVE_MEMBER(Right,	string);
 		}
 	};
 }

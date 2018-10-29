@@ -53,9 +53,14 @@ namespace E3DEngine
 		
 	}
 
-	void Material::createTexture(TextureData& data)
+	void Material::createTexture2D(TextureData& data)
 	{
 		
+	}
+
+	void Material::createCubeTexture(std::string filePath, int selectID, std::string uniformName)
+	{
+
 	}
 
 	void Material::createTexture(Texture *texture, std::string textureUniform)
@@ -168,28 +173,24 @@ namespace E3DEngine
 
 			if (mShader->GetUniformType(varValues[0]) == "sampler2D") // create texture
 			{
-				size_t pointPos = varValues[1].find_last_of('.');
-				std::string extention = varValues[1].substr(pointPos);
-				if (extention.find(".renderTexture") != std::string::npos)
-				{
-					createRtt(varValues);
-				}
-				else
-				{
-					TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
-					tData->clampType = (CLAMP_TYPE)config->TextureClampType;
-					tData->filterType = (FILTER_TYPE)config->TextureFilterType;
-					tData->fileName = varValues[1];
-					tData->uniformName = varValues[0];
-					createTexture(*tData);
-					SAFE_DELETE(tData);
-				}
+				createSampler2D(varValues, config);
 			}
-
+			else if (mShader->GetUniformType(varValues[0]) == "samplerCube")
+			{
+				std::vector<std::string> vec = StringBuilder::Split(varValues[1], ":");
+				if (vec.empty())
+				{
+					return;
+				}
+				std::string fName = vec[0];
+				std::string _path = Application::AppDataPath + fName;
+				int selectID = Convert::ToInt(vec[1]);
+				createCubeTexture(_path, selectID, varValues[0]);
+			}
 		}
 	}
 
-	Render2Texture *Material::GetRtt()
+	Render2Texture *Material::GetRenderTexture()
 	{
 		return Rtt;
 	}
@@ -219,6 +220,26 @@ namespace E3DEngine
 			rtt->SetTextureUniformName(varValues[0]);
 			SetTexture(rtt);
 			Rtt = rtt;
+		}
+	}
+
+	void Material::createSampler2D(std::vector<std::string> &varValues, MaterialConfig * config)
+	{
+		size_t pointPos = varValues[1].find_last_of('.');
+		std::string extention = varValues[1].substr(pointPos);
+		if (extention.find(".renderTexture") != std::string::npos)
+		{
+			createRtt(varValues);
+		}
+		else
+		{
+			TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
+			tData->clampType = (CLAMP_TYPE)config->TextureClampType;
+			tData->filterType = (FILTER_TYPE)config->TextureFilterType;
+			tData->fileName = varValues[1];
+			tData->uniformName = varValues[0];
+			createTexture2D(*tData);
+			SAFE_DELETE(tData);
 		}
 	}
 

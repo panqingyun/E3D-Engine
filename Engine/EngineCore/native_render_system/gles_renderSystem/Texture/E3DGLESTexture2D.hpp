@@ -8,18 +8,18 @@
 #define GLES_Texture_HPP
 
 #include "E3DGLESTextureDataManager.hpp"
-#include <src/RenderSystem/Texture/E3DTexture.hpp>
+#include <src/RenderSystem/Texture/E3DTexture2D.hpp>
 #include "../Include/Include.h"
 
 namespace E3DEngine
 {
 	class TextureFrameEffect;
-	class GLES_Texture : public Texture
+	class GLES_Texture2D : public Texture2D
 	{
 		friend class Material;
 	public:
-		GLES_Texture();
-		virtual ~GLES_Texture();
+		GLES_Texture2D();
+		virtual ~GLES_Texture2D();
 		virtual GLuint &GetTextureBuffer();
 
 	public:
@@ -29,8 +29,6 @@ namespace E3DEngine
 		virtual void Create(TextureData &tData)override;
 		virtual void ActiveBindTexture()override;
 		virtual void InvalidTexture()override;
-		virtual void SetClampType(int tp) override;
-		virtual void SetFilterType(int tp) override;
 
 	private:
 		void setTextureParam(TextureData &tData);

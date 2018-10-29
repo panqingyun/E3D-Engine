@@ -489,6 +489,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.hpp" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture2D.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DScene.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.h" />
@@ -576,6 +577,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DCubeMapTexture.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DRender2Texture.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture2D.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTextureDataManager.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DScene.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.cpp" />

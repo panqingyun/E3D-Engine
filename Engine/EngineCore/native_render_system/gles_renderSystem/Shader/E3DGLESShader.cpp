@@ -29,6 +29,7 @@ namespace E3DEngine
 		uniformSetFunc["mat4"] = &Shader::createMatrix4Uniform;
 		uniformSetFunc["int"] = &Shader::createInt1Uniform;
 		uniformSetFunc["sampler2D"] = &Shader::createSamplerUniform;
+		uniformSetFunc["samplerCube"] = &Shader::createSamplerUniform;
 	}
 
 	void GLES_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)

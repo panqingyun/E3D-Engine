@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MaterialConfig>
+      	<Item ID=1 ShaderID ="1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="0" CullFace = "0" TextureClampType="0" TextureFilterType = "1"/>
+	</MaterialConfig>
+	<ShaderConfig>
+		<Item ID="1" ShaderPath="shader/SkyCubeMap.shader" UniformVariable="skybox-Resource/Material/texture/SkyCube.cubemapTexture:1;"/>
+	</ShaderConfig>
+</ConfigSystem>

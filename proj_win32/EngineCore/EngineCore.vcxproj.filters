@@ -342,6 +342,9 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture2D.hpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.cpp">
       <Filter>engineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\RenderSystem\Texture\E3DTexture2D.cpp">
+      <Filter>engineCore\src\RenderSystem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

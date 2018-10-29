@@ -24,9 +24,10 @@ namespace E3DEngine
 	DECLARE_CLASS_NAME(MeshConfig)
 	DECLARE_CLASS_NAME(LayerConfig)
 	DECLARE_CLASS_NAME(ShaderConfig)
-	DECLARE_CLASS_NAME(TextureAtlas)
+	DECLARE_CLASS_NAME(TextureAtlasConfig)
 	DECLARE_CLASS_NAME(SkyBoxConfig)
 	DECLARE_CLASS_NAME(RenderTextureConfig)
+	DECLARE_CLASS_NAME(CubeMapTextureConfig)
 	
     void RegisterTableCreateInstance()
     {
@@ -47,8 +48,9 @@ namespace E3DEngine
 		REGIST_CLASS(MeshConfig);
 		REGIST_CLASS(LayerConfig);
 		REGIST_CLASS(ShaderConfig);
-		REGIST_CLASS(TextureAtlas);
+		REGIST_CLASS(TextureAtlasConfig);
 		REGIST_CLASS(SkyBoxConfig);
 		REGIST_CLASS(RenderTextureConfig);
+		REGIST_CLASS(CubeMapTextureConfig);
     }
 }

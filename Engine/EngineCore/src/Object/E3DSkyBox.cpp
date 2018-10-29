@@ -19,12 +19,12 @@ void E3DEngine::SkyBox::Create(float l, float w, float h)
 void E3DEngine::SkyBox::TransferRender()
 {
 	SkyBoxConfig * skyBox = m_pRenderer->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Front)); //0
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Top));	// 1
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Back));	// 2
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Down));	// 3
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Left));	// 4
-	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlas>(skyBox->Right));	// 5
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Front)); //0
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Top));	// 1
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Back));	// 2
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Down));	// 3
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Left));	// 4
+	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Right));	// 5
 
 	setTextureCoord();
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
@@ -97,7 +97,7 @@ void E3DEngine::SkyBox::setTextureCoord()
 
 void E3DEngine::SkyBox::getCoord(int index, vec2f &leftTop, vec2f &rightTop, vec2f &leftDown, vec2f &rightDown)
 {
-	TextureAtlas* texture = textures[index];
+	TextureAtlasConfig* texture = textures[index];
 
 	leftTop.x = texture->x / texture->width;
 	leftTop.y = texture->y / texture->height;

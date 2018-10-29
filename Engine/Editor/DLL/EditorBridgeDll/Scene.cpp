@@ -293,7 +293,7 @@ namespace E3DEngine
 		mCoordRt->CreateShape(30, 30);
 		mCoordRt->SetLayerMask(1 << gLookCoordLayer);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
-		Render2Texture *rtt = m->GetRtt();
+		Render2Texture *rtt = m->GetRenderTexture();
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, 4);
 		mCoordRt->SetRenderer(rd);
 		mCoordRt->SetActive(true);

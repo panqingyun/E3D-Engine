@@ -10,16 +10,22 @@
 
 #include "Standard.shader"
 
-varying lowp vec2 v_coord;
-varying vec3 normal;
+varying vec3 ReflectDir;
+varying vec4 DestinationColor;
 
 void main(void)
 {
-    v_coord = inputTextureCoordinate;
-	vec4 interpolatedPosition = vec4(position ,1.0);	
-	normal = attr_normal;
+	mat4 rotateMatrix = getRotateMatrix();
+	vec4 _pos = _e3d_matModel * vec4(position, 1.0);
+	vec3 eyeDir = normalize(_pos.xyz - _e3d_CameraPos.xyz);
+	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	
-    gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;
+	ReflectDir = reflect(eyeDir, normalize(_normal.xyz));
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	
+	initFogNeedVar(position);
+	
+    gl_Position = _e3d_getMVPMatrix() * vec4(position, 1.0);
 }
 
 #Vertex_End
@@ -28,14 +34,13 @@ void main(void)
 
 precision highp float;
 
-varying highp vec2 v_coord;
-varying vec3 normal;
+varying vec3 ReflectDir;
 
 uniform samplerCube skybox;
 
 void main(void) 
 { 
-    vec4 color = textureCube(skybox,normal);
+    vec4 color = textureCube(skybox,ReflectDir);
 	gl_FragColor = color;//texture2D(skybox, v_coord);	
 }
 

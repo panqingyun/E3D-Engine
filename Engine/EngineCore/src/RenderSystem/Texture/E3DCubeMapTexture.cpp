@@ -38,6 +38,12 @@ namespace E3DEngine
 		TextureData * front_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Front);
 		TextureData * back_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Back);
 		createCubeMap(up_data, down_data, left_data, right_data, front_data, back_data);
+		delete up_data;
+		delete down_data;
+		delete left_data;
+		delete right_data;
+		delete front_data;
+		delete back_data;
 	}
 	
 	void CubeMapTexture::ActiveBindTexture()

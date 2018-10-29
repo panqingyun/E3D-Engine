@@ -239,7 +239,7 @@ namespace E3DEngine
 			tData->fileName = varValues[1];
 			tData->uniformName = varValues[0];
 			createTexture2D(*tData);
-			SAFE_DELETE(tData);
+			delete tData;
 		}
 	}
 

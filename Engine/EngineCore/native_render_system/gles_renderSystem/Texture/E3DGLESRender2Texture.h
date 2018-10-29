@@ -2,7 +2,6 @@
 #define __GLES_RENDER_TEXTURE_H__
 
 #include "../FrameBufferObject/E3DFrameBufferObject.h"
-#include "../Texture/E3DGLESTexture.hpp"
 #include <src/RenderSystem/Texture/E3DRender2Texture.h>
 #include "../Include/Include.h"
 

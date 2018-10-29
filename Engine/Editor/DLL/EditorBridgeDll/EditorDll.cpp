@@ -27,7 +27,7 @@ void E3DEngine::EngineDelegateRef::StopAppliaction()
 
 void E3DEngine::EngineDelegateRef::SetupRenderSystem(IntPtr nativeWindow, int width, int height)
 {
-	::SetRenderSystem(CreateRenderSystem((HWND)nativeWindow.ToInt32(), width, height));
+	::SetRenderSystem(CreateGLESRenderSystem((HWND)nativeWindow.ToInt32(), width, height));
 }
 
 void E3DEngine::EngineDelegateRef::SetDebugLogOutFunc(IntPtr func)

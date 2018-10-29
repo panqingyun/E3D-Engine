@@ -396,7 +396,15 @@ namespace E3DEngine
 		RTTs.clear();
 	}
 
-	float * Camera::normal(float *plans) {
+
+	bool Camera::Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth /*= 512*/, int textureHeight /*= 512*/)
+	{
+		// TODO
+		return false;
+	}
+
+	float * Camera::normal(float *plans)
+	{
 		m_Temp = plans;
 		float size = sqrt(m_Temp[0] * m_Temp[0] + m_Temp[1] * m_Temp[1] + m_Temp[2] * m_Temp[2]);
 		m_Temp[0] /= size;

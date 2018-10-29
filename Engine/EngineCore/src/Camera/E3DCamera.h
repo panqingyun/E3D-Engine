@@ -12,27 +12,18 @@ namespace E3DEngine
 {
 	class RenderQueue;
 	class Render2Texture;
+	class CubeMapTexture;
 	struct Ray;
 	class E3D_EXPORT_DLL Camera : public GameObject
 	{
 		friend class Render2Texture;
 	public:
-
 		static Camera * CreateCamera(bool isPerspective = true);
-		/** create a perspective camera
-		 @param position camera position
-		 @param target camera target point
-		 @param fov field of view
-		 @param up the up vector
-		 @param zNear near clipping plane of the camera
-		 @param zFar far clipping plane of the camera
-		 @param aspect ration of the camera ( width / height)
-		 */
+
 		Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up = vec3f(0.0, -1.0, 0.0), float32 zNear = 5.0f, float32 zFar = 10000.0f, float32 aspect = 9.0f/16.0f);
 		
 		Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar);
 		
-		/** destructor*/
 		~Camera();
 
 	public:
@@ -68,6 +59,7 @@ namespace E3DEngine
 		bool boundingBoxFrustum(vec3f position, float size);
 		vec4f GetClearColor();
 		void ClearRT();
+		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		

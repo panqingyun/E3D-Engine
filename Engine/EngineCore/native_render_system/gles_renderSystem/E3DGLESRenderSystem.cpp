@@ -133,7 +133,7 @@ namespace E3DEngine
 	}
 }
 
-void* CreateGLESRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
+__api_function_ void* CreateGLESRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
 	renderSystem->Initilize();

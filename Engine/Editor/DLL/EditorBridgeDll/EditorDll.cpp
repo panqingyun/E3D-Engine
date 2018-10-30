@@ -31,10 +31,12 @@ void E3DEngine::EngineDelegateRef::SetupRenderSystem(int renderSystemType, IntPt
 {
 	if (renderSystemType == RenderSystemType::OPENGL)
 	{
+#pragma comment(lib,"GLRenderSystem.lib")
 		m_pRenderSystem = CreateGLRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
 	}
 	else if(renderSystemType == RenderSystemType::OPENGLES)
 	{
+#pragma comment(lib,"ESRenderSystem.lib")
 		m_pRenderSystem = CreateGLESRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
 	}
 	::SetRenderSystem(m_pRenderSystem);

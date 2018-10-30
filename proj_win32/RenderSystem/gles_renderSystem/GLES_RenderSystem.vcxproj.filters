@@ -19,6 +19,9 @@
     <Filter Include="Texture">
       <UniqueIdentifier>{2caf6a02-080e-4480-9180-f59f60b97dca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GLES2">
+      <UniqueIdentifier>{0998e52d-055f-4561-b89d-524e73ae404e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -64,6 +67,9 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture2D.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.cpp">
+      <Filter>GLES2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESCubeMapTexture.hpp">
@@ -108,5 +114,8 @@
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\ESRenderSystemAPI.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.h">
+      <Filter>GLES2</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

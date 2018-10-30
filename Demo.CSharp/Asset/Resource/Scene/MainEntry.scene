@@ -6,7 +6,7 @@
             <Field ShowDebug="true" ShowNumber="1000" />
         </Component>
     </GameObject>
-    <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="1.000000,1.000000,1.000000,1.000000">
+    <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="ffffffff">
         <Transform Posistion="50.000000,50.000000,50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">

@@ -28,7 +28,6 @@ namespace E3DEngine
 	const std::string _Range = "Range";
 	const std::string _InnerID = "ID";
 	const std::string _Static = "IsStatic";
-	const std::string _VertexColor = "Color";
 
 	const std::string _Layer_AllLayer = "AllLayer";
 	const std::string _Component_ClassName = "ClassName";
@@ -321,9 +320,9 @@ namespace E3DEngine
 		}
 		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
-		if (objectElement->Attribute(_VertexColor) != nullptr)
+		if (objectElement->Attribute(_Color) != nullptr)
 		{
-			go->SetColor(Convert::ToColor4(*objectElement->Attribute(_VertexColor)));
+			go->SetColor(Convert::ToColor4(*objectElement->Attribute(_Color)));
 		}
 		if (objectElement->Attribute(_InnerID) != nullptr)
 		{

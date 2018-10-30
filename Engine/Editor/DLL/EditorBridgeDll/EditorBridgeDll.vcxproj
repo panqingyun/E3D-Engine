@@ -71,7 +71,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>E3DEngine.lib;GLRenderSystem.lib;ESRenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E3DEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>E:\E3D\trunk\proj_win32\bin\Editor\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

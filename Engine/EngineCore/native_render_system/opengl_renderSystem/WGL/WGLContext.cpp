@@ -63,13 +63,15 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 
 	wglMakeCurrent(pDC, hglrc);		//选择绘制情景对象
 	glewInit();
+	glEnable(GL_DEPTH_TEST);
+	glPointSize(1);
+	glLineWidth(1);
 	glEnable(GL_POINT_SMOOTH);
 	glEnable(GL_LINE_SMOOTH);
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
-	glEnable(GL_MULTISAMPLE);
-	glClearDepth(1.0f);
-	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	return TRUE;
 }

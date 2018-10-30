@@ -8,6 +8,10 @@
 	NORMAL:attr_normal;
 }
 
+#ifdef __GLES__
+precision highp float;
+#endif
+
 #include "Standard.shader"
 
 varying vec4 DestinationColor;
@@ -31,6 +35,7 @@ precision highp float;
 #endif
 
 varying vec4 DestinationColor; // 1
+
 void main(void) 
 { // 2
 	gl_FragColor = DestinationColor;

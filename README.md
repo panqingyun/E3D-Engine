@@ -8,6 +8,7 @@
 - [x] 文理序列帧
 - [x] 材质
 - [x] RenderToTexture
+- [x] CubeMapTexture
 - [x] 多FBO
 - [x] 渲染合批
 - [x] 模型读取和显示
@@ -17,7 +18,7 @@
 - [ ] 实时阴影
 - [ ] 骨骼动画
 - [ ] UI
-- [ ] 脚本系统
+- [ ] 脚本系统完善
 
 #### 渲染系统使用的OpenGL 及 OpenGL ES，Windows上OpenGL ES使用AMD的ES模拟器。
 

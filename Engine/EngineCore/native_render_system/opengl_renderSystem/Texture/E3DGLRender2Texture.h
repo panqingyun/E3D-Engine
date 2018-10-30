@@ -1,5 +1,5 @@
-#ifndef __GLES_RENDER_TEXTURE_H__
-#define __GLES_RENDER_TEXTURE_H__
+#ifndef __GL_RENDER_TEXTURE_H__
+#define __GL_RENDER_TEXTURE_H__
 
 #include "../FrameBufferObject/E3DFrameBufferObject.h"
 #include <src/RenderSystem/Texture/E3DRender2Texture.h>
@@ -7,17 +7,18 @@
 
 namespace E3DEngine
 {
-	class GLES_Render2Texture : public Render2Texture
+	using namespace GLRenderSystem;
+	class GL_Render2Texture : public Render2Texture
 	{
-		friend class GLES_TextureDataManager;
+		friend class GL_TextureDataManager;
 	protected:
-		GLES_Render2Texture()
+		GL_Render2Texture()
 		{
 		}
 	public:
 		virtual void CreateRenderTarget(float width, float height) override;
 	public:
-		~GLES_Render2Texture();
+		~GL_Render2Texture();
 		virtual void  Bind();
 
 		virtual void SetTextureUniformIndex(int index, UINT program) override;

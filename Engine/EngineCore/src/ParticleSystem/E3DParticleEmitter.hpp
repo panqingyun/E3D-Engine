@@ -87,7 +87,7 @@ namespace E3DEngine
         float		m_fParticleColor;
         int			m_nEffectID;
         bool		m_bIsLoop;
-        event		EventDelegates StopEmitterHandle;
+        Event::EventDelegates StopEmitterHandle;
         bool		m_bIsBillboard;
         vec3f		m_EmitterPosition;
         bool		bIsFirstCreate;

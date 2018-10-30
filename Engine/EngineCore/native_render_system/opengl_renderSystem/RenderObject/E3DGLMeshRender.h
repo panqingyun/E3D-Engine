@@ -1,18 +1,18 @@
 #pragma once
-#include "E3DGLESRender.hpp"
+#include "E3DGLRender.hpp"
 #include <src/Mesh/E3DMeshRender.h>
 
 namespace E3DEngine
 {
-	class GLES_MeshRender : public MeshRender
+	class GL_MeshRender : public MeshRender
 	{
 	public:
-		GLES_MeshRender()
+		GL_MeshRender()
 		{
-			pRender = new GLES_Renderer;
+			pRender = new GL_Renderer;
 			pRender->mName = mName;
 		}
-		virtual ~GLES_MeshRender() override
+		virtual ~GL_MeshRender() override
 		{
 			SAFE_DELETE(pRender);
 		}
@@ -47,6 +47,6 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
 		virtual Camera *GetCamera() override;
 	protected:
-		GLES_Renderer * pRender;
+		GL_Renderer * pRender;
 	};
 }

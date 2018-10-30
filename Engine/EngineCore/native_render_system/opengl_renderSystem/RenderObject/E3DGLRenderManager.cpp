@@ -4,13 +4,13 @@
 //  Created by 潘庆云 on 2017/7/19.
 //
 
-#include "E3DGLESRenderManager.hpp"
-#include "../E3DGLESRenderSystem.hpp"
-#include "E3DGLESMeshRender.h"
+#include "E3DGLRenderManager.hpp"
+#include "../E3DGL_RenderSystem.h"
+#include "E3DGLMeshRender.h"
 
 namespace E3DEngine
 {
-	Renderer * GLES_RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
+	Renderer * GL_RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
 		if (!isStatic)
 		{
@@ -39,7 +39,7 @@ namespace E3DEngine
 	}
 
 
-	void GLES_RendererManager::AddRenderer(int materialID, Renderer * rd)
+	void GL_RendererManager::AddRenderer(int materialID, Renderer * rd)
 	{
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
 		{
@@ -47,13 +47,13 @@ namespace E3DEngine
 		}
 	}
 
-	E3DEngine::Renderer * GLES_RendererManager::GenRender()
+	E3DEngine::Renderer * GL_RendererManager::GenRender()
 	{
-		return new E3DEngine::GLES_Renderer();
+		return new E3DEngine::GL_Renderer();
 	}
 
 
-	void GLES_RendererManager::Cleanup()
+	void GL_RendererManager::Cleanup()
 	{
 		for (auto & render : m_mapVertexBuffers)
 		{
@@ -62,21 +62,21 @@ namespace E3DEngine
 		m_mapVertexBuffers.clear();
 	}
 
-	E3DEngine::Renderer * GLES_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)
+	E3DEngine::Renderer * GL_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)
 	{
 		Renderer * buffer = nullptr;
 		switch (type)
 		{
 		case E3DEngine::MESH:
-			buffer = new GLES_MeshRender;
+			buffer = new GL_MeshRender;
 			break;
 		default:
-			buffer = new GLES_Renderer;
+			buffer = new GL_Renderer;
 			break;
 		}
 		buffer->RenderIndex = eRI_Normal;
 		m_mapVertexBuffers[buffer->ID] = buffer;
-		buffer->SetMaterial(GLES_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));	
+		buffer->SetMaterial(GL_RenderSystem::GetRenderSystem()->GetMaterialManager()->GetMaterial(materialID));
 		return buffer;
 	}
 

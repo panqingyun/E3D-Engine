@@ -21,7 +21,7 @@ namespace E3DEngine
 		virtual void InvalidTexture()override;
 	protected:
 		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back) override;
-
+		void changeRgbModule(TextureData *data);
 	protected:
 		GLuint			m_nTextureUniform;
 		GLuint			m_nTextureIndex;

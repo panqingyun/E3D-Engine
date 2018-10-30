@@ -15,9 +15,9 @@ namespace E3DEngine
 			Widget(float width, float height);
 
 		public:
-			event EventDelegates Click;
-			event EventDelegates Touch;
-			event EventDelegates Drag;
+			Event::EventDelegates Click;
+			Event::EventDelegates Touch;
+			Event::EventDelegates Drag;
 
 		public:
 			virtual void setWidth(float width);

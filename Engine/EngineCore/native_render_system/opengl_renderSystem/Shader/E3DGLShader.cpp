@@ -4,17 +4,18 @@
 //  Created by 潘庆云 on 2017/3/30.
 //
 
-#include "E3DGLESShader.hpp"
+#include "E3DGLShader.hpp"
 #include <src/Source/E3DDebug.h>
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include <src/Source/Helpers.h>
 #include <src/Scene/E3DSceneManager.hpp>
-#include "../E3DGLESRenderSystem.hpp"
+#include "../E3DGL_RenderSystem.h"
 
 namespace E3DEngine
 {
+	using namespace GLRenderSystem;
 	
-	void GLES_Shader::InitShaderVar()
+	void GL_Shader::InitShaderVar()
 	{
 		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
 		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
@@ -32,7 +33,7 @@ namespace E3DEngine
 		uniformSetFunc["samplerCube"] = &Shader::createSamplerUniform;
 	}
 
-	void GLES_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
+	void GL_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
 	{
 		ShaderProgram = glCreateProgram();
 		GLuint &&vertexShaderHandle = compileShader(vertexShader, GL_VERTEX_SHADER);
@@ -72,7 +73,7 @@ namespace E3DEngine
 	}
 
 
-	GLuint GLES_Shader::compileShader(const char* shaderContent, GLenum shaderType)
+	GLuint GL_Shader::compileShader(const char* shaderContent, GLenum shaderType)
 	{
 		if (shaderContent == nullptr)
 		{
@@ -102,22 +103,22 @@ namespace E3DEngine
 	}
 
 
-	void GLES_Shader::compileShaders()
+	void GL_Shader::compileShaders()
 	{
 
 	}
 
-	void GLES_Shader::UseProgram()
+	void GL_Shader::UseProgram()
 	{
 		glUseProgram(ShaderProgram);
 	}
 
-	void GLES_Shader::UseNullProgram()
+	void GL_Shader::UseNullProgram()
 	{
 		glUseProgram(NULL_SHADER);
 	}
 
-	void GLES_Shader::UpdateProgramUniformValue()
+	void GL_Shader::UpdateProgramUniformValue()
 	{		
 		for (auto & uniformKeyValue : int1UniformList)
 		{
@@ -208,9 +209,7 @@ namespace E3DEngine
 		}
 	}
 
-	int i = 0;
-
-	void GLES_Shader::UpdateAttribPointerValue(UINT vertexType)
+	void GL_Shader::UpdateAttribPointerValue(UINT vertexType)
 	{
 		std::vector<Attribute> *attrList = nullptr;
 		if (vertexType == STATIC_VERTEX)
@@ -230,12 +229,12 @@ namespace E3DEngine
 		EnableVertexAttribArray(vertexType);
 	}
 
-	void GLES_Shader::DeleteShader()
+	void GL_Shader::DeleteShader()
 	{
 		glDeleteShader(ShaderProgram);
 	}
 
-	void GLES_Shader::EnableVertexAttribArray(UINT vertexType)
+	void GL_Shader::EnableVertexAttribArray(UINT vertexType)
 	{
 		std::vector<Attribute> *attrList = nullptr;
 		if (vertexType == STATIC_VERTEX)
@@ -254,7 +253,7 @@ namespace E3DEngine
 		
 	}
 
-	void GLES_Shader::bindAttribLoaction(UINT vertexType)
+	void GL_Shader::bindAttribLoaction(UINT vertexType)
 	{
 		std::vector<Attribute> *attrList = nullptr;
 		if (vertexType == STATIC_VERTEX)
@@ -272,7 +271,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Shader::loadAttribLocation(UINT vertexType)
+	void GL_Shader::loadAttribLocation(UINT vertexType)
 	{
 		std::vector<Attribute> *attrList = nullptr;
 		if (vertexType == STATIC_VERTEX)
@@ -290,7 +289,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Shader::loadUniformLocation()
+	void GL_Shader::loadUniformLocation()
 	{
 		for (auto & uniformKeyValue : int1UniformList)
 		{
@@ -354,7 +353,7 @@ namespace E3DEngine
 	}
 
 
-	GLES_Shader::~GLES_Shader()
+	GL_Shader::~GL_Shader()
 	{
 		DeleteShader();
 		float1UniformList.clear();
@@ -368,18 +367,18 @@ namespace E3DEngine
 	}
 	
 
-	GLint GLES_Shader::LoadSelfDefUniform(std::string name)
+	GLint GL_Shader::LoadSelfDefUniform(std::string name)
 	{
 		return glGetUniformLocation(ShaderProgram, name.c_str());
 	}
 
-	GLuint GLES_Shader::LoadSelfDefAttribuate(std::string name)
+	GLuint GL_Shader::LoadSelfDefAttribuate(std::string name)
 	{
 		GLuint attr = glGetAttribLocation(ShaderProgram, name.c_str());
 		return attr;
 	}
 
-	void GLES_Shader::AddAttriList(Attribute attri, bool isStatic)
+	void GL_Shader::AddAttriList(Attribute attri, bool isStatic)
 	{
 		if (isStatic)
 		{

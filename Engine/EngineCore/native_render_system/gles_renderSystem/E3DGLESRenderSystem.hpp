@@ -38,7 +38,7 @@ namespace E3DEngine
 		void	SetupDefaultFrameBuffer();
 
 	private:
-		FrameBufferObject * defaultFrameBuffer;
+		GLESRenderSystem::FrameBufferObject * defaultFrameBuffer;
 		EGL_Context *		m_pEGL_Context;
 	};
 

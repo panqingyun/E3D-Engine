@@ -87,7 +87,7 @@ void InitEngine(HWND hWnd)
 	// TODO
 	::SetMonoPath("../Data/E3DAssembly",strPath + "../Library/AssemblyCSharp.dll", "../Data/E3DAssembly/E3DEngine.dll");
 	::SetDebugLogOutFunc(LogOutput);
-	void * renderSystem = CreateRenderSystem(hWnd, width, height);
+	void * renderSystem = CreateGLESRenderSystem(hWnd, width, height);
 	::SetRenderSystem(renderSystem);
 	::StartAppliaction(startScenePath.c_str());
 }

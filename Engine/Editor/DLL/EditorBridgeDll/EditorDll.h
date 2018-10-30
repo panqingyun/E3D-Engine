@@ -8,13 +8,20 @@ using namespace System;
 #pragma  managed
 namespace E3DEngine 
 {
+	public ref class RenderSystemType
+	{
+	public:
+		static int OPENGL = 0;
+		static int OPENGLES = 1;
+	};
+
 	public ref class EngineDelegateRef
 	{
 	public: 
 		void InitilizeEngine();
 		void StartAppliaction();
 		void StopAppliaction();
-		void SetupRenderSystem(IntPtr nativeWindow, int width, int height);
+		void SetupRenderSystem(int renderSystem, IntPtr nativeWindow, int width, int height);
 		void SetDebugLogOutFunc(IntPtr func);
 		void SetAppDataPath(String^ path);
 		void EngineUpdate();
@@ -33,6 +40,7 @@ namespace E3DEngine
 
 	private:
 		bool mInRun;
+		void *m_pRenderSystem;
 	};
 }
 #pragma unmanaged

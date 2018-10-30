@@ -15,6 +15,7 @@
 E3DEngine::GLES_RenderSystem * g_RenderSystem = nullptr;
 namespace E3DEngine
 {
+	using namespace GLESRenderSystem;
 	void GLES_RenderSystem::Initilize()
 	{
 		m_pTextureDataManager = dynamic_cast<TextureDataManager*>(new GLES_TextureDataManager);
@@ -132,7 +133,7 @@ namespace E3DEngine
 	}
 }
 
-void* CreateRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
+void* CreateGLESRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
 	renderSystem->Initilize();

@@ -4,13 +4,13 @@
 //  Created by 潘庆云 on 2017/7/17.
 //
 
-#include "E3DGLESMaterialManager.hpp"
+#include "E3DGLMaterialManager.hpp"
 #include "src/Source/Helpers.h"
-#include "E3DGLESMaterial.hpp"
+#include "E3DGLMaterial.hpp"
 
 namespace E3DEngine
 {
-	GLES_MaterialManager::GLES_MaterialManager()
+	GL_MaterialManager::GL_MaterialManager()
 	{
 		m_BlendFactorMap[ZERO] = GL_ZERO;
 		m_BlendFactorMap[ONE] = GL_ONE;
@@ -25,8 +25,8 @@ namespace E3DEngine
 	}
 
 
-	E3DEngine::Material * GLES_MaterialManager::createMatrerial()
+	E3DEngine::Material * GL_MaterialManager::createMatrerial()
 	{
-		return new GLES_Material();
+		return new GL_Material();
 	}
 }

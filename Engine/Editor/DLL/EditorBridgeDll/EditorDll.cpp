@@ -4,7 +4,8 @@
 
 #include "EditorDll.h"
 #include <EngineAPI.h>
-#include <RenderSystemAPI.h>
+#include <ESRenderSystemAPI.h>
+#include <GLRenderSystemAPI.h>
 #include "Scene.h"
 
 #pragma managed
@@ -12,6 +13,7 @@
 using namespace msclr::interop;
 void E3DEngine::EngineDelegateRef::InitilizeEngine()
 {
+	m_pRenderSystem = nullptr;
 	::InitilizeEngine(true);
 }
 
@@ -25,9 +27,17 @@ void E3DEngine::EngineDelegateRef::StopAppliaction()
 	::StopAppliaction();
 }
 
-void E3DEngine::EngineDelegateRef::SetupRenderSystem(IntPtr nativeWindow, int width, int height)
+void E3DEngine::EngineDelegateRef::SetupRenderSystem(int renderSystemType, IntPtr nativeWindow, int width, int height)
 {
-	::SetRenderSystem(CreateGLESRenderSystem((HWND)nativeWindow.ToInt32(), width, height));
+	if (renderSystemType == RenderSystemType::OPENGL)
+	{
+		m_pRenderSystem = CreateGLRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
+	}
+	else if(renderSystemType == RenderSystemType::OPENGLES)
+	{
+		m_pRenderSystem = CreateGLESRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
+	}
+	::SetRenderSystem(m_pRenderSystem);
 }
 
 void E3DEngine::EngineDelegateRef::SetDebugLogOutFunc(IntPtr func)

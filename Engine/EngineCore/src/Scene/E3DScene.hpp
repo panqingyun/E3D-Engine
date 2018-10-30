@@ -61,7 +61,7 @@ namespace E3DEngine
 	protected:
 		virtual void CreateBehaviour() override;
 	public:
-		event EventDelegates	SceneReloadEvent;
+		Event::EventDelegates	SceneReloadEvent;
 
 	private:
 		std::vector<Camera*>			m_vecCamera;

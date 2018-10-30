@@ -4,7 +4,7 @@
 //  Created by 潘庆云 on 2017/7/17.
 //
 
-#include "E3DGLESRender.hpp"
+#include "E3DGLRender.hpp"
 #include <src/Camera/E3DCamera.h>
 #include <src/Object/E3DTransform.hpp>
 #include <src/RenderSystem/E3DRenderSystem.hpp>
@@ -15,7 +15,7 @@
 namespace E3DEngine
 {
 	
-	void GLES_Renderer::updateArrayBuffer(float deltaTime)
+	void GL_Renderer::updateArrayBuffer(float deltaTime)
 	{
 		if (pMaterial == nullptr)
 		{
@@ -32,7 +32,7 @@ namespace E3DEngine
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 	}
 
-	void GLES_Renderer::TransformChange()
+	void GL_Renderer::TransformChange()
 	{
 		if (!mBatchVertex.empty())
 		{
@@ -41,7 +41,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
+	void GL_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		Renderer::FillEnd(objId, vertexCount, indexCount);
 		if (pMaterial == nullptr)
@@ -61,7 +61,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::ClearVertexIndexBuffer()
+	void GL_Renderer::ClearVertexIndexBuffer()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
@@ -72,7 +72,7 @@ namespace E3DEngine
 	}
 
 
-	void GLES_Renderer::SetDrawModule(DWORD module)
+	void GL_Renderer::SetDrawModule(DWORD module)
 	{
 		switch (module)
 		{
@@ -97,7 +97,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::Render(float deltaTime)
+	void GL_Renderer::Render(float deltaTime)
 	{
 		if (pMaterial == nullptr)
 		{
@@ -121,7 +121,7 @@ namespace E3DEngine
 		afterRender(deltaTime);
 	}
 
-	void GLES_Renderer::updateEngineDefineShaderValue()
+	void GL_Renderer::updateEngineDefineShaderValue()
 	{
 		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
@@ -152,7 +152,7 @@ namespace E3DEngine
 	}
 
 
-	void GLES_Renderer::descPointLight()
+	void GL_Renderer::descPointLight()
 	{
 		std::map<UINT, Light*>& plights = SceneManager::GetCurrentScene()->GetPointLights();
 
@@ -190,7 +190,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::afterRender(float deltaTime)
+	void GL_Renderer::afterRender(float deltaTime)
 	{
 		if (pMaterial == nullptr)
 		{

@@ -74,6 +74,20 @@ namespace E3DEditor.ViewModel
                 mainWnd = value;
             }
         }
+
+        private string windowTitle = "";
+        public string WindowTitle
+        {
+            get
+            {
+                return windowTitle;
+            }
+            set
+            {
+                windowTitle = value;
+                OnPropertyChanged("WindowTitle");
+            }
+        }
         TabItemWithClose gameItem = null;
         TabItemWithClose renderItem = null;
         private void createRenderPanel()
@@ -193,15 +207,16 @@ namespace E3DEditor.ViewModel
             }
             else
             {
-                RenderDelegate.SetupRenderSystem(handle, (int)renderSize.Width, (int)renderSize.Height);
+                int renderType = Config.RenderSystemType;
+                RenderDelegate.SetupRenderSystem( renderType, handle, (int)renderSize.Width, (int)renderSize.Height);
                 RenderDelegate.StartAppliaction();
                 mainWnd.objectList.ItemsSource = null;
                 if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
                 {
                     E3DEngine.SceneManageRef.GetInstance().LoadScene("../Data/Scene/default.scene");
                 }
-                loadGameObjectList();
                 curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
+                loadGameObjectList();
                 engineLoaded = true;
             }
         }
@@ -276,6 +291,18 @@ namespace E3DEditor.ViewModel
 
             mainWnd.objectList.ItemsSource = gameObjectList;
             E3DEngine.SceneManageRef.GetInstance().LoadEditorObject();
+            if (curScenePath != "")
+            {
+                WindowTitle = curScenePath;
+                if(Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGL)
+                {
+                    WindowTitle += "<OpenGL>";
+                }
+                else if (Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGLES)
+                {
+                    WindowTitle += "<OpenGL ES>";
+                }
+            }
         }
 
         private Dictionary<int, TabItemWithClose> editorItemMap = new Dictionary<int, TabItemWithClose>();
@@ -557,6 +584,26 @@ namespace E3DEditor.ViewModel
             {
                 createProject();
             }
+            else if(menuName == "GL4RS")
+            {
+                Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGL.ToString());
+                restartApp();
+            }
+            else if(menuName == "ES2RS")
+            {
+                Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGLES.ToString());
+                restartApp();
+            }
+        }
+
+        private void restartApp()
+        {
+            System.Windows.Forms.Application.Restart();
+            if (windowsPlayer != null)
+            {
+                windowsPlayer.Kill();
+            }
+            Environment.Exit(0);
         }
 
         private void loadEditorMenuItem()

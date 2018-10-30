@@ -10,7 +10,7 @@
 #include "Standard.shader"
 
 varying vec4 DestinationColor;
-varying highp vec2 v_coord;
+varying vec2 v_coord;
 void main(void)
 {	
 	vec4 interpolatedPosition = vec4(position ,1.0);	
@@ -28,9 +28,12 @@ void main(void)
 
 #Framgent_Begin
 
+#ifdef __GLES__
 precision highp float;
+#endif
+
 #include "Fragment.shader"
-varying highp vec2 v_coord;
+varying vec2 v_coord;
 uniform sampler2D myTexture0;
 varying vec4 DestinationColor;
 void main(void) 

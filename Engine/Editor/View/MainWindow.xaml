@@ -130,7 +130,10 @@
 					<MenuItem Header="保存场景" Foreground="Black" x:Name="svaeScn" Click="menu_Click"/>
 				</MenuItem>
 				<MenuItem Header="编辑">
-
+					<MenuItem Foreground="Black" Header="渲染系统（需重启）">
+						<MenuItem Foreground="Black" Header="OpenGL 4" x:Name="GL4RS"  Click="menu_Click"/>
+						<MenuItem Foreground="Black" Header="OpenGL ES 2.0" x:Name="ES2RS" Click="menu_Click"/>
+					</MenuItem>
 				</MenuItem>
 				<MenuItem Header="添加">
 					<MenuItem Header="GameObject" Foreground="Black"/>
@@ -152,6 +155,7 @@
 					<MenuItem Header="关于" Foreground="Black"/>
 				</MenuItem>
 			</Menu>
+			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" Grid.RowSpan="2" Grid.ColumnSpan="8" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
 			<Grid.ColumnDefinitions>

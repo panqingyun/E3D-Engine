@@ -30,9 +30,11 @@ void main(void)
 
 #Framgent_Begin
 
+#ifdef __GLES__
 precision highp float;
+#endif
 #include "Fragment.shader"
-varying highp vec2 v_coord;
+varying vec2 v_coord;
 uniform sampler2D myTexture0;
 varying vec4 DestinationColor;
 void main(void) 

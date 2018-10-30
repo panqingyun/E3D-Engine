@@ -7,8 +7,8 @@ void E3DEngine::GLES_Render2Texture::Update(float deltaTime)
 
 void E3DEngine::GLES_Render2Texture::CreateRenderTarget(float width, float height)
 {
-	m_fbo = new FrameBufferObject();
-	m_fbo->Create(width, height, RENDER_TO_TEXTURE);
+	m_fbo = new GLESRenderSystem::FrameBufferObject();
+	m_fbo->Create(width, height, GLESRenderSystem::RENDER_TO_TEXTURE);
 	m_nWidth = width;
 	m_nHeight = height;
 	m_nTextureBuffer = m_fbo->GetTextureBufferID();

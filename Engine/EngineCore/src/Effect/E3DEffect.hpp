@@ -21,7 +21,7 @@ namespace E3DEngine
         virtual void Play() = 0;
 		virtual void Stop();
     public:
-        event EventDelegates PlayEffectEndHandler; // 特效播放完成的回调函数
+        Event::EventDelegates PlayEffectEndHandler; // 特效播放完成的回调函数
     protected:
         virtual void playInFrame(float deltaTime) = 0;
     protected:

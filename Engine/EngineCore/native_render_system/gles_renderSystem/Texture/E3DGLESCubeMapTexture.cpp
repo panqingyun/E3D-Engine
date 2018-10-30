@@ -36,6 +36,8 @@ namespace E3DEngine
 			glEnable(GL_TEXTURE_CUBE_MAP);
 			//glActiveTexture(textureEnum);
 			glBindTexture(GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
+			changeRgbModule(up); changeRgbModule(down); changeRgbModule(left);
+			changeRgbModule(right); changeRgbModule(front); changeRgbModule(back);
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, right->rgbModule, right->width, right->height, 0, right->rgbModule, GL_UNSIGNED_BYTE, right->imgData);
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, left->rgbModule, left->width, left->height, 0, left->rgbModule, GL_UNSIGNED_BYTE, left->imgData);
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, up->rgbModule,  up->width, up->height, 0, up->rgbModule, GL_UNSIGNED_BYTE, up->imgData);
@@ -47,6 +49,25 @@ namespace E3DEngine
 			glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 			glGenerateMipmap(GL_LINEAR_MIPMAP_LINEAR);//GL_LINEAR_MIPMAP_LINEAR
 		}
+	}
+
+
+	void GLES_CubeMapTexture::changeRgbModule(TextureData *data)
+	{
+		DWORD  rgbModule = 0;
+		if (data->rgbModule == PixelFormat::R8G8B8)
+		{
+			rgbModule = GL_RGB;
+		}
+		else if (data->rgbModule == PixelFormat::R8G8B8A8)
+		{
+			rgbModule = GL_RGBA;
+		}
+		else
+		{
+			// TODO
+		}
+		data->rgbModule = rgbModule;
 	}
 
 }

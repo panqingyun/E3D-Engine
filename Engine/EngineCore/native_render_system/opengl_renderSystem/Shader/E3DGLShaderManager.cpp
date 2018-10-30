@@ -1,5 +1,5 @@
-﻿#include "E3DGLESShaderManager.h"
-#include "E3DGLESShader.hpp"
+﻿#include "E3DGLShaderManager.h"
+#include "E3DGLShader.hpp"
 #include "..\..\..\src\Source\E3DVertex.h"
 #include "..\..\..\src\Scene\E3DSceneManager.hpp"
 #include <src/Source/Helpers.h>
@@ -10,14 +10,14 @@ const std::string gVertexEndStr = "#Vertex_End";
 const std::string gFragmentBeginStr = "#Framgent_Begin";
 const std::string gFragmentEndStr = "#Framgent_End";
 
-E3DEngine::GLES_ShaderManager::GLES_ShaderManager()
+E3DEngine::GL_ShaderManager::GL_ShaderManager()
 {
 	initShaderAttributeVar();
 }
 
-E3DEngine::Shader * E3DEngine::GLES_ShaderManager::createShader(std::string shaderPath, std::string unifVar)
+E3DEngine::Shader * E3DEngine::GL_ShaderManager::createShader(std::string shaderPath, std::string unifVar)
 {
-	GLES_Shader *shader = new GLES_Shader;
+	GL_Shader *shader = new GL_Shader;
 	shader->InitShaderVar();
 	std::string vertexShaderString;
 	std::string fragmentShaderString;
@@ -26,7 +26,7 @@ E3DEngine::Shader * E3DEngine::GLES_ShaderManager::createShader(std::string shad
 	return shader;
 }
 
-void E3DEngine::GLES_ShaderManager::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType, uint type)
+void E3DEngine::GL_ShaderManager::createAttribute(std::string typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint BindLocation, std::string attrType, uint type)
 {
 	Attribute attribute;
 	attribute.AttributeSize = AttributeSize;
@@ -48,7 +48,7 @@ void E3DEngine::GLES_ShaderManager::createAttribute(std::string typeName, int St
 	}
 }
 
-void E3DEngine::GLES_ShaderManager::initShaderAttributeVar()
+void E3DEngine::GL_ShaderManager::initShaderAttributeVar()
 {
 	createAttribute("POSITION", 0, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_VERTEX, "vec3", STATIC_VERTEX);
 	createAttribute("NORMAL", 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 3, LOCATION_ATTRIB_NORMAL, "vec3", STATIC_VERTEX);
@@ -72,7 +72,7 @@ void E3DEngine::GLES_ShaderManager::initShaderAttributeVar()
 	createAttribute("DYNAMICCOLOR", 9, GL_FLOAT, GL_FALSE, sizeof(BatchVertex), 4, LOCATION_ATTRIB_DYNAMIC_COLOR, "vec4", DYNAMIC_VERTEX);
 }
 
-std::string E3DEngine::GLES_ShaderManager::processVS()
+std::string E3DEngine::GL_ShaderManager::processVS()
 {
 #ifdef __IOS__
 	std::string priveVs = "#define __IOS__\n";
@@ -109,7 +109,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	return priveVs;
 }
 
-void E3DEngine::GLES_ShaderManager::processUniformVar(GLES_Shader *shader, std::string &shaderContent)
+void E3DEngine::GL_ShaderManager::processUniformVar(GL_Shader *shader, std::string &shaderContent)
 {
 	size_t&& pos = shaderContent.find("uniform");
 	while (pos != std::string::npos)
@@ -160,7 +160,7 @@ void E3DEngine::GLES_ShaderManager::processUniformVar(GLES_Shader *shader, std::
 	processEngineDefineUniform(shader);
 }
 
-void E3DEngine::GLES_ShaderManager::processEngineDefineUniform(GLES_Shader *shader)
+void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
 {
 	shader->RunUniformFunc("mat4",PROJ_MATRIX, "", 1);
 	shader->RunUniformFunc("mat4",VIEW_MATRIX, "", 1);
@@ -181,7 +181,7 @@ void E3DEngine::GLES_ShaderManager::processEngineDefineUniform(GLES_Shader *shad
 	}
 }
 
-std::string E3DEngine::GLES_ShaderManager::preProcessShader(GLES_Shader *shader, std::string shaderFileName, std::string &vs_content, std::string &fs_content)
+std::string E3DEngine::GL_ShaderManager::preProcessShader(GL_Shader *shader, std::string shaderFileName, std::string &vs_content, std::string &fs_content)
 {
 	std::ifstream infile;
 	infile.open(shaderFileName.data());   //将文件流对象与文件连接起来 
@@ -200,7 +200,7 @@ std::string E3DEngine::GLES_ShaderManager::preProcessShader(GLES_Shader *shader,
 	return shaderContent;
 }
 
-void E3DEngine::GLES_ShaderManager::appendInclude(std::string &strLine, std::string folder)
+void E3DEngine::GL_ShaderManager::appendInclude(std::string &strLine, std::string folder)
 {
 	size_t pos = strLine.find("#include");
 	while (pos != std::string::npos)
@@ -223,7 +223,7 @@ void E3DEngine::GLES_ShaderManager::appendInclude(std::string &strLine, std::str
 	}
 }
 
-void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std::string attri, std::string &shaderContent)
+void E3DEngine::GL_ShaderManager::processAttributeVar(GL_Shader *shader, std::string attri, std::string &shaderContent)
 {
 	StringBuilder::ReplaceAll(attri, "\t", "");
 	StringBuilder::ReplaceAll(attri, " ", "");
@@ -263,7 +263,7 @@ void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std
 	shaderContent.insert(0, attributeVari);
 }
 
-void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &str, std::string folder, std::string &vs_content)
+void E3DEngine::GL_ShaderManager::getVertex(GL_Shader *shader, std::string &str, std::string folder, std::string &vs_content)
 {
 	size_t pos_begin = str.find(gVertexBeginStr);
 	size_t pos_end = str.find(gVertexEndStr);
@@ -288,7 +288,7 @@ void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &
 	}
 }
 
-void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string &str, std::string folder, std::string &fs_content)
+void E3DEngine::GL_ShaderManager::getFragment(GL_Shader *shader, std::string &str, std::string folder, std::string &fs_content)
 {
 	size_t pos_begin = str.find(gFragmentBeginStr);
 	size_t pos_end = str.find(gFragmentEndStr);

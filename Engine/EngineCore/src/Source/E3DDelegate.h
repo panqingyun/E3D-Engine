@@ -285,9 +285,6 @@ namespace E3DEngine
     {
         return new Event::Delegate<T, F>(_object, func);
     }
-    
-    
-#define  event Event::
 }
 using EventHandleFunction = E3DEngine::Event::IDelegate<void, E3DEngine::IObject*,  E3DEngine::EventArgs*>;
 

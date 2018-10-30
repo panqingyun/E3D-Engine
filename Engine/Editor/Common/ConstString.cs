@@ -17,7 +17,7 @@ namespace E3DEditor.Common
         public const string Config_dialogAtlasFilePath = "dialogAtlasPath";
         public const string Config_resourceFilePath = "resourceFilePath";
         public const string Config_gameWidht = "width";
-        public const string Config_gameHeight = "height";
+        public const string Config_renderSystemType = "RenderSystem";
         public const string TAB = "\t";
         public const string Mp3Icon = "/Resources/Pic/Icon/g11.ico";
         public const string EffectIcon = "/Resources/Pic/Icon/g4.ico";

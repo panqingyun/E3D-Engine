@@ -74,7 +74,7 @@ typedef  int			int32;
 typedef float			float32;
 typedef double			float64;
 
-#ifndef __IOS__
+#if !(defined __IOS__) && !(defined __GL__)
 #define GLchar char
 #endif
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \

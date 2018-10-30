@@ -208,8 +208,6 @@ namespace E3DEngine
 		}
 	}
 
-	int i = 0;
-
 	void GLES_Shader::UpdateAttribPointerValue(UINT vertexType)
 	{
 		std::vector<Attribute> *attrList = nullptr;

@@ -9,15 +9,14 @@ namespace E3DEditor
     public class Config
     {
         public static string GamePath = "";
-        public static int GameWidth = 0;
-        public static int GameHeight = 0;
+        public static int RenderSystemType = 0;
         
         static XmlDocument xDoc = new XmlDocument();
 
         public static void Init()
         {
             xDoc = new XmlDocument();
-            //readConfig();
+            readConfig();
         }
 
         private static void readConfig()
@@ -25,8 +24,7 @@ namespace E3DEditor
             GamePath = getAppConfig(CONST_STRING.Config_resourceFilePath);
             try
             {
-                GameHeight = Convert.ToInt32(getAppConfig(CONST_STRING.Config_gameHeight));
-                GameWidth = Convert.ToInt32(getAppConfig(CONST_STRING.Config_gameWidht));
+                RenderSystemType = Convert.ToInt32(getAppConfig(CONST_STRING.Config_renderSystemType));
             }
             catch
             {
@@ -46,6 +44,7 @@ namespace E3DEditor
                 return;
             }
             setAppConfig(key, value);
+            SaveConfig();
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace E3DEditor
         /// </summary>
         public static void SaveConfig()
         {
-            xDoc.Save(GamePath + "assets.config");
+            xDoc.Save(System.Windows.Forms.Application.ExecutablePath + ".config");
             readConfig();
         }
 
@@ -74,7 +73,7 @@ namespace E3DEditor
 
         private static string getAppConfig(string appKey)
         {
-            xDoc.Load(GamePath + "assets.config");
+            xDoc.Load(System.Windows.Forms.Application.ExecutablePath + ".config");
 
             var xNode = xDoc.SelectSingleNode("//appSettings");
 

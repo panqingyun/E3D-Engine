@@ -1,6 +1,6 @@
 
-varying highp vec3 vPosition;
-varying highp vec3 mCameraPos;
+varying vec3 vPosition;
+varying vec3 mCameraPos;
 
 vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
 {

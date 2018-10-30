@@ -9,7 +9,6 @@
 
 namespace E3DEngine
 {
-	const char * lightShader = "";
 
 	GLES_Material::GLES_Material()
 	{

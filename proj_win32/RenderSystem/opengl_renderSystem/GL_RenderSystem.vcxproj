@@ -5,6 +5,14 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorRelease|Win32">
+      <Configuration>EditorRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorRelease|x64">
+      <Configuration>EditorRelease</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -36,7 +44,14 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -49,7 +64,14 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -62,10 +84,16 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -77,9 +105,25 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;glew-2.1.0\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
-    <ReferencePath>glew-2.1.0\lib\Release\Win32;$(ReferencePath)</ReferencePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
     <TargetName>GLRenderSystem</TargetName>
     <OutDir>..\..\bin\Editor\lib</OutDir>
+    <LibraryPath>glew-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'">
+    <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;glew-2.1.0\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <TargetName>GLRenderSystem</TargetName>
+    <OutDir>..\..\bin\Editor\lib</OutDir>
+    <LibraryPath>glew-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>GLRenderSystem</TargetName>
+    <OutDir>..\..\bin\Editor\lib\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'">
+    <TargetName>GLRenderSystem</TargetName>
+    <OutDir>..\..\bin\Editor\lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,31 +156,15 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;__GL__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,11 +172,114 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glew32.lib;glew32s.lib</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;__GL__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath);glew-2.1.0\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;opengl32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;__GL__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;opengl32.lib</AdditionalDependencies>
+      <TargetMachine>
+      </TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;__GL__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>glew32.lib;glew32s.lib;opengl32.lib</AdditionalDependencies>
+      <TargetMachine>
+      </TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\E3DGL_RenderSystem.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\FrameBufferObject\E3DFrameBufferObject.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterial.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterialManager.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLMeshRender.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRender.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRenderManager.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShader.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShaderManager.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLCubeMapTexture.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLRender2Texture.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTexture2D.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTextureDataManager.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\WGL\WGLContext.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\E3DGL_RenderSystem.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\FrameBufferObject\E3DFrameBufferObject.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include\Include.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include\RenderSystemAPI.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterial.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterialManager.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLMeshRender.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRender.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRenderManager.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShader.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShaderManager.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLCubeMapTexture.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLRender2Texture.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTexture2D.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTextureDataManager.hpp" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\WGL\WGLContext.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

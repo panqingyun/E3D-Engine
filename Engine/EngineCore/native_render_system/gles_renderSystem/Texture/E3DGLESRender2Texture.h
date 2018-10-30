@@ -30,7 +30,7 @@ namespace E3DEngine
 		virtual void Update(float deltaTime) override;
 
 	protected:
-		FrameBufferObject   *	m_fbo;
+		GLESRenderSystem::FrameBufferObject   *	m_fbo;
 		GLuint			m_nTextureUniform;
 		GLuint			m_nTextureIndex;
 	};

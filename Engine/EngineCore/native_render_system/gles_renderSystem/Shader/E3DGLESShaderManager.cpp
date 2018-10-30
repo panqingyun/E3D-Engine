@@ -83,6 +83,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 #ifdef WIN32
 	std::string priveVs = "#define __WIN32__\n";
 #endif
+	priveVs.append("#define __GLES__\n");
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
 		priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
@@ -297,5 +298,6 @@ void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string
 		fs_content = str.substr(pos_begin + gFragmentBeginStr.length() + 1, pos_end - pos_begin - 1 - gFragmentBeginStr.length());
 		appendInclude(fs_content, folder);
 		processUniformVar(shader, fs_content);
+		fs_content = "#define __GLES__\n" + fs_content;
 	}
 }

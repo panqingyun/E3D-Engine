@@ -10,7 +10,7 @@
 
 #include "Standard.shader"
 
-varying lowp vec2 v_coord;
+varying vec2 v_coord;
 
 void main(void)
 {
@@ -26,9 +26,10 @@ void main(void)
 #Vertex_End
 
 #Framgent_Begin
-
+#ifdef __GLES__
 precision highp float;
-varying highp vec2 v_coord;
+#endif
+varying vec2 v_coord;
 uniform sampler2D myTexture0;
 void main(void) 
 { 

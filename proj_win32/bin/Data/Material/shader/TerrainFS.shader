@@ -1,7 +1,7 @@
-precision highp float;
-varying lowp vec4 DestinationColor; // 1
-varying highp vec3 vPosition;
-varying highp vec3 mCameraPos;
+
+varying vec4 DestinationColor; // 1
+varying  vec3 vPosition;
+varying vec3 mCameraPos;
 
 void main(void) 
 { 

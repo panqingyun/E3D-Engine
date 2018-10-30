@@ -1,28 +1,22 @@
-﻿//
-//  E3DVertexBuffer.hpp
-//	多个物体可以共用, 目的：动态渲染合批
-//  Created by 潘庆云 on 2017/7/17.
-//
-
-#ifndef __E3D_GLES_RENDERER_HPP__
-#define __E3D_GLES_RENDERER_HPP__
+﻿#ifndef __E3D_GL_RENDERER_HPP__
+#define __E3D_GL_RENDERER_HPP__
 
 #include <src/RenderSystem/RenderObject/E3DRender.hpp>
 #include "../Include/include.h"
 
 namespace E3DEngine
 {
-	class GLES_Renderer : public Renderer
+	class GL_Renderer : public Renderer
 	{
 	public:
-		GLES_Renderer()
+		GL_Renderer()
 		{
 			m_nDrawModule = GL_TRIANGLES;
 			m_VertexBuffer = 0;
 			m_IndexBuffer = 0;
 			setVBOs();
 		}
-		virtual ~GLES_Renderer() override
+		virtual ~GL_Renderer() override
 		{
 			if (m_VertexBuffer != 0)
 			{

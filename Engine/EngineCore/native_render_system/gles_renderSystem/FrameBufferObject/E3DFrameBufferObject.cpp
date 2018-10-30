@@ -2,168 +2,170 @@
 
 namespace E3DEngine
 {
-	FrameBufferObject::FrameBufferObject()
+	namespace GLESRenderSystem
 	{
-		m_FrameBuffer = 0;
-		m_renderTarget = nullptr;
-		m_ClearColor = Color4(0,0,0,0);
-		m_BufferPixels = nullptr;
-	}
-
-	FrameBufferObject::~FrameBufferObject()
-	{
-		SAFE_DELETE(m_renderTarget);
-		glDeleteFramebuffers(1, &m_FrameBuffer);
-		SAFE_DELETE(m_BufferPixels);
-	}
-
-	void FrameBufferObject::Create(int width, int height, RenderTargeType targetType)
-	{
-		m_FrameWidth = width;
-		m_FrameHeight = height;
-		createTarget(targetType);
-
-		glGenFramebuffers(1, &m_FrameBuffer);
-		glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-		glGenRenderbuffers(1, &m_renderTarget->m_DepthBuffer);
-		glBindRenderbuffer(GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
-		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
-		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
-		if (targetType == RENDER_BUFFER)
+		FrameBufferObject::FrameBufferObject()
 		{
-			RenderBuffer* dt = static_cast<RenderBuffer*>(m_renderTarget);
-			glGenRenderbuffers(1, &dt->m_RenderBuffer);
-			glBindRenderbuffer(GL_RENDERBUFFER, dt->m_RenderBuffer);
-			glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8_OES, width, height);
-			glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, dt->m_RenderBuffer);
+			m_FrameBuffer = 0;
+			m_renderTarget = nullptr;
+			m_ClearColor = Color4(0, 0, 0, 0);
+			m_BufferPixels = nullptr;
 		}
-		else
+
+		FrameBufferObject::~FrameBufferObject()
 		{
-			RenderTexture* dt = static_cast<RenderTexture*>(m_renderTarget);
-			glGenTextures(1, &dt->m_TextureBuffer);
-			glBindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
-
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+			SAFE_DELETE(m_renderTarget);
+			glDeleteFramebuffers(1, &m_FrameBuffer);
+			SAFE_DELETE(m_BufferPixels);
 		}
-		m_BufferPixels = (GLbyte*)malloc(width * height * 4);
-		glGetIntegerv(GL_IMPLEMENTATION_COLOR_READ_TYPE, &m_BufferType);
-		glGetIntegerv(GL_IMPLEMENTATION_COLOR_READ_FORMAT, &m_BufferFormat);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	}
-
-	void FrameBufferObject::Clear()
-	{
-		glClearColor(m_ClearColor.r, m_ClearColor.g, m_ClearColor.b, m_ClearColor.a);
-		glClearStencil(0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	}
-
-	void FrameBufferObject::Bind()
-	{
-		glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-		glViewport(0, 0, m_FrameWidth, m_FrameHeight);
-	}
-
-    void FrameBufferObject::BindRenderBuffer()
-    {
-        if (m_renderTarget->Type == RENDER_BUFFER)
-        {
-            glBindRenderbuffer(GL_RENDERBUFFER, static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer);
-        }
-    }
-    
-	void FrameBufferObject::SetClearColor(Color4 clearColor)
-	{
-		m_ClearColor = clearColor;
-	}
-
-	GLuint FrameBufferObject::GetTextureBufferID()
-	{
-		if (m_renderTarget->Type == RENDER_TO_TEXTURE)
+		void FrameBufferObject::Create(int width, int height, RenderTargeType targetType)
 		{
-			return static_cast<RenderTexture*>(m_renderTarget)->m_TextureBuffer;
+			m_FrameWidth = width;
+			m_FrameHeight = height;
+			createTarget(targetType);
+
+			glGenFramebuffers(1, &m_FrameBuffer);
+			glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			glGenRenderbuffers(1, &m_renderTarget->m_DepthBuffer);
+			glBindRenderbuffer(GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
+			glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
+			glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
+			if (targetType == RENDER_BUFFER)
+			{
+				RenderBuffer* dt = static_cast<RenderBuffer*>(m_renderTarget);
+				glGenRenderbuffers(1, &dt->m_RenderBuffer);
+				glBindRenderbuffer(GL_RENDERBUFFER, dt->m_RenderBuffer);
+				glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8_OES, width, height);
+				glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, dt->m_RenderBuffer);
+			}
+			else
+			{
+				RenderTexture* dt = static_cast<RenderTexture*>(m_renderTarget);
+				glGenTextures(1, &dt->m_TextureBuffer);
+				glBindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
+
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+			}
+			m_BufferPixels = (GLbyte*)malloc(width * height * 4);
+			glGetIntegerv(GL_IMPLEMENTATION_COLOR_READ_TYPE, &m_BufferType);
+			glGetIntegerv(GL_IMPLEMENTATION_COLOR_READ_FORMAT, &m_BufferFormat);
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
 		}
-		return 0;
-	}
 
-	GLuint FrameBufferObject::GetFrameBufferID()
-	{
-		return m_FrameBuffer;
-	}
-
-	GLuint FrameBufferObject::GetRenderBufferID()
-	{
-		if (m_renderTarget->Type == RENDER_BUFFER)
+		void FrameBufferObject::Clear()
 		{
-			return static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer;
+			glClearColor(m_ClearColor.r, m_ClearColor.g, m_ClearColor.b, m_ClearColor.a);
+			glClearStencil(0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		}
-		return 0;
-	}
 
-	GLuint FrameBufferObject::GetDepthBufferID()
-	{
-		return m_renderTarget->m_DepthBuffer;
-	}
-
-	GLbyte * FrameBufferObject::GetPixels()
-	{
-		glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-		glReadPixels(0, 0, m_FrameWidth, m_FrameHeight, m_BufferFormat, m_BufferType, m_BufferPixels);
-		return m_BufferPixels;
-	}
-
-	GLint FrameBufferObject::GetReadBufferFormat()
-	{
-		return m_BufferFormat;
-	}
-
-	GLint FrameBufferObject::GetReadBufferType()
-	{
-		return m_BufferType;
-	}
-
-	void FrameBufferObject::createTarget(RenderTargeType targetType)
-	{
-		if (targetType == RENDER_BUFFER)
+		void FrameBufferObject::Bind()
 		{
-			m_renderTarget = new RenderBuffer;
+			glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			glViewport(0, 0, m_FrameWidth, m_FrameHeight);
 		}
-		else if (targetType == RENDER_TO_TEXTURE)
+
+		void FrameBufferObject::BindRenderBuffer()
 		{
-			m_renderTarget = new RenderTexture;
+			if (m_renderTarget->Type == RENDER_BUFFER)
+			{
+				glBindRenderbuffer(GL_RENDERBUFFER, static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer);
+			}
+		}
+
+		void FrameBufferObject::SetClearColor(Color4 clearColor)
+		{
+			m_ClearColor = clearColor;
+		}
+
+		GLuint FrameBufferObject::GetTextureBufferID()
+		{
+			if (m_renderTarget->Type == RENDER_TO_TEXTURE)
+			{
+				return static_cast<RenderTexture*>(m_renderTarget)->m_TextureBuffer;
+			}
+			return 0;
+		}
+
+		GLuint FrameBufferObject::GetFrameBufferID()
+		{
+			return m_FrameBuffer;
+		}
+
+		GLuint FrameBufferObject::GetRenderBufferID()
+		{
+			if (m_renderTarget->Type == RENDER_BUFFER)
+			{
+				return static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer;
+			}
+			return 0;
+		}
+
+		GLuint FrameBufferObject::GetDepthBufferID()
+		{
+			return m_renderTarget->m_DepthBuffer;
+		}
+
+		GLbyte * FrameBufferObject::GetPixels()
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			glReadPixels(0, 0, m_FrameWidth, m_FrameHeight, m_BufferFormat, m_BufferType, m_BufferPixels);
+			return m_BufferPixels;
+		}
+
+		GLint FrameBufferObject::GetReadBufferFormat()
+		{
+			return m_BufferFormat;
+		}
+
+		GLint FrameBufferObject::GetReadBufferType()
+		{
+			return m_BufferType;
+		}
+
+		void FrameBufferObject::createTarget(RenderTargeType targetType)
+		{
+			if (targetType == RENDER_BUFFER)
+			{
+				m_renderTarget = new RenderBuffer;
+			}
+			else if (targetType == RENDER_TO_TEXTURE)
+			{
+				m_renderTarget = new RenderTexture;
+			}
+		}
+
+		RenderTexture::~RenderTexture()
+		{
+			glDeleteTextures(1, &m_TextureBuffer);
+		}
+
+		RenderTexture::RenderTexture()
+		{
+			Type = RENDER_TO_TEXTURE;
+			m_DepthBuffer = 0;
+			m_TextureBuffer = 0;
+		}
+
+		RenderBuffer::RenderBuffer()
+		{
+			Type = RENDER_BUFFER;
+			m_DepthBuffer = 0;
+			m_RenderBuffer = 0;
+		}
+
+		RenderBuffer::~RenderBuffer()
+		{
+			glDeleteRenderbuffers(1, &m_RenderBuffer);
 		}
 	}
-
-	RenderTexture::~RenderTexture()
-	{
-		glDeleteTextures(1, &m_TextureBuffer);
-	}
-
-	RenderTexture::RenderTexture()
-	{
-		Type = RENDER_TO_TEXTURE;
-		m_DepthBuffer = 0;
-		m_TextureBuffer = 0;
-	}
-
-	RenderBuffer::RenderBuffer()
-	{
-		Type = RENDER_BUFFER;
-		m_DepthBuffer = 0;
-		m_RenderBuffer = 0;
-	}
-
-	RenderBuffer::~RenderBuffer()
-	{
-		glDeleteRenderbuffers(1, &m_RenderBuffer);
-	}
-
 }
 

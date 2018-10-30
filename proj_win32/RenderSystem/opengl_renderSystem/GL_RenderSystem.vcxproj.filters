@@ -3,4 +3,117 @@
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{f8b0cc49-7b45-4db2-8f69-ac08c041e370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{4a16dbc6-4818-48c5-ae18-68917b57face}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FrameBuffer">
+      <UniqueIdentifier>{2a319b7f-a876-44ad-9543-0a1bc498c505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderObject">
+      <UniqueIdentifier>{078fb00e-6d86-439a-b01b-93b3ce665562}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{a655bce3-0fbc-4d16-9385-bca7af10f802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Material">
+      <UniqueIdentifier>{c309d81d-7c4e-446d-8454-9b532bf11625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WGL">
+      <UniqueIdentifier>{33686216-8fed-4c62-87de-a014639d24de}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\WGL\WGLContext.cpp">
+      <Filter>WGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\E3DGL_RenderSystem.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\FrameBufferObject\E3DFrameBufferObject.cpp">
+      <Filter>FrameBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterial.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterialManager.cpp">
+      <Filter>Material</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLMeshRender.cpp">
+      <Filter>RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRender.cpp">
+      <Filter>RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRenderManager.cpp">
+      <Filter>RenderObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShader.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShaderManager.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLCubeMapTexture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLRender2Texture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTexture2D.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTextureDataManager.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include\Include.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include\RenderSystemAPI.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\WGL\WGLContext.h">
+      <Filter>WGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\E3DGL_RenderSystem.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\FrameBufferObject\E3DFrameBufferObject.h">
+      <Filter>FrameBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterial.hpp">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Material\E3DGLMaterialManager.hpp">
+      <Filter>Material</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLMeshRender.h">
+      <Filter>RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRender.hpp">
+      <Filter>RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\RenderObject\E3DGLRenderManager.hpp">
+      <Filter>RenderObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShader.hpp">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Shader\E3DGLShaderManager.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLCubeMapTexture.hpp">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLRender2Texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTexture2D.hpp">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Texture\E3DGLTextureDataManager.hpp">
+      <Filter>Texture</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

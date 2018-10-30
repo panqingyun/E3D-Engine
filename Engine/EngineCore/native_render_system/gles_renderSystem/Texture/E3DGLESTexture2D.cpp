@@ -19,11 +19,24 @@ namespace E3DEngine
 
 	void GLES_Texture2D::Create(std::string fileName, TextureData &tData)
 	{
+		DWORD  rgbModule = 0;
+		if (tData.rgbModule == PixelFormat::R8G8B8)
+		{
+			rgbModule = GL_RGB;
+		}
+		else if (tData.rgbModule == PixelFormat::R8G8B8A8)
+		{
+			rgbModule = GL_RGBA;
+		}
+		else
+		{
+			// TODO
+		}
 		m_nTextureBuffer = GLES_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
 		glActiveTexture(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		setTextureParam(tData);
-		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
+		glTexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData.width, tData.height, 0, rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
 		if (tData.useMipMap)
 		{
 			glGenerateMipmap(GL_TEXTURE_2D);

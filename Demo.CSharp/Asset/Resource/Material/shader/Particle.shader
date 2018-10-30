@@ -14,7 +14,7 @@
 
 #include "Standard.shader"
 varying vec4 DestinationColor;
-varying lowp vec2 v_coord;
+varying vec2 v_coord;
 varying vec3 cameraRight;
 uniform float particleSize;
 
@@ -38,9 +38,12 @@ void main(void)
 
 #Framgent_Begin
 
+#ifdef __GLES__
 precision highp float;
-varying lowp vec4 DestinationColor; 
-varying lowp vec2 v_coord;
+#endif
+
+varying  vec4 DestinationColor; 
+varying  vec2 v_coord;
 
 varying vec3 cameraRight;
 uniform sampler2D myTexture0;

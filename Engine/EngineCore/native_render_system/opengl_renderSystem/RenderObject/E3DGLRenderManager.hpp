@@ -1,10 +1,5 @@
-//
-//	按照材质ID 索引顶点缓存，同一材质ID的物体顶点都输出到同一个顶点缓存中，然后统一绘制
-//  Created by 潘庆云 on 2017/7/19.
-//
-
-#ifndef E3D_GLES_RENDER_BufferManager_hpp
-#define E3D_GLES_RENDER_BufferManager_hpp
+#ifndef E3D_GL_RENDER_BufferManager_hpp
+#define E3D_GL_RENDER_BufferManager_hpp
 
 #include <src/Source/Interface.h>
 #include <src/RenderSystem/RenderObject/E3DRender.hpp>
@@ -13,7 +8,7 @@
 
 namespace E3DEngine
 {
-	class GLES_RendererManager : public RendererManager
+	class GL_RendererManager : public RendererManager
 	{
 	public:
 		virtual Renderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false) override;

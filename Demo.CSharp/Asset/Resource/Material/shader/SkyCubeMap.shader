@@ -30,9 +30,9 @@ void main(void)
 #Vertex_End
 
 #Framgent_Begin
-
+#ifdef __GLES__
 precision highp float;
-
+#endif
 varying vec3 ReflectDir;
 
 uniform samplerCube skybox;

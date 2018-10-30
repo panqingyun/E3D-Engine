@@ -1,9 +1,9 @@
-#include "E3DGLESMeshRender.h"
+#include "E3DGLMeshRender.h"
 
 namespace E3DEngine
 {
 
-	void GLES_MeshRender::FillBegin(UINT objId)
+	void GL_MeshRender::FillBegin(UINT objId)
 	{
 		pRender->FillBegin(objId);
 	}
@@ -20,101 +20,101 @@ namespace E3DEngine
 	}
 	}*/
 
-	void GLES_MeshRender::FillVertex(Vertex vb)
+	void GL_MeshRender::FillVertex(Vertex vb)
 	{
 		pRender->FillVertex(vb);
 	}
 
 
-	void GLES_MeshRender::FillIndex(uint ib)
+	void GL_MeshRender::FillIndex(uint ib)
 	{
 		pRender->FillIndex(ib);
 	}
 
 
-	void GLES_MeshRender::FillEnd(UINT objId, uint vertexCount, uint indexCount)
+	void GL_MeshRender::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		pRender->FillEnd(objId, vertexCount, indexCount);
 	}
 
-	void GLES_MeshRender::RemoveInRenderer(UINT objId)
+	void GL_MeshRender::RemoveInRenderer(UINT objId)
 	{
 		pRender->RemoveInRenderer(objId);
 	}
 
 
-	E3DEngine::RendererBuffer* GLES_MeshRender::GetRendererBuffer(UINT objID)
+	E3DEngine::RendererBuffer* GL_MeshRender::GetRendererBuffer(UINT objID)
 	{
 		return pRender->GetRendererBuffer(objID);
 	}
 
 
-	void GLES_MeshRender::TransformChange()
+	void GL_MeshRender::TransformChange()
 	{
 		pRender->TransformChange();
 	}
 
 
-	void GLES_MeshRender::Render(float deltaTime)
+	void GL_MeshRender::Render(float deltaTime)
 	{
 		pRender->Render(deltaTime);
 	}
 
-	void GLES_MeshRender::SetDrawModule(DWORD module)
+	void GL_MeshRender::SetDrawModule(DWORD module)
 	{
 		pRender->SetDrawModule(module);
 	}
 
 
-	void GLES_MeshRender::SetColor(long color)
+	void GL_MeshRender::SetColor(long color)
 	{
 		pRender->SetColor(color);
 	}
 
 
-	void GLES_MeshRender::SetIsBillborad(bool isBillboard)
+	void GL_MeshRender::SetIsBillborad(bool isBillboard)
 	{
 		pRender->SetIsBillborad(isBillboard);
 	}
 
 
-	bool GLES_MeshRender::GetIsBillBoard()
+	bool GL_MeshRender::GetIsBillBoard()
 	{
 		return pRender->GetIsBillBoard();
 	}
 
 
-	E3DEngine::CTransform * GLES_MeshRender::GetTransform()
+	E3DEngine::CTransform * GL_MeshRender::GetTransform()
 	{
 		return pRender->GetTransform();
 	}
 
 
-	void GLES_MeshRender::SetTransform(CTransform *_transform)
+	void GL_MeshRender::SetTransform(CTransform *_transform)
 	{
 		pRender->SetTransform(_transform);
 	}
 
 
-	void GLES_MeshRender::CreateNewTransform()
+	void GL_MeshRender::CreateNewTransform()
 	{
 		pRender->CreateNewTransform();
 	}
 
 /*
-	void GLES_MeshRender::SetRenderIndex(DWORD index)
+	void GL_MeshRender::SetRenderIndex(DWORD index)
 	{
 		render->SetRenderIndex(index);
 	}
 */
 
-	void GLES_MeshRender::SetMaterial(Material *material)
+	void GL_MeshRender::SetMaterial(Material *material)
 	{
 		pRender->SetMaterial(material);
 	}
 
 
-	E3DEngine::Camera * GLES_MeshRender::GetCamera()
+	E3DEngine::Camera * GL_MeshRender::GetCamera()
 	{
 		return pRender->GetCamera();
 	}

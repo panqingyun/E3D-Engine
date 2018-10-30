@@ -8,8 +8,8 @@
 }
 
 #include "Standard.shader"
-varying lowp vec4 DestinationColor; // 1
-varying highp vec2 v_coord;
+varying vec4 DestinationColor; // 1
+varying vec2 v_coord;
 void main(void)
 {	
 	DestinationColor =  color;	
@@ -21,9 +21,12 @@ void main(void)
 
 #Framgent_Begin
 
+#ifdef __GLES__
 precision highp float;
-varying lowp vec4 DestinationColor; // 1
-varying highp vec2 v_coord;
+#endif
+
+varying vec4 DestinationColor; // 1
+varying vec2 v_coord;
 uniform sampler2D myTexture0;
 const float TexSize = 512.0;
 

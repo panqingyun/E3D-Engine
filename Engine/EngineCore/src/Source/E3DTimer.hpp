@@ -30,7 +30,7 @@ namespace E3DEngine
 			timerCallBack.Cleanup();
 		}
 		int ID;
-		event EventDelegates timerCallBack;
+		Event::EventDelegates timerCallBack;
 		bool isRepeat;
 		float timeInterval;
 		float tickTime;

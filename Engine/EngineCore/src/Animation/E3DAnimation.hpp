@@ -26,7 +26,7 @@ namespace E3DEngine
 		
 	public:
 		bool	HasLoaded;
-		event EventDelegates AnimationPlayEndEvent;
+		Event::EventDelegates AnimationPlayEndEvent;
 		
 		std::map<std::string, Bone*> *	m_BoneMapping;
 	protected:

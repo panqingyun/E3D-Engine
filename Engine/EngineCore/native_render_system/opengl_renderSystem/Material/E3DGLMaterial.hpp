@@ -1,24 +1,18 @@
-﻿//
-//  Material.hpp
-//
-//  Created by 潘庆云 on 2017/3/30.
-//
+﻿#ifndef _GL_METRAIL_HPP_
+#define _GL_METRAIL_HPP_
 
-#ifndef _GLES_METRAIL_HPP_
-#define _GLES_METRAIL_HPP_
-
-#include "../Shader/E3DGLESShader.hpp"
-#include "../Texture/E3DGLESTexture2D.hpp"
+#include "../Shader/E3DGLShader.hpp"
+#include "../Texture/E3DGLTexture2D.hpp"
 #include <src/RenderSystem/Material/E3DMaterial.hpp>
 #include "../Include/Include.h"
 
 namespace E3DEngine
 {
 
-	class GLES_Material : public Material
+	class GL_Material : public Material
 	{
 	public:
-		GLES_Material();
+		GL_Material();
 		virtual void UseMaterial();
 		virtual void Destory();
 		virtual void SetTexture(Texture * texture, int index = 0);

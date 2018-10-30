@@ -19,7 +19,7 @@
 - [ ] UI
 - [ ] 脚本系统
 
-#### 渲染系统使用的OpenGL ES，Windows上使用AMD的ES模拟器。
+#### 渲染系统使用的OpenGL 及 OpenGL ES，Windows上OpenGL ES使用AMD的ES模拟器。
 
 ## 环境部署
 

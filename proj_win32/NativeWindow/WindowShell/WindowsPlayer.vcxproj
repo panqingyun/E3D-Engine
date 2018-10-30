@@ -182,7 +182,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\..\Engine\EngineCore\include;..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\Engine\EngineCore\include;..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include;..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\bin\WindowsPlayer\lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\bin\WindowsPlayer</OutDir>
     <TargetExt>.exe</TargetExt>
@@ -311,7 +311,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>E3DEngine.lib;RenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E3DEngine.lib;ESRenderSystem.lib;GLRenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\bin\WindowsPlayer\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

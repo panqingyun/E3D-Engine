@@ -941,13 +941,22 @@ std::string Convert::ToString(vec3f source)
 	return str1 + "," + str2 + "," + str3;
 }
 
+std::string Convert::ToString(Color4 source)
+{
+	std::string &&str1 = ToString(source.r);
+	std::string &&str2 = ToString(source.g);
+	std::string &&str3 = ToString(source.b);
+	std::string &&str4 = ToString(source.a);
+
+	return str1 + "," + str2 + "," + str3 + "," + str4;
+}
 
 std::string Convert::ToString(vec4f source)
 {
-	std::string &str1 = ToString(source.x);
-	std::string &str2 = ToString(source.y);
-	std::string &str3 = ToString(source.z);
-	std::string &str4 = ToString(source.w);
+	std::string &&str1 = ToString(source.x);
+	std::string &&str2 = ToString(source.y);
+	std::string &&str3 = ToString(source.z);
+	std::string &&str4 = ToString(source.w);
 
 	return str1 + "," + str2 + "," + str3 + "," + str4;
 }

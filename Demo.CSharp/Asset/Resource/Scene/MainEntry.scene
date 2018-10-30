@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Scene>
-    <GameObject ID="1" Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="000000ff">
+    <GameObject ID="1" Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,1.000000">
         <Transform Posistion="200.000000,35.000000,180.000000" Rotation="0.000000,90.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="AppMain">
             <Field ShowDebug="true" ShowNumber="1000" />
         </Component>
     </GameObject>
-    <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="ffffffff">
+    <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="1.000000,1.000000,1.000000,1.000000">
         <Transform Posistion="50.000000,50.000000,50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">
@@ -113,8 +113,8 @@
         <Material FilePath="Resource/Material/shu.material" SelectID="5" />
         <Transform Posistion="110.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
     </GameObject>
-	<GameObject ID="18" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
-		<Transform Posistion="0,80,0" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
+    <GameObject ID="18" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/SkyCube.material" SelectID="1" />
+        <Transform Posistion="0.000000,80.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
     </GameObject>
 </Scene>

@@ -168,7 +168,7 @@
     <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\bin\WindowsPlayer\lib</OutDir>
-    <TargetName>RenderSystem</TargetName>
+    <TargetName>ESRenderSystem</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorRelease|Win32'">
     <IncludePath>..\..\..\Engine\EngineCore\3rd\header;..\..\..\Engine\EngineCore;GLES\include;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore\3rd\FreeImage3170\FreeImage\Source;..\..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
@@ -404,8 +404,8 @@
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\EGL\EGLContext.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\FrameBufferObject\E3DFrameBufferObject.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\ESRenderSystemAPI.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\Include.h" />
-    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\RenderSystemAPI.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterial.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterialManager.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.h" />

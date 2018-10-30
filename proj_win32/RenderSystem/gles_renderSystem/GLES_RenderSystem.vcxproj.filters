@@ -104,9 +104,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\Include.h" />
-    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\RenderSystemAPI.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture2D.hpp">
       <Filter>Texture</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\ESRenderSystemAPI.h" />
   </ItemGroup>
 </Project>

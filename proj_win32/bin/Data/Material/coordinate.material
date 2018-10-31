@@ -8,7 +8,7 @@
 	</MaterialConfig>
 	<ShaderConfig>
 		<Item ID="1" ShaderPath="shader/coordShader.shader"/>
-		<Item ID="2" ShaderPath="shader/coordRTShader.shader" UniformVariable="myTexture0-../Data/Material/texture/coord.renderTexture:1"/>
-		<Item ID="3" ShaderPath="shader/coordRTShader.shader" UniformVariable="myTexture0-../Data/Material/texture/Camera.png"/>
+		<Item ID="2" ShaderPath="shader/coordRTShader.shader" UniformVariable="myTexture0=../Data/Material/texture/coord.renderTexture:1"/>
+		<Item ID="3" ShaderPath="shader/coordRTShader.shader" UniformVariable="myTexture0=../Data/Material/texture/Camera.png"/>
 	</ShaderConfig>
 </ConfigSystem>

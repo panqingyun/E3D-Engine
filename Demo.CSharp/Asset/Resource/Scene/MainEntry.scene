@@ -11,7 +11,7 @@
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="1">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
-        <Transform Posistion="0.000000,100.000000,200.000000" Rotation="0.000000,-90.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="0.000000,100.000000,200.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />

@@ -165,17 +165,17 @@ namespace E3DEngine
 
 		for (auto& sp : uniformVarDefaultValue)
 		{
-			std::vector<std::string> varValues = StringBuilder::Split(sp, "-");
+			std::vector<std::string> varValues = StringBuilder::Split(sp, "=");
 			if (varValues.empty())
 			{
 				continue;
 			}
-
-			if (mShader->GetUniformType(varValues[0]) == "sampler2D") // create texture
+			std::string uniformType = mShader->GetUniformType(varValues[0]);
+			if (uniformType == "sampler2D") // create texture
 			{
 				createSampler2D(varValues, config);
 			}
-			else if (mShader->GetUniformType(varValues[0]) == "samplerCube")
+			else if (uniformType == "samplerCube")
 			{
 				std::vector<std::string> vec = StringBuilder::Split(varValues[1], ":");
 				if (vec.empty())
@@ -186,6 +186,14 @@ namespace E3DEngine
 				std::string _path = Application::AppDataPath + fName;
 				int selectID = Convert::ToInt(vec[1]);
 				createCubeTexture(_path, selectID, varValues[0]);
+			}
+			else if (uniformType == intType)
+			{
+				mShader->UpdateIntValue(varValues[0], Convert::ToFloat(varValues[1]));
+			}
+			else if (uniformType == floatType)
+			{
+				mShader->UpdateFloatValue(varValues[0], Convert::ToFloat(varValues[1]));
 			}
 		}
 	}

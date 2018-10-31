@@ -5,6 +5,6 @@
 		<Item ID="2" ShaderID = "1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="1" EnableDepthTest="1" EnableWriteDepth="0" CullFace="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID= 1 ShaderPath="shader/Particle.shader" UniformVariable="myTexture0-Resource/Material/texture/particleTexture.png;"/>
+		<Item ID= 1 ShaderPath="shader/Particle.shader" UniformVariable="myTexture0=Resource/Material/texture/particleTexture.png;"/>
 	</ShaderConfig>
 </ConfigSystem>

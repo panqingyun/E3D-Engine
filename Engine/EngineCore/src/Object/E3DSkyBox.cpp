@@ -18,7 +18,12 @@ void E3DEngine::SkyBox::Create(float l, float w, float h)
 
 void E3DEngine::SkyBox::TransferRender()
 {
+	m_pRenderer->SetRenderIndex(eRI_LowMost);
 	SkyBoxConfig * skyBox = m_pRenderer->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
+	if (skyBox == nullptr)
+	{
+		return;
+	}
 	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Front)); //0
 	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Top));	// 1
 	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Back));	// 2
@@ -27,7 +32,6 @@ void E3DEngine::SkyBox::TransferRender()
 	textures.emplace_back(m_pRenderer->GetMaterial()->mMaterialTableManager->Select<TextureAtlasConfig>(skyBox->Right));	// 5
 
 	setTextureCoord();
-	m_pRenderer->SetRenderIndex(eRI_LowMost);
 }
 
 void E3DEngine::SkyBox::PrepareUpdate(float deltaTime)

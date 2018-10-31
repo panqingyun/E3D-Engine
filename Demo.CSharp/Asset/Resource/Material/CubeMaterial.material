@@ -4,6 +4,6 @@
 		<Item ID="1" ShaderID="1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/HFZC_dizhuan01.jpg;"/>
+		<Item ID="1" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/HFZC_dizhuan01.jpg;"/>
 	</ShaderConfig>
 </ConfigSystem>

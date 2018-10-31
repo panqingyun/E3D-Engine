@@ -12,6 +12,7 @@
 
 varying vec3 ReflectDir;
 varying vec4 DestinationColor;
+uniform int bSkyBox;
 
 void main(void)
 {
@@ -19,7 +20,14 @@ void main(void)
 	vec4 _pos = _e3d_matModel * vec4(position, 1.0);
 	vec3 eyeDir = normalize(_pos.xyz - _e3d_CameraPos.xyz);
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
-	ReflectDir = reflect(eyeDir, normalize(_normal.xyz));
+	if (bSkyBox == 1)
+	{
+		ReflectDir = normalize(position);
+	}
+	else
+	{
+		ReflectDir = reflect(eyeDir, normalize(_normal.xyz));
+	}
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
 	
 	initFogNeedVar(position);

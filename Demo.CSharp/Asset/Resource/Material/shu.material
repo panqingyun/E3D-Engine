@@ -8,10 +8,10 @@
 		<Item ID="5" ShaderID = "5" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID= "1" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;"/>
-		<Item ID= "2" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_01.tga;"/>
-		<Item ID= "3" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/WD_zhiwu_03.tga;"/>
-		<Item ID= "4" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;"/>
-		<Item ID= "5" ShaderPath="shader/hua.shader" UniformVariable="myTexture0-Resource/Material/texture/xt_zhuzi01_01.tga;"/>
+		<Item ID= "1" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/WD_zhiwu_01.tga;"/>
+		<Item ID= "2" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/WD_zhiwu_01.tga;"/>
+		<Item ID= "3" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/WD_zhiwu_03.tga;"/>
+		<Item ID= "4" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;"/>
+		<Item ID= "5" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/xt_zhuzi01_01.tga;"/>
 	</ShaderConfig>
 </ConfigSystem>

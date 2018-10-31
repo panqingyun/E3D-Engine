@@ -61,8 +61,7 @@ namespace E3DEngine
 		m_bIsBufferData = false;
 		mObjectType = eT_RenderObject;
 		RenderIndex = eRI_Normal;
-		m_bIsActive = true;
-		IsStaticDraw = true;
+		IsStaticDraw = false;
 		m_bNeedSortVertex = false;
     }
 
@@ -114,28 +113,6 @@ namespace E3DEngine
 	{
 		pCamera = camera;
 	}
-
-
-	bool RenderObject::GetActive()
-	{
-		return m_bIsActive;
-	}
-
-	void RenderObject::SetColor(long color)
-	{
-		m_nColor = color;
-	}
-
-	void RenderObject::SetIsBillborad(bool isBillboard)
-	{
-		m_bIsBillboard = isBillboard;
-	}
-
-	bool RenderObject::GetIsBillBoard()
-	{
-		return m_bIsBillboard;
-	}
-
 
 	UINT RenderObject::GetDrawModule()
 	{

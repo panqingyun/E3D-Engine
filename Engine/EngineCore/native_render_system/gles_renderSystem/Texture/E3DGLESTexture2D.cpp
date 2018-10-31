@@ -13,7 +13,7 @@ namespace E3DEngine
 	{
 		if (m_nTextureBuffer != 0)
 		{
-			glDeleteTextures(1, &m_nTextureBuffer);
+			ES2::DeleteTextures(1, &m_nTextureBuffer);
 		}
 	}
 
@@ -28,20 +28,28 @@ namespace E3DEngine
 		{
 			rgbModule = GL_RGBA;
 		}
+		else if (tData.rgbModule == PixelFormat::L8A8)
+		{
+			rgbModule = GL_LUMINANCE_ALPHA;
+		}
+		else if (tData.rgbModule == PixelFormat::L8)
+		{
+			rgbModule = GL_LUMINANCE;
+		}
 		else
 		{
-			// TODO
+			assert(false);
 		}
 		m_nTextureBuffer = GLES_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
-		glActiveTexture(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
+		ES2::ActiveTexture(GL_TEXTURE_2D);
+		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		setTextureParam(tData);
-		glTexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData.width, tData.height, 0, rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
+		ES2::TexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData.width, tData.height, 0, rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
 		if (tData.useMipMap)
 		{
-			glGenerateMipmap(GL_TEXTURE_2D);
+			ES2::GenerateMipmap(GL_TEXTURE_2D);
 		}
-		glBindTexture(GL_TEXTURE_2D, 0);
+		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void GLES_Texture2D::setTextureParam(TextureData &tData)
@@ -91,51 +99,51 @@ namespace E3DEngine
 			assert(false);
 		}
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterType);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampType);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
+		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
+		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterType);
+		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampType);
+		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
 	void GLES_Texture2D::SetTextureData(TextureData &tData)
 	{
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
+		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
+		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void GLES_Texture2D::Create(TextureData &tData)
 	{
-		glGenTextures(1, &m_nTextureBuffer);
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
+		ES2::GenTextures(1, &m_nTextureBuffer);
+		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		
-		/*glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
+		/*ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
 		unsigned int eFormat = GL_RGBA;
 		
-		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		glBindTexture(GL_TEXTURE_2D, 0);
+		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
+		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	void GLES_Texture2D::SetTextureUniformIndex(int i, GLuint ProgramHandle)
 	{
-		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
-		glUniform1i(m_nTextureUniform, i);
+		m_nTextureUniform = ES2::GetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
+		ES2::Uniform1i(m_nTextureUniform, i);
 		m_nTextureIndex = i;
 	}
 		
 	void GLES_Texture2D::ActiveBindTexture()
 	{
-		glActiveTexture(m_nTextureEnum);
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glUniform1i(m_nTextureUniform, m_nTextureIndex);
+		ES2::ActiveTexture(m_nTextureEnum);
+		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
+		ES2::Uniform1i(m_nTextureUniform, m_nTextureIndex);
 	}
 
 	void GLES_Texture2D::InvalidTexture()
 	{
-		glBindTexture(GL_TEXTURE_2D, 0);
+		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	GLES_Texture2D::GLES_Texture2D()

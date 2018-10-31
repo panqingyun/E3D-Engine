@@ -67,7 +67,7 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Texture\E3DGLESTexture2D.cpp">
       <Filter>Texture</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.cpp">
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\E3DES2Loader.cpp">
       <Filter>GLES2</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,7 +114,7 @@
       <Filter>Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\ESRenderSystemAPI.h" />
-    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.h">
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\E3DES2Loader.h">
       <Filter>GLES2</Filter>
     </ClInclude>
   </ItemGroup>

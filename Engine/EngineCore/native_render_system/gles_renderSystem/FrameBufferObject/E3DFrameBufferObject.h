@@ -21,7 +21,7 @@ namespace E3DEngine
 		public:
 			virtual ~RenderTarget()
 			{
-				glDeleteRenderbuffers(1, &m_DepthBuffer);
+				ES2::DeleteRenderbuffers(1, &m_DepthBuffer);
 			}
 			GLuint	m_DepthBuffer;
 			RenderTargeType Type;

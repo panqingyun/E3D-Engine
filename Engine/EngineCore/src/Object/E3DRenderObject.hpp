@@ -102,15 +102,10 @@ namespace E3DEngine
 		virtual void SetMaterial(Material *material);
 		virtual void TransformChange() { }
 		virtual void SetCamera(Camera * camera);
-		virtual void SetActive(bool active) { m_bIsActive = active; }
 		virtual void SetDrawModule(DWORD module);
 		virtual void ClearVertexIndexBuffer() { }
         
 	public:
-		virtual bool GetActive();
-		virtual void SetColor(long color);
-		virtual void SetIsBillborad(bool isBillboard);
-		virtual bool GetIsBillBoard();
 		virtual UINT GetDrawModule();
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
@@ -131,27 +126,25 @@ namespace E3DEngine
         bool	m_bIsBillboard;
 		DWORD   m_nDrawModule;
 		bool	m_bIsBufferData;
-		bool	m_bIsActive;
-		std::vector<float*> vertexDatas;
 		CTransform * transform;
 		MinMaxAABB   m_AABB;
 		// 材质
 		Material	* pMaterial;
 		bool		m_bNeedSortVertex;
-		DWORD   m_layer;
+		DWORD		m_layer;
 
     public:
 		// 索引数目
-		DWORD		  m_nIndexSize;
+		DWORD							m_nIndexSize;
 		// 顶点数组
-		std::vector<Vertex>		Vertices;
+		std::vector<Vertex>				Vertices;
 		// 索引数组
 		std::vector<unsigned int>		Indices;
 		// 渲染层级
-		eRenderIndex			RenderIndex;
-		// true 1次送入显卡后不再更改， false 每帧都向显卡发送数据
-		bool					IsStaticDraw;
-		Camera *				pCamera;
+		eRenderIndex					RenderIndex;
+		// 静态绘制表示这个Renderer 是给合并批次的object使用
+		bool							IsStaticDraw;
+		Camera *						pCamera;
     };
 
 }

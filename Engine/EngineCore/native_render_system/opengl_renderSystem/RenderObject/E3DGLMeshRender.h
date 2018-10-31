@@ -29,10 +29,6 @@ namespace E3DEngine
 		virtual void SetDrawModule(DWORD module) override;
 
 	public:
-		virtual bool GetActive() { return pRender->GetActive(); }
-		virtual void SetColor(long color);
-		virtual void SetIsBillborad(bool isBillboard);
-		virtual bool GetIsBillBoard();
 		virtual UINT GetDrawModule() { return pRender->GetDrawModule(); }
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
@@ -43,7 +39,6 @@ namespace E3DEngine
 		virtual void SetLayerMask(DWORD layer) { pRender->SetLayerMask(layer); }
 		virtual Material *GetMaterial() { return pRender->GetMaterial(); }
 		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
-		virtual void SetActive(bool active) { pRender->SetActive(active); }
 		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
 		virtual Camera *GetCamera() override;
 	protected:

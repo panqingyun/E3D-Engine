@@ -22,10 +22,6 @@ namespace E3DEngine
 			return;
 		}
 		IsActive = isActive;
-		if (m_pRenderer != nullptr)
-		{
-			m_pRenderer->SetActive(isActive);
-		}
 		for (auto & component : m_listComponents)
 		{			
 			if (isActive)

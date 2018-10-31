@@ -9,7 +9,7 @@
 
 #include "E3DGLESRender2Texture.h"
 
-GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
+E3DEngine::GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
 {
 	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
 	{
@@ -17,7 +17,7 @@ GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageNam
 	}
 	
 	GLuint TextureBuffer = 0;
-	glGenTextures(1, &TextureBuffer);
+	ES2::GenTextures(1, &TextureBuffer);
 	m_mapTextureBuffer[imageName] = TextureBuffer;
 	return TextureBuffer;
 }
@@ -35,7 +35,7 @@ void E3DEngine::GLES_TextureDataManager::Cleanup()
 	for (std::map<std::string, GLuint>::iterator it = m_mapTextureBuffer.begin();
 		it != m_mapTextureBuffer.end(); ++it)
 	{
-		glDeleteTextures(1, &it->second);
+		ES2::DeleteTextures(1, &it->second);
 	}
 	m_mapTextureBuffer.clear();
 }

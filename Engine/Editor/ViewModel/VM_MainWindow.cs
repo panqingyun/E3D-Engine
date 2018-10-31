@@ -607,12 +607,12 @@ namespace E3DEditor.ViewModel
             {
                 createProject();
             }
-            else if(menuName == "GL4RS")
+            else if(menuName == "GL4RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGL)
             {
                 Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGL.ToString());
                 restartApp();
             }
-            else if(menuName == "ES2RS")
+            else if(menuName == "ES2RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGLES)
             {
                 Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGLES.ToString());
                 restartApp();

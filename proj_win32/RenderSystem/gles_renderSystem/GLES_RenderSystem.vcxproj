@@ -295,7 +295,7 @@
       <ImportLibrary>..\..\bin\Editor\lib\$(TargetName).lib</ImportLibrary>
     </Link>
     <Lib>
-      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libEGL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
     </Lib>
@@ -388,7 +388,7 @@
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\EGL\EGLContext.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\FrameBufferObject\E3DFrameBufferObject.cpp" />
-    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.cpp" />
+    <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\E3DES2Loader.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterial.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterialManager.cpp" />
     <ClCompile Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\RenderObject\E3DGLESMeshRender.cpp" />
@@ -405,7 +405,7 @@
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\E3DGLESRenderSystem.hpp" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\EGL\EGLContext.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\FrameBufferObject\E3DFrameBufferObject.h" />
-    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\gles_adapter.h" />
+    <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\GLES2\E3DES2Loader.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\ESRenderSystemAPI.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Include\Include.h" />
     <ClInclude Include="..\..\..\Engine\EngineCore\native_render_system\gles_renderSystem\Material\E3DGLESMaterial.hpp" />

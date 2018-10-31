@@ -40,8 +40,8 @@ namespace E3DEngine
 		defaultFrameBuffer->Bind();
         defaultFrameBuffer->BindRenderBuffer();
 #else
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        glViewport(0, 0, m_frameWidth, m_frameHeight);
+		ES2::BindFramebuffer(GL_FRAMEBUFFER, 0);
+		ES2::Viewport(0, 0, m_frameWidth, m_frameHeight);
 #endif // __IOS_
 
 	}
@@ -61,7 +61,7 @@ namespace E3DEngine
         m_pEGL_Context->UseContext();
 		BindDefaultBackbuffer();
 #endif
-        glCullFace(GL_BACK);
+		ES2::CullFace(GL_BACK);
 				
 	}
 
@@ -71,8 +71,8 @@ namespace E3DEngine
 #ifdef __IOS__
 		defaultFrameBuffer->Clear();
 #else
-		glClearColor(0, 0, 0, 0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		ES2::ClearColor(0, 0, 0, 0);
+		ES2::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 #endif
 		
 	}
@@ -81,7 +81,7 @@ namespace E3DEngine
 	{
 #ifndef __IOS__
 		m_pEGL_Context->SwapBuffer();
-        glFlush();
+		ES2::Flush();
 #endif
 	}
 
@@ -106,20 +106,20 @@ namespace E3DEngine
 		UINT type = 0;
 		if (clearType & eCT_Color)
 		{
-			glClearColor(color.r, color.g, color.b, color.a);
+			ES2::ClearColor(color.r, color.g, color.b, color.a);
 			type |= GL_COLOR_BUFFER_BIT;
 		}
 		if (clearType & eCT_Depth)
 		{
-			glClearDepthf(1);
+			ES2::ClearDepthf(1);
 			type |= GL_DEPTH_BUFFER_BIT;
 		}
 		if (type & eCT_Stencil)
 		{
-			glClearStencil(1);
+			ES2::ClearStencil(1);
 			type |= GL_STENCIL_BUFFER_BIT;
 		}
-		glClear(type);
+		ES2::Clear(type);
 	}
 
 	void GLES_RenderSystem::ChangeRenderSurface(EGLNativeWindowType windowHandle)
@@ -135,6 +135,7 @@ namespace E3DEngine
 
 __api_function_ void* CreateGLESRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
 {
+	E3DEngine::ES2::LoadESLibrary();
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
 	renderSystem->Initilize();
 	renderSystem->setFrameWidth(width);

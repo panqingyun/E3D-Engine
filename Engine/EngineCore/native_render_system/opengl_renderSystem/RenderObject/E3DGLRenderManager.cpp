@@ -12,29 +12,33 @@ namespace E3DEngine
 {
 	Renderer * GL_RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
-		if (!isStatic)
-		{
-			return newRenderer(type, materialID);
-		}
 		Renderer * buffer = nullptr;
-		int rendererID = -1;
-		if (m_mapMaterialID2RendererID.find(materialID) != m_mapMaterialID2RendererID.end())
-		{
-			rendererID = m_mapMaterialID2RendererID[materialID];
-		}
-		if (m_mapVertexBuffers.find(rendererID) == m_mapVertexBuffers.end())
+		if (!isStatic)
 		{
 			buffer = newRenderer(type, materialID);
 		}
 		else
 		{
-			buffer = m_mapVertexBuffers[rendererID];
-			if (buffer->GetVertextCount() + vertexSize > MAX_VERTEX_NUMBER)
+			int rendererID = -1;
+			if (m_mapMaterialID2RendererID.find(materialID) != m_mapMaterialID2RendererID.end())
+			{
+				rendererID = m_mapMaterialID2RendererID[materialID];
+			}
+			if (m_mapVertexBuffers.find(rendererID) == m_mapVertexBuffers.end())
 			{
 				buffer = newRenderer(type, materialID);
 			}
+			else
+			{
+				buffer = m_mapVertexBuffers[rendererID];
+				if (buffer->GetVertextCount() + vertexSize > MAX_VERTEX_NUMBER || !buffer->IsStaticDraw)
+				{
+					buffer = newRenderer(type, materialID);
+				}
+			}
+			m_mapMaterialID2RendererID[materialID] = buffer->ID;
 		}
-		m_mapMaterialID2RendererID[materialID] = buffer->ID;
+		buffer->IsStaticDraw = isStatic;;
 		return buffer;
 	}
 

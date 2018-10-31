@@ -28,10 +28,19 @@ namespace E3DEngine
 		{
 			rgbModule = GL_RGBA;
 		}
+		else if (tData.rgbModule == PixelFormat::L8A8)
+		{
+			rgbModule = GL_LUMINANCE_ALPHA;
+		}
+		else if (tData.rgbModule == PixelFormat::L8)
+		{
+			rgbModule = GL_LUMINANCE;
+		}
 		else
 		{
-			// TODO
+			assert(false);
 		}
+
 		m_nTextureBuffer = GL_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
 		glActiveTexture(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);

@@ -35,10 +35,18 @@ E3DEngine::TextureData * E3DEngine::TextureDataManager::GetTextureDataFromFile(s
 		outByte = (char*)malloc(width * height * 4);
 		memcpy(outByte, bits, width*height * 4);
 	}
+	else if (bpp == PixelFormat::L8A8)
+	{
+		outByte = (char*)malloc(width * height * 2);
+		memcpy(outByte, bits, width*height * 2);
+	}
+	else if (bpp == PixelFormat::L8)
+	{
+		outByte = (char*)malloc(width * height);
+		memcpy(outByte, bits, width*height);
+	}
 	else
 	{
-		// TODO
-		Debug::Log(ell_Error, "bpp is not in support format!");
 		assert(false);
 	}
 	imgData->imgData = outByte;

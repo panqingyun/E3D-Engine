@@ -22,22 +22,22 @@ namespace E3DEngine
 			return;
 		}
 
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		pMaterial->UpdateShader(STATIC_VERTEX);
 		if (!mBatchVertex.empty())
 		{
-			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 	}
 
 	void GLES_Renderer::TransformChange()
 	{
 		if (!mBatchVertex.empty())
 		{
-			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 		}
 	}
 
@@ -48,27 +48,27 @@ namespace E3DEngine
 		{
 			assert(false);
 		}
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
+		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 		pMaterial->UpdateShader(STATIC_VERTEX);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
+		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
 		if (!mBatchVertex.empty())
 		{
-			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
 	}
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STATIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
+		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
+		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STATIC_DRAW);
+		ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
 
 
@@ -116,8 +116,8 @@ namespace E3DEngine
 		updateEngineDefineShaderValue();
 
 		// 绘制图形
-		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
-		int err = glGetError();
+		ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
+
 		afterRender(deltaTime);
 	}
 
@@ -197,11 +197,11 @@ namespace E3DEngine
 			return;
 		}
 		pMaterial->InvalidMaterial();
-		glDisable(GL_STENCIL_TEST);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		glDepthMask(GL_TRUE);
-		glDisable(GL_BLEND);
+		ES2::Disable(GL_STENCIL_TEST);
+		ES2::BindBuffer(GL_ARRAY_BUFFER, 0);
+		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		ES2::DepthMask(GL_TRUE);
+		ES2::Disable(GL_BLEND);
 	}
 
 

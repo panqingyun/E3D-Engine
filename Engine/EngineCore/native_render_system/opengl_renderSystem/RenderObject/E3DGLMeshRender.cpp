@@ -65,25 +65,6 @@ namespace E3DEngine
 		pRender->SetDrawModule(module);
 	}
 
-
-	void GL_MeshRender::SetColor(long color)
-	{
-		pRender->SetColor(color);
-	}
-
-
-	void GL_MeshRender::SetIsBillborad(bool isBillboard)
-	{
-		pRender->SetIsBillborad(isBillboard);
-	}
-
-
-	bool GL_MeshRender::GetIsBillBoard()
-	{
-		return pRender->GetIsBillBoard();
-	}
-
-
 	E3DEngine::CTransform * GL_MeshRender::GetTransform()
 	{
 		return pRender->GetTransform();

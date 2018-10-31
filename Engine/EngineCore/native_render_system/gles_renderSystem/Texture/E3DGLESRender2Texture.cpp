@@ -26,21 +26,21 @@ void E3DEngine::GLES_Render2Texture::Bind()
 
 void E3DEngine::GLES_Render2Texture::SetTextureUniformIndex(int index, UINT program)
 {
-	m_nTextureUniform = glGetUniformLocation(program, m_strTextureUniformName.c_str());
-	glUniform1i(m_nTextureUniform, index);
+	m_nTextureUniform = ES2::GetUniformLocation(program, m_strTextureUniformName.c_str());
+	ES2::Uniform1i(m_nTextureUniform, index);
 	m_nTextureIndex = index;
 }
 
 void E3DEngine::GLES_Render2Texture::ActiveBindTexture()
 {
-	glActiveTexture(m_nTextureEnum);
-	glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-	glUniform1i(m_nTextureUniform, m_nTextureIndex);
+	ES2::ActiveTexture(m_nTextureEnum);
+	ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
+	ES2::Uniform1i(m_nTextureUniform, m_nTextureIndex);
 }
 
 void E3DEngine::GLES_Render2Texture::InvalidTexture()
 {
-	glBindTexture(GL_TEXTURE_2D, 0);
+	ES2::BindTexture(GL_TEXTURE_2D, 0);
 }
 
 void E3DEngine::GLES_Render2Texture::SetClampType(int tp)

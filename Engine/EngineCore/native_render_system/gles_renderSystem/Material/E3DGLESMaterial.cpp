@@ -128,44 +128,44 @@ namespace E3DEngine
 	{
 		if (enableDepthTest)
 		{
-			glEnable(GL_DEPTH_TEST);
+			ES2::Enable(GL_DEPTH_TEST);
 		}
 		else
 		{
-			glDisable(GL_DEPTH_TEST);
+			ES2::Disable(GL_DEPTH_TEST);
 		}
         //深度测试
         if(enablewriteDepth)
 		{
-			glDepthMask(GL_TRUE);
+			ES2::DepthMask(GL_TRUE);
         }
         else
 		{
-			glDepthMask(GL_FALSE);
+			ES2::DepthMask(GL_FALSE);
         }       
 
         if(enableDoubleSide)
         {
-            glDisable(GL_CULL_FACE);
+			ES2::Disable(GL_CULL_FACE);
         }
         else
         {
-			glEnable(GL_CULL_FACE);
+			ES2::Enable(GL_CULL_FACE);
         }		
 
 		if (srcBlendFactor == GL_NONE || dstBlendFactor == GL_NONE)
 		{
-			glDisable(GL_BLEND);
+			ES2::Disable(GL_BLEND);
 		}
 		else
 		{
-			glEnable(GL_BLEND);
-			glBlendFunc(srcBlendFactor, dstBlendFactor);
+			ES2::Enable(GL_BLEND);
+			ES2::BlendFunc(srcBlendFactor, dstBlendFactor);
 		}
-		glEnable(GL_ALPHA);
+		ES2::Enable(GL_ALPHA);
 
-        glEnable(GL_STENCIL_TEST);
-        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+		ES2::Enable(GL_STENCIL_TEST);
+		ES2::ColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
         
         if(enableStencilTest)
         {
@@ -175,11 +175,11 @@ namespace E3DEngine
 
     void GLES_Material::enableStencil()
     {
-        glDepthMask(GL_TRUE);//启用写入深度值
-        glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-        glStencilFunc(GL_EQUAL, 1, 0xFF);
-        glStencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);
-        glStencilMask(0xFF);
+        ES2::DepthMask(GL_TRUE);//启用写入深度值
+        ES2::ColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+        ES2::StencilFunc(GL_EQUAL, 1, 0xFF);
+        ES2::StencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);
+        ES2::StencilMask(0xFF);
     }
 
 
@@ -194,7 +194,7 @@ namespace E3DEngine
 			it.second->InvalidTexture();
 		}
 		UseNullProgram();
-		glBindTexture(GL_TEXTURE_2D, 0);
+		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 

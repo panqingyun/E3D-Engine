@@ -14,6 +14,8 @@ public:
 
 	BOOL ChangeSurface(HDC pDc);
 
+	HGLRC choosePixelFormat(HDC hDC);
+
 public:
 	HGLRC					hglrc;
 	HDC						DisplayID;

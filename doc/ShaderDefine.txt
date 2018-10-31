@@ -1,0 +1,22 @@
+mat4 _e3d_matModel; // 世界矩阵
+mat4 _e3d_matProj; 	// 投影矩阵
+mat4 _e3d_matView;	// 试图矩阵
+vec3 _e3d_Rotation;	// 物体的旋转向量
+vec3 _e3d_CameraPos	// 摄像机位置
+
+vec4 _e3d_WorldSpaceLightColor		// 平行光的颜色
+vec3 _e3d_WorldSpaceLightDirection	// 平行光的方向
+
+int _e3d_PointLightCount						// 点光源的数目
+vec3 _e3d_PointLightPos[_e3d_PointLightCount]	// 点光源的位置数组
+vec4 _e3d_PointLightColor[_e3d_PointLightCount]	// 点光源的颜色数组
+float _e3d_PointLightRange[_e3d_PointLightCount]// 点光源影响范围数组
+
+mat4 _e3d_getMVPMatrix(); // 获取mvp矩阵乘积
+
+#define USING_DIRECTIONAL_LIGHT // 如果存在平行光源 就会有这个定义
+#define USING_POINT_LIGHT		// 如果存在点光源 定义
+#define __GLES__				// 如果使用OpenGL ES渲染定义
+#define __IOS__ 				// IOS平台
+#define __ANDROID__				// Android平台
+#define __WIN32__				// Windows平台

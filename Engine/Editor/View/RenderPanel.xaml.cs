@@ -19,7 +19,6 @@ namespace E3DEditor.View
     /// </summary>
     public partial class RenderPanel : System.Windows.Controls.UserControl
     {
-        System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         public event MouseEventHandler _MouseButtonDown;
         public event MouseEventHandler _MouseButtonUp;
         public event MouseEventHandler _MouseMove;
@@ -27,8 +26,7 @@ namespace E3DEditor.View
         public event System.Windows.Input.KeyEventHandler _KeyUp;
         public event EventHandler _SizeChange;
         public bool NeedUpdate = true;
-
-        private object lock_object = new object();
+        
         public IntPtr Handle
         {
             get
@@ -37,7 +35,6 @@ namespace E3DEditor.View
             }
         }
 
-        private System.Threading.Thread physicsThread = null;
         public event RenderHandler RenderLoaded;
 
         public RenderPanel()
@@ -45,18 +42,6 @@ namespace E3DEditor.View
             InitializeComponent();
             editorContent.SizeChanged += EditorContent_SizeChanged;
             Loaded += RenderPanel_Loaded;
-        }
-
-        private void physicsUpdate()
-        {
-            while(true)
-            {
-                lock (lock_object)
-                {
-                    App.vm_MainWindow.RenderDelegate.UpdatePhysics();
-                }
-                System.Threading.Thread.Sleep(1);
-            }
         }
 
         private void RenderPanel_Loaded(object sender, RoutedEventArgs e)
@@ -69,26 +54,8 @@ namespace E3DEditor.View
             {
                 App.vm_MainWindow.ShowLog(ex.ToString());
             }
-            if (NeedUpdate)
-            {
-                physicsThread = new System.Threading.Thread(physicsUpdate);
-                myTimer.Tick += new EventHandler(update);
-                myTimer.Enabled = true;
-                myTimer.Interval = 10;
-                myTimer.Start();
-                physicsThread.Start();
-            }
         }
         
-        private void update(object sender, EventArgs e)
-        {
-            if (App.vm_MainWindow.EngineLoaded)
-            {
-                //App.vm_MainWindow.RenderDelegate.UpdatePhysics();
-                App.vm_MainWindow.RenderDelegate.EngineUpdate();
-            }
-        }
-
         private void EditorContent_SizeChanged(object sender, EventArgs e)
         {
             _SizeChange?.Invoke(this, e);

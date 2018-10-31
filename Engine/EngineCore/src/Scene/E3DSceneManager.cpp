@@ -37,7 +37,7 @@ namespace E3DEngine
 
 	E3DEngine::Scene * SceneManager::LoadScene(std::string filePath)
 	{		
-		EngineDelegate::GetInstance().SetEnginePause(true);
+		PhysicWorld::GetInstance().SetPause(true);
 		if (mCurScene != nullptr)
 		{
 			mCurScene->Destory();
@@ -46,7 +46,7 @@ namespace E3DEngine
 		mCurScene = new Scene();
 		mCurScene->Create(filePath);
 
-		EngineDelegate::GetInstance().SetEnginePause(false);
+		PhysicWorld::GetInstance().SetPause(false);
 		return mCurScene;
 	}
 

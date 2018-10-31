@@ -409,6 +409,7 @@ namespace E3DEngine
 		TransformChangeFunc		TransChangeFun;
 		std::string				VertexBufferName;
 		Color4					Color;
+		unsigned int			mSceneObjectType;
 	protected:
 		DWORD						m_layerMask;
 		Renderer *					m_pRenderer;

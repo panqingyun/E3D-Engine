@@ -26,32 +26,20 @@ namespace E3DEditor.ViewModel
 {
     public class VM_MainWindow : DependencyObject, INotifyPropertyChanged
     {
-        private ShowLogDelegate outFunc = null;
+        #region Property Field
+
         public E3DEngine.EngineDelegateRef RenderDelegate = null;
+
+        System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
+        private System.Threading.Thread physicsThread = null;
+        private ShowLogDelegate outFunc = null;
         private IntPtr windowsPlayerHandle = IntPtr.Zero;
         private Process windowsPlayer = null;
         private Assembly externAsm = null;
         private string curScenePath = "";
         private bool sceneIsStart = false;
-
-        public void ShowMainWindow()
-        {
-            if (mainWnd == null)
-            {
-                mainWnd = new MainWindow();
-            }
-            mainWnd.ShowDialog();
-        }
-
-        public VM_MainWindow()
-        {
-            RenderDelegate = new E3DEngine.EngineDelegateRef();
-            RenderDelegate.InitilizeEngine();
-            outFunc = ShowLog;
-            IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
-            RenderDelegate.SetDebugLogOutFunc(ptr);
-            Common.Debug.ShowLogHandle = ShowLog;
-        }
+        private TabItemWithClose gameItem = null;
+        private TabItemWithClose renderItem = null;
 
         private bool engineLoaded = false;
         public bool EngineLoaded
@@ -59,6 +47,20 @@ namespace E3DEditor.ViewModel
             get
             {
                 return engineLoaded;
+            }
+            private set
+            {
+                if(engineLoaded == true)
+                {
+                    return;
+                }
+                engineLoaded = value;
+                myTimer.Tick += new EventHandler(engineUpdate);
+                myTimer.Enabled = true;
+                myTimer.Interval = 10;
+                myTimer.Start();
+                physicsThread = new System.Threading.Thread(physicsUpdate);
+                physicsThread.Start();
             }
         }
 
@@ -88,32 +90,75 @@ namespace E3DEditor.ViewModel
                 OnPropertyChanged("WindowTitle");
             }
         }
-        TabItemWithClose gameItem = null;
-        TabItemWithClose renderItem = null;
-        private void createRenderPanel()
+
+        private double prograssBarValue = 0;
+        public double PrograssBarValue
         {
-            if (renderItem != null)
+            get
             {
-                renderItem.Close();
+                return prograssBarValue;
             }
-            renderItem = new TabItemWithClose();
-            renderItem.Width = 150;
-            renderItem.Height = 20;
-            renderItem.FontSize = 13;
-            renderItem.Header = "编辑器";
-            renderItem.HorizontalAlignment = HorizontalAlignment.Stretch;
-            renderItem.VerticalAlignment = VerticalAlignment.Stretch;
-            RenderPanel rp = new RenderPanel();
-            rp.RenderLoaded += Rp_Loaded;
-            rp._MouseButtonDown += Rp__MouseLeftButtonDown;
-            rp._MouseButtonUp += Rp__MouseLeftButtonUp;
-            rp._MouseMove += Rp__MouseMove;
-            rp._KeyDown += Rp__KeyDown;
-            rp._KeyUp += Rp__KeyUp;
-            rp._SizeChange += Rp__SizeChange;
-            renderItem.Content = rp;
-            mainWnd.renderPanel.Items.Add(renderItem);
-            mainWnd.renderPanel.SelectedItem = renderItem;
+            set
+            {
+                prograssBarValue = value;
+                OnPropertyChanged("PrograssBarValue");
+            }
+        }
+
+        private string stateLable = "";
+        public string State
+        {
+            get { return stateLable; }
+            set
+            {
+                stateLable = value;
+                OnPropertyChanged("State");
+            }
+        }
+
+        public bool PauseEngine
+        {
+            set
+            {
+                if (!EngineLoaded)
+                {
+                    return;
+                }
+                if (sceneIsStart)
+                {
+                    RenderDelegate.RunCurrentScene(!value);
+                }
+                pauseGame(value);
+            }
+        }
+
+        private bool isEditor = true;
+        public bool IsEditor
+        {
+            get
+            {
+                return isEditor;
+            }
+            set
+            {
+                isEditor = value;
+            }
+        }
+        public PropertiesView PropertyView
+        {
+            get { return _MainWindow.properties; }
+        }
+
+        #endregion
+
+        public VM_MainWindow()
+        {
+            RenderDelegate = new E3DEngine.EngineDelegateRef();
+            RenderDelegate.InitilizeEngine();
+            outFunc = ShowLog;
+            IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
+            RenderDelegate.SetDebugLogOutFunc(ptr);
+            Common.Debug.ShowLogHandle = ShowLog;
         }
 
         #region RenderPanel Event
@@ -200,7 +245,7 @@ namespace E3DEditor.ViewModel
 
         private void Rp_Loaded(IntPtr handle, Size renderSize)
         {
-            if (engineLoaded)
+            if (EngineLoaded)
             {
                 RenderDelegate.ChangeSurface(handle);
                 RenderDelegate.ChageFrameSize((int)renderSize.Width, (int)renderSize.Height);
@@ -210,6 +255,7 @@ namespace E3DEditor.ViewModel
                 int renderType = Config.RenderSystemType;
                 RenderDelegate.SetupRenderSystem( renderType, handle, (int)renderSize.Width, (int)renderSize.Height);
                 RenderDelegate.StartAppliaction();
+                EngineLoaded = true;
                 mainWnd.objectList.ItemsSource = null;
                 if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
                 {
@@ -217,11 +263,12 @@ namespace E3DEditor.ViewModel
                 }
                 curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
                 loadGameObjectList();
-                engineLoaded = true;
             }
         }
+
         #endregion
 
+        #region Load Scene
         public void LoadScene(string scenePath)
         {
             string _sceneName = System.IO.Path.GetFileName(scenePath);
@@ -305,6 +352,19 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        private void fillNodeList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
+        {
+            for (int i = 0; i < _gameObjectList.Count; i++)
+            {
+                GameObjectNode node = new GameObjectNode();
+                node.Name = _gameObjectList[i].GetName();
+                node.ShowText = node.Name;
+                node.mGameObject = _gameObjectList[i];
+                fillNodeList(_gameObjectList[i].GetChilds(), node.Childs);
+                nodeList.Add(node);
+            }
+        }
+
         private Dictionary<int, TabItemWithClose> editorItemMap = new Dictionary<int, TabItemWithClose>();
 
         public ObservableCollection<GameObjectNode> gameObjectList
@@ -328,45 +388,16 @@ namespace E3DEditor.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private double prograssBarValue = 0;
-        public double PrograssBarValue
-        {
-            get
-            {
-                return prograssBarValue;
-            }
-            set
-            {
-                prograssBarValue = value;
-                OnPropertyChanged("PrograssBarValue");
-            }
-        }
+        #endregion
 
-        private string stateLable = "";
-        public string State
+        #region Method
+        public void ShowMainWindow()
         {
-            get { return stateLable; }
-            set
+            if (mainWnd == null)
             {
-                stateLable = value;
-                OnPropertyChanged("State");
+                mainWnd = new MainWindow();
             }
-        }
-
-        public bool PauseEngine
-        {
-            set
-            {
-                if (!EngineLoaded)
-                {
-                    return;
-                }
-                if (sceneIsStart)
-                {
-                    RenderDelegate.RunCurrentScene(!value);
-                }
-                pauseGame(value);
-            }
+            mainWnd.ShowDialog();
         }
 
         private void pauseGame(bool value)
@@ -387,20 +418,7 @@ namespace E3DEditor.ViewModel
 
             SendMsg2WindowsPlayer(stru);
         }
-
-        private bool isEditor = true;
-        public bool IsEditor
-        {
-            get
-            {
-                return isEditor;
-            }
-            set
-            {
-                isEditor = value;
-            }
-        }
-        
+          
         public void RunCurrentScene(bool isRun)
         {
             if (isRun)
@@ -452,10 +470,9 @@ namespace E3DEditor.ViewModel
                 gameItem.Height = 20;
                 gameItem.Closed += GameItem_Closed;
                 rp = new RenderPanel();
-                rp._SizeChange += Rp__SizeChange1;
-                rp.Loaded += Rp_Loaded1;
+                rp._SizeChange += gamePanel_SizeChange;
+                rp.Loaded += gamePanel_Loaded;
                 gameItem.Content = rp;
-
             }
 
             mainWnd.renderPanel.Items.Add(gameItem);
@@ -470,14 +487,14 @@ namespace E3DEditor.ViewModel
 
         }
 
-        private void Rp_Loaded1(object sender, RoutedEventArgs e)
+        private void gamePanel_Loaded(object sender, RoutedEventArgs e)
         {
             RenderPanel rp = gameItem.Content as RenderPanel;
             // 在Resize事件中更新目标应用程序的窗体尺寸. 
             Win32.SetWindowPos(windowsPlayerHandle, IntPtr.Zero, 0, 0, (int)rp.ActualWidth, (int)rp.ActualHeight, Win32.SWP_NOZORDER);
         }
 
-        private void Rp__SizeChange1(object sender, EventArgs e)
+        private void gamePanel_SizeChange(object sender, EventArgs e)
         {
             RenderPanel rp = gameItem.Content as RenderPanel;
             // 在Resize事件中更新目标应用程序的窗体尺寸. 
@@ -522,16 +539,6 @@ namespace E3DEditor.ViewModel
             Win32.SendMessage(windowsPlayerHandle, Win32.WM_COPYDATA, IntPtr.Zero, ref data);
         }
 
-        public PropertiesView PropertyView
-        {
-            get { return _MainWindow.properties; }
-        }
-        
-        private void item_Closed(object sender, EventArgs e)
-        {
-           
-        }
-        
         public void ShowLog(string log)
         {
             if (log == null)
@@ -560,19 +567,35 @@ namespace E3DEditor.ViewModel
             _MainWindow.logList.ScrollIntoView(loge);
         }
 
-        private void fillNodeList(List<E3DEngine.GameObjectRef> _gameObjectList,ObservableCollection<GameObjectNode> nodeList)
+        private void createRenderPanel()
         {
-            for (int i = 0; i < _gameObjectList.Count; i++)
+            if (renderItem != null)
             {
-                GameObjectNode node = new GameObjectNode();
-                node.Name = _gameObjectList[i].GetName();
-                node.ShowText = node.Name;
-                node.mGameObject = _gameObjectList[i];
-                fillNodeList(_gameObjectList[i].GetChilds(), node.Childs);
-                nodeList.Add(node);
+                renderItem.Close();
             }
+            renderItem = new TabItemWithClose();
+            renderItem.Width = 150;
+            renderItem.Height = 20;
+            renderItem.FontSize = 13;
+            renderItem.Header = "编辑器";
+            renderItem.HorizontalAlignment = HorizontalAlignment.Stretch;
+            renderItem.VerticalAlignment = VerticalAlignment.Stretch;
+            RenderPanel rp = new RenderPanel();
+            rp.RenderLoaded += Rp_Loaded;
+            rp._MouseButtonDown += Rp__MouseLeftButtonDown;
+            rp._MouseButtonUp += Rp__MouseLeftButtonUp;
+            rp._MouseMove += Rp__MouseMove;
+            rp._KeyDown += Rp__KeyDown;
+            rp._KeyUp += Rp__KeyUp;
+            rp._SizeChange += Rp__SizeChange;
+            renderItem.Content = rp;
+            mainWnd.renderPanel.Items.Add(renderItem);
+            mainWnd.renderPanel.SelectedItem = renderItem;
         }
+        
+        #endregion
 
+        #region Menu Command
         public void MenuItemCommand(string menuName)
         {
             if (menuName == "openSln")
@@ -682,6 +705,8 @@ namespace E3DEditor.ViewModel
             E3DEngine.SceneManageRef.GetInstance().GetCurScene().SaveScene(curScenePath);
         }
 
+        #endregion
+
         #region ... Command
         public void ExecuteCommand(object sender, ExecutedRoutedEventArgs e)
         {
@@ -760,6 +785,28 @@ namespace E3DEditor.ViewModel
                 default: break;
             }
         }
+        #endregion
+
+        #region Update
+
+        private void physicsUpdate()
+        {
+            while (true)
+            {
+                RenderDelegate.UpdatePhysics();
+                System.Threading.Thread.Sleep(1);
+            }
+        }
+
+        private void engineUpdate(object sender, EventArgs e)
+        {
+            if (EngineLoaded)
+            {
+                RenderDelegate.EngineUpdate();
+            }
+        }
+
+
         #endregion
     }
 }

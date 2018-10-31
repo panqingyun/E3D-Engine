@@ -88,7 +88,6 @@ namespace E3DEngine
         m_bIsBlank = false;
         m_CurrentParticleNumer = 0;
         m_fBlankTime = 0;
-		m_pParticleGroup->UpdateRefrence(1);
     }
     
     void ParticleEmitter::InitCompleted()

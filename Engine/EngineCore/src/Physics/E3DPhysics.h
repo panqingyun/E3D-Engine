@@ -46,6 +46,7 @@ namespace E3DEngine
 		btDiscreteDynamicsWorld * GetWorld();
 
 		bool RayCast(Ray ray, RaycastHit &hit);
+		void SetPause(bool bPause);
 	private:
 		btDefaultCollisionConfiguration* m_pCollisionConfiguration;
 		btCollisionDispatcher* m_pDispatcher;
@@ -57,6 +58,7 @@ namespace E3DEngine
 		btCollisionObject* objB;
 		std::map<uint, char> m_hasCheckObjectMap;
 		btVector3 mlocalInertia;
+		bool	mPause;
 #endif
 	};
 }

@@ -40,6 +40,10 @@ namespace E3DEngine
 
 	void PhysicWorld::Update(float deltaTime)
 	{
+		if (mPause)
+		{
+			return;
+		}
 		m_pDynamicsWorld->stepSimulation(deltaTime);
 		//int  numManifolds = m_pDispatcher->getNumManifolds();
 		//for (int i = 0; i < numManifolds; i++)
@@ -133,6 +137,12 @@ namespace E3DEngine
 			return true;
 		}
 		return false;
+	}
+
+
+	void PhysicWorld::SetPause(bool bPause)
+	{
+		mPause = bPause;
 	}
 
 	void PhysicWorld::CreateGround()

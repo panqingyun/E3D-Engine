@@ -65,7 +65,6 @@ namespace E3DEngine
 		virtual void setBehaviourDefaultValue();
 	public:
 		unsigned int	ID;
-		unsigned int	mSceneObjectType;
 		std::string		mName;
 		std::string		mTypeName;
 		ObjectType		mObjectType;

@@ -45,8 +45,6 @@ namespace E3DEngine
 		virtual void PlayDurationEnd(IObject * sender, EventArgs * e)	override;
 
     public:
-        eParticleLiveState	getParticleState() const;
-        void				setParticleState(eParticleLiveState state);
         Vertex *			getVertex(mat4f worldMatrix);
 		BatchVertex *		getBatchVertex();
         uint *				getIndices();
@@ -99,7 +97,6 @@ namespace E3DEngine
         int     m_RandomForceID;
         float	m_fWidth;                     // 宽度
         float	m_fHeight;                    // 高度
-        bool	m_bOwnDimension;               // 是否可控制粒子大小
         float	m_fColor[4];                  // 当前颜色（通常指顶点颜色 R G B A）
         vec3f	m_vDirection;                 // 方向
         vec3f   m_vBornEmitterPosition;
@@ -109,19 +106,11 @@ namespace E3DEngine
         BatchVertex BVertes[4];
 		Vertex		Vertes[4];
         uint		Indices[6];
-        long		m_nCurrentColor;
         float		m_fTextureCoord[4][2];
         float		m_fTimeToLive;                // 剩余生命
         float		m_fTotalTimeToLive;           // 生命周期
-        Quatf		m_qQuat;
-        vec3f		m_rotateAxis;
         float		m_rotateAngle;
         float		m_rotateSpeed;
-        bool		m_bIsBillBoard;
-        float		rudis;
-        vec3f		m_vRight;
-        vec3f		m_vUp;
-        eParticleLiveState		m_eParticleState;
         vec2f		m_NotChangeTextureCoord[4];
         TextureFrameEffect * m_FrameEffect;
         vec2f       m_uv;
@@ -151,10 +140,7 @@ namespace E3DEngine
     {
     public:
         ParticleGroup();
-        virtual ~ParticleGroup() override;
-		int	 GetRefrence();
-        void UpdateRefrence(int number);
-        void SetTextureIndex(int index);
+        virtual ~ParticleGroup();
 		void SetfShaderIndex(int index);
 		void CreateParticle(unsigned int particleNumber, float time2Live, vec3f pos, Vector2 size, float color, uint groupID, vec3f bornEmitterPos, bool isFirstCreate = false);
 		
@@ -181,7 +167,6 @@ namespace E3DEngine
 		std::vector<ParticleAffector*> * GetAffector();
     public:
         int				m_isLock;
-        Material		* m_pMaterial;
         uint			ParticleID; // 唯一的ID
         string			m_MaterialName;
         int				ParticleConfigID;
@@ -212,10 +197,7 @@ namespace E3DEngine
 		std::vector<ParticleAffector*>	m_particleAffectors;
 		std::vector<TextureUVConfig*>	m_vecUVConfigs;
 		particleInitConfig				initCfg;
-        UINT	m_nRefrence;   // 引用粒子团的发射器和影响器的计数，当引用值是0的时候 删除这个粒子团
         UINT	m_uiMaxParticleNumber;
-        int		m_nTextureIndex;
-        bool    m_bIsBlendONE;
         uint			m_particleIndex;
         long			m_nColor;
         uint			vertexStartIndex;

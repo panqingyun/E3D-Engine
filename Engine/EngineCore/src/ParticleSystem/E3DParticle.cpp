@@ -12,7 +12,6 @@ namespace E3DEngine
 	Particle::Particle()
 	{
 		autoRelease();
-		m_bIsBillBoard = true;
 		Transform = new CTransform();
 		m_FrameEffect = new TextureFrameEffect();
 		m_FrameEffect->IsParticleEffect = false;
@@ -24,7 +23,6 @@ namespace E3DEngine
 		m_fTotalTimeToLive = time2Live;
 		m_fWidth = width;
 		m_fHeight = height;
-		m_bOwnDimension = ownDimension;
 		m_vDirection = vec3f(0, 0, 0);
 		fShaderIndex = fsIndex;
 		
@@ -49,7 +47,6 @@ namespace E3DEngine
 		Transform->SetPosition(position);
 		vec3f up = vec3f(0, 1, 0);
 		
-		rudis = sqrt(m_fWidth * m_fWidth + m_fHeight * m_fHeight) / 2;
 		initVertex();
 
 		bFristUpdte = true;
@@ -164,17 +161,6 @@ namespace E3DEngine
 		return m_fColor;
 	}
 
-	eParticleLiveState Particle::getParticleState() const
-	{
-		return m_eParticleState;
-	}
-
-
-	void Particle::setParticleState(eParticleLiveState state)
-	{
-		m_eParticleState = state;
-	}
-
 	Vertex * Particle::getVertex(mat4f worldMatrix)
 	{
 		vec4f pos0 = vec4f(Vertes[0].Position[0], Vertes[0].Position[1], Vertes[0].Position[2], 1.0);
@@ -206,7 +192,6 @@ namespace E3DEngine
 
 	void Particle::SetColor(long color)
 	{
-		m_nCurrentColor = color;
 		vec4f vColor = Convert::ToColorRGBA(color);
 		m_fColor[0] = vColor.r;
 		m_fColor[1] = vColor.g;
@@ -502,7 +487,6 @@ namespace E3DEngine
 	{
 		mName				= _ParticleGroupName;
 		m_particleIndex		= 0;
-		m_pMaterial			= nullptr;
 		m_bIsPause			= false;
 		m_nColor			= 0xffffffff;
 		beGetFromLocalPool	= false;
@@ -628,8 +612,6 @@ namespace E3DEngine
 	void ParticleGroup::SetRenderer(Renderer * buffer)
 	{
 		m_pRenderer = buffer;
-		m_pMaterial = buffer->GetMaterial();
-		m_pMaterial->SetEnableDepthWrite(false);
 		SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
 		m_pRenderer->CreateNewTransform();
 		SetRenderIndex(eRI_TopMost);
@@ -668,25 +650,6 @@ namespace E3DEngine
 	{
 		return &m_ActiveParticles;
 	}
-
-
-	void ParticleGroup::UpdateRefrence(int number)
-	{
-		m_nRefrence += number;
-	}
-
-
-	int ParticleGroup::GetRefrence()
-	{
-		return m_nRefrence;
-	}
-
-
-	void ParticleGroup::SetTextureIndex(int index)
-	{
-		m_nTextureIndex = index;
-	}
-
 
 	void ParticleGroup::SetfShaderIndex(int index)
 	{

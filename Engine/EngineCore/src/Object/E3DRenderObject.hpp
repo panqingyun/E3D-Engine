@@ -116,7 +116,7 @@ namespace E3DEngine
 		virtual void SetLayerMask(DWORD layer);
 		virtual DWORD GetLayerMask();
 		virtual Camera *GetCamera();
-
+		virtual void ChangeColor(Color4 color) { }
 		void SetActive(bool isActive) { m_IsActive = isActive; }
 		MinMaxAABB GetBounds()
 		{

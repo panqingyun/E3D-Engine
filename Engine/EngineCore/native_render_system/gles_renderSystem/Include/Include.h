@@ -7,6 +7,7 @@
 #include "EGL/eglplatform.h"
 #include "EGL/egl.h"
 #include <GLES2/gl2.h>
+#define GL_GLEXT_PROTOTYPES
 #include <GLES2/gl2ext.h>
 #include <GLES2/gl2platform.h>
 #include "../GLES2/E3DES2Loader.h"

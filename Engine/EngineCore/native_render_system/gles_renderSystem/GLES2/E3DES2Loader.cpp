@@ -150,6 +150,8 @@ namespace E3DEngine
 		PFNGLVERTEXATTRIB4FVPROC _glVertexAttrib4fv;
 		PFNGLVERTEXATTRIBPOINTERPROC _glVertexAttribPointer;
 		PFNGLVIEWPORTPROC _glViewport;
+		PFNGLMAPBUFFEROESPROC _glMapBufferOES;
+		PFNGLUNMAPBUFFEROESPROC _glUnMapBufferOES;
 #endif
 
 		void LoadESLibrary()
@@ -303,6 +305,8 @@ namespace E3DEngine
 			_glVertexAttrib4fv = (PFNGLVERTEXATTRIB4FVPROC)GetProcAddress(gESModule, __String(glVertexAttrib4fv));
 			_glVertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC)GetProcAddress(gESModule, __String(glVertexAttribPointer));
 			_glViewport = (PFNGLVIEWPORTPROC)GetProcAddress(gESModule, __String(glViewport));
+			_glMapBufferOES = (PFNGLMAPBUFFEROESPROC)GetProcAddress(gESModule, __String(glMapBufferOES));
+			_glUnMapBufferOES = (PFNGLUNMAPBUFFEROESPROC)GetProcAddress(gESModule, __String(glUnmapBufferOES));
 #endif
 		}
 
@@ -1584,6 +1588,23 @@ namespace E3DEngine
 #endif
 		}
 
+		void* MapBufferOES(GLenum target, GLenum access)
+		{
+#ifdef WIN32
+			return _glMapBufferOES(target, access);
+#else
+			return glMapBufferOES(target, access);
+#endif
+		}
+
+		GLboolean UnMapBufferOES(GLenum target)
+		{
+#ifdef WIN32
+			return _glUnMapBufferOES(target);
+#else
+			return glUnmapBufferOES(target);
+#endif
+		}
 
 
 	}

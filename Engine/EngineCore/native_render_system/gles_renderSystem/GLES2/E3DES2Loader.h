@@ -605,6 +605,8 @@ namespace E3DEngine
 		typedef void(APIENTRY * PFNGLVERTEXATTRIB4FVPROC) (GLuint indx, const GLfloat* values);
 		typedef void(APIENTRY * PFNGLVERTEXATTRIBPOINTERPROC) (GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* ptr);
 		typedef void(APIENTRY * PFNGLVIEWPORTPROC) (GLint x, GLint y, GLsizei width, GLsizei height);
+		typedef void*(APIENTRY * PFNGLMAPBUFFEROESPROC)(GLenum target, GLenum access);
+		typedef GLboolean(APIENTRY * PFNGLUNMAPBUFFEROESPROC)(GLenum target);
 
 		void LoadESLibrary();
 
@@ -750,5 +752,7 @@ namespace E3DEngine
 		void       VertexAttrib4fv(GLuint indx, const GLfloat* values);
 		void       VertexAttribPointer(GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void* ptr);
 		void       Viewport(GLint x, GLint y, GLsizei width, GLsizei height);
+		void*	   MapBufferOES(GLenum target, GLenum access);
+		GLboolean  UnMapBufferOES(GLenum target);
 	}
 }

@@ -130,16 +130,29 @@ namespace E3DEngine
 			return;
 		}
 
+		updateEngineDefineShaderValue();
+
 		pMaterial->UseMaterial();
 
 		updateArrayBuffer(deltaTime);
-
-		updateEngineDefineShaderValue();
 		
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 
 		afterRender(deltaTime);
+	}
+
+
+	void GL_Renderer::ChangeColor(Color4 color)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		Vertex *verts = (Vertex*)glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE);
+		for (int i = 0; i < m_vertexCount; i++)
+		{
+			verts[i].SetColor(color.r, color.g, color.b, color.a);
+		}
+		glUnmapBuffer(GL_ARRAY_BUFFER);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	void GL_Renderer::updateEngineDefineShaderValue()

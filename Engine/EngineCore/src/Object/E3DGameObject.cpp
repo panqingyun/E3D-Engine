@@ -599,7 +599,7 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		if (m_pRenderer != nullptr)
 		{
-			//m_pRenderer->ChangeColor(color);
+			m_pRenderer->ChangeColor(color);
 		}
 #endif
 	}

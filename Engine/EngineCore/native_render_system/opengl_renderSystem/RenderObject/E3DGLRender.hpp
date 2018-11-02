@@ -40,7 +40,7 @@ namespace E3DEngine
 		virtual void ClearVertexIndexBuffer() override;
 
 		virtual void Render(float deltaTime) override;
-
+		virtual void ChangeColor(Color4 color) override;
 		virtual void SetDrawModule(DWORD module) override;
 
 	protected:

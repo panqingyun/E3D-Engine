@@ -77,8 +77,10 @@ namespace E3DEngine
 		m_nIndexSize = (DWORD)Indices.size();
 		if (!IsStaticDraw)
 		{
+#ifndef __E3D_EDITOR__
 			Indices.clear();
 			Vertices.clear();
+#endif
 		}
 	}
 
@@ -118,6 +120,18 @@ namespace E3DEngine
 		}
 	}
 
+	void GLES_Renderer::ChangeColor(Color4 color)
+	{
+#ifdef __E3D_EDITOR__
+		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		for (int i = 0; i < m_vertexCount; i++)
+		{
+			Vertices[i].SetColor(color.r, color.g, color.b, color.a);
+		}
+		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
+#endif
+	}
+
 	void GLES_Renderer::Render(float deltaTime)
 	{
 		if (pMaterial == nullptr)
@@ -125,15 +139,13 @@ namespace E3DEngine
 			return;
 		}
 
+		updateEngineDefineShaderValue();
+
 		pMaterial->UseMaterial();
 
 		updateArrayBuffer(deltaTime);
-
-		updateEngineDefineShaderValue();
-
-		// 绘制图形
+			// 绘制图形
 		ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
-
 		afterRender(deltaTime);
 	}
 
@@ -141,8 +153,7 @@ namespace E3DEngine
 	{
 		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
-		//Debug::Log(ell_None, "%f,%f,%f", GetTransform()->Position.x, GetTransform()->Position.y, GetTransform()->Position.z);
-		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
+		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);		
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
 
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();

@@ -20,6 +20,7 @@
 - [ ] 骨骼动画
 - [ ] UI
 - [ ] 脚本系统完善
+- [ ] 鼠标拾取
 
 #### 渲染系统使用的OpenGL 及 OpenGL ES，Windows上OpenGL ES使用AMD的ES模拟器。
 

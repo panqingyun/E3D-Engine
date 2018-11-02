@@ -340,7 +340,6 @@ namespace E3DEngine
 		if (objectElement->FirstChildElement(_Material) != nullptr)
 		{
 			DWORD type = go->mSceneObjectType == TP_Mesh ? MESH : NORMAL;
-			Debug::Log(ell_Warning, "%s", go->mName.c_str());
 			Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), VertexManager::GetVertex(go->VertexBufferName).size(), go->GetIsStatic(), type);
 			go->SetRenderer(rd);
 		}

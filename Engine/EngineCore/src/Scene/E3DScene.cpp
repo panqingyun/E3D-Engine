@@ -48,6 +48,7 @@ namespace E3DEngine
 			}
 		}
 		rootObject->Transform->Update();
+		RenderScene();
 		// 运行时执行，编辑器下不执行
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{

@@ -251,13 +251,16 @@ namespace E3DEditor.ViewModel
         {
             renderViewInitSize = renderSize;
             renderViewHandle = handle;
-            renderThread = new System.Threading.Thread(renderUpdate);
-            renderThread.Start();
-            while(!renderInited)
-            {
-                System.Threading.Thread.Sleep(1);
-            } // 等待render初始化
-            RenderDelegate.CreateShareContext();
+
+            int renderType = Config.RenderSystemType;
+            RenderDelegate.SetupRenderSystem(renderType, renderViewHandle, (int)renderViewInitSize.Width, (int)renderViewInitSize.Height);
+            //renderThread = new System.Threading.Thread(renderUpdate);
+            //renderThread.Start();
+            //while (!renderInited)
+            //{
+            //    System.Threading.Thread.Sleep(1);
+            //} // 等待render初始化
+            //RenderDelegate.CreateShareContext();
             RenderDelegate.StartAppliaction();
             EngineLoaded = true;
             mainWnd.objectList.ItemsSource = null;
@@ -821,6 +824,7 @@ namespace E3DEditor.ViewModel
             if (EngineLoaded)
             {
                 RenderDelegate.LogicUpdate();
+                //RenderDelegate.RenderUpdate();
             }
         }
 

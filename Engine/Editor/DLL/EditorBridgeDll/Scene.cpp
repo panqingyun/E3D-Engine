@@ -277,7 +277,7 @@ namespace E3DEngine
 		if (mCoordCamera == nullptr)
 		{
 			mCoordCamera = Camera::CreateCamera();
-			//SetEditorCamera(mCoordCamera, false);
+			SetEditorCamera(mCoordCamera, false);
 			mCoordCamera->SetLayerMask(1 << gCoordLayer);
 			mCoordCamera->Transform->SetPosition(0, 0, 100);
 			mCoordCamera->Flag |= DONT_SAVE;

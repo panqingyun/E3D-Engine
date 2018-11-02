@@ -134,19 +134,19 @@ namespace E3DEngine
 
 	void GLES_RenderSystem::UseRenderContext()
 	{
-		m_pEGL_Context->UseContext();
+		//m_pEGL_Context->UseContext();
 	}
 
 
 	void GLES_RenderSystem::UseShareContext()
 	{
-		m_pEGL_Context->UseShareContext();
+		//m_pEGL_Context->UseShareContext();
 	}
 
 
 	void GLES_RenderSystem::CreateShareContext()
 	{
-		m_pEGL_Context->CreateShareContext();
+		//m_pEGL_Context->CreateShareContext();
 	}
 
 }

@@ -196,7 +196,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
-			::EngineUpdate();
+			::LogicUpdate();
 		}
 	}
 	bExit = true;

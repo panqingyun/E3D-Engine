@@ -39,8 +39,10 @@ namespace E3DEngine
 	public ref class Vector4
 	{
 	public:
+		Vector4(float _x, float _y, float _z, float _w);
 		Vector4(vvision::vec4f *vec);
 		void SetValue(vvision::vec4f *vec);
+		void SetValue(float _x, float _y, float _z, float _w);
 
 		String^ ToString() override;
 	public:

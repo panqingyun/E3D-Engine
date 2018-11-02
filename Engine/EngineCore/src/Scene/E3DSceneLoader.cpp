@@ -340,6 +340,7 @@ namespace E3DEngine
 		if (objectElement->FirstChildElement(_Material) != nullptr)
 		{
 			DWORD type = go->mSceneObjectType == TP_Mesh ? MESH : NORMAL;
+			Debug::Log(ell_Warning, "%s", go->mName.c_str());
 			Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), VertexManager::GetVertex(go->VertexBufferName).size(), go->GetIsStatic(), type);
 			go->SetRenderer(rd);
 		}
@@ -517,11 +518,7 @@ namespace E3DEngine
 			Camera *pCamera = (Camera*)gameObject;
 			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
 		}
-		else if (gameObject->mSceneObjectType == TP_DLight || gameObject->mSceneObjectType == TP_PLight)
-		{
-			Light * light = (Light*)gameObject;
-			objectElement->SetAttribute(_Color, Convert::ToString(light->Color));
-		}
+		objectElement->SetAttribute(_Color, Convert::ToString(gameObject->Color));
 		saveTransformElement(objectElement, gameObject->Transform);
 		saveComponentElement(objectElement, gameObject);
 		for (auto gameObj : gameObject->GetChilds())

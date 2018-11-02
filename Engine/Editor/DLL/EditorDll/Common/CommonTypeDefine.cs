@@ -38,6 +38,7 @@ namespace E3DEditor.Common
         Table,
         Vector3,
         ComponentList,
+        Color4,
     }
 
     public enum LogLevel

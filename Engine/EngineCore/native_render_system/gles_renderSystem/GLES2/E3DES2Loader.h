@@ -2,6 +2,8 @@
 namespace E3DEngine
 {
 
+#ifdef _WIN32
+#include <windows.h>
 	typedef void            GLvoid;
 	typedef unsigned int    GLenum;
 	typedef unsigned char   GLboolean;
@@ -455,13 +457,12 @@ namespace E3DEngine
 
 #define GL_INVALID_FRAMEBUFFER_OPERATION  0x0506
 
-	namespace ES2
-	{
-#ifdef _WIN32
-#include <windows.h>
 #else
 #define APIENTRY
 #endif
+
+	namespace ES2
+	{
 		typedef void(APIENTRY * PFNGLACTIVETEXTUREPROC) (GLenum texture);
 		typedef void(APIENTRY * PFNGLATTACHSHADERPROC) (GLuint program, GLuint shader);
 		typedef void(APIENTRY * PFNGLBINDATTRIBLOCATIONPROC) (GLuint program, GLuint index, const char* name);

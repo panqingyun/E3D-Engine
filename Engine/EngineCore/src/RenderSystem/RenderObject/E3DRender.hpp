@@ -39,6 +39,7 @@ namespace E3DEngine
 		virtual ~Renderer() override;
 	public:
 		virtual void FillBegin(UINT objId);
+		virtual void FillVertex(std::vector<Vertex>& vb);
 		virtual void FillVertex(Vertex vb);
 		virtual void FillBatchVertex(BatchVertex bv);
 		virtual void FillIndex(uint ib);

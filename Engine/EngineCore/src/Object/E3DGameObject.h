@@ -398,6 +398,7 @@ namespace E3DEngine
 		virtual void ComponentAdded(Component * component);
 		virtual void fillRender(bool isActive);
 
+		void fillVertextIndex();
 	public:
 		object					Tag;
 		bool					IsActive;

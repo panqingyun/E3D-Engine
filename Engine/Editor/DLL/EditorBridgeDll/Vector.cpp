@@ -58,6 +58,19 @@ namespace E3DEngine
 		SetValue(vec);
 	}
 
+	Vector4::Vector4(float _x, float _y, float _z, float _w)
+	{
+		SetValue(_x, _y, _z, _w);
+	}
+
+	void Vector4::SetValue(float _x, float _y, float _z, float _w)
+	{
+		x = _x;
+		y = _y;
+		z = _z;
+		w = _w;
+	}
+
 	void Vector4::SetValue(vvision::vec4f *vec)
 	{
 		mVec = vec;

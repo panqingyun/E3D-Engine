@@ -11,6 +11,8 @@
 #include <src/Scene/E3DSceneManager.hpp>
 #include <src/Light/E3DLight.hpp>
 #include "../../../src/Source/E3DDebug.h"
+#include "../Shader/E3DGLShader.hpp"
+#include "../Material/E3DGLMaterial.hpp"
 
 namespace E3DEngine
 {
@@ -41,6 +43,15 @@ namespace E3DEngine
 		}
 	}
 
+	void GL_Renderer::RemoveInRenderer(UINT objId)
+	{
+		Renderer::RemoveInRenderer(objId);
+		if (IsStaticDraw)
+		{
+			fillVertexToGPU();
+		}
+	}
+
 	void GL_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		Renderer::FillEnd(objId, vertexCount, indexCount);
@@ -48,25 +59,36 @@ namespace E3DEngine
 		{
 			assert(false);
 		}
+		fillVertexToGPU();
+	}
+
+	void GL_Renderer::fillVertexToGPU()
+	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 		pMaterial->UpdateShader(STATIC_VERTEX);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STREAM_DRAW);
 		if (!mBatchVertex.empty())
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
+		m_nIndexSize = (DWORD)Indices.size();
+		if (!IsStaticDraw)
+		{
+			Vertices.clear();
+			Indices.clear();
+		}
 	}
 
 	void GL_Renderer::ClearVertexIndexBuffer()
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STREAM_DRAW);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STREAM_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
@@ -103,21 +125,20 @@ namespace E3DEngine
 		{
 			return;
 		}
-
-		if (Vertices.empty())
+		if (!m_IsActive || m_nIndexSize == 0)
 		{
 			return;
 		}
-		m_nIndexSize = (DWORD)Indices.size();
+
 		pMaterial->UseMaterial();
 
 		updateArrayBuffer(deltaTime);
 
 		updateEngineDefineShaderValue();
-
+		
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
-		int err = glGetError();
+
 		afterRender(deltaTime);
 	}
 
@@ -196,6 +217,11 @@ namespace E3DEngine
 		{
 			return;
 		}
+		static_cast<GL_Material*>(pMaterial)->DisableVertexAttrib(STATIC_VERTEX);
+		if (!mBatchVertex.empty())
+		{
+			static_cast<GL_Material*>(pMaterial)->DisableVertexAttrib(DYNAMIC_VERTEX);
+		}
 		pMaterial->InvalidMaterial();
 		glDisable(GL_STENCIL_TEST);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -204,5 +230,12 @@ namespace E3DEngine
 		glDisable(GL_BLEND);
 	}
 
+
+	void GL_Renderer::setVBOs()
+	{
+		glGenBuffers(1, &m_VertexBuffer);
+		glGenBuffers(1, &m_IndexBuffer);
+		glGenBuffers(1, &m_BatchVertexBuffer);
+	}
 
 }

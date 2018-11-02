@@ -72,7 +72,9 @@ namespace E3DEngine
 		virtual void    SetProgramUniform(){ }
 		virtual void	DeleteShader();
 		virtual void	UpdateAttribPointerValue(UINT vertexType);
-		virtual void	EnableVertexAttribArray(UINT vertexType);
+
+		void	EnableVertexAttribArray(UINT vertexType);
+		void	DisableVertexAttribArray(UINT vertexType);
 		virtual void	InitShaderVar();
 
 		void AddAttriList(GLRenderSystem::Attribute attri, bool isStatic);

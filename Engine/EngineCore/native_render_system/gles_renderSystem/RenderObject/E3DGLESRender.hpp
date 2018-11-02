@@ -38,8 +38,9 @@ namespace E3DEngine
 	public:
 		virtual void updateArrayBuffer(float deltaTime);
 		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount) override;
-		virtual void TransformChange() override;
 
+		virtual void TransformChange() override;
+		virtual void RemoveInRenderer(UINT objId) override;
 		virtual void ClearVertexIndexBuffer() override;
 
 		virtual void Render(float deltaTime) override;
@@ -50,6 +51,7 @@ namespace E3DEngine
 		void updateEngineDefineShaderValue();
 
 		void descPointLight();
+		void fillVertexToGPU();
 
 		virtual void afterRender(float deltaTime);
 

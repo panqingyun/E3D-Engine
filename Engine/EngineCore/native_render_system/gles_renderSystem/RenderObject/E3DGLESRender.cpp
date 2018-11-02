@@ -41,6 +41,15 @@ namespace E3DEngine
 		}
 	}
 
+	void GLES_Renderer::RemoveInRenderer(UINT objId)
+	{
+		Renderer::RemoveInRenderer(objId);
+		if (IsStaticDraw)
+		{
+			fillVertexToGPU();
+		}
+	}
+
 	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		Renderer::FillEnd(objId, vertexCount, indexCount);
@@ -48,6 +57,11 @@ namespace E3DEngine
 		{
 			assert(false);
 		}
+		fillVertexToGPU();		
+	}
+
+	void GLES_Renderer::fillVertexToGPU()
+	{
 		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 		pMaterial->UpdateShader(STATIC_VERTEX);
@@ -59,6 +73,13 @@ namespace E3DEngine
 			ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
+
+		m_nIndexSize = (DWORD)Indices.size();
+		if (!IsStaticDraw)
+		{
+			Indices.clear();
+			Vertices.clear();
+		}
 	}
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
@@ -66,7 +87,7 @@ namespace E3DEngine
 		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
 		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* Indices.size(), nullptr, GL_STATIC_DRAW);
+		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* m_nIndexSize, nullptr, GL_STATIC_DRAW);
 		ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
@@ -104,11 +125,6 @@ namespace E3DEngine
 			return;
 		}
 
-		if (Vertices.empty())
-		{
-			return;
-		}
-		m_nIndexSize = (DWORD)Indices.size();
 		pMaterial->UseMaterial();
 
 		updateArrayBuffer(deltaTime);

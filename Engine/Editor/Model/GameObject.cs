@@ -101,7 +101,20 @@ namespace E3DEditor.Model
             }
         }
 
-        [PropertyField(PropType = PropertyType.ComponentList, DisplayIndex = 5)]
+        [PropertyField(PropType = PropertyType.Color4, DisplayIndex = 5)]
+        public Vector4 Color
+        {
+            get
+            {
+                return mGameObject.GetColor();
+            }
+            set
+            {
+                mGameObject.SetColor(value);
+            }
+        }
+
+        [PropertyField(PropType = PropertyType.ComponentList, DisplayIndex = 6)]
         public List<ComponentRef> Component
         {
             get

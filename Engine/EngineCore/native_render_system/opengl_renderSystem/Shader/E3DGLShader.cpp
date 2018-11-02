@@ -211,6 +211,7 @@ namespace E3DEngine
 
 	void GL_Shader::UpdateAttribPointerValue(UINT vertexType)
 	{
+		EnableVertexAttribArray(vertexType);
 		std::vector<Attribute> *attrList = nullptr;
 		if (vertexType == STATIC_VERTEX)
 		{
@@ -226,7 +227,6 @@ namespace E3DEngine
 			glVertexAttribPointer(attrib.AttributeLoaction, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
 		}
 
-		EnableVertexAttribArray(vertexType);
 	}
 
 	void GL_Shader::DeleteShader()
@@ -251,6 +251,25 @@ namespace E3DEngine
 			glEnableVertexAttribArray(attrib.AttributeLoaction);
 		}
 		
+	}
+
+
+	void GL_Shader::DisableVertexAttribArray(UINT vertexType)
+	{
+		std::vector<Attribute> *attrList = nullptr;
+		if (vertexType == STATIC_VERTEX)
+		{
+			attrList = &staticAttributeList;
+		}
+		else
+		{
+			attrList = &dynamicAttributeList;
+		}
+
+		for (auto & attrib : *attrList)
+		{
+			glDisableVertexAttribArray(attrib.AttributeLoaction);
+		}
 	}
 
 	void GL_Shader::bindAttribLoaction(UINT vertexType)

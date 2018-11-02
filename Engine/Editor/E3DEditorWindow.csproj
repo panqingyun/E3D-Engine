@@ -123,6 +123,9 @@
     <Compile Include="View\AutoSizeImage.xaml.cs">
       <DependentUpon>AutoSizeImage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ColorDialog.xaml.cs">
+      <DependentUpon>ColorDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DropDownBox.xaml.cs">
       <DependentUpon>DropDownBox.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </Page>
     <Page Include="View\AutoSizeImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ColorDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -349,6 +356,10 @@
     <Resource Include="Resources\Pic\Icon\g4.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="DLL\ColorPicker\ColorPicker.csproj">
+      <Project>{059dc6c7-59c6-4adf-8960-976a02e7498e}</Project>
+      <Name>ColorPicker</Name>
+    </ProjectReference>
     <ProjectReference Include="DLL\EditorBridgeDll\EditorBridgeDll.vcxproj">
       <Project>{f1202232-1e69-4bd4-a088-ee079b683b94}</Project>
       <Name>EditorBridgeDll</Name>

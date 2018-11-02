@@ -21,6 +21,8 @@ namespace E3DEngine
 		virtual void UseNullProgram();
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
+
+		void DisableVertexAttrib(unsigned int vertexType);
 	public:
 
 		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,

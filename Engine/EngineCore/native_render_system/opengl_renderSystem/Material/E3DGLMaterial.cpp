@@ -195,4 +195,10 @@ namespace E3DEngine
 	{
 		static_cast<GL_Shader*>(mShader)->UpdateAttribPointerValue(vertexType);
 	}
+
+	void GL_Material::DisableVertexAttrib(unsigned int vertexType)
+	{
+		static_cast<GL_Shader*>(mShader)->DisableVertexAttribArray(vertexType);
+	}
+
 }

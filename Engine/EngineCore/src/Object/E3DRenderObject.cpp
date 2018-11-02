@@ -90,7 +90,6 @@ namespace E3DEngine
 			// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
 			//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
 		}
-		IsStaticDraw = false;
 		SceneManager::GetCurrentScene()->AddRenderObject(this, m_layer);
 		//for (auto & attr : pMaterial->pShader->AttributeList)
 		//{// TODO 根据材质需要的顶点数据重新分配顶点数组

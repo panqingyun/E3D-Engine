@@ -39,8 +39,6 @@ namespace E3DEngine
 	{
 	public:
 		Mesh(std::string filePath);
-		virtual void TransferRender() override;
-		virtual void SetActive(bool isActive) override;
 		void Destory();
 		virtual void Update(float deltaTime) override;
 	public:

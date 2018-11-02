@@ -117,6 +117,7 @@ namespace E3DEngine
 		virtual DWORD GetLayerMask();
 		virtual Camera *GetCamera();
 
+		void SetActive(bool isActive) { m_IsActive = isActive; }
 		MinMaxAABB GetBounds()
 		{
 			return m_AABB;
@@ -132,7 +133,7 @@ namespace E3DEngine
 		Material	* pMaterial;
 		bool		m_bNeedSortVertex;
 		DWORD		m_layer;
-
+		bool		m_IsActive;
     public:
 		// 索引数目
 		DWORD							m_nIndexSize;

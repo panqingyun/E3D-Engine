@@ -50,6 +50,8 @@ namespace E3DEngine
 		void Update(float deltaTime);
 		void AfterUpdate(float deltaTime);
 		GameObject * GetGameObjectPtr();
+		Vector4 ^GetColor();
+		void SetColor(Vector4 ^color);
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;
@@ -66,6 +68,7 @@ namespace E3DEngine
 		List<ComponentRef^>^ mComponentList;
 		int mID;
 		int mInnerID;
+		Vector4 ^mColor;
 	};
 }
 #pragma unmanaged

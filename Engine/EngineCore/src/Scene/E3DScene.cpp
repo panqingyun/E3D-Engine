@@ -36,6 +36,7 @@ namespace E3DEngine
 		m_scenePath = filePath;
 	}
 
+	int xc = 0;
 	void Scene::Update(float deltaTime)
 	{
 		// 运行时执行，编辑器下不执行
@@ -51,7 +52,6 @@ namespace E3DEngine
 		GetRenderSystem()->BeginFrame();
 		RenderScene(deltaTime);
 		GetRenderSystem()->EndFrame();
-
 		// 运行时执行，编辑器下不执行
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{

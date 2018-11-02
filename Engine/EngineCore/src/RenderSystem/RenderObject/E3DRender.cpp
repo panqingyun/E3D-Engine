@@ -8,9 +8,14 @@
 
 namespace E3DEngine
 {
+	void Renderer::FillVertex(std::vector<Vertex>& vb)
+	{
+		Vertices.insert(Vertices.end(), vb.begin(), vb.end());
+	}
+
 	void Renderer::FillVertex(Vertex vb)
 	{
-		Vertices.push_back(vb);
+		Vertices.emplace_back(vb);
 	}
 
 	void Renderer::FillBatchVertex(BatchVertex bv)
@@ -33,6 +38,7 @@ namespace E3DEngine
 	{
 		VertexCountAdd(objId, vertexCount);
 		IndexCountAdd(objId, indexCount);
+		m_IsActive = true;
 	}
 
 	Renderer::Renderer()
@@ -86,36 +92,44 @@ namespace E3DEngine
 
 	void Renderer::RemoveInRenderer(UINT objId)
 	{
-		std::map<UINT , RendererBuffer>::iterator vbuffer = m_objRendererBuffers.find(objId);
-		if (vbuffer ==  m_objRendererBuffers.end())
+		if (IsStaticDraw)
 		{
-			return;
-		}
-		for (auto & m_objVextexBuffer : m_objRendererBuffers)
-		{
-			if (m_objVextexBuffer.second.VertextStartIndex > vbuffer->second.VertextStartIndex)
+			std::map<UINT, RendererBuffer>::iterator vbuffer = m_objRendererBuffers.find(objId);
+			if (vbuffer == m_objRendererBuffers.end())
 			{
-				m_objVextexBuffer.second.VertextStartIndex -= vbuffer->second.VertextNumber;
-				m_objVextexBuffer.second.IndexStartIndex -= vbuffer->second.IndexNumber;
+				return;
 			}
-		}
-		Vertices.erase(Vertices.begin() + vbuffer->second.VertextStartIndex, Vertices.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
-		if (!mBatchVertex.empty())
-		{
-			mBatchVertex.erase(mBatchVertex.begin() + vbuffer->second.VertextStartIndex, mBatchVertex.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
-		}
-		
-		Indices.erase(Indices.begin() + vbuffer->second.IndexStartIndex, Indices.begin() + vbuffer->second.IndexStartIndex + vbuffer->second.IndexNumber);
-		for (int i = 0; i < Indices.size(); i ++)
-		{
-			if (i >= vbuffer->second.IndexStartIndex)
+			for (auto & m_objVextexBuffer : m_objRendererBuffers)
 			{
-				Indices[i] -= vbuffer->second.VertextNumber;
+				if (m_objVextexBuffer.second.VertextStartIndex > vbuffer->second.VertextStartIndex)
+				{
+					m_objVextexBuffer.second.VertextStartIndex -= vbuffer->second.VertextNumber;
+					m_objVextexBuffer.second.IndexStartIndex -= vbuffer->second.IndexNumber;
+				}
 			}
+			Vertices.erase(Vertices.begin() + vbuffer->second.VertextStartIndex, Vertices.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
+			if (!mBatchVertex.empty())
+			{
+				mBatchVertex.erase(mBatchVertex.begin() + vbuffer->second.VertextStartIndex, mBatchVertex.begin() + vbuffer->second.VertextStartIndex + vbuffer->second.VertextNumber);
+			}
+
+			Indices.erase(Indices.begin() + vbuffer->second.IndexStartIndex, Indices.begin() + vbuffer->second.IndexStartIndex + vbuffer->second.IndexNumber);
+			for (int i = 0; i < Indices.size(); i++)
+			{
+				if (i >= vbuffer->second.IndexStartIndex)
+				{
+					Indices[i] -= vbuffer->second.VertextNumber;
+				}
+			}
+			m_vertexCount -= vbuffer->second.VertextNumber;
+			m_indexCount -= vbuffer->second.IndexNumber;
+			m_objRendererBuffers.erase(vbuffer);
+			m_nIndexSize = Indices.size();
 		}
-		m_vertexCount -= vbuffer->second.VertextNumber;
-		m_indexCount -= vbuffer->second.IndexNumber;
-		m_objRendererBuffers.erase(vbuffer);
+		else
+		{
+			m_IsActive = false;
+		}
 	}
 	
 	RendererBuffer* Renderer::GetRendererBuffer(UINT objID)

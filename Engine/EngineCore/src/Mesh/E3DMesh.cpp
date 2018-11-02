@@ -70,29 +70,6 @@ namespace E3DEngine
 		//SAFE_DELETE(tbMgr);
 	}
 
-
-	void Mesh::TransferRender()
-	{
-		GameObject::TransferRender();
-		static_cast<MeshRender*>(m_pRenderer)->SetBoneVector(VecBoneMatrix);
-		m_pRenderer->IsStaticDraw = false;
-		m_pRenderer->SetTransform(Transform);
-		m_pRenderer->mName = mName;
-		GameObject::TransferRender();
-		IsActive = false;
-		SetActive(true);
-	}
-
-	void Mesh::SetActive(bool isActive)
-	{
-		if (isActive == IsActive)
-		{
-			return;
-		}
-		GameObject::SetActive(isActive);
-		fillRender(isActive);
-	}
-
 	bool Mesh::initFromScene(const aiScene *pScene, const string &Filename)
 	{
 		Entries.resize(pScene->mNumMeshes);

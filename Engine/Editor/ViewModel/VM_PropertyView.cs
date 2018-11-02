@@ -108,6 +108,7 @@ namespace E3DEditor.ViewModel
             createNewPropertyMap[PropertyType.NumberText] = createNumberBoxRow;
             createNewPropertyMap[PropertyType.Vector3] = createVector3Row;
             createNewPropertyMap[PropertyType.ComponentList] = createComponentRow;
+            createNewPropertyMap[PropertyType.Color4] = createColorPanel;
         }
 
         void PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -208,6 +209,51 @@ namespace E3DEditor.ViewModel
             CheckBox check = sender as CheckBox;
             ComponentRef com = check.Tag as ComponentRef;
             com.SetActive(true);
+        }
+
+        private void createColorPanel(PropertyInfo prop, int row, PropertyFieldAttribute attr)
+        {
+            gridAddRowDef();
+            gridAddTitle(prop);
+            Rectangle back = new Rectangle();
+            back.Margin = new Thickness(0, 2, 2, 0);
+            Rectangle rect = new Rectangle();
+            Vector4 color = (Vector4)prop.GetValue(_selectedObject);
+            back.Fill = _View.Resources["CheckerBoard"] as Brush;
+            rect.Fill = new SolidColorBrush(Color.FromArgb((byte)(color.w * 255), 
+                (byte)(color.x * 255), (byte)(color.y * 255), (byte)(color.z * 255)));
+            rect.Tag = prop;
+
+            rect.Margin = new Thickness(0, 2, 2, 0);
+            Grid.SetColumn(rect, 1);
+            Grid.SetRow(rect, _panelParent.RowDefinitions.Count - 1);
+            Grid.SetColumn(back, 1);
+            Grid.SetRow(back, _panelParent.RowDefinitions.Count - 1);
+            var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
+            Validation.SetErrorTemplate(rect, template);
+            _panelParent.Children.Add(back);
+            _panelParent.Children.Add(rect);
+            rect.PreviewMouseLeftButtonUp += Rect_PreviewMouseLeftButtonUp;
+            gridAddEnd();
+        }
+
+        private void Rect_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle rect = sender as Rectangle;
+            PropertyInfo prop = rect.Tag as PropertyInfo;
+            Vector4 color = (Vector4)prop.GetValue(_selectedObject);
+
+            ColorDialog colorDlg = new ColorDialog();
+            colorDlg.InitialColor = Color.FromArgb((byte)(color.w * 255),
+                (byte)(color.x * 255), (byte)(color.y * 255), (byte)(color.z * 255));
+            colorDlg.Show();
+            Vector4 vec = new Vector4(1, 1, 1, 1);
+            colorDlg.SelectedColorChanged += new EventHandler<ColorPicker.EventArgs<Color>>((object _sender, ColorPicker.EventArgs<Color> _e) =>
+            {
+                rect.Fill = new SolidColorBrush( _e.Value);
+                vec.SetValue(_e.Value.R / 255.0f, _e.Value.G / 255.0f, _e.Value.B / 255.0f, _e.Value.A / 255.0f);
+                prop.SetValue(_selectedObject, vec);
+            });
         }
 
         private void createComponentRow(PropertyInfo prop, int row, PropertyFieldAttribute attr)

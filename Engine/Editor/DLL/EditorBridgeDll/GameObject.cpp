@@ -28,6 +28,7 @@ namespace E3DEngine
 		mInnerID = gameObject->SceneInnerID;
 		mTransform = gcnew TransformRef(gameObject->Transform);
 		mName = gcnew String(gameObject->mName.c_str());
+		mColor = gcnew Vector4(gameObject->Color.r, gameObject->Color.g, gameObject->Color.b, gameObject->Color.a);
 		getChilds();
 		getComponents();
 	}
@@ -140,6 +141,17 @@ namespace E3DEngine
 	E3DEngine::GameObject * GameObjectRef::GetGameObjectPtr()
 	{
 		return mGameObject;
+	}
+
+	E3DEngine::Vector4^ GameObjectRef::GetColor()
+	{
+		return mColor;
+	}
+
+	void GameObjectRef::SetColor(Vector4 ^color)
+	{
+		mColor->SetValue(color->x, color->y, color->z, color->w);
+		mGameObject->SetColor(Color4(color->x, color->y, color->z, color->w));
 	}
 
 	void GameObjectRef::SetActive(bool active)

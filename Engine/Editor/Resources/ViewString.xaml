@@ -46,6 +46,7 @@
 	<system:String x:Key="empty">清空</system:String>
 	<system:String x:Key="copy">复制</system:String>
 	<system:String x:Key="Name">名字</system:String>
+	<system:String x:Key="Color">颜色</system:String>
 	<!--属性释义-->
 	<system:String x:Key="ID">编号</system:String>
 	<system:String x:Key="Path">路径</system:String>

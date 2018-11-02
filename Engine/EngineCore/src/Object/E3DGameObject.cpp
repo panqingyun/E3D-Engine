@@ -398,40 +398,16 @@ namespace E3DEngine
 		{
 			return;
 		}
-		std::vector<Vertex> &vecVertex = VertexManager::GetVertex(VertexBufferName);
-		std::vector<UINT> &vecIndex = VertexManager::GetIndex(VertexBufferName);
+		m_pRenderer->IsStaticDraw = m_bIsStatic;
 		if (isActive)
 		{
-			m_pRenderer->FillBegin(ID);
-			for (int i = 0; i < vecVertex.size(); i++)
+			if (m_pRenderer->GetRendererBuffer(ID) == nullptr)
 			{
-				Vertex ver = vecVertex[i];
-				ver.SetColor(Color.r * m_pRenderer->GetMaterial()->mColor.r * vecVertex[i].Color[0],
-					Color.g * m_pRenderer->GetMaterial()->mColor.g * vecVertex[i].Color[1],
-					Color.b * m_pRenderer->GetMaterial()->mColor.b * vecVertex[i].Color[2],
-					Color.a * m_pRenderer->GetMaterial()->mColor.a * vecVertex[i].Color[3]);
-				if (m_bIsStatic)
-				{
-					vec4f pos = Transform->WorldMatrix * vec4f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2], 1.0);
-					ver.SetPosition(pos.x, pos.y, pos.z);
-				}
-				m_pRenderer->FillVertex(ver);
+				fillVertextIndex();
 			}
-
-			for (int i = 0; i < vecIndex.size(); i++)
+			if (!m_bIsStatic)
 			{
-				m_pRenderer->FillIndex(vecIndex[i]);
-			}
-
-			m_pRenderer->FillEnd(ID, vecVertex.size(), vecIndex.size());
-
-			if (m_bIsStatic)
-			{
-				m_pRenderer->CreateNewTransform();
-			}
-			else
-			{
-				m_pRenderer->SetTransform(Transform);
+				m_pRenderer->SetActive(true);
 			}
 		}
 		else
@@ -441,6 +417,42 @@ namespace E3DEngine
 		m_pRenderer->TransformChange();
 	}
 
+	void GameObject::fillVertextIndex()
+	{
+		std::vector < Vertex > &vecVertex = VertexManager::GetVertex(VertexBufferName);
+		std::vector < UINT > &vecIndex = VertexManager::GetIndex(VertexBufferName);
+		m_pRenderer->FillBegin(ID);
+		for (int i = 0; i < vecVertex.size(); i++)
+		{
+			Vertex ver = vecVertex[i];
+			ver.SetColor(Color.r * m_pRenderer->GetMaterial()->mColor.r * vecVertex[i].Color[0],
+				Color.g * m_pRenderer->GetMaterial()->mColor.g * vecVertex[i].Color[1],
+				Color.b * m_pRenderer->GetMaterial()->mColor.b * vecVertex[i].Color[2],
+				Color.a * m_pRenderer->GetMaterial()->mColor.a * vecVertex[i].Color[3]);
+			if (m_bIsStatic)
+			{
+				vec4f pos = Transform->WorldMatrix * vec4f(vecVertex[i].Position[0], vecVertex[i].Position[1], vecVertex[i].Position[2], 1.0);
+				ver.SetPosition(pos.x, pos.y, pos.z);
+			}
+			m_pRenderer->FillVertex(ver);
+		}
+
+		for (int i = 0; i < vecIndex.size(); i++)
+		{
+			m_pRenderer->FillIndex(vecIndex[i]);
+		}
+
+		m_pRenderer->FillEnd(ID, vecVertex.size(), vecIndex.size());
+
+		if (m_bIsStatic)
+		{
+			m_pRenderer->CreateNewTransform();
+		}
+		else
+		{
+			m_pRenderer->SetTransform(Transform);
+		}
+	}
 
 	void GameObject::RemoveChild(GameObject * node)
 	{
@@ -584,6 +596,12 @@ namespace E3DEngine
 	void GameObject::SetColor(Color4 color)
 	{
 		Color = color;
+#ifdef __E3D_EDITOR__
+		if (m_pRenderer != nullptr)
+		{
+			//m_pRenderer->ChangeColor(color);
+		}
+#endif
 	}
 
 	void GameObject::SetIsStatic(bool isStatic)
@@ -937,14 +955,37 @@ std::string Convert::ToString(vec3f source)
 	return str1 + "," + str2 + "," + str3;
 }
 
+string DecIntToHexStr(long long num)
+{
+	string str;
+	long long Temp = num / 16;
+	int left = num % 16;
+	if (Temp > 0)
+		str += DecIntToHexStr(Temp);
+	if (left < 10)
+		str += (left + '0');
+	else
+		str += ('A' + left - 10);
+	return str;
+}
+
 std::string Convert::ToString(Color4 source)
 {
-	std::string &&str1 = ToString(source.r);
-	std::string &&str2 = ToString(source.g);
-	std::string &&str3 = ToString(source.b);
-	std::string &&str4 = ToString(source.a);
+	int r = source.r * 255;
+	int g = source.g * 255;
+	int b = source.b * 255;
+	int a = source.a * 255;
+	std::string str1 = DecIntToHexStr(r);
+	std::string str2 = DecIntToHexStr(g);
+	std::string str3 = DecIntToHexStr(b);
+	std::string str4 = DecIntToHexStr(a);
 
-	return str1 + "," + str2 + "," + str3 + "," + str4;
+	str1.length() == 1 ? str1 = "0" + str1 : str1;
+	str2.length() == 1 ? str2 = "0" + str2 : str2;
+	str3.length() == 1 ? str3 = "0" + str3 : str3;
+	str4.length() == 1 ? str4 = "0" + str4 : str4;
+
+	return str1 + str2 + str3 +  str4;
 }
 
 std::string Convert::ToString(vec4f source)
@@ -1022,8 +1063,18 @@ vvision::vec4f Convert::ToColorRGBA(std::string colorStr)
 
 Color4 Convert::ToColor4(std::string colorStr)
 {
-	long color = _16To10(colorStr);
-	vec4f &&_v_color = ToColorRGBA(color);
+	int t = colorStr.length();//得到字符串长度 
+	long long answer = 0;
+	for (int i = 0; i < t; i++)
+	{
+		if (colorStr[i] >= 'A' && colorStr[i] <= 'Z')
+		{
+			colorStr[i] = int(colorStr[i] - 'A') + 10 + '0';
+		}
+		answer += ((colorStr[i] - '0')*(pow(16, t - 1 - i)));
+	}
+
+	vec4f &&_v_color = ToColorRGBA(answer);
 	return Color4(_v_color.r, _v_color.g, _v_color.b, _v_color.a);
 }
 

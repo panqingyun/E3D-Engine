@@ -4,7 +4,7 @@
 
 BOOL GL_Context::SwapBuffer()
 {
-	glFlush();
+	glFinish();
 	return ::SwapBuffers(DisplayID);
 }
 
@@ -135,6 +135,30 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	wglMakeCurrent(pDC, hglrc);		//选择绘制情景对象
 
 	glewInit();
+	//int iPixAttribs[] =
+	//{
+	//	WGL_SUPPORT_OPENGL_ARB,			1,					// Must support OGL rendering
+	//	WGL_DRAW_TO_WINDOW_ARB,			1,					// pf that can run a window
+	//	WGL_ACCELERATION_ARB,			WGL_FULL_ACCELERATION_ARB, // must be HW accelerated
+	//	WGL_COLOR_BITS_ARB,				32,					// 8 bits of each R, G and B
+	//	WGL_DEPTH_BITS_ARB,				24,					// 24 bits of depth precision for window, 典型情况下深度缓冲区都是24位的,试了几台机器都不支持32位深度缓冲区
+	//	WGL_DOUBLE_BUFFER_ARB,			GL_TRUE,			// Double buffered context
+	//	WGL_PIXEL_TYPE_ARB,				WGL_TYPE_RGBA_ARB,	// pf should be RGBA type
+	//	WGL_STENCIL_BITS_ARB,			8,					//开启模板缓冲区,模板缓冲区位数=8
+	//	WGL_SAMPLE_BUFFERS_ARB,			GL_TRUE,			// MSAA on,开启多重采样
+	//	WGL_SAMPLES_ARB,				4,					// 4x MSAA ,多重采样样本数量为4
+	//	0 
+	//}; // NULL termination
+
+	//int pixelFormat;
+	//UINT numFormats;
+	////   wglChoosePixelFormatARB(*hDC, attribList, NULL, 1, &pixelFormat, &numFormats);    // 直接用不行，编译提示错误
+	//PFNWGLCHOOSEPIXELFORMATARBPROC pChoosePixelFormat;
+	//pChoosePixelFormat = (PFNWGLCHOOSEPIXELFORMATARBPROC)wglGetProcAddress("wglChoosePixelFormatARB");   // 用这个函数获得函数指针就可以用了
+	//pChoosePixelFormat(pDC, iPixAttribs, NULL, 1, &pixelFormat, &numFormats);
+	//SetPixelFormat(pDC, pixelFormat, NULL);
+
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -145,5 +169,7 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	glEnable(GL_MULTISAMPLE);
 	//glEnable(GL_POLYGON_SMOOTH);     //多边形抗锯齿  
 	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
+	glClearDepthf(1);
+	glClear(GL_DEPTH_BUFFER_BIT);
 	return TRUE;
 }

@@ -25,7 +25,7 @@ namespace E3DEngine
 		virtual void RemoveInRenderer(UINT objId);
 		virtual RendererBuffer* GetRendererBuffer(UINT objID);
 		virtual void TransformChange() override;
-		virtual void Render(float deltaTime) override;
+		virtual void Render() override;
 		virtual void SetDrawModule(DWORD module) override;
 
 	public:

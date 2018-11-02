@@ -370,7 +370,6 @@ namespace E3DEngine
 		virtual void RemoveChild(UINT ID);
 		virtual void DestoryAllChild();
 		virtual void SetCollider(Collider * collider);
-		virtual void Render(float deltaTime);
 		virtual void CreateComplete();
 		virtual void SetRenderer(Renderer * renderer);
 		virtual void CreateBehaviour() override;

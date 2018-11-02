@@ -44,6 +44,22 @@ namespace E3DEngine
 	}
 
 
+	void RenderSystem::CreateShareContext()
+	{
+
+	}
+
+	void RenderSystem::UseShareContext()
+	{
+
+	}
+
+
+	void RenderSystem::UseRenderContext()
+	{
+
+	}
+
 	E3DEngine::RendererManager * RenderSystem::GetRenderManager()
 	{
 		return m_pRenderManager;

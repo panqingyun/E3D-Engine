@@ -96,7 +96,7 @@ namespace E3DEngine
 		virtual void AfterUpdate()
 		{
 		}
-		virtual void Render(float deltaTime);
+		virtual void Render();
 		virtual void Destory(RenderObject *obj);
 		virtual void SetMaterialID(int ID);
 		virtual void SetMaterial(Material *material);

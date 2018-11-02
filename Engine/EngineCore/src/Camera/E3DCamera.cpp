@@ -82,26 +82,26 @@ namespace E3DEngine
 	}
 
 
-	void Camera::Render(float deltaTime)
+	void Camera::Render()
 	{
 		if (RTTs.size() == 0)
 		{
-			render(deltaTime);
+			render();
 		}
 		else
 		{
 			for (auto & rtt : RTTs)
 			{
 				rtt->Bind();
-				render(deltaTime);
+				render();
 			}
 		}
 	}
 
-	void Camera::render(float deltaTime)
+	void Camera::render()
 	{
 		ClearBackGround();
-		m_RenderQueue->Render(deltaTime);
+		m_RenderQueue->Render();
 		GetRenderSystem()->BindDefaultBackbuffer();
 	}
 

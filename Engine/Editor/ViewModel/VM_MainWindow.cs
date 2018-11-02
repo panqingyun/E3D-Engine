@@ -32,6 +32,7 @@ namespace E3DEditor.ViewModel
 
         System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         private System.Threading.Thread physicsThread = null;
+        private System.Threading.Thread renderThread = null;
         private ShowLogDelegate outFunc = null;
         private IntPtr windowsPlayerHandle = IntPtr.Zero;
         private Process windowsPlayer = null;
@@ -40,6 +41,9 @@ namespace E3DEditor.ViewModel
         private bool sceneIsStart = false;
         private TabItemWithClose gameItem = null;
         private TabItemWithClose renderItem = null;
+        private Size renderViewInitSize;
+        private IntPtr renderViewHandle;
+        private bool renderInited = false;
 
         private bool engineLoaded = false;
         public bool EngineLoaded
@@ -245,25 +249,24 @@ namespace E3DEditor.ViewModel
 
         private void Rp_Loaded(IntPtr handle, Size renderSize)
         {
-            if (EngineLoaded)
+            renderViewInitSize = renderSize;
+            renderViewHandle = handle;
+            renderThread = new System.Threading.Thread(renderUpdate);
+            renderThread.Start();
+            while(!renderInited)
             {
-                RenderDelegate.ChangeSurface(handle);
-                RenderDelegate.ChageFrameSize((int)renderSize.Width, (int)renderSize.Height);
-            }
-            else
+                System.Threading.Thread.Sleep(1);
+            } // 等待render初始化
+            RenderDelegate.CreateShareContext();
+            RenderDelegate.StartAppliaction();
+            EngineLoaded = true;
+            mainWnd.objectList.ItemsSource = null;
+            if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
             {
-                int renderType = Config.RenderSystemType;
-                RenderDelegate.SetupRenderSystem( renderType, handle, (int)renderSize.Width, (int)renderSize.Height);
-                RenderDelegate.StartAppliaction();
-                EngineLoaded = true;
-                mainWnd.objectList.ItemsSource = null;
-                if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
-                {
-                    E3DEngine.SceneManageRef.GetInstance().LoadScene("../Data/Scene/default.scene");
-                }
-                curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
-                loadGameObjectList();
+                E3DEngine.SceneManageRef.GetInstance().LoadScene("../Data/Scene/default.scene");
             }
+            curScenePath = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetScenePath();
+            loadGameObjectList();
         }
 
         #endregion
@@ -541,30 +544,33 @@ namespace E3DEditor.ViewModel
 
         public void ShowLog(string log)
         {
-            if (log == null)
-                return;
-            LogEntiry loge = new LogEntiry();
-            if (log.Contains("[error]"))
+            Dispatcher.Invoke(() => 
             {
-                loge.LogStr = log.Replace("[error]", "");
-                loge.LogColor = Brushes.Red;
-                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.ErrorIcon, UriKind.Relative));
-            }
-            else if (log.Contains("[warning]"))
-            {
-                loge.LogStr = log.Replace("[warning]", "");
-                loge.LogColor = Brushes.Yellow;
-                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.WarningIcon, UriKind.Relative));
-            }
-            else
-            {
-                loge.LogStr = log;
-                loge.LogColor = Brushes.White;
-                loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.InfoIcon, UriKind.Relative));
-            }
-            _MainWindow.logList.Items.Add(loge);
-            State = loge.LogStr;
-            _MainWindow.logList.ScrollIntoView(loge);
+                if (log == null)
+                    return;
+                LogEntiry loge = new LogEntiry();
+                if (log.Contains("[error]"))
+                {
+                    loge.LogStr = log.Replace("[error]", "");
+                    loge.LogColor = Brushes.Red;
+                    loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.ErrorIcon, UriKind.Relative));
+                }
+                else if (log.Contains("[warning]"))
+                {
+                    loge.LogStr = log.Replace("[warning]", "");
+                    loge.LogColor = Brushes.Yellow;
+                    loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.WarningIcon, UriKind.Relative));
+                }
+                else
+                {
+                    loge.LogStr = log;
+                    loge.LogColor = Brushes.White;
+                    loge.LogIcon = new BitmapImage(new Uri(CONST_STRING.InfoIcon, UriKind.Relative));
+                }
+                _MainWindow.logList.Items.Add(loge);
+                State = loge.LogStr;
+                _MainWindow.logList.ScrollIntoView(loge);
+            });
         }
 
         private void createRenderPanel()
@@ -789,6 +795,18 @@ namespace E3DEditor.ViewModel
 
         #region Update
 
+        private void renderUpdate()
+        {
+            int renderType = Config.RenderSystemType;
+            RenderDelegate.SetupRenderSystem(renderType, renderViewHandle, (int)renderViewInitSize.Width, (int)renderViewInitSize.Height);
+            renderInited = true;
+            while(true)
+            {
+                RenderDelegate.RenderUpdate();
+                System.Threading.Thread.Sleep(1);
+            }
+        }
+
         private void physicsUpdate()
         {
             while (true)
@@ -802,7 +820,7 @@ namespace E3DEditor.ViewModel
         {
             if (EngineLoaded)
             {
-                RenderDelegate.EngineUpdate();
+                RenderDelegate.LogicUpdate();
             }
         }
 

@@ -53,17 +53,27 @@ void E3DEngine::EngineDelegateRef::SetAppDataPath(String^  path)
 	::SetAppDataPath(ch2);
 }
 
-void E3DEngine::EngineDelegateRef::EngineUpdate()
+void E3DEngine::EngineDelegateRef::LogicUpdate()
 {
 	SceneManageRef::GetInstance()->GetCurScene()->Update(0.02f);
-	::EngineUpdate();
+	::LogicUpdate();
 	SceneManageRef::GetInstance()->GetCurScene()->AfterUpdate(0.02f);
 	SceneManageRef::GetInstance()->Update(0.02f);
+}
+
+void E3DEngine::EngineDelegateRef::RenderUpdate()
+{
+	::RenderUpdate();
 }
 
 void E3DEngine::EngineDelegateRef::DestoryEngine()
 {
 	::DestoryEngine();
+}
+
+void E3DEngine::EngineDelegateRef::CreateShareContext()
+{
+	::CreateShareContext();
 }
 
 void E3DEngine::EngineDelegateRef::PauseEngine(bool bPause)

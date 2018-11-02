@@ -65,7 +65,7 @@ namespace E3DEngine
 		DWORD m_vertexCount;
 		DWORD m_indexCount;
 		std::map<UINT, RendererBuffer> m_objRendererBuffers;
-		bool	bLock;
+		bool	bNeedUpdateVertex;
 	};
 
 }

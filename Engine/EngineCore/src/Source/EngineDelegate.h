@@ -63,6 +63,7 @@ namespace E3DEngine
 		bool GetEnginePause();
 		bool GetIsRun();
 		void SetIsRun(bool isRun);
+		void SetPauseRender(bool isPause);
 
 	public:
 
@@ -72,9 +73,10 @@ namespace E3DEngine
 		bool									m_bIsInited;
 		bool									m_bPause;
 		bool									m_bRun;
-		
+		bool									m_bPauseRender;
 	public:
-		void Update(float deltaTime);
+		void UpdateRender();
+		void UpdateLogic(float deltaTime);
 		void UpdatePhysics(float deltaTime);
 	};
 }

@@ -35,6 +35,7 @@ namespace E3DEngine
 			return;
 		}
 		m_bRun = !isEditor;
+		m_bPauseRender = false;
 		Application::Initialize();
 		PhysicWorld::GetInstance().InitPhysics();
 		Timer::Init();
@@ -42,19 +43,35 @@ namespace E3DEngine
 		m_bIsInited = true;
 	}
 
-	void EngineDelegate::Update(float deltaTime)
+	void EngineDelegate::UpdateRender()
 	{
 		if (m_bPause)
 		{
 			return;
 		}
-		/*if (m_bRun)
+		if (m_bPauseRender)
 		{
-			PhysicWorld::GetInstance().Update(deltaTime);
-		}*/
-		Timer::Update(deltaTime);
+			return;
+		}
 		Scene * pCurScene = SceneManager::GetCurrentScene();
-		if (pCurScene != nullptr )
+		if (pCurScene != nullptr)
+		{
+			SceneManager::GetCurrentScene()->RenderScene();
+		}
+	}
+
+
+	void EngineDelegate::UpdateLogic(float deltaTime)
+	{
+		if (m_bPause)
+		{
+			return;
+		}
+
+		Timer::Update(deltaTime);
+
+		Scene * pCurScene = SceneManager::GetCurrentScene();
+		if (pCurScene != nullptr)
 		{
 			SceneManager::GetCurrentScene()->Update(deltaTime);
 		}
@@ -65,7 +82,6 @@ namespace E3DEngine
 			Application::UpdateApp(deltaTime);
 		}
 	}
-
 
 	void EngineDelegate::UpdatePhysics(float deltaTime)
 	{
@@ -106,4 +122,10 @@ namespace E3DEngine
 	{
 		m_bRun = isRun;
 	}
+
+	void EngineDelegate::SetPauseRender(bool isPause)
+	{
+		m_bPauseRender = isPause;
+	}
+
 }

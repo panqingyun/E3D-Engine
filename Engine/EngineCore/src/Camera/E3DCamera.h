@@ -27,7 +27,7 @@ namespace E3DEngine
 		~Camera();
 
 	public:
-		void Render(float deltaTime);
+		void Render();
 		void ClearBackGround();
 		void SetClearColor(Color4 color);
 		void SetClearType(DWORD clearType);
@@ -67,7 +67,7 @@ namespace E3DEngine
 		bool boundingBoxFrustum(float x,float y,float z,float size);
 		void calculateFrustumPlanes();
 		float * normal(float *plans);
-		void render(float deltaTime);
+		void render();
 		//int GetFacePos(vec3f v1,vec3f v2,vec3f v3);
 	private:
 		mat4f m_mView;

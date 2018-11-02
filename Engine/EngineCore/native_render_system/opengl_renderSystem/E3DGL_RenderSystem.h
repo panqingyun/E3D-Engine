@@ -19,10 +19,12 @@ namespace E3DEngine
 		virtual void Cleanup() override;
 		virtual void BindDefaultBackbuffer() override;
 		virtual void ChangeRenderSurface(HWND windowHandle) override;
-		void	CreateOpenGLES(HDC displayID);
+		void	CreateOpenGL(HDC displayID);
 		void    Clear(Color4 color, int clearType);
 		static GL_RenderSystem * GetRenderSystem();
-
+		virtual void CreateShareContext() override;
+		virtual void UseShareContext() override;
+		virtual void UseRenderContext() override;
 	public:
 		virtual void BeginFrame() override;
 		void clearFrameBufferObject();

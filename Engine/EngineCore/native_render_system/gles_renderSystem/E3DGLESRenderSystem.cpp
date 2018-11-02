@@ -131,6 +131,24 @@ namespace E3DEngine
 	{
 		return g_RenderSystem;
 	}
+
+	void GLES_RenderSystem::UseRenderContext()
+	{
+		m_pEGL_Context->UseContext();
+	}
+
+
+	void GLES_RenderSystem::UseShareContext()
+	{
+		m_pEGL_Context->UseShareContext();
+	}
+
+
+	void GLES_RenderSystem::CreateShareContext()
+	{
+		m_pEGL_Context->CreateShareContext();
+	}
+
 }
 
 __api_function_ void* CreateGLESRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)

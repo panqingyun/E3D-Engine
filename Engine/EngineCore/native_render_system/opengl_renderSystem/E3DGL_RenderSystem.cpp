@@ -11,6 +11,7 @@
 #include "RenderObject/E3DGLRenderManager.hpp"
 #include <include/EngineAPI.h>
 #include "Shader/E3DGLShaderManager.h"
+#include <../../src/Source/E3DDebug.h>
 
 E3DEngine::GL_RenderSystem * g_RenderSystem = nullptr;
 namespace E3DEngine
@@ -67,7 +68,7 @@ namespace E3DEngine
 		m_pGL_Context->SwapBuffer();
 	}
 
-	void GL_RenderSystem::CreateOpenGLES(HDC displayID)
+	void GL_RenderSystem::CreateOpenGL(HDC displayID)
 	{
 		m_pGL_Context = new GL_Context();
 		m_pGL_Context->OpenGLInit(displayID);
@@ -109,6 +110,27 @@ namespace E3DEngine
 	{
 		return g_RenderSystem;
 	}
+
+	void GL_RenderSystem::CreateShareContext()
+	{
+		BOOL b = m_pGL_Context->CreateGLShareRC();
+		if ( b == FALSE)
+		{
+			Debug::Log(ell_Error, "wrong context");
+		}
+	}
+
+	void GL_RenderSystem::UseShareContext()
+	{
+		m_pGL_Context->UseShareContext();
+	}
+
+
+	void GL_RenderSystem::UseRenderContext()
+	{
+		m_pGL_Context->UseContext();
+	}
+
 }
 
 void* CreateGLRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
@@ -117,7 +139,7 @@ void* CreateGLRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int heigh
 	renderSystem->Initilize();
 	renderSystem->setFrameWidth(width);
 	renderSystem->setFrameHeight(height);
-	renderSystem->CreateOpenGLES(GetDC(nativeWindow));
+	renderSystem->CreateOpenGL(GetDC(nativeWindow));
 	g_RenderSystem = renderSystem;
 	return renderSystem;
 }

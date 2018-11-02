@@ -97,7 +97,7 @@ namespace E3DEngine
 		//}
 	}
 
-	void RenderObject::Render(float deltaTime)
+	void RenderObject::Render()
 	{
 		
     }

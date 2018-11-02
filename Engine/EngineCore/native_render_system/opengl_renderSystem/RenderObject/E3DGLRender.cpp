@@ -17,7 +17,7 @@
 namespace E3DEngine
 {
 	
-	void GL_Renderer::updateArrayBuffer(float deltaTime)
+	void GL_Renderer::updateArrayBuffer()
 	{
 		if (pMaterial == nullptr)
 		{
@@ -119,7 +119,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GL_Renderer::Render(float deltaTime)
+	void GL_Renderer::Render()
 	{
 		if (pMaterial == nullptr)
 		{
@@ -134,12 +134,12 @@ namespace E3DEngine
 
 		pMaterial->UseMaterial();
 
-		updateArrayBuffer(deltaTime);
+		updateArrayBuffer();
 		
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 
-		afterRender(deltaTime);
+		afterRender();
 	}
 
 
@@ -224,7 +224,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GL_Renderer::afterRender(float deltaTime)
+	void GL_Renderer::afterRender()
 	{
 		if (pMaterial == nullptr)
 		{

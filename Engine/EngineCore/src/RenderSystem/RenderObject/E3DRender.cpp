@@ -39,12 +39,13 @@ namespace E3DEngine
 		VertexCountAdd(objId, vertexCount);
 		IndexCountAdd(objId, indexCount);
 		m_IsActive = true;
+		bNeedUpdateVertex = true;
 	}
 
 	Renderer::Renderer()
 	{
 		m_vertexCount = 0;
-		bLock = false;
+		bNeedUpdateVertex = false;
 		m_indexCount = 0;
 		CreateBehaviour();
 	}
@@ -125,6 +126,7 @@ namespace E3DEngine
 			m_indexCount -= vbuffer->second.IndexNumber;
 			m_objRendererBuffers.erase(vbuffer);
 			m_nIndexSize = Indices.size();
+			bNeedUpdateVertex = true;
 		}
 		else
 		{

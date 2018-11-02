@@ -92,7 +92,7 @@ VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
 	{
 		return;
 	}
-	camera->Render(0.2f);
+	camera->Render();
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getPosition, CS_OBJECT, obj, float&, x, float&, y, float&, z)

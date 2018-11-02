@@ -33,7 +33,7 @@ namespace E3DEngine
 		void Update(float deltaTime);
 		void Destory();
 		void DestoryAllOjectImmediately();
-		void RenderScene(float deltaTime);
+		void RenderScene();
 		void ChangeRenderIndex(UINT id, eRenderIndex index);
 		void AddCamera(Camera * pCamera);
 		void SortCamera();

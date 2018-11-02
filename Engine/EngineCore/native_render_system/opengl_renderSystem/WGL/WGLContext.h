@@ -14,10 +14,12 @@ public:
 
 	BOOL ChangeSurface(HDC pDc);
 
-	HGLRC choosePixelFormat(HDC hDC);
+	BOOL CreateGLShareRC();
 
+	BOOL UseShareContext();
 public:
 	HGLRC					hglrc;
+	HGLRC					shareRc;
 	HDC						DisplayID;
 
 private:

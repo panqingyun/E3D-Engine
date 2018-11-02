@@ -48,8 +48,8 @@ EGLBoolean EGL_Context::CreateEGLEnv(bool isOffScreen)
 	{
 		return EGL_FALSE;
 	}
-
 	pESContext->eglContext = eglCreateContext(pESContext->eglDisplay, Config, EGL_NO_CONTEXT, contextAttribs);
+	
 	if (pESContext->eglContext == EGL_NO_CONTEXT)
 	{
 		return EGL_FALSE;
@@ -62,6 +62,19 @@ void EGL_Context::ChangeSurface(EGLNativeWindowType windowHandle)
 {
 	pESContext->hWnd = windowHandle;
 	createSurface(false, Config);
+}
+
+void EGL_Context::UseShareContext()
+{
+	eglMakeCurrent(pESContext->eglDisplay, pESContext->eglSurface, pESContext->eglSurface, eglShareContext);
+}
+
+
+void EGL_Context::CreateShareContext()
+{
+	EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE, EGL_NONE };
+	eglShareContext = eglCreateContext(pESContext->eglDisplay, Config, pESContext->eglContext, contextAttribs);
+	glFlush();
 }
 
 EGLBoolean EGL_Context::chooseConfig(bool isOffScreen, EGLConfig &config, EGLint &numConfigs)
@@ -123,6 +136,7 @@ void EGL_Context::InitGLES(EGLNativeDisplayType displayID, EGLNativeWindowType w
 
 void EGL_Context::SwapBuffer()
 {
+	glFinish();
 	eglSwapBuffers(pESContext->eglDisplay, pESContext->eglSurface);
 }
 

@@ -394,6 +394,7 @@ namespace E3DEngine
 
 	void GameObject::fillRender(bool isActive)
 	{
+		GetRenderSystem()->UseShareContext();
 		if (m_pRenderer == nullptr)
 		{
 			return;
@@ -415,6 +416,7 @@ namespace E3DEngine
 			m_pRenderer->RemoveInRenderer(ID);
 		}
 		m_pRenderer->TransformChange();
+		GetRenderSystem()->UseRenderContext();
 	}
 
 	void GameObject::fillVertextIndex()
@@ -507,15 +509,6 @@ namespace E3DEngine
 	{
 		m_pCollider = collider;
 	}
-
-	void GameObject::Render(float deltaTime)
-	{
-		if (m_pRenderer != nullptr)
-		{
-			m_pRenderer->Render(deltaTime);
-		}
-	}
-
 
 	void GameObject::CreateComplete()
 	{

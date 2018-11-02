@@ -213,7 +213,7 @@ namespace E3DEngine
 		return retValue;
 	}
 
-	void RenderQueue::Render(float deltaTime)
+	void RenderQueue::Render()
 	{
 		for (auto & render : _renderQueue)
 		{
@@ -223,11 +223,11 @@ namespace E3DEngine
 				continue;
 			}
 			render->SetCamera(m_pCamera);
-			render->Render(deltaTime);
+			render->Render();
 		}
 		for (auto &renderQueue : mapRenderQueue)
 		{
-			renderQueue.second->Render(deltaTime);
+			renderQueue.second->Render();
 		}
 	}
 

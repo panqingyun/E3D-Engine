@@ -15,7 +15,7 @@
 namespace E3DEngine
 {
 	
-	void GLES_Renderer::updateArrayBuffer(float deltaTime)
+	void GLES_Renderer::updateArrayBuffer()
 	{
 		if (pMaterial == nullptr)
 		{
@@ -132,9 +132,14 @@ namespace E3DEngine
 #endif
 	}
 
-	void GLES_Renderer::Render(float deltaTime)
+	void GLES_Renderer::Render()
 	{
 		if (pMaterial == nullptr)
+		{
+			return;
+		}
+
+		if (!m_IsActive || m_nIndexSize == 0)
 		{
 			return;
 		}
@@ -143,10 +148,10 @@ namespace E3DEngine
 
 		pMaterial->UseMaterial();
 
-		updateArrayBuffer(deltaTime);
+		updateArrayBuffer();
 			// 绘制图形
 		ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
-		afterRender(deltaTime);
+		afterRender();
 	}
 
 	void GLES_Renderer::updateEngineDefineShaderValue()
@@ -217,7 +222,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Renderer::afterRender(float deltaTime)
+	void GLES_Renderer::afterRender()
 	{
 		if (pMaterial == nullptr)
 		{

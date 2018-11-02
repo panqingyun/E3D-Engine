@@ -51,6 +51,9 @@ namespace E3DEngine
 		virtual void	BindDefaultBackbuffer();
 		Vector2	GetFrameSize();
 		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle);
+		virtual void	CreateShareContext();
+		virtual void	UseShareContext();
+		virtual void	UseRenderContext();
 
 	public:
 		RendererManager * GetRenderManager();

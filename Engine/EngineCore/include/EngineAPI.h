@@ -84,11 +84,19 @@ extern "C"
 	/// <summary>
 	/// 更新
 	/// </summary>
-	__api_function_ void EngineUpdate();
+	__api_function_ void LogicUpdate();
 	/// <summary>
 	/// 更新物理
 	/// </summary>
 	__api_function_ void UpdatePhysics();
+	/// <summary>
+	/// 更新渲染
+	/// </summary>
+	__api_function_ void RenderUpdate();
+	/// <summary>
+	/// 创建共享渲染设备
+	/// </summary>
+	__api_function_ void CreateShareContext();
 	/// <summary>
 	/// 销毁
 	/// </summary>

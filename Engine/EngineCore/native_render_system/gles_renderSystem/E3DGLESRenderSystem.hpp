@@ -29,6 +29,9 @@ namespace E3DEngine
 		void	CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle);
 		void    Clear(Color4 color, int clearType);
 		static GLES_RenderSystem * GetRenderSystem();
+		virtual void UseRenderContext() override;
+		virtual void UseShareContext() override;
+		virtual void CreateShareContext() override;
         
 	public:
 		virtual void BeginFrame() override;

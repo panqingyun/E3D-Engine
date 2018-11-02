@@ -38,19 +38,31 @@ extern "C"
 	{
 		Application::StartApp(startScene);
 	}
+
 	__api_function_ void StopAppliaction()
 	{
 		Application::StopApp();
 	}
-	__api_function_ void EngineUpdate()
+
+	__api_function_ void LogicUpdate()
 	{
 		static DWORD lastTime = getCurrentTime();
 		DWORD curTime = getCurrentTime();
 		float _deltaTime = (float)(curTime - lastTime) / 1000.0f;
 		lastTime = curTime;
 		Time::deltaTime = _deltaTime;
-		E3DEngine::EngineDelegate::GetInstance().Update(_deltaTime);
+		E3DEngine::EngineDelegate::GetInstance().UpdateLogic(_deltaTime);
 		
+	}
+
+	__api_function_ void RenderUpdate()
+	{
+		EngineDelegate::GetInstance().UpdateRender();
+	}
+
+	__api_function_ void CreateShareContext()
+	{
+		GetRenderSystem()->CreateShareContext();
 	}
 	
 	__api_function_ void SetRenderSystem(void* renderSystem)

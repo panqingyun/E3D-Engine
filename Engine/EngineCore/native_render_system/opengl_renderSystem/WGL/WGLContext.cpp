@@ -19,7 +19,7 @@ BOOL GL_Context::ChangeSurface(HDC pDc)
 	return FALSE;
 }
 
-HGLRC GL_Context::choosePixelFormat(HDC hDC)
+HGLRC choosePixelFormat(HDC hDC)
 {
 	HGLRC m_hRC = 0;
 	//	PIXELFORMATDESCRIPTOR pfd;
@@ -89,6 +89,18 @@ HGLRC GL_Context::choosePixelFormat(HDC hDC)
 	return m_hRC;
 }
 
+
+BOOL GL_Context::CreateGLShareRC()
+{
+	return  TRUE;
+}
+
+
+BOOL GL_Context::UseShareContext()
+{
+	return wglMakeCurrent(DisplayID, shareRc);
+}
+
 BOOL GL_Context::OpenGLInit(HDC pDC)
 {
 	int pixelformat;
@@ -131,7 +143,11 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	::DescribePixelFormat(pDC, n, sizeof(pfd), &pfd);
 
 	hglrc = wglCreateContext(pDC);	//创建绘制情景对象
-	
+
+	shareRc = wglCreateContext(DisplayID);
+
+	wglShareLists(shareRc, hglrc);
+
 	wglMakeCurrent(pDC, hglrc);		//选择绘制情景对象
 
 	glewInit();
@@ -159,17 +175,17 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	//SetPixelFormat(pDC, pixelFormat, NULL);
 
 
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_POINT_SMOOTH);
-	glEnable(GL_LINE_SMOOTH);
-	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
-	glEnable(GL_MULTISAMPLE);
-	//glEnable(GL_POLYGON_SMOOTH);     //多边形抗锯齿  
-	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
-	glClearDepthf(1);
-	glClear(GL_DEPTH_BUFFER_BIT);
+	//glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_POINT_SMOOTH);
+	//glEnable(GL_LINE_SMOOTH);
+	//glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
+	//glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
+	//glEnable(GL_MULTISAMPLE);
+	////glEnable(GL_POLYGON_SMOOTH);     //多边形抗锯齿  
+	//glHint(GL_POLYGON_SMOOTH, GL_NICEST);
+	//glClearDepthf(1);
+	//glClear(GL_DEPTH_BUFFER_BIT);
 	return TRUE;
 }

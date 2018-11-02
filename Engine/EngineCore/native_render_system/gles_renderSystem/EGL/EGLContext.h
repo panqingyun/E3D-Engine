@@ -34,6 +34,9 @@ public:
 
 	void ChangeSurface(EGLNativeWindowType windowHandle);
 
+	void UseShareContext();
+
+	void CreateShareContext();
 protected:
 	EGLBoolean CreateEGLEnv(bool isOffScreen);
 
@@ -51,6 +54,7 @@ public:
 	EGLConfig				Config;
 	EGLint					MajorVersion;
 	EGLint					MinorVersion;
+	EGLContext				eglShareContext;
 #endif
 };
 

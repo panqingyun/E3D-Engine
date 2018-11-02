@@ -24,8 +24,10 @@ namespace E3DEngine
 		void SetupRenderSystem(int renderSystem, IntPtr nativeWindow, int width, int height);
 		void SetDebugLogOutFunc(IntPtr func);
 		void SetAppDataPath(String^ path);
-		void EngineUpdate();
+		void LogicUpdate();
+		void RenderUpdate();
 		void DestoryEngine();
+		void CreateShareContext();
 		void PauseEngine(bool bPause);
 		void ChageFrameSize(int w, int h);
 		void MouseDown(int mouseButtonID, float xPos, float yPos);

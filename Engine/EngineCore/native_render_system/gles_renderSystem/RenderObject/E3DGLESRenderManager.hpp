@@ -16,14 +16,12 @@ namespace E3DEngine
 	class GLES_RendererManager : public RendererManager
 	{
 	public:
-		virtual Renderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false) override;
-
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual Renderer * GenRender() override;
 		virtual void Cleanup() override;
 
-	private:
-		Renderer * newRenderer(RENDER_TYPE type, int materialID);
+	protected:
+		virtual Renderer * newRenderer(RENDER_TYPE type, int materialID) override;
 
 	private:
 		std::map<int, Renderer*> m_mapVertexBuffers;

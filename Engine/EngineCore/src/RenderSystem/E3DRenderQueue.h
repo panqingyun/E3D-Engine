@@ -18,7 +18,7 @@ namespace E3DEngine
 		void SetCamera(Camera * pCamera);
 		bool ChangeRenderQueue(UINT id, eRenderIndex index);
 
-		void Render(float deltaTime);
+		void Render();
 
 		unsigned int GetID();
 		bool FindInRenderQueue(RenderObject *rb);

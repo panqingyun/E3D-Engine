@@ -55,9 +55,9 @@ namespace E3DEngine
 	}
 
 
-	void GLES_MeshRender::Render(float deltaTime)
+	void GLES_MeshRender::Render()
 	{
-		pRender->Render(deltaTime);
+		pRender->Render();
 	}
 
 	void GLES_MeshRender::SetDrawModule(DWORD module)

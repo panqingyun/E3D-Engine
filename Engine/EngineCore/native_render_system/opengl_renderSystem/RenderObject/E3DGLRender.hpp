@@ -30,25 +30,25 @@ namespace E3DEngine
 			}
 		}
 	public:
-		virtual void updateArrayBuffer(float deltaTime);
-		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount) override;
-
-		void fillVertexToGPU();
+		virtual void updateArrayBuffer();
+		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount);
 
 		virtual void TransformChange() override;
 		virtual void RemoveInRenderer(UINT objId) override;
 		virtual void ClearVertexIndexBuffer() override;
 
-		virtual void Render(float deltaTime) override;
+		virtual void Render() override;
 		virtual void ChangeColor(Color4 color) override;
 		virtual void SetDrawModule(DWORD module) override;
 
 	protected:
+		void fillVertexToGPU();
+
 		void updateEngineDefineShaderValue();
 
 		void descPointLight();
 
-		virtual void afterRender(float deltaTime);
+		virtual void afterRender();
 
 	private:
 		void setVBOs();

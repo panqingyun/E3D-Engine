@@ -15,8 +15,12 @@ namespace E3DEngine
 		virtual Renderer * GenRender();
 		virtual void AddRenderer(int materialID, Renderer * rd);
 		virtual void Cleanup();
+
+	protected:
+		virtual Renderer * newRenderer(RENDER_TYPE type, int materialID);
 	protected:
 		std::map<int, Renderer*> m_mapVertexBuffers;
+		std::map<int, int> m_mapMaterialID2RendererID;
 	};
 }
 

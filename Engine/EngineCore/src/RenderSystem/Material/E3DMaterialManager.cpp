@@ -30,6 +30,7 @@ namespace E3DEngine
 
 	Material* MaterialManager::CreateMaterial(std::string path, int id)
 	{
+		GetRenderSystem()->UseShareContext();
 		if (m_mapConfigMaterial.find(path) != m_mapConfigMaterial.end())
 		{
 			if (m_mapConfigMaterial[path].find(id) != m_mapConfigMaterial[path].end())
@@ -68,6 +69,7 @@ namespace E3DEngine
 		material->CreateMaterial(config);
 		m_mapIDMaterials[material->ID] = material;
 		m_mapConfigMaterial[path][id] = material;
+		GetRenderSystem()->UseRenderContext();
 		return material;
 	}
 	

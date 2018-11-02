@@ -228,7 +228,6 @@ namespace E3DEngine
 			SetEditorCamera(mEditorCamera, true);
 			mEditorCamera->SetLayerMask(-1 & ~(1 << gCoordLayer) & ~(1 << gLookCoordLayer) & ~(1<< objectCoordLayer));
 			mEditorCamera->Transform->SetPosition(0, 100, 200);
-			mEditorCamera->SetClearColor(Color4(1.0, 0, 0, 1));
 			mEditorCamera->Flag |= DONT_SAVE;
 		}
 

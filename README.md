@@ -36,7 +36,9 @@
 - 打开``proj_win32/E3DEngine.sln`` 设置``WindowsPlayer``为启动项目，编译选项选择``Release/Debug``,编译Engine和WindowsPlayer下的项目，运行WindowsPlayer，运行时需要项目资源，资源文件夹需要和exe文件在同级目录内，并取名为“App_Data”，或者从命令行给WindowsPlayer启动参数，启动参数为3个并用英文逗号分开，第一个参数是资源目录，第二个参数是编辑器的窗口句柄，此处可以不填，这个是为了从编辑器启动游戏后，游戏与编辑器相互通信用的，第三个参数是起始场景，也可以不填。
 
 ![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/CubTexture.png)
-![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/editor.png)
+![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/engine.png)
+![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/engine1.png)
+![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/tree.png)
 ## IOS 和 Android尚未完成
 
 ## Mono C#代码调试方法

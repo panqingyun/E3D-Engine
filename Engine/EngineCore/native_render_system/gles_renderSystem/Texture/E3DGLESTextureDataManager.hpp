@@ -16,8 +16,9 @@ namespace E3DEngine
 	{
 	public:
 		virtual unsigned int GetTextureBuffer(std::string imageName) override;
-		virtual Render2Texture* CreateRender2Texture(float width, float height) override;
 		virtual void Cleanup() override;
+	protected:
+		virtual Render2Texture* createRender2Texture() override;
 	};
 }
 

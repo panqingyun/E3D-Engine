@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ public class LogEntiry
 
 namespace E3DEditor.ViewModel
 {
+    public delegate void ThreadOperateDelegate(int thread_id, int thread_op_type);
     public class VM_MainWindow : DependencyObject, INotifyPropertyChanged
     {
         #region Property Field
@@ -34,6 +36,7 @@ namespace E3DEditor.ViewModel
         private System.Threading.Thread physicsThread = null;
         private System.Threading.Thread renderThread = null;
         private ShowLogDelegate outFunc = null;
+        private ThreadOperateDelegate threadFunc = null;
         private IntPtr windowsPlayerHandle = IntPtr.Zero;
         private Process windowsPlayer = null;
         private Assembly externAsm = null;
@@ -44,6 +47,8 @@ namespace E3DEditor.ViewModel
         private Size renderViewInitSize;
         private IntPtr renderViewHandle;
         private bool renderInited = false;
+
+        private Dictionary<int, Thread> threadMap = new Dictionary<int, Thread>();
 
         private bool engineLoaded = false;
         public bool EngineLoaded
@@ -64,6 +69,7 @@ namespace E3DEditor.ViewModel
                 myTimer.Interval = 10;
                 myTimer.Start();
                 physicsThread = new System.Threading.Thread(physicsUpdate);
+                threadMap[E3DEngine.ThreadInfoDefine.PHYSIC_THREAD_ID] = physicsThread;
                 physicsThread.Start();
             }
         }
@@ -160,7 +166,10 @@ namespace E3DEditor.ViewModel
             RenderDelegate = new E3DEngine.EngineDelegateRef();
             RenderDelegate.InitilizeEngine();
             outFunc = ShowLog;
+            threadFunc = operateThread;
             IntPtr ptr = Marshal.GetFunctionPointerForDelegate(outFunc);
+            IntPtr tptr = Marshal.GetFunctionPointerForDelegate(threadFunc);
+            RenderDelegate.RegisterThreadFunc(tptr);
             RenderDelegate.SetDebugLogOutFunc(ptr);
             Common.Debug.ShowLogHandle = ShowLog;
         }
@@ -251,16 +260,23 @@ namespace E3DEditor.ViewModel
         {
             renderViewInitSize = renderSize;
             renderViewHandle = handle;
-
-            int renderType = Config.RenderSystemType;
-            RenderDelegate.SetupRenderSystem(renderType, renderViewHandle, (int)renderViewInitSize.Width, (int)renderViewInitSize.Height);
-            //renderThread = new System.Threading.Thread(renderUpdate);
-            //renderThread.Start();
-            //while (!renderInited)
-            //{
-            //    System.Threading.Thread.Sleep(1);
-            //} // 等待render初始化
-            //RenderDelegate.CreateShareContext();
+            threadMap[E3DEngine.ThreadInfoDefine.LOGIC_THREAD_ID] = Thread.CurrentThread;
+            if (Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGL)
+            {
+                renderThread = new System.Threading.Thread(renderUpdate);
+                threadMap[E3DEngine.ThreadInfoDefine.RENDER_THREAD_ID] = renderThread;
+                renderThread.Start();
+                while (!renderInited)
+                {
+                    System.Threading.Thread.Sleep(1);
+                } // 等待render初始化
+                RenderDelegate.CreateShareContext();
+            }
+            else
+            {
+                int renderType = Config.RenderSystemType;
+                RenderDelegate.SetupRenderSystem(renderType, renderViewHandle, (int)renderViewInitSize.Width, (int)renderViewInitSize.Height);
+            }
             RenderDelegate.StartAppliaction();
             EngineLoaded = true;
             mainWnd.objectList.ItemsSource = null;
@@ -797,6 +813,21 @@ namespace E3DEditor.ViewModel
         #endregion
 
         #region Update
+
+        private void operateThread(int thread_id, int thread_op_type)
+        {
+            if(threadMap.ContainsKey(thread_id))
+            {
+                if(thread_op_type == E3DEngine.ThreadInfoDefine.RESUME_THREAD)
+                {
+                    threadMap[thread_id].Resume();
+                }
+                else if(thread_op_type == E3DEngine.ThreadInfoDefine.SUSPEND_THREAD)
+                {
+                    threadMap[thread_id].Suspend();
+                }
+            }
+        }
 
         private void renderUpdate()
         {

@@ -70,6 +70,7 @@ namespace E3DEngine
 		void	setFrameWidth(float width);
 		float	getFrameHeight();
 		float	getFrameWidth();
+		bool	getIsMutilThreadRender();
 
 	protected:
 		float			m_frameHeight;
@@ -77,8 +78,10 @@ namespace E3DEngine
 
 		RendererManager * m_pRenderManager;
 		MaterialManager * m_pMaterialManager;
-		TextureDataManager * m_pTextureDataManager;
-		ShaderManager	* m_pShaderManager;
+		TextureDataManager *	m_pTextureDataManager;
+		ShaderManager	*		m_pShaderManager;
+
+		bool					m_bIsMutilThreadRender;
 	};
 
 }

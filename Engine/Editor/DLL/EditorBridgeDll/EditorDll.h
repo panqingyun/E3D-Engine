@@ -15,6 +15,17 @@ namespace E3DEngine
 		static int OPENGLES = 1;
 	};
 
+	public ref class ThreadInfoDefine
+	{
+	public:
+		static int LOGIC_THREAD_ID	= 0;
+		static int PHYSIC_THREAD_ID = 1;
+		static int RENDER_THREAD_ID = 2;
+
+		static int SUSPEND_THREAD	= 0;
+		static int RESUME_THREAD	= 1;
+	};
+
 	public ref class EngineDelegateRef
 	{
 	public: 
@@ -39,7 +50,7 @@ namespace E3DEngine
 		void RunCurrentScene(bool run);
 		void UpdatePhysics();
 		void SetMonoPath(System::String^ env_dllPath, System::String^ assembly_dllPath, System::String^ engine_dllPath);
-
+		void RegisterThreadFunc(IntPtr fun);
 	private:
 		bool mInRun;
 		void *m_pRenderSystem;

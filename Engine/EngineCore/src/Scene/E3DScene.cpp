@@ -48,7 +48,13 @@ namespace E3DEngine
 			}
 		}
 		rootObject->Transform->Update();
-		RenderScene();
+		if (!GetRenderSystem()->getIsMutilThreadRender())
+		{
+			// 渲染场景
+			GetRenderSystem()->BeginFrame();
+			RenderScene();
+			GetRenderSystem()->EndFrame();
+		}
 		// 运行时执行，编辑器下不执行
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{
@@ -102,8 +108,6 @@ namespace E3DEngine
 
 	void Scene::RenderScene()
 	{
-		// 渲染场景
-		GetRenderSystem()->BeginFrame();
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{
 			for (Camera * camera : m_vecCamera)
@@ -124,7 +128,6 @@ namespace E3DEngine
 			}
 		}
 #endif
-		GetRenderSystem()->EndFrame();
 	}
 
 	void Scene::ChangeRenderIndex(UINT id, eRenderIndex index)

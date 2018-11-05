@@ -46,7 +46,7 @@ namespace E3DEngine
 
 	void RenderSystem::CreateShareContext()
 	{
-
+		m_bIsMutilThreadRender = true;
 	}
 
 	void RenderSystem::UseShareContext()
@@ -109,6 +109,12 @@ namespace E3DEngine
 	float RenderSystem::getFrameWidth()
 	{
 		return this->m_frameWidth;
+	}
+
+
+	bool RenderSystem::getIsMutilThreadRender()
+	{
+		return m_bIsMutilThreadRender;
 	}
 
 	void RenderSystem::Clear(Color4 color, int clearType)

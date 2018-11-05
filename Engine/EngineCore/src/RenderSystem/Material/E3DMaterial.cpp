@@ -224,8 +224,17 @@ namespace E3DEngine
 		RenderTextureConfig* rttCfg = rttTabMgr->Select<RenderTextureConfig>(Id);
 		if (rttCfg != nullptr)
 		{
-			Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(rttCfg->Width, rttCfg->Height);
-			rtt->SetTextureUniformName(varValues[0]);
+			std::string v1 = varValues[0];
+			Render2Texture *rtt = nullptr;
+			if (GetRenderSystem()->getIsMutilThreadRender())
+			{
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(rttCfg->Width, rttCfg->Height);
+			}
+			else
+			{
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(rttCfg->Width, rttCfg->Height);
+			}
+			rtt->SetTextureUniformName(v1);
 			SetTexture(rtt);
 			Rtt = rtt;
 		}
@@ -233,19 +242,21 @@ namespace E3DEngine
 
 	void Material::createSampler2D(std::vector<std::string> &varValues, MaterialConfig * config)
 	{
-		size_t pointPos = varValues[1].find_last_of('.');
-		std::string extention = varValues[1].substr(pointPos);
+		std::string name = varValues[1];
+		std::string uniName = varValues[0];
+		size_t pointPos = name.find_last_of('.');
+		std::string extention = name.substr(pointPos);
 		if (extention.find(".renderTexture") != std::string::npos)
 		{
 			createRtt(varValues);
 		}
 		else
 		{
-			TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + varValues[1]);
+			TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + name);
 			tData->clampType = (CLAMP_TYPE)config->TextureClampType;
 			tData->filterType = (FILTER_TYPE)config->TextureFilterType;
-			tData->fileName = varValues[1];
-			tData->uniformName = varValues[0];
+			tData->fileName = name;
+			tData->uniformName = uniName;
 			createTexture2D(*tData);
 			delete tData;
 		}

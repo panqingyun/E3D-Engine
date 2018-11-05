@@ -146,6 +146,8 @@ extern "C"
 	/// </summary>
 	__api_function_ void SetMonoPath(std::string env_dllPath, std::string assembly_dllPath, std::string engine_dllPath);
 
+	__api_function_ void RegisterThreadOperateFunc(void *func);
+
 #ifdef __cplusplus
 }
 #endif

@@ -81,7 +81,9 @@ namespace E3DEngine
 		// -----------------------------------------------
 		// 创建RTT
 		//-----------------------------------------------
-		virtual Render2Texture* CreateRender2Texture(float width, float height) { return nullptr; }
+		Render2Texture* CreateRender2Texture(float width, float height);
+
+		Render2Texture* CreateRender2TextureSingleThread(float width, float height);
 
 		// -----------------------------------------------
 		// 创建图像数据
@@ -94,6 +96,9 @@ namespace E3DEngine
 		// 清理
 		//-----------------------------------------------
 		virtual void Cleanup();
+
+	protected:
+		virtual Render2Texture* createRender2Texture() { return nullptr; }
 
 	protected:
 		std::map<std::string, unsigned int> m_mapTextureBuffer;

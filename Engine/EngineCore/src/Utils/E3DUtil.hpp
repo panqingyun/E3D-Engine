@@ -136,4 +136,5 @@ float RangeRandom(float fLow, float fHigh);
 float SymmetricRandom();
 // 给给定的数圈定范围
 float RangeNumber(float &number, float max, float min);
+void OperateThread(int id, int type);
 #endif /* Util_h */

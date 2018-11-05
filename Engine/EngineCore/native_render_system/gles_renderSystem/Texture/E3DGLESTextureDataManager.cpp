@@ -9,6 +9,7 @@
 
 #include "E3DGLESRender2Texture.h"
 
+
 E3DEngine::GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
 {
 	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
@@ -23,10 +24,9 @@ E3DEngine::GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::stri
 }
 
 
-E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::CreateRender2Texture(float width, float height)
+E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::createRender2Texture()
 {
 	GLES_Render2Texture *rtt = new GLES_Render2Texture;
-	rtt->CreateRenderTarget(width, height);
 	return rtt;
 }
 

@@ -31,12 +31,10 @@ void E3DEngine::EngineDelegateRef::SetupRenderSystem(int renderSystemType, IntPt
 {
 	if (renderSystemType == RenderSystemType::OPENGL)
 	{
-#pragma comment(lib,"GLRenderSystem.lib")
 		m_pRenderSystem = CreateGLRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
 	}
 	else if(renderSystemType == RenderSystemType::OPENGLES)
 	{
-#pragma comment(lib,"ESRenderSystem.lib")
 		m_pRenderSystem = CreateGLESRenderSystem((HWND)nativeWindow.ToInt32(), width, height);
 	}
 	::SetRenderSystem(m_pRenderSystem);
@@ -133,6 +131,11 @@ void E3DEngine::EngineDelegateRef::SetMonoPath(System::String^ env_dllPath, Syst
 	::SetMonoPath(marshal_as<std::string>(env_dllPath),
 		marshal_as<std::string>(assembly_dllPath),
 		marshal_as<std::string>(engine_dllPath));
+}
+
+void E3DEngine::EngineDelegateRef::RegisterThreadFunc(IntPtr fun)
+{
+	::RegisterThreadOperateFunc((void*)fun.ToInt32());
 }
 
 #pragma unmanaged

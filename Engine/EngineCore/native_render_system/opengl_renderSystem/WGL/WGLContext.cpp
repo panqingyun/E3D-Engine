@@ -144,9 +144,9 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 
 	hglrc = wglCreateContext(pDC);	//创建绘制情景对象
 
-	/*shareRc = wglCreateContext(DisplayID);
+	shareRc = wglCreateContext(DisplayID);
 
-	wglShareLists(shareRc, hglrc);*/
+	wglShareLists(shareRc, hglrc);
 
 	wglMakeCurrent(pDC, hglrc);		//选择绘制情景对象
 

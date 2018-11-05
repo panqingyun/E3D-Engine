@@ -30,6 +30,16 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EditorDebug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\EditorDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FreeImageNET">
       <HintPath>..\FreeImageNET.dll</HintPath>
@@ -63,12 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\PropertyFieldAttribute.cs" />
     <Compile Include="Common\Win32.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EditorBridgeDll\EditorBridgeDll.vcxproj">
-      <Project>{f1202232-1e69-4bd4-a088-ee079b683b94}</Project>
-      <Name>EditorBridgeDll</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

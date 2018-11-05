@@ -17,6 +17,32 @@ unsigned int E3DEngine::TextureDataManager::GetTextureBuffer(std::string imageNa
 	return 0;
 }
 
+
+E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(float width, float height)
+{
+	Render2Texture *rtt = createRender2Texture();
+	vec2f *size = new vec2f(width, height);
+	auto f = [](void *param1, void* param2)
+	{
+		Render2Texture * rt = (Render2Texture *)param1;
+		vec2f *size = (vec2f*)param2;
+
+		rt->CreateRenderTarget(size->x, size->y);
+	};
+
+	EngineDelegate::GetInstance().AddInvoke(LOGIC_THREAD_ID, RENDER_THREAD_ID, f, rtt, size);
+	return rtt;
+	
+}
+
+
+E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSingleThread(float width, float height)
+{
+	Render2Texture *rtt = createRender2Texture();
+	rtt->CreateRenderTarget(width, height);
+	return rtt;
+}
+
 E3DEngine::TextureData * E3DEngine::TextureDataManager::GetTextureDataFromFile(std::string imageName)
 {
 	E3DEngine::TextureData * imgData = new E3DEngine::TextureData();

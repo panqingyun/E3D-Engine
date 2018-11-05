@@ -8,6 +8,7 @@
 #include <src/Source/E3DDebug.h>
 #include "E3DGLRender2Texture.h"
 
+
 GLuint E3DEngine::GL_TextureDataManager::GetTextureBuffer(std::string imageName)
 {
 	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
@@ -21,14 +22,6 @@ GLuint E3DEngine::GL_TextureDataManager::GetTextureBuffer(std::string imageName)
 	return TextureBuffer;
 }
 
-
-E3DEngine::Render2Texture* E3DEngine::GL_TextureDataManager::CreateRender2Texture(float width, float height)
-{
-	GL_Render2Texture *rtt = new GL_Render2Texture;
-	rtt->CreateRenderTarget(width, height);
-	return rtt;
-}
-
 void E3DEngine::GL_TextureDataManager::Cleanup()
 {
 	for (std::map<std::string, GLuint>::iterator it = m_mapTextureBuffer.begin();
@@ -37,4 +30,10 @@ void E3DEngine::GL_TextureDataManager::Cleanup()
 		glDeleteTextures(1, &it->second);
 	}
 	m_mapTextureBuffer.clear();
+}
+
+E3DEngine::Render2Texture* E3DEngine::GL_TextureDataManager::createRender2Texture()
+{
+	GL_Render2Texture *rtt = new GL_Render2Texture;
+	return rtt;
 }

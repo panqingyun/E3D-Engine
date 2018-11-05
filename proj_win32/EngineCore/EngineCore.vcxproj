@@ -9,6 +9,14 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorDebug|Win32">
+      <Configuration>EditorDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="EditorDebug|x64">
+      <Configuration>EditorDebug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="EditorRelease|Win32">
       <Configuration>EditorRelease</Configuration>
       <Platform>Win32</Platform>
@@ -56,6 +64,12 @@
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GLES_Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -63,6 +77,12 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -124,10 +144,16 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='GLES_Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='GLES_Debug|x64'" Label="PropertySheets">
@@ -153,10 +179,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>E3DEngine_d</TargetName>
-    <OutDir>..\bin</OutDir>
+    <OutDir>..\bin\Editor</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'">
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+    <TargetName>E3DEngine_d</TargetName>
+    <OutDir>..\bin\Editor</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GLES_Debug|Win32'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;GLES\Include;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
@@ -165,6 +197,11 @@
     <OutDir>..\bin</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine;GLES\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine;GLES\Include;$(IncludePath)</IncludePath>
     <LibraryPath>GLES\Lib;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_d</TargetName>
@@ -212,14 +249,36 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;GLES_VER_2;GLES_VERSION=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;__E3D_EDITOR__;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\lib\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>mono-2.0.lib;RenderSystem_d.lib;assimp_d.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\bin\Editor\lib\$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>mono-2.0.lib;assimp_d.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;__E3D_EDITOR__;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\bin\Editor\lib\$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>mono-2.0.lib;assimp_d.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>mono-2.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -252,6 +311,24 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
@@ -318,7 +395,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;NDEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;__E3D_EDITOR__;B3_USE_CLEW;GLES_VER_2;GLES_VERSION=2;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;NDEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;__E3D_EDITOR__;B3_USE_CLEW;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>

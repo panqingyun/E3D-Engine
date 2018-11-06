@@ -708,6 +708,7 @@ namespace E3DEngine
 			}
 			ivertexTotal += 4;
 		}
+		GetRenderSystem()->UseShareContext();
 		render->FillEnd(ID, (DWORD)ivertexTotal, iindexTotal);
 	}
 	
@@ -718,7 +719,6 @@ namespace E3DEngine
 			return;
 		}
 		m_pRenderer->SetTransform(Transform);	
-		
 		GameObject::TransformChange();
 	}
 
@@ -910,6 +910,8 @@ namespace E3DEngine
 		if (IsActive && !m_ParticlePool.empty())
 		{
 			checkParticleState(deltaTime);
+
+			GetRenderSystem()->UseShareContext();
 			m_pRenderer->TransformChange();
 
 			m_pRenderer->GetMaterial()->mShader->UpdateFloatValue("particleSize", pSzie.x);

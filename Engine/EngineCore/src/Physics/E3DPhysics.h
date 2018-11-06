@@ -57,8 +57,9 @@ namespace E3DEngine
 		btCollisionObject* objA;
 		btCollisionObject* objB;
 		std::map<uint, char> m_hasCheckObjectMap;
-		btVector3 mlocalInertia;
+		btVector3 mlocalInertia; 
 		bool	mPause;
+		bool	mbPaused;
 #endif
 	};
 }

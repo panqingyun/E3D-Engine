@@ -4,6 +4,14 @@
 #include "stdafx.h"
 #include "Window.h"
 
+const int LOGIC_THREAD_ID = 0;
+const int PHYSIC_THREAD_ID = 1;
+const int RENDER_THREAD_ID = 2;
+const int SUSPEND_THREAD = 0;
+const int RESUME_THREAD = 1;
+const int LOCK_THREAD = 2;
+const int LOCK_END = 3;
+
 #define MAX_LOADSTRING 100
 
 // 全局变量: 
@@ -29,12 +37,19 @@ float				CameraYaw = 0;
 bool				MButtonDown = false;
 bool				bExit = false;
 std::fstream		InFile;
-unsigned int		threadID = 0;
+unsigned int		physicsThreadID = 0;
+unsigned int		renderThreadID = 0;
+
 std::string logFileName = "E3DLog.log";
 HANDLE g_hConsoleHandle = 0;
-CRITICAL_SECTION            gPhysicsSection;
-HANDLE						hPhysicsThread = NULL;
 
+CRITICAL_SECTION            gPhysicsSection;
+CRITICAL_SECTION            gRenderSection;
+
+HANDLE						hPhysicsThread = NULL;
+HANDLE						hRenderThread = NULL;
+bool						bRenderInited = false;
+std::map<int, HANDLE>		mapThreads;
 
 #ifdef _DEBUG
 #define EXE_NAME "WinClient_d.exe"
@@ -48,6 +63,7 @@ std::string strPath = "";
 bool isShowWithEditor = false;
 HWND editorHandle = nullptr;
 std::string startScenePath = "";
+int width, height;
 
 DWORD nRet = 0;
 void LogOutput(const char* log)
@@ -66,15 +82,29 @@ void LogOutput(const char* log)
 	InFile << log;
 }
 
+void OpThread(int id, int op)
+{
+	if (mapThreads.find(id) != mapThreads.end())
+	{
+		if (op == SUSPEND_THREAD)
+		{
+			SuspendThread(mapThreads[id]);
+		}
+		else if (op == RESUME_THREAD)
+		{
+			ResumeThread(mapThreads[id]);
+		}
+	}
+}
+
 void InitEngine(HWND hWnd)
 {
-	InitializeCriticalSection(&gPhysicsSection);
 	MainWindowHwnd = hWnd;
 
 	RECT rect;
 	::GetClientRect(hWnd, &rect);
-	int width = rect.right - rect.left;
-	int height = rect.bottom - rect.top;
+	width = rect.right - rect.left;
+	height = rect.bottom - rect.top;
 
 	InFile.open(logFileName.data(), std::ios::out);
 	if (!isShowWithEditor)
@@ -87,9 +117,7 @@ void InitEngine(HWND hWnd)
 	// TODO
 	::SetMonoPath("../Data/E3DAssembly",strPath + "../Library/AssemblyCSharp.dll", "../Data/E3DAssembly/E3DEngine.dll");
 	::SetDebugLogOutFunc(LogOutput);
-	void * renderSystem = CreateGLRenderSystem(hWnd, width, height);
-	::SetRenderSystem(renderSystem);
-	::StartAppliaction(startScenePath.c_str());
+	::RegisterThreadOperateFunc(OpThread);
 }
 
 std::vector<std::string> Split(std::string str, std::string pattern)
@@ -211,8 +239,23 @@ unsigned __stdcall PhysicsMain(void*)
 	{
 		EnterCriticalSection(&gPhysicsSection);
 		::UpdatePhysics();
+		Sleep(1); 
 		LeaveCriticalSection(&gPhysicsSection);
+	}
+	return 0;
+}
+
+unsigned __stdcall RenderMain(void*)
+{
+	void * renderSystem = CreateGLRenderSystem(MainWindowHwnd, width, height);
+	::SetRenderSystem(renderSystem);
+	bRenderInited = true;
+	while (!bExit)
+	{
+		EnterCriticalSection(&gRenderSection);
+		::RenderUpdate();
 		Sleep(1);
+		LeaveCriticalSection(&gRenderSection);
 	}
 	return 0;
 }
@@ -276,7 +319,22 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
    
    InitEngine(hWnd);
-   hPhysicsThread = (HANDLE)_beginthreadex(NULL, 0, &PhysicsMain, NULL, 0, &threadID);
+
+   InitializeCriticalSection(&gPhysicsSection);
+   InitializeCriticalSection(&gRenderSection);
+   hPhysicsThread = (HANDLE)_beginthreadex(NULL, 0, &PhysicsMain, NULL, 0, &physicsThreadID);
+   hRenderThread = (HANDLE)_beginthreadex(nullptr, 0, &RenderMain, nullptr, 0, &renderThreadID);
+   mapThreads[PHYSIC_THREAD_ID] = hPhysicsThread;
+   mapThreads[RENDER_THREAD_ID] = hRenderThread;
+   mapThreads[LOGIC_THREAD_ID] = GetCurrentThread();
+   while (!bRenderInited)
+   {
+	   Sleep(1);
+   }
+   ::CreateShareContext();
+
+   ::StartAppliaction(startScenePath.c_str());
+
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 

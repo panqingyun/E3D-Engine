@@ -38,6 +38,7 @@
 #include "../Object/E3DTerrain.h"
 #include "../Object/E3DSkyBox.h"
 #include "../Object/E3DPrefab.h"
+#include "E3DThreadTool.h"
 
 #define RAD2DEG(x) (x * 180.0 / M_PI)
 #define CAMERA_Z_POS 50.0
@@ -47,29 +48,8 @@
 #define HL_VIDEO_CAMERA "HL_VIDEO_CAMERA"
 #define LAYER_CONFIAG_NAME Application::ResourcePath + "LayerConfig.xml"
 
-using ThreadInvokeFun = void(*)(void*, void*);
-
-struct ThreadInfo
-{
-	int ID;
-	ThreadInvokeFun Func;
-	void *Param1;
-	void *Param2;
-	ThreadInfo(int id, ThreadInvokeFun func, void* p1, void *p2)
-		:ID(id), Func(func), Param1(p1), Param2(p2)
-	{
-		
-	}
-};
-
 namespace E3DEngine
 {
-	const int LOGIC_THREAD_ID	= 0;
-	const int PHYSIC_THREAD_ID	= 1;
-	const int RENDER_THREAD_ID	= 2;
-	const int SUSPEND_THREAD	= 0;
-	const int RESUME_THREAD		= 1;
-
 	class E3D_EXPORT_DLL EngineDelegate : public IObject
 	{
 	public:
@@ -85,8 +65,6 @@ namespace E3DEngine
 		void SetIsRun(bool isRun);
 		void SetPauseRender(bool isPause);
 
-	public:
-		void AddInvoke(int cur_thread_id, int dist_thread_id, ThreadInvokeFun func, void *  param1 = nullptr, void *param2 = nullptr);
 	private:
 		EngineDelegate();
 	private:
@@ -94,15 +72,11 @@ namespace E3DEngine
 		bool									m_bPause;
 		bool									m_bRun;
 		bool									m_bPauseRender;
+		bool									m_bRenderPaused;
 	public:
 		void UpdateRender();
 		void UpdateLogic(float deltaTime);
 		void UpdatePhysics(float deltaTime);
-
-	private:
-		ThreadInfo *mRenderThreadInvoke;
-		ThreadInfo *mLogicThreadInvoke;
-		ThreadInfo *mPhysicThreadInvoke;
 	};
 }
 

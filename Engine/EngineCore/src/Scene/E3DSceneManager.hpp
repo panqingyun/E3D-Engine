@@ -22,7 +22,7 @@ namespace E3DEngine
 		SceneManager();
 		virtual void Initilize();
 		virtual void Destory();		
-		Scene * LoadScene(std::string filePath);
+		void LoadScene(std::string filePath);
 		static Scene * GetCurrentScene();
 
 	private:

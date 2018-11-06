@@ -46,6 +46,10 @@ namespace E3DEngine
 			return;
 		}
 		int &index = t.mIndex;
+		if (index >= t.mTimerList.size())
+		{
+			index = 0;
+		}
 		std::list<stTimer*> &timerList = t.mTimerList[index];
 		std::list<stTimer*> temp;
 
@@ -87,7 +91,7 @@ namespace E3DEngine
 		getInstance().m_nTimerID = 0;
 		getInstance().deltaTime = 0;
 		getInstance().mIndex = 0;
-		getInstance().mTimerList.resize(14400000);
+		getInstance().mTimerList.resize(1440);
 	}
 
 	void Timer::PauseTimer(unsigned int timerID)

@@ -202,8 +202,8 @@ VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float
 
 CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 {
-	Scene * scene = SceneManager::GetInstance().LoadScene(Convert::ToStdString(path));
-
+	SceneManager::GetInstance().LoadScene(Convert::ToStdString(path));
+	Scene * scene = SceneManager::GetInstance().GetCurrentScene();
 	return scene->GetMonoBehaviour()->GetMonoObject();
 }
 

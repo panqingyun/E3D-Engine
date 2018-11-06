@@ -30,7 +30,7 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(f
 		rt->CreateRenderTarget(size->x, size->y);
 	};
 
-	EngineDelegate::GetInstance().AddInvoke(LOGIC_THREAD_ID, RENDER_THREAD_ID, f, rtt, size);
+	ThreadTool::GetInstance().AddInvoke(LOGIC_THREAD_ID, RENDER_THREAD_ID, f, rtt, size);
 	return rtt;
 	
 }

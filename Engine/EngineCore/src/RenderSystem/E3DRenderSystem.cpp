@@ -5,6 +5,9 @@
 //
 
 #include "E3DRenderSystem.hpp"
+#include "..\Source\E3DThreadTool.h"
+#include "..\Scene\E3DSceneManager.hpp"
+#include "..\Source\E3DDebug.h"
 
 E3DEngine::RenderSystem * g_pRenderSystem = nullptr;
 void SetRenderSystem(E3DEngine::RenderSystem * rs)
@@ -20,6 +23,41 @@ E3D_EXPORT_DLL E3DEngine::RenderSystem * GetRenderSystem()
 
 namespace E3DEngine
 {
+
+	void RenderSystem::SetPauseRender(bool isPause)
+	{
+		m_bPauseRender = isPause;
+		if (isPause && m_bIsMutilThreadRender)
+		{
+			m_bRenderPaused = false;
+			while (!m_bRenderPaused)
+			{
+#if (defined WIN32)
+				::Sleep(1);
+#else
+				::sleep(1);
+#endif
+			}
+		}
+	}
+
+	void RenderSystem::Render()
+	{
+		if (m_bPauseRender)
+		{
+			m_bRenderPaused = true;
+			return;
+		}
+		BeginFrame();
+		ThreadTool::GetInstance().RunInvokeFun(RENDER_THREAD_ID);
+		Scene * pCurScene = SceneManager::GetCurrentScene();
+		if (pCurScene != nullptr)
+		{
+			SceneManager::GetCurrentScene()->RenderScene();
+		}
+		EndFrame();
+	}
+
 	void RenderSystem::Initilize()
 	{
 	}
@@ -89,6 +127,7 @@ namespace E3DEngine
 
 	RenderSystem::RenderSystem()
 	{
+		m_bRenderPaused = false;
 	}
 
 	void RenderSystem::setFrameHeight(float height)

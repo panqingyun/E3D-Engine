@@ -198,7 +198,8 @@ namespace E3DEngine
 	E3DEngine::SceneRef^ SceneManageRef::LoadScene(String^ path)
 	{
 		std::string InputData = marshal_as<std::string>(path);
-		Scene *scene = SceneManager::GetInstance().LoadScene(InputData);
+		SceneManager::GetInstance().LoadScene(InputData);
+		Scene *scene = SceneManager::GetInstance().GetCurrentScene();
 		if (mCurScene == nullptr)
 		{
 			mCurScene = gcnew SceneRef(scene);
@@ -219,7 +220,8 @@ namespace E3DEngine
 		}
 		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
 		{
-			mDefaultScene = SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
+			SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
+			mDefaultScene = SceneManager::GetInstance().GetCurrentScene();
 		}
 
 		if (mEditorCamera == nullptr)

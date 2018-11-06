@@ -148,6 +148,7 @@ extern "C"
 
 	__api_function_ void RegisterThreadOperateFunc(void *func);
 
+
 #ifdef __cplusplus
 }
 #endif

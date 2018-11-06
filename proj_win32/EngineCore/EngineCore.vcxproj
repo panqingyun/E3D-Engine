@@ -182,7 +182,7 @@
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
     <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
     <TargetName>E3DEngine_d</TargetName>
-    <OutDir>..\bin\Editor</OutDir>
+    <OutDir>..\bin\WindowsPlayer\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='EditorDebug|Win32'">
     <IncludePath>..\..\Engine\EngineCore\3rd\header;..\..\Engine\EngineCore;..\..\Engine\EngineCore\3rd\Physical\src;..\..\Engine\EngineCore\3rd\Mono;..\..\Engine\EngineCore\3rd\Mono\eglib\src;..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\Engine\EngineCore\3rd\stb;$(IncludePath)</IncludePath>
@@ -249,13 +249,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;__E3D_EDITOR__;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\bin\Editor\lib\$(TargetName).lib</ImportLibrary>
+      <ImportLibrary>..\bin\WindowsPlayer\lib\$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>mono-2.0.lib;assimp_d.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletInverseDynamics_Debug.lib;BulletSoftBody_Debug.lib;LinearMath_Debug.lib;stb_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
@@ -371,7 +371,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;GLES_VER_2;GLES_VERSION=2;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_SCL_SECURE_NO_WARNINGS;FRONT_CREATE_TEXTURE;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;__WIN32__;_WINDOWS;WINDOWS;B3_USE_CLEW;E3D_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalOptions>/D _CRT_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -580,6 +580,7 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DPlatformConfig.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h" />
+    <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DThreadTool.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DTimer.hpp" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertex.h" />
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.h" />
@@ -665,6 +666,7 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DHttpClient.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp" />
+    <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DThreadTool.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DTimer.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertex.cpp" />
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.cpp" />

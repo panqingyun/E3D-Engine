@@ -42,6 +42,8 @@ namespace E3DEngine
 		RenderSystem();
 		~RenderSystem() = default;
 
+		void Render();
+		void SetPauseRender(bool isPause);
 	public:
 		virtual void Initilize();
 		virtual std::string GetName();
@@ -82,6 +84,8 @@ namespace E3DEngine
 		ShaderManager	*		m_pShaderManager;
 
 		bool					m_bIsMutilThreadRender;
+		bool					m_bPauseRender;
+		bool					m_bRenderPaused;
 	};
 
 }

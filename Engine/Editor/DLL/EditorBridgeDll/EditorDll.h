@@ -24,6 +24,8 @@ namespace E3DEngine
 
 		static int SUSPEND_THREAD	= 0;
 		static int RESUME_THREAD	= 1;
+		static int LOCK_THREAD		= 2;
+		static int LOCK_END			= 3;
 	};
 
 	public ref class EngineDelegateRef

@@ -6,12 +6,16 @@
 #include "../Object/E3DGameObject.h"
 #include "../Source/E3DDebug.h"
 #include "E3DCollider.hpp"
+#include "../Source/EngineDelegate.h"
 
 namespace E3DEngine
 {
 	PhysicWorld::PhysicWorld()
 	{
 		mlocalInertia = btVector3(0, 10, 0);
+
+		mbPaused = false;
+		mPause = false;
 	}
 
 	PhysicWorld::~PhysicWorld()
@@ -42,8 +46,10 @@ namespace E3DEngine
 	{
 		if (mPause)
 		{
+			mbPaused = true;
 			return;
 		}
+		
 		m_pDynamicsWorld->stepSimulation(deltaTime);
 		//int  numManifolds = m_pDispatcher->getNumManifolds();
 		//for (int i = 0; i < numManifolds; i++)
@@ -85,7 +91,6 @@ namespace E3DEngine
 		delete m_pOverlappingPairCache;
 		delete m_pSolver;
 		delete m_pDispatcher;
-		delete m_pCollisionConfiguration;
 	}
 
 	void PhysicWorld::Cleanup()
@@ -143,6 +148,18 @@ namespace E3DEngine
 	void PhysicWorld::SetPause(bool bPause)
 	{
 		mPause = bPause;
+		if (mPause)
+		{
+			mbPaused = false;
+			while (!mbPaused && EngineDelegate::GetInstance().GetIsRun())
+			{
+#if (defined WIN32)
+				::Sleep(1);
+#else
+				::sleep(1);
+#endif
+			}
+		}
 	}
 
 	void PhysicWorld::CreateGround()

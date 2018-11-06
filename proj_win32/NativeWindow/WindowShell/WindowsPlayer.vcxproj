@@ -178,8 +178,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\..\Engine\EngineCore\Include;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\include;..\..\..\Engine\EngineCore\3rd\std;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\Engine\EngineCore\Include;..\..\..\Engine\EngineCore\src;..\..\..\Engine\EngineCore\include;..\..\..\Engine\EngineCore\3rd\std;..\..\..\Engine\EngineCore\3rd\Physical\src;..\..\..\Engine\EngineCore\3rd\Mono;..\..\..\Engine\EngineCore\3rd\assimp-3.3.1\include;..\..\..\Engine\EngineCore;..\..\..\Engine\EngineCore\native_render_system\opengl_renderSystem\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\bin\WindowsPlayer\lib\;$(LibraryPath)</LibraryPath>
     <OutDir>..\..\bin</OutDir>
     <TargetName>WinClient_d</TargetName>
     <TargetExt>.exe</TargetExt>
@@ -284,7 +284,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>E3DEngine_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E3DEngine_d.lib;GLRenderSystem_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -384,7 +384,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>E3DEngine.lib;ESRenderSystem.lib;GLRenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>E3DEngine.lib;GLRenderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\bin\WindowsPlayer\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

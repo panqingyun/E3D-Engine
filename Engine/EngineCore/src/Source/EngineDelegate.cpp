@@ -17,9 +17,6 @@ namespace E3DEngine
 		m_bIsInited = false;
 		m_bPause = false;
 		m_bRun = true;
-		mRenderThreadInvoke = nullptr;
-		mPhysicThreadInvoke = nullptr;
-		mLogicThreadInvoke = nullptr;
 	}
 
 
@@ -54,18 +51,11 @@ namespace E3DEngine
 		}
 		if (m_bPauseRender)
 		{
+			m_bRenderPaused = true;
 			return;
 		}
 		GetRenderSystem()->BeginFrame();
-		if (mRenderThreadInvoke != nullptr)
-		{
-			if (mRenderThreadInvoke->Func != nullptr)
-			{
-				mRenderThreadInvoke->Func(mRenderThreadInvoke->Param1, mRenderThreadInvoke->Param2);
-			}
-			OperateThread(mRenderThreadInvoke->ID, RESUME_THREAD);
-			SAFE_DELETE(mRenderThreadInvoke);
-		}
+		ThreadTool::GetInstance().RunInvokeFun(RENDER_THREAD_ID);
 		Scene * pCurScene = SceneManager::GetCurrentScene();
 		if (pCurScene != nullptr)
 		{
@@ -81,15 +71,8 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (mLogicThreadInvoke != nullptr)
-		{
-			if (mLogicThreadInvoke->Func != nullptr)
-			{
-				mLogicThreadInvoke->Func(mLogicThreadInvoke->Param1, mLogicThreadInvoke->Param2);
-			}
-			OperateThread(mLogicThreadInvoke->ID, RESUME_THREAD);
-			SAFE_DELETE(mLogicThreadInvoke);
-		}
+
+		ThreadTool::GetInstance().RunInvokeFun(LOGIC_THREAD_ID);
 		Timer::Update(deltaTime);
 
 		Scene * pCurScene = SceneManager::GetCurrentScene();
@@ -111,15 +94,8 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (mPhysicThreadInvoke != nullptr)
-		{
-			if (mPhysicThreadInvoke->Func != nullptr)
-			{
-				mPhysicThreadInvoke->Func(mPhysicThreadInvoke->Param1, mPhysicThreadInvoke->Param2);
-			}
-			OperateThread(mPhysicThreadInvoke->ID, RESUME_THREAD);
-			SAFE_DELETE(mPhysicThreadInvoke);
-		}
+
+		ThreadTool::GetInstance().RunInvokeFun(PHYSIC_THREAD_ID);
 		if (m_bRun)
 		{
 			PhysicWorld::GetInstance().Update(deltaTime);
@@ -157,24 +133,18 @@ namespace E3DEngine
 	void EngineDelegate::SetPauseRender(bool isPause)
 	{
 		m_bPauseRender = isPause;
-	}
-
-
-	void EngineDelegate::AddInvoke(int cur_thread_id, int dist_thread_id, ThreadInvokeFun func, void * param1 /*= nullptr*/, void *param2 /*= nullptr*/)
-	{
-		if (dist_thread_id == LOGIC_THREAD_ID)
+		if (isPause && GetRenderSystem()->getIsMutilThreadRender())
 		{
-			mLogicThreadInvoke = new ThreadInfo(cur_thread_id, func, param1, param2);
+			m_bRenderPaused = false;
+			while (!m_bRenderPaused)
+			{
+#if (defined WIN32)
+				::Sleep(1);
+#else
+				::sleep(1);
+#endif
+			}
 		}
-		else if (dist_thread_id == RENDER_THREAD_ID)
-		{
-			mRenderThreadInvoke = new ThreadInfo(cur_thread_id, func, param1, param2);
-		}
-		else if (dist_thread_id == PHYSIC_THREAD_ID)
-		{
-			mPhysicThreadInvoke = new ThreadInfo(cur_thread_id, func, param1, param2);
-		}
-		OperateThread(cur_thread_id, SUSPEND_THREAD);
 	}
 
 }

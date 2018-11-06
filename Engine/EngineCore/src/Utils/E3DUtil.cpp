@@ -29,9 +29,6 @@ long getCurrentTime()
 }
 extern "C"
 {
-	using OpThreadFun = void(*)(int id, int type);
-	OpThreadFun opFunc = nullptr;
-
 	__api_function_ void InitilizeEngine(bool isEditor)
 	{
 		E3DEngine::EngineDelegate::GetInstance().Initilize(isEditor);
@@ -149,22 +146,14 @@ extern "C"
 
 	__api_function_ void RegisterThreadOperateFunc(void *func)
 	{
-		opFunc = (OpThreadFun)func;
+		ThreadTool::GetInstance().RegisterThreadFunc((OpThreadFun)func);
 	}
-
 }
 
 /*
  * 全局函数
  */
 
-void OperateThread(int id, int type)
-{
-	if (opFunc != nullptr)
-	{
-		opFunc(id, type);
-	}
-}
 // returns a random number
 inline float asm_rand()
 {

@@ -100,7 +100,7 @@ namespace E3DEngine
 
 	void GameObjectRef::Selected()
 	{
-		SceneManageRef::GetInstance()->GetCurScene()->ShowCoord(mGameObject->Transform);
+
 	}
 
 	int GameObjectRef::GetSceneInnerID()

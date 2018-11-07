@@ -168,7 +168,6 @@ namespace E3DEngine
 	{
 		Camera *pCamera = Camera::CreateCamera();
 
-		SceneManager::GetCurrentScene()->AddCamera(pCamera);
 		pCamera->SetClearColor(Convert::ToColor4(*objectElement->Attribute(_ClearColor)));
 		setLayerMask(objectElement, pCamera);
 		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);

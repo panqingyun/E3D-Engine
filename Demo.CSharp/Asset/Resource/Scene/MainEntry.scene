@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Scene>
     <GameObject ID="1" Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,0.000000" Color="FFFFFFFF">
-        <Transform Posistion="200.000000,35.000000,180.000000" Rotation="0.000000,90.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="220.000000,50.000000,220.000000" Rotation="-20.000000,55.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="AppMain">
             <Field ShowDebug="true" ShowNumber="1000" />
         </Component>
@@ -11,11 +11,11 @@
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
-        <Transform Posistion="31.502136,69.381302,133.375671" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="220.000000,50.000000,220.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
-        <Transform Posistion="160.000000,64.637520,176.000000" Rotation="0.000000,-0.000000,0.000000" Scale="2.000000,2.000000,2.000000" />
+        <Transform Posistion="160.722092,30.925074,173.902847" Rotation="-177.930542,9.885993,0.416615" Scale="2.000000,2.000000,2.000000" />
         <Component Active="true" ClassName="E3DEngine.BoxCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
@@ -23,7 +23,7 @@
     </GameObject>
     <GameObject ID="5" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
-        <Transform Posistion="110.000000,64.643074,155.000000" Rotation="52.295994,9.017948,0.033294" Scale="3.000000,3.000000,3.000000" />
+        <Transform Posistion="113.706825,31.495628,156.921371" Rotation="90.027145,-58.615704,-0.052147" Scale="3.000000,3.000000,3.000000" />
         <Component Active="true" ClassName="E3DEngine.BoxCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
@@ -31,7 +31,7 @@
     </GameObject>
     <GameObject ID="6" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-        <Transform Posistion="160.000000,58.643066,176.000000" Rotation="0.000000,-0.000000,50.000015" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="161.752960,30.921316,178.337860" Rotation="73.993034,47.537258,-5.674814" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="501.000000" Mass="30.000000" Restitution="0.100000" />
         </Component>
@@ -42,7 +42,7 @@
     </GameObject>
     <GameObject ID="7" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-        <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,52.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,262.000244,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
@@ -52,7 +52,7 @@
         </Component>
         <GameObject ID="8" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
             <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-            <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,206.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
+            <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,134.150131,0.000000" Scale="0.500000,0.500000,0.500000" />
             <Component Active="true" ClassName="E3DEngine.RigidBody">
                 <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
             </Component>
@@ -67,7 +67,7 @@
     </GameObject>
     <GameObject ID="10" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SphereMaterial.material" SelectID="1" />
-        <Transform Posistion="110.000000,78.643074,155.000000" Rotation="0.000000,-0.000000,50.000015" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="77.992805,27.895203,220.141617" Rotation="-120.424156,38.289005,94.926712" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="30.000000" Restitution="0.100000" />
         </Component>

@@ -73,6 +73,38 @@ namespace E3DEngine
 		return material;
 	}
 	
+	E3DEngine::Material * MaterialManager::CreateMaterial(MaterialConfig *config)
+	{
+		GetRenderSystem()->UseShareContext();
+		if (m_mapConfigMaterial.find(config->FilePath) != m_mapConfigMaterial.end())
+		{
+			if (m_mapConfigMaterial[config->FilePath].find(config->ID) != m_mapConfigMaterial[config->FilePath].end())
+			{
+				return m_mapConfigMaterial[config->FilePath][config->ID];
+			}
+		}
+
+		std::string folder, file;
+		StringManipulator::SplitFileName(config->FilePath, folder, file);
+		Material * material = createMatrerial();
+		std::map<int, DWORD>::iterator srcItr = m_BlendFactorMap.find(config->SrcBlendFactor);
+		std::map<int, DWORD>::iterator dstItr = m_BlendFactorMap.find(config->DstBlendFactor);
+
+		DWORD srcFactor = 0, dstFactor = 0;
+		srcFactor = srcItr != m_BlendFactorMap.end() ? srcItr->second : 0;
+		dstFactor = dstItr != m_BlendFactorMap.end() ? dstItr->second : 0;
+		material->SetBlendType(srcFactor, dstFactor);
+		material->SetEnableDepthTest(config->EnableDepthTest == 1);
+		material->SetEnableDepthWrite(config->EnableWriteDepth == 1);
+		material->SetEnableCullFace(config->CullFace == 0);
+		material->mFilePath = folder + "/";
+		material->CreateMaterial(config);
+		m_mapIDMaterials[material->ID] = material;
+		m_mapConfigMaterial[config->FilePath][config->ID] = material;
+		GetRenderSystem()->UseRenderContext();
+		return material;
+	}
+
 	void MaterialManager::Cleanup()
 	{
 		for (auto it : m_mapIDMaterials)

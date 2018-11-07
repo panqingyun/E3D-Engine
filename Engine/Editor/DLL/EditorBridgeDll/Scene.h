@@ -19,7 +19,7 @@ namespace E3DEngine
 		String ^GetScenePath();
 		void SaveScene(String ^path);
 		GameObjectRef ^GetGameObject(int ID);
-		void ShowCoord(CTransform *transform);
+		void ShowCoord();
 		void Loaded();
 		void SetSelectObject(GameObjectRef ^obj);
 		GameObjectRef ^GetCurSelObject();

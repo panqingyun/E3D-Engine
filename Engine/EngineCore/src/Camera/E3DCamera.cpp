@@ -131,7 +131,7 @@ namespace E3DEngine
 		vec4f &&point = GetProjectionMatrix()  * GetViewMatrix() * Convert::Vec3ToVec4(worldPoint);
 		retPos.x = ((point.x / point.w) + 1) / 2.0 * GetRenderSystem()->getFrameWidth();
 		retPos.y = -((point.y / point.w) + 1) / 2.0 * GetRenderSystem()->getFrameHeight();
-		retPos.z /= point.z / point.w;
+		retPos.z /= point.w;
 
 		return retPos;
 	}
@@ -142,7 +142,7 @@ namespace E3DEngine
 		vec4f &&point = GetProjectionMatrix()  * GetViewMatrix() * Convert::Vec3ToVec4(worldPoint);
 		retPos.x = point.x / point.w;
 		retPos.y = point.y / point.w;
-		retPos.z /= point.z / point.w;
+		retPos.z /= point.w;
 
 		return retPos;
 	}
@@ -488,7 +488,7 @@ namespace E3DEngine
 		}
 		else
 		{
-			E3DEngine::Camera *camera = new E3DEngine::Camera(-position, target, up, -1, 1, -1, 1, zNear, zFar);
+			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, up, -1, 1, -1, 1, zNear, zFar);
 			camera->SetActive(true);
 			return camera;
 		}

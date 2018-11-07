@@ -38,7 +38,7 @@ namespace E3DEngine
 		{
 			if (shadowCamera != nullptr)
 			{
-				SAFE_DELETE(shadowCamera);
+				delete shadowCamera;
 			}
 		}
 

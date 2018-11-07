@@ -57,12 +57,13 @@ namespace E3DEngine
 		return findGameObject(childList, ID);
 	}
 
-	void SceneRef::ShowCoord(CTransform *transform)
+	void SceneRef::ShowCoord()
 	{
 		if (mObjectCoord == nullptr)
 		{
 			createCoordinate("../Data/Material/coordinate.material", 1);
 		}
+		mObjectCoord->Transform = mCurSelObject->GetTransform()->GetTransformPtr();
 	}
 
 	void SceneRef::Loaded()
@@ -75,6 +76,8 @@ namespace E3DEngine
 	void SceneRef::SetSelectObject(GameObjectRef ^obj)
 	{
 		mCurSelObject = obj;
+		mCurSelObject->Selected(); 
+		ShowCoord();
 	}
 
 	E3DEngine::GameObjectRef ^ SceneRef::GetCurSelObject()
@@ -84,40 +87,24 @@ namespace E3DEngine
 
 	void SceneRef::Update(float deltaTime)
 	{
-		if (mCurSelObject != nullptr)
+		if (mCurSelObject != nullptr && mObjectCoord != nullptr)
 		{
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
 				mCurSelObject->Update(deltaTime);
 				mObjectCoord->Update(deltaTime);
 			}
-			const vec3f &objePos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
-			if (mCurSelObject->GetGameObjectPtr()->GetRenderer() != nullptr &&
-				mCurSelObject->GetGameObjectPtr()->GetRenderer()->GetCamera() != nullptr
-				&& mObjectCoord->GetRenderer() != nullptr && mObjectCoord->GetRenderer()->GetCamera() != nullptr)
-			{
-				vec3f clipPoint = mCurSelObject->GetGameObjectPtr()->GetRenderer()->GetCamera()->GetClipPoint(objePos);
-				vec4f worlPoint = mObjectCoord->GetRenderer()->GetCamera()->GetWorldPoint(clipPoint.x, clipPoint.y, 0);
-				mObjectCoord->Transform->SetPosition(worlPoint.x, worlPoint.y, worlPoint.z);
-				mObjectCoord->Transform->SetRotation(mCurSelObject->GetTransform()->GetTransformPtr()->Rotation);
-			}
-			else
-			{
-				vec3f clipPoint = SceneManageRef::GetInstance()->GetEditorMainCamera()->GetClipPoint(objePos);
-				vec4f worlPoint = SceneManageRef::GetInstance()->GetLookCoordCamera()->GetWorldPoint(clipPoint.x, clipPoint.y, 0);
-				mObjectCoord->Transform->SetPosition(worlPoint.x, worlPoint.y, worlPoint.z);
-				mObjectCoord->Transform->SetRotation(mCurSelObject->GetTransform()->GetTransformPtr()->Rotation);
-			}
 		}
 	}
 
 	void SceneRef::AfterUpdate(float deltaTime)
 	{
-		if (mCurSelObject != nullptr)
+		if (mCurSelObject != nullptr && mObjectCoord != nullptr)
 		{
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
 				mCurSelObject->AfterUpdate(deltaTime);
+
 				mObjectCoord->AfterUpdate(deltaTime);
 			}
 		}
@@ -320,7 +307,7 @@ namespace E3DEngine
 		mObjectCoord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(mObjectCoord->VertexBufferName).size());
-		mObjectCoord->SetLayerMask(1 << objectCoordLayer);
+		mObjectCoord->SetLayerMask(1);
 		mObjectCoord->SetRenderer(rd);
 		mObjectCoord->Flag |= DONT_SAVE;
 		mObjectCoord->SetActive(true);

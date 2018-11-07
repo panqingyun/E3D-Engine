@@ -375,7 +375,10 @@ namespace E3DEngine
 				m_vecObjList.erase(go->ID);
 			}
 			rootObject->AddChild(go);
-
+			if (obj->mObjectType == eT_Camera)
+			{
+				AddCamera((Camera*)obj);
+			}
 		}
 		m_vecObjList[obj->ID] = obj;
 	}

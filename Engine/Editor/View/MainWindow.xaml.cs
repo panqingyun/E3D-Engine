@@ -39,7 +39,6 @@ namespace E3DEditor.View
             GameObjectNode node = objectList.SelectedItem as GameObjectNode;
             E3DEngine.SceneManageRef.GetInstance().GetCurScene().SetSelectObject(node.mGameObject);
             node.IsSelected = true;
-            node.mGameObject.Selected();
         }
 
         private void menu_Click(object sender, RoutedEventArgs e)

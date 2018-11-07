@@ -4,6 +4,9 @@
 #include "../Scene/E3DSceneManager.hpp"
 #include "../Source/E3DDebug.h"
 #include "../Object/E3DTransform.hpp"
+#include "../Camera/E3DCamera.h"
+#include "../RenderSystem/E3DRenderSystem.hpp"
+#include "../Object/E3DRectangle.hpp"
 
 namespace E3DEngine
 {
@@ -31,6 +34,19 @@ namespace E3DEngine
 	void DirectionLight::CreateShadow()
 	{
 		// 平行光 创建正交投影摄像机
+		shadowCamera = new E3DEngine::Camera(vec3f(0, 0, 1), vec3f(0, 0, 0), vec3f(0, 1, 0), -512, 512, -512, 512, 1, 1000);
+		shadowCamera->Transform = Transform; //TODO
+		TextureData tData;
+		tData.fileName = "CameraShadowMap";
+		tData.configID = ID;
+		tData.width = 1024;
+		tData.height = 1024;
+		Render2Texture * rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
+		shadowCamera->SetRenderTexture(rtt);
+		ADD_IN_SCENE(shadowCamera);
+		Rectangle *rect = new Rectangle;
+		rect->CreateShape(1024, 1024);
+
 	}
 
 

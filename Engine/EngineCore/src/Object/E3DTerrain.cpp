@@ -13,7 +13,6 @@ E3DEngine::Terrain::Terrain()
 {
 	mSceneObjectType = TP_Terrain;
 	m_bIsEditorGrid = false;
-	lastSize = 1;
 	CREATE_BEHAVIOUR(Terrain);
 }
 
@@ -68,9 +67,10 @@ void E3DEngine::Terrain::Create(const char * heightMapFileName)
 }
 
 
-void E3DEngine::Terrain::Create(int size)
+void E3DEngine::Terrain::Create(int size, int perGridSize)
 {
 	VertexBufferName = "_Terrain";
+	mSize = size;
 	if (VertexManager::GetVertex(VertexBufferName).empty())
 	{
 		std::vector<Vertex>  vecVertex;
@@ -86,9 +86,9 @@ void E3DEngine::Terrain::Create(int size)
 				x = (float)i - size / 2.0f;
 				z = -((float)j - size / 2.0f);
 				y = 0;
-				vecVertex[vertexIndex].SetPosition(x * 20, y, z * 20);
+				vecVertex[vertexIndex].SetPosition(x * perGridSize, y, z * perGridSize);
 				vecVertex[vertexIndex].SetNormal(0, 1, 0);
-				vecVertex[vertexIndex].SetColor(0.5, 0.5, 0.5, 1);
+				vecVertex[vertexIndex].SetColor(1, 1,1, 1);
 				vecVertex[vertexIndex].SettextureCoord1((float)i / (size - 1), (float)j / (size - 1));
 				vertexIndex++;
 				if (i < size - 1 && j < size - 1)
@@ -108,24 +108,6 @@ void E3DEngine::Terrain::Create(int size)
 	}
 	Transform->SetNeedUpdate(true);
 }
-
-void E3DEngine::Terrain::SetMaterial(Material * material)
-{
-	m_pRenderer = GetRenderSystem()->GetRenderManager()->GetRenderer(material->ID, VertexManager::GetVertex(VertexBufferName).size());
-	m_pRenderer->SetRenderIndex(eRI_Normal);
-	//SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-	m_pRenderer->SetTransform(Transform);
-	GameObject::TransferRender();
-	m_pRenderer->IsStaticDraw = false;
-	fillRender(true);
-}
-
-
-void E3DEngine::Terrain::PrepareUpdate(float deltaTime)
-{
-	GameObject::PrepareUpdate(deltaTime);
-}
-
 
 void E3DEngine::Terrain::SetIsEditorGrid(bool isEditor)
 {

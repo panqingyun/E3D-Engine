@@ -239,6 +239,8 @@ namespace E3DEngine
 		glDisable(GL_STENCIL_TEST);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 		glDepthMask(GL_TRUE);
 		glDisable(GL_BLEND);
 	}

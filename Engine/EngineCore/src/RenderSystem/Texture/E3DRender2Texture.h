@@ -24,7 +24,6 @@ namespace E3DEngine
 
 	protected:
 		Camera				*   m_pCamera; 
-		unsigned int			m_nTextureBuffer;
 		float					m_nWidth;
 		float					m_nHeight;
 	};

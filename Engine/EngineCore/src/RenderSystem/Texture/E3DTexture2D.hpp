@@ -23,19 +23,9 @@ namespace E3DEngine
 		TextureFrameEffect * TextureEffect;
 		
 	public:
-		virtual void Create(std::string fileName);
-		virtual void SetTextureData(TextureData &tData);
-		virtual void Create(TextureData &tData);
-		virtual void SetTextureEnum(uint enumNumber);
-		virtual void ActiveBindTexture();
-		virtual void InvalidTexture();
-		virtual void SetClampType(int tp) { }
-		virtual void SetFilterType(int tp) { }
-		virtual uint GetTextureEnum() { return m_nTextureEnum; }
+		virtual void SetTextureData(TextureData *tData);
+		virtual void Create(TextureData *tData);
 		virtual void CreateBehaviour() override;
-
-		uint GetTextureBuffer() { return m_nTextureBuffer; }
-
 	};
 }
 

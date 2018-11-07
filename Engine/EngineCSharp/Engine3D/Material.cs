@@ -32,6 +32,18 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern Material createMaterial(string materialPath, int id);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public extern void UpdateFloatValue(string name, float value);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public extern void UpdateFloat2Value(string name, float value1, float value2);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public extern void UpdateFloat3Value(string name, float value1, float value2, float value3);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public extern void UpdateFloat4Value(string name, float value1, float value2, float value3, float value4);
+
         private Material()
         {
 
@@ -41,9 +53,5 @@ namespace E3DEngine
             return createMaterial(materialPath, id);
         }
 
-        public void UpdateFloatValue(string name, float value)
-        {
-
-        }
     }
 }

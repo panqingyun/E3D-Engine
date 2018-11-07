@@ -11,28 +11,25 @@ namespace E3DEngine
 
 	GL_Texture2D::~GL_Texture2D()
 	{
-		if (m_nTextureBuffer != 0)
-		{
-			glDeleteTextures(1, &m_nTextureBuffer);
-		}
+		glDeleteTextures(1, &m_nTextureBuffer);
 	}
 
-	void GL_Texture2D::Create(std::string fileName, TextureData &tData)
+	void GL_Texture2D::Create(TextureData *tData)
 	{
 		DWORD  rgbModule = 0;
-		if (tData.rgbModule == PixelFormat::R8G8B8)
+		if (tData->rgbModule == PixelFormat::R8G8B8)
 		{
 			rgbModule = GL_RGB;
 		}
-		else if (tData.rgbModule == PixelFormat::R8G8B8A8)
+		else if (tData->rgbModule == PixelFormat::R8G8B8A8)
 		{
 			rgbModule = GL_RGBA;
 		}
-		else if (tData.rgbModule == PixelFormat::L8A8)
+		else if (tData->rgbModule == PixelFormat::L8A8)
 		{
 			rgbModule = GL_LUMINANCE_ALPHA;
 		}
-		else if (tData.rgbModule == PixelFormat::L8)
+		else if (tData->rgbModule == PixelFormat::L8)
 		{
 			rgbModule = GL_LUMINANCE;
 		}
@@ -41,23 +38,22 @@ namespace E3DEngine
 			assert(false);
 		}
 
-		m_nTextureBuffer = GL_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
-		glActiveTexture(GL_TEXTURE_2D);
+		glGenTextures(1, &m_nTextureBuffer);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		setTextureParam(tData);
-		glTexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData.width, tData.height, 0, rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		if (tData.useMipMap)
+		glTexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData->width, tData->height, 0, rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
+		if (tData->useMipMap)
 		{
 			glGenerateMipmap(GL_TEXTURE_2D);
 		}
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GL_Texture2D::setTextureParam(TextureData &tData)
+	void GL_Texture2D::setTextureParam(TextureData *tData)
 	{
 		unsigned int clampType = 0;
 		unsigned int filterType = 0;
-		switch (tData.clampType)
+		switch (tData->clampType)
 		{
 		case CLAMP_TYPE::CLAMP_TO_EDGE:
 			clampType = GL_CLAMP_TO_EDGE;
@@ -72,7 +68,7 @@ namespace E3DEngine
 			assert(false);
 		}
 
-		switch (tData.filterType)
+		switch (tData->filterType)
 		{
 		case FILTER_TYPE::LINEAR:
 			filterType = GL_LINEAR;
@@ -82,19 +78,19 @@ namespace E3DEngine
 			break;
 		case FILTER_TYPE::LINEAR_MIPMAP_LINEAR:
 			filterType = GL_LINEAR_MIPMAP_LINEAR;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::LINEAR_MIPMAP_NEAREST:
 			filterType = GL_LINEAR_MIPMAP_NEAREST;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_LINEAR:
 			filterType = GL_NEAREST_MIPMAP_LINEAR;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_NEAREST:
 			filterType = GL_NEAREST_MIPMAP_NEAREST;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		default:
 			assert(false);
@@ -106,44 +102,10 @@ namespace E3DEngine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
-	void GL_Texture2D::SetTextureData(TextureData &tData)
+	void GL_Texture2D::SetTextureData(TextureData *tData)
 	{
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
-
-	void GL_Texture2D::Create(TextureData &tData)
-	{
-		glGenTextures(1, &m_nTextureBuffer);
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		
-		/*glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
-		unsigned int eFormat = GL_RGBA;
-		
-		glTexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
-
-	void GL_Texture2D::SetTextureUniformIndex(int i, GLuint ProgramHandle)
-	{
-		m_nTextureUniform = glGetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
-		glUniform1i(m_nTextureUniform, i);
-		m_nTextureIndex = i;
-	}
-		
-	void GL_Texture2D::ActiveBindTexture()
-	{
-		glActiveTexture(m_nTextureEnum);
-		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glUniform1i(m_nTextureUniform, m_nTextureIndex);
-	}
-
-	void GL_Texture2D::InvalidTexture()
-	{
+		glTexImage2D(GL_TEXTURE_2D, 0, tData->rgbModule, tData->width, tData->height, 0, tData->rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 

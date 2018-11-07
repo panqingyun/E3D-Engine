@@ -534,7 +534,6 @@ namespace E3DEngine
 		m_pRenderer = renderer;
 		m_pRenderer->SetLayerMask(m_layerMask);
 		m_pRenderer->mName = mName;
-		TransferRender();
 		fillRender(true);
 	}
 

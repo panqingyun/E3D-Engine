@@ -10,7 +10,8 @@ namespace E3DEditor
     {
         public static string GamePath = "";
         public static int RenderSystemType = 0;
-        
+        public static int MutiThreadRender = 0;
+
         static XmlDocument xDoc = new XmlDocument();
 
         public static void Init()
@@ -25,6 +26,7 @@ namespace E3DEditor
             try
             {
                 RenderSystemType = Convert.ToInt32(getAppConfig(CONST_STRING.Config_renderSystemType));
+                MutiThreadRender = Convert.ToInt32(getAppConfig(CONST_STRING.Config_mutiThreadRender));
             }
             catch
             {

@@ -11,9 +11,16 @@
 
 namespace E3DEngine
 {
+	const std::string stringType	= "string";
+	const std::string intType		= "int";
+	const std::string floatType		= "float";
+	const std::string doubleType	= "double";
+	const std::string boolType		= "bool";
+	const std::string sampler2DType	  = "sampler2D";
+	const std::string samplerCubeType = "samplerCube";
+
 	Material::Material()
 	{
-		Textures.clear();
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Material);
 		Object::setBehaviourDefaultValue();
@@ -24,7 +31,6 @@ namespace E3DEngine
 	void Material::Destory()
 	{
 		SAFE_DELETE(mMaterialTableManager);
-		Textures.clear();
 		SAFE_DELETE(mShader);
 	}
 
@@ -58,39 +64,10 @@ namespace E3DEngine
 		
 	}
 
-	void Material::createCubeTexture(std::string filePath, int selectID, std::string uniformName)
-	{
-
-	}
-
-	void Material::createTexture(Texture *texture, std::string textureUniform)
-	{
-		
-	}
-
-	void Material::BindTexture()
-	{
-		for (auto & it : Textures)
-		{
-			if (it.second == nullptr)
-			{
-				continue;
-			}
-			it.second->ActiveBindTexture();
-		}
-	}
-
-
 	void Material::SetEnableDepthWrite(bool bEnable)
 	{
 		enablewriteDepth = bEnable;
 	}
-
-	void Material::CreateCubeTexture(std::string dirPath, std::string xPName, std::string xNName, std::string yPName, std::string yNName, std::string zPName, std::string ZNName)
-	{
-
-	}
-
 
 	MonoBehaviour * Material::GetBehaviour()
 	{
@@ -153,6 +130,11 @@ namespace E3DEngine
 	}
 
 
+	E3DEngine::Shader * Material::GetShader()
+	{
+		return mShader;
+	}
+
 	void Material::CreateShader(ShaderConfig *cfg)
 	{
 		
@@ -171,21 +153,13 @@ namespace E3DEngine
 				continue;
 			}
 			std::string uniformType = mShader->GetUniformType(varValues[0]);
-			if (uniformType == "sampler2D") // create texture
+			if (uniformType == sampler2DType) // create texture
 			{
 				createSampler2D(varValues, config);
 			}
-			else if (uniformType == "samplerCube")
-			{
-				std::vector<std::string> vec = StringBuilder::Split(varValues[1], ":");
-				if (vec.empty())
-				{
-					return;
-				}
-				std::string fName = vec[0];
-				std::string _path = Application::AppDataPath + fName;
-				int selectID = Convert::ToInt(vec[1]);
-				createCubeTexture(_path, selectID, varValues[0]);
+			else if (uniformType == samplerCubeType)
+			{				
+				createCubeTexture(varValues);
 			}
 			else if (uniformType == intType)
 			{
@@ -196,6 +170,21 @@ namespace E3DEngine
 				mShader->UpdateFloatValue(varValues[0], Convert::ToFloat(varValues[1]));
 			}
 		}
+	}
+
+	void Material::createCubeTexture(std::vector<std::string> &varValues)
+	{
+		std::vector<std::string> vec = StringBuilder::Split(varValues[1], ":");
+		if (vec.empty())
+		{
+			return;
+		}
+		TextureData data;
+		data.configID = Convert::ToInt(vec[1]);
+		data.fileName = Application::AppDataPath + vec[0];
+		CubeMapTexture * texture = (CubeMapTexture *)GetRenderSystem()->GetTextureDataManager()->GetTexture(TextureType::eCUBMAP_TEXTURE, &data);
+		mShader->UpdateSamplerCube(varValues[0], texture, textureCount);
+		textureCount++;
 	}
 
 	Render2Texture *Material::GetRenderTexture()
@@ -224,18 +213,23 @@ namespace E3DEngine
 		RenderTextureConfig* rttCfg = rttTabMgr->Select<RenderTextureConfig>(Id);
 		if (rttCfg != nullptr)
 		{
+			TextureData tData;
+			tData.width = rttCfg->Width;
+			tData.height = rttCfg->Height;
+			tData.fileName = fName;
+			tData.configID = Id;
 			std::string v1 = varValues[0];
 			Render2Texture *rtt = nullptr;
 			if (GetRenderSystem()->getIsMutilThreadRender())
 			{
-				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(rttCfg->Width, rttCfg->Height);
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
 			}
 			else
 			{
-				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(rttCfg->Width, rttCfg->Height);
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
 			}
-			rtt->SetTextureUniformName(v1);
-			SetTexture(rtt);
+			mShader->UpdateSampler2D(v1, rtt, textureCount);
+			textureCount++;
 			Rtt = rtt;
 		}
 	}
@@ -252,13 +246,14 @@ namespace E3DEngine
 		}
 		else
 		{
-			TextureData* tData = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + name);
-			tData->clampType = (CLAMP_TYPE)config->TextureClampType;
-			tData->filterType = (FILTER_TYPE)config->TextureFilterType;
-			tData->fileName = name;
-			tData->uniformName = uniName;
-			createTexture2D(*tData);
-			delete tData;
+			TextureData tData;
+			tData.clampType = (CLAMP_TYPE)config->TextureClampType;
+			tData.filterType = (FILTER_TYPE)config->TextureFilterType;
+			tData.fileName = Application::AppDataPath + name;
+			tData.uniformName = uniName;
+			Texture * texture = GetRenderSystem()->GetTextureDataManager()->GetTexture(TextureType::eTEXTURE_2D, &tData);
+			mShader->UpdateSampler2D(uniName, texture, textureCount);
+			textureCount++;
 		}
 	}
 

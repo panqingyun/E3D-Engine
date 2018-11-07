@@ -21,23 +21,14 @@ namespace E3DEngine
 		GLES_Material();
 		virtual void UseMaterial();
 		virtual void Destory();
-		virtual void SetTexture(Texture * texture, int index = 0);
-		virtual void BindTexture();
 		virtual void UseProgram();		
 		virtual void UseNullProgram();
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
-	public:
 
-		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
-									   std::string xNName,
-									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
 	protected:
 		void enableStencil()override;
 		virtual void openState();
-		virtual void createTexture2D(TextureData& data) override;
-		virtual void createTexture(Texture *texture, std::string textureUniform) override;
-		virtual void createCubeTexture(std::string filePath, int selectID, std::string uniformName) override;
 		
 	};
 }

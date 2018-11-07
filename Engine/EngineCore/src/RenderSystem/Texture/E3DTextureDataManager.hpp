@@ -18,6 +18,13 @@ namespace E3DEngine
 		MIRRORED_REPEAT = 2,
 	};
 
+	enum TextureType
+	{
+		eTEXTURE_2D,
+		eRENDER_TEXTURE,
+		eCUBMAP_TEXTURE,
+	};
+
 	enum FILTER_TYPE
 	{
 		LINEAR = 0,
@@ -49,6 +56,7 @@ namespace E3DEngine
 		int		width;
 		int		height;
 		bool	useMipMap;
+		int		configID;
 
 		TextureData()
 		{
@@ -59,11 +67,15 @@ namespace E3DEngine
 			height = 0;
 			rgbModule = 0;
 			useMipMap = false;
+			configID = 0;
 		}
 
 		~TextureData()
 		{
-			free(imgData);
+			if (imgData != nullptr)
+			{
+				free(imgData);
+			}
 		}
 	};
 	class Render2Texture;
@@ -81,16 +93,18 @@ namespace E3DEngine
 		// -----------------------------------------------
 		// 创建RTT
 		//-----------------------------------------------
-		Render2Texture* CreateRender2Texture(float width, float height);
+		Render2Texture* CreateRender2Texture(TextureData *data);
 
-		Render2Texture* CreateRender2TextureSingleThread(float width, float height);
+		Render2Texture* CreateRender2TextureSingleThread(TextureData *data);
 
 		// -----------------------------------------------
 		// 创建图像数据
 		// @return 图像内部数据RGB
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual TextureData * GetTextureDataFromFile(std::string imageName);
+		virtual TextureData * GetTextureDataFromFile(std::string imageName, TextureData * InData = nullptr);
+
+		Texture *GetTexture(TextureType type, TextureData* tData);
 
 		// -----------------------------------------------
 		// 清理
@@ -99,10 +113,10 @@ namespace E3DEngine
 
 	protected:
 		virtual Render2Texture* createRender2Texture() { return nullptr; }
-
+		virtual Texture *createTexture2D(TextureData *data) { return nullptr; }
+		virtual Texture *createCubeTexture(std::string filePath, int selectID);
 	protected:
-		std::map<std::string, unsigned int> m_mapTextureBuffer;
-		std::map<std::string, Texture*> m_mapRender2Texture;
+		std::map<std::string, Texture*> m_mapTextures;
 	};
 }
 

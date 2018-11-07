@@ -10,6 +10,9 @@
 #include <src/Source/Helpers.h>
 #include <src/Scene/E3DSceneManager.hpp>
 #include "../E3DGL_RenderSystem.h"
+#include <src/RenderSystem/Texture/E3DCubeMapTexture.hpp>
+#include <src/RenderSystem/Texture/E3DRender2Texture.h>
+#include <src/RenderSystem/Texture/E3DTexture2D.hpp>
 
 namespace E3DEngine
 {
@@ -29,8 +32,8 @@ namespace E3DEngine
 		uniformSetFunc["mat3"] = &Shader::createMatrix3Uniform;
 		uniformSetFunc["mat4"] = &Shader::createMatrix4Uniform;
 		uniformSetFunc["int"] = &Shader::createInt1Uniform;
-		uniformSetFunc["sampler2D"] = &Shader::createSamplerUniform;
-		uniformSetFunc["samplerCube"] = &Shader::createSamplerUniform;
+		uniformSetFunc["sampler2D"] = &Shader::createSampler2DUniform;
+		uniformSetFunc["samplerCube"] = &Shader::createSamplerCubeUniform;
 	}
 
 	void GL_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
@@ -185,7 +188,7 @@ namespace E3DEngine
 		{
 			if (uniformKeyValue.second.Data == nullptr)
 			{
-				break;
+				continue;
 			}
 			glUniformMatrix4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
@@ -194,7 +197,7 @@ namespace E3DEngine
 		{
 			if (uniformKeyValue.second.Data == nullptr)
 			{
-				break;
+				continue;
 			}
 			glUniformMatrix3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
@@ -203,9 +206,31 @@ namespace E3DEngine
 		{
 			if (uniformKeyValue.second.Data == nullptr)
 			{
-				break;
+				continue;
 			}
 			glUniformMatrix2fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+		}
+
+		for (auto & uniformKeyValue : sampler2DUniformList)
+		{
+			if (uniformKeyValue.second.texture == nullptr)
+			{
+				continue;
+			}
+			glActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
+			glBindTexture(GL_TEXTURE_2D, uniformKeyValue.second.texture->GetTextureBuffer());
+			glUniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
+		}
+
+		for (auto & uniformKeyValue : samplerCubeUniformList)
+		{
+			if (uniformKeyValue.second.texture == nullptr)
+			{
+				continue;
+			}
+			glActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, uniformKeyValue.second.texture->GetTextureBuffer());
+			glUniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
 		}
 	}
 
@@ -369,6 +394,16 @@ namespace E3DEngine
 		{
 			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
 		}
+
+		for (auto & uniformKeyValue : sampler2DUniformList)
+		{
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
+		}
+
+		for (auto & uniformKeyValue : samplerCubeUniformList)
+		{
+			uniformKeyValue.second.UniformLocation = LoadSelfDefUniform(uniformKeyValue.first);
+		}
 	}
 
 
@@ -388,7 +423,9 @@ namespace E3DEngine
 
 	GLint GL_Shader::LoadSelfDefUniform(std::string name)
 	{
-		return glGetUniformLocation(ShaderProgram, name.c_str());
+		GLint location = glGetUniformLocation(ShaderProgram, name.c_str());
+		uniformLocationMap[name] = location;
+		return location;
 	}
 
 	GLuint GL_Shader::LoadSelfDefAttribuate(std::string name)

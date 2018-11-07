@@ -69,6 +69,9 @@ void RegisterMonoFunction();
 #define _5_PARAM_FUNCTION(className, funcName, param1Type, param1Name, param2Type, param2Name, param3Type, param3Name, param4Type, param4Name, param5Type, param5Name)\
 	className##_##funcName(param1Type param1Name,param2Type param2Name, param3Type param3Name, param4Type param4Name, param5Type param5Name)
 
+#define _6_PARAM_FUNCTION(className, funcName, param1Type, param1Name, param2Type, param2Name, param3Type, param3Name, param4Type, param4Name, param5Type, param5Name, param6Type, param6Name)\
+	className##_##funcName(param1Type param1Name,param2Type param2Name, param3Type param3Name, param4Type param4Name, param5Type param5Name, param6Type param6Name)
+
 
 #define IMPL_GET_FUNCTION(className,funcName)\
 	__internal_call_function static CS_OBJECT className##_funcName(CS_OBJECT cs_obj)\
@@ -164,3 +167,8 @@ VOID _2_PARAM_FUNCTION(CapsuleCollider		, set_Radius		, CS_OBJECT		, capsuleColl
 float _1_PARAM_FUNCTION(CapsuleCollider		, get_Radius		, CS_OBJECT		, capsuleCollider);
 VOID _2_PARAM_FUNCTION(CapsuleCollider		, set_Height		, CS_OBJECT		, capsuleCollider, float, height);
 float _1_PARAM_FUNCTION(CapsuleCollider		, get_Height		, CS_OBJECT		, capsuleCollider);
+CS_OBJECT _1_PARAM_FUNCTION(GameObject		, get_Renderer		, CS_OBJECT		, gameObject);
+VOID _3_PARAM_FUNCTION(Material, UpdateFloatValue, CS_OBJECT, material, CS_STRING, name, float, value);
+VOID _4_PARAM_FUNCTION(Material, UpdateFloat2Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2);
+VOID _5_PARAM_FUNCTION(Material, UpdateFloat3Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2, float, value3);
+VOID _6_PARAM_FUNCTION(Material, UpdateFloat4Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2, float, value3, float ,value4);

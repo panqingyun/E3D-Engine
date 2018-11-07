@@ -268,7 +268,7 @@ namespace E3DEditor.ViewModel
             physicsThread.Start();
 
             threadMap[E3DEngine.ThreadInfoDefine.LOGIC_THREAD_ID] = Thread.CurrentThread;
-            if (Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGL)
+            if (Config.MutiThreadRender == 1)
             {
                 renderThread = new System.Threading.Thread(renderUpdate);
                 threadMap[E3DEngine.ThreadInfoDefine.RENDER_THREAD_ID] = renderThread;

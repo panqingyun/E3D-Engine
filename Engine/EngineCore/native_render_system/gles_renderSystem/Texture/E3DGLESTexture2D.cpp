@@ -17,22 +17,22 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Texture2D::Create(std::string fileName, TextureData &tData)
+	void GLES_Texture2D::Create(TextureData *tData)
 	{
 		DWORD  rgbModule = 0;
-		if (tData.rgbModule == PixelFormat::R8G8B8)
+		if (tData->rgbModule == PixelFormat::R8G8B8)
 		{
 			rgbModule = GL_RGB;
 		}
-		else if (tData.rgbModule == PixelFormat::R8G8B8A8)
+		else if (tData->rgbModule == PixelFormat::R8G8B8A8)
 		{
 			rgbModule = GL_RGBA;
 		}
-		else if (tData.rgbModule == PixelFormat::L8A8)
+		else if (tData->rgbModule == PixelFormat::L8A8)
 		{
 			rgbModule = GL_LUMINANCE_ALPHA;
 		}
-		else if (tData.rgbModule == PixelFormat::L8)
+		else if (tData->rgbModule == PixelFormat::L8)
 		{
 			rgbModule = GL_LUMINANCE;
 		}
@@ -40,23 +40,22 @@ namespace E3DEngine
 		{
 			assert(false);
 		}
-		m_nTextureBuffer = GLES_RenderSystem::GetRenderSystem()->GetTextureDataManager()->GetTextureBuffer(fileName);
-		ES2::ActiveTexture(GL_TEXTURE_2D);
+		ES2::GenTextures(1, &m_nTextureBuffer);
 		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		setTextureParam(tData);
-		ES2::TexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData.width, tData.height, 0, rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		if (tData.useMipMap)
+		ES2::TexImage2D(GL_TEXTURE_2D, 0, rgbModule, tData->width, tData->height, 0, rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
+		if (tData->useMipMap)
 		{
 			ES2::GenerateMipmap(GL_TEXTURE_2D);
 		}
 		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture2D::setTextureParam(TextureData &tData)
+	void GLES_Texture2D::setTextureParam(TextureData *tData)
 	{
 		unsigned int clampType = 0;
 		unsigned int filterType = 0;
-		switch (tData.clampType)
+		switch (tData->clampType)
 		{
 		case CLAMP_TYPE::CLAMP_TO_EDGE:
 			clampType = GL_CLAMP_TO_EDGE;
@@ -71,7 +70,7 @@ namespace E3DEngine
 			assert(false);
 		}
 
-		switch (tData.filterType)
+		switch (tData->filterType)
 		{
 		case FILTER_TYPE::LINEAR:
 			filterType = GL_LINEAR;
@@ -81,19 +80,19 @@ namespace E3DEngine
 			break;
 		case FILTER_TYPE::LINEAR_MIPMAP_LINEAR:
 			filterType = GL_LINEAR_MIPMAP_LINEAR;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::LINEAR_MIPMAP_NEAREST:
 			filterType = GL_LINEAR_MIPMAP_NEAREST;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_LINEAR:
 			filterType = GL_NEAREST_MIPMAP_LINEAR;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_NEAREST:
 			filterType = GL_NEAREST_MIPMAP_NEAREST;
-			tData.useMipMap = true;
+			tData->useMipMap = true;
 			break;
 		default:
 			assert(false);
@@ -105,44 +104,10 @@ namespace E3DEngine
 		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
-	void GLES_Texture2D::SetTextureData(TextureData &tData)
+	void GLES_Texture2D::SetTextureData(TextureData *tData)
 	{
 		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		ES2::BindTexture(GL_TEXTURE_2D, 0);
-	}
-
-	void GLES_Texture2D::Create(TextureData &tData)
-	{
-		ES2::GenTextures(1, &m_nTextureBuffer);
-		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		
-		/*ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		ES2::TexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);*/
-		unsigned int eFormat = GL_RGBA;
-		
-		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData.rgbModule, tData.width, tData.height, 0, tData.rgbModule, GL_UNSIGNED_BYTE, tData.imgData);
-		ES2::BindTexture(GL_TEXTURE_2D, 0);
-	}
-
-	void GLES_Texture2D::SetTextureUniformIndex(int i, GLuint ProgramHandle)
-	{
-		m_nTextureUniform = ES2::GetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
-		ES2::Uniform1i(m_nTextureUniform, i);
-		m_nTextureIndex = i;
-	}
-		
-	void GLES_Texture2D::ActiveBindTexture()
-	{
-		ES2::ActiveTexture(m_nTextureEnum);
-		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		ES2::Uniform1i(m_nTextureUniform, m_nTextureIndex);
-	}
-
-	void GLES_Texture2D::InvalidTexture()
-	{
+		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData->rgbModule, tData->width, tData->height, 0, tData->rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
 		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 

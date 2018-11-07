@@ -10,6 +10,7 @@
 
 #include "Standard.shader"
 
+uniform float time;
 varying vec3 ReflectDir;
 varying vec4 vertColor;
 
@@ -17,19 +18,46 @@ varying vec4 vPos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 
+const int n = 3;
+const int m = 2;
+vec2 thetas = vec2(0.38,1.42);
+mat3 amplitudes = mat3(
+	vec3(0.2, 0.2,0),
+	vec3(0.3, 0.50,0),
+	vec3(0.2, 0.6,0)
+);
+ const vec3 omegas = vec3(3.27,3.31,3.42);
+ const vec3 waveNums = vec3(1.091,1.118,1.1935);
+
+vec3 gerstner(float x, float y, float z)
+{
+	for (int i = 0; i < n; i++)
+	{
+		vec3 _amplitudes = amplitudes[i];
+		for (int j = 0; j < m; j++)
+		{
+			x = x - cos(thetas[j]) * _amplitudes[j] * sin(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
+            y = y + _amplitudes[j] * cos(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
+            z = z - sin(thetas[j]) * _amplitudes[j] * sin(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
+		}
+	}
+	return vec3(x, y, z);
+}
+
+
 void main(void)
 {
 	mat4 rotateMatrix = getRotateMatrix();
-	vec4 _pos = _e3d_matModel * vec4(position, 1.0);
-	vec3 eyeDir = normalize(_pos.xyz - _e3d_CameraPos.xyz);
-	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
-	vertColor = color;
-	
-	initFogNeedVar(position);
+	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);	
 	eyePosition = _e3d_CameraPos.xyz;
-	vPos = _pos; // 顶点位置
+	vPos =  _e3d_matModel * vec4(position, 1.0);; // 顶点位置
 	vNrm = normalize(_normal.xyz); // 顶点法线
-    gl_Position = _e3d_getMVPMatrix() * vec4(position, 1.0);
+	vec3 posi = gerstner(position.x, position.y ,position.z);
+	
+	vec4 _pos = _e3d_matModel * vec4(posi, 1.0);
+	
+	vertColor =  getLightColor(_pos.xyz, _normal.xyz) * color;
+    gl_Position = _e3d_getMVPMatrix() * vec4(position.x, posi.y*0.1, position.z, 1.0);
 }
 
 #Vertex_End
@@ -85,7 +113,8 @@ vec4 FresnelShading(void)
 
 void main(void) 
 { 
-	gl_FragColor = FresnelShading() * vertColor;
+	gl_FragColor = vec4((FresnelShading() * vertColor).xyz, 0.8);
 }
 
 #Framgent_End
+

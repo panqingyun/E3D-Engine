@@ -204,12 +204,6 @@ inline const ValueType * unsafe_object_cast(const object * operand)
     return unsafe_object_cast<ValueType>(const_cast<object *>(operand));
 }
 
-const static std::string stringType  = "string";
-const static std::string intType     = "int";
-const static std::string floatType   = "float";
-const static std::string doubleType  = "double";
-const static std::string boolType	 = "bool";
-
 struct E3D_EXPORT_DLL Convert
 {
     static int ToInt(std::string source);

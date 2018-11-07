@@ -12,14 +12,13 @@ namespace E3DEngine
 	public:
 		Terrain();
 		void Create(const char * heightMapFileName);
-		void Create(int size);
-		virtual void SetMaterial(Material * material);
-		virtual void PrepareUpdate(float deltaTime);
+		void Create(int size, int perGridSize = 1);
 		void SetIsEditorGrid(bool isEditor);
+		int GetSize() { return mSize; }
 
 	private:
 		bool m_bIsEditorGrid;
-		int lastSize;
+		int  mSize;
 	};
 }
 

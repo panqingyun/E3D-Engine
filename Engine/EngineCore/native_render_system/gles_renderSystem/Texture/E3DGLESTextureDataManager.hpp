@@ -14,11 +14,10 @@ namespace E3DEngine
 {
 	class GLES_TextureDataManager : public TextureDataManager
 	{
-	public:
-		virtual unsigned int GetTextureBuffer(std::string imageName) override;
-		virtual void Cleanup() override;
 	protected:
 		virtual Render2Texture* createRender2Texture() override;
+		virtual Texture *createTexture2D(TextureData *data) override;
+		virtual Texture *createCubeTexture(std::string filePath, int selectID) override;
 	};
 }
 

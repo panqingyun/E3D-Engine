@@ -11,6 +11,8 @@
 #include "../../Source/E3DVertex.h"
 #include "../../Config/Table.h"
 #include "../E3DRenderSystem.hpp"
+#include "../Texture/E3DTexture2D.hpp"
+#include "../Texture/E3DTexture.hpp"
 
 namespace E3DEngine
 {
@@ -174,6 +176,36 @@ namespace E3DEngine
 		uniformTypeMap[uniformName] = uniformType;
 	}
 
+	void Shader::UpdateSampler2D(std::string name, Texture *texture, int index)
+	{
+		if (sampler2DUniformList.find(name) == sampler2DUniformList.end())
+		{
+			return;
+		}
+		sampler2DUniformList[name].texture = texture;
+		sampler2DUniformList[name].TextureIndex = index;
+	}
+
+
+	void Shader::UpdateSamplerCube(std::string name, CubeMapTexture *texture, int index)
+	{
+		if (samplerCubeUniformList.find(name) == samplerCubeUniformList.end())
+		{
+			return;
+		}
+		samplerCubeUniformList[name].texture = texture;
+		samplerCubeUniformList[name].TextureIndex = index;
+	}
+
+	unsigned int Shader::GetUniformLocation(std::string uniformName)
+	{
+		if (uniformLocationMap.find(uniformName) == uniformLocationMap.end())
+		{
+			return 0;
+		}
+		return uniformLocationMap[uniformName];
+	}
+
 	void Shader::createInt1Uniform(std::string varName, std::string defValueFormat, int count)
 	{
 		int1Uniform uni;
@@ -233,11 +265,20 @@ namespace E3DEngine
 		matrix4UniformList[varName] = matrix;
 	}
 
-	void Shader::createSamplerUniform(std::string varName, std::string defValue, int count)
+	void Shader::createSampler2DUniform(std::string varName, std::string defValue, int count)
 	{
-		samplerNameValue[varName] = defValue;
+		sampler2DUniform uni;
+		uni.VarName = varName;
+		sampler2DUniformList[varName] = uni;
 	}
 
+
+	void Shader::createSamplerCubeUniform(std::string varName, std::string defValue, int count)
+	{
+		samplerCubeUniform uni;
+		uni.VarName = varName;
+		samplerCubeUniformList[varName] = uni;
+	}
 
 	void Shader::createFloat1ArrayUniform(std::string varName, std::string defValueFormat, int count)
 	{
@@ -276,11 +317,6 @@ namespace E3DEngine
 
 	}
 
-	std::map<std::string, std::string> & Shader::GetSamplerNameValue()
-	{
-		return samplerNameValue;
-	}
-
 	std::string Shader::GetUniformType(std::string uniformName)
 	{
 		if (uniformTypeMap.find(uniformName) == uniformTypeMap.end())
@@ -289,5 +325,4 @@ namespace E3DEngine
 		}
 		return uniformTypeMap[uniformName];
 	}
-
 }

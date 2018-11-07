@@ -48,11 +48,6 @@ namespace E3DEngine
 		virtual void SetTexture(Texture * texture, int index = 0);
 
 		// -----------------------------------------------
-		// 绑定纹理
-		//-----------------------------------------------
-		virtual void BindTexture();
-
-		// -----------------------------------------------
 		// 启用Shader
 		//-----------------------------------------------
 		virtual void UseProgram() { }
@@ -62,34 +57,23 @@ namespace E3DEngine
 		//-----------------------------------------------
 		virtual void UseNullProgram() { }
 		virtual void UpdateShader(unsigned int vertexType) { }
-
 		virtual void SetEnableDepthWrite(bool bEnable);
 		virtual void SetBlendType(DWORD src, DWORD dst);
 		virtual void SetEnableDepthTest(bool enable);
 		virtual void SetEnableCullFace(bool enable);
 
 	public:
-
+		Shader *GetShader();
 		// -----------------------------------------------
 		// 创建Shader 
 		// @param shader配置
 		//-----------------------------------------------
 		void CreateShader(ShaderConfig *cfg);
-
-		// -----------------------------------------------
-		// 创建环境贴图
-		// @param 上下左右前后的贴图文件名
-		//-----------------------------------------------
-		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
-									   std::string xNName,
-									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
-
 		Render2Texture *GetRenderTexture();
 		// -----------------------------------------------
 		// 创建Mono对象
 		//-----------------------------------------------
 		MonoBehaviour * GetBehaviour();
-
 		void SetColor(Color4 color);
 
 	protected:
@@ -99,8 +83,7 @@ namespace E3DEngine
 		virtual void beforeUpdate();
 		virtual void afterUpdate();
 		virtual void createTexture2D(TextureData& data);
-		virtual void createCubeTexture(std::string filePath, int selectID, std::string uniformName);
-		virtual void createTexture(Texture *texture, std::string textureUniform);
+		virtual void createCubeTexture(std::vector<std::string> &varValues);
 		void initUniformValue(ShaderConfig * sCfg, MaterialConfig * config);
 		void createSampler2D(std::vector<std::string> &varValues, MaterialConfig * config);
 
@@ -115,7 +98,8 @@ namespace E3DEngine
 		DWORD		srcBlendFactor;
 		DWORD		dstBlendFactor;
 		Render2Texture *Rtt;
-		std::map<UINT, Texture*>	Textures; // 纹理
+		int			textureCount;
+
 	public:
 		Shader			* mShader;		// shader
 		TableManager	* mMaterialTableManager;

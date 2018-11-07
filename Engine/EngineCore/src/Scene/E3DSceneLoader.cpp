@@ -28,6 +28,7 @@ namespace E3DEngine
 	const std::string _Range = "Range";
 	const std::string _InnerID = "ID";
 	const std::string _Static = "IsStatic";
+	const std::string _Size = "Size";
 
 	const std::string _Layer_AllLayer = "AllLayer";
 	const std::string _Component_ClassName = "ClassName";
@@ -234,6 +235,14 @@ namespace E3DEngine
 		Sphere * sphere = new Sphere();
 		sphere->Create(1);
 		return sphere;
+	}
+
+	GameObject *createTerrain(TiXmlElement *objectElement)
+	{
+		Terrain * terrain = new Terrain;
+		int size = Convert::ToInt(*objectElement->Attribute(_Size));
+		terrain->Create(size);
+		return terrain;
 	}
 
 	GameObject *createPointLight(TiXmlElement *objectElement)
@@ -517,6 +526,11 @@ namespace E3DEngine
 			Camera *pCamera = (Camera*)gameObject;
 			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
 		}
+		else if (gameObject->mSceneObjectType == TP_Terrain)
+		{
+			Terrain *terrain = (Terrain*)gameObject;
+			objectElement->SetAttribute(_Size, terrain->GetSize());
+		}
 		objectElement->SetAttribute(_Color, Convert::ToString(gameObject->Color));
 		saveTransformElement(objectElement, gameObject->Transform);
 		saveComponentElement(objectElement, gameObject);
@@ -600,6 +614,7 @@ namespace E3DEngine
 		createObjectFun[TP_Sphere] = createSphere;
 		createObjectFun[TP_PLight] = createPointLight;
 		createObjectFun[TP_Prefab] = createPrefab;
+		createObjectFun[TP_Terrain] = createTerrain;
 	}
 
 }

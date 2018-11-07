@@ -49,6 +49,7 @@
     <Compile Include="Asset\Script\AppDemo.cs" />
     <Compile Include="Asset\Script\AppMain.cs" />
     <Compile Include="Asset\Script\SelfRotateSphere.cs" />
+    <Compile Include="Asset\Script\WaterWave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -142,16 +142,16 @@ namespace E3DEngine
 
 	void TableBase::convertTypeSetValue(setValue & set, string value, string type)
     {
-        if(type == stringType){
+        if(type == "string"){
             set(this,value);
         }
-        else if(type == intType){
+        else if(type == "int"){
             set(this, Convert::ToInt(value));
         }
-        else if(type == floatType){
+        else if(type == "float"){
             set(this, Convert::ToFloat(value));
         }
-        else if(type == doubleType){
+        else if(type == "double"){
             set(this, Convert::ToDouble(value));
 		}
         else{

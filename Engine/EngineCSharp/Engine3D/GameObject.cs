@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 
 namespace E3DEngine
 {
-
     public class GameObject : Object
     {
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -34,13 +33,12 @@ namespace E3DEngine
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern GameObject findChildWithID(uint id);
 
-
-        private Renderer m_pRenderer;
-
-        public Renderer GetRenderer()
+        public Renderer Renderer
         {
-            return m_pRenderer;
+            [MethodImpl(MethodImplOptions.InternalCall)]
+            get;
         }
+
         public bool Active
         {
             [MethodImpl(MethodImplOptions.InternalCall)]

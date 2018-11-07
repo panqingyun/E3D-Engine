@@ -23,15 +23,11 @@ namespace E3DEngine
 		virtual GLuint &GetTextureBuffer();
 
 	public:
-		virtual void Create(std::string fileName, TextureData &tData);
-		virtual void SetTextureUniformIndex(int i, GLuint ProgramHandle);
-		virtual void SetTextureData(TextureData &tData)override;
-		virtual void Create(TextureData &tData)override;
-		virtual void ActiveBindTexture()override;
-		virtual void InvalidTexture()override;
+		virtual void SetTextureData(TextureData *tData)override;
+		virtual void Create(TextureData *tData)override;
 
 	private:
-		void setTextureParam(TextureData &tData);
+		void setTextureParam(TextureData *tData);
 
 	protected:
 		GLuint			m_nTextureUniform;

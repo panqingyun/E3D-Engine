@@ -13,30 +13,6 @@ namespace E3DEngine
 		
 	}
 
-	void Texture::Create(string fileName)
-	{
-	}
-	
-	void Texture::SetTextureEnum(uint enumNumber)
-	{
-		m_nTextureEnum = enumNumber;
-	}
-	
-	std::string Texture::GetUniformName()
-	{
-		return m_strTextureUniformName;
-	}
-
-	void Texture::ActiveBindTexture()
-	{
-		
-	}
-
-	void Texture::InvalidTexture()
-	{
-		
-	}
-
 	Texture::Texture()
 	{
 		CreateBehaviour();
@@ -47,11 +23,6 @@ namespace E3DEngine
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Texture);
 		setBehaviourDefaultValue();
-	}
-
-	void Texture::SetTextureUniformName(std::string name)
-	{
-		m_strTextureUniformName = name;
 	}
 
 }

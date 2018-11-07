@@ -26,6 +26,7 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Renderer,	get_Material);
 	REGISTER_INTERNAL_CALL(GameObject,	set_Active);
 	REGISTER_INTERNAL_CALL(GameObject,	get_Active);
+	REGISTER_INTERNAL_CALL(GameObject,	get_Renderer);
 	REGISTER_INTERNAL_CALL(GameObject,	addComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	getComponent);
 	REGISTER_INTERNAL_CALL(GameObject,	removeComponent);
@@ -76,6 +77,10 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(CapsuleCollider, get_Radius);
 	REGISTER_INTERNAL_CALL(CapsuleCollider, set_Height);
 	REGISTER_INTERNAL_CALL(CapsuleCollider, get_Height);
+	REGISTER_INTERNAL_CALL(Material,		UpdateFloatValue);
+	REGISTER_INTERNAL_CALL(Material,		UpdateFloat2Value);
+	REGISTER_INTERNAL_CALL(Material,		UpdateFloat3Value);
+	REGISTER_INTERNAL_CALL(Material,		UpdateFloat4Value);
 
 }
 
@@ -865,4 +870,65 @@ float _1_PARAM_FUNCTION(CapsuleCollider, get_Height, CS_OBJECT, capsuleCollider)
 	}
 
 	return collider->GetHeight();
+}
+
+CS_OBJECT _1_PARAM_FUNCTION(GameObject, get_Renderer, CS_OBJECT, gameObject)
+{
+	GameObject *gameObj = getCppObject<GameObject>(gameObject);
+
+	if (gameObj == nullptr)
+	{
+		return nullptr;
+	}
+
+	if (gameObj->GetRenderer() == nullptr)
+	{
+		return nullptr;
+	}
+
+	return gameObj->GetRenderer()->GetMonoBehaviour()->GetMonoObject();
+}
+
+VOID _3_PARAM_FUNCTION(Material, UpdateFloatValue, CS_OBJECT, material, CS_STRING, name, float, value)
+{
+	Material *m = getCppObject<Material>(material);
+	if (m == nullptr)
+	{
+		return;
+	}
+	std::string uniformName = Convert::ToStdString(name);
+	m->GetShader()->UpdateFloatValue(uniformName, value);
+}
+
+VOID _4_PARAM_FUNCTION(Material, UpdateFloat2Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2)
+{
+	Material *m = getCppObject<Material>(material);
+	if (m == nullptr)
+	{
+		return;
+	}
+	std::string uniformName = Convert::ToStdString(name);
+	m->GetShader()->UpdateFloatValue(uniformName, value1, value2);
+}
+
+VOID _5_PARAM_FUNCTION(Material, UpdateFloat3Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2, float, value3)
+{
+	Material *m = getCppObject<Material>(material);
+	if (m == nullptr)
+	{
+		return;
+	}
+	std::string uniformName = Convert::ToStdString(name);
+	m->GetShader()->UpdateFloatValue(uniformName, value1, value2, value3);
+}
+
+VOID _6_PARAM_FUNCTION(Material, UpdateFloat4Value, CS_OBJECT, material, CS_STRING, name, float, value1, float, value2, float, value3, float, value4)
+{
+	Material *m = getCppObject<Material>(material);
+	if (m == nullptr)
+	{
+		return;
+	}
+	std::string uniformName = Convert::ToStdString(name);
+	m->GetShader()->UpdateFloatValue(uniformName, value1, value2, value3, value4);
 }

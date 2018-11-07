@@ -237,9 +237,12 @@ namespace E3DEngine
 		terrain->Create(512);
 		terrain->SetIsEditorGrid(true);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
-		terrain->SetMaterial(m);
+		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(terrain->VertexBufferName).size());
+		terrain->SetRenderer(rd);
+		terrain->SetActive(true);
 		terrain->SetLayerMask(1);
 		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
+		terrain->Transform->SetScale(20, 1, 20);
 		terrain->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(terrain);
 		createCoord();

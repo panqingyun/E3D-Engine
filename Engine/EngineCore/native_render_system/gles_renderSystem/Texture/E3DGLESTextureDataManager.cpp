@@ -8,21 +8,8 @@
 #include <src/Source/E3DDebug.h>
 
 #include "E3DGLESRender2Texture.h"
-
-
-E3DEngine::GLuint E3DEngine::GLES_TextureDataManager::GetTextureBuffer(std::string imageName)
-{
-	if (m_mapTextureBuffer.find(imageName) != m_mapTextureBuffer.end())
-	{
-		return m_mapTextureBuffer[imageName];
-	}
-	
-	GLuint TextureBuffer = 0;
-	ES2::GenTextures(1, &TextureBuffer);
-	m_mapTextureBuffer[imageName] = TextureBuffer;
-	return TextureBuffer;
-}
-
+#include "E3DGLESTexture2D.hpp"
+#include "E3DGLESCubeMapTexture.hpp"
 
 E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::createRender2Texture()
 {
@@ -30,12 +17,18 @@ E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::createRender2Text
 	return rtt;
 }
 
-void E3DEngine::GLES_TextureDataManager::Cleanup()
+
+E3DEngine::Texture * E3DEngine::GLES_TextureDataManager::createTexture2D(TextureData *data)
 {
-	for (std::map<std::string, GLuint>::iterator it = m_mapTextureBuffer.begin();
-		it != m_mapTextureBuffer.end(); ++it)
-	{
-		ES2::DeleteTextures(1, &it->second);
-	}
-	m_mapTextureBuffer.clear();
+	GLES_Texture2D * texture = new GLES_Texture2D();
+	texture->Create(data);
+	return texture;
+}
+
+
+E3DEngine::Texture * E3DEngine::GLES_TextureDataManager::createCubeTexture(std::string filePath, int selectID)
+{
+	GLES_CubeMapTexture * texture = new GLES_CubeMapTexture;
+	texture->Create(filePath, selectID);
+	return texture;
 }

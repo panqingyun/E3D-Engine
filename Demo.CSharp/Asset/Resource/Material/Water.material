@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MaterialConfig>
+		<Item ID="1" ShaderID = "1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5"  EnableDepthTest="1" CullFace ="0"/>
+	</MaterialConfig>
+	<ShaderConfig>
+		<Item ID="1" ShaderPath="shader/Water.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=0.8;etaRatio=0.8"/>
+	</ShaderConfig>
+</ConfigSystem>

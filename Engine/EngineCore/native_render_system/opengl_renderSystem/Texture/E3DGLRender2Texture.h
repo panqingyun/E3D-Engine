@@ -19,21 +19,10 @@ namespace E3DEngine
 		virtual void CreateRenderTarget(float width, float height) override;
 	public:
 		~GL_Render2Texture();
-		virtual void  Bind();
-
-		virtual void SetTextureUniformIndex(int index, UINT program) override;
-		virtual void ActiveBindTexture()override;
-		virtual void InvalidTexture()override;
-		virtual void SetClampType(int tp) override;
-		virtual void SetFilterType(int tp) override;
-
-	public:
-		virtual void Update(float deltaTime) override;
+		void Bind();
 
 	protected:
 		FrameBufferObject   *	m_fbo;
-		GLuint			m_nTextureUniform;
-		GLuint			m_nTextureIndex;
 	};
 
 }

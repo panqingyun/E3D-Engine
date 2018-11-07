@@ -4,6 +4,6 @@
       	<Item ID=1 ShaderID ="1" Color="ffffffff" CullFace = "0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/SkyCubeMap.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;bSkyBox=0;"/>
+		<Item ID="1" ShaderPath="shader/SkyCubeMap.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=0.2;etaRatio=0.8"/>
 	</ShaderConfig>
 </ConfigSystem>

@@ -15,9 +15,6 @@ namespace E3DEngine
 	{
 	public:
 		void Create(std::string fileName, int selectID);
-	
-		virtual void ActiveBindTexture() override;
-
 	protected:
 		void createTexture(CubeMapTextureConfig *cubeMap);
 		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back);

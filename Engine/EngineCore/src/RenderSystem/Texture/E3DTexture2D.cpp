@@ -13,31 +13,12 @@ namespace E3DEngine
 		
 	}
 
-	void Texture2D::Create(string fileName)
-	{
-	}
-	
-	void Texture2D::SetTextureData(TextureData &tData)
+	void Texture2D::SetTextureData(TextureData *tData)
 	{
 		
 	}
 
-	void Texture2D::Create(TextureData &tData)
-	{
-		
-	}
-
-	void Texture2D::SetTextureEnum(uint enumNumber)
-	{
-		m_nTextureEnum = enumNumber;
-	}
-	
-	void Texture2D::ActiveBindTexture()
-	{
-		
-	}
-
-	void Texture2D::InvalidTexture()
+	void Texture2D::Create(TextureData *tData)
 	{
 		
 	}

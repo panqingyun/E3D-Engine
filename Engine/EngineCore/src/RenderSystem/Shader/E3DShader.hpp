@@ -24,6 +24,9 @@ namespace E3DEngine
 #define	 POINT_LIGHT_COLOR "_e3d_PointLightColor"
 #define	 POINT_LIGHT_RANGE "_e3d_PointLightRange"
 
+	class Texture;
+	class CubeMapTexture;
+
 	struct Uniform
 	{
 		std::string  VarName;
@@ -78,6 +81,18 @@ namespace E3DEngine
 		}
 	};
 
+	struct sampler2DUniform : Uniform 
+	{
+		int TextureIndex;
+		Texture * texture;
+	};
+
+	struct samplerCubeUniform : Uniform
+	{
+		int TextureIndex;
+		CubeMapTexture * texture;
+	};
+
 	struct VertexData
 	{
 		float * Data;
@@ -108,7 +123,10 @@ namespace E3DEngine
 		void UpdataFloat3ArrayUniform(std::string name, std::vector<float> value);
 		void UpdataFloat4ArrayUniform(std::string name, std::vector<float> value);
 		void RunUniformFunc(std::string uniformType, std::string uniformName, std::string defaultVale, int size);
+		void UpdateSampler2D(std::string name, Texture *texture, int index);
+		void UpdateSamplerCube(std::string name, CubeMapTexture *texture, int index);
 
+		virtual unsigned int GetUniformLocation(std::string uniformName);
 	public:
 		virtual void	DeleteShader() { }
 		std::map<std::string, std::string> &GetSamplerNameValue();
@@ -123,7 +141,8 @@ namespace E3DEngine
 		void createMatrix2Uniform(std::string varName, std::string defValueFormat, int count);
 		void createMatrix3Uniform(std::string varName, std::string defValueFormat, int count);
 		void createMatrix4Uniform(std::string varName, std::string defValueFormat, int count);
-		void createSamplerUniform(std::string varName, std::string defValueFormat, int count);
+		void createSampler2DUniform(std::string varName, std::string defValueFormat, int count);
+		void createSamplerCubeUniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat1ArrayUniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat2ArrayUniform(std::string varName, std::string defValueFormat, int count);
 		void createFloat3ArrayUniform(std::string varName, std::string defValueFormat, int count);
@@ -134,7 +153,6 @@ namespace E3DEngine
 
 	protected:
 		std::map<std::string, setShaderValueFunc> uniformSetFunc;
-		std::map<std::string, std::string> samplerNameValue;
 		std::map<std::string, float1Uniform> float1UniformList;
 		std::map<std::string, float2Uniform> float2UniformList;
 		std::map<std::string, float3Uniform> float3UniformList;
@@ -142,6 +160,8 @@ namespace E3DEngine
 		std::map<std::string, matrixUniform> matrix4UniformList;
 		std::map<std::string, matrixUniform> matrix3UniformList;
 		std::map<std::string, matrixUniform> matrix2UniformList;
+		std::map<std::string, sampler2DUniform> sampler2DUniformList;
+		std::map<std::string, samplerCubeUniform> samplerCubeUniformList;
 		std::map<std::string, int1Uniform> int1UniformList;
 		std::map<std::string, floatUniformArray> float1UniformArrayList;
 		std::map<std::string, floatUniformArray> float2UniformArrayList;
@@ -149,6 +169,7 @@ namespace E3DEngine
 		std::map<std::string, floatUniformArray> float4UniformArrayList;
 
 		std::map<std::string, std::string> uniformTypeMap;
+		std::map<std::string, unsigned int> uniformLocationMap;
 	};
 }
 

@@ -20,14 +20,8 @@ namespace E3DEngine
 		~GLES_Render2Texture();
 		virtual void  Bind();
 
-		virtual void SetTextureUniformIndex(int index, UINT program) override;
-		virtual void ActiveBindTexture()override;
-		virtual void InvalidTexture()override;
 		virtual void SetClampType(int tp) override;
 		virtual void SetFilterType(int tp) override;
-
-	public:
-		virtual void Update(float deltaTime) override;
 
 	protected:
 		GLESRenderSystem::FrameBufferObject   *	m_fbo;

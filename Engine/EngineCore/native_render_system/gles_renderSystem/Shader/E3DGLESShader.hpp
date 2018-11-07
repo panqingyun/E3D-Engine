@@ -78,7 +78,6 @@ namespace E3DEngine
 		virtual void	InitShaderVar();
 
 		void AddAttriList(Attribute attri, bool isStatic);
-		
 	private:
 		int location;
 	protected:

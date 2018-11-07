@@ -118,13 +118,19 @@ namespace E3DEngine
 
 	void GL_RenderSystem::UseShareContext()
 	{
-		m_pGL_Context->UseShareContext();
+		if (m_bIsMutilThreadRender)
+		{
+			m_pGL_Context->UseShareContext();
+		}
 	}
 
 
 	void GL_RenderSystem::UseRenderContext()
 	{
-		m_pGL_Context->UseContext();
+		if (m_bIsMutilThreadRender)
+		{
+			m_pGL_Context->UseContext();
+		}
 	}
 
 }

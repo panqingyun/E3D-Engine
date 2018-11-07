@@ -8,26 +8,7 @@
 #include <src/Source/E3DDebug.h>
 
 namespace E3DEngine
-{		
-	void GLES_CubeMapTexture::ActiveBindTexture()
-	{
-		ES2::BindTexture(GL_TEXTURE_CUBE_MAP, m_nTextureBuffer);
-		ES2::ActiveTexture(m_nTextureIndex);
-		ES2::Uniform1i(m_nTextureUniform, m_nTextureIndex);
-	}
-
-	void GLES_CubeMapTexture::SetTextureUniformIndex(int i, GLuint ProgramHandle)
-	{
-		m_nTextureUniform = ES2::GetUniformLocation(ProgramHandle, m_strTextureUniformName.c_str());
-		ES2::Uniform1i(m_nTextureUniform, i);
-		m_nTextureIndex = i;
-	}
-
-	void GLES_CubeMapTexture::InvalidTexture()
-	{
-		ES2::BindTexture(GL_TEXTURE_CUBE_MAP, 0);
-	}
-
+{	
 	void GLES_CubeMapTexture::createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back)
 	{
 		ES2::GenTextures(1, &m_nTextureBuffer);

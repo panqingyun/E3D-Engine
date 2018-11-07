@@ -10,74 +10,7 @@ namespace E3DEngine
 
 	void GL_Material::Destory()
 	{
-		for (std::map<UINT, Texture*>::iterator it = Textures.begin(); it != Textures.end(); ++it)
-		{
-			SAFE_DELETE(it->second);
-		}
 		SAFE_DELETE(mShader);
-		Textures.clear();
-	}
-
-	void GL_Material::SetTexture(Texture * texture, int index)
-	{
-		if (Textures.find(index) != Textures.end() && texture != Textures[index])
-		{
-			SAFE_DELETE(Textures[index]);
-		}
-		else
-		{
-			index = Textures.size();
-		}
-		Textures[index] = texture;
-		texture->SetTextureEnum(index + GL_TEXTURE0);
-		texture->SetTextureUniformIndex(index, static_cast<GL_Shader*>(mShader)->ShaderProgram);
-		
-	}
-
-	void GL_Material::createTexture2D(TextureData& data)
-	{
-		GL_Texture2D * texture = new GL_Texture2D();
-		std::string path = mFilePath;
-		path = path + data.fileName;
-		int textureSum = Textures.size();
-		texture->Create(path, data);
-		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
-		texture->SetTextureUniformName(data.uniformName);
-		texture->SetTextureUniformIndex(textureSum, static_cast<GL_Shader*>(mShader)->ShaderProgram);
-		Textures[textureSum] = ((E3DEngine::Texture*)texture);
-	}
-
-	void GL_Material::createTexture(Texture *texture, std::string textureUniform)
-	{
-		int textureSum = Textures.size();
-		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
-		texture->SetTextureUniformName(textureUniform);
-		texture->SetTextureUniformIndex(textureSum, static_cast<GL_Shader*>(mShader)->ShaderProgram);
-		Textures[textureSum] = ((E3DEngine::Texture*)texture);
-	}
-
-
-	void GL_Material::createCubeTexture(std::string filePath,int selectID, std::string uniformName)
-	{
-		GL_CubeMapTexture * texture = new GL_CubeMapTexture;
-		texture->Create(filePath, selectID);
-		int textureSum = Textures.size();
-		texture->SetTextureEnum(GL_TEXTURE0 + textureSum);
-		texture->SetTextureUniformName(uniformName);
-		texture->SetTextureUniformIndex(textureSum, static_cast<GL_Shader*>(mShader)->ShaderProgram);
-		Textures[textureSum] = ((E3DEngine::Texture*)texture);
-	}
-
-	void GL_Material::BindTexture()
-	{
-		for (auto & it : Textures)
-		{
-			if (it.second == nullptr)
-			{
-				continue;
-			}
-			it.second->ActiveBindTexture();
-		}
 	}
 
 	void GL_Material::UseProgram()
@@ -103,14 +36,6 @@ namespace E3DEngine
 	{
 		UseProgram();
 		openState();
-		for(auto & it : Textures)
-		{
-			if (it.second == nullptr)
-			{
-				continue;
-			}
-			it.second->ActiveBindTexture();
-		}
 		if (mShader != nullptr)
 		{
 			static_cast<GL_Shader*>(mShader)->UpdateProgramUniformValue();
@@ -178,14 +103,6 @@ namespace E3DEngine
 
 	void GL_Material::InvalidMaterial()
 	{
-		for (auto & it : Textures)
-		{
-			if (it.second == nullptr)
-			{
-				continue;
-			}
-			it.second->InvalidTexture();
-		}
 		UseNullProgram();
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}

@@ -14,6 +14,7 @@ namespace E3DEngine
 		{
 			RENDER_BUFFER,
 			RENDER_TO_TEXTURE,
+			RENDER_DEPTH,
 		} RenderTargeType;
 
 		class RenderTarget

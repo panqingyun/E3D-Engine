@@ -39,7 +39,10 @@ namespace E3DEngine
 		if (!mBatchVertex.empty())
 		{
 			glBindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+			BatchVertex * vert = (BatchVertex *)glMapBuffer(GL_ARRAY_BUFFER, GL_READ_WRITE);
+			memcpy(vert, mBatchVertex.data(), sizeof(BatchVertex)* mBatchVertex.size());
+			glUnmapBuffer(GL_ARRAY_BUFFER);
+			//glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 		}
 	}
 

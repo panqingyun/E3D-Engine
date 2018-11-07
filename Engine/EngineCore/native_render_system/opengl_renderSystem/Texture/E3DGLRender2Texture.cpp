@@ -9,6 +9,16 @@ void E3DEngine::GL_Render2Texture::CreateRenderTarget(float width, float height)
 	m_nTextureBuffer = m_fbo->GetTextureBufferID();
 }
 
+
+void E3DEngine::GL_Render2Texture::CreateDepthTarget(float width, float height)
+{
+	m_fbo = new FrameBufferObject();
+	m_fbo->Create(width, height, RENDER_DEPTH);
+	m_nWidth = width;
+	m_nHeight = height;
+	m_nTextureBuffer = m_fbo->GetTextureBufferID();
+}
+
 E3DEngine::GL_Render2Texture::~GL_Render2Texture()
 {
 	SAFE_DELETE(m_fbo);

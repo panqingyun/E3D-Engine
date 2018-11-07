@@ -15,6 +15,12 @@ void E3DEngine::Render2Texture::CreateRenderTarget(float width, float height)
 
 }
 
+
+void E3DEngine::Render2Texture::CreateDepthTarget(float width, float height)
+{
+
+}
+
 E3DEngine::Render2Texture::~Render2Texture()
 {
 	

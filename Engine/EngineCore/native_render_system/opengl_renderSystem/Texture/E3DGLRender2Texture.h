@@ -17,6 +17,7 @@ namespace E3DEngine
 		}
 	public:
 		virtual void CreateRenderTarget(float width, float height) override;
+		virtual void CreateDepthTarget(float width, float height) override;
 	public:
 		~GL_Render2Texture();
 		void Bind();

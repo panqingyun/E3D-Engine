@@ -62,7 +62,7 @@ namespace E3DEditor.ViewModel
             }
             private set
             {
-                if(engineLoaded == true)
+                if (engineLoaded == true)
                 {
                     return;
                 }
@@ -370,7 +370,7 @@ namespace E3DEditor.ViewModel
             if (curScenePath != "")
             {
                 WindowTitle = curScenePath;
-                if(Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGL)
+                if (Config.RenderSystemType == E3DEngine.RenderSystemType.OPENGL)
                 {
                     WindowTitle += "<OpenGL>";
                 }
@@ -408,7 +408,7 @@ namespace E3DEditor.ViewModel
             }
         }
 
-        public static readonly DependencyProperty gameObjectListProperty = DependencyProperty.Register("gameObjectList", 
+        public static readonly DependencyProperty gameObjectListProperty = DependencyProperty.Register("gameObjectList",
             typeof(ObservableCollection<GameObjectNode>), typeof(VM_MainWindow));
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -447,7 +447,7 @@ namespace E3DEditor.ViewModel
 
             SendMsg2WindowsPlayer(stru);
         }
-          
+
         public void RunCurrentScene(bool isRun)
         {
             if (isRun)
@@ -512,7 +512,7 @@ namespace E3DEditor.ViewModel
             wndStyle &= ~Win32.WS_BORDER;
             wndStyle &= ~Win32.WS_THICKFRAME;
             Win32.SetWindowLong(windowsPlayerHandle, Win32.GWL_STYLE, wndStyle);
-            Win32.SetWindowPos(windowsPlayerHandle, IntPtr.Zero, 0, 0, 0, 0,  Win32.SWP_NOMOVE | Win32.SWP_NOSIZE | Win32.SWP_NOZORDER | Win32.SWP_FRAMECHANGED);
+            Win32.SetWindowPos(windowsPlayerHandle, IntPtr.Zero, 0, 0, 0, 0, Win32.SWP_NOMOVE | Win32.SWP_NOSIZE | Win32.SWP_NOZORDER | Win32.SWP_FRAMECHANGED);
 
         }
 
@@ -539,7 +539,7 @@ namespace E3DEditor.ViewModel
                 windowsPlayer.Kill();
                 windowsPlayer = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Common.Debug.Error(ex.ToString());
             }
@@ -552,7 +552,7 @@ namespace E3DEditor.ViewModel
 
         public void RevWindowsPlayerData(COPYDATASTRUCT data)
         {
-            switch(data.dwData.ToInt32())
+            switch (data.dwData.ToInt32())
             {
                 case (int)DataType.eLog:
                     {
@@ -570,7 +570,7 @@ namespace E3DEditor.ViewModel
 
         public void ShowLog(string log)
         {
-            Dispatcher.Invoke(() => 
+            Dispatcher.Invoke(() =>
             {
                 if (log == null)
                     return;
@@ -625,7 +625,7 @@ namespace E3DEditor.ViewModel
             mainWnd.renderPanel.Items.Add(renderItem);
             mainWnd.renderPanel.SelectedItem = renderItem;
         }
-        
+
         #endregion
 
         #region Menu Command
@@ -636,16 +636,16 @@ namespace E3DEditor.ViewModel
                 string filePath = IOFile.OpenSlnFile();
                 openSln(filePath);
             }
-            else if(menuName == "newSln")
+            else if (menuName == "newSln")
             {
                 createProject();
             }
-            else if(menuName == "GL4RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGL)
+            else if (menuName == "GL4RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGL)
             {
                 Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGL.ToString());
                 restartApp();
             }
-            else if(menuName == "ES2RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGLES)
+            else if (menuName == "ES2RS" && Config.RenderSystemType != E3DEngine.RenderSystemType.OPENGLES)
             {
                 Config.WriteConfig(CONST_STRING.Config_renderSystemType, E3DEngine.RenderSystemType.OPENGLES.ToString());
                 restartApp();
@@ -672,7 +672,7 @@ namespace E3DEditor.ViewModel
             }
             Type[] types = externAsm.GetTypes();
             object[] menuItems = externAsm.GetCustomAttributes(typeof(MenuItemAttribute), false);
-            for(int i = 0; i < menuItems.Length; i++)
+            for (int i = 0; i < menuItems.Length; i++)
             {
 
             }
@@ -697,11 +697,11 @@ namespace E3DEditor.ViewModel
                         RenderDelegate.SetMonoPath("../Data/E3DAssembly", Config.GamePath + "../Library/AssemblyCSharp.dll", Config.GamePath + "../Library/E3DEngine.dll");
                         createRenderPanel();
                         mainWnd.fileView.viewModel.LoadDirectory();
-                       // loadEditorMenuItem();
+                        // loadEditorMenuItem();
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -711,10 +711,13 @@ namespace E3DEditor.ViewModel
         {
             Setting set = new Setting();
             set.ShowDialog();
-
             string project_path = set.ProjectPath;
             string project_name = set.ProjectName;
 
+            if (project_path == "" || project_name == "")
+            {
+                return;
+            }
             bool ret = ZipHelper.UnZip("../Data/project_template", project_path + "/" + project_name);
             if (ret)
             {

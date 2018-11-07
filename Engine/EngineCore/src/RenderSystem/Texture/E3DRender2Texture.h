@@ -12,6 +12,7 @@ namespace E3DEngine
 		Render2Texture();
 	public:
 		virtual void CreateRenderTarget(float width, float height);
+		virtual void CreateDepthTarget(float width, float height);
 	public:
 		virtual ~Render2Texture();
 

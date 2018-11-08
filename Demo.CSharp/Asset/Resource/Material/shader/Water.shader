@@ -8,7 +8,6 @@
 	NORMAL:attr_normal;
 }
 
-uniform float time;
 varying vec3 ReflectDir;
 varying vec4 vertColor;
 
@@ -20,6 +19,8 @@ varying vec2 v_Coord;
 varying vec3 lightDir;
 varying vec4 lightColor;
 
+const float _WaveScale = 0.1;
+vec4 _2StreamVelo = vec4(-12.5, 42.7,-15.8,-0.34);
 const int n = 3;
 const int m = 2;
 vec2 thetas = vec2(0.38,1.42);
@@ -30,21 +31,6 @@ mat3 amplitudes = mat3(
 );
  const vec3 omegas = vec3(3.27,3.31,3.42);
  const vec3 waveNums = vec3(1.091,1.118,1.1935);
-
-vec3 gerstner(float x, float y, float z)
-{
-	for (int i = 0; i < n; i++)
-	{
-		vec3 _amplitudes = amplitudes[i];
-		for (int j = 0; j < m; j++)
-		{
-			x = x - cos(thetas[j]) * _amplitudes[j] * sin(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
-            y = y + _amplitudes[j] * cos(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
-            z = z - sin(thetas[j]) * _amplitudes[j] * sin(waveNums[i] * (x * cos(thetas[j]) + z * sin(thetas[j])) - omegas[i] * time);
-		}
-	}
-	return vec3(x, y, z);
-}
 
 mat4 getRotateMatrix()
 {
@@ -63,7 +49,7 @@ void main(void)
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos =  _e3d_matModel * vec4(position, 1.0);; // 顶点位置
 	vNrm = normalize(_normal.xyz); // 顶点法线
-	vec3 posi = gerstner(position.x, position.y ,position.z);
+	//vec3 posi = gerstner(position.x, position.y ,position.z);
 	
 #ifdef USING_DIRECTIONAL_LIGHT
 	lightDir = _e3d_WorldSpaceLightDirection;
@@ -72,10 +58,11 @@ void main(void)
 	lightDir = vec3(0.0,0.0,0.0);
 #endif
 
-	vec4 _pos = _e3d_matModel * vec4(posi, 1.0);
-	v_Coord = inputTextureCoordinate;
+	vec4 _pos = _e3d_matModel * vec4(position, 1.0);
+	
+	v_Coord = inputTextureCoordinate;// * _WaveScale + (_2StreamVelo * time).xy ;//vPos.xzxz * _WaveScale + (_2StreamVelo * time) * 0.1;
 	vertColor = color;
-    gl_Position = _e3d_getMVPMatrix() * vec4(position.x, posi.y*0.1, position.z, 1.0);
+    gl_Position = _e3d_getMVPMatrix() * vec4(position, 1.0);
 }
 
 #Vertex_End
@@ -98,6 +85,7 @@ varying vec4 vPos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
+uniform float time;
 
 uniform float fresnelBias;
 uniform float etaRatio;
@@ -106,6 +94,8 @@ const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
 const float Ns = 1.0;			//高光系数
 const float attenuation = 1.0;	//光线的衰减系数
 
+const float _BumpDepth = 1.0;
+const float _ReflScale = 3.598;
 const float fresnelScale = 0.1;
 const float fresnelPower = 5.0;
 
@@ -130,10 +120,10 @@ vec4 getLightColor(vec3 position, vec3 normal)
 }
 
 
-vec4 FresnelShading(void)
+vec4 FresnelShading(vec3 normal)
 {
 	// 计算入射，反射，折射
-	vec3 N = normalize(vNrm); // 法线
+	vec3 N = normalize(normal); // 法线
 	vec3 I = normalize(vPos.xyz-eyePosition); // 入射
 	//vec3 R = reflect(I, N); // 反射
 	vec3 R = reflect(I, N); // 反射
@@ -156,11 +146,15 @@ vec4 FresnelShading(void)
 
 void main(void) 
 { 
-	vec4 normalColor = texture2D(waterNormal, v_Coord);
-	vec4 normalVec = normalize(normalColor * 2.0 - 1.0);
-	normalVec = vec4(normalVec.x, normalVec.z, -normalVec.y, normalVec.w);
+	float yV = mod(v_Coord.y * 10.0 + time * 0.01, 10.0);
+	vec2 coord = vec2(v_Coord.x * 10.0, yV);
+	vec3 bump1 = texture2D( waterNormal, coord).rbg * 2.0 - 1.0;
+	
+	vec3 normal =  normalize(vec3(bump1.x, _BumpDepth, bump1.z)); // 扰动法线
+	
+	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	gl_FragColor = vec4((FresnelShading() * _lightColor * vertColor).xyz, 0.8) * texture2D(waterTex, v_Coord);
+	gl_FragColor = vec4((FresnelShading(vNrm) * _lightColor * vertColor).rgb, 0.8);
 }
 
 #Framgent_End

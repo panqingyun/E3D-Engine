@@ -40,6 +40,7 @@
 ![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/engine.png)
 ![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/engine1.png)
 ![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/tree.png)
+![](https://github.com/panqingyun/E3D/blob/master/ScreenShot/tree1.jpg)
 ## IOS 和 Android尚未完成
 
 ## Mono C#代码调试方法

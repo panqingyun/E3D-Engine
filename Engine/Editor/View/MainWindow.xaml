@@ -205,7 +205,7 @@
 								</DataTemplate>
 							</ListBox.ItemTemplate>
 						</ListBox>
-						<GridSplitter Grid.Row="0" Margin="-5,0" Background="#FF009FFF" Height="1" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+						<GridSplitter Grid.Row="0" Margin="-5,0" Background="#FF009FFF" Height="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
 						<TextBox Grid.Row="1" Background="Transparent" TextWrapping="Wrap" IsReadOnly="True" Foreground="White" HorizontalScrollBarVisibility="Hidden" 
 								 BorderThickness="0" BorderBrush="Black" Text="{Binding Path=SelectedValue.LogStr,ElementName=logList}" FontFamily="Consolas" FontSize="13"/>
 					</Grid>

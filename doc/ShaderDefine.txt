@@ -20,3 +20,25 @@ mat4 _e3d_getMVPMatrix(); // 获取mvp矩阵乘积
 #define __IOS__ 				// IOS平台
 #define __ANDROID__				// Android平台
 #define __WIN32__				// Windows平台
+
+// 顶点语义
+POSITION  		// 位置 vec3
+NORMAL			// 法线 vec3
+COLOR			// 颜色 vec4
+TEXTURECOORD	// 纹理坐标0 vec2
+TEXTURECOORD0 	// 纹理坐标0 vec2
+TEXTURECOORD1	// 纹理坐标1 vec2
+TEXTURECOORD2	// 纹理坐标2 vec2
+TEXTURECOORD3	// 纹理坐标3 vec2
+TEXTURECOORD4	// 纹理坐标4 vec2
+TEXTURECOORD5	// 纹理坐标5 vec2
+TEXTURECOORD6	// 纹理坐标6 vec2
+TEXTURECOORD7	// 纹理坐标7 vec2
+TANGENT			// 切线 vec3
+BONEINDEX		// 骨骼索引	vec4
+BONEWEIGHT		// 骨骼权重 vec4
+
+TRANSPOSITION	// 变换位置 	vec3
+TRANSSCALE		// 变换的缩放 	vec3
+TRANSROTATE		// 变换的旋转 	vec3
+DYNAMICCOLOR	// 变换颜色 	vec4

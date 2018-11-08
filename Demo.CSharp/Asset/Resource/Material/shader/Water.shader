@@ -147,16 +147,25 @@ vec4 FresnelShading(vec3 normal)
 void main(void) 
 { 
 	float yV = mod(v_Coord.y * 10.0 + time * 0.03, 10.0);
+	float xV = mod( 10.0 + v_Coord.x * 10.0 - time * 0.02, 10.0);
+	
 	vec2 coord = vec2(v_Coord.x * 10.0, yV);
+	vec2 coord1 = vec2(v_Coord.y * 10.0, xV);
+	
 	vec3 bump1 = texture2D( waterNormal, coord).rbg * 2.0 - 1.0;
+	vec3 bump2 = texture2D( waterNormal, coord1).rbg * 2.0 - 1.0;
 	
 	vec3 normal =  normalize(vec3(bump1.x, _BumpDepth, bump1.z)); // 扰动法线
+	vec3 normal2 =  normalize(vec3(bump2.x, _BumpDepth, bump2.z)); // 扰动法线
 	
 	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
+	
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	vec4 freColor1 = FresnelShading(normalVec) * 0.6;
-	vec4 freColor2 = FresnelShading(vNrm)  * 0.6;
-	gl_FragColor = vec4(((freColor1  + freColor2) * _lightColor * vertColor).rgb, 0.6);
+	vec4 freColor1 = FresnelShading(normalVec) * 0.5;
+	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
+	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;
+	
+	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor).rgb, 0.6);
 }
 
 #Framgent_End

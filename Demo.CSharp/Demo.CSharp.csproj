@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Asset\Script\AppDemo.cs" />
     <Compile Include="Asset\Script\AppMain.cs" />
+    <Compile Include="Asset\Script\CameraController.cs" />
     <Compile Include="Asset\Script\SelfRotateSphere.cs" />
     <Compile Include="Asset\Script\WaterWave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

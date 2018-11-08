@@ -28,13 +28,3 @@ void E3DEngine::GLES_Render2Texture::Bind()
 {
 	m_fbo->Bind();
 }
-
-void E3DEngine::GLES_Render2Texture::SetClampType(int tp)
-{
-
-}
-
-void E3DEngine::GLES_Render2Texture::SetFilterType(int tp)
-{
-
-}

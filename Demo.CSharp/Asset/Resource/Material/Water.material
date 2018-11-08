@@ -4,6 +4,6 @@
 		<Item ID="1" ShaderID = "1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" TextureClampType="1" EnableDepthTest="1" CullFace ="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/Water.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=1.0;etaRatio=0.8;waterTex=Resource/Material/texture/water_01.tga;waterNormal=Resource/Material/texture/yw_leshan_normalmap.jpg"/>
+		<Item ID="1" ShaderPath="shader/Water.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=1.0;etaRatio=0.4;waterTex=Resource/Material/texture/water_01.tga;waterNormal=Resource/Material/texture/yw_leshan_normalmap.jpg"/>
 	</ShaderConfig>
 </ConfigSystem>

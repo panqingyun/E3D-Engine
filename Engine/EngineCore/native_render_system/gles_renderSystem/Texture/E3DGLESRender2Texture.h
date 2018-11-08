@@ -20,10 +20,6 @@ namespace E3DEngine
 	public:
 		~GLES_Render2Texture();
 		virtual void  Bind();
-
-		virtual void SetClampType(int tp) override;
-		virtual void SetFilterType(int tp) override;
-
 	protected:
 		GLESRenderSystem::FrameBufferObject   *	m_fbo;
 		GLuint			m_nTextureUniform;

@@ -18,12 +18,12 @@ class SelfRotateSphere : Component
     private Vector3 rotate = new Vector3();
     void Update(float dt)
     {
-        rotate.y += RotateSpeed*dt;
-        if (rotate.y >= 360)
-        {
-            rotate.y = 0;
-        }
-        this.gameObject.Transform.Rotation = rotate;
+        //rotate.y += RotateSpeed*dt;
+        //if (rotate.y >= 360)
+        //{
+        //    rotate.y = 0;
+        //}
+        //this.gameObject.Transform.Rotation = rotate;
     }
 
     void OnCollisionEnter(E3DEngine.Object collisionObject)

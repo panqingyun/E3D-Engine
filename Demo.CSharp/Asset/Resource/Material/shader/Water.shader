@@ -146,7 +146,7 @@ vec4 FresnelShading(vec3 normal)
 
 void main(void) 
 { 
-	float yV = mod(v_Coord.y * 10.0 + time * 0.01, 10.0);
+	float yV = mod(v_Coord.y * 10.0 + time * 0.03, 10.0);
 	vec2 coord = vec2(v_Coord.x * 10.0, yV);
 	vec3 bump1 = texture2D( waterNormal, coord).rbg * 2.0 - 1.0;
 	
@@ -154,7 +154,9 @@ void main(void)
 	
 	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	gl_FragColor = vec4((FresnelShading(vNrm) * _lightColor * vertColor).rgb, 0.8);
+	vec4 freColor1 = FresnelShading(normalVec) * 0.6;
+	vec4 freColor2 = FresnelShading(vNrm)  * 0.6;
+	gl_FragColor = vec4(((freColor1  + freColor2) * _lightColor * vertColor).rgb, 0.6);
 }
 
 #Framgent_End

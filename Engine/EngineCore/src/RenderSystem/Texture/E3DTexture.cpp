@@ -15,14 +15,11 @@ namespace E3DEngine
 
 	Texture::Texture()
 	{
-		CreateBehaviour();
+		
 	}
 
-	void Texture::CreateBehaviour()
+	uint Texture::GetTextureBuffer()
 	{
-		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
-		NEW_INSTANCE(Texture);
-		setBehaviourDefaultValue();
+		return m_nTextureBuffer;
 	}
-
 }

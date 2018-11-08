@@ -12,6 +12,12 @@
 
 namespace E3DEngine
 {	
+	CubeMapTexture::CubeMapTexture()
+	{
+		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+		NEW_INSTANCE(TextureCubMap);
+		Object::setBehaviourDefaultValue();
+	}
 
 	void CubeMapTexture::Create(std::string fileName, int selectID)
 	{

@@ -7,7 +7,9 @@ void E3DEngine::Render2Texture::Update(float deltaTime)
 
 E3DEngine::Render2Texture::Render2Texture()
 {
-	
+	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
+	NEW_INSTANCE(RenderTexture);
+	Object::setBehaviourDefaultValue();
 }
 
 void E3DEngine::Render2Texture::CreateRenderTarget(float width, float height)

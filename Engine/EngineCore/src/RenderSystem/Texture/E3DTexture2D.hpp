@@ -26,6 +26,12 @@ namespace E3DEngine
 		virtual void SetTextureData(TextureData *tData);
 		virtual void Create(TextureData *tData);
 		virtual void CreateBehaviour() override;
+		TextureData *GetTextureData();
+		void SetIsReadWrite(bool bReadWrite);
+
+	protected:
+		TextureData	*	m_pTextureData;
+		bool			m_bIsReadWrite;
 	};
 }
 

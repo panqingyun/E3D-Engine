@@ -14,6 +14,7 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL CubeMapTexture : public Texture
 	{
 	public:
+		CubeMapTexture();
 		void Create(std::string fileName, int selectID);
 	protected:
 		void createTexture(CubeMapTextureConfig *cubeMap);

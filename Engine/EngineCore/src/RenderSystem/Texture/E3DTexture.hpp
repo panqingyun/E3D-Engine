@@ -21,16 +21,10 @@ namespace E3DEngine
 		virtual ~Texture();
 
 	public:
-		virtual void SetClampType(int tp) { }
-		virtual void SetFilterType(int tp) { }
-		virtual void CreateBehaviour() override;
-
-		uint GetTextureBuffer() { return m_nTextureBuffer; }
+		uint GetTextureBuffer();
 
 	protected:
 		unsigned int	m_nTextureBuffer;
-		int				m_nTextureClampType;
-		int				m_nTextureFilterType;
 	};
 }
 

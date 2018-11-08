@@ -22,7 +22,6 @@ void main(void)
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
-	initFogNeedVar(position);
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
 
@@ -48,8 +47,7 @@ void main(void)
 	}
 	else
 	{
-		vec4 fogColor = mixFogColor(color,vec4(1.0,1.0,1.0,1.0));
-		gl_FragColor = fogColor * DestinationColor;
+		gl_FragColor = DestinationColor * color;
 	}
 }
 

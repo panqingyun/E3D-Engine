@@ -97,7 +97,7 @@ namespace E3DEngine
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
 				glGetShaderInfoLog(shaderHandle, logLength, &logLength, log);
-				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s", log); 
+				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s \n ShaderContent:\n %s", log, shaderContent);
 			}
 			glDeleteShader(shaderHandle);
 		}

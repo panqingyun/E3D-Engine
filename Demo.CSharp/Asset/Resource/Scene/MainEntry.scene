@@ -11,7 +11,7 @@
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
-        <Transform Posistion="220.000000,50.000000,220.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="0.000000,100.000000,200.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
@@ -117,9 +117,9 @@
         <Material FilePath="Resource/Material/SkyCube.material" SelectID="1" />
         <Transform Posistion="-50.000000,50.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
     </GameObject>
-    <GameObject ID="19" Name="Terrain" Type="10" LayerMask="0" Active="true" RenderIndex="2" Size="256" Color="6591F989">
+    <GameObject ID="19" Name="Water" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/WaterPlane.fbx" Color="C7D8FF89">
         <Material FilePath="Resource/Material/Water.material" SelectID="1" />
-        <Transform Posistion="128.000000,28.000000,128.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="120.000000,29.500000,120.000000" Rotation="0.000000,0.000000,0.000000" Scale="200.000000,1.000000,200.000000" />
         <Component Active="true" ClassName="WaterWave" />
     </GameObject>
 </Scene>

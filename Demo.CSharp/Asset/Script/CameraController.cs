@@ -17,10 +17,10 @@ class CameraController : Component
 
     void Start()
     {
-        Game.AppDemo.KeyPressEvent += AppDemo_KeyPressEvent;
-        Game.AppDemo.MouseDownEvent += AppDemo_MouseDownEvent;
-        Game.AppDemo.MouseMoveEvent += AppDemo_MouseMoveEvent;
-        Game.AppDemo.MouseUpEvent += AppDemo_MouseUpEvent;
+        Game.App.KeyPressEvent += AppDemo_KeyPressEvent;
+        Game.App.MouseDownEvent += AppDemo_MouseDownEvent;
+        Game.App.MouseMoveEvent += AppDemo_MouseMoveEvent;
+        Game.App.MouseUpEvent += AppDemo_MouseUpEvent;
         MainCamera = (Camera)gameObject;
         cameraRotateX = -MainCamera.Transform.Rotation.x;
         cameraRotateY = -MainCamera.Transform.Rotation.y;
@@ -28,10 +28,10 @@ class CameraController : Component
 
     void Destory()
     {
-        Game.AppDemo.KeyPressEvent -= AppDemo_KeyPressEvent;
-        Game.AppDemo.MouseDownEvent -= AppDemo_MouseDownEvent;
-        Game.AppDemo.MouseMoveEvent -= AppDemo_MouseMoveEvent;
-        Game.AppDemo.MouseUpEvent -= AppDemo_MouseUpEvent;
+        Game.App.KeyPressEvent -= AppDemo_KeyPressEvent;
+        Game.App.MouseDownEvent -= AppDemo_MouseDownEvent;
+        Game.App.MouseMoveEvent -= AppDemo_MouseMoveEvent;
+        Game.App.MouseUpEvent -= AppDemo_MouseUpEvent;
     }
 
     private void AppDemo_MouseUpEvent(MouseButtonInfo mouseInfo)

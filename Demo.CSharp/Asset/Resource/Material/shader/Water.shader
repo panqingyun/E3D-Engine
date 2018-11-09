@@ -91,7 +91,7 @@ varying float time;
 uniform float fresnelBias;
 uniform float etaRatio;
 
-const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
+const vec3  ambient = vec3(0.8, 0.8, 0.8);		//环境光颜色
 const float Ns = 5.0;			//高光系数
 const float attenuation = 1.0;	//光线的衰减系数
 
@@ -108,16 +108,21 @@ vec4 lerp(vec4 a, vec4 b, float s)
 
 vec4 getLightColor(vec3 position, vec3 normal)
 {
-	//--- 光照
-	vec3 N = normalize((vec4(normal, 1.0)).xyz);
+	//--- 光照 Phong 模型
+	vec3 N = normalize(normal);
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition - position);
 	vec3 H = normalize(V + L);
 	vec3 diffuse = vec3((lightColor * max(dot(N, L), 0.0)).xyz);
+	
+	// vec3 R=reflect(L,N);
+	// R=normalize(R);
+	// float specularLight = pow(max(dot(V, R), 0), Ns);
+	// vec3 specular = (attenuation * lightColor * specularLight).xyz;
+	
 	vec3 specular = vec3((lightColor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
-	vec4 _lightColor = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 
-	return (_lightColor + ambient);
+	return vec4(diffuse + specular + ambient, 1.0);
 }
 
 
@@ -126,9 +131,7 @@ vec4 FresnelShading(vec3 normal)
 	// 计算入射，反射，折射
 	vec3 N = normalize(normal); // 法线
 	vec3 I = normalize(vPos.xyz-eyePosition); // 入射
-	//vec3 R = reflect(I, N); // 反射
 	vec3 R = reflect(I, N); // 反射
-	//vec3 T = refract(I, N, etaRatio); // 折射
 	vec3 T = refract(I, N, etaRatio); // 折射
 	// 反射因子计算
 	float fresnel = fresnelBias+fresnelScale*pow(min(0.0, 1.0-dot(I, N)), fresnelPower);

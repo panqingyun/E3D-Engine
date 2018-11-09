@@ -8,7 +8,7 @@
         <Component Active="true" ClassName="CameraController" />
     </GameObject>
     <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="50.000000,50.000000,50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="-50.000000,50.000000,50.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
@@ -118,12 +118,12 @@
         <Material FilePath="Resource/Material/SkyCube.material" SelectID="1" />
         <Transform Posistion="-50.000000,50.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
     </GameObject>
-    <GameObject ID="19" Name="Water" Type="10" LayerMask="0" Active="false" RenderIndex="2" Size="256" Color="A2BCFA89">
+    <GameObject ID="19" Name="Water" Type="10" LayerMask="0" Active="true" RenderIndex="2" Size="256" Color="A2BCFA89">
         <Material FilePath="Resource/Material/Water.material" SelectID="1" />
         <Transform Posistion="120.000000,28.000000,130.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
-	<GameObject ID="20" Name="shu4" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/gy_taoshu03.fbx" Color="FFFFFFFF">
+    <GameObject ID="20" Name="shu4" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/gy_taoshu03.fbx" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/shu.material" SelectID="6" />
-        <Transform Posistion="110.000000,30.000000,190.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.0400,0.0400,0.0400" />
+        <Transform Posistion="110.000000,30.000000,190.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
     </GameObject>
 </Scene>

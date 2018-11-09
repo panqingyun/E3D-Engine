@@ -40,7 +40,7 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
 #ifdef USING_DIRECTIONAL_LIGHT
 	//--- π‚’’
-	vec3 N = normalize((vec4(normal, 1.0)).xyz);
+	vec3 N = normalize(normal);
 	vec3 L = normalize(_e3d_WorldSpaceLightDirection);
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec3 H = normalize(V + L);

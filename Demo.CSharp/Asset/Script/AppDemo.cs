@@ -8,7 +8,7 @@ namespace Game
     public delegate void MouseButtonDelegate(MouseButtonInfo mouseInfo);
     public delegate void KeyDelegate(KeyCode keyCode);
 
-    public class AppDemo
+    public class App
     {
         string mainScenePath = "Scene/MainEntry.scene";
         

@@ -40,15 +40,7 @@ varying vec4 DestinationColor;
 void main(void) 
 { 
 	vec4 color = texture2D(myTexture0, v_coord);
-	
-	if(color.a < 0.1)
-	{
-		discard;
-	}
-	else
-	{
-		gl_FragColor = DestinationColor * color;
-	}
+	gl_FragColor = DestinationColor * color;
 }
 
 #Framgent_End

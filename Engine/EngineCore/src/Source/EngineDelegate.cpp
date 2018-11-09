@@ -82,10 +82,7 @@ namespace E3DEngine
 		}
 
 		AutoreleasePool::GetInstance().Update();
-		if (m_bRun)
-		{
-			Application::UpdateApp(deltaTime);
-		}
+		Application::UpdateApp(deltaTime);
 	}
 
 	void EngineDelegate::UpdatePhysics(float deltaTime)

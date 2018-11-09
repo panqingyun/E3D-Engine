@@ -125,7 +125,6 @@
     <Compile Include="Model\GameObject.cs" />
     <Compile Include="Model\NodeEntity.cs" />
     <Compile Include="ViewModel\BaseCommand.cs" />
-    <Compile Include="ViewModel\GameObjectProperty.cs" />
     <Compile Include="ViewModel\VM_FleView.cs" />
     <Compile Include="ViewModel\VM_MainWindow.cs" />
     <Compile Include="ViewModel\VM_PropertyView.cs" />

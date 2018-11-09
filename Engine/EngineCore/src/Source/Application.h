@@ -37,7 +37,7 @@ namespace E3DEngine
 		int mPositionY;
 	};
 
-	class Application : public IObject
+	class E3D_EXPORT_DLL Application : public IObject
 	{
 	public:
 		Application();
@@ -58,6 +58,7 @@ namespace E3DEngine
 		static void MouseMove(vec2f position);
 		static void KeyDown(char key);
 		static void KeyUp(char key);
+		static double GetTimeSinceStart();
 
 	public:
 		static std::string AppDataPath;
@@ -70,6 +71,7 @@ namespace E3DEngine
 		static MonoBehaviour *m_pEntryBehaviour;
 		static MonoBehaviour *m_pBehaviour;
 		static bool m_bIsStop;
+		static double m_nRunTimeLong;
 		static MouseButtonInfo * m_pMouseInfo;
 		static MonoString* getAppDataPath();
 		static MonoString* getResourcePath();

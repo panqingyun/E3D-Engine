@@ -86,7 +86,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	priveVs.append("#define __GLES__\n");
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
-		priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
+		priveVs.append("#define ").append(USING_DIRECTIONAL_LIGHT).append("  \n");
 		priveVs.append("uniform vec3 ").append(LIGHT_DIR).append(";\n");
 		priveVs.append("uniform vec4 ").append(LIGHT_COLOR).append(";\n");
 	}
@@ -94,8 +94,8 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	if (pointLights.size() != 0)
 	{
 		std::string lightCount = Convert::ToString((int)pointLights.size());
-		priveVs.append("#define USING_POINT_LIGHT  \n");
-		priveVs.append("const int _e3d_PointLightCount = ").append(lightCount).append(";\n");
+		priveVs.append("#define ").append(USING_POINT_LIGHT).append("  \n");
+		priveVs.append("const int ").append(_e3d_PointLightCount).append(" = ").append(lightCount).append(";\n");
 		priveVs.append("uniform vec3 ").append(POINT_LIGHT_POS).append("[").append(lightCount).append("];\n");
 		priveVs.append("uniform float ").append(POINT_LIGHT_RANGE).append("[").append(lightCount).append("];\n");
 		priveVs.append("uniform vec4 ").append(POINT_LIGHT_COLOR).append("[").append(lightCount).append("];\n");
@@ -106,6 +106,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	priveVs.append("{\n");
 	priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
 	priveVs.append("}\n");
+	priveVs.append("uniform float ").append(_Time).append(";\n");
 	
 	return priveVs;
 }
@@ -167,7 +168,8 @@ void E3DEngine::GLES_ShaderManager::processEngineDefineUniform(GLES_Shader *shad
 	shader->RunUniformFunc("mat4",VIEW_MATRIX, "", 1);
 	shader->RunUniformFunc("mat4",MODEL_MATRIX, "", 1);
 	shader->RunUniformFunc("vec3",CAMERA_POS, "", 1);
-	shader->RunUniformFunc("vec3",ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("float", _Time, "", 1);
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
 		shader->RunUniformFunc("vec4", LIGHT_COLOR, "", 1);

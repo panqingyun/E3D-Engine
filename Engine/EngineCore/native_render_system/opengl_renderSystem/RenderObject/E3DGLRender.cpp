@@ -13,6 +13,7 @@
 #include "../../../src/Source/E3DDebug.h"
 #include "../Shader/E3DGLShader.hpp"
 #include "../Material/E3DGLMaterial.hpp"
+#include "../../../src/Source/Application.h"
 
 namespace E3DEngine
 {
@@ -162,9 +163,9 @@ namespace E3DEngine
 	{
 		pMaterial->mShader->UpdateMatrix4Value(PROJ_MATRIX, pCamera->GetProjectionMatrix());
 		pMaterial->mShader->UpdateMatrix4Value(VIEW_MATRIX, pCamera->GetViewMatrix());
-		//Debug::Log(ell_None, "%f,%f,%f", GetTransform()->Position.x, GetTransform()->Position.y, GetTransform()->Position.z);
-		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, GetTransform()->WorldMatrix);
-		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, GetTransform()->RotationEuler.x  * M_PI / 180, GetTransform()->RotationEuler.y * M_PI / 180, GetTransform()->RotationEuler.z * M_PI / 180);
+		pMaterial->mShader->UpdateFloatValue(_Time, Application::GetTimeSinceStart());
+		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, transform->WorldMatrix);
+		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, transform->RotationEuler.x  * M_PI / 180, transform->RotationEuler.y * M_PI / 180, transform->RotationEuler.z * M_PI / 180);
 
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)

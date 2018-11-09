@@ -12,7 +12,7 @@
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
-        <Transform Posistion="223.086868,50.706512,166.572464" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="-21.827326,101.669365,94.563210" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="7" LayerMask="0" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/CubeMaterial.material" SelectID="1" />
@@ -101,30 +101,29 @@
     <GameObject ID="14" Name="shu1" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_01.fbx" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/shu.material" SelectID="1" />
         <Transform Posistion="142.000000,30.100000,159.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.005000,0.005000,0.005000" />
-        <Component Active="true" ClassName="WaterWave" />
     </GameObject>
     <GameObject ID="15" Name="shu2" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_03.fbx" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/shu.material" SelectID="3" />
         <Transform Posistion="125.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.005000,0.005000,0.005000" />
-        <Component Active="true" ClassName="WaterWave" />
     </GameObject>
     <GameObject ID="16" Name="shu3" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/wd_zhiwu_01.fbx" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/shu.material" SelectID="1" />
         <Transform Posistion="185.000000,30.000000,170.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
-        <Component Active="true" ClassName="WaterWave" />
     </GameObject>
     <GameObject ID="17" Name="shu4" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/Demo_zw_lvzhi001.fbx" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/shu.material" SelectID="5" />
         <Transform Posistion="110.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
-        <Component Active="true" ClassName="WaterWave" />
     </GameObject>
     <GameObject ID="18" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FEFAFAFF">
         <Material FilePath="Resource/Material/SkyCube.material" SelectID="1" />
         <Transform Posistion="-50.000000,50.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
     </GameObject>
-    <GameObject ID="19" Name="Water" Type="10" LayerMask="0" Active="true" RenderIndex="2" Size="256" Color="A2BCFA89">
+    <GameObject ID="19" Name="Water" Type="10" LayerMask="0" Active="false" RenderIndex="2" Size="256" Color="A2BCFA89">
         <Material FilePath="Resource/Material/Water.material" SelectID="1" />
-        <Transform Posistion="120.000000,29.500000,130.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
-        <Component Active="true" ClassName="WaterWave" />
+        <Transform Posistion="120.000000,28.000000,130.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+    </GameObject>
+	<GameObject ID="20" Name="shu4" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/gy_taoshu03.fbx" Color="FFFFFFFF">
+        <Material FilePath="Resource/Material/shu.material" SelectID="6" />
+        <Transform Posistion="110.000000,30.000000,190.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.0400,0.0400,0.0400" />
     </GameObject>
 </Scene>

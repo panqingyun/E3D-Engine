@@ -172,6 +172,7 @@ namespace E3DEngine
 	MonoBehaviour * Application::m_pEntryBehaviour = nullptr;
 	MonoBehaviour * Application::m_pBehaviour = nullptr;
 	MouseButtonInfo * Application::m_pMouseInfo = nullptr;
+	double Application::m_nRunTimeLong = 0;
 
 	void Application::CreatScript()
 	{
@@ -183,6 +184,7 @@ namespace E3DEngine
 	void Application::StartApp(std::string sceneName)
 	{
 		m_bIsStop = false;
+		m_nRunTimeLong = 0;
 		MonoScriptManager::GetInstance().Initialize();
 		CreatScript();
 		std::string startApp = AppDataPath + "/app.config";
@@ -201,7 +203,6 @@ namespace E3DEngine
 				{
 
 				}
-
 			}
 		}
 		else
@@ -252,6 +253,7 @@ namespace E3DEngine
 
 	void Application::UpdateApp(float deltaTime)
 	{
+		m_nRunTimeLong += deltaTime;
 		if (m_bIsStop)
 		{
 			return;
@@ -260,6 +262,7 @@ namespace E3DEngine
 		{
 			return;
 		}
+		
 		m_pEntryBehaviour->Update(deltaTime);
 	}
 
@@ -403,6 +406,11 @@ namespace E3DEngine
 #endif
 	}
 
+
+	double Application::GetTimeSinceStart()
+	{
+		return m_nRunTimeLong;
+	}
 
 	MouseButtonInfo::MouseButtonInfo(UINT mBtn, int posX, int posY)
 	{

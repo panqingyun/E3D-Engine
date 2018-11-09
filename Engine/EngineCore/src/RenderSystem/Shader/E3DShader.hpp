@@ -23,6 +23,10 @@ namespace E3DEngine
 #define  POINT_LIGHT_POS "_e3d_PointLightPos"
 #define	 POINT_LIGHT_COLOR "_e3d_PointLightColor"
 #define	 POINT_LIGHT_RANGE "_e3d_PointLightRange"
+#define  USING_DIRECTIONAL_LIGHT "USING_DIRECTIONAL_LIGHT"
+#define  USING_POINT_LIGHT "USING_POINT_LIGHT"
+#define  _e3d_PointLightCount "_e3d_PointLightCount"
+#define  _Time "_Time"
 
 	class Texture;
 	class CubeMapTexture;

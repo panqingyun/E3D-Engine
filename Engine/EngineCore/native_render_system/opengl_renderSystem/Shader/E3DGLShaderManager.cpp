@@ -105,6 +105,7 @@ std::string E3DEngine::GL_ShaderManager::processVS()
 	priveVs.append("{\n");
 	priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
 	priveVs.append("}\n");
+	priveVs.append("uniform float ").append(_Time).append(";\n");
 	
 	return priveVs;
 }
@@ -166,7 +167,8 @@ void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
 	shader->RunUniformFunc("mat4",VIEW_MATRIX, "", 1);
 	shader->RunUniformFunc("mat4",MODEL_MATRIX, "", 1);
 	shader->RunUniformFunc("vec3",CAMERA_POS, "", 1);
-	shader->RunUniformFunc("vec3",ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("float", _Time, "", 1);
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
 		shader->RunUniformFunc("vec4", LIGHT_COLOR, "", 1);

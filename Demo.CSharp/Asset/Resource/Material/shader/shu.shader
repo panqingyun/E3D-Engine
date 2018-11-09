@@ -11,8 +11,7 @@
 #include "Standard.shader"
 varying vec2 v_coord;
 varying vec4 DestinationColor;
-uniform float time;
-vec4 _WindDir = vec4(0.4,0.1,0.3,5.0);
+vec4 _WindDir = vec4(0.4,0.1,0.3,0.2);
 
 void main(void)
 {
@@ -23,12 +22,12 @@ void main(void)
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	DestinationColor = color;
 	
 	float power = _WindDir.w;
 	_WindDir.w = 0.0;
 	vec3 dir =  normalize(_e3d_matModel*_WindDir).xyz;
-	vec3 _vPos = position + dir * (sin(position.x +  time) + sin(position.z + 0.43 * time) + 1.0) * power * pow(position.y / 100.0, 2.0); //摇动
+	vec3 _vPos = position + dir * (sin(position.x +  _Time) + sin(position.y + 0.43 * _Time) + 1.0) * power * pow(position.z / 80.0, 2.0); //摇动
 	
     gl_Position = _e3d_getMVPMatrix() * vec4(_vPos ,1.0);
 }

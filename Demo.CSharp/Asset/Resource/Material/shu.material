@@ -6,6 +6,7 @@
 		<Item ID="3" ShaderID = "3" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
 		<Item ID="4" ShaderID = "4" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
 		<Item ID="5" ShaderID = "5" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
+		<Item ID="6" ShaderID = "6" Color="ffffffff" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "0"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<Item ID= "1" ShaderPath="shader/shu.shader" UniformVariable="myTexture0=Resource/Material/texture/WD_zhiwu_01.tga;"/>
@@ -13,5 +14,6 @@
 		<Item ID= "3" ShaderPath="shader/shu.shader" UniformVariable="myTexture0=Resource/Material/texture/WD_zhiwu_03.tga;"/>
 		<Item ID= "4" ShaderPath="shader/shu.shader" UniformVariable="myTexture0=Resource/Material/texture/Demo_zw_lvzhi001_diffuse.tga;"/>
 		<Item ID= "5" ShaderPath="shader/shu.shader" UniformVariable="myTexture0=Resource/Material/texture/xt_zhuzi01_01.tga;"/>
+		<Item ID= "6" ShaderPath="shader/shu.shader" UniformVariable="myTexture0=Resource/Material/texture/gy_taoshu02.tga;"/>
 	</ShaderConfig>
 </ConfigSystem>

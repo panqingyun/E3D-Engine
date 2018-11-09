@@ -15,6 +15,7 @@ varying vec4 vPos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
+varying float time;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
@@ -57,7 +58,7 @@ void main(void)
 #else
 	lightDir = vec3(0.0,0.0,0.0);
 #endif
-
+	time = _Time;
 	vec4 _pos = _e3d_matModel * vec4(position, 1.0);
 	
 	v_Coord = inputTextureCoordinate;// * _WaveScale + (_2StreamVelo * time).xy ;//vPos.xzxz * _WaveScale + (_2StreamVelo * time) * 0.1;
@@ -85,13 +86,13 @@ varying vec4 vPos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
-uniform float time;
+varying float time;
 
 uniform float fresnelBias;
 uniform float etaRatio;
 
 const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
-const float Ns = 1.0;			//高光系数
+const float Ns = 5.0;			//高光系数
 const float attenuation = 1.0;	//光线的衰减系数
 
 const float _BumpDepth = 1.0;

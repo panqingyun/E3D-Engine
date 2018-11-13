@@ -36,6 +36,12 @@ namespace E3DEngine
 		eDM_POINTS,
 	};
 
+	enum CULL_FACE
+	{
+		eCF_BACK,
+		eCF_FRONT,
+	};
+
 	class E3D_EXPORT_DLL RenderSystem : public IObject
 	{
 	public:
@@ -56,7 +62,7 @@ namespace E3DEngine
 		virtual void	CreateShareContext();
 		virtual void	UseShareContext();
 		virtual void	UseRenderContext();
-
+		virtual void    SetCullFaceType(CULL_FACE type);
 	public:
 		RendererManager * GetRenderManager();
 		MaterialManager * GetMaterialManager();

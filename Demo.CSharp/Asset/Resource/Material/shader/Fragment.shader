@@ -19,6 +19,7 @@ float getShadowColor(vec4 pos, float bias)
 {
 	float shadowColor = 1.0;
 #ifndef __GLES__
+#ifdef __CREATE_SHADOW__
 	vec2 textSize = 1.0/ textureSize(_e3d_lightDepthTex, 0);
  	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
 	
@@ -49,6 +50,7 @@ float getShadowColor(vec4 pos, float bias)
 			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.9;
 		}
 	}
+#endif
 #endif
 	return shadowColor;
 }

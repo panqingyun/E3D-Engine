@@ -51,8 +51,6 @@ namespace E3DEngine
 	{
 		m_pGL_Context->UseContext();
 		BindDefaultBackbuffer();
-		glCullFace(GL_BACK);
-
 	}
 
 
@@ -73,6 +71,7 @@ namespace E3DEngine
 		m_pGL_Context = new GL_Context();
 		m_pGL_Context->OpenGLInit(displayID);
 		m_pGL_Context->UseContext();
+		glCullFace(GL_BACK);
 	}
 
 	GL_RenderSystem::GL_RenderSystem()
@@ -131,6 +130,12 @@ namespace E3DEngine
 		{
 			m_pGL_Context->UseContext();
 		}
+	}
+
+
+	void GL_RenderSystem::SetCullFaceType(CULL_FACE type)
+	{
+		glCullFace(type == eCF_BACK ? GL_BACK : GL_FRONT);
 	}
 
 }

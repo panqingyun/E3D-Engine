@@ -98,6 +98,12 @@ namespace E3DEngine
 
 	}
 
+
+	void RenderSystem::SetCullFaceType(CULL_FACE type)
+	{
+
+	}
+
 	E3DEngine::RendererManager * RenderSystem::GetRenderManager()
 	{
 		return m_pRenderManager;

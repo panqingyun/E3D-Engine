@@ -43,6 +43,7 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
+		m_bIsShadowCamera = false;
 		CREATE_BEHAVIOUR(Camera);
 		Transform->SetNeedUpdate(false);
 	}
@@ -69,18 +70,8 @@ namespace E3DEngine
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
 		CREATE_BEHAVIOUR(Camera);
+		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
-
-		//Box *box = new Box();
-		//box->Create(right - left, top - bottom, zFar - zNear);
-		//Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::AppDataPath + "Resource/Material/CubeMaterial.material", 1);
-		//Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(box->VertexBufferName).size());
-		//box->SetRenderer(rd);
-		//box->SetActive(true);
-		//box->Transform->SetPosition(position);
-		//box->Transform->SetRotation(Transform->Rotation);
-		////rd->SetDrawModule(eDM_LINES);
-		//ADD_IN_SCENE(box);
 	}
 
 
@@ -113,7 +104,15 @@ namespace E3DEngine
 	void Camera::render()
 	{
 		ClearBackGround();
+		if (m_bIsShadowCamera)
+		{
+			GetRenderSystem()->SetCullFaceType(eCF_FRONT);
+		}
 		m_RenderQueue->Render();
+		if (m_bIsShadowCamera)
+		{
+			GetRenderSystem()->SetCullFaceType(eCF_BACK);
+		}
 		GetRenderSystem()->BindDefaultBackbuffer();
 	}
 
@@ -426,6 +425,12 @@ namespace E3DEngine
 			return nullptr;
 		}
 		return *RTTs.begin();
+	}
+
+
+	void Camera::SetIsShadowCamera()
+	{
+		m_bIsShadowCamera = true;
 	}
 
 	float * Camera::normal(float *plans)

@@ -20,7 +20,6 @@ namespace E3DEngine
 		eRI_TopMost,
 	} eRenderIndex;
 
-
 	class MinMaxAABB : public Object
 	{
 	private:

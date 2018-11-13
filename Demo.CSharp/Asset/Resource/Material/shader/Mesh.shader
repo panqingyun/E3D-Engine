@@ -30,10 +30,10 @@ void main(void)
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	initFogNeedVar(position);
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
-	
+#ifdef USING_DIRECTIONAL_LIGHT
 	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
 	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
-	
+#endif
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
 

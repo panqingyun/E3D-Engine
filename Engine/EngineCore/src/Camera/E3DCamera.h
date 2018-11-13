@@ -61,6 +61,8 @@ namespace E3DEngine
 		void ClearRT();
 		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
 		Render2Texture *GetRenderTexture();
+		void SetIsShadowCamera();
+		bool GetIsShadowCamera() { return m_bIsShadowCamera; }
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		
@@ -84,7 +86,7 @@ namespace E3DEngine
 		float m_aspect;
 		float m_near;
 		float m_far;
-		
+		bool  m_bIsShadowCamera;
 		bool isPerspective;
 		std::vector<float *> m_Plans;
 		float *m_Temp;

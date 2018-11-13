@@ -61,7 +61,6 @@ namespace E3DEngine
         m_pEGL_Context->UseContext();
 		BindDefaultBackbuffer();
 #endif
-		ES2::CullFace(GL_BACK);
 				
 	}
 
@@ -92,8 +91,9 @@ namespace E3DEngine
 #else
         m_pEGL_Context = new EGL_Context();
         m_pEGL_Context->InitGLES(displayID, windowHandle);
-        m_pEGL_Context->UseContext();
+		m_pEGL_Context->UseContext();
 #endif
+		ES2::CullFace(GL_BACK);
 	}
 
 	GLES_RenderSystem::GLES_RenderSystem()
@@ -147,6 +147,12 @@ namespace E3DEngine
 	void GLES_RenderSystem::CreateShareContext()
 	{
 		//m_pEGL_Context->CreateShareContext();
+	}
+
+
+	void GLES_RenderSystem::SetCullFaceType(CULL_FACE type)
+	{
+		ES2::CullFace(type == eCF_BACK ? GL_BACK : GL_FRONT);
 	}
 
 }

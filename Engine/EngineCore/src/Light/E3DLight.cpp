@@ -49,6 +49,7 @@ namespace E3DEngine
 		shadowCamera->SetClearType(eCT_Depth);
 		shadowCamera->SetClearColor(Color4(1, 1, 1, 1));
 		shadowCamera->SetActive(true);
+		shadowCamera->SetIsShadowCamera();
 		shadowCamera->mName = "ShadowCamera";
 		shadowCamera->Flag |= (DONT_SAVE | HIDE_IN_PROPERTY);
 		ADD_IN_SCENE(shadowCamera);

@@ -1,6 +1,7 @@
 #include "E3DRenderQueue.h"
 #include "E3DRenderSystem.hpp"
 #include "../Source/E3DDebug.h"
+#include "../Camera/E3DCamera.h"
 
 namespace E3DEngine
 {

@@ -156,17 +156,42 @@ vec4 FresnelShading(vec3 normal)
 	return cout;
 }
 
-vec4 getShadowColor(vec4 pos, float bias)
+float getShadowColor(vec4 pos, float bias)
 {
-	vec4 shadowColor = vec4(1.0, 1.0 ,1.0 ,1.0);
+	float shadowColor = 1.0;
 #ifndef __GLES__
-	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
-	float texSize = 4096.0;
+#ifdef __CREATE_SHADOW__
+	vec2 textSize = 1.0/ textureSize(_e3d_lightDepthTex, 0);
+ 	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
 	
 	if(pos.z - bias > depth) // 
 	{
-		shadowColor.rgb = shadowColor.rgb * 0.5;
+		shadowColor = 0.5;
 	}	
+	else
+	{
+		vec4 coord1 = vec4(clamp(pos.xy - textSize, 0.0, 1.0),pos.z, pos.w );		
+		vec4 coord2 = vec4(clamp(pos.xy + textSize, 0.0, 1.0),pos.z, pos.w );
+		vec4 coord3 = vec4(clamp(pos.x -  textSize.x, 0.0, 1.0), clamp(pos.y + textSize.y, 0.0, 1.0) ,pos.z, pos.w );
+		vec4 coord4 = vec4(clamp(pos.x +  textSize.x, 0.0, 1.0), clamp(pos.y - textSize.y, 0.0, 1.0) ,pos.z, pos.w );
+		
+		float depth1 =  texture2D(_e3d_lightDepthTex,coord1.xy).r;
+		float depth2 =  texture2D(_e3d_lightDepthTex,coord2.xy).r;
+		float depth3 =  texture2D(_e3d_lightDepthTex,coord3.xy).r;
+		float depth4 =  texture2D(_e3d_lightDepthTex,coord4.xy).r;
+		
+		depth1 = coord1.z - bias > depth1 ?  0.5 : 1.0; 
+		depth2 = coord2.z - bias > depth2 ?  0.5 : 1.0; 
+		depth3 = coord3.z - bias > depth3 ?  0.5 : 1.0; 
+		depth4 = coord4.z - bias > depth4 ?  0.5 : 1.0; 
+		
+		float mulColor = depth1* depth2 * depth3 * depth4;
+		if (mulColor < 1.0)
+		{
+			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.9;
+		}
+	}
+#endif
 #endif
 	return shadowColor;
 }
@@ -191,8 +216,8 @@ void main(void)
 	vec4 freColor1 = FresnelShading(normalVec) * 0.5;
 	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
-	vec4 sC = getShadowColor(v_InLightPos, 0.0);
-	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor).rgb, 0.6) * sC;
+	float sC = getShadowColor(v_InLightPos, 0.0);
+	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor * sC).rgb, 0.6);
 }
 
 #Framgent_End

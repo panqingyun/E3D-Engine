@@ -308,7 +308,7 @@ void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string
 			std::string lightUniform = "";
 			if (SceneManager::GetCurrentScene()->GetDirectionalLight()->GetCreateShadow())
 			{
-				lightUniform.append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
+				lightUniform.append("#define __CREATE_SHADOW__\n").append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
 			}
 			fs_content = lightUniform + fs_content;
 		}

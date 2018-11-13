@@ -44,7 +44,7 @@ namespace E3DEngine
 		tData.height = 4096;
 		tData.target = RENDER_DEPTH;
 		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
-		shadowCamera->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD);
+		shadowCamera->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD & ~LD_NOSHADOW);
 		shadowCamera->SetRenderTexture(rtt);
 		shadowCamera->SetClearType(eCT_Depth);
 		shadowCamera->SetClearColor(Color4(1, 1, 1, 1));

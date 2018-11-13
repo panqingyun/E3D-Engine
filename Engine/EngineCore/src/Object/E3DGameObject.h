@@ -281,6 +281,7 @@ namespace E3DEngine
 		LD_LOOK_COORD	= 1 << 30,
 		LD_OBJECT_COORD = 1 << 29,
 		LD_SKYBOX		= 1 << 28,
+		LD_NOSHADOW		= 1 << 27,
 	};
 
 	template<typename  T> std::string GetClassName()

@@ -42,7 +42,7 @@ vec4 getShadowColor(vec4 pos)
 {
 	vec4 shadowColor = vec4(1.0, 1.0 ,1.0 ,1.0);
 	//float depth = texture(_e3d_lightDepthTex, pos.xy).r;
-	float bias = 0.001;
+	float bias = 0.0;
 	float texSize = 4096.0;
 	
 	vec2 intXY = vec2(pos.x * texSize, pos.y * texSize);

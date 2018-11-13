@@ -51,7 +51,7 @@ void main(void)
 {
 	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos);	
 	
-	gl_FragColor = vec4(color.rgb, 1.0);
+	gl_FragColor = DestinationColor * vec4(color.rgb, 1.0);
 }
 
 #Framgent_End

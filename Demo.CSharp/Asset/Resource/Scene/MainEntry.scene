@@ -10,7 +10,7 @@
     <GameObject ID="2" Name="Light" Type="2" LayerMask="AllLayer" Active="true" CreateShadow="true" Color="FFFFFFFF">
         <Transform Posistion="-100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>
-    <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="" Active="true" RenderIndex="2" Color="FFFFFFFF">
+    <GameObject ID="3" Name="SkyBox" Type="4" LayerMask="28" Active="true" RenderIndex="2" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/SkyBox.material" SelectID="1" />
         <Transform Posistion="0.000000,100.000000,200.000000" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
     </GameObject>
@@ -74,7 +74,7 @@
         </Component>
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject ID="11" Name="Dimian" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj" Color="FFFFFFFF">
+    <GameObject ID="11" Name="Dimian" Type="5" LayerMask="27" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/FHZC.obj" Color="FFFFFFFF">
         <Material FilePath="Resource/Material/Mesh.material" SelectID="3" />
         <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.MeshCollider" />
@@ -114,11 +114,11 @@
         <Material FilePath="Resource/Material/shu.material" SelectID="5" />
         <Transform Posistion="110.000000,30.000000,160.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.008000,0.008000,0.008000" />
     </GameObject>
-    <GameObject ID="18" Name="Sphere" Type="8" LayerMask="0" Active="false" RenderIndex="2" Color="FEFAFAFF">
+    <GameObject ID="18" Name="Sphere" Type="8" LayerMask="0" Active="true" RenderIndex="2" Color="FEFAFAFF">
         <Material FilePath="Resource/Material/SkyCube.material" SelectID="1" />
         <Transform Posistion="-50.000000,50.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="50.000000,50.000000,50.000000" />
     </GameObject>
-    <GameObject ID="19" Name="Water" Type="10" LayerMask="28" Active="true" RenderIndex="2" Size="256" Color="A2BCFA89">
+    <GameObject ID="19" Name="Water" Type="10" LayerMask="27" Active="true" RenderIndex="2" Size="256" Color="A2BCFA89">
         <Material FilePath="Resource/Material/Water.material" SelectID="1" />
         <Transform Posistion="120.000000,28.000000,130.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
     </GameObject>

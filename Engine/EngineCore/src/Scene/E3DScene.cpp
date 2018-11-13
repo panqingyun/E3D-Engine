@@ -121,6 +121,10 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		else
 		{
+			if (usedDirectionLight != nullptr)
+			{
+				usedDirectionLight->GetShadowCamera()->Render();
+			}
 			const std::vector<Camera*> &cameras = GetEditorCameras();
 			for (auto &camera : cameras)
 			{

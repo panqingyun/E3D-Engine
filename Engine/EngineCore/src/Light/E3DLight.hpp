@@ -32,18 +32,18 @@ namespace E3DEngine
 		virtual void CreateShadow() { }
 		Light()
 		{
+			mCreateShadow = false;
 			shadowCamera = nullptr;
 		}
 		virtual ~Light()
 		{
-			if (shadowCamera != nullptr)
-			{
-				delete shadowCamera;
-			}
 		}
 
+		bool GetCreateShadow() { return mCreateShadow; }
+		Camera * GetShadowCamera();
 	protected:
 		Camera * shadowCamera;
+		bool	mCreateShadow;
 	};
 
 	class E3D_EXPORT_DLL PointLight : public Light
@@ -68,7 +68,6 @@ namespace E3DEngine
 
 		void SetDirection(vec3f dir);
 		vec3f &GetDirection();
-
 	private:
 		vec3f mDirection;
 	};

@@ -11,6 +11,7 @@
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
 #include "../Physics/E3DCollider.hpp"
 #include "../Source/E3DVertexManager.h"
+#include "../Mesh/E3DMeshRender.h"
 
 namespace E3DEngine
 {
@@ -323,7 +324,7 @@ namespace E3DEngine
 		IsActive = false;
 		m_pRenderer = nullptr;
 		ParentNode = nullptr;
-		m_layerMask = -1;
+		m_layerMask = 0;
 		m_bIsStatic = false;
 		Flag = 0;
 		SceneInnerID = 0;
@@ -533,6 +534,14 @@ namespace E3DEngine
 	{
 		m_pRenderer = renderer;
 		m_pRenderer->SetLayerMask(m_layerMask);
+		if (mSceneObjectType == TP_Mesh)
+		{
+			SceneManager::GetCurrentScene()->AddRenderObject(((MeshRender*)m_pRenderer)->GetRenderer(), m_layerMask);
+		}
+		else
+		{
+			SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
+		}
 		m_pRenderer->mName = mName;
 		if (IsActive)
 		{

@@ -7,5 +7,6 @@
 		<Item ID = 0 Name="defaultLayer" />
 		<Item ID = 1 Name="notBlendLayer"/>
 		<Item ID = 2 Name="backLayer"/>
+		<Item ID = 28 Name="SkyBox"/>
 	</LayerConfig>
 </ConfigSystem>

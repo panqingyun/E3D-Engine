@@ -54,7 +54,6 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	return (lightColor + ambient);
 }
 
-
 mat4 getRotateMatrix()
 {
 	mat4 rotate;

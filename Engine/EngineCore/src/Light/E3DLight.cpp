@@ -7,6 +7,7 @@
 #include "../Camera/E3DCamera.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Object/E3DRectangle.hpp"
+#include "../Source/Application.h"
 
 namespace E3DEngine
 {
@@ -33,22 +34,25 @@ namespace E3DEngine
 
 	void DirectionLight::CreateShadow()
 	{
+		mCreateShadow = true; 
 		// 平行光 创建正交投影摄像机
-		shadowCamera = new E3DEngine::Camera(vec3f(0, 0, 1), vec3f(0, 0, 0), vec3f(0, 1, 0), -512, 512, -512, 512, 1, 1000);
-		shadowCamera->Transform = Transform; //TODO
+		vec3f trans = vec3f(100, 200, 100);
+		shadowCamera = new E3DEngine::Camera(Transform->Position + trans, trans, vec3f(0, 1, 0), -225, 225, -225, 225, 1, 1000);
+		
 		TextureData tData;
-		tData.fileName = "CameraShadowMap";
-		tData.configID = ID;
-		tData.width = 1024;
-		tData.height = 1024;
-		Render2Texture * rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
+		tData.width = 4096;
+		tData.height = 4096;
+		tData.target = RENDER_DEPTH;
+		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
+		shadowCamera->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD);
 		shadowCamera->SetRenderTexture(rtt);
+		shadowCamera->SetClearType(eCT_Depth);
+		shadowCamera->SetClearColor(Color4(1, 1, 1, 1));
+		shadowCamera->SetActive(true);
+		shadowCamera->mName = "ShadowCamera";
+		shadowCamera->Flag |= (DONT_SAVE | HIDE_IN_PROPERTY);
 		ADD_IN_SCENE(shadowCamera);
-		Rectangle *rect = new Rectangle;
-		rect->CreateShape(1024, 1024);
-
 	}
-
 
 	void DirectionLight::CreateComplete()
 	{
@@ -118,4 +122,10 @@ namespace E3DEngine
 		TRANSFER_FIELD_VALUE(Intensity);
 		GameObject::setBehaviourDefaultValue();
 	}
+
+	E3DEngine::Camera * Light::GetShadowCamera()
+	{
+		return shadowCamera;
+	}
+
 }

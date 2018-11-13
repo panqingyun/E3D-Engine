@@ -61,4 +61,10 @@ namespace E3DEngine
 		return nullptr;
 	}
 
+
+	E3DEngine::Renderer* MeshRender::GetRenderer()
+	{
+		return nullptr;
+	}
+
 }

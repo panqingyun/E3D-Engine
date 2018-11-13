@@ -51,7 +51,14 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSi
 		return (E3DEngine::Render2Texture*)m_mapTextures[texture_key];
 	}
 	Render2Texture *rtt = createRender2Texture();
-	rtt->CreateRenderTarget(tData->width, tData->height);
+	if (tData->target == RENDER_TO_TEXTURE)
+	{
+		rtt->CreateRenderTarget(tData->width, tData->height);
+	}
+	else if (tData->target == RENDER_DEPTH)
+	{
+		rtt->CreateDepthTarget(tData->width, tData->height);
+	}
 	m_mapTextures[texture_key] = rtt;
 
 	return rtt;

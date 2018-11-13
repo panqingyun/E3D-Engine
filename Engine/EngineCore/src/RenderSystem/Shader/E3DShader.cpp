@@ -182,6 +182,7 @@ namespace E3DEngine
 		{
 			return;
 		}
+
 		sampler2DUniformList[name].texture = texture;
 		sampler2DUniformList[name].TextureIndex = index;
 	}

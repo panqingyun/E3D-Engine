@@ -20,6 +20,7 @@ void E3DEngine::SkyBox::TransferRender()
 {
 	m_pRenderer->SetRenderIndex(eRI_LowMost);
 	SkyBoxConfig * skyBox = m_pRenderer->GetMaterial()->mMaterialTableManager->Select<SkyBoxConfig>(1);
+	SetLayerMask(LD_SKYBOX);
 	if (skyBox == nullptr)
 	{
 		return;

@@ -44,6 +44,13 @@ namespace E3DEngine
 		R8G8B8A8	// 32-bit pixel format, 8 bits for red, green, blue and alpha.
 	};
 
+	typedef enum
+	{
+		RENDER_BUFFER,
+		RENDER_TO_TEXTURE,
+		RENDER_DEPTH,
+	} RenderTargeType;
+
 	struct E3D_EXPORT_DLL TextureData
 	{
 		CLAMP_TYPE clampType;
@@ -57,6 +64,7 @@ namespace E3DEngine
 		int		height;
 		bool	useMipMap;
 		int		configID;
+		int		target;
 
 		TextureData()
 		{

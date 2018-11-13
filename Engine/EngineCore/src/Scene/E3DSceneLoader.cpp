@@ -23,6 +23,7 @@ namespace E3DEngine
 	const std::string _Particle = "Particle";
 	const std::string _ClearColor = "ClearColor";
 	const std::string _Color = "Color";
+	const std::string _CreateShadow = "CreateShadow";
 	const std::string _RenderIndex = "RenderIndex";
 	const std::string _Component = "Component";
 	const std::string _Range = "Range";
@@ -210,7 +211,7 @@ namespace E3DEngine
 		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
 		
 		light->Color = Convert::ToColor4(*objectElement->Attribute(_Color));
-
+		
 		return light;
 	}
 
@@ -344,6 +345,15 @@ namespace E3DEngine
 			}
 			component.second->OnCreateComplete();
 		}
+		if (go->mSceneObjectType == TP_DLight && objectElement->Attribute(_CreateShadow) != nullptr)
+		{
+			bool &&bCreate = Convert::ToBoolean(*objectElement->Attribute(_CreateShadow));
+			if (bCreate)
+			{
+				((Light*)go)->CreateShadow();
+			}
+		}
+
 		setGameObjectActive(objectElement, go);
 		if (objectElement->FirstChildElement(_Material) != nullptr)
 		{
@@ -529,6 +539,11 @@ namespace E3DEngine
 		{
 			Terrain *terrain = (Terrain*)gameObject;
 			objectElement->SetAttribute(_Size, terrain->GetSize());
+		}
+		else if (gameObject->mSceneObjectType == TP_DLight)
+		{
+			Light * light = (Light*)gameObject;
+			objectElement->SetAttribute(_CreateShadow, Convert::ToString(light->GetCreateShadow()));
 		}
 		objectElement->SetAttribute(_Color, Convert::ToString(gameObject->Color));
 		saveTransformElement(objectElement, gameObject->Transform);

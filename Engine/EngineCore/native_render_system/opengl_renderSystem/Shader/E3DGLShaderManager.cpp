@@ -88,6 +88,8 @@ std::string E3DEngine::GL_ShaderManager::processVS()
 		priveVs.append("#define USING_DIRECTIONAL_LIGHT  \n");
 		priveVs.append("uniform vec3 ").append(LIGHT_DIR).append(";\n");
 		priveVs.append("uniform vec4 ").append(LIGHT_COLOR).append(";\n");
+		priveVs.append("uniform mat4 ").append(LIGHT_PROJ_MAT).append(";\n");
+		priveVs.append("uniform mat4 ").append(LIGHT_VIEW_MAT).append(";\n");
 	}
 	std::map<UINT, Light*>& pointLights = SceneManager::GetCurrentScene()->GetPointLights();
 	if (pointLights.size() != 0)
@@ -158,7 +160,6 @@ void E3DEngine::GL_ShaderManager::processUniformVar(GL_Shader *shader, std::stri
 		pos = shaderContent.find("uniform", pos + 1);
 	}
 
-	processEngineDefineUniform(shader);
 }
 
 void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
@@ -169,6 +170,8 @@ void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
 	shader->RunUniformFunc("vec3",CAMERA_POS, "", 1);
 	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
 	shader->RunUniformFunc("float", _Time, "", 1);
+	shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
+	shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
 		shader->RunUniformFunc("vec4", LIGHT_COLOR, "", 1);
@@ -282,6 +285,7 @@ void E3DEngine::GL_ShaderManager::getVertex(GL_Shader *shader, std::string &str,
 				std::string attrib = vs_content.substr(pos1 + 1, pos2 - pos1 - 1);
 				vs_content = vs_content.substr(pos2 + 1, pos_end - pos2);
 				processUniformVar(shader, vs_content);
+				processEngineDefineUniform(shader);
 				appendInclude(vs_content, folder);
 				processAttributeVar(shader, attrib, vs_content);
 				vs_content = processVS().append(vs_content);
@@ -297,6 +301,16 @@ void E3DEngine::GL_ShaderManager::getFragment(GL_Shader *shader, std::string &st
 	if (pos_begin != std::string::npos && pos_end != std::string::npos)
 	{
 		fs_content = str.substr(pos_begin + gFragmentBeginStr.length() + 1, pos_end - pos_begin - 1 - gFragmentBeginStr.length());
+
+		if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
+		{
+			std::string lightUniform = "";
+			if (SceneManager::GetCurrentScene()->GetDirectionalLight()->GetCreateShadow())
+			{
+				lightUniform.append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
+			}
+			fs_content = lightUniform + fs_content;
+		}
 		appendInclude(fs_content, folder);
 		processUniformVar(shader, fs_content);
 	}

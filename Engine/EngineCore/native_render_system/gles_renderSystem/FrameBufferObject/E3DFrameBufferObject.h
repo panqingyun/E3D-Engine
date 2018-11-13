@@ -10,13 +10,6 @@ namespace E3DEngine
 {
 	namespace GLESRenderSystem
 	{
-		typedef enum
-		{
-			RENDER_BUFFER,
-			RENDER_TO_TEXTURE,
-			RENDER_DEPTH,
-		} RenderTargeType;
-
 		class RenderTarget
 		{
 		public:
@@ -25,7 +18,7 @@ namespace E3DEngine
 				ES2::DeleteRenderbuffers(1, &m_DepthBuffer);
 			}
 			GLuint	m_DepthBuffer;
-			RenderTargeType Type;
+			DWORD Type;
 		};
 
 		class RenderTexture : public RenderTarget
@@ -53,7 +46,7 @@ namespace E3DEngine
 			~FrameBufferObject();
 
 		public:
-			void Create(int width, int height, RenderTargeType targetType);
+			void Create(int width, int height, DWORD targetType);
 			void Clear();
 			void Bind();
 			void SetClearColor(Color4 clearColor);
@@ -67,7 +60,7 @@ namespace E3DEngine
 			GLint  GetReadBufferFormat();
 			GLint  GetReadBufferType();
 		private:
-			void createTarget(RenderTargeType targetType);
+			void createTarget(DWORD targetType);
 		private:
 			GLuint			m_FrameBuffer;
 			RenderTarget  * m_renderTarget;

@@ -218,6 +218,7 @@ namespace E3DEngine
 			tData.height = rttCfg->Height;
 			tData.fileName = fName;
 			tData.configID = Id;
+			tData.target = rttCfg->Target;
 			std::string v1 = varValues[0];
 			Render2Texture *rtt = nullptr;
 			if (GetRenderSystem()->getIsMutilThreadRender())

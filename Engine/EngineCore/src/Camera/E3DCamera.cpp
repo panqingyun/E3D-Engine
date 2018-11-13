@@ -14,6 +14,7 @@
 #include "../Source/EngineDelegate.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Physics/E3DPhysics.h"
+#include "../Source/E3DVertexManager.h"
 
 namespace E3DEngine
 {
@@ -27,7 +28,7 @@ namespace E3DEngine
 		}
 		isPerspective = true;
 		m_mProjection = mat4f::createPerspective(fov, aspect, zNear, zFar);
-		m_mView = mat4f::createLookAt(Transform->Position, target, up);
+		m_mView = mat4f::createLookAt(position, target, up);
 		Transform->Rotation = Quatf::frommat(m_mView);
 		Transform->Position = position;
 		m_near = zNear;
@@ -56,9 +57,9 @@ namespace E3DEngine
 		}
 		isPerspective = false;
 		m_mProjection = mat4f::createOrtho(left, right, bottom, top, zNear, zFar);
-		m_mView = mat4f::createLookAt(Transform->Position, target, up);
-		Transform->Rotation = Quatf::frommat(m_mView);
+		m_mView = mat4f::createLookAt(position, target, up);
 		Transform->Position = position;
+		Transform->Rotation = Quatf::frommat(m_mView);
 		m_mViewInverse = m_mView.inverse();
 		m_mProjectInverse = m_mProjection.inverse();
 		m_RenderQueue = new RenderQueue;
@@ -69,6 +70,17 @@ namespace E3DEngine
 		mObjectType = eT_Camera;
 		CREATE_BEHAVIOUR(Camera);
 		Transform->SetNeedUpdate(false);
+
+		//Box *box = new Box();
+		//box->Create(right - left, top - bottom, zFar - zNear);
+		//Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::AppDataPath + "Resource/Material/CubeMaterial.material", 1);
+		//Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(box->VertexBufferName).size());
+		//box->SetRenderer(rd);
+		//box->SetActive(true);
+		//box->Transform->SetPosition(position);
+		//box->Transform->SetRotation(Transform->Rotation);
+		////rd->SetDrawModule(eDM_LINES);
+		//ADD_IN_SCENE(box);
 	}
 
 
@@ -223,8 +235,11 @@ namespace E3DEngine
 			}
 		}
 		RTTs.push_back(rtt); 
-		m_mProjection = mat4f::createPerspective(m_fov, rtt->GetWidth() / rtt->GetHeight(), m_near, m_far);
-		m_mProjectInverse = m_mProjection.inverse();
+		if (isPerspective)
+		{
+			m_mProjection = mat4f::createPerspective(m_fov, rtt->GetWidth() / rtt->GetHeight(), m_near, m_far);
+			m_mProjectInverse = m_mProjection.inverse();
+		}
 	}
 
 	void Camera::TransformChange()
@@ -401,6 +416,16 @@ namespace E3DEngine
 	{
 		// TODO
 		return false;
+	}
+
+
+	E3DEngine::Render2Texture * Camera::GetRenderTexture()
+	{
+		if (RTTs.empty())
+		{
+			return nullptr;
+		}
+		return *RTTs.begin();
 	}
 
 	float * Camera::normal(float *plans)

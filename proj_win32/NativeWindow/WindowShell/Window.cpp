@@ -50,6 +50,7 @@ HANDLE						hPhysicsThread = NULL;
 HANDLE						hRenderThread = NULL;
 bool						bRenderInited = false;
 std::map<int, HANDLE>		mapThreads;
+bool isMutRender = false;
 
 #ifdef _DEBUG
 #define EXE_NAME "WinClient_d.exe"
@@ -323,15 +324,23 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    InitializeCriticalSection(&gPhysicsSection);
    InitializeCriticalSection(&gRenderSection);
    hPhysicsThread = (HANDLE)_beginthreadex(NULL, 0, &PhysicsMain, NULL, 0, &physicsThreadID);
-   hRenderThread = (HANDLE)_beginthreadex(nullptr, 0, &RenderMain, nullptr, 0, &renderThreadID);
-   mapThreads[PHYSIC_THREAD_ID] = hPhysicsThread;
-   mapThreads[RENDER_THREAD_ID] = hRenderThread;
-   mapThreads[LOGIC_THREAD_ID] = GetCurrentThread();
-   while (!bRenderInited)
+   if (isMutRender)
    {
-	   Sleep(1);
+	   hRenderThread = (HANDLE)_beginthreadex(nullptr, 0, &RenderMain, nullptr, 0, &renderThreadID);
+	   mapThreads[RENDER_THREAD_ID] = hRenderThread;
+	   while (!bRenderInited)
+	   {
+		   Sleep(1);
+	   }
+	   ::CreateShareContext();
    }
-   ::CreateShareContext();
+   else
+   {
+	   void * renderSystem = CreateGLRenderSystem(MainWindowHwnd, width, height);
+	   ::SetRenderSystem(renderSystem);
+   }
+   mapThreads[PHYSIC_THREAD_ID] = hPhysicsThread;
+   mapThreads[LOGIC_THREAD_ID] = GetCurrentThread();
 
    ::StartAppliaction(startScenePath.c_str());
 

@@ -24,7 +24,7 @@ namespace E3DEngine
 		//virtual const aiScene *GetAiScene() const;
 		virtual vector<mat4f*> &GetBoneMatrixs();
 		virtual Camera *GetCamera() override;
-
+		virtual Renderer* GetRenderer();
 	private:
 		const aiScene*				pScene;
 		vector<mat4f*>				VecBoneMatrix;

@@ -60,6 +60,7 @@ namespace E3DEngine
 		vec4f GetClearColor();
 		void ClearRT();
 		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
+		Render2Texture *GetRenderTexture();
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		

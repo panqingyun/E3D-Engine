@@ -1,4 +1,6 @@
 #include "E3DFrameBufferObject.h"
+#include <src/RenderSystem/Texture/E3DTextureDataManager.hpp>
+#include "../../../src/Source/E3DDebug.h"
 
 namespace E3DEngine
 {
@@ -19,7 +21,7 @@ namespace E3DEngine
 			SAFE_DELETE(m_BufferPixels);
 		}
 
-		void FrameBufferObject::Create(int width, int height, RenderTargeType targetType)
+		void FrameBufferObject::Create(int width, int height, DWORD targetType)
 		{
 			m_FrameWidth = width;
 			m_FrameHeight = height;
@@ -45,14 +47,14 @@ namespace E3DEngine
 				glGenTextures(1, &dt->m_TextureBuffer);
 				glBindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
 
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 				if (targetType == RENDER_TO_TEXTURE)
 				{
 					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
 				}
 				else if(targetType == RENDER_DEPTH)
@@ -60,7 +62,16 @@ namespace E3DEngine
 					glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+					glDrawBuffer(GL_NONE);
+					glReadBuffer(GL_NONE);
+					GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+					if (status != GL_FRAMEBUFFER_COMPLETE) 
+					{
+						Debug::Log(ell_Error, "FrameBuffer create failed");
+					}
 				}
 			}
 			m_BufferPixels = (GLbyte*)malloc(width * height * 4);
@@ -141,13 +152,13 @@ namespace E3DEngine
 			return m_BufferType;
 		}
 
-		void FrameBufferObject::createTarget(RenderTargeType targetType)
+		void FrameBufferObject::createTarget(DWORD targetType)
 		{
 			if (targetType == RENDER_BUFFER)
 			{
 				m_renderTarget = new RenderBuffer;
 			}
-			else if (targetType == RENDER_TO_TEXTURE)
+			else if (targetType == RENDER_TO_TEXTURE || targetType == RENDER_DEPTH)
 			{
 				m_renderTarget = new RenderTexture;
 			}

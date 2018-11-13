@@ -167,8 +167,8 @@ void main(void)
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
 	vec4 freColor1 = FresnelShading(normalVec) * 0.5;
 	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
-	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;
-	
+	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
+	vec4 c = texture2D(_e3d_lightDepthTex, v_Coord);
 	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor).rgb, 0.6);
 }
 

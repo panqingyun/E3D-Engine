@@ -271,7 +271,16 @@ namespace E3DEngine
 	using TransformChangeFunc = void(*)(int ID);
 	enum GameObjectFlags
 	{
-		DONT_SAVE = 1,
+		DONT_SAVE = 1 << 0,
+		HIDE_IN_PROPERTY = 1 << 1,
+	};
+
+	enum LayerDefine
+	{
+		LD_COORD		= 1 << 31,
+		LD_LOOK_COORD	= 1 << 30,
+		LD_OBJECT_COORD = 1 << 29,
+		LD_SKYBOX		= 1 << 28,
 	};
 
 	template<typename  T> std::string GetClassName()

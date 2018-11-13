@@ -1,4 +1,5 @@
 #include "E3DFrameBufferObject.h"
+#include "..\..\..\src\RenderSystem\Texture\E3DTextureDataManager.hpp"
 
 namespace E3DEngine
 {
@@ -19,7 +20,7 @@ namespace E3DEngine
 			SAFE_DELETE(m_BufferPixels);
 		}
 
-		void FrameBufferObject::Create(int width, int height, RenderTargeType targetType)
+		void FrameBufferObject::Create(int width, int height, DWORD targetType)
 		{
 			m_FrameWidth = width;
 			m_FrameHeight = height;
@@ -45,21 +46,22 @@ namespace E3DEngine
 				ES2::GenTextures(1, &dt->m_TextureBuffer);
 				ES2::BindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
 
-				ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-				ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
 				if (targetType == RENDER_TO_TEXTURE)
 				{
 					ES2::TexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 					ES2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
 				}
 				else if (targetType == RENDER_DEPTH)
 				{
-					ES2::TexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_ATTACHMENT, width, height, 0, GL_DEPTH_ATTACHMENT, GL_UNSIGNED_BYTE, nullptr);
+					ES2::TexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
 					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 					ES2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
 				}
 				
@@ -142,13 +144,13 @@ namespace E3DEngine
 			return m_BufferType;
 		}
 
-		void FrameBufferObject::createTarget(RenderTargeType targetType)
+		void FrameBufferObject::createTarget(DWORD targetType)
 		{
 			if (targetType == RENDER_BUFFER)
 			{
 				m_renderTarget = new RenderBuffer;
 			}
-			else if (targetType == RENDER_TO_TEXTURE)
+			else if (targetType == RENDER_TO_TEXTURE || targetType == RENDER_DEPTH)
 			{
 				m_renderTarget = new RenderTexture;
 			}

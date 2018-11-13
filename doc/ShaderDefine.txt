@@ -6,6 +6,9 @@ vec3 _e3d_CameraPos	// 摄像机位置
 
 vec4 _e3d_WorldSpaceLightColor		// 平行光的颜色
 vec3 _e3d_WorldSpaceLightDirection	// 平行光的方向
+sampler2D _e3d_lightDepthTex		// 平行光阴影深度图
+mat4 _e3d_lightMatProj				// 平行光光源的投影矩阵
+mat4 _e3d_lightViewMat				// 平行光的视图矩阵
 
 int _e3d_PointLightCount						// 点光源的数目
 vec3 _e3d_PointLightPos[_e3d_PointLightCount]	// 点光源的位置数组

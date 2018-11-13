@@ -49,7 +49,7 @@ varying vec4 v_Pos;
 					   
 void main(void) 
 {
-	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos);	
+	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, 0.06);	
 	
 	gl_FragColor = DestinationColor * vec4(color.rgb, 1.0);
 }

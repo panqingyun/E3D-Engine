@@ -23,7 +23,7 @@ namespace E3DEngine
 		rootObject = new GameObject;
 		rootObject->SetActive(true);
 		usedDirectionLight = nullptr;
-
+		m_pSceneMainCamera = nullptr;
 		m_vecObjList[rootObject->ID] = rootObject;
 		CreateBehaviour();
 
@@ -82,6 +82,7 @@ namespace E3DEngine
 		m_vecObjList.clear();
 		m_mapLights.clear();
 		m_vecCamera.clear();
+
 		TableRegister::Destory();
 #ifdef __E3D_EDITOR__
 		const std::vector<Camera*> &cameras = GetEditorCameras();
@@ -140,7 +141,6 @@ namespace E3DEngine
 		{
 			camera->GetRenderQueue()->ChangeRenderQueue(id, index);
 		}
-
 #if __E3D_EDITOR__
 		const std::vector<Camera*> &cameras = GetEditorCameras();
 		for (auto &camera : cameras)
@@ -162,6 +162,10 @@ namespace E3DEngine
 		}
 		if (isCanInsert)
 		{
+			if (m_pSceneMainCamera == nullptr && pCamera->GetRenderTexture() == nullptr)
+			{
+				m_pSceneMainCamera = pCamera;
+			}
 			m_vecCamera.emplace_back(pCamera);
 			ChangeCameraObject(pCamera);
 		}
@@ -245,11 +249,16 @@ namespace E3DEngine
 
 	Camera * Scene::GetMainCamera()
 	{
-		if (m_vecCamera.size() != 0)
+		if (EngineDelegate::GetInstance().GetIsRun())
 		{
-			return m_vecCamera[m_vecCamera.size() - 1];
+			return m_pSceneMainCamera;
 		}
-		return nullptr;
+		else
+		{
+#ifdef __E3D_EDITOR__
+			return GetEditorMainCamera();
+#endif
+		}
 	}
 
 	void Scene::ChangeViewportSize(float w, float h)

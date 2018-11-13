@@ -18,6 +18,11 @@ extern "C"
 	float speed = 0.5f;
 	std::vector<Camera *> editorCameras;
 	Camera *mainEditorCamera = nullptr;
+	
+	Camera *GetEditorMainCamera()
+	{
+		return mainEditorCamera;
+	}
 
 	void editorMouseButtonDown(MouseButtonInfo* mouseInfo)
 	{

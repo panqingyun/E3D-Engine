@@ -16,6 +16,7 @@ varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
 varying float time;
+varying vec4 v_InLightPos;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
@@ -33,6 +34,11 @@ mat3 amplitudes = mat3(
  const vec3 omegas = vec3(3.27,3.31,3.42);
  const vec3 waveNums = vec3(1.091,1.118,1.1935);
 
+const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
+                       0.0 , 0.5 , 0.0 , 0.0 ,
+                       0.0 , 0.0 , 0.5 , 0.0 ,
+                       0.5 , 0.5 , 0.5 , 1.0 ) ;
+					   
 mat4 getRotateMatrix()
 {
 	mat4 rotate;
@@ -55,6 +61,8 @@ void main(void)
 #ifdef USING_DIRECTIONAL_LIGHT
 	lightDir = _e3d_WorldSpaceLightDirection;
 	lightColor = _e3d_WorldSpaceLightColor;
+	v_InLightPos = _e3d_lightMatProj * _e3d_lightViewMat * vPos;
+	v_InLightPos = biasMatrix* (v_InLightPos / v_InLightPos.w );
 #else
 	lightDir = vec3(0.0,0.0,0.0);
 #endif
@@ -80,7 +88,7 @@ varying vec4 vertColor;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
-
+varying vec4 v_InLightPos;
 
 varying vec4 vPos;
 varying vec3 vNrm;
@@ -148,6 +156,21 @@ vec4 FresnelShading(vec3 normal)
 	return cout;
 }
 
+vec4 getShadowColor(vec4 pos, float bias)
+{
+	vec4 shadowColor = vec4(1.0, 1.0 ,1.0 ,1.0);
+#ifndef __GLES__
+	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
+	float texSize = 4096.0;
+	
+	if(pos.z - bias > depth) // 
+	{
+		shadowColor.rgb = shadowColor.rgb * 0.5;
+	}	
+#endif
+	return shadowColor;
+}
+
 void main(void) 
 { 
 	float yV = mod(v_Coord.y * 10.0 + time * 0.03, 10.0);
@@ -168,8 +191,8 @@ void main(void)
 	vec4 freColor1 = FresnelShading(normalVec) * 0.5;
 	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
-	vec4 c = texture2D(_e3d_lightDepthTex, v_Coord);
-	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor).rgb, 0.6);
+	vec4 sC = getShadowColor(v_InLightPos, 0.0);
+	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor).rgb, 0.6) * sC;
 }
 
 #Framgent_End

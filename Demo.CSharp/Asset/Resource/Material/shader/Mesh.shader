@@ -96,7 +96,7 @@ void main(void)
 	// vec4 fc = fs + f_c ;
 	
 	
-	vec4 shadowColor = getShadowColor(v_Pos);
+	vec4 shadowColor = getShadowColor(v_Pos, 0.0);
 	
 	gl_FragColor = mixFogColor(f_c * DestinationColor,vec4(1.0,1.0,1.0,1.0)) * shadowColor;
 }

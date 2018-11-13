@@ -8,6 +8,7 @@
 #include "../Camera/E3DCamera.h"
 #include "../Source/EngineDelegate.h"
 #include "../Source/E3DVertexManager.h"
+#include "../Scene/E3DSceneManager.hpp"
 
 void E3DEngine::SkyBox::Create(float l, float w, float h)
 {
@@ -41,7 +42,7 @@ void E3DEngine::SkyBox::PrepareUpdate(float deltaTime)
 	{
 		return;
 	}
-	Transform->SetPosition(m_pRenderer->pCamera->Transform->Position);
+	Transform->SetPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
 }
 
 void E3DEngine::SkyBox::setTextureCoord()

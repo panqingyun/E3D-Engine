@@ -175,17 +175,17 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	//SetPixelFormat(pDC, pixelFormat, NULL);
 
 
-	//glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	//glEnable(GL_POINT_SMOOTH);
-	//glEnable(GL_LINE_SMOOTH);
-	//glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
-	//glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
-	//glEnable(GL_MULTISAMPLE);
-	////glEnable(GL_POLYGON_SMOOTH);     //¶à±ßÐÎ¿¹¾â³Ý  
-	//glHint(GL_POLYGON_SMOOTH, GL_NICEST);
-	//glClearDepthf(1);
-	//glClear(GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_POINT_SMOOTH);
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
+	glEnable(GL_MULTISAMPLE);
+	//glEnable(GL_POLYGON_SMOOTH);     //¶à±ßÐÎ¿¹¾â³Ý  
+	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
+	glClearDepthf(1);
+	glClear(GL_DEPTH_BUFFER_BIT);
 	return TRUE;
 }

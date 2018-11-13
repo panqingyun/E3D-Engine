@@ -10,6 +10,7 @@
 extern "C"
 {
 	const std::vector<E3DEngine::Camera *> &GetEditorCameras();
+	E3DEngine::Camera *GetEditorMainCamera();
 	E3D_EXPORT_DLL void SetEditorCamera(E3DEngine::Camera *eCamera, bool isMainCamera);
 }
 #endif

@@ -38,21 +38,21 @@ vec4 dip_filter(mat3 _filter, vec2 _xy, sampler2D myTexture, float TexSize)
 }
 
 
-vec4 getShadowColor(vec4 pos)
+vec4 getShadowColor(vec4 pos, float bias)
 {
 	vec4 shadowColor = vec4(1.0, 1.0 ,1.0 ,1.0);
-	//float depth = texture(_e3d_lightDepthTex, pos.xy).r;
-	float bias = 0.0;
-	float texSize = 4096.0;
+#ifndef __GLES__
+ 	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
+	//float texSize = 4096.0;
 	
-	vec2 intXY = vec2(pos.x * texSize, pos.y * texSize);
-	mat3 _smooth_fil = mat3(1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0);
-	vec4 tmp = dip_filter(_smooth_fil, intXY , _e3d_lightDepthTex, texSize);
+	//vec2 intXY = vec2(pos.x * texSize, pos.y * texSize);
+	//mat3 _smooth_fil = mat3(1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0);
+	//vec4 tmp = dip_filter(_smooth_fil, intXY , _e3d_lightDepthTex, texSize);
 	
-	if(pos.z - bias > tmp.r) // 
+	if(pos.z - bias > depth) // 
 	{
-		shadowColor = shadowColor * 0.5;
+		shadowColor.rgb = shadowColor.rgb * 0.5;
 	}	
-	
+#endif
 	return shadowColor;
 }

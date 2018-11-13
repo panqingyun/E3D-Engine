@@ -72,6 +72,7 @@ namespace E3DEngine
 		DirectionLight *				usedDirectionLight;
 		UINT							m_nObjectID;
 		std::string						m_scenePath;
+		Camera			*				m_pSceneMainCamera;
 	};
 }
 

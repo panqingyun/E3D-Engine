@@ -22,7 +22,7 @@ namespace E3DEngine
 #define  LIGHT_DIR "_e3d_WorldSpaceLightDirection"
 #define  LIGHT_DEPTH_TEX "_e3d_lightDepthTex"
 #define  LIGHT_PROJ_MAT "_e3d_lightMatProj"
-#define  LIGHT_VIEW_MAT "_e3d_lightViewMat"
+#define  LIGHT_VIEW_MAT "_e3d_lightMatView"
 #define  POINT_LIGHT_POS "_e3d_PointLightPos"
 #define	 POINT_LIGHT_COLOR "_e3d_PointLightColor"
 #define	 POINT_LIGHT_RANGE "_e3d_PointLightRange"

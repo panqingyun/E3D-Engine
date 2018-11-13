@@ -31,7 +31,7 @@ void main(void)
 	initFogNeedVar(position);
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
 	
-	v_Pos = _e3d_lightMatProj * _e3d_lightViewMat * _pos;
+	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
 	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
 	
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
@@ -95,10 +95,10 @@ void main(void)
 	// vec4 fs = ((f_c * _SpecColor.w) + (_SpecColor * spec)) * 2.0;
 	// vec4 fc = fs + f_c ;
 	
+	float shadowColor = getShadowColor(v_Pos, 0.0);
 	
-	vec4 shadowColor = getShadowColor(v_Pos, 0.0);
-	
-	gl_FragColor = mixFogColor(f_c * DestinationColor,vec4(1.0,1.0,1.0,1.0)) * shadowColor;
+	vec4 finalColor = mixFogColor(f_c,vec4(1.0,1.0,1.0,1.0)) * shadowColor;
+	gl_FragColor = vec4(finalColor.rgb, 1.0) * DestinationColor;
 }
 
 #Framgent_End

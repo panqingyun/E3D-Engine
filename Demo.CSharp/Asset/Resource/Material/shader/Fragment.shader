@@ -15,44 +15,40 @@ vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
     return mColor;
 }
 
-// 模糊
-vec4 dip_filter(mat3 _filter, vec2 _xy, sampler2D myTexture, float TexSize)
+float getShadowColor(vec4 pos, float bias)
 {
-	mat3 _filter_pos_delta_x=mat3(vec3(-1.0, 0.0, 1.0), vec3(0.0, 0.0 ,1.0) ,vec3(1.0,0.0,1.0));
-    mat3 _filter_pos_delta_y=mat3(vec3(-1.0,-1.0,-1.0),vec3(-1.0,0.0,0.0),vec3(-1.0,1.0,1.0));
-	vec4 final_color = vec4(0.0, 0.0, 0.0, 0.0);
-	for(int i = 0; i< 3; i++)
-	{
-		vec3 _ixy_new_x = _filter_pos_delta_x[i];
-		vec3 _ixy_new_y = _filter_pos_delta_y[i];
-		vec3 _ifilter = _filter[i];
-			
-		for(int j = 0; j< 3; j++)
-		{
-			vec2 _xy_new = vec2(_xy.x + _ixy_new_x[j], _xy.y + _ixy_new_y[j]);
-			vec2 _uv_new = vec2(_xy_new.x / TexSize, _xy_new.y / TexSize);
-			final_color = final_color + texture2D(myTexture, _uv_new) * _ifilter[j];
-		}
-	}
-	return final_color;
-}
-
-
-vec4 getShadowColor(vec4 pos, float bias)
-{
-	vec4 shadowColor = vec4(1.0, 1.0 ,1.0 ,1.0);
+	float shadowColor = 1.0;
 #ifndef __GLES__
+	float textSize = 1.0/4096.0;
  	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
-	//float texSize = 4096.0;
-	
-	//vec2 intXY = vec2(pos.x * texSize, pos.y * texSize);
-	//mat3 _smooth_fil = mat3(1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0);
-	//vec4 tmp = dip_filter(_smooth_fil, intXY , _e3d_lightDepthTex, texSize);
 	
 	if(pos.z - bias > depth) // 
 	{
-		shadowColor.rgb = shadowColor.rgb * 0.5;
+		shadowColor = 0.5;
 	}	
+	else
+	{
+		vec4 coord1 = vec4(clamp(pos.xy - textSize, 0.0, 1.0),pos.z, pos.w );		
+		vec4 coord2 = vec4(clamp(pos.xy + textSize, 0.0, 1.0),pos.z, pos.w );
+		vec4 coord3 = vec4(clamp(pos.x -  textSize, 0.0, 1.0), clamp(pos.y + textSize, 0.0, 1.0) ,pos.z, pos.w );
+		vec4 coord4 = vec4(clamp(pos.x +  textSize, 0.0, 1.0), clamp(pos.y - textSize, 0.0, 1.0) ,pos.z, pos.w );
+		
+		float depth1 =  texture2D(_e3d_lightDepthTex,coord1.xy).r;
+		float depth2 =  texture2D(_e3d_lightDepthTex,coord2.xy).r;
+		float depth3 =  texture2D(_e3d_lightDepthTex,coord3.xy).r;
+		float depth4 =  texture2D(_e3d_lightDepthTex,coord4.xy).r;
+		
+		depth1 = coord1.z - bias > depth1 ?  0.5 : 1.0; 
+		depth2 = coord2.z - bias > depth2 ?  0.5 : 1.0; 
+		depth3 = coord3.z - bias > depth3 ?  0.5 : 1.0; 
+		depth4 = coord4.z - bias > depth4 ?  0.5 : 1.0; 
+		
+		float mulColor = depth1* depth2 * depth3 * depth4;
+		if (mulColor < 1.0)
+		{
+			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.9;
+		}
+	}
 #endif
 	return shadowColor;
 }

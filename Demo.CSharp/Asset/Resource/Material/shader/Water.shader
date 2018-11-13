@@ -61,7 +61,7 @@ void main(void)
 #ifdef USING_DIRECTIONAL_LIGHT
 	lightDir = _e3d_WorldSpaceLightDirection;
 	lightColor = _e3d_WorldSpaceLightColor;
-	v_InLightPos = _e3d_lightMatProj * _e3d_lightViewMat * vPos;
+	v_InLightPos = _e3d_lightMatProj * _e3d_lightMatView * vPos;
 	v_InLightPos = biasMatrix* (v_InLightPos / v_InLightPos.w );
 #else
 	lightDir = vec3(0.0,0.0,0.0);

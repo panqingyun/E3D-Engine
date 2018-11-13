@@ -116,7 +116,7 @@ vec4 lerp(vec4 a, vec4 b, float s)
 
 vec4 getLightColor(vec3 position, vec3 normal)
 {
-	//--- 光照 Phong 模型
+	//--- 光照 Blinn Phong 模型
 	vec3 N = normalize(normal);
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition - position);

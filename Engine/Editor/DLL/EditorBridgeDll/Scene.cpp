@@ -228,25 +228,25 @@ namespace E3DEngine
 		terrain->Transform->SetScale(20, 1, 20);
 		terrain->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(terrain);
-		//createCoord();
+		createCoord();
 	}
 
 	mat4f trans = mat4f::createTranslation(0, 0, 100);
 
 	void SceneManageRef::Update(float deltaTime)
 	{
-		/*mat4f rot = mEditorCamera->Transform->Rotation.transform();
+		mat4f rot = mEditorCamera->Transform->Rotation.transform();
 		mat4f world = rot * trans;
 
 		mCoordCamera->Transform->WorldMatrix = world;
-		mCoordCamera->SetViewMatrix(world.inverse());*/
+		mCoordCamera->SetViewMatrix(world.inverse());
 	}
 
 	void SceneManageRef::OnFrameSizeChange()
 	{
-		/*vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
+		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
 
-		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);*/
+		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
 
 	E3DEngine::Camera * SceneManageRef::GetEditorMainCamera()
@@ -265,13 +265,13 @@ namespace E3DEngine
 		{
 			mCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mCoordCamera, false);
-			mCoordCamera->SetLayerMask(1 << LD_COORD);
+			mCoordCamera->SetLayerMask(LD_COORD);
 			mCoordCamera->Transform->SetPosition(0, 0, 100);
 			mCoordCamera->Flag |= DONT_SAVE;
 
 			mLookCoordCamera = Camera::CreateCamera();
 			SetEditorCamera(mLookCoordCamera, false);
-			mLookCoordCamera->SetLayerMask((1 << LD_LOOK_COORD) | (1 << LD_OBJECT_COORD));
+			mLookCoordCamera->SetLayerMask(LD_LOOK_COORD | LD_OBJECT_COORD);
 			mLookCoordCamera->Transform->SetPosition(0, 0, 150);
 			mLookCoordCamera->Flag |= DONT_SAVE;
 			mLookCoordCamera->SetClearType(eCT_NotClear);
@@ -279,7 +279,7 @@ namespace E3DEngine
 
 		mCoordRt = new Rectangle;
 		mCoordRt->CreateShape(30, 30);
-		mCoordRt->SetLayerMask(1 << LD_LOOK_COORD);
+		mCoordRt->SetLayerMask(LD_LOOK_COORD);
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
 		Render2Texture *rtt = m->GetRenderTexture();
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, 4);

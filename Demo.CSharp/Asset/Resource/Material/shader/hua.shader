@@ -11,6 +11,8 @@
 #include "Standard.shader"
 varying vec2 v_coord;
 varying vec4 DestinationColor;
+varying vec3 normal;
+varying vec3 lightDir;
 
 varying vec4 v_Pos;
 
@@ -31,6 +33,8 @@ void main(void)
 	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
 	v_Pos = (v_Pos / v_Pos.w + 1.0) * 0.5;
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	normal = _normal;
+	lightDir = _e3d_WorldSpaceLightDirection;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
 
@@ -46,10 +50,13 @@ varying vec2 v_coord;
 uniform sampler2D myTexture0;
 varying vec4 DestinationColor;
 varying vec4 v_Pos;
+varying vec3 normal;
+varying vec3 lightDir;
 					   
 void main(void) 
 {
-	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, 0.0005);	
+	float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.0005);
+	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, bias);	
 	
 	gl_FragColor = DestinationColor * vec4(color.rgb, 1.0);
 }

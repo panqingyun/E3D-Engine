@@ -19,7 +19,7 @@ float getShadowColor(vec4 pos, float bias)
 {
 	float shadowColor = 1.0;
 #ifndef __GLES__
-	float textSize = 1.0/4096.0;
+	vec2 textSize = 1.0/ textureSize(_e3d_lightDepthTex, 0);
  	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
 	
 	if(pos.z - bias > depth) // 
@@ -30,8 +30,8 @@ float getShadowColor(vec4 pos, float bias)
 	{
 		vec4 coord1 = vec4(clamp(pos.xy - textSize, 0.0, 1.0),pos.z, pos.w );		
 		vec4 coord2 = vec4(clamp(pos.xy + textSize, 0.0, 1.0),pos.z, pos.w );
-		vec4 coord3 = vec4(clamp(pos.x -  textSize, 0.0, 1.0), clamp(pos.y + textSize, 0.0, 1.0) ,pos.z, pos.w );
-		vec4 coord4 = vec4(clamp(pos.x +  textSize, 0.0, 1.0), clamp(pos.y - textSize, 0.0, 1.0) ,pos.z, pos.w );
+		vec4 coord3 = vec4(clamp(pos.x -  textSize.x, 0.0, 1.0), clamp(pos.y + textSize.y, 0.0, 1.0) ,pos.z, pos.w );
+		vec4 coord4 = vec4(clamp(pos.x +  textSize.x, 0.0, 1.0), clamp(pos.y - textSize.y, 0.0, 1.0) ,pos.z, pos.w );
 		
 		float depth1 =  texture2D(_e3d_lightDepthTex,coord1.xy).r;
 		float depth2 =  texture2D(_e3d_lightDepthTex,coord2.xy).r;

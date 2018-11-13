@@ -126,4 +126,8 @@
         <Material FilePath="Resource/Material/shu.material" SelectID="6" />
         <Transform Posistion="110.000000,30.000000,190.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
     </GameObject>
+    <GameObject ID="21" Name="zhuzi" Type="5" LayerMask="0" Active="true" RenderIndex="2" FilePath="Resource/Mesh/Model/xt_zhuzi02.fbx" Color="FFFFFFFF">
+        <Material FilePath="Resource/Material/shu.material" SelectID="5" />
+        <Transform Posistion="165.000000,30.000000,170.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
+    </GameObject>
 </Scene>

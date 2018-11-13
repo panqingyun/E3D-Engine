@@ -55,7 +55,7 @@ varying vec3 lightDir;
 					   
 void main(void) 
 {
-	float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.0005);
+	float bias = max(0.005 * (1.0 - dot(normal, lightDir)), 0.0005);
 	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, bias);	
 	
 	gl_FragColor = DestinationColor * vec4(color.rgb, 1.0);

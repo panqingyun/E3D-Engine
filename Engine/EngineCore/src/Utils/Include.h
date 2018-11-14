@@ -18,8 +18,9 @@
 
 #ifndef __IGNORED_INCLUDE__
 #include <btBulletDynamicsCommon.h>
+#include <ft2build.h>
+#include FT_FREETYPE_H 
 #endif
-
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/threads.h>

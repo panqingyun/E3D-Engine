@@ -60,6 +60,7 @@ namespace E3DEngine
 		static void KeyDown(char key);
 		static void KeyUp(char key);
 		static double GetTimeSinceStart();
+		static float GetFPS();
 
 	public:
 		static std::string AppDataPath;
@@ -76,5 +77,6 @@ namespace E3DEngine
 		static MouseButtonInfo * m_pMouseInfo;
 		static MonoString* getAppDataPath();
 		static MonoString* getResourcePath();
+		static float m_fDeltaTime;
 	};
 }

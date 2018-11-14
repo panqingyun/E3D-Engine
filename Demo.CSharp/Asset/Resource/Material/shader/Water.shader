@@ -108,6 +108,10 @@ const float _ReflScale = 3.598;
 const float fresnelScale = 0.1;
 const float fresnelPower = 5.0;
 
+float near_clip = 1.0;
+float ampify = 5.0;
+float ks = 1.0;
+
 vec4 lerp(vec4 a, vec4 b, float s)
 {
 	return vec4(a+(b-a)*s);
@@ -153,6 +157,7 @@ vec4 FresnelShading(vec3 normal)
 	// 颜色合成
 	vec4 cout = lerp(refracColor, reflecColor, fresnel);
 	cout.a = fresnel*0.5+0.5;
+	
 	return cout;
 }
 
@@ -217,7 +222,7 @@ void main(void)
 	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
 	float sC = getShadowColor(v_InLightPos, 0.0);
-	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor * sC).rgb, 0.6);
+	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor * sC).rgb, 0.6) ;
 }
 
 #Framgent_End

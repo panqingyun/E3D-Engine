@@ -115,6 +115,19 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        private float fps = 0;
+        public float GameFPS
+        {
+            get
+            {
+                return RenderDelegate.GetFPS();
+            }
+            set
+            {
+                OnPropertyChanged("GameFPS");
+            }
+        }
+
         private string stateLable = "";
         public string State
         {
@@ -887,11 +900,19 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        private int i = 0;
         private void engineUpdate(object sender, EventArgs e)
         {
             if (EngineLoaded)
             {
                 RenderDelegate.LogicUpdate();
+                if(i < 30)
+                {
+                    i++;
+                    return;
+                }
+                i = 0;
+                GameFPS = 0;
                 //RenderDelegate.RenderUpdate();
             }
         }

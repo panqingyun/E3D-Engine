@@ -5,7 +5,7 @@ varying vec3 mCameraPos;
 vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
 {
 	float dist = abs(distance(mCameraPos, vPosition));
-	float maxDist = 300.0;
+	float maxDist = 800.0;
 	float minDist = 1.0;
     float fogFactor = (maxDist - dist) / (maxDist - minDist);  
     fogFactor = clamp( fogFactor, 0.0, 1.0 );  
@@ -14,6 +14,12 @@ vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
   
     return mColor;
 }
+
+// vec4 GammaCorrection(vec4 fragColor)
+// {
+	// float gamma = 2.2;
+	// return pow(fragColor.rgb, vec3(1.0 / gamma));
+// }
 
 float getShadowColor(vec4 pos, float bias)
 {
@@ -24,10 +30,6 @@ float getShadowColor(vec4 pos, float bias)
  	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
 	
 	if(pos.z - bias > depth) // 
-	{
-		shadowColor = 0.5;
-	}	
-	else
 	{
 		vec4 coord1 = vec4(clamp(pos.xy - textSize, 0.0, 1.0),pos.z, pos.w );		
 		vec4 coord2 = vec4(clamp(pos.xy + textSize, 0.0, 1.0),pos.z, pos.w );
@@ -47,9 +49,13 @@ float getShadowColor(vec4 pos, float bias)
 		float mulColor = depth1* depth2 * depth3 * depth4;
 		if (mulColor < 1.0)
 		{
-			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.9;
+			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.8;
 		}
-	}
+		else
+		{
+			shadowColor = 0.5;			
+		}
+	}	
 #endif
 #endif
 	return shadowColor;

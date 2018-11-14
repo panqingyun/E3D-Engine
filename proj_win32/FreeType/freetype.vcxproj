@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F01584A0-4D6A-3581-B4F1-B305E0B7893B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>freetype</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freetype.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freetyped_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freetype.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\FreeType\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freetype.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\FreeType\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freetype.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freetype</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\..\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FT2_BUILD_LIBRARY;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>E:\E3D\trunk\proj_win32\FreeType\include;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1 -BE:/E3D/trunk/proj_win32/FreeType --check-stamp-file E:/E3D/trunk/proj_win32/FreeType/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.12\Templates\CPackConfig.cmake.in;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeRCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeSystem.cmake;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1 -BE:/E3D/trunk/proj_win32/FreeType --check-stamp-file E:/E3D/trunk/proj_win32/FreeType/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.12\Templates\CPackConfig.cmake.in;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeRCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeSystem.cmake;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1 -BE:/E3D/trunk/proj_win32/FreeType --check-stamp-file E:/E3D/trunk/proj_win32/FreeType/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.12\Templates\CPackConfig.cmake.in;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeRCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeSystem.cmake;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HE:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1 -BE:/E3D/trunk/proj_win32/FreeType --check-stamp-file E:/E3D/trunk/proj_win32/FreeType/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:/E3D/trunk/Engine/EngineCore/3rd/freetype-2.9.1/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.12\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.12\Templates\CPackConfig.cmake.in;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\builds\cmake\FindHarfBuzz.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeRCCompiler.cmake;E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\3.12.0-rc1\CMakeSystem.cmake;E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">E:\E3D\trunk\proj_win32\FreeType\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\freetype.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftadvanc.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftbbox.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftbdf.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftbitmap.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftbzip2.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftcache.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftchapters.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftcid.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftdriver.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\fterrdef.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\fterrors.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftfntfmt.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftgasp.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftglyph.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftgxval.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftgzip.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftimage.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftincrem.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftlcdfil.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftlist.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftlzw.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftmac.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftmm.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftmodapi.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftmoderr.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftotval.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftoutln.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftparams.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftpfr.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftrender.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftsizes.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftsnames.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftstroke.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftsynth.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftsystem.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\fttrigon.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\fttypes.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ftwinfnt.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\t1tables.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\ttnameid.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\tttables.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\tttags.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\ft2build.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\config\ftconfig.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\config\ftheader.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\config\ftmodule.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\config\ftoption.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\config\ftstdlib.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\autohint.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\cffotypes.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\cfftypes.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftcalc.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftdebug.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftdrv.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\fthash.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftmemory.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftobjs.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftpic.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftrfork.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftserv.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftstream.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\fttrace.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\ftvalid.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\internal.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\psaux.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\pshints.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\sfnt.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\t1types.h" />
+    <ClInclude Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\include\freetype\internal\tttypes.h" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\autofit\autofit.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftbase.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftbbox.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftbdf.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftbitmap.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftcid.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftfstype.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftgasp.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftglyph.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftgxval.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftinit.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftmm.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftotval.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftpatent.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftpfr.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftstroke.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftsynth.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftsystem.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\fttype1.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftwinfnt.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\bdf\bdf.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\bzip2\ftbzip2.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\cache\ftcache.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\cff\cff.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\cid\type1cid.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\gzip\ftgzip.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\lzw\ftlzw.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\pcf\pcf.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\pfr\pfr.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\psaux\psaux.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\pshinter\pshinter.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\psnames\psnames.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\raster\raster.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\sfnt\sfnt.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\smooth\smooth.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\truetype\truetype.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\type1\type1.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\type42\type42.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\winfonts\winfnt.c" />
+    <ClCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\builds\windows\ftdebug.c" />
+    <ResourceCompile Include="E:\E3D\trunk\Engine\EngineCore\3rd\freetype-2.9.1\src\base\ftver.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:\E3D\trunk\proj_win32\FreeType\ZERO_CHECK.vcxproj">
+      <Project>{18675AF4-AB9A-3D67-8EF6-9A9E5DCC60A2}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

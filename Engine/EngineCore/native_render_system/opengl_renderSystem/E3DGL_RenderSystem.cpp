@@ -72,6 +72,7 @@ namespace E3DEngine
 		m_pGL_Context->OpenGLInit(displayID);
 		m_pGL_Context->UseContext();
 		glCullFace(GL_BACK);
+		//glEnable(GL_FRAMEBUFFER_SRGB);
 	}
 
 	GL_RenderSystem::GL_RenderSystem()

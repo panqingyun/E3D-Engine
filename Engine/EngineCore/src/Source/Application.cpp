@@ -178,6 +178,7 @@ namespace E3DEngine
 	MonoBehaviour * Application::m_pBehaviour = nullptr;
 	MouseButtonInfo * Application::m_pMouseInfo = nullptr;
 	double Application::m_nRunTimeLong = 0;
+	float Application::m_fDeltaTime = 0;
 
 	void Application::CreatScript()
 	{
@@ -259,6 +260,7 @@ namespace E3DEngine
 	void Application::UpdateApp(float deltaTime)
 	{
 		m_nRunTimeLong += deltaTime;
+		m_fDeltaTime = deltaTime;
 		if (m_bIsStop)
 		{
 			return;
@@ -415,6 +417,12 @@ namespace E3DEngine
 	double Application::GetTimeSinceStart()
 	{
 		return m_nRunTimeLong;
+	}
+
+
+	float Application::GetFPS()
+	{
+		return 1.0 / m_fDeltaTime;
 	}
 
 	MouseButtonInfo::MouseButtonInfo(UINT mBtn, int posX, int posY)

@@ -66,6 +66,7 @@
 		<GridSplitter x:Name="gridSplitter" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="2" Background="#FFABADB3"/>
 		<TabControl x:Name="renderPanel" Margin="0,7,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"
 					Background="Transparent" BorderThickness="2" BorderBrush="#FF009FFF"></TabControl>
+		
 		<!--<Border BorderBrush="White" BorderThickness="1" x:Name="EditorPanel" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent">
 			<local:RenderPanel IsEditor="True" x:Name="renderPanel"/>
 		</Border>-->
@@ -156,6 +157,8 @@
 				</MenuItem>
 			</Menu>
 			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" Grid.RowSpan="2" Grid.ColumnSpan="8" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="15" 
+			   Foreground="Yellow" Grid.Row="1" Grid.Column="5" Content="{Binding Path=GameFPS}" Panel.ZIndex="20"/>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
 			<Grid.ColumnDefinitions>

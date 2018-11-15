@@ -288,7 +288,6 @@ namespace E3DEngine
 	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());\
 	mBehaviour->Create(NAME_SPACE, #name);\
 	setBehaviourDefaultValue();\
-	Object::setBehaviourDefaultValue();
 
 
 	class Camera;

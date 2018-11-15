@@ -2,10 +2,6 @@
 <Scene>
     <GameObject ID="1" Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,0.000000" Color="FFFFFFFF">
         <Transform Posistion="186.000000,64.000000,260.000000" Rotation="-24.200006,17.200001,0.000000" Scale="1.000000,1.000000,1.000000" />
-        <Component Active="true" ClassName="AppMain">
-            <Field ShowDebug="true" ShowNumber="1000" />
-        </Component>
-        <Component Active="true" ClassName="CameraController" />
     </GameObject>
     <GameObject ID="2" Name="Light" Type="3" LayerMask="AllLayer" Active="true" Color="FFFFFFFF">
         <Transform Posistion="100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
@@ -52,9 +48,6 @@
         </Component>
         <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
-        <Component Active="true" ClassName="Game.BaseApp">
-            <Field Number="100" />
-        </Component>
     </GameObject>
     <GameObject ID="7" Name="Sphere" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
         <Transform Posistion="160.000000,31.000000,172.000000" Rotation="0.000000,188.700089,0.000000" Scale="1.000000,1.000000,1.000000" />
@@ -66,9 +59,6 @@
         </Component>
         <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
-        <Component Active="true" ClassName="SelfRotateSphere">
-            <Field RotateSpeed="100.000000" />
-        </Component>
         <GameObject ID="8" Name="Sphere" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
             <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,102.900063,0.000000" Scale="0.500000,0.500000,0.500000" />
             <Component Active="true" ClassName="E3DEngine.Renderer">
@@ -79,9 +69,6 @@
             </Component>
             <Component Active="true" ClassName="E3DEngine.Sphere" />
             <Component Active="true" ClassName="E3DEngine.SphereCollider" />
-            <Component Active="true" ClassName="SelfRotateSphere">
-                <Field RotateSpeed="50.000000" />
-            </Component>
         </GameObject>
         <GameObject ID="9" Name="particle" Type="2" LayerMask="0" Active="true" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
             <Transform Posistion="0.000000,3.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="0.500000,0.500000,0.500000" />

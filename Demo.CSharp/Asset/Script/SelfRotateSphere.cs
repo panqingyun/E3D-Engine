@@ -11,8 +11,6 @@ class SelfRotateSphere : Component
 
     void Start()
     {
-        //GameObject go = new GameObject();
-        Debug.Log("==============" + RotateSpeed.ToString());
     }
 
     private Vector3 rotate = new Vector3();
@@ -28,7 +26,7 @@ class SelfRotateSphere : Component
 
     void OnCollisionEnter(E3DEngine.Object collisionObject)
     {
-        Debug.LogWarning(collisionObject.Name + " Has Drop");
+       // Debug.LogWarning(collisionObject.Name + " Has Drop");
     }
 }
 
@@ -39,7 +37,7 @@ namespace Game
         public int Number = 0;
         void Start()
         {
-            Debug.LogWarning(" qaq " + Number);
+           // Debug.LogWarning(" qaq " + Number);
         }
     }
     namespace Bpp

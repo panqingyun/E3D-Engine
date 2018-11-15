@@ -246,6 +246,10 @@ void * MonoBehaviour::GetPropertyValue(const char * name)
 
 void MonoBehaviour::CallMethod(const char * name, void ** param , int paramNum /* = 0*/)
 {
+	if (m_pClass == nullptr)
+	{
+		return;
+	}
 	MonoMethod * method = nullptr;
 	if (m_MethodMap.find(name) == m_MethodMap.end())
 	{
@@ -266,6 +270,10 @@ void MonoBehaviour::CallMethod(const char * name, void ** param , int paramNum /
 
 void MonoBehaviour::callMethod(void ** param, MonoMethod *method)
 {
+	if (m_pClass == nullptr || m_pMonoObject == nullptr)
+	{
+		return;
+	}
 	if (param == nullptr)
 	{
 		char * arg = "";

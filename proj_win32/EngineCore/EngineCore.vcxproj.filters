@@ -79,6 +79,9 @@
     <Filter Include="engineCore\src\RenderSystem">
       <UniqueIdentifier>{aa84fbc7-856a-4c21-82f6-9633e5813f65}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engineCore\src\Component">
+      <UniqueIdentifier>{b1720d4c-bf9b-46a7-8f5f-c39f17bf29f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Engine\EngineCore\src\Animation\E3DAnimation.hpp">
@@ -116,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.hpp">
       <Filter>engineCore\src\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DComponent.hpp">
-      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTransform.hpp">
       <Filter>engineCore\src\Object</Filter>
@@ -162,9 +162,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.hpp">
       <Filter>engineCore\src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.hpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DDebug.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
@@ -186,12 +183,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\UI\UISystem.h">
       <Filter>engineCore\src\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DPlane.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.h">
       <Filter>engineCore\src\Camera</Filter>
     </ClInclude>
@@ -200,9 +191,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.h">
       <Filter>engineCore\src\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DBox.h">
-      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DResource.h">
       <Filter>engineCore\src\Source</Filter>
@@ -216,9 +204,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.h">
       <Filter>extern\WindowsSocket</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSphere.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.h">
       <Filter>engineCore\src\Object</Filter>
     </ClInclude>
@@ -227,9 +212,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.h">
       <Filter>engineCore\src\Mono</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.h">
-      <Filter>engineCore\src\Object</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.hpp">
       <Filter>engineCore\src\Mesh</Filter>
@@ -333,12 +315,6 @@
     <ClInclude Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.h">
       <Filter>engineCore\src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DLine.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Engine\EngineCore\src\Object\E3DCoordinate.h">
-      <Filter>engineCore\src\Object</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.h">
       <Filter>engineCore\src\Source</Filter>
     </ClInclude>
@@ -347,6 +323,27 @@
     </ClInclude>
     <ClInclude Include="..\..\Engine\EngineCore\src\Source\E3DThreadTool.h">
       <Filter>engineCore\src\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DBox.h">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DComponent.hpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DCoordinate.h">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DRectangle.hpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DSkyBox.h">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DSphere.h">
+      <Filter>engineCore\src\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Engine\EngineCore\src\Component\E3DTerrain.h">
+      <Filter>engineCore\src\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -383,9 +380,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DBone.cpp">
       <Filter>engineCore\src\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DComponent.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTransform.cpp">
       <Filter>engineCore\src\Object</Filter>
     </ClCompile>
@@ -419,9 +413,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneManager.cpp">
       <Filter>engineCore\src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DRectangle.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DDebug.cpp">
       <Filter>engineCore\src\Source</Filter>
     </ClCompile>
@@ -440,12 +431,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\UI\UISystem.cpp">
       <Filter>engineCore\src\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DTerrain.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DPlane.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Camera\E3DCamera.cpp">
       <Filter>engineCore\src\Camera</Filter>
     </ClCompile>
@@ -454,9 +439,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Physics\E3DPhysics.cpp">
       <Filter>engineCore\src\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DBox.cpp">
-      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DResource.cpp">
       <Filter>engineCore\src\Source</Filter>
@@ -470,9 +452,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\extern\windows_net\E3DNet.cpp">
       <Filter>extern\WindowsSocket</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSphere.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DGameObject.cpp">
       <Filter>engineCore\src\Object</Filter>
     </ClCompile>
@@ -481,9 +460,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mono\MonoScriptManager.cpp">
       <Filter>engineCore\src\Mono</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DSkyBox.cpp">
-      <Filter>engineCore\src\Object</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Mesh\E3DMesh.cpp">
       <Filter>engineCore\src\Mesh</Filter>
@@ -578,12 +554,6 @@
     <ClCompile Include="..\..\Engine\EngineCore\src\Scene\E3DSceneLoader.cpp">
       <Filter>engineCore\src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DLine.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Engine\EngineCore\src\Object\E3DCoordinate.cpp">
-      <Filter>engineCore\src\Object</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DVertexManager.cpp">
       <Filter>engineCore\src\Source</Filter>
     </ClCompile>
@@ -592,6 +562,27 @@
     </ClCompile>
     <ClCompile Include="..\..\Engine\EngineCore\src\Source\E3DThreadTool.cpp">
       <Filter>engineCore\src\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DBox.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DComponent.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DCoordinate.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DRectangle.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DSkyBox.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DSphere.cpp">
+      <Filter>engineCore\src\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Engine\EngineCore\src\Component\E3DTerrain.cpp">
+      <Filter>engineCore\src\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

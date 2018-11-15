@@ -3,7 +3,6 @@
 #ifndef FBXSceneAnimator_hpp
 #define FBXSceneAnimator_hpp
 
-#include "../Object/E3DComponent.hpp"
 #include "../Animation/E3DAnimationClip.hpp"
 #include "../Source/E3DDelegate.h"
 #include "../Mesh/E3DBone.hpp"

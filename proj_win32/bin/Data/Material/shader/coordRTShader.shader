@@ -57,7 +57,7 @@ void main(void)
 	vec2 intXY = vec2(v_coord.x * TexSize, v_coord.y * TexSize);
 	mat3 _smooth_fil = mat3(1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0, 1.0/9.0,1.0/9.0,1.0/9.0);
 	vec4 tmp = dip_filter(_smooth_fil, intXY );
-	gl_FragColor = tmp;//texture2D(myTexture0, v_coord);
+	gl_FragColor = vec4(1.0,1.0,1.0,1.0);// tmp;//texture2D(myTexture0, v_coord);
 }
 
 #Framgent_End

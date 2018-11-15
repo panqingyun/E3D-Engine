@@ -65,12 +65,6 @@ namespace E3DEngine
 		pRender->SetDrawModule(module);
 	}
 
-
-	E3DEngine::Renderer * GL_MeshRender::GetRenderer()
-	{
-		return pRender;
-	}
-
 	E3DEngine::CTransform * GL_MeshRender::GetTransform()
 	{
 		return pRender->GetTransform();

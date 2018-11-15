@@ -31,4 +31,9 @@ namespace E3DEngine
 		保存预设
 	*/
 	E3D_EXPORT_DLL void SavePrefab(Prefab *prefab);
+
+	/*
+		获取当前加载根路径
+	*/
+	E3D_EXPORT_DLL std::string GetCurLoadRootPath();
 }

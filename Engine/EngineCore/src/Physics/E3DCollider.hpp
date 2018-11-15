@@ -12,8 +12,6 @@
 
 namespace E3DEngine
 {
-	void ImplCollider();
-
 #ifndef __IGNORED_INCLUDE__
 	struct E3D_EXPORT_DLL ColCallBack : public btCollisionWorld::ContactResultCallback
 	{

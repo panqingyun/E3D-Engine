@@ -19,7 +19,7 @@ typedef enum
 namespace E3DEngine
 {
 	class TextureFrameEffect;
-	class Renderer;
+	class BatchRenderer;
     class Camera;
     class ParticleAffector;
     class ParticleEmitter;
@@ -149,7 +149,7 @@ namespace E3DEngine
 	public:
         void	AddParticleEmitter(ParticleEmitter * emitter);
         void	AddParticleAffector(ParticleAffector * affector);
-		void	SetRenderer(Renderer* buffer);
+		void	SetRenderer(BatchRenderer* buffer);
         void	SetEmitterEnable(bool isEnable);
 		void	SetPause(bool bPause);
         void			ParseUVConfig(std::string uvStr);

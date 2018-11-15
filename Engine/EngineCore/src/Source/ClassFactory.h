@@ -55,7 +55,7 @@ static void Set##varName(void * cp, object value)\
 	classType* tp = (classType*)cp; \
 	tp->varName = object_cast<varType>(value); \
 }\
-static  varType Get##varName(void * cp) const \
+static object Get##varName(void * cp) \
 {\
 	classType* tp = (classType*)cp; \
 	return tp->varName; \

@@ -62,9 +62,8 @@ namespace E3DEngine
 	}
 
 
-	E3DEngine::Renderer* MeshRender::GetRenderer()
+	E3DEngine::RenderObject * MeshRender::Get()
 	{
-		return nullptr;
+		return pRender;
 	}
-
 }

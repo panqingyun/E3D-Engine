@@ -9,6 +9,7 @@
 #include "../Mono/MonoScriptManager.h"
 #include "../Object/E3DObject.h"
 
+void ImplComponent();
 namespace E3DEngine
 {
 	enum FieldTypeEnum
@@ -18,6 +19,7 @@ namespace E3DEngine
 		FT_STRING	= 2,
 		FT_BOOLEAN	= 3,
 		FT_OBJECT	= 4,
+		FT_COLOR	= 5,
 	};
 
     class GameObject;
@@ -27,7 +29,6 @@ namespace E3DEngine
     {
     public:
 		Component();
-
 		virtual void OnCreate();
 		virtual void OnCreateComplete();
 		virtual void Awake();
@@ -46,7 +47,7 @@ namespace E3DEngine
 		virtual std::string GetFieldValueStr(std::string fieldName);
 		virtual void SetFieldValue(std::string fieldName, std::string fieldValueStr);
 		virtual void SetActive(bool active);
-
+		virtual Object *Get() { return this; }
 	public:
         GameObject *	mGameObject;
 		std::string 	_Tag;

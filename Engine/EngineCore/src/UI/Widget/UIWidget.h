@@ -3,7 +3,6 @@
 
 #include "../../Source/Interface.h"
 #include "../../Source/E3DDelegate.h"
-#include "../../Object/E3DRectangle.hpp"
 
 namespace E3DEngine
 {

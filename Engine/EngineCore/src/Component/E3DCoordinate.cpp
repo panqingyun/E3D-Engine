@@ -2,8 +2,8 @@
 #include "../RenderSystem/RenderObject/E3DRender.hpp"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Scene/E3DSceneManager.hpp"
-#include "E3DTransform.hpp"
-#include "E3DGameObject.h"
+#include "../Object/E3DTransform.hpp"
+#include "../Object/E3DGameObject.h"
 #include "../Camera/E3DCamera.h"
 #include "../Source/E3DDebug.h"
 #include "../Source/E3DVertexManager.h"
@@ -12,8 +12,13 @@ namespace E3DEngine
 {
 	Coordinate::Coordinate()
 	{
-		VertexBufferName = "Coordinate";
-		if (VertexManager::GetVertex(VertexBufferName).empty())
+		CreateBehaviour();		
+	}
+
+	void Coordinate::Awake()
+	{
+		mGameObject->VertexBufferName = "Coordinate";
+		if (VertexManager::GetVertex(mGameObject->VertexBufferName).empty())
 		{
 			std::vector<Vertex> vecVertex;
 			vecVertex.resize(6);
@@ -44,14 +49,8 @@ namespace E3DEngine
 
 			memcpy(vecIndex.data(), index, sizeof(UINT) * 9);
 
-			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+			VertexManager::Add(vecVertex, vecIndex, mGameObject->VertexBufferName);
 		}
-		mSceneObjectType = TP_Line;
-		CreateBehaviour();
 	}
 
-	void Coordinate::TransferRender()
-	{
-		m_pRenderer->SetDrawModule(eDM_LINES);
-	}
 }

@@ -12,6 +12,7 @@
 #include "../Physics/E3DCollider.hpp"
 #include "../Source/E3DVertexManager.h"
 #include "../Mesh/E3DMeshRender.h"
+#include "../Component/E3DComponent.hpp"
 
 namespace E3DEngine
 {
@@ -53,6 +54,12 @@ namespace E3DEngine
 	vvision::vec3f GameObject::GetBounds()
 	{
 		return size;
+	}
+
+
+	void GameObject::SetSize(float l, float h, float w)
+	{
+		size = vec3f(l, h, w);
 	}
 
 	Component * GameObject::AddComponent(std::string type_name)
@@ -316,7 +323,7 @@ namespace E3DEngine
 
 	GameObject::GameObject()
 	{
-		mSceneObjectType = TP_Empty;
+		mSceneObjectType = TP_GameObject;
 		Transform = new CTransform;
 		Transform->gameObject = this;
 		DontDestoryOnLoad = false;
@@ -530,18 +537,11 @@ namespace E3DEngine
 	}
 
 
-	void GameObject::SetRenderer(Renderer * renderer)
+	void GameObject::SetRenderer(BatchRenderer * renderer)
 	{
 		m_pRenderer = renderer;
 		m_pRenderer->SetLayerMask(m_layerMask);
-		if (mSceneObjectType == TP_Mesh)
-		{
-			SceneManager::GetCurrentScene()->AddRenderObject(((MeshRender*)m_pRenderer)->GetRenderer(), m_layerMask);
-		}
-		else
-		{
-			SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
-		}
+		SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer->Get(), m_layerMask);		
 		m_pRenderer->mName = mName;
 		if (IsActive)
 		{
@@ -582,6 +582,7 @@ namespace E3DEngine
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(GameObject);
 		setBehaviourDefaultValue();
+		TRANSFER_FIELD_OBJECT(Transform);
 	}
 
 	void GameObject::Destory(GameObject *go)

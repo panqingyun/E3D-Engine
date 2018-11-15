@@ -6,7 +6,7 @@
 
 namespace E3DEngine
 {
-	class GL_Renderer : public Renderer
+	class GL_Renderer : public BatchRenderer
 	{
 	public:
 		GL_Renderer()

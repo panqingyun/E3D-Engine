@@ -4,19 +4,21 @@
 
 #pragma once
 
-#include "E3DGameObject.h"
+#include "E3DComponent.hpp"
 #include "../Source/E3DVertex.h"
+#include "../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
-	class Renderer;
-	class E3D_EXPORT_DLL Box : public GameObject
+	class BatchRenderer;
+	class E3D_EXPORT_DLL Box : public Component
 	{
+		DECLARE_CLASS(Box)
 	public:
 		Box();
-		virtual void Create(float l, float w, float h);
+		virtual void Awake() override;
 	protected:
-		void fillVertex(float l, float h, float w);
+		void fillVertex();
 
 	};
 }

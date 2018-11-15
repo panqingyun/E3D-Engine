@@ -49,7 +49,7 @@ namespace E3DEngine
 
 	void GL_Renderer::RemoveInRenderer(UINT objId)
 	{
-		Renderer::RemoveInRenderer(objId);
+		BatchRenderer::RemoveInRenderer(objId);
 		if (IsStaticDraw)
 		{
 			fillVertexToGPU();
@@ -58,7 +58,7 @@ namespace E3DEngine
 
 	void GL_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
-		Renderer::FillEnd(objId, vertexCount, indexCount);
+		BatchRenderer::FillEnd(objId, vertexCount, indexCount);
 		if (pMaterial == nullptr)
 		{
 			assert(false);
@@ -170,7 +170,7 @@ namespace E3DEngine
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
-			Color4 color = dlight->Color;
+			Color4 color = dlight->mGameObject->Color;
 			if (!dlight->IsActive)
 			{
 				color.r = 0; color.g = 0; color.b = 0; color.a = 1;
@@ -178,7 +178,7 @@ namespace E3DEngine
 			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
 			vec3f direction = dlight->GetDirection();
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, direction.x, direction.y, direction.z);
-			if (dlight->GetCreateShadow())
+			if (object_cast<bool>(Light::GetCreateShadow(dlight)))
 			{
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_PROJ_MAT, dlight->GetShadowCamera()->GetProjectionMatrix());
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_VIEW_MAT, dlight->GetShadowCamera()->GetViewMatrix());
@@ -211,10 +211,10 @@ namespace E3DEngine
 				lightPos.emplace_back(pl.second->Transform->Position.x);
 				lightPos.emplace_back(pl.second->Transform->Position.y);
 				lightPos.emplace_back(pl.second->Transform->Position.z);
-				lightColor.emplace_back(pl.second->Color.r);
-				lightColor.emplace_back(pl.second->Color.g);
-				lightColor.emplace_back(pl.second->Color.b);
-				lightColor.emplace_back(pl.second->Color.a);
+				lightColor.emplace_back(pl.second->mGameObject->Color.r);
+				lightColor.emplace_back(pl.second->mGameObject->Color.g);
+				lightColor.emplace_back(pl.second->mGameObject->Color.b);
+				lightColor.emplace_back(pl.second->mGameObject->Color.a);
 				lightRange.emplace_back(static_cast<PointLight*>(pl.second)->Range);
 			}
 			else

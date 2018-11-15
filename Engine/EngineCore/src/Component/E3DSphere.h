@@ -1,16 +1,20 @@
 #pragma once
 //********************************** Effect 3D Engine **************************************************//
 //******************* Copyright (c) 2017-12-7  PanQingyun. All rights reserved. *************************//
-#include "E3DGameObject.h"
+#include "E3DComponent.hpp"
 #include "../Source/E3DVertex.h"
+#include "../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
-	class Renderer;
-	class E3D_EXPORT_DLL Sphere : public GameObject
+	class E3D_EXPORT_DLL Sphere : public Component
 	{
+		DECLARE_CLASS(Sphere)
 	public:
 		Sphere();
-		void Create(float r);
+		virtual void Awake() override;
+
+	private:
+		void create(float r);
 	};
 }

@@ -9,10 +9,21 @@
 
 namespace E3DEngine
 {
-	void Rectangle::CreateShape(float width, float height)
+	Rectangle::Rectangle()
 	{
-		VertexBufferName = "Rectangle";
-		if (VertexManager::GetVertex(VertexBufferName).empty())
+		CreateBehaviour();
+	}
+
+
+	void Rectangle::Awake()
+	{
+		createShape(1, 1);
+	}
+
+	void Rectangle::createShape(float width, float height)
+	{
+		mGameObject->VertexBufferName = "Rectangle";
+		if (VertexManager::GetVertex(mGameObject->VertexBufferName).empty())
 		{
 			std::vector<Vertex> vecVertex;
 			vecVertex.resize(4);
@@ -41,8 +52,7 @@ namespace E3DEngine
 			vecIndex[3] = 2;
 			vecIndex[4] = 3;
 			vecIndex[5] = 0;
-			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+			VertexManager::Add(vecVertex, vecIndex, mGameObject->VertexBufferName);
 		}
-		CreateBehaviour();
 	}
 }

@@ -37,7 +37,6 @@ namespace E3DEngine
 		m_pDynamicsWorld = new btDiscreteDynamicsWorld(m_pDispatcher, broadphase, m_pSolver, m_pCollisionConfiguration);
 		// 重力加速度 10
 		m_pDynamicsWorld->setGravity(btVector3(0, -10, 0));
-		ImplCollider();
 		//CreateGround();
 
 	}

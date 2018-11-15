@@ -36,6 +36,7 @@ namespace E3DEngine
 		}
 		m_bRun = !isEditor;
 		m_bPauseRender = false;
+		ImplComponent();
 		Application::Initialize();
 		PhysicWorld::GetInstance().InitPhysics();
 		Timer::Init();

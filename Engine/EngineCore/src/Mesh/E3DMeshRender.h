@@ -7,16 +7,18 @@
 
 #include "E3DBone.hpp"
 #include "../Object/E3DRenderObject.hpp"
-#include "../Object/E3DComponent.hpp"
+#include "../Component/E3DComponent.hpp"
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
+#include "../Source/ClassFactory.h"
 
 using namespace std;
 
 class aiScene;
 namespace E3DEngine
 {
-	class E3D_EXPORT_DLL MeshRender : public Renderer
+	class E3D_EXPORT_DLL MeshRender : public BatchRenderer
 	{
+		DECLARE_CLASS(MeshRender)
 	public:
 		~MeshRender();
 		//virtual void SetAiScene(const aiScene* scene);
@@ -24,10 +26,12 @@ namespace E3DEngine
 		//virtual const aiScene *GetAiScene() const;
 		virtual vector<mat4f*> &GetBoneMatrixs();
 		virtual Camera *GetCamera() override;
-		virtual Renderer* GetRenderer();
+		virtual RenderObject *Get() override;
 	private:
 		const aiScene*				pScene;
 		vector<mat4f*>				VecBoneMatrix;
+	protected:
+		BatchRenderer				*pRender;
 		
 	};
 

@@ -2,11 +2,59 @@
 //********************************** Effect 3D Engine **************************************************//
 //******************* Copyright (c) 2017-2-8  PanQingyun. All rights reserved. *************************//
 
-#include "../Object/E3DComponent.hpp"
+#include "E3DComponent.hpp"
 #include "../Object/E3DGameObject.h"
-#include <../../3rd/Mono/mono/metadata/tabledefs.h>
+#include "../../3rd/Mono/mono/metadata/tabledefs.h"
 #include "../Source/ClassFactory.h"
 #include "../Source/EngineDelegate.h"
+#include "../Physics/E3DCollider.hpp"
+#include "E3DBox.h"
+#include "E3DCoordinate.h"
+#include "E3DRectangle.hpp"
+#include "../RenderSystem/RenderObject/E3DRender.hpp"
+#include "../Mesh/E3DMesh.hpp"
+#include "../Mesh/E3DMeshRender.h"
+#include "../Light/E3DLight.hpp"
+
+void ImplComponent()
+{
+	REGIST_CLASS(BoxCollider);
+	REGIST_CLASS(SphereCollider);
+	REGIST_CLASS(MeshCollider);
+	REGIST_CLASS(RigidBody);
+	REGIST_CLASS(CapsuleCollider);
+	REGIST_CLASS(Box);
+	REGIST_CLASS(Coordinate);
+	REGIST_CLASS(E3DEngine::Rectangle);
+	REGIST_CLASS(SkyBox);
+	REGIST_CLASS(SkyDome);
+	REGIST_CLASS(Sphere);
+	REGIST_CLASS(Terrain);
+	REGIST_CLASS(Mesh);
+	REGIST_CLASS(Renderer);
+	REGIST_CLASS(DirectionLight);
+	REGIST_CLASS(PointLight);
+	REGIST_CLASS(SpotLight);
+}
+
+DECLARE_CLASS_NAME(BoxCollider)
+DECLARE_CLASS_NAME(SphereCollider)
+DECLARE_CLASS_NAME(MeshCollider)
+DECLARE_CLASS_NAME(RigidBody)
+DECLARE_CLASS_NAME(CapsuleCollider)
+DECLARE_CLASS_NAME(Box)
+DECLARE_CLASS_NAME(Coordinate)
+DECLARE_CLASS_NAME(E3DEngine::Rectangle)
+DECLARE_CLASS_NAME(SkyBox)
+DECLARE_CLASS_NAME(SkyDome)
+DECLARE_CLASS_NAME(Sphere)
+DECLARE_CLASS_NAME(Terrain)
+DECLARE_CLASS_NAME(Mesh)
+DECLARE_CLASS_NAME(Renderer)
+DECLARE_CLASS_NAME(DirectionLight)
+DECLARE_CLASS_NAME(SpotLight)
+DECLARE_CLASS_NAME(PointLight)
+
 
 #define NOT_RUN_RETURN \
 if(!E3DEngine::EngineDelegate::GetInstance().GetIsRun())\
@@ -24,7 +72,6 @@ E3DEngine::Component::Component()
 
 void E3DEngine::Component::OnCreate()
 {
-	NOT_RUN_RETURN
 	Awake();
 	OnEnable();
 }

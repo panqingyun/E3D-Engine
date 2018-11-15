@@ -1,7 +1,7 @@
 #pragma once
 #include <Scene/E3DSceneManager.hpp>
 #include "GameObject.h"
-#include <Object/E3DCoordinate.h>
+#include <Component/E3DCoordinate.h>
 
 #pragma managed
 using namespace System;
@@ -51,6 +51,7 @@ namespace E3DEngine
 		void OnFrameSizeChange();
 		Camera *GetEditorMainCamera();
 		Camera *GetLookCoordCamera();
+		void SetRunPath(String ^path);
 	private:
 		void createCoord();
 
@@ -63,6 +64,7 @@ namespace E3DEngine
 		Prefab *mCoordPrefab; 
 		Rectangle *mCoordRt;
 		SceneRef ^ mCurScene;
+		String^  mEditorPath;
 	};
 }
 

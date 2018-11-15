@@ -122,7 +122,7 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		else
 		{
-			if (usedDirectionLight != nullptr && usedDirectionLight->GetCreateShadow())
+			if (usedDirectionLight != nullptr && object_cast<bool>(Light::GetCreateShadow(usedDirectionLight)))
 			{
 				usedDirectionLight->GetShadowCamera()->Render();
 			}

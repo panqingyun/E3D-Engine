@@ -4,9 +4,10 @@
 #ifndef E3DLight_hpp
 #define E3DLight_hpp
 
-#include "../Object/E3DGameObject.h"
+#include "../Component/E3DComponent.hpp"
 
 #include <iostream>
+#include "../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
@@ -17,55 +18,59 @@ namespace E3DEngine
 		eSPOT_LIGHT,
 	};
 
-	class E3D_EXPORT_DLL Light : public GameObject
+	class E3D_EXPORT_DLL Light : public Component
 	{
-	public:
-		static Light * Create(LightType type);
 	public:
 		LightType   Type;
 		float		Intensity;			// 强度
 
 	public:
 		virtual void setBehaviourDefaultValue() override;
-
+		virtual void OnCreateComplete() override;
 	public:
-		virtual void CreateShadow() { }
+		virtual void MakeShadow() { }
 		Light()
 		{
-			mCreateShadow = false;
-			shadowCamera = nullptr;
+			
 		}
 		virtual ~Light()
 		{
 		}
 
-		bool GetCreateShadow() { return mCreateShadow; }
 		Camera * GetShadowCamera();
+	public:
+		static void SetCreateShadow(void *cp, object value);
+		static object GetCreateShadow(void *cp);
+		virtual void registProperty() override
+		{
+			SAVE_METHOD(CreateShadow, FT_BOOLEAN);
+		}
+
 	protected:
 		Camera * shadowCamera;
-		bool	mCreateShadow;
+		bool	CreateShadow;
 	};
 
 	class E3D_EXPORT_DLL PointLight : public Light
 	{
+		DECLARE_CLASS(PointLight)
 	public:
 		PointLight();
 		float Range;
 
 	public:
-		virtual void CreateShadow() override;
+		virtual void MakeShadow() override;
 	};
 
 	class E3D_EXPORT_DLL DirectionLight : public Light
 	{
+		DECLARE_CLASS(DirectionLight)
 	public:
 		DirectionLight();
 
 	public:
-		virtual void CreateShadow() override;
-		virtual void CreateComplete() override;
-		virtual void TransformChange() override;
-
+		virtual void MakeShadow() override;
+		virtual void OnCreateComplete() override;
 		void SetDirection(vec3f dir);
 		vec3f &GetDirection();
 	private:
@@ -74,13 +79,14 @@ namespace E3DEngine
 
 	class E3D_EXPORT_DLL SpotLight : public Light
 	{
+		DECLARE_CLASS(SpotLight)
 	public:
 		SpotLight();
 		float Range;
 		int   SpotAngle;
 
 	public:
-		virtual void CreateShadow() override;
+		virtual void MakeShadow() override;
 	};
 	
 }

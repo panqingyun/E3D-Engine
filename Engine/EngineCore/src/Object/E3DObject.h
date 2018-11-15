@@ -22,18 +22,9 @@ namespace E3DEngine
 	{
 		TP_NONE = 0,
 		TP_Camera = 1,
-		TP_DLight = 2,
-		TP_PLight = 3,
-		TP_SkyBox = 4,
-		TP_Mesh	  = 5,
-		TP_Particle = 6,
-		TP_Cube = 7,
-		TP_Sphere = 8,
-		TP_Empty = 9,
-		TP_Terrain  = 10,
-		TP_Prefab = 11,
-		TP_SkyDome = 12,
-		TP_Line = 13,
+		TP_Particle = 2,
+		TP_GameObject = 3, 
+		TP_Prefab
 	};
 
 	const std::string NM_GameObject = "GameObject";

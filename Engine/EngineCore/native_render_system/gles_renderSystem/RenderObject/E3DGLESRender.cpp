@@ -44,7 +44,7 @@ namespace E3DEngine
 
 	void GLES_Renderer::RemoveInRenderer(UINT objId)
 	{
-		Renderer::RemoveInRenderer(objId);
+		BatchRenderer::RemoveInRenderer(objId);
 		if (IsStaticDraw)
 		{
 			fillVertexToGPU();
@@ -53,7 +53,7 @@ namespace E3DEngine
 
 	void GLES_Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
-		Renderer::FillEnd(objId, vertexCount, indexCount);
+		BatchRenderer::FillEnd(objId, vertexCount, indexCount);
 		if (pMaterial == nullptr)
 		{
 			assert(false);
@@ -174,7 +174,7 @@ namespace E3DEngine
 			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
 			vec3f direction = dlight->GetDirection();
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, direction.x, direction.y, direction.z);
-			if (dlight->GetCreateShadow())
+			if (object_cast<bool>(Light::GetCreateShadow(dlight)))
 			{
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_PROJ_MAT, dlight->GetShadowCamera()->GetProjectionMatrix());
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_VIEW_MAT, dlight->GetShadowCamera()->GetViewMatrix());

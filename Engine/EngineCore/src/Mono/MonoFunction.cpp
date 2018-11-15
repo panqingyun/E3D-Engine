@@ -34,8 +34,6 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	newGameObject);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
-	REGISTER_INTERNAL_CALL(SkyBox,		CreateSkyBox);
-	REGISTER_INTERNAL_CALL(SkyDome,		CreateSkyDome);
 	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		get_MainCamera);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
@@ -53,20 +51,15 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(Renderer,	setDrawModule);
 	REGISTER_INTERNAL_CALL(Renderer,	getDrawModule);
 	REGISTER_INTERNAL_CALL(Material,	createMaterial);
-	REGISTER_INTERNAL_CALL(Box,			Create);
 	REGISTER_INTERNAL_CALL(RigidBody,	    set_Mass);
 	REGISTER_INTERNAL_CALL(RigidBody,		get_Mass);
 	REGISTER_INTERNAL_CALL(ParticleSystem,	createParticle);
 	REGISTER_INTERNAL_CALL(ParticleGroup,	SetEmitterEnable);
-	REGISTER_INTERNAL_CALL(Sphere,			Create);
-	REGISTER_INTERNAL_CALL(Terrain,			Create);
-	REGISTER_INTERNAL_CALL(Light,			Create);
 	REGISTER_INTERNAL_CALL(Light,			setColor);
 	REGISTER_INTERNAL_CALL(PointLight,		set_Range);
 	REGISTER_INTERNAL_CALL(PointLight,		get_Range);
-	REGISTER_INTERNAL_CALL(Mesh,			create);
-	REGISTER_INTERNAL_CALL(Renderer,		set_RenderIndex);
-	REGISTER_INTERNAL_CALL(Renderer,		get_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer, set_RenderIndex);
+	REGISTER_INTERNAL_CALL(Renderer, get_RenderIndex);
 	REGISTER_INTERNAL_CALL(RigidBody,		get_Friction);
 	REGISTER_INTERNAL_CALL(RigidBody,		get_Restitution);
 	REGISTER_INTERNAL_CALL(RigidBody,		set_Friction);
@@ -215,7 +208,7 @@ CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)
 CS_OBJECT _1_PARAM_FUNCTION(Renderer, createRenderer, UINT, materialID)
 {
 	// TODO
-	Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(materialID, 0);
+	BatchRenderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(materialID, 0);
 
 	return render->GetMonoBehaviour()->GetMonoObject();
 }
@@ -227,7 +220,7 @@ VOID _1_PARAM_FUNCTION(Renderer, setVertex2Render, CPP_OBJECT, obj)
 
 CS_OBJECT _0_PARAM_FUNCTION(Renderer, createRendererWithoutParam)
 {
-	Renderer * render = new Renderer();
+	BatchRenderer * render = new BatchRenderer();
 
 	return render->GetMonoBehaviour()->GetMonoObject();
 }
@@ -238,15 +231,6 @@ CS_OBJECT _2_PARAM_FUNCTION(Material, createMaterial, CS_STRING, path, int, id)
 
 	E3DEngine::Material * material = GetRenderSystem()->GetMaterialManager()->CreateMaterial(m_Path, id);
 	return material->GetBehaviour()->GetMonoObject();
-}
-
-CS_OBJECT _3_PARAM_FUNCTION(Box, Create, float, l, float, w, float, h)
-{
-	Box *box = new Box;
-	ADD_IN_SCENE(box);
-	box->Create(l, w, h);
-	
-	return box->GetMonoBehaviour()->GetMonoObject();
 }
 
 VOID _1_PARAM_FUNCTION(GameObject, removeComponent, CS_OBJECT, cs_obj)
@@ -324,7 +308,7 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, getComponent, CS_OBJECT, obj, CS_STRING,
 		return nullptr;
 	}
 
-	return component->GetMonoBehaviour()->GetMonoObject();
+	return component->Get()->GetMonoBehaviour()->GetMonoObject();
 }
 
 VOID _2_PARAM_FUNCTION(Renderer, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, material)
@@ -334,7 +318,7 @@ VOID _2_PARAM_FUNCTION(Renderer, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, mat
 	{
 		return;
 	}
-	Renderer * obj = getCppObject<Renderer>(cs_boj);
+	BatchRenderer * obj = getCppObject<BatchRenderer>(cs_boj);
 	if (obj == nullptr)
 	{
 		return;
@@ -345,7 +329,7 @@ VOID _2_PARAM_FUNCTION(Renderer, set_Material, CS_OBJECT, cs_boj, CS_OBJECT, mat
 
 CS_OBJECT _1_PARAM_FUNCTION(Renderer, get_Material, CS_OBJECT, cs_boj)
 {
-	Renderer * obj = getCppObject<Renderer>(cs_boj);
+	BatchRenderer * obj = getCppObject<BatchRenderer>(cs_boj);
 	if (obj == nullptr)
 	{
 		return nullptr;
@@ -514,15 +498,6 @@ CS_OBJECT _2_PARAM_FUNCTION(GameObject, findChildWithID, CS_OBJECT, cs_obj, UINT
 	return child->GetMonoBehaviour()->GetMonoObject();
 }
 
-CS_OBJECT _1_PARAM_FUNCTION(Sphere, Create, float, r)
-{
-	Sphere *sphere = new Sphere();
-	sphere->Create(r);
-	ADD_IN_SCENE(sphere);
-
-	return sphere->GetMonoBehaviour()->GetMonoObject();
-}
-
 VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child)
 {
 	GameObject *go = getCppObject<GameObject>(cs_obj);
@@ -538,15 +513,6 @@ VOID _2_PARAM_FUNCTION(GameObject, AddChild, CS_OBJECT, cs_obj, CS_OBJECT, child
 	}
 
 	go->AddChild(_child);
-}
-
-CS_OBJECT _1_PARAM_FUNCTION(Terrain, Create, CS_STRING, heightMap)
-{
-	Terrain * terrain = new Terrain;
-	terrain->Create(Convert::ToStdString(heightMap).c_str());
-	ADD_IN_SCENE(terrain);
-
-	return terrain->GetMonoBehaviour()->GetMonoObject();
 }
 
 VOID _2_PARAM_FUNCTION(Renderer, setDrawModule, CS_OBJECT, cs_obj, UINT, drawModule)
@@ -573,27 +539,6 @@ UINT _1_PARAM_FUNCTION(Renderer, getDrawModule, CS_OBJECT, cs_obj)
 	return rd->GetDrawModule();
 }
 
-VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox, CS_OBJECT, material)
-{
-	Material * m = getCppObject<Material>(material);
-	SkyBox *skyBox = new SkyBox();
-	skyBox->Create(50, 50, 50);
-	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(skyBox->VertexBufferName).size());
-	skyBox->SetRenderer(rd);
-	skyBox->SetActive(true);
-	ADD_IN_SCENE(skyBox);
-}
-
-CS_OBJECT _1_PARAM_FUNCTION(Light, Create, UINT, lightType)
-{
-	Light *light = Light::Create((LightType)lightType);
-	if (light == nullptr)
-	{
-		return nullptr;
-	}
-	return light->GetMonoBehaviour()->GetMonoObject();
-}
-
 VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, float, b,float, a)
 {
 	Light *light = getCppObject<Light>(cs_obj);
@@ -602,10 +547,10 @@ VOID _5_PARAM_FUNCTION(Light, setColor, CS_OBJECT, cs_obj, float, r, float, g, f
 	{
 		return;
 	}
-	light->Color.r = r;
+	/*light->Color.r = r;
 	light->Color.g = g;
 	light->Color.b = b;
-	light->Color.a = a;
+	light->Color.a = a;*/
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getForward, CS_OBJECT, obj, float&, x, float&, y, float&, z)
@@ -680,17 +625,6 @@ VOID _2_PARAM_FUNCTION(Camera, getProjectionMatrix, CS_OBJECT, cs_obj, CS_ARRAY&
 	}
 }
 
-VOID _1_PARAM_FUNCTION(SkyDome, CreateSkyDome, CS_OBJECT, material)
-{
-	SkyDome * skyDome = new SkyDome;
-	skyDome->Create(50);
-	Material * m = getCppObject<Material>(material);
-	Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(skyDome->VertexBufferName).size());
-	skyDome->SetRenderer(rd);
-	skyDome->SetActive(true);
-	ADD_IN_SCENE(skyDome);
-}
-
 VOID _2_PARAM_FUNCTION(PointLight, set_Range, CS_OBJECT, light, float, range)
 {
 	PointLight * pl = getCppObject<PointLight>(light);
@@ -711,15 +645,6 @@ float _1_PARAM_FUNCTION(PointLight, get_Range, CS_OBJECT, light)
 
 	return pl->Range;
 }
-
-CS_OBJECT _2_PARAM_FUNCTION(Mesh, create, CS_STRING, path, int, cfgID)
-{
-	std::string filePath = Convert::ToStdString(path);
-	Mesh * mh = new Mesh(filePath);
-	ADD_IN_SCENE(mh);
-	return mh->GetMonoBehaviour()->GetMonoObject();
-}
-
 
 UINT _1_PARAM_FUNCTION(Renderer, get_RenderIndex, CS_OBJECT, cs_boj)
 {

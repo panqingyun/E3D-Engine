@@ -1,5 +1,5 @@
 #pragma once
-#include <Object/E3DComponent.hpp>
+#include <Component/E3DComponent.hpp>
 
 #pragma managed
 

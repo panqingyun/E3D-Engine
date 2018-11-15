@@ -8,6 +8,7 @@
 #define __E3D_RENDERER_HPP__
 
 #include "../../Object/E3DRenderObject.hpp"
+#include "../../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
@@ -32,11 +33,31 @@ namespace E3DEngine
 		MESH,
 	};
 
-	class E3D_EXPORT_DLL Renderer : public RenderObject
+	class E3D_EXPORT_DLL Renderer : public Component
+	{
+		DECLARE_CLASS(Renderer)
+	public:
+		DECLARE_METHOD(Renderer, std::string, MaterialPath)
+		DECLARE_METHOD(Renderer, int, MaterialID)
+		DECLARE_METHOD(Renderer, int, RendererType)
+		virtual void registProperty()
+		{
+			SAVE_METHOD(MaterialPath, FT_STRING);
+			SAVE_METHOD(MaterialID, FT_INT);
+			SAVE_METHOD(RendererType, FT_INT);
+		}
+	public:
+		virtual void OnCreateComplete() override;
+		virtual Object *Get();
+	protected:
+		RenderObject *pRenderer;
+	};
+
+	class E3D_EXPORT_DLL BatchRenderer : public RenderObject
 	{
 	public:
-		Renderer();
-		virtual ~Renderer() override;
+		BatchRenderer();
+		virtual ~BatchRenderer() override;
 	public:
 		virtual void FillBegin(UINT objId);
 		virtual void FillVertex(std::vector<Vertex>& vb);

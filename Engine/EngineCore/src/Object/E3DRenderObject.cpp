@@ -4,7 +4,8 @@
 #include "E3DRenderObject.hpp"
 #include "../Source/EngineDelegate.h"
 #include "E3DTransform.hpp"
-#include "../RenderSystem/Material/E3DMaterial.hpp"
+#include "../RenderSystem/Material/E3DMaterialManager.hpp"
+#include "../RenderSystem/E3DRenderSystem.hpp"
 
 //extern PFNGLMAPBUFFEROESPROC
 namespace E3DEngine
@@ -88,7 +89,7 @@ namespace E3DEngine
 		pMaterial = material;
 		if (RenderIndex != eRI_None)
 		{
-			// TODO 同样的材质，不同渲染层级，需要重新创建一个Renderer
+			// TODO 同样的材质，不同渲染层级，需要重新创建一个BatchRenderer
 			//m_pRenderer = GetRenderSystem()->GetRenderManager()->CreateVertexRender(material->mMaterialID);
 		}
 		//for (auto & attr : pMaterial->pShader->AttributeList)

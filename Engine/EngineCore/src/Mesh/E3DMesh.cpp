@@ -11,6 +11,7 @@
 #include "../Source/FilePath.h"
 #include "../Source/E3DDebug.h"
 #include "../Source/E3DVertexManager.h"
+#include "../Object/E3DGameObject.h"
 
 namespace E3DEngine
 {
@@ -29,28 +30,32 @@ namespace E3DEngine
 	}
 #endif
 
-	Mesh::Mesh(std::string filePath)
+	Mesh::Mesh()
 	{
-		mSceneObjectType = TP_Mesh;
+		
+	}
+
+	void Mesh::Awake()
+	{
 		NumBones = 0;
 		m_bIsBufferData = false;
 		m_bIsSkinMesh = false;
 		mAnimation = nullptr;
 		CREATE_BEHAVIOUR(Mesh);
-		VertexBufferName = filePath;
-		std::string   fbxPath = Application::AppDataPath + filePath;
-		bool Ret	= false;
-		pScene		= pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
+		mGameObject->VertexBufferName = FilePath;
+		std::string   fbxPath = Application::AppDataPath + FilePath;
+		bool Ret = false;
+		pScene = pImporter.ReadFile(fbxPath, ASSIMP_LOAD_FLAGS);
 		if (pScene)
 		{
 			Ret = initFromScene(pScene, fbxPath);
 		}
 		else
 		{
-			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", filePath.c_str(), pImporter.GetErrorString());
+			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", FilePath.c_str(), pImporter.GetErrorString());
 			return;
 		}
-		mName = filePath;
+		mName = FilePath;
 		if (m_bIsSkinMesh)
 		{
 			// 构建骨骼树
@@ -86,7 +91,7 @@ namespace E3DEngine
 			NumVertices += pScene->mMeshes[i]->mNumVertices;
 			NumIndices  += Entries[i].NumIndices;
 		}
-		if (VertexManager::GetVertex(VertexBufferName).empty())
+		if (VertexManager::GetVertex(mGameObject->VertexBufferName).empty())
 		{
 			std::vector<Vertex> vecVertex;
 			std::vector<UINT> vecIndex;
@@ -96,7 +101,7 @@ namespace E3DEngine
 				initMesh(i, paiMesh, vecVertex, vecIndex);
 			}
 
-			VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+			VertexManager::Add(vecVertex, vecIndex, mGameObject->VertexBufferName);
 		}
 		for (uint i = 0; i < Entries.size(); i++)
 		{
@@ -155,6 +160,30 @@ namespace E3DEngine
 			mAnimation->LoadAnimations();
 			mAnimation->Play("Take 001", true);
 		}
+	}
+
+
+	void Mesh::SetFilePath(void *cp, object value)
+	{
+		Mesh *mesh = (Mesh*)cp;
+		if (mesh == nullptr)
+		{
+			return;
+		}
+
+		mesh->FilePath = Convert::ToString(value);
+	}
+
+
+	object Mesh::GetFilePath(void *cp)
+	{
+		Mesh *mesh = static_cast<Mesh*>(cp);
+		if (mesh == nullptr)
+		{
+			return std::string("");
+		}
+
+		return mesh->FilePath;
 	}
 
 	void Mesh::initMesh(uint MeshIndex, const aiMesh* paiMesh, std::vector<Vertex> &vecVertex, std::vector<UINT> &vecIndex)
@@ -232,7 +261,7 @@ namespace E3DEngine
 				bone = BoneMapping[BoneName];
 			}
 
-			std::vector<Vertex> &vecVertex = VertexManager::GetVertex(VertexBufferName);
+			std::vector<Vertex> &vecVertex = VertexManager::GetVertex(mGameObject->VertexBufferName);
 			
 			for (uint j = 0 ; j < pMesh->mBones[i]->mNumWeights ; j++)
 			{
@@ -262,7 +291,6 @@ namespace E3DEngine
 		{
 			bone.second->Update(deltaTime);
 		}
-		GameObject::Update(deltaTime);
 	}
 
 	MeshEntity::MeshEntity()

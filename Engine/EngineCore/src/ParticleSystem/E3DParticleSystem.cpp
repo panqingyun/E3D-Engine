@@ -161,7 +161,7 @@ namespace E3DEngine
 		}
 
 		Material * mMaterial = GetRenderSystem()->GetMaterialManager()->CreateMaterial(Application::ResourcePath + materialPath, materialID);
-		Renderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID, particle->GetVertexSize(),NORMAL, true);
+		BatchRenderer * render = GetRenderSystem()->GetRenderManager()->GetRenderer(mMaterial->ID, particle->GetVertexSize(),NORMAL, true);
 		particle->SetRenderer(render);
 		particle->SetLayerMask(1 << layerConfig->ID);
 		particle->IsActive = false;

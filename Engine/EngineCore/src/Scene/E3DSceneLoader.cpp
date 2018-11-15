@@ -61,6 +61,10 @@ namespace E3DEngine
 			return Application::AppDataPath + path;
 		}
 	}
+	E3D_EXPORT_DLL std::string GetCurLoadRootPath()
+	{
+		return sceneFolderPath + "/";
+	}
 
 	vec3f getVector3(std::string vecStr)
 	{
@@ -101,10 +105,7 @@ namespace E3DEngine
 		Component * component = go->AddComponent(comName.c_str());
 		component->IsActive = active;
 		setComponentFieldValue(objectElement->FirstChildElement(_Component_Field), component);
-		if (EngineDelegate::GetInstance().GetIsRun())
-		{
-			component->OnCreate();
-		}
+		component->OnCreate();
 		createComponent(objectElement->NextSiblingElement(_Component), go);
 	}
 
@@ -176,85 +177,12 @@ namespace E3DEngine
 		return pCamera;
 	}
 
-	Renderer * createRenderer(TiXmlElement *objectElement, int vertxSize, bool isStaticObject, DWORD renderType = NORMAL)
-	{
-		std::string _path = *objectElement->Attribute(_FilePath);
-		int _id = Convert::ToInt(*objectElement->Attribute(_SelectID));
-
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(GetFileFullPath(_path), _id);
-		m->mConfigPath = _path;
-		m->mConfigID = _id;
-		Renderer * renderer = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, vertxSize,(RENDER_TYPE)renderType, isStaticObject);
-		return renderer;
-	}
-
-	GameObject* createSkyBox(TiXmlElement *objectElement)
-	{
-		SkyBox *skb = new SkyBox();
-		skb->Create(50, 50, 50);
-
-		return skb;
-	}
-
-	GameObject* createMesh(TiXmlElement *objectElement)
-	{
-		std::string _path = *objectElement->Attribute(_FilePath);
-
-		Mesh *mesh = new Mesh(_path);	
-		mesh->mConfigPath = _path;
-
-		return mesh;
-	}
-
-	GameObject* createDLight(TiXmlElement *objectElement)
-	{
-		Light *light = Light::Create(LightType::eDIRECTION_LIGHT);
-		
-		light->Color = Convert::ToColor4(*objectElement->Attribute(_Color));
-		
-		return light;
-	}
-
 	GameObject *createEmpty(TiXmlElement *objectElement)
 	{
 		GameObject * go = new GameObject();
 
+		go->CreateBehaviour();
 		return go;
-	}
-
-	GameObject *createCube(TiXmlElement *objectElement)
-	{
-		Box * box = new Box();
-		box->Create(1, 1, 1);
-
-		return box;
-	}
-
-	GameObject *createSphere(TiXmlElement *objectElement)
-	{
-		Sphere * sphere = new Sphere();
-		sphere->Create(1);
-		return sphere;
-	}
-
-	GameObject *createTerrain(TiXmlElement *objectElement)
-	{
-		Terrain * terrain = new Terrain;
-		int size = Convert::ToInt(*objectElement->Attribute(_Size));
-		terrain->Create(size);
-		return terrain;
-	}
-
-	GameObject *createPointLight(TiXmlElement *objectElement)
-	{
-		Light *light = Light::Create(LightType::ePOINT_LIGHT);
-		light->Color = Convert::ToColor4(*objectElement->Attribute(_Color));
-		if (objectElement->Attribute(_Range) != nullptr)
-		{
-			static_cast<PointLight*>(light)->Range = Convert::ToFloat(*objectElement->Attribute(_Range));
-		}
-
-		return light;
 	}
 
 	GameObject *createPrefab(TiXmlElement *objectElement)
@@ -339,28 +267,10 @@ namespace E3DEngine
 		}
 		for (auto & component : go->GetAllComponents())
 		{
-			if (!EngineDelegate::GetInstance().GetIsRun())
-			{
-				continue;
-			}
 			component.second->OnCreateComplete();
-		}
-		if (go->mSceneObjectType == TP_DLight && objectElement->Attribute(_CreateShadow) != nullptr)
-		{
-			bool &&bCreate = Convert::ToBoolean(*objectElement->Attribute(_CreateShadow));
-			if (bCreate)
-			{
-				((Light*)go)->CreateShadow();
-			}
 		}
 
 		setGameObjectActive(objectElement, go);
-		if (objectElement->FirstChildElement(_Material) != nullptr)
-		{
-			DWORD type = go->mSceneObjectType == TP_Mesh ? MESH : NORMAL;
-			Renderer * rd = createRenderer(objectElement->FirstChildElement(_Material), VertexManager::GetVertex(go->VertexBufferName).size(), go->GetIsStatic(), type);
-			go->SetRenderer(rd);
-		}
 	}
 
 	E3D_EXPORT_DLL void LoadSceneObjects(string sceneFilePath)
@@ -496,15 +406,6 @@ namespace E3DEngine
 		}
 	}
 
-	void saveMaterialElement(TiXmlElement *objectElement, Material *material)
-	{
-		TiXmlElement *materialElement = new TiXmlElement(_Material);
-		materialElement->SetAttribute(_FilePath, material->mConfigPath);
-		materialElement->SetAttribute(_SelectID, material->mConfigID);
-
-		objectElement->LinkEndChild(materialElement);
-	}
-
 	void saveTransformElement(TiXmlElement *objectElement, CTransform *transform)
 	{
 		TiXmlElement *transformElement = new TiXmlElement(_Transform);
@@ -521,29 +422,14 @@ namespace E3DEngine
 		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));
 		objectElement->SetAttribute(_Active, Convert::ToString(gameObject->IsActive));
-		if (gameObject->GetRenderer() != nullptr)
-		{
-			objectElement->SetAttribute(_RenderIndex, gameObject->GetRenderer()->RenderIndex);
-			saveMaterialElement(objectElement, gameObject->GetRenderer()->GetMaterial());
-		}	
-		if (gameObject->mSceneObjectType == TP_Particle || gameObject->mSceneObjectType == TP_Mesh)
-		{
-			objectElement->SetAttribute(_FilePath, gameObject->mConfigPath);
-		}
-		else if (gameObject->mSceneObjectType == TP_Camera)
+		if (gameObject->mSceneObjectType == TP_Camera)
 		{
 			Camera *pCamera = (Camera*)gameObject;
 			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
 		}
-		else if (gameObject->mSceneObjectType == TP_Terrain)
+		else if (gameObject->mSceneObjectType == TP_Particle)
 		{
-			Terrain *terrain = (Terrain*)gameObject;
-			objectElement->SetAttribute(_Size, terrain->GetSize());
-		}
-		else if (gameObject->mSceneObjectType == TP_DLight)
-		{
-			Light * light = (Light*)gameObject;
-			objectElement->SetAttribute(_CreateShadow, Convert::ToString(light->GetCreateShadow()));
+			objectElement->SetAttribute(_FilePath, Convert::ToString(gameObject->mConfigPath));
 		}
 		objectElement->SetAttribute(_Color, Convert::ToString(gameObject->Color));
 		saveTransformElement(objectElement, gameObject->Transform);
@@ -619,16 +505,9 @@ namespace E3DEngine
 	void RegistScnObjCreateFunc()
 	{
 		createObjectFun[TP_Camera] = createCamera;
-		createObjectFun[TP_DLight] = createDLight;
-		createObjectFun[TP_SkyBox] = createSkyBox;
-		createObjectFun[TP_Mesh] = createMesh;
 		createObjectFun[TP_Particle] = createParticle;
-		createObjectFun[TP_Empty] = createEmpty;
-		createObjectFun[TP_Cube] = createCube;
-		createObjectFun[TP_Sphere] = createSphere;
-		createObjectFun[TP_PLight] = createPointLight;
+		createObjectFun[TP_GameObject] = createEmpty;
 		createObjectFun[TP_Prefab] = createPrefab;
-		createObjectFun[TP_Terrain] = createTerrain;
 	}
 
 }

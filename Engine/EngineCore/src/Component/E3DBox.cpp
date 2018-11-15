@@ -15,17 +15,15 @@ E3DEngine::Box::Box()
 	CREATE_BEHAVIOUR(Box);
 }
 
-void E3DEngine::Box::Create(float l, float h, float w)
+void E3DEngine::Box::Awake()
 {
-	VertexBufferName = "Box";
-	fillVertex(l, h, w);
-	mSceneObjectType = TP_Cube;
+	mGameObject->VertexBufferName = "Box";
+	fillVertex();
 }
 
-
-void E3DEngine::Box::fillVertex(float l, float h, float w)
+void E3DEngine::Box::fillVertex()
 {
-	if (VertexManager::GetVertex(VertexBufferName).empty())
+	if (VertexManager::GetVertex(mGameObject->VertexBufferName).empty())
 	{
 		std::vector<Vertex> vecVertex;
 		vecVertex.resize(24);
@@ -145,12 +143,9 @@ void E3DEngine::Box::fillVertex(float l, float h, float w)
 
 		memcpy(vecIndex.data(), index, sizeof(UINT) * 36);
 
-		VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+		VertexManager::Add(vecVertex, vecIndex, mGameObject->VertexBufferName);
 	}
 
-	Transform->Scale = vec3f(l, h, w);
-	size.x = l;
-	size.y = w;
-	size.z = h;
+	mGameObject->SetSize(1, 1, 1);
 }
 

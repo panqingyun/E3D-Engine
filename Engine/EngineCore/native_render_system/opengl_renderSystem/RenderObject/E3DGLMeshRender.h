@@ -27,7 +27,6 @@ namespace E3DEngine
 		virtual void TransformChange() override;
 		virtual void Render() override;
 		virtual void SetDrawModule(DWORD module) override;
-		virtual Renderer *GetRenderer() override;
 
 	public:
 		virtual UINT GetDrawModule() { return pRender->GetDrawModule(); }
@@ -42,7 +41,5 @@ namespace E3DEngine
 		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
 		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
 		virtual Camera *GetCamera() override;
-	protected:
-		GL_Renderer * pRender;
 	};
 }

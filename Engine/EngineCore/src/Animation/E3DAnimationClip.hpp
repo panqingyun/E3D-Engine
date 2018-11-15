@@ -4,7 +4,6 @@
 #ifndef AnimationClip_hpp
 #define AnimationClip_hpp
 
-#include "../Object/E3DComponent.hpp"
 #include "../Mesh/E3DBone.hpp"
 
 #ifndef __IGNORED_INCLUDE__

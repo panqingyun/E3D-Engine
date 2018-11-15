@@ -4,7 +4,6 @@
 #include "../Mono/MonoScriptManager.h"
 #include "../Object/E3DObject.h"
 #include "../Camera/E3DCamera.h"
-#include "../Object/E3DCoordinate.h"
 
 #ifdef __E3D_EDITOR__
 extern "C"

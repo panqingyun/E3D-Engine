@@ -10,7 +10,7 @@
 
 namespace E3DEngine
 {
-	void GLES_RendererManager::AddRenderer(int materialID, Renderer * rd)
+	void GLES_RendererManager::AddRenderer(int materialID, BatchRenderer * rd)
 	{
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
 		{
@@ -18,7 +18,7 @@ namespace E3DEngine
 		}
 	}
 
-	E3DEngine::Renderer * GLES_RendererManager::GenRender()
+	E3DEngine::BatchRenderer * GLES_RendererManager::GenRender()
 	{
 		return new E3DEngine::GLES_Renderer();
 	}
@@ -33,9 +33,9 @@ namespace E3DEngine
 		m_mapVertexBuffers.clear();
 	}
 
-	E3DEngine::Renderer * GLES_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)
+	E3DEngine::BatchRenderer * GLES_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)
 	{
-		Renderer * buffer = nullptr;
+		BatchRenderer * buffer = nullptr;
 		switch (type)
 		{
 		case E3DEngine::MESH:

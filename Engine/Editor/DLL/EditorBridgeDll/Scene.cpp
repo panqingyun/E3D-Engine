@@ -2,11 +2,18 @@
 #include "stdafx.h"
 #include "Source/E3DVertexManager.h"
 #include <Scene/E3DSceneLoader.h>
+#include <string>
 
 #pragma managed
 #include <msclr\marshal_cppstd.h>
 using namespace msclr::interop;
 using namespace System;
+
+std::string get_std_string(String ^str)
+{
+	return marshal_as<std::string>(str);
+}
+
 namespace E3DEngine
 {
 	void TransformChange(int ID)
@@ -55,11 +62,11 @@ namespace E3DEngine
 
 	void SceneRef::ShowCoord()
 	{
-		if (mObjectCoord == nullptr)
+		/*if (mObjectCoord == nullptr)
 		{
 			createCoordinate("../Data/Material/coordinate.material", 1);
 		}
-		mObjectCoord->Transform = mCurSelObject->GetTransform()->GetTransformPtr();
+		mObjectCoord->Transform = mCurSelObject->GetTransform()->GetTransformPtr();*/
 	}
 
 	void SceneRef::Loaded()
@@ -88,7 +95,6 @@ namespace E3DEngine
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
 				mCurSelObject->Update(deltaTime);
-				mObjectCoord->Update(deltaTime);
 			}
 		}
 	}
@@ -100,8 +106,6 @@ namespace E3DEngine
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
 				mCurSelObject->AfterUpdate(deltaTime);
-
-				mObjectCoord->AfterUpdate(deltaTime);
 			}
 		}
 	}
@@ -197,13 +201,14 @@ namespace E3DEngine
 
 	void SceneManageRef::LoadEditorObject()
 	{
+		std::string path = get_std_string(mEditorPath);
 		if (mDefaultScene != nullptr)
 		{
 			mDefaultScene = nullptr;
 		}
 		if (SceneManager::GetInstance().GetCurrentScene() == nullptr)
 		{
-			SceneManager::GetInstance().LoadScene("../Data/Scene/default.scene");
+			SceneManager::GetInstance().LoadScene(path + "/../Data/Scene/default.scene");
 			mDefaultScene = SceneManager::GetInstance().GetCurrentScene();
 		}
 
@@ -216,18 +221,25 @@ namespace E3DEngine
 			mEditorCamera->Flag |= DONT_SAVE;
 		}
 
-		Terrain * terrain = new Terrain();
-		terrain->Create(512);
-		terrain->SetIsEditorGrid(true);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/Terrain.material", 1);
-		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(terrain->VertexBufferName).size());
-		terrain->SetRenderer(rd);
-		terrain->SetActive(true);
-		terrain->SetLayerMask(1);
-		terrain->GetRenderer()->SetDrawModule(eDM_LINES);
-		terrain->Transform->SetScale(20, 1, 20);
-		terrain->Flag |= DONT_SAVE;
-		ADD_IN_SCENE(terrain);
+		GameObject *gameObject = new GameObject();
+		gameObject->CreateBehaviour();
+		gameObject->SetActive(true);
+		gameObject->Flag |= DONT_SAVE;
+
+		Terrain *terrain = gameObject->AddComponent<Terrain>();
+		terrain->IsEditorGrid = true;
+		terrain->Size = 512;
+		terrain->OnCreate();
+		terrain->OnCreateComplete();
+		gameObject->Transform->SetScale(20, 1, 20);
+		Renderer *render = gameObject->AddComponent<Renderer>();
+		render->MaterialPath = path + "/../Data/Material/Terrain.material";
+		render->MaterialID = 1;
+		render->OnCreate();
+		render->OnCreateComplete();
+		static_cast<BatchRenderer*>(render->Get())->SetDrawModule(eDM_LINES);
+		ADD_IN_SCENE(gameObject);
+
 		createCoord();
 	}
 
@@ -259,6 +271,11 @@ namespace E3DEngine
 		return mLookCoordCamera;
 	}
 
+	void SceneManageRef::SetRunPath(String ^path)
+	{
+		mEditorPath = path;
+	}
+
 	void SceneManageRef::createCoord()
 	{
 		if (mCoordCamera == nullptr)
@@ -276,22 +293,25 @@ namespace E3DEngine
 			mLookCoordCamera->Flag |= DONT_SAVE;
 			mLookCoordCamera->SetClearType(eCT_NotClear);
 		}
-
-		mCoordRt = new Rectangle;
-		mCoordRt->CreateShape(30, 30);
-		mCoordRt->SetLayerMask(LD_LOOK_COORD);
-		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial("../Data/Material/coordinate.material", 2);
-		Render2Texture *rtt = m->GetRenderTexture();
-		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, 4);
-		mCoordRt->SetRenderer(rd);
-		mCoordRt->SetActive(true);
-		mCoordRt->Flag |= DONT_SAVE;
+		std::string path = get_std_string(mEditorPath);
+		GameObject *gameObject = new GameObject();
+		gameObject->CreateBehaviour();
+		mCoordRt = gameObject->AddComponent<Rectangle>();
+		mCoordRt->OnCreate();
+		mCoordRt->OnCreateComplete();
+		gameObject->SetLayerMask(LD_LOOK_COORD);
+		Renderer *rd = gameObject->AddComponent<Renderer>();
+		rd->MaterialID = 2;
+		rd->MaterialPath = path +"/../Data/Material/coordinate.material";
+		rd->OnCreate();
+		rd->OnCreateComplete();
+		Render2Texture *rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();
+		gameObject->Flag |= DONT_SAVE;
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
-		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
-		ADD_IN_SCENE(mCoordRt);
+		gameObject->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
+		ADD_IN_SCENE(gameObject);
 		mCoordCamera->SetRenderTexture(rtt);
-
-		mCoordPrefab = (Prefab*)LoadPrefab("../Data/Scene/coordinate.prefab");
+		mCoordPrefab = (Prefab*)LoadPrefab(path + "/../Data/Scene/coordinate.prefab");
 		mCoordPrefab->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(mCoordPrefab);
 
@@ -300,14 +320,14 @@ namespace E3DEngine
 
 	void SceneRef::createCoordinate(std::string materilPath, int selectID)
 	{
-		mObjectCoord = new Coordinate();
+		/*mObjectCoord = new Coordinate();
 		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(materilPath, selectID);
 		Renderer *rd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(mObjectCoord->VertexBufferName).size());
 		mObjectCoord->SetLayerMask(1);
 		mObjectCoord->SetRenderer(rd);
 		mObjectCoord->Flag |= DONT_SAVE;
 		mObjectCoord->SetActive(true);
-		ADD_IN_SCENE(mObjectCoord);
+		ADD_IN_SCENE(mObjectCoord);*/
 	}
 
 }

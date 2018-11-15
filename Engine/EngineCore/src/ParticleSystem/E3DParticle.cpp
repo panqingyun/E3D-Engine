@@ -515,7 +515,7 @@ namespace E3DEngine
 	{
 		if (m_pRenderer != nullptr)
 		{
-			static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
+			static_cast<BatchRenderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		}
 	}
 	
@@ -565,7 +565,7 @@ namespace E3DEngine
 			{
 				return;
 			}
-			static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
+			static_cast<BatchRenderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		}
 		ParticlePool::GetInstance().DeleteParticleToDeathPool(m_ParticlePool);
 		m_ParticlePool.clear();
@@ -588,7 +588,7 @@ namespace E3DEngine
 		{
 			if (m_pRenderer != nullptr)
 			{
-				static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
+				static_cast<BatchRenderer*>(m_pRenderer)->RemoveInRenderer(ID);
 			}
 		}
 		GameObject::SetActive(isActive);
@@ -609,7 +609,7 @@ namespace E3DEngine
 		return &m_particleAffectors;
 	}
 
-	void ParticleGroup::SetRenderer(Renderer * buffer)
+	void ParticleGroup::SetRenderer(BatchRenderer * buffer)
 	{
 		m_pRenderer = buffer;
 		SceneManager::GetCurrentScene()->AddRenderObject(m_pRenderer, m_layerMask);
@@ -672,11 +672,11 @@ namespace E3DEngine
 		{
 			return;
 		}
-		static_cast<Renderer*>(m_pRenderer)->RemoveInRenderer(ID);
+		static_cast<BatchRenderer*>(m_pRenderer)->RemoveInRenderer(ID);
 		// 初始化粒子团内的所有粒子
 		int ivertexTotal = 0;
 		int iindexTotal = 0;
-		Renderer * render = static_cast<Renderer*>(m_pRenderer);;
+		BatchRenderer * render = static_cast<BatchRenderer*>(m_pRenderer);;
 		render->FillBegin(ID);		
 
 		for (share_pointer<Particle> &it : m_ParticlePool)
@@ -724,7 +724,7 @@ namespace E3DEngine
 
 	void ParticleGroup::UpdateParticles(float deltaTime)
 	{
-		if (static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID) == nullptr)
+		if (static_cast<BatchRenderer*>(m_pRenderer)->GetRendererBuffer(ID) == nullptr)
 		{
 			return;
 		}
@@ -736,7 +736,7 @@ namespace E3DEngine
 			return dis1 > dis2;
 		});
 
-		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
+		vertexStartIndex = static_cast<BatchRenderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		for (particleListIterator it = m_ActiveParticles.begin(); it != m_ActiveParticles.end();)
 		{
 			share_pointer<Particle> particle = *it;
@@ -779,10 +779,10 @@ namespace E3DEngine
 			p->Update(deltaTime);
 			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
 
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 3] = vertex[3];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 0] = vertex[0];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 1] = vertex[1];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 2] = vertex[2];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + p->Index * 4 + 3] = vertex[3];
 		}
 	}
 	
@@ -805,7 +805,7 @@ namespace E3DEngine
 			return dis1 > dis2;
 		});
 
-		vertexStartIndex = static_cast<Renderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
+		vertexStartIndex = static_cast<BatchRenderer*>(m_pRenderer)->GetRendererBuffer(ID)->VertextStartIndex;
 		//Debug::Log(ell_Error, "Particle Number is %d", m_ActiveParticles.size());
 		for (particleListIterator itr = m_ActiveParticles.begin(); itr != m_ActiveParticles.end();)
 		{
@@ -842,10 +842,10 @@ namespace E3DEngine
 			}
 			particle.get_ptr()->Update(deltaTime);
 			BatchVertex* vertex = particle.get_ptr()->getBatchVertex();
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = vertex[1];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = vertex[2];
-			static_cast<Renderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = vertex[3];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 0] = vertex[0];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 1] = vertex[1];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 2] = vertex[2];
+			static_cast<BatchRenderer*>(m_pRenderer)->mBatchVertex[vertexStartIndex + particle.get_ptr()->Index * 4 + 3] = vertex[3];
 		}
 		if (m_ActiveParticles.empty() && !bIsEnable )
 		{

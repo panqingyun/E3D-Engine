@@ -4,14 +4,19 @@
 #define E3Drectangle_hpp
 
 #include <stdio.h>
-#include "E3DRenderObject.hpp"
+#include "E3DComponent.hpp"
+#include "..\Source\ClassFactory.h"
 
 namespace E3DEngine
 {
-	class E3D_EXPORT_DLL Rectangle : public GameObject
+	class E3D_EXPORT_DLL Rectangle : public Component
 	{
+		DECLARE_CLASS(Rectangle)
 	public:
-		void CreateShape(float width, float height);
+		Rectangle();
+		virtual void Awake() override;
+	private:
+		void createShape(float width, float height);
 	};
 }
 

@@ -27,7 +27,6 @@ namespace E3DEngine
 		virtual void TransformChange() override;
 		virtual void Render() override;
 		virtual void SetDrawModule(DWORD module) override;
-		virtual Renderer *GetRenderer() override { return pRender; }
 	public:
 		virtual UINT GetDrawModule() { return pRender->GetDrawModule(); }
 		virtual CTransform * GetTransform();

@@ -10,15 +10,15 @@
 
 namespace E3DEngine
 {
-	Renderer * RendererManager::CreateRender(Material* material)
+	BatchRenderer * RendererManager::CreateRender(Material* material)
 	{
 		return nullptr;
 	}
 
-	Renderer * RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
+	BatchRenderer * RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
 		GetRenderSystem()->UseShareContext();
-		Renderer * buffer = nullptr;
+		BatchRenderer * buffer = nullptr;
 		if (!isStatic)
 		{
 			buffer = newRenderer(type, materialID);
@@ -50,13 +50,13 @@ namespace E3DEngine
 	}
 
 
-	E3DEngine::Renderer * RendererManager::GenRender()
+	E3DEngine::BatchRenderer * RendererManager::GenRender()
 	{
 		return nullptr;
 	}
 
 
-	void RendererManager::AddRenderer(int materialID, Renderer * rd)
+	void RendererManager::AddRenderer(int materialID, BatchRenderer * rd)
 	{
 
 	}
@@ -68,7 +68,7 @@ namespace E3DEngine
 	}
 
 
-	E3DEngine::Renderer * RendererManager::newRenderer(RENDER_TYPE type, int materialID)
+	E3DEngine::BatchRenderer * RendererManager::newRenderer(RENDER_TYPE type, int materialID)
 	{
 		return nullptr;
 	}

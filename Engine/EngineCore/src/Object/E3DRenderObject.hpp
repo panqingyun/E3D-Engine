@@ -4,10 +4,11 @@
 #ifndef Object_hpp
 #define Object_hpp
 
-#include "E3DComponent.hpp"
+#include "../Component/E3DComponent.hpp"
 #include "../RenderSystem/Material/E3DMaterial.hpp"
 #include "../Source/E3DVertex.h"
 #include "../Source/vmath.h"
+#include "../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
@@ -103,7 +104,7 @@ namespace E3DEngine
 		virtual void SetCamera(Camera * camera);
 		virtual void SetDrawModule(DWORD module);
 		virtual void ClearVertexIndexBuffer() { }
-        
+		virtual RenderObject *Get() { return this; }
 	public:
 		virtual UINT GetDrawModule();
 		virtual CTransform * GetTransform();
@@ -121,6 +122,7 @@ namespace E3DEngine
 		{
 			return m_AABB;
 		}
+
     protected:
         long	m_nColor;
         bool	m_bIsBillboard;
@@ -142,7 +144,7 @@ namespace E3DEngine
 		std::vector<unsigned int>		Indices;
 		// 渲染层级
 		eRenderIndex					RenderIndex;
-		// 静态绘制表示这个Renderer 是给合并批次的object使用
+		// 静态绘制表示这个BatchRenderer 是给合并批次的object使用
 		bool							IsStaticDraw;
 		Camera *						pCamera;
     };

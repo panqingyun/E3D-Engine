@@ -8,7 +8,7 @@
 
 #include <algorithm>
 #include <typeinfo>
-#include "E3DComponent.hpp"
+#include "../Component/E3DComponent.hpp"
 #include "../Source/E3DDelegate.h"
 #include "../Source/E3DVertex.h"
 #include "../Source/vmath.h"
@@ -284,24 +284,18 @@ namespace E3DEngine
 		LD_NOSHADOW		= 1 << 27,
 	};
 
-	template<typename  T> std::string GetClassName()
-	{
-		return typeid(T).name();
-	}
-
 #define CREATE_BEHAVIOUR(name) \
 	mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());\
 	mBehaviour->Create(NAME_SPACE, #name);\
 	setBehaviourDefaultValue();\
-	Object::setBehaviourDefaultValue();\
-	TRANSFER_FIELD_OBJECT(Transform);\
+	Object::setBehaviourDefaultValue();
 
 
 	class Camera;
 	class CTransform;
 	class Material;
 	class RenderObject;
-	class Renderer;
+	class BatchRenderer;
 	class SkyBox;
 	class Collider;
 	class RigidBody;
@@ -312,18 +306,18 @@ namespace E3DEngine
 
 		template<typename T> T * AddComponent()
 		{
-			std::string type_id = GetClassName<T>();
+			std::string type_id = typeid(T).name();
 			T *_t = new T();
 			((Component*)_t)->SetGameObject(this);
-			((Component*)_t)->mSceneObjectType = type_id;
+			((Component*)_t)->mTypeName = type_id;
 			((Component*)_t)->Transform = Transform;
-			m_listComponents[type_id].push_back((Component*)_t);
+			m_listComponents[type_id] = (Component*)_t;
 			ComponentAdded((Component*)_t);
 			return _t;
 		}
 		template<typename T> T * GetComponent()
 		{
-			std::string type_id = GetClassName<T>();
+			std::string type_id = typeid(T).name();
 			if (m_listComponents.find(type_id) != m_listComponents.end())
 			{
 				return (T*)m_listComponents[type_id][0];
@@ -333,7 +327,7 @@ namespace E3DEngine
 		template<typename T> std::vector<T*> * GetComponents()
 		{
 			std::vector<T*> * retVector = nullptr;
-			std::string type_id = GetClassName<T>();
+			std::string type_id = typeid(T).name();
 			if (m_listComponents.find(type_id) != m_listComponents.end())
 			{
 				retVector = new std::vector<T*>();
@@ -375,7 +369,7 @@ namespace E3DEngine
 		virtual void DestoryAllChild();
 		virtual void SetCollider(Collider * collider);
 		virtual void CreateComplete();
-		virtual void SetRenderer(Renderer * renderer);
+		virtual void SetRenderer(BatchRenderer * renderer);
 		virtual void CreateBehaviour() override;
 
 		virtual Collider * GetCollider();
@@ -386,6 +380,7 @@ namespace E3DEngine
 		virtual std::vector<uint>& GetIndex();
 		// 获取长宽高
 		virtual vec3f GetBounds();
+		virtual void SetSize(float l, float h, float w);
 
 	public:
 		void SetRenderIndex(DWORD index);
@@ -416,7 +411,7 @@ namespace E3DEngine
 		unsigned int			mSceneObjectType;
 	protected:
 		DWORD						m_layerMask;
-		Renderer *					m_pRenderer;
+		BatchRenderer *				m_pRenderer;
 		vec3f						size;
 		std::vector<BatchVertex>	m_vecBatchVertex;
 		bool						m_bIsStatic;

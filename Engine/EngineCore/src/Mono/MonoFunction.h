@@ -112,7 +112,6 @@ VOID _4_PARAM_FUNCTION(Transform		, getForward		, CS_OBJECT		, obj		, float&	, x
 VOID _4_PARAM_FUNCTION(Transform		, getUp				, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
 VOID _4_PARAM_FUNCTION(Transform		, getRight			, CS_OBJECT		, obj		, float&	, x, float&	, y, float&	, z);
 VOID _5_PARAM_FUNCTION(Camera			, setClearColor		, CS_OBJECT		, cs_boj	, float		, r, float	, g, float	, b, float, a);
-CS_OBJECT _3_PARAM_FUNCTION(Box			, Create			, float			, l			, float		, w, float	, h);
 VOID _2_PARAM_FUNCTION(Renderer			, set_Material		, CS_OBJECT		, cs_boj	, CS_OBJECT	, material);
 VOID _2_PARAM_FUNCTION(GameObject		, set_Active		, CS_OBJECT		, cs_boj	, CS_BOOL	, isActive);
 
@@ -140,15 +139,11 @@ VOID _2_PARAM_FUNCTION(Object				, set_Name			, CS_OBJECT		, cs_obj, CS_STRING		
 CS_STRING _1_PARAM_FUNCTION(Object			, get_Name			, CS_OBJECT		, cs_obj);
 CS_OBJECT _1_PARAM_FUNCTION(Sphere			, Create			, float			, r);
 VOID _2_PARAM_FUNCTION(GameObject			, AddChild			, CS_OBJECT		, cs_obj, CS_OBJECT		,child);
-CS_OBJECT _1_PARAM_FUNCTION(Terrain			, Create			, CS_STRING		,heightMap);
 VOID _2_PARAM_FUNCTION(Renderer				, setDrawModule		, CS_OBJECT		, cs_obj		, UINT ,drawModule);
 UINT _1_PARAM_FUNCTION(Renderer				, getDrawModule		, CS_OBJECT		, cs_obj);
-VOID _1_PARAM_FUNCTION(SkyBox, CreateSkyBox	, CS_OBJECT			, material);
-CS_OBJECT _1_PARAM_FUNCTION(Light			, Create			, UINT			, lightType);
 VOID _5_PARAM_FUNCTION(Light				, setColor			, CS_OBJECT		, cs_obj, float, r, float, g, float, b, float, a);
 VOID _2_PARAM_FUNCTION(Camera				, getViewMatrix		, CS_OBJECT		, cs_obj, CS_ARRAY&, data);
 VOID _2_PARAM_FUNCTION(Camera				, getProjectionMatrix, CS_OBJECT	, cs_obj, CS_ARRAY& ,data);
-VOID _1_PARAM_FUNCTION(SkyDome				, CreateSkyDome		, CS_OBJECT		, material);
 VOID _2_PARAM_FUNCTION(PointLight			, set_Range			, CS_OBJECT		, light, float, range);
 float _1_PARAM_FUNCTION(PointLight			, get_Range			, CS_OBJECT		, light);
 CS_OBJECT _2_PARAM_FUNCTION(Mesh			, create			, CS_STRING		, path, int ,cfgID);

@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include "../Source/Interface.h"
-#include "../Object/E3DComponent.hpp"
 
 namespace E3DEngine
 {

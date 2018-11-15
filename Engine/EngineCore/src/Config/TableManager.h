@@ -29,7 +29,7 @@ namespace E3DEngine
 
         template<typename T> T*  Select(int ID)
         {
-            string name = GetClassName<T>();
+            string name = typeid(T).name();
             if(name == "")
 			{
                 return nullptr;
@@ -42,7 +42,7 @@ namespace E3DEngine
         }
         template<typename T> T*  Select(int ID1, int ID2)
         {
-            string name = GetClassName<T>();
+            string name = typeid(T).name();
             if(name == "")
 			{
                 return nullptr;
@@ -56,7 +56,7 @@ namespace E3DEngine
         
         template<typename T> vector<T*>* GetTable()
         {
-            string name = GetClassName<T>();
+            string name = typeid(T).name();
             if(name == "")
 			{
                 return nullptr;

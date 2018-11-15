@@ -8,21 +8,6 @@
 
 namespace E3DEngine
 {
-	void ImplCollider()
-	{
-		REGIST_CLASS(BoxCollider);
-		REGIST_CLASS(SphereCollider);
-		REGIST_CLASS(MeshCollider);
-		REGIST_CLASS(RigidBody);
-		REGIST_CLASS(CapsuleCollider);
-	}
-
-	DECLARE_CLASS_NAME(BoxCollider)
-	DECLARE_CLASS_NAME(SphereCollider)
-	DECLARE_CLASS_NAME(MeshCollider)
-	DECLARE_CLASS_NAME(RigidBody)
-	DECLARE_CLASS_NAME(CapsuleCollider)
-
 	btBoxShape* createBoxShape(const btVector3& halfExtents)
 	{
 		btBoxShape* box = new btBoxShape(halfExtents);

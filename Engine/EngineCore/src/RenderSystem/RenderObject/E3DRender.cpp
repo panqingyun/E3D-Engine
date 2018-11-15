@@ -5,36 +5,68 @@
 //
 
 #include "E3DRender.hpp"
+#include "..\E3DRenderSystem.hpp"
+#include "..\..\Source\E3DVertexManager.h"
+#include "..\..\Source\Application.h"
+#include "..\..\Scene\E3DSceneLoader.h"
 
 namespace E3DEngine
 {
-	void Renderer::FillVertex(std::vector<Vertex>& vb)
+	void Renderer::OnCreateComplete()
+	{
+		std::string path = "";
+		if (MaterialPath[0] == MaterialPath[1] && MaterialPath[1] == '.')
+		{
+			path = GetCurLoadRootPath() + MaterialPath;
+		}
+#ifdef __E3D_EDITOR__
+		else if (MaterialPath.find(":") != std::string::npos)
+		{
+			path = MaterialPath;
+		}
+#endif
+		else
+		{
+			path = Application::AppDataPath + MaterialPath;
+		}
+		Material *m = GetRenderSystem()->GetMaterialManager()->CreateMaterial(path, MaterialID);
+		BatchRenderer * brd = GetRenderSystem()->GetRenderManager()->GetRenderer(m->ID, VertexManager::GetVertex(mGameObject->VertexBufferName).size(), (RENDER_TYPE)RendererType, mGameObject->GetIsStatic());
+		mGameObject->SetRenderer(brd);
+		pRenderer = brd;
+	}
+
+	Object * Renderer::Get()
+	{
+		return pRenderer;
+	}
+
+	void BatchRenderer::FillVertex(std::vector<Vertex>& vb)
 	{
 		Vertices.insert(Vertices.end(), vb.begin(), vb.end());
 	}
 
-	void Renderer::FillVertex(Vertex vb)
+	void BatchRenderer::FillVertex(Vertex vb)
 	{
 		Vertices.emplace_back(vb);
 	}
 
-	void Renderer::FillBatchVertex(BatchVertex bv)
+	void BatchRenderer::FillBatchVertex(BatchVertex bv)
 	{
 		mBatchVertex.emplace_back(bv);
 	}
 
-	void Renderer::FillIndex(uint ib)
+	void BatchRenderer::FillIndex(uint ib)
 	{
 		Indices.push_back(m_vertexCount + ib);
 	}
 
-	void Renderer::FillBegin(UINT objId)
+	void BatchRenderer::FillBegin(UINT objId)
 	{
 		RecordCurrentVextexStartIndex(ID);
 		RecordCurrentIndexStartIndex(ID);
 	}
 
-	void Renderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
+	void BatchRenderer::FillEnd(UINT objId, uint vertexCount, uint indexCount)
 	{
 		VertexCountAdd(objId, vertexCount);
 		IndexCountAdd(objId, indexCount);
@@ -42,7 +74,7 @@ namespace E3DEngine
 		bNeedUpdateVertex = true;
 	}
 
-	Renderer::Renderer()
+	BatchRenderer::BatchRenderer()
 	{
 		m_vertexCount = 0;
 		bNeedUpdateVertex = false;
@@ -50,48 +82,48 @@ namespace E3DEngine
 		CreateBehaviour();
 	}
 
-	void Renderer::CreateBehaviour()
+	void BatchRenderer::CreateBehaviour()
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(Renderer);
 		setBehaviourDefaultValue();
 	}
 
-	void Renderer::setBehaviourDefaultValue()
+	void BatchRenderer::setBehaviourDefaultValue()
 	{
 		Object::setBehaviourDefaultValue();
 	}
 
-	Renderer::~Renderer()
+	BatchRenderer::~BatchRenderer()
 	{
 		m_objRendererBuffers.clear();
 	}
 
-	DWORD Renderer::RecordCurrentVextexStartIndex(UINT objId)
+	DWORD BatchRenderer::RecordCurrentVextexStartIndex(UINT objId)
 	{
 		m_objRendererBuffers[objId].VertextStartIndex = m_vertexCount;
 		return m_vertexCount;
 	}
 
-	DWORD Renderer::RecordCurrentIndexStartIndex(UINT objId)
+	DWORD BatchRenderer::RecordCurrentIndexStartIndex(UINT objId)
 	{
 		m_objRendererBuffers[objId].IndexStartIndex = m_indexCount;
 		return m_indexCount;
 	}
 
-	void Renderer::VertexCountAdd(UINT objId, uint vertexCount)
+	void BatchRenderer::VertexCountAdd(UINT objId, uint vertexCount)
 	{
 		m_objRendererBuffers[objId].VertextNumber = vertexCount;
 		m_vertexCount += vertexCount;
 	}
 
-	void Renderer::IndexCountAdd(UINT objId, uint indexCount)
+	void BatchRenderer::IndexCountAdd(UINT objId, uint indexCount)
 	{
 		m_objRendererBuffers[objId].IndexNumber = indexCount;
 		m_indexCount += indexCount;
 	}
 
-	void Renderer::RemoveInRenderer(UINT objId)
+	void BatchRenderer::RemoveInRenderer(UINT objId)
 	{
 		if (IsStaticDraw)
 		{
@@ -134,7 +166,7 @@ namespace E3DEngine
 		}
 	}
 	
-	RendererBuffer* Renderer::GetRendererBuffer(UINT objID)
+	RendererBuffer* BatchRenderer::GetRendererBuffer(UINT objID)
 	{
 		if (m_objRendererBuffers.find(objID) == m_objRendererBuffers.end())
 		{
@@ -143,7 +175,7 @@ namespace E3DEngine
 		return &m_objRendererBuffers[objID];
 	}
 
-	void Renderer::TransformChange()
+	void BatchRenderer::TransformChange()
 	{
 		
 	}

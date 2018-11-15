@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include "Scene.h"
-#include <Object/E3DCoordinate.h>
+#include <Component/E3DCoordinate.h>
 
 #pragma managed
 #include <msclr\marshal_cppstd.h>

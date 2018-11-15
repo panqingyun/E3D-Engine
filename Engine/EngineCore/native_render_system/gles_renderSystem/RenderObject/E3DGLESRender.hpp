@@ -12,7 +12,7 @@
 
 namespace E3DEngine
 {
-	class GLES_Renderer : public Renderer
+	class GLES_Renderer : public BatchRenderer
 	{
 	public:
 		GLES_Renderer()

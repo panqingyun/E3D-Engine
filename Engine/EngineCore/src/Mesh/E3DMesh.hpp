@@ -7,7 +7,7 @@
 
 #include "E3DBone.hpp"
 #include "../Object/E3DRenderObject.hpp"
-#include "../Object/E3DComponent.hpp"
+#include "../Component/E3DComponent.hpp"
 #include "../Animation/E3DAnimation.hpp"
 
 #ifndef __IGNORED_INCLUDE__
@@ -18,8 +18,8 @@
 #include <assimp/postprocess.h>
 #include <assimp/cimport.h>
 #endif
-
-using namespace std;
+#include "../Source/ClassFactory.h"
+#include "../Object/E3DGameObject.h"
 
 namespace E3DEngine
 {
@@ -35,11 +35,13 @@ namespace E3DEngine
 		unsigned int BaseIndex;
 		unsigned int MaterialIndex;
 	};
-	class E3D_EXPORT_DLL Mesh : public GameObject
+	class E3D_EXPORT_DLL Mesh : public Component
 	{
+		DECLARE_CLASS(Mesh)
 	public:
-		Mesh(std::string filePath);
-		void Destory();
+		Mesh();
+		virtual void Awake() override;
+		virtual void Destory() override;
 		virtual void Update(float deltaTime) override;
 	public:
 #ifndef __IGNORED_INCLUDE__
@@ -54,9 +56,16 @@ namespace E3DEngine
 		void	loadBones(uint MeshIndex, const aiMesh* paiMesh);
 		void	createBoneTree(aiNode * pNode);
 		void	createAnimation();
-
+	public:
+		static void SetFilePath(void *cp, object value);
+		static object GetFilePath(void *cp);
+		virtual void registProperty() override
+		{
+			SAVE_METHOD(FilePath, FT_STRING)
+		}
 	protected:
 		bool m_bIsSkinMesh;
+		std::string FilePath;
 #endif
 	public:	
 		vector<mat4f*>				VecBoneMatrix;

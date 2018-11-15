@@ -9,6 +9,7 @@
 		<Item ID="6" ShaderID = "6" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
 		<Item ID="7" ShaderID = "7" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
 		<Item ID="8" ShaderID = "8" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "0"/>
+		<Item ID="9" ShaderID = "9" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--
@@ -44,5 +45,6 @@
 		<Item ID="6" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/LH_changshiqiao01.jpg;" />
 		<Item ID="7" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/b_0000_shengmu_001.tga;"/>
 		<Item ID="8" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/rose2_D.png;"/>
+		<Item ID="9" ShaderPath="shader/hua.shader" UniformVariable="myTexture0=Resource/Material/texture/jiebai_fangzi01.jpg;"/>
 	</ShaderConfig>
 </ConfigSystem>

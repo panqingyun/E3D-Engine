@@ -10,16 +10,16 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL RendererManager : public IManager
 	{
 	public:
-		virtual Renderer * CreateRender(Material* material);
-		virtual Renderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false);
-		virtual Renderer * GenRender();
-		virtual void AddRenderer(int materialID, Renderer * rd);
+		virtual BatchRenderer * CreateRender(Material* material);
+		virtual BatchRenderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false);
+		virtual BatchRenderer * GenRender();
+		virtual void AddRenderer(int materialID, BatchRenderer * rd);
 		virtual void Cleanup();
 
 	protected:
-		virtual Renderer * newRenderer(RENDER_TYPE type, int materialID);
+		virtual BatchRenderer * newRenderer(RENDER_TYPE type, int materialID);
 	protected:
-		std::map<int, Renderer*> m_mapVertexBuffers;
+		std::map<int, BatchRenderer*> m_mapVertexBuffers;
 		std::map<int, int> m_mapMaterialID2RendererID;
 	};
 }

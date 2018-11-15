@@ -2,7 +2,7 @@
 //******************* Copyright (c) 2017-12-7  PanQingyun. All rights reserved. *************************//
 #include "E3DSphere.h"
 #include "../RenderSystem/RenderObject/E3DRenderManager.hpp"
-#include "E3DTransform.hpp"
+#include "../Object/E3DTransform.hpp"
 #include "../Camera/E3DCamera.h"
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Scene/E3DSceneManager.hpp"
@@ -10,14 +10,18 @@
 
 E3DEngine::Sphere::Sphere()
 {
-	mSceneObjectType = TP_Sphere;
 	CREATE_BEHAVIOUR(Sphere);
 }
 
-void E3DEngine::Sphere::Create(float R)
+void E3DEngine::Sphere::Awake()
 {
-	VertexBufferName = "Sphere";
-	if (VertexManager::GetVertex(VertexBufferName).empty())
+	create(1);
+}
+
+void E3DEngine::Sphere::create(float R)
+{
+	mGameObject->VertexBufferName = "Sphere";
+	if (VertexManager::GetVertex(mGameObject->VertexBufferName).empty())
 	{
 		std::vector<Vertex> vecVertex;
 		int rowNumber = 181;
@@ -55,9 +59,7 @@ void E3DEngine::Sphere::Create(float R)
 				}
 			}
 		}
-		VertexManager::Add(vecVertex, vecIndex, VertexBufferName);
+		VertexManager::Add(vecVertex, vecIndex, mGameObject->VertexBufferName);
 	}
-	size.x = R;
-	size.y = R;
-	size.z = R;
+	mGameObject->SetSize(R, R, R);
 }

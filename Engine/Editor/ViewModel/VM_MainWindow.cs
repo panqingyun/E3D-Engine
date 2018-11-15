@@ -67,6 +67,7 @@ namespace E3DEditor.ViewModel
                     return;
                 }
                 engineLoaded = value;
+                E3DEngine.SceneManageRef.GetInstance().SetRunPath(System.Windows.Forms.Application.StartupPath);
                 myTimer.Tick += new EventHandler(engineUpdate);
                 myTimer.Enabled = true;
                 myTimer.Interval = 10;

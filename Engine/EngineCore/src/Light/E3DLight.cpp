@@ -37,7 +37,7 @@ namespace E3DEngine
 		// 平行光 创建正交投影摄像机
 		vec3f trans = vec3f(100, 200, 100);
 		shadowCamera = new E3DEngine::Camera(Transform->Position + trans, trans, vec3f(0, 1, 0), -225, 225, -225, 225, 1, 1000);
-		
+		shadowCamera->CreateBehaviour();
 		TextureData tData;
 		tData.width = 4096;
 		tData.height = 4096;

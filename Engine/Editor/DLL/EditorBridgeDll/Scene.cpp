@@ -90,7 +90,7 @@ namespace E3DEngine
 
 	void SceneRef::Update(float deltaTime)
 	{
-		if (mCurSelObject != nullptr && mObjectCoord != nullptr)
+		if (mCurSelObject != nullptr)
 		{
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
@@ -101,7 +101,7 @@ namespace E3DEngine
 
 	void SceneRef::AfterUpdate(float deltaTime)
 	{
-		if (mCurSelObject != nullptr && mObjectCoord != nullptr)
+		if (mCurSelObject != nullptr )
 		{
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
@@ -224,6 +224,7 @@ namespace E3DEngine
 		GameObject *gameObject = new GameObject();
 		gameObject->CreateBehaviour();
 		gameObject->SetActive(true);
+		gameObject->SetLayerMask(1);
 		gameObject->Flag |= DONT_SAVE;
 
 		Terrain *terrain = gameObject->AddComponent<Terrain>();
@@ -297,9 +298,11 @@ namespace E3DEngine
 		GameObject *gameObject = new GameObject();
 		gameObject->CreateBehaviour();
 		mCoordRt = gameObject->AddComponent<Rectangle>();
+		gameObject->SetLayerMask(LD_LOOK_COORD);
 		mCoordRt->OnCreate();
 		mCoordRt->OnCreateComplete();
-		gameObject->SetLayerMask(LD_LOOK_COORD);
+		gameObject->SetActive(true);
+		gameObject->Transform->SetScale(50, 50, 1);
 		Renderer *rd = gameObject->AddComponent<Renderer>();
 		rd->MaterialID = 2;
 		rd->MaterialPath = path +"/../Data/Material/coordinate.material";

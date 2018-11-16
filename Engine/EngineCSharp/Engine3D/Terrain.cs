@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace E3DEngine
 {
-    public class Terrain : GameObject
+    public class Terrain : Component
     {
-        private Terrain()
-        {
-
-        }
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public static extern Terrain Create(string heightMap);
+       
     }
 }

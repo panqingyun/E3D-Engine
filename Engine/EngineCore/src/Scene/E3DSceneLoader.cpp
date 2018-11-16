@@ -171,8 +171,6 @@ namespace E3DEngine
 		Camera *pCamera = Camera::CreateCamera();
 
 		pCamera->SetClearColor(Convert::ToColor4(*objectElement->Attribute(_ClearColor)));
-		setLayerMask(objectElement, pCamera);
-		parseTransform(objectElement->FirstChildElement(_Transform), pCamera->Transform);
 
 		return pCamera;
 	}

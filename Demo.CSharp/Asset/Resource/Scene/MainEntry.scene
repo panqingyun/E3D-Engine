@@ -2,6 +2,10 @@
 <Scene>
     <GameObject ID="1" Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" ClearColor="0.000000,0.000000,0.000000,0.000000" Color="FFFFFFFF">
         <Transform Posistion="186.000000,64.000000,260.000000" Rotation="-24.200006,17.200001,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component Active="true" ClassName="AppMain">
+            <Field ShowDebug="" ShowNumber="" />
+        </Component>
+        <Component Active="true" ClassName="CameraController" />
     </GameObject>
     <GameObject ID="2" Name="Light" Type="3" LayerMask="AllLayer" Active="true" Color="FFFFFFFF">
         <Transform Posistion="100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />

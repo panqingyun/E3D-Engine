@@ -11,6 +11,7 @@
 
 E3DEngine::SkyBox::SkyBox()
 {
+	CREATE_BEHAVIOUR(SkyBox);
 }
 
 void E3DEngine::SkyBox::Awake()

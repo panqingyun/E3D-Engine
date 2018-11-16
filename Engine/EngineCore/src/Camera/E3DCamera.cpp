@@ -44,7 +44,6 @@ namespace E3DEngine
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
 		m_bIsShadowCamera = false;
-		CREATE_BEHAVIOUR(Camera);
 		Transform->SetNeedUpdate(false);
 	}
 	
@@ -69,7 +68,6 @@ namespace E3DEngine
 		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
-		CREATE_BEHAVIOUR(Camera);
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}
@@ -433,6 +431,12 @@ namespace E3DEngine
 		m_bIsShadowCamera = true;
 	}
 
+
+	void Camera::CreateBehaviour()
+	{
+		CREATE_BEHAVIOUR(Camera);
+	}
+
 	float * Camera::normal(float *plans)
 	{
 		m_Temp = plans;
@@ -513,12 +517,14 @@ namespace E3DEngine
 			const float32 fov = 60.0f;
 			const float32 aspect = frameSize.x / frameSize.y;
 			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
+			camera->CreateBehaviour();
 			camera->SetActive(true);
 			return camera;
 		}
 		else
 		{
 			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, up, -1, 1, -1, 1, zNear, zFar);
+			camera->CreateBehaviour();
 			camera->SetActive(true);
 			return camera;
 		}

@@ -63,6 +63,7 @@ namespace E3DEngine
 		Render2Texture *GetRenderTexture();
 		void SetIsShadowCamera();
 		bool GetIsShadowCamera() { return m_bIsShadowCamera; }
+		virtual void CreateBehaviour() override;
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		

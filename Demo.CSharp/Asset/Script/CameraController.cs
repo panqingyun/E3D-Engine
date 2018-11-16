@@ -17,6 +17,7 @@ class CameraController : Component
 
     void Start()
     {
+        Debug.Log("12344");
         Game.App.KeyPressEvent += AppDemo_KeyPressEvent;
         Game.App.MouseDownEvent += AppDemo_MouseDownEvent;
         Game.App.MouseMoveEvent += AppDemo_MouseMoveEvent;

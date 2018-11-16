@@ -53,10 +53,10 @@ void E3DEngine::EngineDelegateRef::SetAppDataPath(String^  path)
 
 void E3DEngine::EngineDelegateRef::LogicUpdate()
 {
-	//SceneManageRef::GetInstance()->GetCurScene()->Update(0.02f);
+	SceneManageRef::GetInstance()->GetCurScene()->Update(0.02f);
 	::LogicUpdate();
-	//SceneManageRef::GetInstance()->GetCurScene()->AfterUpdate(0.02f);
-	//SceneManageRef::GetInstance()->Update(0.02f);
+	SceneManageRef::GetInstance()->GetCurScene()->AfterUpdate(0.02f);
+	SceneManageRef::GetInstance()->Update(0.02f);
 }
 
 void E3DEngine::EngineDelegateRef::RenderUpdate()

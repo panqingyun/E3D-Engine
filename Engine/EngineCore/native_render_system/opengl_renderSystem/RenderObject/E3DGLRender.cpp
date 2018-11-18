@@ -135,8 +135,12 @@ namespace E3DEngine
 		}
 
 		updateEngineDefineShaderValue();
-
 		pMaterial->UseMaterial();
+
+		if (pCamera->GetIsShadowCamera())
+		{
+			//glEnable(GL_CULL_FACE);
+		}		
 
 		updateArrayBuffer();
 		

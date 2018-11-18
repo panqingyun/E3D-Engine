@@ -30,7 +30,11 @@
 			</Grid.RowDefinitions>
 			<GroupBox Header="{StaticResource Hierarchy}" Foreground="White" Grid.Row="0" FontSize="13" BorderBrush="#FF009FFF" 
 					  Style="{StaticResource GroupboxWithoutWhiteBorder}">
-				<TreeView x:Name="objectList" Margin="-3,10,-3,-3" Grid.Column="0" Background="#FF292929" 
+				<Expander Margin="-3,5,-3,-3" Style="{StaticResource ExpanderStyle1}" IsExpanded="True">
+					<Expander.Header>
+						<TextBlock Text="{Binding Path=SceneName}"/>
+					</Expander.Header>
+					<TreeView x:Name="objectList"  Background="#FF292929" 
 						  BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle}" MouseLeftButtonUp="objectList_MouseLeftButtonUp">
 					<TreeView.ContextMenu >
 						<ContextMenu>
@@ -46,6 +50,7 @@
 						</HierarchicalDataTemplate>
 					</TreeView.ItemTemplate>
 				</TreeView>
+				</Expander>
 			</GroupBox>
 			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceView}" />
 			<GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" Background="Transparent" Height="3" VerticalAlignment="Top"/>

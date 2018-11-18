@@ -51,7 +51,7 @@ namespace E3DEngine
 		// 启用Shader
 		//-----------------------------------------------
 		virtual void UseProgram() { }
-
+		virtual void SetRenderState(){ }
 		// -----------------------------------------------
 		// 使用ID是0的shader 即不使用任何shader
 		//-----------------------------------------------

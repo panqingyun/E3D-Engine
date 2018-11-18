@@ -173,6 +173,17 @@ namespace E3DEditor.ViewModel
             get { return _MainWindow.properties; }
         }
 
+        private string sceneName = "";
+        public string SceneName
+        {
+            get { return sceneName; }
+            set
+            {
+                sceneName = value;
+                OnPropertyChanged("SceneName");
+            }
+        }
+
         #endregion
 
         public VM_MainWindow()
@@ -373,11 +384,11 @@ namespace E3DEditor.ViewModel
             List<E3DEngine.GameObjectRef> _gameObjectList = gameRootObj.GetChilds();
             gameObjectList = new ObservableCollection<GameObjectNode>();
             GameObjectNode node = new GameObjectNode();
-            node.Name = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetName();
-            node.ShowText = node.Name;
-            node.mGameObject = gameRootObj;
-            gameObjectList.Add(node);
-            fillNodeList(_gameObjectList, node.Childs);
+            SceneName = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetName();
+            //node.ShowText = node.Name;
+            //node.mGameObject = gameRootObj;
+            //gameObjectList.Add(node);
+            fillNodeList(_gameObjectList, gameObjectList);
 
             mainWnd.objectList.ItemsSource = gameObjectList;
             E3DEngine.SceneManageRef.GetInstance().LoadEditorObject();

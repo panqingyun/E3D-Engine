@@ -34,7 +34,7 @@ namespace E3DEngine
 
 	void GL_Material::UseMaterial()
 	{
-		UseProgram();
+		UseProgram(); 
 		openState();
 		if (mShader != nullptr)
 		{
@@ -111,6 +111,11 @@ namespace E3DEngine
 	void GL_Material::UpdateShader(unsigned int vertexType)
 	{
 		static_cast<GL_Shader*>(mShader)->UpdateAttribPointerValue(vertexType);
+	}
+
+	void GL_Material::SetRenderState()
+	{
+		
 	}
 
 	void GL_Material::DisableVertexAttrib(unsigned int vertexType)

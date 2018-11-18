@@ -9,7 +9,7 @@
 		<Item ID="6" ShaderID = "6" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
 		<Item ID="7" ShaderID = "7" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
 		<Item ID="8" ShaderID = "8" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "0"/>
-		<Item ID="9" ShaderID = "9" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "1" TextureClampType="1" TextureFilterType = "5"/>
+		<Item ID="9" ShaderID = "9" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace = "0" TextureClampType="1" TextureFilterType = "5"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<!--

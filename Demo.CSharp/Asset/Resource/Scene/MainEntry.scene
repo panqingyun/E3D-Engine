@@ -14,14 +14,14 @@
         </Component>
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="3" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="40.655552,96.304810,226.612457" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="186.000000,64.000000,260.000000" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
         <Component Active="true" ClassName="E3DEngine.SkyBox" />
     </GameObject>
     <GameObject ID="4" Name="Box" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="160.577957,150.884079,173.921982" Rotation="179.634018,12.574232,0.394400" Scale="2.000000,2.000000,2.000000" />
+        <Transform Posistion="177.317505,100.000000,190.444504" Rotation="-73.703781,3.296401,-90.468735" Scale="2.000000,2.000000,2.000000" />
         <Component Active="true" ClassName="E3DEngine.Box" />
         <Component Active="true" ClassName="E3DEngine.BoxCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
@@ -32,18 +32,18 @@
         </Component>
     </GameObject>
     <GameObject ID="5" Name="Box" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="113.717201,131.495605,156.925705" Rotation="90.028137,-58.389698,-0.053347" Scale="3.000000,3.000000,3.000000" />
-        <Component Active="true" ClassName="E3DEngine.Box" />
-        <Component Active="true" ClassName="E3DEngine.BoxCollider" />
+        <Transform Posistion="80.000000,100.000000,98.000000" Rotation="90.050735,-71.822418,-0.078370" Scale="3.000000,3.000000,3.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/CubeMaterial.material" RendererType="0" />
         </Component>
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.Sphere" />
+        <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
     <GameObject ID="6" Name="Sphere" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="161.151337,130.913513,177.884964" Rotation="5.783142,59.480999,-14.467428" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="83.337097,27.806238,229.666321" Rotation="-106.260948,-64.948448,170.372391" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>

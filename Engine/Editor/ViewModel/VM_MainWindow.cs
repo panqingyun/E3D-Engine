@@ -344,22 +344,8 @@ namespace E3DEditor.ViewModel
                 return;
             mainWnd.Pause.IsChecked = false;
             E3DEngine.SceneManageRef.GetInstance().LoadScene(curScenePath);
-            E3DEngine.GameObjectRef gameRootObj = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetRootObject();
-            List<E3DEngine.GameObjectRef> _gameObjectList = gameRootObj.GetChilds();
-            ObservableCollection<GameObjectNode> listObject = gameObjectList[0].Childs;
-            for (int i = 0; i < _gameObjectList.Count; i++)
-            {
-                for (int j = 0; j < listObject.Count; j++)
-                {
-                    if (listObject[j].SceneInnerID == _gameObjectList[i].GetSceneInnerID())
-                    {
-                        listObject[j].mGameObject = _gameObjectList[i];
-                        refillObjectList(_gameObjectList[i].GetChilds(), listObject[j].Childs);
-                        break;
-                    }
-                }
-            }
-            E3DEngine.SceneManageRef.GetInstance().LoadEditorObject();
+            mainWnd.objectList.ItemsSource = null;
+            loadGameObjectList();
         }
 
         private void refillObjectList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)

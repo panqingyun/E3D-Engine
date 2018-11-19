@@ -435,6 +435,7 @@ namespace E3DEngine
 	void Camera::CreateBehaviour()
 	{
 		CREATE_BEHAVIOUR(Camera);
+		TRANSFER_FIELD_OBJECT(Transform);
 	}
 
 	float * Camera::normal(float *plans)

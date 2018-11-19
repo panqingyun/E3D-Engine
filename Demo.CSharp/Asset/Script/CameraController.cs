@@ -68,7 +68,6 @@ class CameraController : Component
         else if (mouseMButtonDown)
         {
             curPos.SetValue(-curMousePosition.x + lastMousePosition.x, curMousePosition.y - lastMousePosition.y, 0);
-
             Vector3 dir = MainCamera.GetViewMatrix().Inverse() * curPos;
             dir.Normalize();
             Vector3 newPos = MainCamera.Transform.Position + dir;

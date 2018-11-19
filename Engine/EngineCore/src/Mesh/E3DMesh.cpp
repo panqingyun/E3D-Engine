@@ -55,7 +55,7 @@ namespace E3DEngine
 			Debug::Log(ell_Error, "Error parsing '%s': '%s'\n", FilePath.c_str(), pImporter.GetErrorString());
 			return;
 		}
-		mName = FilePath;
+
 		if (m_bIsSkinMesh)
 		{
 			// 构建骨骼树

@@ -14,19 +14,18 @@ namespace E3DEngine
 	public ref class GameObjectType
 	{
 	public:
-		static int TP_NONE = 0;
-		static int TP_Camera = 1;
-		static int TP_DLight = 2;
-		static int TP_PLight = 3;
-		static int TP_SkyBox = 4;
-		static int TP_Mesh = 5;
-		static int TP_Particle = 6;
-		static int TP_Cube = 7;
-		static int TP_Sphere = 8;
-		static int TP_Empty = 9;
-		static int TP_Terrain = 10;
-		static int TP_Prefab = 11;
-		static int TP_SkyDome = 12;
+		static int TP_NONE			= 0;
+		static int TP_Camera		= 1;
+		static int TP_Particle		= 2;
+		static int TP_GameObject	= 3;
+		static int TP_Prefab		= 4;
+	};		
+
+	public ref class GameObjectFlag
+	{
+	public:
+		static int  DONT_SAVE			= 1 << 0;
+		static int 	HIDE_IN_HIERARCHY	= 1 << 1;
 	};
 
 	public ref class GameObjectRef
@@ -52,6 +51,7 @@ namespace E3DEngine
 		GameObject * GetGameObjectPtr();
 		Vector4 ^GetColor();
 		void SetColor(Vector4 ^color);
+		int GetFlag();
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;

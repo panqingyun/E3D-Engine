@@ -35,22 +35,32 @@ namespace E3DEngine
 	{
 		CreateShadow = true; 
 		// 平行光 创建正交投影摄像机
-		shadowCamera = new E3DEngine::Camera(Transform->Position + CenterPosition, CenterPosition, vec3f(0, 1, 0), -Range.x, Range.x, -Range.y, Range.y, 1, 1000);
-		shadowCamera->CreateBehaviour();
+		float &&halfSize = Size / 2.0f;
+		GameObject *gameObject = new GameObject();
+		gameObject->CreateBehaviour();
+		gameObject->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD & ~LD_NOSHADOW);
+		shadowCamera = (Camera*)gameObject->AddComponent("E3DEngine.Camera");
+		shadowCamera->Perspective = false;
+		shadowCamera->Pos = Transform->Position + CenterPosition;
+		shadowCamera->Target = CenterPosition;
+		shadowCamera->Near = 1;
+		shadowCamera->Far = 1000;
+		shadowCamera->Size = Size;
+		shadowCamera->SetActive(true);
+		//shadowCamera = new E3DEngine::Camera(Transform->Position + CenterPosition, CenterPosition, vec3f(0, 1, 0), -halfSize, halfSize, -halfSize, halfSize, 1, 1000);
+		shadowCamera->OnCreate();
+		shadowCamera->OnCreateComplete();
 		TextureData tData;
 		tData.width = 4096;
 		tData.height = 4096;
 		tData.target = RENDER_DEPTH;
 		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
-		shadowCamera->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD & ~LD_NOSHADOW);
 		shadowCamera->SetRenderTexture(rtt);
 		shadowCamera->SetClearType(eCT_Depth);
-		shadowCamera->SetClearColor(Color4(1, 1, 1, 1));
-		shadowCamera->SetActive(true);
 		shadowCamera->SetIsShadowCamera();
 		shadowCamera->mName = "ShadowCamera";
-		shadowCamera->Flag |= (DONT_SAVE | HIDE_IN_PROPERTY);
-		ADD_IN_SCENE(shadowCamera);
+		gameObject->Flag |= (DONT_SAVE | HIDE_IN_HIERARCHY);
+		ADD_IN_SCENE(gameObject);
 	}
 
 	void DirectionLight::OnCreateComplete()

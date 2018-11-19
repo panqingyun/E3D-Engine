@@ -214,11 +214,16 @@ namespace E3DEngine
 
 		if (mEditorCamera == nullptr)
 		{
-			mEditorCamera = Camera::CreateCamera();
+			GameObject *editorCameraGameObject = new GameObject();
+			editorCameraGameObject->CreateBehaviour();
+			editorCameraGameObject->SetActive(true);
+			mEditorCamera = (Camera*)editorCameraGameObject->AddComponent(CAMERA_NAME);
 			SetEditorCamera(mEditorCamera, true);
-			mEditorCamera->SetLayerMask(-1 & ~LD_COORD & ~LD_LOOK_COORD & ~LD_OBJECT_COORD);
-			mEditorCamera->Transform->SetPosition(0, 100, 200);
-			mEditorCamera->Flag |= DONT_SAVE;
+			editorCameraGameObject->SetLayerMask(-1 & ~LD_COORD & ~LD_LOOK_COORD & ~LD_OBJECT_COORD);
+			editorCameraGameObject->Flag |= DONT_SAVE;
+			mEditorCamera->OnCreate();
+			mEditorCamera->OnCreateComplete();
+			editorCameraGameObject->Transform->SetPosition(0, 100, 200);
 		}
 
 		GameObject *gameObject = new GameObject();
@@ -281,17 +286,27 @@ namespace E3DEngine
 	{
 		if (mCoordCamera == nullptr)
 		{
-			mCoordCamera = Camera::CreateCamera();
+			GameObject *coordCamerObject = new GameObject();
+			coordCamerObject->CreateBehaviour();
+			coordCamerObject->SetActive(true);
+			coordCamerObject->SetLayerMask(LD_COORD);
+			coordCamerObject->Flag |= DONT_SAVE;
+			mCoordCamera = (Camera*)coordCamerObject->AddComponent(CAMERA_NAME);
+			mCoordCamera->OnCreate();
+			mCoordCamera->OnCreateComplete();
+			coordCamerObject->Transform->SetPosition(0, 0, 100);
 			SetEditorCamera(mCoordCamera, false);
-			mCoordCamera->SetLayerMask(LD_COORD);
-			mCoordCamera->Transform->SetPosition(0, 0, 100);
-			mCoordCamera->Flag |= DONT_SAVE;
-
-			mLookCoordCamera = Camera::CreateCamera();
+			GameObject *lookGameobject = new GameObject();
+			lookGameobject->CreateBehaviour();
+			lookGameobject->SetActive(true); 
+			lookGameobject->SetLayerMask(LD_LOOK_COORD | LD_OBJECT_COORD);
+			lookGameobject->Flag |= DONT_SAVE;
+			mLookCoordCamera = (Camera*)lookGameobject->AddComponent(CAMERA_NAME);
+			mLookCoordCamera->OnCreate();
+			mLookCoordCamera->OnCreateComplete();
+			lookGameobject->Transform->SetPosition(0, 0, 150);
 			SetEditorCamera(mLookCoordCamera, false);
-			mLookCoordCamera->SetLayerMask(LD_LOOK_COORD | LD_OBJECT_COORD);
-			mLookCoordCamera->Transform->SetPosition(0, 0, 150);
-			mLookCoordCamera->Flag |= DONT_SAVE;
+			
 			mLookCoordCamera->SetClearType(eCT_NotClear);
 		}
 		std::string path = get_std_string(mEditorPath);

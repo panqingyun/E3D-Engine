@@ -50,6 +50,7 @@ namespace E3DEngine
 		virtual void SetFieldValue(std::string fieldName, std::string fieldValueStr);
 		virtual void SetActive(bool active);
 		virtual Object *Get() { return this; }
+		virtual void TransformChange() { }
 	public:
         GameObject *	mGameObject;
 		std::string 	_Tag;

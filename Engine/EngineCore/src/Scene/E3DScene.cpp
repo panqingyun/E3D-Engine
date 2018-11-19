@@ -82,7 +82,7 @@ namespace E3DEngine
 		m_vecObjList.clear();
 		m_mapLights.clear();
 		m_vecCamera.clear();
-
+		m_pSceneMainCamera = nullptr;
 		TableRegister::Destory();
 #ifdef __E3D_EDITOR__
 		const std::vector<Camera*> &cameras = GetEditorCameras();
@@ -191,7 +191,7 @@ namespace E3DEngine
 	{
 		for (auto &obj : m_mapRenders)
 		{
-			if (obj.second->GetLayerMask() & pCamera->GetLayerMask())
+			if (obj.second->GetLayerMask() & pCamera->mGameObject->GetLayerMask())
 			{
 				pCamera->GetRenderQueue()->Add(obj.second);
 			}
@@ -207,7 +207,7 @@ namespace E3DEngine
 
 		for (Camera * camera : m_vecCamera)
 		{
-			if (camera->GetLayerMask() & rb->GetLayerMask())
+			if (camera->mGameObject->GetLayerMask() & rb->GetLayerMask())
 			{
 				camera->GetRenderQueue()->Add(rb);
 			}
@@ -221,7 +221,7 @@ namespace E3DEngine
 		const std::vector<Camera*> &cameras = GetEditorCameras();
 		for (auto &camera : cameras)
 		{
-			if (camera->GetLayerMask() & rb->GetLayerMask())
+			if (camera->mGameObject->GetLayerMask() & rb->GetLayerMask())
 			{
 				camera->GetRenderQueue()->Add(rb);
 			}
@@ -292,7 +292,7 @@ namespace E3DEngine
 		
         for(Camera * camera : m_vecCamera)
 		{
-			if (camera->GetLayerMask() & layer)
+			if (camera->mGameObject->GetLayerMask() & layer)
 			{
 				camera->GetRenderQueue()->Add(rb);
 			}
@@ -301,7 +301,7 @@ namespace E3DEngine
 		const std::vector<Camera*> &cameras = GetEditorCameras();
 		for (auto &camera : cameras)
 		{
-			if (camera->GetLayerMask() & layer)
+			if (camera->mGameObject->GetLayerMask() & layer)
 			{
 				camera->GetRenderQueue()->Add(rb);
 			}
@@ -376,22 +376,19 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (obj->mObjectType == eT_GameObject || obj->mObjectType == eT_Camera)
+		GameObject *go = static_cast<GameObject*>(obj);
+		if (rootObject->FindChild(go->ID))
 		{
-			GameObject *go = static_cast<GameObject*>(obj);
-			if (rootObject->FindChild(go->ID))
-			{
-				return;
-			}
-			if (m_vecObjList.find(go->ID) != m_vecObjList.end())
-			{
-				m_vecObjList.erase(go->ID);
-			}
-			rootObject->AddChild(go);
-			if (obj->mObjectType == eT_Camera)
-			{
-				AddCamera((Camera*)obj);
-			}
+			return;
+		}
+		if (m_vecObjList.find(go->ID) != m_vecObjList.end())
+		{
+			m_vecObjList.erase(go->ID);
+		}
+		rootObject->AddChild(go);
+		if (static_cast<GameObject*>(obj)->GetComponent(CAMERA_NAME) != nullptr)
+		{
+			AddCamera((Camera*)static_cast<GameObject*>(obj)->GetComponent("E3DEngine.Camera"));
 		}
 		m_vecObjList[obj->ID] = obj;
 	}

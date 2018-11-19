@@ -154,6 +154,11 @@ namespace E3DEngine
 		mGameObject->SetColor(Color4(color->x, color->y, color->z, color->w));
 	}
 
+	int GameObjectRef::GetFlag()
+	{
+		return mGameObject->Flag;
+	}
+
 	void GameObjectRef::SetActive(bool active)
 	{
 		if (mGameObject == nullptr)

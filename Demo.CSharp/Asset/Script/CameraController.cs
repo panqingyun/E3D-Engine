@@ -21,9 +21,9 @@ class CameraController : Component
         Game.App.MouseDownEvent += AppDemo_MouseDownEvent;
         Game.App.MouseMoveEvent += AppDemo_MouseMoveEvent;
         Game.App.MouseUpEvent += AppDemo_MouseUpEvent;
-        MainCamera = (Camera)gameObject;
-        cameraRotateX = -MainCamera.Transform.Rotation.x;
-        cameraRotateY = -MainCamera.Transform.Rotation.y;
+        MainCamera = gameObject.GetComponent<Camera>();
+        cameraRotateX = -gameObject.Transform.Rotation.x;
+        cameraRotateY = -gameObject.Transform.Rotation.y;
     }
 
     void Destory()
@@ -69,7 +69,7 @@ class CameraController : Component
             curPos.SetValue(-curMousePosition.x + lastMousePosition.x, curMousePosition.y - lastMousePosition.y, 0);
             Vector3 dir = MainCamera.GetViewMatrix().Inverse() * curPos;
             dir.Normalize();
-            Vector3 newPos = MainCamera.Transform.Position + dir;
+            Vector3 newPos = gameObject.Transform.Position + dir;
             lastMousePosition = curMousePosition;
             gameObject.Transform.Position = newPos;
         }
@@ -94,7 +94,7 @@ class CameraController : Component
     float speed = 0.1f;
     private void AppDemo_KeyPressEvent(KeyCode keyCode)
     {
-        curCameraPos = MainCamera.Transform.Position;
+        curCameraPos = gameObject.Transform.Position;
         if (keyCode == KeyCode.KeyW)
         {
             curCameraDir = MainCamera.Forward;

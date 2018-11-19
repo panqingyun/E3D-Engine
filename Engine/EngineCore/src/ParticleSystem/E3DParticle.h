@@ -20,7 +20,6 @@ namespace E3DEngine
 {
 	class TextureFrameEffect;
 	class BatchRenderer;
-    class Camera;
     class ParticleAffector;
     class ParticleEmitter;
 	class E3D_EXPORT_DLL Particle : public Ref , public IActor

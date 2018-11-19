@@ -18,54 +18,41 @@
 
 namespace E3DEngine
 {
-	Camera::Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect)
+	void Camera::createCamera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up, float32 zNear, float32 zFar, float32 aspect)
 	{
-		mSceneObjectType = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size() ;i++)
 		{
 			m_Plans[i] = new float[4];
 		}
-		isPerspective = true;
 		m_mProjection = mat4f::createPerspective(fov, aspect, zNear, zFar);
 		m_mView = mat4f::createLookAt(position, target, up);
-		Transform->Rotation = Quatf::frommat(m_mView);
-		Transform->Position = position;
-		m_near = zNear;
-		m_far = zFar;
 		m_aspect = aspect;
-		m_fov = fov;
 		m_mViewInverse = m_mView.inverse();
 		m_mProjectInverse = m_mProjection.inverse();
 		m_RenderQueue = new RenderQueue;
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
-		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}
 	
-	Camera::Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar)
+	void Camera::createCamera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar)
 	{
-		mSceneObjectType = TP_Camera;
 		m_Plans.resize(6);
 		for (int i = 0; i < m_Plans.size(); i++)
 		{
 			m_Plans[i] = new float[4];
 		}
-		isPerspective = false;
 		m_mProjection = mat4f::createOrtho(left, right, bottom, top, zNear, zFar);
 		m_mView = mat4f::createLookAt(position, target, up);
-		Transform->Position = position;
-		Transform->Rotation = Quatf::frommat(m_mView);
 		m_mViewInverse = m_mView.inverse();
 		m_mProjectInverse = m_mProjection.inverse();
 		m_RenderQueue = new RenderQueue;
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
-		m_layerMask = ~0;
 		m_nDepth = 0;
 		mObjectType = eT_Camera;
 		m_bIsShadowCamera = false;
@@ -75,13 +62,40 @@ namespace E3DEngine
 
 	Camera::~Camera()
 	{
-		if (ParentNode != nullptr && ParentNode->mObjectType == eT_Camera)
-		{
-			static_cast<GameObject*>(ParentNode)->Transform->RemoveChild(ID);
-		}
 		delete m_RenderQueue;
 	}
 
+
+	void Camera::Awake()
+	{
+		vec3f up = vec3f(0.0f, 1.0f, 0.0);
+		Vector2 frameSize = GetRenderSystem()->GetFrameSize();
+		if (Perspective)
+		{
+			const float32 aspect = frameSize.x / frameSize.y;
+			createCamera(Pos, Target, Fov, up, Near, Far, aspect);
+			mGameObject->SetColor(Color4(0, 0, 0, 0));
+		}
+		else
+		{
+			float &&halfSize = Size / 2.0f;
+			createCamera(Pos, Target, up, -halfSize, halfSize, -halfSize, halfSize, Near, Far);
+			mGameObject->SetColor(Color4(0, 0, 0, 0));
+		}
+		m_RenderQueue->CullRenderObjectByLayer(mGameObject->GetLayerMask());
+		SceneManager::GetCurrentScene()->ChangeCameraObject(this);
+		Component::Awake();
+	}
+
+
+	void Camera::TransformChange()
+	{
+		Transform->WorldMatrix = Transform->Rotation.transform();
+		Transform->WorldMatrix[12] = Transform->Position.x;
+		Transform->WorldMatrix[13] = Transform->Position.y;
+		Transform->WorldMatrix[14] = Transform->Position.z;
+		m_mView = Transform->WorldMatrix.inverse();
+	}
 
 	void Camera::Render()
 	{
@@ -176,12 +190,7 @@ namespace E3DEngine
 
 	void Camera::ClearBackGround()
 	{
-		GetRenderSystem()->Clear(m_clearColor, m_clearType);
-	}
-
-	void Camera::SetClearColor(Color4 color)
-	{
-		m_clearColor = color;
+		GetRenderSystem()->Clear(mGameObject->Color, m_clearType);
 	}
 
 	void Camera::SetClearType(DWORD clearType)
@@ -192,9 +201,9 @@ namespace E3DEngine
 
 	void Camera::ChangeViewport(float aspect)
 	{
-		if (isPerspective && RTTs.size() == 0)
+		if (Perspective && RTTs.size() == 0)
 		{
-			m_mProjection = mat4f::createPerspective(m_fov, aspect, m_near, m_far);
+			m_mProjection = mat4f::createPerspective(Fov, aspect, Near, Far);
 			m_mProjectInverse = m_mProjection.inverse();
 		}
 	}
@@ -202,13 +211,6 @@ namespace E3DEngine
 	RenderQueue * Camera::GetRenderQueue()
 	{
 		return m_RenderQueue;
-	}
-
-	void Camera::SetLayerMask(DWORD layerMask)
-	{
-		GameObject::SetLayerMask(layerMask);
-		m_RenderQueue->CullRenderObjectByLayer(layerMask);
-		SceneManager::GetCurrentScene()->ChangeCameraObject(this);
 	}
 
 	int Camera::GetDepth()
@@ -232,24 +234,12 @@ namespace E3DEngine
 			}
 		}
 		RTTs.push_back(rtt); 
-		if (isPerspective)
+		if (Perspective)
 		{
-			m_mProjection = mat4f::createPerspective(m_fov, rtt->GetWidth() / rtt->GetHeight(), m_near, m_far);
+			m_mProjection = mat4f::createPerspective(Fov, rtt->GetWidth() / rtt->GetHeight(), Near, Far);
 			m_mProjectInverse = m_mProjection.inverse();
 		}
 	}
-
-	void Camera::TransformChange()
-	{
-		//extract view matrix from quaternion
-		Transform->WorldMatrix = Transform->Rotation.transform();
-		Transform->WorldMatrix[12] = Transform->Position.x;
-		Transform->WorldMatrix[13] = Transform->Position.y;
-		Transform->WorldMatrix[14] = Transform->Position.z;
-		m_mView = Transform->WorldMatrix.inverse();
-
-	}
-
 
 	const mat4f& Camera::GetViewMatrix()
 	{		
@@ -302,7 +292,7 @@ namespace E3DEngine
 		Ray ray;
 		ray.From = Transform->GetPosition();
 
-		vec3f to(0, 0, m_far);
+		vec3f to(0, 0, Far);
 		to = to * GetForwardVector();
 
 		ray.To = GetWorldPointWithScreenPoint(mPosX, mPosY, to.z) + Transform->GetPosition();
@@ -397,12 +387,6 @@ namespace E3DEngine
 		return true;
 	}
 
-	vvision::vec4f Camera::GetClearColor()
-	{
-		return vec4f(m_clearColor.r, m_clearColor.g, m_clearColor.b, m_clearColor.a);
-	}
-
-
 	void Camera::ClearRT()
 	{
 		RTTs.clear();
@@ -429,13 +413,6 @@ namespace E3DEngine
 	void Camera::SetIsShadowCamera()
 	{
 		m_bIsShadowCamera = true;
-	}
-
-
-	void Camera::CreateBehaviour()
-	{
-		CREATE_BEHAVIOUR(Camera);
-		TRANSFER_FIELD_OBJECT(Transform);
 	}
 
 	float * Camera::normal(float *plans)
@@ -503,32 +480,6 @@ namespace E3DEngine
 
 		Debug::Log(ell_Warning, "sixth %f, %f, %f, %f", m_Plans[5][0], m_Plans[5][1], m_Plans[5][2], m_Plans[5][3]);
 		m_Plans[5] = normal(m_Plans[5]);
-	}
-
-	Camera * Camera::CreateCamera(bool _isPerspective)
-	{
-		const vec3f position = vec3f(0, 0, 200);
-		const vec3f target = vec3f(0, 0, -1);
-		const vec3f up = vec3f(0.0f, 1.0f, 0.0);
-		const float32 zNear = 1.0f;
-		const float32 zFar = 3000.0f;
-		Vector2 frameSize = GetRenderSystem()->GetFrameSize();
-		if (_isPerspective)
-		{
-			const float32 fov = 60.0f;
-			const float32 aspect = frameSize.x / frameSize.y;
-			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, fov, up, zNear, zFar, aspect);
-			camera->CreateBehaviour();
-			camera->SetActive(true);
-			return camera;
-		}
-		else
-		{
-			E3DEngine::Camera *camera = new E3DEngine::Camera(position, target, up, -1, 1, -1, 1, zNear, zFar);
-			camera->CreateBehaviour();
-			camera->SetActive(true);
-			return camera;
-		}
 	}
 
 	float Camera::GetYaw()

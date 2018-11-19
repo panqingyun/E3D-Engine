@@ -35,6 +35,7 @@ void ImplComponent()
 	REGIST_CLASS(DirectionLight);
 	REGIST_CLASS(PointLight);
 	REGIST_CLASS(SpotLight);
+	REGIST_CLASS(Camera);
 }
 
 DECLARE_CLASS_NAME(BoxCollider)
@@ -54,6 +55,7 @@ DECLARE_CLASS_NAME(Renderer)
 DECLARE_CLASS_NAME(DirectionLight)
 DECLARE_CLASS_NAME(SpotLight)
 DECLARE_CLASS_NAME(PointLight)
+DECLARE_CLASS_NAME(Camera)
 
 
 #define NOT_RUN_RETURN \

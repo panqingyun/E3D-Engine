@@ -274,7 +274,7 @@ namespace E3DEngine
 	enum GameObjectFlags
 	{
 		DONT_SAVE = 1 << 0,
-		HIDE_IN_PROPERTY = 1 << 1,
+		HIDE_IN_HIERARCHY = 1 << 1,
 	};
 
 	enum LayerDefine
@@ -291,6 +291,7 @@ namespace E3DEngine
 	mBehaviour->Create(NAME_SPACE, #name);\
 	setBehaviourDefaultValue();\
 
+#define CAMERA_NAME "E3DEngine.Camera"
 
 	class Camera;
 	class CTransform;

@@ -34,10 +34,8 @@ void RegisterMonoFunction()
 	REGISTER_INTERNAL_CALL(GameObject,	findChildWithName);
 	REGISTER_INTERNAL_CALL(GameObject,	newGameObject);
 	REGISTER_INTERNAL_CALL(GameObject,	AddChild);
-	REGISTER_INTERNAL_CALL(Camera,		setClearColor);
 	REGISTER_INTERNAL_CALL(Camera,		get_MainCamera);
 	REGISTER_INTERNAL_CALL(Camera,		renderCamera);
-	REGISTER_INTERNAL_CALL(Camera,		createCamera);
 	REGISTER_INTERNAL_CALL(Camera,		screen2WorldPoint);
 	REGISTER_INTERNAL_CALL(Camera,		getViewMatrix);
 	REGISTER_INTERNAL_CALL(Camera,		getProjectionMatrix);
@@ -178,24 +176,6 @@ VOID _1_PARAM_FUNCTION(Debug, log_info, CS_STRING, info)
 {
 	std::string _log = Convert::ToStdString(info);
 	E3DEngine::Debug::Log(ell_Info, _log.c_str());
-}
-
-CS_OBJECT _0_PARAM_FUNCTION(Camera, createCamera)
-{	
-	E3DEngine::Camera *camera = Camera::CreateCamera();
-	SceneManager::GetInstance().GetCurrentScene()->AddCamera(camera);
-	return camera->GetMonoBehaviour()->GetMonoObject();
-}
-
-VOID _5_PARAM_FUNCTION(Camera, setClearColor, CS_OBJECT, cs_boj, float, r, float, g, float, b, float, a)
-{
-	Camera * camera = getCppObject<Camera>(cs_boj);
-	if (camera == nullptr)
-	{
-		return;
-	}
-
-	camera->SetClearColor(Color4(r, g, b, a));
 }
 
 CS_OBJECT _1_PARAM_FUNCTION(Scene, createScene, CS_STRING, path)

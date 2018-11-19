@@ -67,12 +67,12 @@ namespace E3DEngine
 		DirectionLight();
 
 		DECLARE_METHOD(DirectionLight, vec3f, CenterPosition);
-		DECLARE_METHOD(DirectionLight, vec2f, Range);
+		DECLARE_METHOD(DirectionLight, float, Size);
 		virtual void registProperty()
 		{
 			Light::registProperty();
 			SAVE_METHOD(CenterPosition, FT_VECTOR3);
-			SAVE_METHOD(Range, FT_VECTOR2);
+			SAVE_METHOD(Size, FT_FLOAT);
 		}
 	public:
 		virtual void MakeShadow() override;

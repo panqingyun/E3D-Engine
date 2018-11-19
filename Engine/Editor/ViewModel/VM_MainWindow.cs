@@ -396,6 +396,10 @@ namespace E3DEditor.ViewModel
         {
             for (int i = 0; i < _gameObjectList.Count; i++)
             {
+                if((_gameObjectList[i].GetFlag() & E3DEngine.GameObjectFlag.HIDE_IN_HIERARCHY) != 0)
+                {
+                    continue;
+                }
                 GameObjectNode node = new GameObjectNode();
                 node.Name = _gameObjectList[i].GetName();
                 node.ShowText = node.Name;

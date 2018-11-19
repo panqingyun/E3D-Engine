@@ -10,7 +10,7 @@ E3DEngine::UI::UICamera::UICamera(const vec3f& position, const vec3f& target, ve
 	float top = screenHeight / 2.0f;
 	float right = screenWidth / 2.0f;
 	float bottom = -screenHeight / 2.0f;
-	m_pCamera = new Camera(position, target, up, left, right, bottom, top, zNear, zFar);
+	//m_pCamera = new Camera(position, target, up, left, right, bottom, top, zNear, zFar);
 }
 
 const mat4f& E3DEngine::UI::UICamera::GetProjectionMatrix()

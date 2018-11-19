@@ -365,6 +365,10 @@ namespace E3DEngine
 		{
 			TransChangeFun(ID);
 		}
+		for (auto &component : m_listComponents)
+		{
+			component.second->TransformChange();
+		}
 	}
 
 	void GameObject::AddChild(GameObject * node)
@@ -388,12 +392,9 @@ namespace E3DEngine
 		{
 			mChildGameObject[node->ID] = node;
 			node->ParentNode = this;
-			if (mObjectType != eT_Scene)
+			if (node->GetComponent(CAMERA_NAME))
 			{
-				if (mObjectType == eT_Camera)
-				{
-					SceneManager::GetCurrentScene()->AddCamera(static_cast<Camera*>(node));
-				}
+				SceneManager::GetCurrentScene()->AddCamera(static_cast<Camera*>(node->GetComponent(CAMERA_NAME)));
 			}
 
 		}

@@ -20,11 +20,11 @@ namespace E3DEngine
 
 	enum SceneObjectType
 	{
-		TP_NONE = 0,
-		TP_Camera = 1,
-		TP_Particle = 2,
-		TP_GameObject = 3, 
-		TP_Prefab
+		TP_NONE			= 0,
+		TP_Camera		= 1,
+		TP_Particle		= 2,
+		TP_GameObject	= 3, 
+		TP_Prefab		= 4,
 	};
 
 	const std::string NM_GameObject = "GameObject";

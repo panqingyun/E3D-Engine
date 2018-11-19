@@ -166,15 +166,6 @@ namespace E3DEngine
 		}
 	}
 
-	GameObject* createCamera(TiXmlElement *objectElement)
-	{
-		Camera *pCamera = Camera::CreateCamera();
-
-		pCamera->SetClearColor(Convert::ToColor4(*objectElement->Attribute(_ClearColor)));
-
-		return pCamera;
-	}
-
 	GameObject *createEmpty(TiXmlElement *objectElement)
 	{
 		GameObject * go = new GameObject();
@@ -253,22 +244,18 @@ namespace E3DEngine
 		{
 			go->Transform->SetIsBillBoard(true);
 		}
-		createComponent(objectElement->FirstChildElement(_Component), go);
 		setLayerMask(objectElement, go);
 		if (objectElement->Attribute(_Color) != nullptr)
 		{
 			go->SetColor(Convert::ToColor4(*objectElement->Attribute(_Color)));
 		}
-		if (objectElement->Attribute(_InnerID) != nullptr)
-		{
-			go->SceneInnerID = Convert::ToInt(*objectElement->Attribute(_InnerID));
-		}
+		setGameObjectActive(objectElement, go);
+		createComponent(objectElement->FirstChildElement(_Component), go);
 		for (auto & component : go->GetAllComponents())
 		{
 			component.second->OnCreateComplete();
 		}
-
-		setGameObjectActive(objectElement, go);
+		go->TransformChange();
 	}
 
 	E3D_EXPORT_DLL void LoadSceneObjects(string sceneFilePath)
@@ -310,6 +297,7 @@ namespace E3DEngine
 			if (go != nullptr)
 			{
 				go->SetIsStatic(isStatic);
+				setObjectCommonValue(go, item->ToElement(), _type);
 				if (parent == nullptr)
 				{
 					ADD_IN_SCENE(go);
@@ -318,7 +306,6 @@ namespace E3DEngine
 				{
 					parent->AddChild(go);
 				}
-				setObjectCommonValue(go, item->ToElement(), _type);
 				CreateObjects(go, item->ToElement());
 				go->CreateComplete();
 			}
@@ -420,12 +407,7 @@ namespace E3DEngine
 		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));
 		objectElement->SetAttribute(_Active, Convert::ToString(gameObject->IsActive));
-		if (gameObject->mSceneObjectType == TP_Camera)
-		{
-			Camera *pCamera = (Camera*)gameObject;
-			objectElement->SetAttribute(_ClearColor, Convert::ToString(pCamera->GetClearColor()));
-		}
-		else if (gameObject->mSceneObjectType == TP_Particle)
+		if (gameObject->mSceneObjectType == TP_Particle)
 		{
 			objectElement->SetAttribute(_FilePath, Convert::ToString(gameObject->mConfigPath));
 		}
@@ -502,7 +484,6 @@ namespace E3DEngine
 
 	void RegistScnObjCreateFunc()
 	{
-		createObjectFun[TP_Camera] = createCamera;
 		createObjectFun[TP_Particle] = createParticle;
 		createObjectFun[TP_GameObject] = createEmpty;
 		createObjectFun[TP_Prefab] = createPrefab;

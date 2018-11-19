@@ -7,6 +7,7 @@
 #include <complex>
 #include "../Object/E3DGameObject.h"
 #include "../Source/vmath.h"
+#include "../Source/ClassFactory.h"
 
 namespace E3DEngine
 {
@@ -14,26 +15,36 @@ namespace E3DEngine
 	class Render2Texture;
 	class CubeMapTexture;
 	struct Ray;
-	class E3D_EXPORT_DLL Camera : public GameObject
+	class E3D_EXPORT_DLL Camera : public Component
 	{
+		DECLARE_CLASS(Camera)
 		friend class Render2Texture;
 	public:
-		static Camera * CreateCamera(bool isPerspective = true);
-
-		Camera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up = vec3f(0.0, -1.0, 0.0), float32 zNear = 5.0f, float32 zFar = 10000.0f, float32 aspect = 9.0f/16.0f);
-		
-		Camera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar);
-		
+		Camera() 
+		{
+			Perspective = true;
+			Pos = vec3f(0, 0, 200);
+			Target = vec3f(0, 0, -1);
+			Near = 1;
+			Far = 3000;
+			Fov = 60;
+			CREATE_BEHAVIOUR(Camera);
+		}
 		~Camera();
+	private:
+		void createCamera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up = vec3f(0.0, -1.0, 0.0), float32 zNear = 5.0f, float32 zFar = 10000.0f, float32 aspect = 9.0f/16.0f);
+		void createCamera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar);
+		
+	public: 
+		virtual void Awake() override;
+		virtual void TransformChange() override;
 
 	public:
 		void Render();
 		void ClearBackGround();
-		void SetClearColor(Color4 color);
 		void SetClearType(DWORD clearType);
 		void ChangeViewport(float aspect);
 		RenderQueue * GetRenderQueue();
-		virtual void SetLayerMask(DWORD layerMask) override;
 		int GetDepth();
 		void SetDepth(int depth);
 		void SetRenderTexture(Render2Texture * rtt);
@@ -43,7 +54,6 @@ namespace E3DEngine
 		const mat4f& GetProjectionMatrix();		
 		const mat4f& GetViewInverseMatrix();
 		const mat4f& GetProjectInverseMatrix();		
-		void TransformChange() override;
 		const mat4f& GetViewMatrix();		
 		void SetViewMatrix(mat4f viewMat);
 		vec3f GetForwardVector();		
@@ -56,14 +66,32 @@ namespace E3DEngine
 		float GetYaw();
 		float GetRoll();
 		float GetFaceArea();		
+
+	public:
+		DECLARE_METHOD(Camera, bool, Perspective);
+		DECLARE_METHOD(Camera, float, Near);
+		DECLARE_METHOD(Camera, float, Far);
+		DECLARE_METHOD(Camera, float, Size);
+		DECLARE_METHOD(Camera, vec3f, Pos);
+		DECLARE_METHOD(Camera, vec3f, Target);
+		DECLARE_METHOD(Camera, float, Fov);
+		virtual void registProperty() override
+		{
+			SAVE_METHOD(Perspective, FT_BOOLEAN);
+			SAVE_METHOD(Near, FT_FLOAT);
+			SAVE_METHOD(Far, FT_FLOAT);
+			SAVE_METHOD(Size, FT_FLOAT);
+			SAVE_METHOD(Pos, FT_VECTOR3);
+			SAVE_METHOD(Target, FT_VECTOR3);
+			SAVE_METHOD(Fov, FT_FLOAT);
+		}
+
 		bool boundingBoxFrustum(vec3f position, float size);
-		vec4f GetClearColor();
 		void ClearRT();
 		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
 		Render2Texture *GetRenderTexture();
 		void SetIsShadowCamera();
 		bool GetIsShadowCamera() { return m_bIsShadowCamera; }
-		virtual void CreateBehaviour() override;
 	private:
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		
@@ -83,16 +111,11 @@ namespace E3DEngine
 		float m_yaw;
 		float m_roll;
 		float m_facearea;
-		float m_fov;
 		float m_aspect;
-		float m_near;
-		float m_far;
 		bool  m_bIsShadowCamera;
-		bool isPerspective;
 		std::vector<float *> m_Plans;
 		float *m_Temp;
 		RenderQueue * m_RenderQueue;
-		Color4 m_clearColor; 
 		int m_nDepth;
 		DWORD m_clearType;
 		std::list<Render2Texture *> RTTs;

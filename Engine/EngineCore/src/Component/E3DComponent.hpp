@@ -20,6 +20,8 @@ namespace E3DEngine
 		FT_BOOLEAN	= 3,
 		FT_OBJECT	= 4,
 		FT_COLOR	= 5,
+		FT_VECTOR3  = 6,
+		FT_VECTOR2	= 7,
 	};
 
     class GameObject;

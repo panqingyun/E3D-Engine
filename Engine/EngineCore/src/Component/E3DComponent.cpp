@@ -211,6 +211,16 @@ void E3DEngine::Component::registProperty()
 		{
 			m_propertyTypeMap[name] = FT_FLOAT;
 		}
+		else if (type == MONO_TYPE_VALUETYPE)
+		{
+			// TODO
+			MonoClass *k = mono_class_from_mono_type(mono_type);
+		}
+		else if (type == MONO_TYPE_CLASS)
+		{
+			// TODO
+			MonoClass *k = mono_class_from_mono_type(mono_type);
+		}
 	}
 }
 
@@ -250,6 +260,14 @@ std::string E3DEngine::Component::getEngineFieldValueStr(std::string fieldName)
 	else if (type == FT_STRING)
 	{
 		return object_cast<std::string>(value);
+	}
+	else if (type == FT_VECTOR3)
+	{
+		return Convert::ToString(object_cast<vec3f>(value));
+	}
+	else if (type == FT_VECTOR2)
+	{
+		return Convert::ToString(object_cast<vec2f>(value));
 	}
 	return empty_string;
 }
@@ -297,6 +315,14 @@ void E3DEngine::Component::setEngineFieldValue(std::string fieldName, std::strin
 	else if (type == FT_BOOLEAN)
 	{
 		set(this, Convert::ToBoolean(fieldValueStr));
+	}
+	else if (type == FT_VECTOR3)
+	{
+		set(this, Convert::ToVector3(fieldValueStr));
+	}
+	else if (type == FT_VECTOR2)
+	{
+		set(this, Convert::ToVector2(fieldValueStr));
 	}
 }
 
@@ -353,5 +379,11 @@ void E3DEngine::Component::setMonoFieldVale(std::string fieldName, std::string f
 	{
 		float value = Convert::ToFloat(fieldValueStr);
 		mBehaviour->SetFieldValue(fieldName.c_str(), &value);
+	}
+	else if (type == FT_VECTOR3)
+	{
+		vec3f &&vec3 = Convert::ToVector3(fieldValueStr);
+		MonoObject *vector3 = Convert::ToCSVector3(vec3);
+		mBehaviour->SetFieldValue(fieldName.c_str(), vector3);
 	}
 }

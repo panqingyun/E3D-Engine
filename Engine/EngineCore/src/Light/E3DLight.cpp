@@ -35,8 +35,7 @@ namespace E3DEngine
 	{
 		CreateShadow = true; 
 		// 平行光 创建正交投影摄像机
-		vec3f trans = vec3f(165, 30, 170);
-		shadowCamera = new E3DEngine::Camera(Transform->Position + trans, trans, vec3f(0, 1, 0), -110, 110, -110, 110, 1, 1000);
+		shadowCamera = new E3DEngine::Camera(Transform->Position + CenterPosition, CenterPosition, vec3f(0, 1, 0), -Range.x, Range.x, -Range.y, Range.y, 1, 1000);
 		shadowCamera->CreateBehaviour();
 		TextureData tData;
 		tData.width = 4096;
@@ -95,6 +94,10 @@ namespace E3DEngine
 
 	void Light::OnCreateComplete()
 	{
+		if (CreateShadow)
+		{
+			MakeShadow();
+		}
 		SceneManager::GetCurrentScene()->AddLight(this);
 	}
 
@@ -102,31 +105,4 @@ namespace E3DEngine
 	{
 		return shadowCamera;
 	}
-
-	void Light::SetCreateShadow(void *cp, object value)
-	{
-		Light *light = static_cast<Light*>(cp);
-		if (light == nullptr)
-		{
-			return;
-		}
-
-		light->CreateShadow = object_cast<bool>(value);
-		if (light->CreateShadow)
-		{
-			light->MakeShadow();
-		}
-	}
-
-	object Light::GetCreateShadow(void *cp)
-	{
-		Light *light = static_cast<Light*>(cp);
-		if (light == nullptr)
-		{
-			return false;
-		}
-
-		return light->CreateShadow;
-	}
-
 }

@@ -225,6 +225,7 @@ struct E3D_EXPORT_DLL Convert
 	static std::string ToStdString(MonoString* str);
 	static std::string ToString(bool source);
 	static std::string ToString(vec3f source);
+	static std::string ToString(vec2f source);
 	static std::string ToString(vec4f source);
 	static std::string ToString(Color4 source);
 
@@ -261,7 +262,8 @@ struct E3D_EXPORT_DLL Convert
 	static MonoObject * ToCSVector3(vec3f vec);
 
 	static vec4f CSVector4ToVec4(MonoObject *vec);
-
+	static vec3f ToVector3(std::string value);
+	static vec2f ToVector2(std::string value);
 
 	static bool ToBoolean(std::string src);
 };

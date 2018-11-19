@@ -10,11 +10,11 @@
     <GameObject ID="2" Name="Light" Type="3" LayerMask="AllLayer" Active="true" Color="FFFFFFFF">
         <Transform Posistion="100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.DirectionLight">
-            <Field CreateShadow="true" />
+            <Field CenterPosition="165.000000,30.000000,170.000000" CreateShadow="true" Range="110.000000,110.000000" />
         </Component>
     </GameObject>
     <GameObject ID="3" Name="SkyBox" Type="3" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="99.670387,43.051891,244.523407" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="107.725166,42.789406,171.763428" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -32,7 +32,7 @@
         </Component>
     </GameObject>
     <GameObject ID="5" Name="CubSphere" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="80.000000,50.000000,110.000000" Rotation="90.050735,-71.822418,-0.078370" Scale="3.000000,3.000000,3.000000" />
+        <Transform Posistion="100.000000,32.000000,150.000000" Rotation="90.050735,-71.822418,-0.078370" Scale="3.000000,3.000000,3.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
         </Component>
@@ -43,7 +43,7 @@
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
     <GameObject ID="6" Name="Sphere" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="83.337097,27.806238,229.666321" Rotation="-106.260948,-64.948448,170.372391" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="83.337097,30.500000,190.666306" Rotation="-106.260948,-64.948448,170.372391" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>
@@ -79,7 +79,7 @@
         </GameObject>
     </GameObject>
     <GameObject ID="11" Name="Dimian" Type="3" LayerMask="27" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="0.000000,0.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Transform Posistion="0.000000,59.500000,230.000000" Rotation="180.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/FHZC.obj" />
         </Component>
@@ -105,7 +105,7 @@
         </Component>
     </GameObject>
     <GameObject ID="13" Name="qiao" Type="3" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="138.000000,30.100000,164.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.007000,0.010000" />
+        <Transform Posistion="163.199997,30.100000,150.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.010000,0.007000,0.010000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/LH_changshiqiao01.fbx" />
         </Component>
@@ -136,7 +136,7 @@
         </Component>
     </GameObject>
     <GameObject ID="22" Name="huaban" Type="3" LayerMask="27" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="50.000000,32.000000,140.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.100000,0.100000,0.100000" />
+        <Transform Posistion="50.000000,30.000000,140.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.100000,0.100000,0.100000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/wls_huaban01.fbx" />
         </Component>
@@ -145,7 +145,7 @@
         </Component>
     </GameObject>
     <GameObject ID="23" Name="huaban" Type="3" LayerMask="27" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="40.000000,32.000000,120.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.100000,0.100000,0.100000" />
+        <Transform Posistion="40.000000,30.000000,120.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.100000,0.100000,0.100000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/wls_huaban01.fbx" />
         </Component>

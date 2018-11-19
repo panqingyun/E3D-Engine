@@ -39,8 +39,7 @@ namespace E3DEngine
 
 		Camera * GetShadowCamera();
 	public:
-		static void SetCreateShadow(void *cp, object value);
-		static object GetCreateShadow(void *cp);
+		DECLARE_METHOD(Light, bool, CreateShadow);
 		virtual void registProperty() override
 		{
 			SAVE_METHOD(CreateShadow, FT_BOOLEAN);
@@ -48,7 +47,6 @@ namespace E3DEngine
 
 	protected:
 		Camera * shadowCamera;
-		bool	CreateShadow;
 	};
 
 	class E3D_EXPORT_DLL PointLight : public Light
@@ -68,6 +66,14 @@ namespace E3DEngine
 	public:
 		DirectionLight();
 
+		DECLARE_METHOD(DirectionLight, vec3f, CenterPosition);
+		DECLARE_METHOD(DirectionLight, vec2f, Range);
+		virtual void registProperty()
+		{
+			Light::registProperty();
+			SAVE_METHOD(CenterPosition, FT_VECTOR3);
+			SAVE_METHOD(Range, FT_VECTOR2);
+		}
 	public:
 		virtual void MakeShadow() override;
 		virtual void OnCreateComplete() override;

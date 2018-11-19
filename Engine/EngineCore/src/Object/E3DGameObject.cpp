@@ -1003,6 +1003,14 @@ std::string Convert::ToString(vec4f source)
 	return str1 + "," + str2 + "," + str3 + "," + str4;
 }
 
+
+std::string Convert::ToString(vec2f source)
+{
+	std::string &&str1 = ToString(source.x);
+	std::string &&str2 = ToString(source.y);
+	return str1 + "," + str2;
+}
+
 std::string Convert::ToStdString(MonoString* str)
 {
 	int length = mono_string_length(str);
@@ -1132,6 +1140,32 @@ vec4f Convert::CSVector4ToVec4(MonoObject * vec)
 	return _vec4;
 }
 
+
+vvision::vec3f Convert::ToVector3(std::string value)
+{
+	std::vector<std::string> vec = StringBuilder::Split(value, ",");
+	if (vec.empty())
+	{
+		return vec3f(0, 0, 0);
+	}
+	float &&x = Convert::ToFloat(vec[0]);
+	float &&y = Convert::ToFloat(vec[1]);
+	float &&z = Convert::ToFloat(vec[2]);
+	return vec3f(x, y, z);	
+}
+
+
+vvision::vec2f Convert::ToVector2(std::string value)
+{
+	std::vector<std::string> vec = StringBuilder::Split(value, ",");
+	if (vec.empty())
+	{
+		return vec2f(0, 0);
+	}
+	float &&x = Convert::ToFloat(vec[0]);
+	float &&y = Convert::ToFloat(vec[1]);
+	return vec2f(x, y);
+}
 
 bool Convert::ToBoolean(std::string src)
 {

@@ -12,10 +12,16 @@
 
 varying vec3 ReflectDir;
 varying vec4 vertColor;
+varying vec3 lightDir;
 
 varying vec4 vPos;
+varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
+const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
+                       0.0 , 0.5 , 0.0 , 0.0 ,
+                       0.0 , 0.0 , 0.5 , 0.0 ,
+                       0.5 , 0.5 , 0.5 , 1.0 ) ;
 
 void main(void)
 {
@@ -24,7 +30,11 @@ void main(void)
 	vec3 eyeDir = normalize(_pos.xyz - _e3d_CameraPos.xyz);
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	vertColor = color;
-	
+#ifdef USING_DIRECTIONAL_LIGHT
+	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
+	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
+	lightDir = _e3d_WorldSpaceLightDirection;
+#endif
 	initFogNeedVar(position);
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos = _pos; // 顶点位置
@@ -38,14 +48,17 @@ void main(void)
 #ifdef __GLES__
 precision highp float;
 #endif
+#include "Fragment.shader"
 varying vec3 ReflectDir;
 
 uniform samplerCube skybox;
 varying vec4 vertColor;
 
 varying vec4 vPos;
+varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
+varying vec3 lightDir;
 
 uniform float fresnelBias;
 uniform float etaRatio;
@@ -85,7 +98,9 @@ vec4 FresnelShading(void)
 
 void main(void) 
 { 
-	gl_FragColor = FresnelShading() * vertColor;
+	float bias = max(0.008 * (1.0 - dot(vNrm, lightDir)), 0.0008);
+	float shadowColor = getShadowColor(v_Pos, bias);
+	gl_FragColor = FresnelShading() * vec4(vertColor.rgb * shadowColor, vertColor.a);
 }
 
 #Framgent_End

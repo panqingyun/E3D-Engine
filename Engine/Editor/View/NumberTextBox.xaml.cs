@@ -79,7 +79,7 @@ namespace E3DEditor.View
         {
             if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
                            (e.Key >= Key.D0 && e.Key <= Key.D9) ||
-                           e.Key == Key.Back ||
+                           e.Key == Key.Back || e.Key == Key.OemPeriod || e.Key == Key.Decimal ||
                            e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Enter)
             {
                 if (e.KeyboardDevice.Modifiers != ModifierKeys.None)

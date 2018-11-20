@@ -390,6 +390,7 @@ namespace E3DEditor.ViewModel
                     WindowTitle += "<OpenGL ES>";
                 }
             }
+            mainWnd.properties.SelectedObject = null;
         }
 
         private void fillNodeList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
@@ -743,6 +744,11 @@ namespace E3DEditor.ViewModel
         private void saveCurrentScene()
         {
             if (E3DEngine.SceneManageRef.GetInstance().GetCurScene() == null)
+            {
+                return;
+            }
+
+            if(sceneIsStart)
             {
                 return;
             }

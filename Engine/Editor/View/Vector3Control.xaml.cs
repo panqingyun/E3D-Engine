@@ -86,7 +86,7 @@ namespace E3DEditor.View
             vec.x = X;
             vec.y = Y;
             vec.z = Z;
-            EnterKeyDown?.Invoke(sender, e);
+            EnterKeyDown?.Invoke(this, e);
             if (SelectObject != null)
             {
                 ValueProperty.SetValue(SelectObject, vec);

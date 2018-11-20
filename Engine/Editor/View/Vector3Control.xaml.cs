@@ -69,6 +69,7 @@ namespace E3DEditor.View
             InitializeComponent();
         }
 
+        public event KeyEventHandler EnterKeyDown;
         public TextChangeDelegate TextChange;
 
         private void _TextInput(object sender, TextCompositionEventArgs e)
@@ -85,8 +86,11 @@ namespace E3DEditor.View
             vec.x = X;
             vec.y = Y;
             vec.z = Z;
-            
-            ValueProperty.SetValue(SelectObject, vec);
+            EnterKeyDown?.Invoke(sender, e);
+            if (SelectObject != null)
+            {
+                ValueProperty.SetValue(SelectObject, vec);
+            }
         }
     }
 }

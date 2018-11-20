@@ -13,6 +13,9 @@ namespace E3DEngine
 		static int FT_STRING = 2;
 		static int FT_BOOLEAN = 3;
 		static int FT_OBJECT = 4;
+		static int FT_COLOR = 5;
+		static int FT_VECTOR3 = 6;
+		static int 	FT_VECTOR2 = 7;
 	};
 
 	ref class ComponentRef;

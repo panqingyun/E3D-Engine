@@ -297,6 +297,22 @@ namespace E3DEditor.ViewModel
                         cb.SelectionChanged += comCb_SelectionChanged;
                         cb.SelectedIndex = fieldList[j].Value == "true" ? 0 : 1;
                     }
+                    else if (fieldList[j].Type == ComponentFieldType.FT_VECTOR3)
+                    {
+                        var vecElement = new Vector3Control();
+                        string[] vStr = fieldList[j].Value.Split(',');
+                        Vector3 vec = new Vector3(Convert.ToSingle(vStr[0]), Convert.ToSingle(vStr[1]), Convert.ToSingle(vStr[2]));
+                        vecElement.ValueObject = vec;
+                        vecElement.Margin = new Thickness(0, 2, 2, 0);
+                        vecElement.BorderThickness = new Thickness(0);
+                        vecElement.Tag = fieldList[j];
+                        Grid.SetColumn(vecElement, 1);
+                        Grid.SetRow(vecElement, _panelParent.RowDefinitions.Count - 1);
+                        var template = (ControlTemplate)_View.Resources["validationErrorTemplate"];
+                        Validation.SetErrorTemplate(vecElement, template);
+                        vecElement.EnterKeyDown += VecElement_EnterKeyDown;
+                        _panelParent.Children.Add(vecElement);
+                    }
                     else
                     {
                         TextBox tb = createTextBox(false);
@@ -308,6 +324,13 @@ namespace E3DEditor.ViewModel
 
                 }
             }
+        }
+
+        private void VecElement_EnterKeyDown(object sender, KeyEventArgs e)
+        {
+            Vector3Control vc = sender as Vector3Control;
+            ComponentField cf = vc.Tag as ComponentField;
+            cf.SetValue(vc.X + "," + vc.Y + "," + vc.Z);
         }
 
         private void comCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

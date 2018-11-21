@@ -31,6 +31,7 @@ namespace E3DEngine
 	public ref class GameObjectRef
 	{
 	public:
+		GameObjectRef();
 		GameObjectRef(GameObject *gameObject);
 		String^ GetName();
 		void SetValue(GameObject *gameObject);
@@ -43,7 +44,6 @@ namespace E3DEngine
 		bool GetActive();
 		int GetID();
 		void Selected();
-		int GetSceneInnerID();
 		void Reset();
 		bool GetHasComponent(String ^fullName);
 		void Update(float deltaTime);
@@ -52,6 +52,7 @@ namespace E3DEngine
 		Vector4 ^GetColor();
 		void SetColor(Vector4 ^color);
 		int GetFlag();
+		void SetParent(GameObjectRef ^gameObject);
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;
@@ -67,7 +68,6 @@ namespace E3DEngine
 		List<GameObjectRef ^>^ mChildList;
 		List<ComponentRef^>^ mComponentList;
 		int mID;
-		int mInnerID;
 		Vector4 ^mColor;
 	};
 }

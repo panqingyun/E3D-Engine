@@ -10,7 +10,7 @@
 		<Item
 			ID = 1
 			Affector			= "RandomForceAffectorConfig:1;
-                                   SelfScalAffectorConfig:1,2;
+                                   SelfScalAffectorConfig:1,2,3;
                                    LinnerColorAffectorConfig:1"
 			Emitter				= "BallEmitterConfig : 1"
 			Material			= "Material/ParticleMaterial.material : 1"
@@ -36,15 +36,15 @@
         ID					= 1
         Name				= "球面发射器"
         Type				= 1
-        Radius				= 1
+        Radius				= 0.2
         ParticleWidth		= 4
         ParticleHeight		= 4
         BlankTime			= 0
-        MaxParticleNumber	= 50
+        MaxParticleNumber	= 100
         TotalParticleNumber	= 10000
         ParticleLiveTime	= 0.3
         CreateParticleOnce  = 2
-        BornInterval        = 0.01
+        BornInterval        = 0.0
         ParticlePosition	= "0,0,0"
         ScaleRange          = "1.0,2.0"
         IsLoop				= 0
@@ -66,8 +66,9 @@
 		 StartScale 起始缩放
 		 EndScale 终止缩放
 		 -->
-        <Item ID = 1 StartScale=1.0 EndScale=1.0 StartTime=0.0 EndTime = 0.2/>
-        <Item ID = 2 StartScale=1.0 EndScale=0.0 StartTime=0.2 EndTime = 0.8/>
+        <Item ID = 1 StartScale=0.2 EndScale=1.0 StartTime=0.0 EndTime = 0.2/>
+        <Item ID = 2 StartScale=1.0 EndScale=1.0 StartTime=0.2 EndTime = 0.4/>
+        <Item ID = 3 StartScale=1.0 EndScale=0.0 StartTime=0.4 EndTime = 0.6/>
 	</SelfScalAffectorConfig>
     <RandomForceAffectorConfig>
         <!--
@@ -75,7 +76,7 @@
          yRandom  y方向随机范围 [-1,1]
          zRandom  z方向随机范围 [-1,1]
          -->
-        <Item ID = 1 Force=2 ForceRange="6,10" xRandom="-0.2,0.2" yRandom="1,1" zRandom="0,0" rotateByDir=0/>
+        <Item ID = 1 Force=10 ForceRange="10,40" xRandom="-0.2,0.2" yRandom="1,1" zRandom="0,0" rotateByDir=0/>
     </RandomForceAffectorConfig>
 	<TextureUVConfig>
 		<!--

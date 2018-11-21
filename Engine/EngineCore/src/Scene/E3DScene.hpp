@@ -65,7 +65,6 @@ namespace E3DEngine
 
 	private:
 		std::vector<Camera*>			m_vecCamera;
-		std::map<DWORD, Object*>		m_vecObjList;
 		GameObject		*				rootObject;
 		std::map<DWORD, RenderObject*>	m_mapRenders;
 		std::map<UINT ,Light*>			m_mapLights;

@@ -9,22 +9,12 @@
 class MonoBehaviour;
 namespace E3DEngine
 {
-	typedef enum
-	{
-		eT_GameObject,
-		eT_Scene,
-		eT_Object,
-		eT_Camera,
-		eT_RenderObject
-	} ObjectType;
-
 	enum SceneObjectType
 	{
 		TP_NONE			= 0,
-		TP_Camera		= 1,
+		TP_GameObject	= 1,
 		TP_Particle		= 2,
-		TP_GameObject	= 3, 
-		TP_Prefab		= 4,
+		TP_Prefab		= 3,
 	};
 
 	const std::string NM_GameObject = "GameObject";
@@ -58,7 +48,6 @@ namespace E3DEngine
 		unsigned int	ID;
 		std::string		mName;
 		std::string		mTypeName;
-		ObjectType		mObjectType;
 		MonoBehaviour * mBehaviour;
 		std::string		mConfigPath;
 		int				mConfigID;

@@ -348,22 +348,6 @@ namespace E3DEditor.ViewModel
             loadGameObjectList();
         }
 
-        private void refillObjectList(List<E3DEngine.GameObjectRef> _gameObjectList, ObservableCollection<GameObjectNode> nodeList)
-        {
-            for (int i = 0; i < _gameObjectList.Count; i++)
-            {
-                for (int j = 0; j < nodeList.Count; j++)
-                {
-                    if (nodeList[j].SceneInnerID == _gameObjectList[i].GetSceneInnerID())
-                    {
-                        nodeList[j].mGameObject = _gameObjectList[i];
-                        refillObjectList(_gameObjectList[i].GetChilds(), nodeList[j].Childs);
-                        break;
-                    }
-                }
-            }
-        }
-
         private void loadGameObjectList()
         {
             E3DEngine.GameObjectRef gameRootObj = E3DEngine.SceneManageRef.GetInstance().GetCurScene().GetRootObject();

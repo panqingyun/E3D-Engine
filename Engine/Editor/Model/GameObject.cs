@@ -19,7 +19,6 @@ namespace E3DEditor.Model
             set
             {
                 gameObject = value;
-                SceneInnerID = gameObject.GetSceneInnerID();
                 value.TransformChangeHandle = objectTransChange;
             }
             get

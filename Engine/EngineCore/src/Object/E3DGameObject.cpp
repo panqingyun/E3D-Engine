@@ -323,18 +323,15 @@ namespace E3DEngine
 
 	GameObject::GameObject()
 	{
-		mSceneObjectType = TP_GameObject;
 		Transform = new CTransform;
 		Transform->gameObject = this;
 		DontDestoryOnLoad = false;
-		mObjectType = eT_GameObject;
 		IsActive = false;
 		m_pRenderer = nullptr;
 		ParentNode = nullptr;
 		m_layerMask = 0;
 		m_bIsStatic = false;
 		Flag = 0;
-		SceneInnerID = 0;
 		TransChangeFun = nullptr;
 		VertexBufferName = "";
 		Color = Color4(1, 1, 1, 1);

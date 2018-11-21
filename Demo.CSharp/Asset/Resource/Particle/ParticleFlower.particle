@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<ParticleConfig>
+		<!--
+		 ElementClassName	处理类名 由程序来定义
+		 AffectorName		影响器的名字 可以多填
+		 AffectorID			影响器内ID 可以多填
+		 EmitterName		发射器名字
+		 EmitterID			发射器内ID
+		 Material			材质的ID
+		 DisplayCamera		0 前置摄像头绘制， 1 后置摄像头绘制， 2 前后都绘制
+		 -->
+        
+		<Item ID="1" Affector="RandomForceAffectorConfig:1;SelfRotateAffectorConfig:1"  
+		Emitter="AreaEmitterConfig : 1" 
+		Material="Material/ParticleMaterial.material:2" 
+		DisplayCamera="2" LockEmitterMove="0" 
+		DirectionOffset="1.0"  TextureUV="1,2,3,4"/>
+	</ParticleConfig>
+	
+	<AreaEmitterConfig>
+		<!--
+		 ParticleWidth			单个粒子的宽度
+		 ParticleHeight			单个粒子的高度
+		 BlankTime				发射器发射间歇时间
+		 MaxParticleNumber		最多发射粒子数目
+		 ParticleLiveTime		粒子存活时间
+		 ParticlePosition		粒子团的位置
+		 AreaRange				区域范围
+		 IsBillboard			是否公告板 1 是 0 不是
+		 -->
+		<Item ID="1" ParticlePosition="0,0,0" ParticleWidth="2" ParticleHeight="2" BlankTime="0" MaxParticleNumber="50" 
+		TotalParticleNumber="10000" ParticleLiveTime="4.5" AreaRange="20,1,20" ScaleRange="0.6,0.92" AlphaRange="0.9,1.0" CreateParticleOnce="1" BornInterval="1.0" IsLoop="1" IsBillboard="1"/>
+	</AreaEmitterConfig>
+    <SelfRotateAffectorConfig>
+        <!--
+         RoteteSpeed 旋转角速度
+         RotateAxis 旋转轴向量 xmin,xmax,ymin,ymax,zmin,zmax
+         
+         -->
+        <Item ID = "1" RoteteSpeed="0.02" RotateSpeedRange="-1.0,1.0" RotateAxis="0,1,0"/>
+    </SelfRotateAffectorConfig>
+    <RandomForceAffectorConfig>
+        <!--
+         xRandom  x方向随机范围 [-1,1]
+         yRandom  y方向随机范围 [-1,1]
+         zRandom  z方向随机范围 [-1,1]
+         -->
+       <Item ID = 1 ForceRange="4,8" xRandom="-0.2,0.2" yRandom="-1,-1" zRandom="0,0" rotateByDir=0/>
+    </RandomForceAffectorConfig>
+	<TextureUVConfig>
+		<!--
+		 speed					帧速
+		 repeatStartFrame		从第几帧开始重复
+		 type					拼图类别  0:表示行列都是规则的序列
+		 isReverse				是否倒序 1 是 0 否 ，即正序播放，然后倒序播放
+		 leftRightMirror		左右对称，1表示正常；-1表示左右对称
+		 leftRightMirror;		左右对称，1表示正常；-1表示左右对称
+		 topBottomMirror;		上下对称，1表示正常；-1表示上下对称
+		 widthTexture;			纹理宽度，即大图宽度
+		 heightTexture;			纹理高度，即大图高度
+		 widthPic;				单帧图片宽度(像素)，不规则拼图时必填
+		 heightPic;				单帧图片高度(像素)，不规则拼图时必填
+		 startX;				开始UV的X(像素)，不规则拼图时必填
+		 startY;				开始UV的Y(像素)，不规则拼图时必填
+		 framePos				序列帧数组
+		 -->
+		<Item ID="1" speed="12" repeatStartFrame="0" type="0" isReverse="0" leftRightMirror="1" topBottomMirror="1"  widthTexture="128" heightTexture="128" widthPic="64" heightPic="64" startX ="0"  startY ="0" framePos = "0.0,0.0"/>
+        <Item ID="2" speed="12" repeatStartFrame="0" type="0" isReverse="0" leftRightMirror="1" topBottomMirror="1"  widthTexture="128" heightTexture="128" widthPic="64" heightPic="64" startX ="0"  startY ="0" framePos = "0.0,1.0"/>
+        <Item ID="3" speed="12" repeatStartFrame="0" type="0" isReverse="0" leftRightMirror="1" topBottomMirror="1"  widthTexture="128" heightTexture="128" widthPic="64" heightPic="64" startX ="0"  startY ="0" framePos = "1.0,0.0"/>
+        <Item ID="4" speed="12" repeatStartFrame="0" type="0" isReverse="0" leftRightMirror="1" topBottomMirror="1"  widthTexture="128" heightTexture="128" widthPic="64" heightPic="64" startX ="0"  startY ="0" framePos = "1.0,1.0"/>
+	</TextureUVConfig>
+</ConfigSystem>

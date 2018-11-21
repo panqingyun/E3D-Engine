@@ -19,12 +19,10 @@ namespace E3DEngine
 	Scene::Scene()
 	{
 		m_nObjectID = 0;
-		mObjectType = eT_Scene;
 		rootObject = new GameObject;
 		rootObject->SetActive(true);
 		usedDirectionLight = nullptr;
 		m_pSceneMainCamera = nullptr;
-		m_vecObjList[rootObject->ID] = rootObject;
 		CreateBehaviour();
 
 	}
@@ -42,10 +40,7 @@ namespace E3DEngine
 		// 运行时执行，编辑器下不执行
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{
-			for (auto &node : m_vecObjList)
-			{
-				node.second->Update(deltaTime);
-			}
+			rootObject->Update(deltaTime);
 		}
 		rootObject->Transform->Update();
 		if (!GetRenderSystem()->getIsMutilThreadRender())
@@ -58,13 +53,7 @@ namespace E3DEngine
 		// 运行时执行，编辑器下不执行
 		if (EngineDelegate::GetInstance().GetIsRun())
 		{
-			for (auto &node : m_vecObjList)
-			{
-				if (node.second->mObjectType == eT_GameObject)
-				{
-					static_cast<GameObject*>(node.second)->AfterUpdate(deltaTime);
-				}
-			}
+			rootObject->AfterUpdate(deltaTime);
 		}
 	}
 
@@ -79,7 +68,6 @@ namespace E3DEngine
 		SAFE_DELETE(rootObject);
 		GetRenderSystem()->Cleanup();
 		m_mapRenders.clear();
-		m_vecObjList.clear();
 		m_mapLights.clear();
 		m_vecCamera.clear();
 		m_pSceneMainCamera = nullptr;
@@ -96,15 +84,7 @@ namespace E3DEngine
 
 	void Scene::DestoryAllOjectImmediately()
 	{
-		for(auto & it : m_vecObjList)
-		{
-			//for (Camera * camera : m_vecCamera)
-			//{
-			//	camera->GetRenderQueue()->Remove(static_cast<GameObject*>(it.second));
-			//}
-			SAFE_DELETE(it.second);
-		}
-		m_vecObjList.clear();
+		
 	}
 
 	void Scene::RenderScene()
@@ -381,16 +361,11 @@ namespace E3DEngine
 		{
 			return;
 		}
-		if (m_vecObjList.find(go->ID) != m_vecObjList.end())
-		{
-			m_vecObjList.erase(go->ID);
-		}
 		rootObject->AddChild(go);
 		if (static_cast<GameObject*>(obj)->GetComponent(CAMERA_NAME) != nullptr)
 		{
 			AddCamera((Camera*)static_cast<GameObject*>(obj)->GetComponent("E3DEngine.Camera"));
 		}
-		m_vecObjList[obj->ID] = obj;
 	}
 
 	void Scene::RemoveObject(Object * node)
@@ -407,14 +382,6 @@ namespace E3DEngine
 
 			rootObject->RemoveChild(go);
 		}
-		else
-		{
-			if (m_vecObjList.find(id) == m_vecObjList.end())
-			{
-				return;
-			}
-			m_vecObjList.erase(node->ID);
-		}
 	}
 
 	void Scene::RemoveObject(UINT ID)
@@ -422,14 +389,6 @@ namespace E3DEngine
 		if (rootObject->FindChild(ID))
 		{
 			rootObject->RemoveChild(ID);
-		}
-		else
-		{
-			if (m_vecObjList.find(ID) == m_vecObjList.end())
-			{
-				return;
-			}
-			m_vecObjList.erase(ID);
 		}
 	}
 

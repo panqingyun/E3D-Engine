@@ -47,7 +47,6 @@ namespace E3DEngine
 		Transform->SetPosition(position);
 		vec3f up = vec3f(0, 1, 0);
 		
-		initVertex();
 
 		bFristUpdte = true;
 		m_rotateSpeed = 0.0f;
@@ -60,6 +59,7 @@ namespace E3DEngine
 		};
 		memcpy(Indices, indexs, sizeof(uint)* 6);
 		StartEffect();
+		initVertex();
 	}
 	
 	void Particle::ResetFrameEffect()
@@ -163,14 +163,6 @@ namespace E3DEngine
 
 	Vertex * Particle::getVertex(mat4f worldMatrix)
 	{
-		vec4f pos0 = vec4f(Vertes[0].Position[0], Vertes[0].Position[1], Vertes[0].Position[2], 1.0);
-		vec4f pos1 = vec4f(Vertes[1].Position[0], Vertes[1].Position[1], Vertes[1].Position[2], 1.0);
-		vec4f pos2 = vec4f(Vertes[2].Position[0], Vertes[2].Position[1], Vertes[2].Position[2], 1.0);
-		vec4f pos3 = vec4f(Vertes[3].Position[0], Vertes[3].Position[1], Vertes[3].Position[2], 1.0);
-		Vertes[0].SetPosition(pos0.x, pos0.y, pos0.z);
-		Vertes[1].SetPosition(pos1.x, pos1.y, pos1.z);
-		Vertes[2].SetPosition(pos2.x, pos2.y, pos2.z);
-		Vertes[3].SetPosition(pos3.x, pos3.y, pos3.z);
 		return Vertes;
 	}
 
@@ -974,8 +966,8 @@ namespace E3DEngine
 			int _n = rand() % num;
 			
 			share_pointer<Particle> sp_P = ParticlePool::GetInstance().ActiveParticleFromPool();
-
-			sp_P.get_ptr()->ActiveEffect(m_vecUVConfigs[_n]);
+			TextureUVConfig * cfg = m_vecUVConfigs[_n];
+			sp_P.get_ptr()->ActiveEffect(cfg);
 			sp_P.get_ptr()->Create(size.x, size.y, true, color, pos, fShaderIndex, time2Live);
 			sp_P.get_ptr()->autoRelease();
 			sp_P.get_ptr()->GroupID = groupID;

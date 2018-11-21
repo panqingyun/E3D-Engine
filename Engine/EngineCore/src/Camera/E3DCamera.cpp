@@ -34,7 +34,6 @@ namespace E3DEngine
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_nDepth = 0;
-		mObjectType = eT_Camera;
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}
@@ -54,7 +53,6 @@ namespace E3DEngine
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
 		m_nDepth = 0;
-		mObjectType = eT_Camera;
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}

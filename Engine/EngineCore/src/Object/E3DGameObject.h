@@ -402,7 +402,6 @@ namespace E3DEngine
 	public:
 		object					Tag;
 		bool					IsActive;
-		int						SceneInnerID;
 		GameObject		*		ParentNode;
 		bool					DontDestoryOnLoad;
 		CTransform	*			Transform;

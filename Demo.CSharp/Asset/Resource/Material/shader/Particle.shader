@@ -27,7 +27,7 @@ void main(void)
 	
 	vec3 pos = transformPosition;
 	pos += cameraRightInWorldspace * particleSize * tangent.x;
-	pos += cameraUpInWorldspace * particleSize * tangent.y;
+	pos += cameraUpInWorldspace * particleSize  * tangent.y;
 	
 	mat4 transMatrix = getTransformMatrix(pos, transformRotate,transformScale);
 	

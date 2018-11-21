@@ -16,6 +16,14 @@ namespace E3DEngine
 		SetValue(gameObject);
 	}
 
+	GameObjectRef::GameObjectRef()
+	{
+		mGameObject = new GameObject();
+		mGameObject->CreateBehaviour();
+		mGameObject->SetLayerMask(1);
+		mGameObject->SetActive(true);
+	}
+
 	System::String^ GameObjectRef::GetName()
 	{
 		return mName;
@@ -25,7 +33,6 @@ namespace E3DEngine
 	{
 		mGameObject = gameObject;
 		mID = gameObject->ID;
-		mInnerID = gameObject->SceneInnerID;
 		mTransform = gcnew TransformRef(gameObject->Transform);
 		mName = gcnew String(gameObject->mName.c_str());
 		mColor = gcnew Vector4(gameObject->Color.r, gameObject->Color.g, gameObject->Color.b, gameObject->Color.a);
@@ -103,11 +110,6 @@ namespace E3DEngine
 
 	}
 
-	int GameObjectRef::GetSceneInnerID()
-	{
-		return mInnerID;
-	}
-
 	void GameObjectRef::Reset()
 	{
 		mChildList->Clear();
@@ -157,6 +159,11 @@ namespace E3DEngine
 	int GameObjectRef::GetFlag()
 	{
 		return mGameObject->Flag;
+	}
+
+	void GameObjectRef::SetParent(GameObjectRef ^gameObject)
+	{
+		mGameObject->SetParent(gameObject->GetGameObjectPtr());
 	}
 
 	void GameObjectRef::SetActive(bool active)

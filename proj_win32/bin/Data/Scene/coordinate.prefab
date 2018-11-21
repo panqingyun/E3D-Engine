@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Prefab>
-	<GameObject IsStatic="true" Color="0000ffff" ID="1" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="0000ffff" ID="1" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="0, 0,12.5" Rotation="0, 0, 0" Scale="3,3,25"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>
-	<GameObject IsStatic="true" Color="ff0000ff" ID="2" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="ff0000ff" ID="2" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="12.5,0,0" Rotation="0, 0, 0" Scale="25,3,3"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>	
-	<GameObject IsStatic="true" Color="00ff00ff" ID="3" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="00ff00ff" ID="3" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="0,12.5,0" Rotation="0, 0, 0" Scale="3,25,3"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>
-	<GameObject IsStatic="true" Color="ffffffff" ID="4" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="ffffffff" ID="4" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="0,-12.5,0" Rotation="0, 0, 0" Scale="3,25,3"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>
-	<GameObject IsStatic="true" Color="ffffffff" ID="5" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="ffffffff" ID="5" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="-12.5,0,0" Rotation="0, 0, 0" Scale="25,3,3"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>
-	<GameObject IsStatic="true" Color="ffffffff" ID="6" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="ffffffff" ID="6" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="0,0,-12.5" Rotation="0, 0, 0" Scale="3,3,25"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="../Material/CubeMaterial.material" RendererType="0" />
         </Component>
 	</GameObject>
-	<GameObject IsStatic="true" Color="ffffffff" ID="7" Name="Box" Type="3" LayerMask="31"  Active="true">
+	<GameObject IsStatic="true" Color="ffffffff" ID="7" Name="Box" Type="1" LayerMask="31"  Active="true">
 		<Transform Posistion="0,0,0" Rotation="0, 0, 0" Scale="10,10,10"/>
 		<Component Active="true" ClassName="E3DEngine.Box" />
 		<Component Active="true" ClassName="E3DEngine.Renderer">

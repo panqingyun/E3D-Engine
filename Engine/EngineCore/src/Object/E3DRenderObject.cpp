@@ -60,7 +60,6 @@ namespace E3DEngine
 		m_nColor = 0xffffffff;
         nMaterialID = 0;
 		m_bIsBufferData = false;
-		mObjectType = eT_RenderObject;
 		RenderIndex = eRI_Normal;
 		IsStaticDraw = false;
 		m_bNeedSortVertex = false;

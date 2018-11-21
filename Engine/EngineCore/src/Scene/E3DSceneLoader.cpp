@@ -402,7 +402,6 @@ namespace E3DEngine
 
 	void saveGameObjectElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
-		objectElement->SetAttribute(_InnerID, gameObject->SceneInnerID);
 		objectElement->SetAttribute(_Name, gameObject->mName);
 		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));

@@ -1,26 +1,6 @@
 # E3DEngine
 [github](https://github.com/panqingyun/E3D-Engine)
 ![](./ScreenShot/Editor1.jpg)
-- [x] 场景
-- [x] 摄像机
-- [x] 粒子系统
-- [x] 天空盒
-- [x] 文理序列帧
-- [x] 材质
-- [x] RenderToTexture
-- [x] CubeMapTexture
-- [x] 多FBO
-- [x] 渲染合批
-- [x] 模型读取和显示
-- [x] 物理引擎使用Bullet
-- [x] 使用Mono C#作为逻辑脚本
-- [x] 平行光实时阴影
-
-- [ ] 场景管理
-- [ ] 骨骼动画
-- [ ] UI
-- [ ] 脚本系统完善
-- [ ] 鼠标拾取
 
 #### 渲染系统使用的OpenGL 及 OpenGL ES，Windows上OpenGL ES使用AMD的ES模拟器。
 

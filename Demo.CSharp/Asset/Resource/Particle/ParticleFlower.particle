@@ -30,7 +30,7 @@
 		 IsBillboard			是否公告板 1 是 0 不是
 		 -->
 		<Item ID="1" ParticlePosition="0,0,0" ParticleWidth="2" ParticleHeight="2" BlankTime="0" MaxParticleNumber="50" 
-		TotalParticleNumber="10000" ParticleLiveTime="4.5" AreaRange="20,1,20" ScaleRange="0.6,0.92" AlphaRange="0.9,1.0" CreateParticleOnce="1" BornInterval="1.0" IsLoop="1" IsBillboard="1"/>
+		TotalParticleNumber="10000" ParticleLiveTime="4.5" AreaRange="20,0,20" ScaleRange="0.6,0.92" AlphaRange="0.9,1.0" CreateParticleOnce="1" BornInterval="1.0" IsLoop="1" IsBillboard="1"/>
 	</AreaEmitterConfig>
     <SelfRotateAffectorConfig>
         <!--

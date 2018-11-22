@@ -25,7 +25,7 @@ void E3DEngine::SkyBox::Update(float deltaTime)
 	Transform->SetPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
 }
 
-
+ 
 E3DEngine::SkyDome::SkyDome()
 {
 	CREATE_BEHAVIOUR(SkyDome);

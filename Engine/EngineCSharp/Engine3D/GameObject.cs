@@ -16,9 +16,6 @@ namespace E3DEngine
         protected extern Component addComponent(string comName);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        protected static extern void newGameObject(GameObject go);
-
-        [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Component getComponent(string comName);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -58,11 +55,7 @@ namespace E3DEngine
         private Dictionary<string, List<Component>> component_dic = new Dictionary<string, List<Component>>();
 
         public Transform Transform;
-
-        public GameObject()
-        {
-            newGameObject(this);
-        }
+       
 
         public void RemoveComponent(Component com)
         {

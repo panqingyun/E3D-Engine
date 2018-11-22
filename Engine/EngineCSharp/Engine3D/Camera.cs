@@ -16,6 +16,9 @@ namespace E3DEngine
         protected extern void screen2WorldPoint(ref float x, ref float y, ref float z);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
+        protected extern void world2ScreenPoint(ref float x, ref float y, ref float z);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern void getViewMatrix(out float[] value);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
@@ -23,6 +26,8 @@ namespace E3DEngine
 
         private Matrix4x4 viewMatrix = new Matrix4x4();
         private Matrix4x4 projMatrix = new Matrix4x4();
+        private Vector3 worldPoint;
+        private Vector3 screenPoint;
 
         /// <summary>
         /// 前方向
@@ -74,6 +79,13 @@ namespace E3DEngine
             renderCamera();
         }
 
+        public Vector3 WorldToScreenPoint(Vector3 worldPoint)
+        {
+            world2ScreenPoint(ref worldPoint.x, ref worldPoint.y, ref worldPoint.z);
+            screenPoint = worldPoint;
+            return screenPoint;
+        }
+
         /// <summary>
         /// 把屏幕坐标转换成世界坐标
         /// </summary>
@@ -81,9 +93,9 @@ namespace E3DEngine
         /// <returns>世界坐标</returns>
         public Vector3 ScreenToWorldPoint(Vector3 screenPoint)
         {
-            float x = 0, y = 0, z = 0;
-            screen2WorldPoint(ref x, ref y, ref z);
-            return new Vector3(x, y, z);
+            screen2WorldPoint(ref screenPoint.x, ref screenPoint.y, ref screenPoint.z);
+            worldPoint = screenPoint;
+            return worldPoint;
         }
         /// <summary>
         /// 获取视矩阵

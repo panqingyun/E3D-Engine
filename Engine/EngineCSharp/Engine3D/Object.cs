@@ -14,6 +14,14 @@ namespace E3DEngine
         /// </summary>
         private unsafe void* CppObject;
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        protected static extern void newObject(Object obj);
+
+        public Object()
+        {
+            //newObject(this);
+        }
+
         ~Object()
         {
            

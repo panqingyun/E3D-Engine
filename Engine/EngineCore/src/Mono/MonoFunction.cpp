@@ -78,7 +78,11 @@ void RegisterMonoFunction()
 VOID _1_PARAM_FUNCTION(GameObject, newGameObject, CS_OBJECT, cs_obj)
 {
 	GameObject *go = new GameObject();
+	go->mName = "GameObject";
 	go->SetMonoObject(cs_obj);
+	go->SetActive(true);
+	go->SetLayerMask(1);
+	ADD_IN_SCENE(go);
 }
 
 VOID _1_PARAM_FUNCTION(Camera, renderCamera, CS_OBJECT, cs_obj)
@@ -422,9 +426,6 @@ VOID _4_PARAM_FUNCTION(Camera, screen2WorldPoint, CS_OBJECT, cs_obj, float&, x, 
 		return;
 	}
 	vec3f newPos(x, y, z);
-
-	newPos.x	= newPos.x / GetRenderSystem()->getFrameWidth() - 0.5;
-	newPos.y	= -1 * (newPos.y / GetRenderSystem()->getFrameHeight() - 0.5);
 	newPos		= camera->GetWorldPointWithScreenPoint(newPos.x, newPos.y, newPos.z);
 	
 	x = newPos.x;
@@ -836,4 +837,21 @@ VOID _6_PARAM_FUNCTION(Material, UpdateFloat4Value, CS_OBJECT, material, CS_STRI
 	}
 	std::string uniformName = Convert::ToStdString(name);
 	m->GetShader()->UpdateFloatValue(uniformName, value1, value2, value3, value4);
+}
+
+VOID _4_PARAM_FUNCTION(Camera, world2ScreenPoint, CS_OBJECT, cs_obj, float&, x, float&, y, float&, z)
+{
+	Camera * camera = getCppObject<Camera>(cs_obj);
+
+	if (camera == nullptr)
+	{
+		return;
+	}
+	vec3f newPos(x, y, z);
+
+	vec3f &&pos = camera->GetScreenPointWithWorlPoint(newPos);
+
+	x = pos.x;
+	y = pos.y;
+	z = pos.z;
 }

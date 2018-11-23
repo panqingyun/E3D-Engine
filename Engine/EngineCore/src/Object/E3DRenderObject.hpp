@@ -117,12 +117,14 @@ namespace E3DEngine
 		virtual DWORD GetLayerMask();
 		virtual Camera *GetCamera();
 		virtual void ChangeColor(Color4 color) { }
-		void SetActive(bool isActive) { m_IsActive = isActive; }
+		void SetActive(bool isActive);
 		MinMaxAABB GetBounds()
 		{
 			return m_AABB;
 		}
-
+#ifdef __E3D_EDITOR__
+		virtual void Selected(bool select);
+#endif
     protected:
         long	m_nColor;
         bool	m_bIsBillboard;
@@ -135,6 +137,7 @@ namespace E3DEngine
 		bool		m_bNeedSortVertex;
 		DWORD		m_layer;
 		bool		m_IsActive;
+		bool		m_IsSelected;
     public:
 		// 索引数目
 		DWORD							m_nIndexSize;

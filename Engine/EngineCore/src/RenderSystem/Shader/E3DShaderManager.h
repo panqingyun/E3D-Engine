@@ -15,7 +15,8 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL ShaderManager : public IManager
 	{
 	public: 
-		virtual Shader * GetShader(ShaderConfig * sCfg, std::string materailPath);
+		Shader * GetShader(std::string shaderFullPath);
+		Shader * CreateShader(ShaderConfig * sCfg, std::string materailPath);
 		virtual void Cleanup();
 
 	protected:

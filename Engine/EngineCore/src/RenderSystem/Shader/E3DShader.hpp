@@ -17,6 +17,7 @@ namespace E3DEngine
 #define  PROJ_MATRIX "_e3d_matProj"
 #define  VIEW_MATRIX "_e3d_matView"
 #define  ROTATION_VEC "_e3d_Rotation"
+#define  SCALE_VEC "_e3d_Scale"
 #define  CAMERA_POS  "_e3d_CameraPos"
 #define  LIGHT_COLOR "_e3d_WorldSpaceLightColor"
 #define  LIGHT_DIR "_e3d_WorldSpaceLightDirection"

@@ -84,7 +84,12 @@ namespace E3DEngine
 
 	void SceneRef::SetSelectObject(GameObjectRef ^obj)
 	{
+		if (mCurSelObject != nullptr)
+		{
+			mCurSelObject->GetGameObjectPtr()->Selected(false);
+		}
 		mCurSelObject = obj;
+		mCurSelObject->GetGameObjectPtr()->Selected(true);
 		ShowCoord();
 	}
 

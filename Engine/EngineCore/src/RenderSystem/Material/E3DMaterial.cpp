@@ -44,7 +44,7 @@ namespace E3DEngine
 			{
 				return;
 			}
-			mShader = GetRenderSystem()->GetShaderManager()->GetShader(sCfg, mFilePath);
+			mShader = GetRenderSystem()->GetShaderManager()->CreateShader(sCfg, mFilePath);
 			if (config->Color != empty_string)
 			{
 				mColor = Convert::ToColorRGBA(config->Color);

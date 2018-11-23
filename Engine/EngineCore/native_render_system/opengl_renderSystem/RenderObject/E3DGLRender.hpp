@@ -32,12 +32,14 @@ namespace E3DEngine
 	public:
 		virtual void updateArrayBuffer();
 		virtual void FillEnd(UINT objId, uint vertexCount, uint indexCount);
-
 		virtual void TransformChange() override;
 		virtual void RemoveInRenderer(UINT objId) override;
 		virtual void ClearVertexIndexBuffer() override;
 
 		virtual void Render() override;
+
+		void drawSelectFrame();
+
 		virtual void ChangeColor(Color4 color) override;
 		virtual void SetDrawModule(DWORD module) override;
 

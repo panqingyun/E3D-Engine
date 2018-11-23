@@ -183,7 +183,7 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
 	glEnable(GL_MULTISAMPLE);
-	//glEnable(GL_POLYGON_SMOOTH);     //¶à±ßÐÎ¿¹¾â³Ý  
+	
 	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
 	glClearDepthf(1);
 	glClear(GL_DEPTH_BUFFER_BIT);

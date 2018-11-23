@@ -14,6 +14,7 @@
 #include "../Shader/E3DGLShader.hpp"
 #include "../Material/E3DGLMaterial.hpp"
 #include "../../../src/Source/Application.h"
+#include "../E3DGL_RenderSystem.h"
 
 namespace E3DEngine
 {
@@ -136,18 +137,22 @@ namespace E3DEngine
 
 		updateEngineDefineShaderValue();
 		pMaterial->UseMaterial();
-
-		if (pCamera->GetIsShadowCamera())
-		{
-			//glEnable(GL_CULL_FACE);
-		}		
-
 		updateArrayBuffer();
-		
+#ifdef __E3D_EDITOR__
+		if (m_IsSelected)
+		{
+			glClearStencil(0);
+			glClear(GL_STENCIL_BUFFER_BIT);
+		}
+#endif
+		glStencilMask(0xFF);
+		glStencilFunc(GL_ALWAYS, 1, 0xFF);
 		// 绘制图形
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
-
 		afterRender();
+#ifdef __E3D_EDITOR__
+		drawSelectFrame();
+#endif
 	}
 
 
@@ -170,6 +175,7 @@ namespace E3DEngine
 		pMaterial->mShader->UpdateFloatValue(_Time, Application::GetTimeSinceStart());
 		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, transform->WorldMatrix);
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, transform->RotationEuler.x  * M_PI / 180, transform->RotationEuler.y * M_PI / 180, transform->RotationEuler.z * M_PI / 180);
+		pMaterial->mShader->UpdateFloatValue(SCALE_VEC, transform->Scale.x, transform->Scale.y, transform->Scale.z);
 
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
@@ -250,7 +256,6 @@ namespace E3DEngine
 			static_cast<GL_Material*>(pMaterial)->DisableVertexAttrib(DYNAMIC_VERTEX);
 		}
 		pMaterial->InvalidMaterial();
-		glDisable(GL_STENCIL_TEST);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		glBindTexture(GL_TEXTURE_2D, 0);
@@ -265,6 +270,28 @@ namespace E3DEngine
 		glGenBuffers(1, &m_VertexBuffer);
 		glGenBuffers(1, &m_IndexBuffer);
 		glGenBuffers(1, &m_BatchVertexBuffer);
+	}
+
+	void GL_Renderer::drawSelectFrame()
+	{
+		if (m_IsSelected && !pCamera->GetIsShadowCamera())
+		{
+			vec3f scale = transform->GetScale();
+			Shader *pShader = pMaterial->GetShader();
+			pMaterial->mShader = GL_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame.shader");
+			updateEngineDefineShaderValue();
+			pMaterial->UseMaterial();
+			updateArrayBuffer();
+			glEnable(GL_STENCIL_TEST);
+			glStencilMask(0x00);
+			glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+			glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+			//glDepthMask(GL_FALSE);
+			glEnable(GL_DEPTH_TEST);
+			glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
+			afterRender();
+			pMaterial->mShader = pShader;
+		}
 	}
 
 }

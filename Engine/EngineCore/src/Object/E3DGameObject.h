@@ -393,6 +393,9 @@ namespace E3DEngine
 		static void Destory(GameObject *go);
 		CTransform * GetTransform();
 		void SetColor(Color4 color);
+#ifdef __E3D_EDITOR__
+		void Selected(bool isSelect);
+#endif
 
 	protected:
 		virtual void ComponentAdded(Component * component);

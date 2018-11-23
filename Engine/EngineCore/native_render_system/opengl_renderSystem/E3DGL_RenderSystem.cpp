@@ -72,6 +72,7 @@ namespace E3DEngine
 		m_pGL_Context->OpenGLInit(displayID);
 		m_pGL_Context->UseContext();
 		glCullFace(GL_BACK);
+		glEnable(GL_STENCIL_TEST);//启用写入深度值
 		//glEnable(GL_FRAMEBUFFER_SRGB);
 	}
 
@@ -95,7 +96,7 @@ namespace E3DEngine
 		}
 		if (type & eCT_Stencil)
 		{
-			glClearStencil(1);
+			glClearStencil(0);
 			type |= GL_STENCIL_BUFFER_BIT;
 		}
 		glClear(type);

@@ -103,6 +103,7 @@ std::string E3DEngine::GL_ShaderManager::processVS()
 	}
 	priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
 	priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
+	priveVs.append("uniform vec3 ").append(SCALE_VEC).append(";\n");
 	priveVs.append("mat4 _e3d_getMVPMatrix()\n");
 	priveVs.append("{\n");
 	priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
@@ -169,6 +170,7 @@ void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
 	shader->RunUniformFunc("mat4",MODEL_MATRIX, "", 1);
 	shader->RunUniformFunc("vec3",CAMERA_POS, "", 1);
 	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("vec3", SCALE_VEC, "", 1);
 	shader->RunUniformFunc("float", _Time, "", 1);
 	shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
 	shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);

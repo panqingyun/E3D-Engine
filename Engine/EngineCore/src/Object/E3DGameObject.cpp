@@ -607,6 +607,17 @@ namespace E3DEngine
 #endif
 	}
 
+
+#ifdef __E3D_EDITOR__
+	void GameObject::Selected(bool isSelect)
+	{
+		if (m_pRenderer != nullptr)
+		{
+			m_pRenderer->Get()->Selected(isSelect);
+		}
+	}
+#endif
+
 	void GameObject::SetIsStatic(bool isStatic)
 	{
 		m_bIsStatic = isStatic;

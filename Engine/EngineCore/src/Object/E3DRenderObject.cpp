@@ -168,9 +168,21 @@ namespace E3DEngine
 		return pCamera;
 	}
 
+#ifdef __E3D_EDITOR__
+	void RenderObject::Selected(bool select)
+	{
+		m_IsSelected = select;
+	}
+#endif
+
 	void RenderObject::SetNeedSortVertex(bool bNeed)
 	{
 		m_bNeedSortVertex = bNeed;
+	}
+
+	void RenderObject::SetActive(bool isActive)
+	{
+		m_IsActive = isActive;
 	}
 
 }

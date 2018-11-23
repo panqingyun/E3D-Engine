@@ -97,7 +97,7 @@
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="fangzi" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
+    <GameObject Name="fangzi" Type="1" LayerMask="0" Active="true" Color="FDFDFDFF">
         <Transform Posistion="80.000000,30.000000,100.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.050000,0.050000,0.050000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/jiebai_fangzi01.fbx" />

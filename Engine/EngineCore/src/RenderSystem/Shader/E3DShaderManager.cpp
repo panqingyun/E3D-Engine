@@ -6,15 +6,26 @@
 #include "../../Config/Table.h"
 #include "../../Source/E3DDebug.h"
 
-E3DEngine::Shader * E3DEngine::ShaderManager::GetShader(ShaderConfig * sCfg, std::string materailPath)
+E3DEngine::Shader * E3DEngine::ShaderManager::CreateShader(ShaderConfig * sCfg, std::string materailPath)
 {
-	/*std::string key = sCfg->VertexShader + sCfg->FragmentShader;
+	std::string key = materailPath + sCfg->ShaderPath;
 	if (mShadersMap.find(key) != mShadersMap.end())
 	{
 		return mShadersMap[key];
-	}*/
+	}
 	Shader * shader = createShader(materailPath + sCfg->ShaderPath, sCfg->UniformVariable);
-	//mShadersMap[key] = shader;
+	
+	return shader;
+}
+
+E3DEngine::Shader * E3DEngine::ShaderManager::GetShader(std::string shaderFullPath)
+{ 
+	if (mShadersMap.find(shaderFullPath) != mShadersMap.end())
+	{
+		return mShadersMap[shaderFullPath];
+	}
+	Shader * shader = createShader(shaderFullPath, "");
+	mShadersMap[shaderFullPath] = shader;
 	return shader;
 }
 

@@ -95,7 +95,7 @@ namespace E3DEngine
     {
         glDepthMask(GL_TRUE);//启用写入深度值
         glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-        glStencilFunc(GL_EQUAL, 1, 0xFF);
+        glStencilFunc(GL_GEQUAL, 1, 0xFF);
         glStencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);
         glStencilMask(0xFF);
     }

@@ -22,6 +22,13 @@ namespace E3DEngine
 	{
 	}
 
+
+	E3DEngine::PhysicWorld & PhysicWorld::GetInstance()
+	{
+		static PhysicWorld _ins;
+		return _ins;
+	}
+
 	void PhysicWorld::InitPhysics()
 	{
 		btVector3 worldAabbMin(-10000, -10000, -10000);
@@ -138,6 +145,10 @@ namespace E3DEngine
 		if (cb.hasHit())
 		{
 			hit.mGameObject = (GameObject*)cb.m_collisionObject->getUserPointer();
+			hit.mPickPos.x = cb.m_hitPointWorld.getX();
+			hit.mPickPos.y = cb.m_hitPointWorld.getY();
+			hit.mPickPos.z = cb.m_hitPointWorld.getZ();
+			hit.mDistance = hit.mPickPos.Distance(ray.From);
 			return true;
 		}
 		return false;

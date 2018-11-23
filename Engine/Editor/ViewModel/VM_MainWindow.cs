@@ -420,6 +420,13 @@ namespace E3DEditor.ViewModel
         #endregion
 
         #region Method
+
+        public void SelectObject(GameObjectNode node)
+        {
+            mainWnd.SelectItems(node);
+            mainWnd.properties.SelectedObject = node;
+        }
+
         public void ShowMainWindow()
         {
             if (mainWnd == null)

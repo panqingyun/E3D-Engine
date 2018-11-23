@@ -8,10 +8,20 @@ namespace E3DEditor.Model
 {
     public class GameObjectNode : ItemNodeBase
     {
-        public bool IsSelected = false;
         public int SceneInnerID = 0;
         int iupdateTimes = 0;
         int iupdateNeedNumber = 60;
+
+        private bool isSelect = false;
+        public bool IsSelected
+        {
+            get { return isSelect; }
+            set
+            {
+                isSelect = value;
+                OnPropertyChanged("IsSelected");
+            }
+        }        
 
         private GameObjectRef gameObject;
         public GameObjectRef mGameObject
@@ -20,11 +30,17 @@ namespace E3DEditor.Model
             {
                 gameObject = value;
                 value.TransformChangeHandle = objectTransChange;
+                value.GameObjectSelected = objectSelected;
             }
             get
             {
                 return gameObject;
             }
+        }
+
+        private void objectSelected(object sender, EventArgs e)
+        {
+            App.vm_MainWindow.SelectObject(this);
         }
 
         private void objectTransChange(object sender, EventArgs e)

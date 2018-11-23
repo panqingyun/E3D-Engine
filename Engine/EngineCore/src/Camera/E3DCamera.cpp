@@ -128,20 +128,9 @@ namespace E3DEngine
 
 	vec3f Camera::GetWorldPointWithScreenPoint(float x, float y, float z)
 	{
-		vec4f zViewVec = GetViewMatrix() * vec4f(0.0, 0.0, z, 1.0);
-		float zView = zViewVec.z;
-		float zProj = zView * GetProjectionMatrix()[10] + GetProjectionMatrix()[14];
-		float wView = -zView;
-
-		vec4f projNormal = vec4f();
-		vec4f proj;
-		projNormal.x = x / GetRenderSystem()->getFrameWidth() * 2.0f - 1;
-		projNormal.y = -y / GetRenderSystem()->getFrameHeight() * 2.0f - 1;
-		projNormal.z = zProj / wView;
-		projNormal.w = 1.0;
-		proj = vec4f(projNormal.x*wView, projNormal.y*wView, zProj, projNormal.w*wView);
-		vec4f view = GetProjectInverseMatrix() * proj;
-		vec4f world = GetViewInverseMatrix() * view;
+		float clipX = x / GetRenderSystem()->getFrameWidth() * 2.0f - 1;
+		float clipY = -(y / GetRenderSystem()->getFrameHeight() * 2.0f - 1);
+		vec4f world = GetWorldPoint(clipX, clipY, z);
 
 		return Convert::Vec4ToVec3(world);
 	}
@@ -281,19 +270,13 @@ namespace E3DEngine
 
 	E3DEngine::Ray Camera::ScreenPointToRay(vec2f mousePos)
 	{
-		float screenWidth = GetRenderSystem()->getFrameWidth();
-		float screenHeight = GetRenderSystem()->getFrameHeight();
-
-		float mPosX = (mousePos.x / screenWidth - 0.5) * 2;
-		float mPosY = (mousePos.y / screenHeight - 0.5) * 2;
-
 		Ray ray;
 		ray.From = Transform->GetPosition();
 
 		vec3f to(0, 0, Far);
 		to = to * GetForwardVector();
 
-		ray.To = GetWorldPointWithScreenPoint(mPosX, mPosY, to.z) + Transform->GetPosition();
+		ray.To = GetWorldPointWithScreenPoint(mousePos.x, mousePos.y, to.z);
 
 		return ray;
 	}

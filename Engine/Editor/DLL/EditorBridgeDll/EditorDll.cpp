@@ -88,6 +88,13 @@ void E3DEngine::EngineDelegateRef::ChageFrameSize(int w, int h)
 void E3DEngine::EngineDelegateRef::MouseDown(int mouseButtonID, float xPos, float yPos)
 {
 	::MouseDown(mouseButtonID, xPos, yPos);
+	if (SceneManageRef::GetInstance()->GetCurScene() != nullptr)
+	{
+		if (mouseButtonID == MouseButton::eLeftButton)
+		{
+			SceneManageRef::GetInstance()->GetCurScene()->PickObject(xPos, yPos);
+		}
+	}
 }
 
 void E3DEngine::EngineDelegateRef::MouseUp(int mouseButtonID, float xPos, float yPos)

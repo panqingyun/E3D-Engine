@@ -107,7 +107,10 @@ namespace E3DEngine
 
 	void GameObjectRef::Selected()
 	{
-
+		if (GameObjectSelected != nullptr)
+		{
+			GameObjectSelected(this, nullptr);
+		}
 	}
 
 	void GameObjectRef::Reset()

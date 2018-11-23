@@ -13,6 +13,7 @@
 
 namespace E3DEngine
 {
+	using SceneDestoryFun = void(*)();
 	class E3D_EXPORT_DLL SceneManager : public IObject
 	{
 	public:
@@ -24,7 +25,8 @@ namespace E3DEngine
 		virtual void Destory();		
 		void LoadScene(std::string filePath);
 		static Scene * GetCurrentScene();
-
+	public:
+		SceneDestoryFun SceneDestoryCallBack;
 	private:
 		Scene * mCurScene;
 	};

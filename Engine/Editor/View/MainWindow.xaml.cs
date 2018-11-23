@@ -107,5 +107,30 @@ namespace E3DEditor.View
         {
 
         }
+
+        private void expandedParent(TreeViewItem item)
+        {
+            if(item.Parent != null)
+            {
+                TreeViewItem container = item.Parent as TreeViewItem;
+                container.IsExpanded = true;
+                expandedParent(container);
+            }
+        }
+
+        public void SelectItems(object curNode)
+        {
+            TreeViewItem container = objectList.ItemContainerGenerator.ContainerFromItem(curNode) as TreeViewItem;
+            if (container != null)
+            {
+                if (container.ItemContainerGenerator.Status != System.Windows.Controls.Primitives.GeneratorStatus.ContainersGenerated)
+                {
+                    container.UpdateLayout();
+                }
+                expandedParent(container);
+                container.IsSelected = true;
+                container.BringIntoView();//滚动条滚动到选中的子元素
+            }
+        }
     }
 }

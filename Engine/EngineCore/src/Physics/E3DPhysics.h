@@ -7,14 +7,25 @@
 
 namespace E3DEngine
 {
-	class RaycastHit : public Ref
+	class E3D_EXPORT_DLL RaycastHit : public Ref
 	{
 	public:
+		vec3f mPickPos;
+		float mDistance;
 		GameObject *mGameObject;
 	};
 
-	struct Ray : public Ref
+	struct E3D_EXPORT_DLL Ray : public Ref
 	{
+		Ray()
+		{
+
+		}
+		Ray(vec3f f, vec3f t)
+		{
+			From = f;
+			To = t;
+		}
 		vec3f From;
 		vec3f To;
 	};
@@ -22,17 +33,13 @@ namespace E3DEngine
 	class E3D_EXPORT_DLL PhysicWorld : public  Ref
 	{
 
-#ifndef __IGNORED_INCLUDE__
 	private:
 		PhysicWorld();
 
 	public:
 		~PhysicWorld();
-		static PhysicWorld &GetInstance()
-		{
-			static PhysicWorld _ins;
-			return _ins;
-		}
+		static PhysicWorld &GetInstance();
+#ifndef __IGNORED_INCLUDE__
 		void InitPhysics();
 
 		void CreateGround();
@@ -45,8 +52,11 @@ namespace E3DEngine
 
 		btDiscreteDynamicsWorld * GetWorld();
 
+#endif
 		bool RayCast(Ray ray, RaycastHit &hit);
 		void SetPause(bool bPause);
+
+#ifndef __IGNORED_INCLUDE__
 	private:
 		btDefaultCollisionConfiguration* m_pCollisionConfiguration;
 		btCollisionDispatcher* m_pDispatcher;

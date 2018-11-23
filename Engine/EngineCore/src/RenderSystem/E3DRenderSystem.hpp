@@ -63,6 +63,7 @@ namespace E3DEngine
 		virtual void	UseShareContext();
 		virtual void	UseRenderContext();
 		virtual void    SetCullFaceType(CULL_FACE type);
+		virtual void    Pick(vec2f pickPos);
 	public:
 		RendererManager * GetRenderManager();
 		MaterialManager * GetMaterialManager();

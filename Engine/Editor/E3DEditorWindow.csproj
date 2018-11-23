@@ -58,7 +58,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>StoryEditorKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'EditorRelease|AnyCPU'">
     <OutputPath>..\..\proj_win32\bin\Editor\</OutputPath>
@@ -269,7 +270,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="StoryEditorKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\App.config" />

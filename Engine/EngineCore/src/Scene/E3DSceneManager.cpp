@@ -22,6 +22,7 @@ namespace E3DEngine
 	SceneManager::SceneManager()
 	{
 		mCurScene = nullptr;
+		SceneDestoryCallBack = nullptr;
 		E3DEngine::RegistScnObjCreateFunc();
 	}
 
@@ -41,6 +42,10 @@ namespace E3DEngine
 		EngineDelegate::GetInstance().SetPauseRender(true);
 		if (mCurScene != nullptr)
 		{
+			if (SceneDestoryCallBack != nullptr)
+			{
+				SceneDestoryCallBack();
+			}
 			mCurScene->Destory();
 			SAFE_DELETE(mCurScene);
 		}

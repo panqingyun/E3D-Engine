@@ -56,6 +56,7 @@ namespace E3DEngine
 
 	public:
 		System::EventHandler  ^TransformChangeHandle;
+		System::EventHandler  ^GameObjectSelected;
 
 	private:
 		void getChilds();

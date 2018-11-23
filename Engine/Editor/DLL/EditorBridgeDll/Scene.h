@@ -9,6 +9,7 @@ using namespace System;
 namespace E3DEngine
 {
 	void TransformChange(int ID);
+	void SceneDetory();
 	public ref class SceneRef
 	{
 	public:
@@ -25,6 +26,7 @@ namespace E3DEngine
 		GameObjectRef ^GetCurSelObject();
 		void Update(float deltaTime);
 		void AfterUpdate(float deltaTime);
+		void PickObject(float x, float y);
 
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
@@ -52,6 +54,7 @@ namespace E3DEngine
 		Camera *GetEditorMainCamera();
 		Camera *GetLookCoordCamera();
 		void SetRunPath(String ^path);
+		void DestoryScene();
 	private:
 		void createCoord();
 

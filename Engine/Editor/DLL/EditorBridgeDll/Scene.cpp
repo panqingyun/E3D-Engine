@@ -6,6 +6,7 @@
 
 #pragma managed
 #include <msclr\marshal_cppstd.h>
+#include "Physics/E3DPhysics.h"
 using namespace msclr::interop;
 using namespace System;
 
@@ -27,6 +28,11 @@ namespace E3DEngine
 		{
 			refObj->TransformChangeHandle(refObj, nullptr);
 		}
+	}
+
+	void SceneDetory()
+	{
+		SceneManageRef::GetInstance()->DestoryScene();
 	}
 
 	SceneRef::SceneRef(Scene *scene)
@@ -79,7 +85,6 @@ namespace E3DEngine
 	void SceneRef::SetSelectObject(GameObjectRef ^obj)
 	{
 		mCurSelObject = obj;
-		mCurSelObject->Selected(); 
 		ShowCoord();
 	}
 
@@ -106,6 +111,24 @@ namespace E3DEngine
 			if (!EngineDelegate::GetInstance().GetIsRun())
 			{
 				mCurSelObject->AfterUpdate(deltaTime);
+			}
+		}
+	}
+
+	void SceneRef::PickObject(float x, float y)
+	{
+		Camera * editorMain = SceneManageRef::GetInstance()->GetEditorMainCamera();
+		
+		Ray ray = editorMain->ScreenPointToRay(vec2f(x, y));
+		RaycastHit hitInfo;
+		bool &&bHit = PhysicWorld::GetInstance().RayCast(ray, hitInfo);
+		if (bHit)
+		{
+			GameObjectRef ^gameObj = GetGameObject(hitInfo.mGameObject->ID);
+			if (gameObj != nullptr)
+			{
+				gameObj->Selected();
+				SetSelectObject(gameObj);
 			}
 		}
 	}
@@ -157,6 +180,7 @@ namespace E3DEngine
 		mLookCoordCamera = nullptr;
 		mCoordCamera = nullptr;
 		mEditorCamera = nullptr;
+		SceneManager::GetInstance().SceneDestoryCallBack = SceneDetory;
 	}
 
 	E3DEngine::SceneManageRef^ SceneManageRef::GetInstance()
@@ -177,7 +201,7 @@ namespace E3DEngine
 		}
 		else
 		{
-			mCurScene->SetValue(scene);
+			//mCurScene->SetValue(scene);
 		}
 		return mCurScene;
 	}
@@ -280,6 +304,11 @@ namespace E3DEngine
 	void SceneManageRef::SetRunPath(String ^path)
 	{
 		mEditorPath = path;
+	}
+
+	void SceneManageRef::DestoryScene()
+	{
+		mCurScene = nullptr;
 	}
 
 	void SceneManageRef::createCoord()

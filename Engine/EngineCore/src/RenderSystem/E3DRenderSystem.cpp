@@ -104,6 +104,11 @@ namespace E3DEngine
 
 	}
 
+	void RenderSystem::Pick(vec2f pickPos)
+	{
+
+	}
+
 	E3DEngine::RendererManager * RenderSystem::GetRenderManager()
 	{
 		return m_pRenderManager;

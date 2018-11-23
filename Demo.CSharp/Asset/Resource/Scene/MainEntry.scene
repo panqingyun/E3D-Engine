@@ -80,7 +80,7 @@
             <Component Active="true" ClassName="E3DEngine.Sphere" />
             <Component Active="true" ClassName="E3DEngine.SphereCollider" />
         </GameObject>
-        <GameObject Name="particle" Type="2" LayerMask="0" Active="true" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
+        <GameObject Name="particle" Type="2" LayerMask="27" Active="true" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
             <Transform Posistion="0.000000,3.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
         </GameObject>
     </GameObject>

@@ -54,6 +54,7 @@ namespace E3DEngine
 		void fillVertexToGPU();
 
 		virtual void afterRender();
+		void drawSelectFrame();
 
 	private:
 		void setVBOs()

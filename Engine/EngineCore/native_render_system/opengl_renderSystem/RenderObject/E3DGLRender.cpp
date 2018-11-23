@@ -145,6 +145,10 @@ namespace E3DEngine
 			glClear(GL_STENCIL_BUFFER_BIT);
 		}
 #endif
+		if (pCamera->GetIsShadowCamera())
+		{
+			glDepthMask(GL_TRUE);
+		}
 		glStencilMask(0xFF);
 		glStencilFunc(GL_ALWAYS, 1, 0xFF);
 		// 绘制图形

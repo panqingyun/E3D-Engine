@@ -248,6 +248,8 @@ namespace E3DEngine
 			editorCameraGameObject->SetActive(true);
 			mEditorCamera = (Camera*)editorCameraGameObject->AddComponent(CAMERA_NAME);
 			SetEditorCamera(mEditorCamera, true);
+			editorCameraGameObject->mName = "mEditorCamera";
+			editorCameraGameObject->SetColor(Color4(1, 1, 1, 1));
 			editorCameraGameObject->SetLayerMask(-1 & ~LD_COORD & ~LD_LOOK_COORD & ~LD_OBJECT_COORD);
 			editorCameraGameObject->Flag |= DONT_SAVE;
 			mEditorCamera->OnCreate();
@@ -275,18 +277,18 @@ namespace E3DEngine
 		static_cast<BatchRenderer*>(render->Get())->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(gameObject);
 
-		createCoord();
+		//createCoord();
 	}
 
 	mat4f trans = mat4f::createTranslation(0, 0, 100);
 
 	void SceneManageRef::Update(float deltaTime)
 	{
-		mat4f rot = mEditorCamera->Transform->Rotation.transform();
+	/*	mat4f rot = mEditorCamera->Transform->Rotation.transform();
 		mat4f world = rot * trans;
 
 		mCoordCamera->Transform->WorldMatrix = world;
-		mCoordCamera->SetViewMatrix(world.inverse());
+		mCoordCamera->SetViewMatrix(world.inverse());*/
 	}
 
 	void SceneManageRef::OnFrameSizeChange()

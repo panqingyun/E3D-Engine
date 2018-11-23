@@ -163,6 +163,13 @@ namespace E3DEngine
 				layer |= (1 << Convert::ToInt(layers[i]));
 			}
 			go->SetLayerMask(layer);
+			if (go->mSceneObjectType == TP_Particle)
+			{
+				for (auto &p : go->GetChilds())
+				{
+					p.second->SetLayerMask(go->GetLayerMask());
+				}
+			}
 		}
 	}
 

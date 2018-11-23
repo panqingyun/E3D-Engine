@@ -38,19 +38,15 @@ namespace E3DEngine
 
 		virtual void Render() override;
 
-		void drawSelectFrame();
-
 		virtual void ChangeColor(Color4 color) override;
 		virtual void SetDrawModule(DWORD module) override;
 
 	protected:
 		void fillVertexToGPU();
-
 		void updateEngineDefineShaderValue();
-
 		void descPointLight();
-
 		virtual void afterRender();
+		void drawSelectFrame();
 
 	private:
 		void setVBOs();

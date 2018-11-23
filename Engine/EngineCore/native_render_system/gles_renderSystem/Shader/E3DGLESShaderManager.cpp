@@ -104,6 +104,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	}
 	priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
 	priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
+	priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
 	priveVs.append("mat4 _e3d_getMVPMatrix()\n");
 	priveVs.append("{\n");
 	priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");
@@ -161,7 +162,6 @@ void E3DEngine::GLES_ShaderManager::processUniformVar(GLES_Shader *shader, std::
 		pos = shaderContent.find("uniform", pos + 1);
 	}
 
-	processEngineDefineUniform(shader);
 }
 
 void E3DEngine::GLES_ShaderManager::processEngineDefineUniform(GLES_Shader *shader)
@@ -171,13 +171,14 @@ void E3DEngine::GLES_ShaderManager::processEngineDefineUniform(GLES_Shader *shad
 	shader->RunUniformFunc("mat4",MODEL_MATRIX, "", 1);
 	shader->RunUniformFunc("vec3",CAMERA_POS, "", 1);
 	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
+	shader->RunUniformFunc("vec3", SCALE_VEC, "", 1);
 	shader->RunUniformFunc("float", _Time, "", 1);
-	shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
-	shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
 		shader->RunUniformFunc("vec4", LIGHT_COLOR, "", 1);
 		shader->RunUniformFunc("vec3", LIGHT_DIR, "", 1);
+		shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
+		shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);
 	}
 	std::map<UINT, Light*>& pointLights = SceneManager::GetCurrentScene()->GetPointLights();
 	if (pointLights.size() != 0)
@@ -287,6 +288,7 @@ void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &
 				std::string attrib = vs_content.substr(pos1 + 1, pos2 - pos1 - 1);
 				vs_content = vs_content.substr(pos2 + 1, pos_end - pos2);
 				processUniformVar(shader, vs_content);
+				processEngineDefineUniform(shader);
 				appendInclude(vs_content, folder);
 				processAttributeVar(shader, attrib, vs_content);
 				vs_content = processVS().append(vs_content);

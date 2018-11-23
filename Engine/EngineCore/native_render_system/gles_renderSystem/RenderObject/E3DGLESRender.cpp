@@ -12,6 +12,7 @@
 #include <src/Light/E3DLight.hpp>
 #include "../../../src/Source/E3DDebug.h"
 #include "../../../src/Source/Application.h"
+#include "../E3DGLESRenderSystem.hpp"
 
 namespace E3DEngine
 {
@@ -144,15 +145,27 @@ namespace E3DEngine
 		{
 			return;
 		}
-
 		updateEngineDefineShaderValue();
 
 		pMaterial->UseMaterial();
 
 		updateArrayBuffer();
+#ifdef __E3D_EDITOR__
+		if (m_IsSelected)
+		{
+			ES2::ClearStencil(0);
+			ES2::Clear(GL_STENCIL_BUFFER_BIT);
+		}
+#endif
+		ES2::StencilMask(0xFF);
+		ES2::StencilFunc(GL_ALWAYS, 1, 0xFF);
 			// 绘制图形
 		ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 		afterRender();
+
+#ifdef __E3D_EDITOR__
+		drawSelectFrame();
+#endif
 	}
 
 	void GLES_Renderer::updateEngineDefineShaderValue()
@@ -162,7 +175,7 @@ namespace E3DEngine
 		pMaterial->mShader->UpdateMatrix4Value(MODEL_MATRIX, transform->WorldMatrix);
 		pMaterial->mShader->UpdateFloatValue(_Time, Application::GetTimeSinceStart());
 		pMaterial->mShader->UpdateFloatValue(ROTATION_VEC, transform->RotationEuler.x  * M_PI / 180, transform->RotationEuler.y * M_PI / 180, transform->RotationEuler.z * M_PI / 180);
-
+		pMaterial->mShader->UpdateFloatValue(SCALE_VEC, transform->Scale.x, transform->Scale.y, transform->Scale.z);
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
@@ -237,12 +250,33 @@ namespace E3DEngine
 			return;
 		}
 		pMaterial->InvalidMaterial();
-		ES2::Disable(GL_STENCIL_TEST);
 		ES2::BindBuffer(GL_ARRAY_BUFFER, 0);
 		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		ES2::DepthMask(GL_TRUE);
 		ES2::Disable(GL_BLEND);
 	}
 
+
+	void GLES_Renderer::drawSelectFrame()
+	{
+		if (m_IsSelected && !pCamera->GetIsShadowCamera())
+		{
+			vec3f scale = transform->GetScale();
+			Shader *pShader = pMaterial->GetShader();
+			pMaterial->mShader = GLES_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame.shader");
+			updateEngineDefineShaderValue();
+			pMaterial->UseMaterial();
+			updateArrayBuffer();
+			ES2::Enable(GL_STENCIL_TEST);
+			ES2::StencilMask(0x00);
+			ES2::StencilFunc(GL_NOTEQUAL, 1, 0xFF);
+			ES2::StencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+			//glDepthMask(GL_FALSE);
+			ES2::Enable(GL_DEPTH_TEST);
+			ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
+			afterRender();
+			pMaterial->mShader = pShader;
+		}
+	}
 
 }

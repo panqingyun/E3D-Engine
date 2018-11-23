@@ -172,10 +172,10 @@ void E3DEngine::GL_ShaderManager::processEngineDefineUniform(GL_Shader *shader)
 	shader->RunUniformFunc("vec3", ROTATION_VEC, "", 1);
 	shader->RunUniformFunc("vec3", SCALE_VEC, "", 1);
 	shader->RunUniformFunc("float", _Time, "", 1);
-	shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
-	shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);
 	if (SceneManager::GetCurrentScene()->GetDirectionalLight() != nullptr)
 	{
+		shader->RunUniformFunc("mat4", LIGHT_PROJ_MAT, "", 1);
+		shader->RunUniformFunc("mat4", LIGHT_VIEW_MAT, "", 1);
 		shader->RunUniformFunc("vec4", LIGHT_COLOR, "", 1);
 		shader->RunUniformFunc("vec3", LIGHT_DIR, "", 1);
 	}

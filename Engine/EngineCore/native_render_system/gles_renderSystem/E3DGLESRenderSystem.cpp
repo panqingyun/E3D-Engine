@@ -94,6 +94,7 @@ namespace E3DEngine
 		m_pEGL_Context->UseContext();
 #endif
 		ES2::CullFace(GL_BACK);
+		ES2::Enable(GL_STENCIL_TEST);
 	}
 
 	GLES_RenderSystem::GLES_RenderSystem()

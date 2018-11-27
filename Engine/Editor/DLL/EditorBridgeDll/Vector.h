@@ -8,8 +8,11 @@ namespace E3DEngine
 	public ref class Vector2
 	{
 	public:
+		Vector2();
+		Vector2(float _x, float _y);
 		Vector2(vvision::vec2f *vec);
 		void SetValue(vvision::vec2f *vec);
+		void SetValue(float _x, float _y);
 		String^ ToString() override;
 	public:
 		float x;

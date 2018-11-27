@@ -27,7 +27,11 @@ namespace E3DEngine
 		void Update(float deltaTime);
 		void AfterUpdate(float deltaTime);
 		void PickObject(float x, float y);
-
+		void OnMouseDown(int buttonID, float x, float y);
+		void OnMouseUp(int mouseButtonID, float xPos, float yPos);
+		void OnMouseMove(float xPos, float yPos);
+		void OnKeyDown(char key);
+		void OnKeyUp(char key);
 	private:
 		GameObjectRef ^ findGameObject(List<GameObjectRef ^>^ childList, int id);
 		void createCoordinate(std::string materilPath, int selectID);
@@ -37,6 +41,9 @@ namespace E3DEngine
 		GameObjectRef ^mRootObject;
 		Coordinate *mObjectCoord;
 		GameObjectRef ^mCurSelObject;
+		bool mMouseIsPress;
+		Vector2 ^mLastPos;
+		char mCurKey;
 	};
 
 	public ref class SceneManageRef

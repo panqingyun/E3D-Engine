@@ -40,6 +40,7 @@ namespace E3DEngine
 		void AddObject(Object * obj);
 		void RemoveObject(Object * node);
 		UINT GenObjectID();
+
 	public:
 		void ChangeCameraObject(Camera *pCamera);
 		void ChangeRenderObjectLayer(RenderObject * rb);

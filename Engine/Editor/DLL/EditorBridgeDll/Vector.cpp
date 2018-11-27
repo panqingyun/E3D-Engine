@@ -9,6 +9,23 @@ namespace E3DEngine
 		SetValue(vec);
 	}
 
+	Vector2::Vector2()
+	{
+		x = 0;
+		y = 0;
+	}
+
+	Vector2::Vector2(float _x, float _y)
+	{
+		SetValue(_x, _y);
+	}
+
+	void Vector2::SetValue(float _x, float _y)
+	{
+		x = _x;
+		y = _y;
+	}
+
 	void Vector2::SetValue(vvision::vec2f *vec)
 	{
 		mVec = vec;

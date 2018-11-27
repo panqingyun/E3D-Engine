@@ -40,6 +40,7 @@ namespace E3DEditor.Model
 
         private void objectSelected(object sender, EventArgs e)
         {
+            IsSelected = true;
             App.vm_MainWindow.SelectObject(this);
         }
 
@@ -47,12 +48,15 @@ namespace E3DEditor.Model
         {
             if (IsSelected)
             {
-                iupdateTimes++;
-                if (iupdateTimes < iupdateNeedNumber)
+                if (App.vm_MainWindow.IsRun)
                 {
-                    return;
+                    iupdateTimes++;
+                    if (iupdateTimes < iupdateNeedNumber)
+                    {
+                        return;
+                    }
+                    iupdateTimes = 0;
                 }
-                iupdateTimes = 0;
                 OnPropertyChanged("Position");
                 OnPropertyChanged("Rotation");
                 OnPropertyChanged("Scale");

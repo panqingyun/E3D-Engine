@@ -47,7 +47,7 @@ void E3DEngine::EngineDelegateRef::SetDebugLogOutFunc(IntPtr func)
 
 void E3DEngine::EngineDelegateRef::SetAppDataPath(String^  path)
 {
-	char* ch2 = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(path);
+	char* ch2 = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(path);	
 	::SetAppDataPath(ch2);
 }
 
@@ -94,26 +94,46 @@ void E3DEngine::EngineDelegateRef::MouseDown(int mouseButtonID, float xPos, floa
 		{
 			SceneManageRef::GetInstance()->GetCurScene()->PickObject(xPos, yPos);
 		}
+		if (!EngineDelegate::GetInstance().GetIsRun())
+		{
+			SceneManageRef::GetInstance()->GetCurScene()->OnMouseDown(mouseButtonID, xPos, yPos);
+		}
 	}
 }
 
 void E3DEngine::EngineDelegateRef::MouseUp(int mouseButtonID, float xPos, float yPos)
 {
+	if (!EngineDelegate::GetInstance().GetIsRun())
+	{
+		SceneManageRef::GetInstance()->GetCurScene()->OnMouseUp(mouseButtonID, xPos, yPos);
+	}
 	::MouseUp(mouseButtonID, xPos, yPos);
 }
 
 void E3DEngine::EngineDelegateRef::MouseMove(float xPos, float yPos)
 {
+	if (!EngineDelegate::GetInstance().GetIsRun())
+	{
+		SceneManageRef::GetInstance()->GetCurScene()->OnMouseMove(xPos, yPos);
+	}
 	::MouseMove(xPos, yPos);
 }
 
 void E3DEngine::EngineDelegateRef::KeyDown(char key)
 {
+	if (!EngineDelegate::GetInstance().GetIsRun())
+	{
+		SceneManageRef::GetInstance()->GetCurScene()->OnKeyDown(key);
+	}
 	::KeyDown(key);
 }
 
 void E3DEngine::EngineDelegateRef::KeyUp(char key)
 {
+	if (!EngineDelegate::GetInstance().GetIsRun())
+	{
+		SceneManageRef::GetInstance()->GetCurScene()->OnKeyUp(key);
+	}
 	::KeyUp(key);
 }
 

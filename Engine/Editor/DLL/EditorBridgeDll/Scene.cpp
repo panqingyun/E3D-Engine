@@ -138,6 +138,64 @@ namespace E3DEngine
 		}
 	}
 
+	void SceneRef::OnMouseDown(int buttonID, float x, float y)
+	{
+		mLastPos->SetValue(x, y);
+		mMouseIsPress = true;
+	}
+
+
+	void SceneRef::OnMouseUp(int mouseButtonID, float xPos, float yPos)
+	{
+		mLastPos->SetValue(0, 0);
+		mMouseIsPress = false;
+	}
+
+	void SceneRef::OnMouseMove(float xPos, float yPos)
+	{
+		if (mMouseIsPress && mCurSelObject != nullptr)
+		{
+			if (mCurKey == 'X' || mCurKey == 'x')
+			{
+				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
+				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
+				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
+				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x + (newPos.x - lastPos.x), oldPos.y, oldPos.z);
+				mLastPos->SetValue(xPos, yPos);
+			}
+			else if (mCurKey == 'Y' || mCurKey == 'y')
+			{
+				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
+				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
+				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
+				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x, oldPos.y + (newPos.y - lastPos.y), oldPos.z);
+				mLastPos->SetValue(xPos, yPos);
+			}
+			else if (mCurKey == 'Z' || mCurKey == 'z')
+			{
+				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
+				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
+				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
+				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x, oldPos.y, oldPos.z + (newPos.z - lastPos.z));
+				mLastPos->SetValue(xPos, yPos);
+			}
+		}
+	}
+
+	void SceneRef::OnKeyDown(char key)
+	{
+		mCurKey = key;
+	}
+
+
+	void SceneRef::OnKeyUp(char key)
+	{
+		mCurKey = '0';
+	}
+
 	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)
 	{
 		GameObjectRef ^ retObj = nullptr;
@@ -167,6 +225,8 @@ namespace E3DEngine
 
 	void SceneRef::SetValue(Scene *scene)
 	{
+		mMouseIsPress = false;
+		mLastPos = gcnew Vector2();
 		mScene = scene;
 		if (mRootObject == nullptr)
 		{

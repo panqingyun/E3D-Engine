@@ -75,6 +75,11 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        public bool IsRun
+        {
+            get { return sceneIsStart; }
+        }
+
         private MainWindow mainWnd;
         public MainWindow _MainWindow
         {

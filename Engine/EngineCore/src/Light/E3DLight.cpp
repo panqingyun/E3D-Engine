@@ -35,7 +35,6 @@ namespace E3DEngine
 	{
 		CreateShadow = true; 
 		// 平行光 创建正交投影摄像机
-		float &&halfSize = Size / 2.0f;
 		GameObject *gameObject = new GameObject();
 		gameObject->CreateBehaviour();
 		gameObject->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD & ~LD_NOSHADOW);
@@ -45,14 +44,14 @@ namespace E3DEngine
 		shadowCamera->Target = CenterPosition;
 		shadowCamera->Near = 1;
 		shadowCamera->Far = 1000;
-		shadowCamera->Size = Size;
+		shadowCamera->Size = Range;
 		shadowCamera->SetActive(true);
 		//shadowCamera = new E3DEngine::Camera(Transform->Position + CenterPosition, CenterPosition, vec3f(0, 1, 0), -halfSize, halfSize, -halfSize, halfSize, 1, 1000);
 		shadowCamera->OnCreate();
 		shadowCamera->OnCreateComplete();
 		TextureData tData;
-		tData.width = 4096;
-		tData.height = 4096;
+		tData.width = TextureSize;
+		tData.height = TextureSize;
 		tData.target = RENDER_DEPTH;
 		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
 		shadowCamera->SetRenderTexture(rtt);

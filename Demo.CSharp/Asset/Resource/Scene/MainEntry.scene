@@ -13,7 +13,7 @@
     <GameObject Name="Light" Type="1" LayerMask="AllLayer" Active="true" Color="FCFBFBFF">
         <Transform Posistion="100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.DirectionLight">
-            <Field CenterPosition="145.000000,60.000000,100.000000" CreateShadow="true" Size="220.000000" />
+            <Field CenterPosition="145.000000,60.000000,100.000000" CreateShadow="true" Range="220.000000" TextureSize="4096"/>
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">

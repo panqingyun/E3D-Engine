@@ -40,9 +40,11 @@ namespace E3DEngine
 		Camera * GetShadowCamera();
 	public:
 		DECLARE_METHOD(Light, bool, CreateShadow);
+		DECLARE_METHOD(Light, float, TextureSize);
 		virtual void registProperty() override
 		{
 			SAVE_METHOD(CreateShadow, FT_BOOLEAN);
+			SAVE_METHOD(TextureSize, FT_FLOAT);
 		}
 
 	protected:
@@ -67,12 +69,12 @@ namespace E3DEngine
 		DirectionLight();
 
 		DECLARE_METHOD(DirectionLight, vec3f, CenterPosition);
-		DECLARE_METHOD(DirectionLight, float, Size);
+		DECLARE_METHOD(DirectionLight, float, Range);
 		virtual void registProperty()
 		{
 			Light::registProperty();
 			SAVE_METHOD(CenterPosition, FT_VECTOR3);
-			SAVE_METHOD(Size, FT_FLOAT);
+			SAVE_METHOD(Range, FT_FLOAT);
 		}
 	public:
 		virtual void MakeShadow() override;

@@ -82,6 +82,12 @@ namespace E3DEngine
 		pRender->CreateNewTransform();
 	}
 
+
+	E3DEngine::RenderObject* GLES_MeshRender::Get()
+	{
+		return pRender;
+	}
+
 /*
 	void GLES_MeshRender::SetRenderIndex(DWORD index)
 	{

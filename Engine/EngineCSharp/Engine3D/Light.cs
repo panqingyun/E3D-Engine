@@ -17,32 +17,11 @@ namespace E3DEngine
         SPOT_LIGHT,
     };
 
-    public class Light : GameObject
+    public class Light : Component
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        public extern static Light Create(LightType type);
-
         [MethodImpl(MethodImplOptions.InternalCall)]
         protected extern Light setColor(float r, float g, float b, float a);
         
-        public static T Create<T>() where T : Light
-        {
-            Light l = null;
-            if (typeof(T) == typeof(PointLight))
-            {
-                 l = Create(LightType.POINT_LIGHT);
-            }
-            else if(typeof(T) == typeof(DirectionLight))
-            {
-                l = Create(LightType.DIRECTION_LIGHT);
-            }
-            else if (typeof(T) == typeof(SpotLight))
-            {
-                l = Create(LightType.SPOT_LIGHT);
-            }
-            return l as T;
-        }
-
         public Vector4 Color
         {
             set
@@ -51,6 +30,7 @@ namespace E3DEngine
             }
 
         }// 颜色
+
         public float Intensity
         {
             [MethodImpl(MethodImplOptions.InternalCall)]

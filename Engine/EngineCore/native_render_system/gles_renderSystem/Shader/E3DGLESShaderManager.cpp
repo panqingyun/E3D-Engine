@@ -104,7 +104,7 @@ std::string E3DEngine::GLES_ShaderManager::processVS()
 	}
 	priveVs.append("uniform mat4 ").append(VIEW_MATRIX).append(";\nuniform mat4 ").append(MODEL_MATRIX).append(";\nuniform mat4 ").append(PROJ_MATRIX).append(";\nuniform vec3 ").append(CAMERA_POS).append(";\n");
 	priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
-	priveVs.append("uniform vec3 ").append(ROTATION_VEC).append(";\n");
+	priveVs.append("uniform vec3 ").append(SCALE_VEC).append(";\n");
 	priveVs.append("mat4 _e3d_getMVPMatrix()\n");
 	priveVs.append("{\n");
 	priveVs.append("\treturn ").append(PROJ_MATRIX).append(" * ").append(VIEW_MATRIX).append(" * ").append(MODEL_MATRIX).append(";\n");

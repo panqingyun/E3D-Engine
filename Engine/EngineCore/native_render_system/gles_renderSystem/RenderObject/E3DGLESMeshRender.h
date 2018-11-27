@@ -33,7 +33,7 @@ namespace E3DEngine
 		virtual void SetTransform(CTransform *_transform);
 		virtual void CreateNewTransform();
 		//virtual void SetRenderIndex(DWORD index) override;
-
+		virtual RenderObject* Get();
 		virtual void SetMaterial(Material *material);
 		virtual void SetLayerMask(DWORD layer) { pRender->SetLayerMask(layer); }
 		virtual Material *GetMaterial() { return pRender->GetMaterial(); }

@@ -193,7 +193,7 @@ namespace E3DEngine
 
 	void SceneRef::OnKeyUp(char key)
 	{
-		mCurKey = '0';
+	//	mCurKey = '0';
 	}
 
 	GameObjectRef ^ SceneRef::findGameObject(List<GameObjectRef ^>^ childList, int ID)

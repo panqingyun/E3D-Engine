@@ -58,5 +58,7 @@
 	<system:String x:Key="Info">提示</system:String>
 	<system:String x:Key="ResolutionRatioWrong">游戏分辨率配置格式错误，应填入整数</system:String>
 	<system:String x:Key="SelectNodeInfo">选择节点类型：</system:String>
+	<system:String x:Key="horzitalMove">横向移动</system:String>
+	<system:String x:Key="verticalMove">纵向移动</system:String>
 	
 </ResourceDictionary>

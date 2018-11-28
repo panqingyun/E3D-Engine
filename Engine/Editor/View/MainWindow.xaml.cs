@@ -80,11 +80,6 @@ namespace E3DEditor.View
             }
             return IntPtr.Zero;
         }
-        
-        private void Pause_Checked(object sender, RoutedEventArgs e)
-        {
-            App.vm_MainWindow.PauseEngine = (bool)Pause.IsChecked;
-        }
 
         private void RunScene_Click(object sender, RoutedEventArgs e)
         {
@@ -102,12 +97,7 @@ namespace E3DEditor.View
             isInRun = !isInRun;
             App.vm_MainWindow.RunCurrentScene(isInRun);
         }
-
-        private void logList_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void expandedParent(TreeViewItem item)
         {
             if(item.Parent != null)
@@ -132,5 +122,6 @@ namespace E3DEditor.View
                 container.BringIntoView();//滚动条滚动到选中的子元素
             }
         }
+        
     }
 }

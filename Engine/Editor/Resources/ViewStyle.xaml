@@ -665,4 +665,67 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+
+	<Style x:Key="RDOButton" TargetType="{x:Type RadioButton}">
+		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+		<Setter Property="Background" Value="White"/>
+		<Setter Property="BorderThickness" Value="0"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type RadioButton}">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="Storyboard1">
+							<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="bd">
+								<EasingColorKeyFrame KeyTime="0" Value="Transparent"/>
+								<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF555555"/>
+							</ColorAnimationUsingKeyFrames>
+						</Storyboard>
+						<Storyboard x:Key="Storyboard2">
+							<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="bd">
+								<EasingColorKeyFrame KeyTime="0" Value="#FF555555"/>
+								<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#111111"/>
+							</ColorAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<BulletDecorator Background="Transparent">
+						<Border x:Name="bd"  HorizontalAlignment="Center" Background="White" CornerRadius="5">
+							<Border.OpacityMask>
+								<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+									<GradientStop Color="Black" Offset="0"/>
+									<GradientStop Color="White" Offset="1"/>
+								</LinearGradientBrush>
+							</Border.OpacityMask>
+							<ContentPresenter Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+						</Border>
+					</BulletDecorator>
+					<ControlTemplate.Triggers>
+
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter TargetName="bd" Property="Background" Value="#FFF7F3F3" />
+						</Trigger>
+						<Trigger Property="IsChecked" Value="false">
+							<Setter TargetName="bd" Property="Background" Value="{x:Null}" />
+						</Trigger>
+						<Trigger Property="IsChecked" Value="true">
+							<Trigger.EnterActions>
+								<BeginStoryboard x:Name="Storyboard2_BeginStoryboard" Storyboard="{StaticResource Storyboard2}"/>
+							</Trigger.EnterActions>
+							<Setter TargetName="bd" Property="Background" Value="Black" />
+						</Trigger>
+
+						<MultiTrigger>
+							<MultiTrigger.EnterActions>
+								<BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+							</MultiTrigger.EnterActions>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsMouseOver" Value="True"/>
+								<Condition Property="IsChecked" Value="False"/>
+							</MultiTrigger.Conditions>
+							<Setter TargetName="bd" Property="Background" Value="Red" />
+						</MultiTrigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 </ResourceDictionary>

@@ -8,6 +8,14 @@ using namespace System;
 
 namespace E3DEngine
 {
+	public ref class ObjectMoveDirection
+	{
+	public:
+		static int NONE = 0;
+		static int HORZITAL = 1;
+		static int VERTICAL = 2;
+	};
+
 	void TransformChange(int ID);
 	void SceneDetory();
 	public ref class SceneRef
@@ -62,6 +70,8 @@ namespace E3DEngine
 		Camera *GetLookCoordCamera();
 		void SetRunPath(String ^path);
 		void DestoryScene();
+		void SetMoveDirection(int dir);
+		int GetMoveDirection();
 	private:
 		void createCoord();
 
@@ -75,6 +85,7 @@ namespace E3DEngine
 		Rectangle *mCoordRt;
 		SceneRef ^ mCurScene;
 		String^  mEditorPath;
+		int mDirection;
 	};
 }
 

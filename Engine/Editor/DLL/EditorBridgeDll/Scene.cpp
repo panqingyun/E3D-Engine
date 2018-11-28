@@ -162,7 +162,7 @@ namespace E3DEngine
 	{
 		if (mMouseIsPress && mCurSelObject != nullptr)
 		{
-			if (mCurKey == 'X' || mCurKey == 'x')
+			if (SceneManageRef::GetInstance()->GetMoveDirection() == ObjectMoveDirection::HORZITAL)
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
 				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetRigthVector() * (xPos- mLastPos->x) / 5;
@@ -170,7 +170,7 @@ namespace E3DEngine
 				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}
-			else if (mCurKey == 'Y' || mCurKey == 'y')
+			else if (SceneManageRef::GetInstance()->GetMoveDirection() == ObjectMoveDirection::VERTICAL)
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
 				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetUpVector() * ( mLastPos->y - yPos) / 5;
@@ -236,6 +236,7 @@ namespace E3DEngine
 
 	SceneManageRef::SceneManageRef()
 	{
+		mDirection = ObjectMoveDirection::HORZITAL;
 		mCurScene = nullptr;
 		mLookCoordCamera = nullptr;
 		mCoordCamera = nullptr;
@@ -366,6 +367,16 @@ namespace E3DEngine
 	void SceneManageRef::DestoryScene()
 	{
 		mCurScene = nullptr;
+	}
+
+	void SceneManageRef::SetMoveDirection(int dir)
+	{
+		mDirection = dir;
+	}
+
+	int SceneManageRef::GetMoveDirection()
+	{
+		return mDirection;
 	}
 
 	void SceneManageRef::createCoord()

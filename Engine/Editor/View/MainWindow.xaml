@@ -36,20 +36,20 @@
 					</Expander.Header>
 					<TreeView x:Name="objectList"  Background="#FF292929" 
 						  BorderBrush="Transparent" ItemContainerStyle="{DynamicResource TreeViewItemStyle}" MouseLeftButtonUp="objectList_MouseLeftButtonUp">
-					<TreeView.ContextMenu >
-						<ContextMenu>
-							<MenuItem x:Name="_MenuItemNew" Command="{Binding MainMenuNewButtonCommand}" Header="{StaticResource New}" />
-							<MenuItem x:Name="_MenuItemDel" Command="{Binding MainMenuDeleteButtonCommand}" Header="{StaticResource Delete}"/>
-						</ContextMenu>
-					</TreeView.ContextMenu>
+						<TreeView.ContextMenu >
+							<ContextMenu>
+								<MenuItem x:Name="_MenuItemNew" Command="{Binding MainMenuNewButtonCommand}" Header="{StaticResource New}" />
+								<MenuItem x:Name="_MenuItemDel" Command="{Binding MainMenuDeleteButtonCommand}" Header="{StaticResource Delete}"/>
+							</ContextMenu>
+						</TreeView.ContextMenu>
 						<TreeView.ItemTemplate>
 							<HierarchicalDataTemplate DataType="{x:Type model:GameObjectNode}" ItemsSource="{Binding Childs}">
 								<Grid>
 									<TextBlock Foreground="#FFE6E6E6" Text="{Binding ShowText}" FontSize="13" Height="20" FontFamily="Consolas"/>
 								</Grid>
 							</HierarchicalDataTemplate>
-					</TreeView.ItemTemplate>
-				</TreeView>
+						</TreeView.ItemTemplate>
+					</TreeView>
 				</Expander>
 			</GroupBox>
 			<local:FileView Grid.Row="1" x:Name="fileView" FontSize="12" propertiesView="{Binding ElementName=properties}" HeaderText="{StaticResource ResourceView}" />
@@ -69,9 +69,9 @@
 			</TabControl>
 		</Grid>
 		<GridSplitter x:Name="gridSplitter" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="2" Background="#FFABADB3"/>
-		<TabControl x:Name="renderPanel" Margin="0,7,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"
+		<TabControl x:Name="renderPanel"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1"
 					Background="Transparent" BorderThickness="2" BorderBrush="#FF009FFF"></TabControl>
-		
+
 		<!--<Border BorderBrush="White" BorderThickness="1" x:Name="EditorPanel" Margin="0,10,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Background="Transparent">
 			<local:RenderPanel IsEditor="True" x:Name="renderPanel"/>
 		</Border>-->
@@ -81,7 +81,11 @@
 				<RowDefinition Height="40"/>
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="320"/>
+				<ColumnDefinition Width="174"/>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="1"/>
+				<ColumnDefinition Width="40"/>
+				<ColumnDefinition Width="38"/>
 				<ColumnDefinition Width="125*"/>
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="40"/>
@@ -90,19 +94,19 @@
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="60"/>
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="6" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" Command="{Binding MainTitleButtonCommand}"
+			<Button Grid.Column="10" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" Command="{Binding MainTitleButtonCommand}"
 					CommandParameter="Min" ToolTip="{StaticResource MinToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/min.png" Width="20" Height="20"/>
 			</Button>
-			<Button Grid.Column="7" x:Name="Close" Margin="0,0,0,10" Command="{Binding MainTitleButtonCommand}" CommandParameter="Close" Style="{StaticResource MenuButton}" 
+			<Button Grid.Column="11" x:Name="Close" Margin="0,0,0,10" Command="{Binding MainTitleButtonCommand}" CommandParameter="Close" Style="{StaticResource MenuButton}" 
 					ToolTip="{StaticResource CloseToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/close.png" Height="20" Width="20" />
 			</Button>
-			<CheckBox x:Name="Pause" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"
-					  Background="#5387b9" IsChecked="False" Content="{StaticResource Pause}" Tag="{StaticResource Countinue}"
-					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Checked="Pause_Checked" Unchecked="Pause_Checked" Margin="0,10"/>
-			<Button x:Name="RunScene" Grid.Column="3" Width="25" Height="25" Click="RunScene_Click"					
-					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run" Grid.Row="1" Margin="7,8">
+			<CheckBox x:Name="Pause" Grid.Column="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding PauseEngine,Mode=TwoWay}"
+					  Background="#5387b9" Content="{StaticResource Pause}" Tag="{StaticResource Countinue}"
+					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Margin="0,10"/>
+			<Button x:Name="RunScene" Grid.Column="7" Width="25" Height="25" Click="RunScene_Click"					
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource TestToolTip}" CommandParameter="Run" Grid.Row="1" Margin="8,8,7,7">
 				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<ed:RegularPolygon Fill="#FF5387B9" InnerRadius="1" Width="20" Height="20" x:Name="runScene"
 						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
@@ -115,8 +119,8 @@
 					<Rectangle Fill="#FF5387B9" x:Name="stopRunScene" Visibility="Hidden"/>
 				</Grid>
 			</Button>
-			<Button x:Name="RunGame" Grid.Column="4" Width="25" Height="25" Command="{Binding MainTitleButtonCommand}"
-					Style="{StaticResource MenuButton}" ToolTip="{StaticResource RunToolTip}" CommandParameter="Run" Grid.Row="1" Margin="7,8">
+			<Button x:Name="RunGame" Grid.Column="8" Width="25" Height="25" Command="{Binding MainTitleButtonCommand}"
+					Style="{StaticResource MenuButton}" ToolTip="{StaticResource RunToolTip}" CommandParameter="Run" Grid.Row="1" Margin="8,8,7,7">
 				<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 					<ed:RegularPolygon Fill="Green" InnerRadius="1" Width="20" Height="20"
 						   PointCount="3" Stretch="Fill" Stroke="#FF5387B9" RenderTransformOrigin="0.5,0.5">
@@ -128,7 +132,7 @@
 					</ed:RegularPolygon>
 				</Grid>
 			</Button>
-			<Menu x:Name="menu" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="6">
+			<Menu x:Name="menu" HorizontalAlignment="Stretch" Background="Transparent" Foreground="White" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="10">
 				<MenuItem Header="文件">
 					<MenuItem Header="打开项目" Foreground="Black" x:Name="openSln" Click="menu_Click"/>
 					<MenuItem Header="新建项目" Foreground="Black" x:Name="newSln" Click="menu_Click"/>
@@ -161,9 +165,81 @@
 					<MenuItem Header="关于" Foreground="Black"/>
 				</MenuItem>
 			</Menu>
-			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" Grid.RowSpan="2" Grid.ColumnSpan="8" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="15" 
-			   Foreground="Yellow" Grid.Row="1" Grid.Column="5" Content="{Binding Path=GameFPS}" Panel.ZIndex="20"/>
+			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="9" Margin="195,0,911,0"/>
+			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="30,15,0,15" VerticalAlignment="Center" FontSize="15" 
+			   Foreground="Yellow" Grid.Row="1" Grid.Column="9" Content="{Binding Path=GameFPS}" Panel.ZIndex="20"/>
+			<RadioButton x:Name="horizontal" IsChecked="{Binding IsHorzitalMove,Mode=TwoWay}" Style="{StaticResource RDOButton}"  Grid.Row="1" Grid.Column="1" Margin="0,0,0,7" Height="30" Width="40" ToolTip="{StaticResource horzitalMove}">
+				<Grid>
+					<Grid  HorizontalAlignment="Center" VerticalAlignment="Center">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="13*"/>
+							<ColumnDefinition Width="2*"/>
+						</Grid.ColumnDefinitions>
+						<Rectangle Fill="White" Width="30" Height="2" Grid.ColumnSpan="2"/>
+						<Rectangle Fill="White" Height="2" Margin="0,0,-2,-4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="11" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" >
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="-45"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+						<Rectangle Fill="White" Margin="0,-3,-2,0" HorizontalAlignment="Right" Width="11" RenderTransformOrigin="0.5,0.5" Height="2" VerticalAlignment="Top" Grid.ColumnSpan="2" >
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="45"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+						<Rectangle Fill="White" Height="2" Margin="-3,-3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="11" RenderTransformOrigin="0.5,0.5" >
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="-45"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+						<Rectangle Fill="White" Margin="-3,0,0,-4" HorizontalAlignment="Left" Width="11" RenderTransformOrigin="0.5,0.5" Height="2" VerticalAlignment="Bottom" >
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<RotateTransform Angle="45"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+						</Rectangle>
+					</Grid>
+				</Grid>
+			</RadioButton>
+			<RadioButton x:Name="vertical" IsChecked="{Binding IsVerticalMove}" Style="{StaticResource RDOButton}" Grid.Row="1" Grid.Column="3" Margin="0,0,0,7" Height="30" Width="40" ToolTip="{StaticResource verticalMove}">
+				<Grid  HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Rectangle Fill="White" Width="2" Height="25" Margin="2,0,1,0"/>
+					<Rectangle Fill="White" Height="2" Margin="0,0,-7,2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="11" RenderTransformOrigin="0.5,0.5" >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="-45"/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle Fill="White" Margin="0,1,-7,0" HorizontalAlignment="Right" Width="11" RenderTransformOrigin="0.5,0.5" Height="2" VerticalAlignment="Top" >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="45"/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle Fill="White" Height="2" Margin="-6.216,1.294,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="11" RenderTransformOrigin="0.5,0.5" >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="-45"/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle Fill="White" Margin="-6,0,0,2" HorizontalAlignment="Left" Width="11" RenderTransformOrigin="0.5,0.5" Height="2" VerticalAlignment="Bottom" >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<RotateTransform Angle="45"/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+				</Grid>
+			</RadioButton>
 		</Grid>
 		<Grid HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Background="#FF007ACC">
 			<Grid.ColumnDefinitions>

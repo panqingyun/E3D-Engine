@@ -17,7 +17,7 @@
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="98.970924,92.829468,211.267456" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="101.005623,73.597336,192.561401" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -98,7 +98,7 @@
         </Component>
     </GameObject>
     <GameObject Name="fangzi" Type="1" LayerMask="0" Active="true" Color="FDFDFDFF">
-        <Transform Posistion="114.437729,30.000000,138.064606" Rotation="-90.000000,0.000000,0.000000" Scale="0.050000,0.050000,0.050000" />
+        <Transform Posistion="101.432678,29.452709,105.291595" Rotation="-90.000000,0.000000,0.000000" Scale="0.050000,0.050000,0.050000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/jiebai_fangzi01.fbx" />
         </Component>
@@ -145,7 +145,7 @@
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
         <GameObject Name="particleFlower" Type="2" LayerMask="0" Active="true" FilePath="Resource/Particle/ParticleFlower.particle" Color="FFFFFFFF">
-            <Transform Posistion="0.000000,20.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+            <Transform Posistion="0.886000,30.438999,0.870000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         </GameObject>
         <GameObject Name="huaban" Type="1" LayerMask="27" Active="true" Color="FFFFFFFF">
             <Transform Posistion="48.705070,40.379219,10.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
@@ -203,7 +203,7 @@
         </GameObject>
     </GameObject>
     <GameObject Name="zhuzi" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="165.000000,28.000000,170.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
+        <Transform Posistion="143.415024,30.553928,137.093323" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/xt_zhuzi01.fbx" />
         </Component>
@@ -216,7 +216,7 @@
         </Component>
     </GameObject>
     <GameObject Name="zhuzi1" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="155.000000,28.000000,175.000000" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
+        <Transform Posistion="136.109818,28.000000,127.126060" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/xt_zhuzi02.fbx" />
         </Component>

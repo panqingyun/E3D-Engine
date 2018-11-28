@@ -145,19 +145,27 @@ namespace E3DEditor.ViewModel
             }
         }
 
+        private bool pauseEngine = false;
         public bool PauseEngine
         {
+            get { return pauseEngine; }
             set
             {
                 if (!EngineLoaded)
                 {
                     return;
                 }
+                pauseGame(value);
+                if (!IsRun)
+                {
+                    return;
+                }
+                pauseEngine = value;
                 if (sceneIsStart)
                 {
                     RenderDelegate.RunCurrentScene(!value);
                 }
-                pauseGame(value);
+                OnPropertyChanged("PauseEngine");
             }
         }
 
@@ -186,6 +194,36 @@ namespace E3DEditor.ViewModel
             {
                 sceneName = value;
                 OnPropertyChanged("SceneName");
+            }
+        }
+
+        private bool isHorMove = true;
+        public bool IsHorzitalMove
+        {
+            get { return isHorMove; }
+            set
+            {
+                isHorMove = value;
+                if(value)
+                {
+                    E3DEngine.SceneManageRef.GetInstance().SetMoveDirection(E3DEngine.ObjectMoveDirection.HORZITAL);
+                }
+                OnPropertyChanged("IsHorzitalMove");
+            }
+        }
+
+        private bool isVerMove = false;
+        public bool IsVerticalMove
+        {
+            get { return isVerMove; }
+            set
+            {
+                isVerMove = value;
+                if (value)
+                {
+                    E3DEngine.SceneManageRef.GetInstance().SetMoveDirection(E3DEngine.ObjectMoveDirection.VERTICAL);
+                }
+                OnPropertyChanged("IsVerticalMove");
             }
         }
 

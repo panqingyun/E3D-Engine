@@ -23,6 +23,9 @@ namespace E3DEngine
 		rootObject->SetActive(true);
 		usedDirectionLight = nullptr;
 		m_pSceneMainCamera = nullptr;
+#ifdef __E3D_EDITOR__
+		pSelectCamera = nullptr;
+#endif
 		CreateBehaviour();
 
 	}
@@ -105,6 +108,10 @@ namespace E3DEngine
 			if (usedDirectionLight != nullptr && object_cast<bool>(Light::GetCreateShadow(usedDirectionLight)))
 			{
 				usedDirectionLight->GetShadowCamera()->Render();
+			}
+			if (pSelectCamera != nullptr)
+			{
+				pSelectCamera->Render();
 			}
 			const std::vector<Camera*> &cameras = GetEditorCameras();
 			for (auto &camera : cameras)

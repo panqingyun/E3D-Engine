@@ -46,8 +46,9 @@ namespace E3DEngine
 		void updateEngineDefineShaderValue();
 		void descPointLight();
 		virtual void afterRender();
+#ifdef __E3D_EDITOR__
 		void drawSelectFrame();
-
+#endif
 	private:
 		void setVBOs();
 	private:

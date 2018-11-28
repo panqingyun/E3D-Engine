@@ -2,5 +2,6 @@
 <ConfigSystem>
 	<RenderTextureConfig>
 		<Item ID="1" Width="512" Height="512" Target="1"/>
+		<Item ID="2" Width="1024" Height="1024" Target="1"/>
 	</RenderTextureConfig>
 </ConfigSystem>

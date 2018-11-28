@@ -35,7 +35,7 @@
         </Component>
     </GameObject>
     <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="110.564613,72.654785,133.325836" Rotation="-0.596582,-18.581457,91.880898" Scale="3.000000,3.000000,3.000000" />
+        <Transform Posistion="110.395004,32.854729,133.219849" Rotation="-0.596582,-18.581457,91.880898" Scale="3.000000,3.000000,3.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
         </Component>

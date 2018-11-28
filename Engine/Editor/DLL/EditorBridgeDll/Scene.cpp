@@ -38,6 +38,7 @@ namespace E3DEngine
 	SceneRef::SceneRef(Scene *scene)
 	{
 		mCurSelObject = nullptr;
+		mCameraView = nullptr;
 		SetValue(scene);
 	}
 
@@ -84,12 +85,18 @@ namespace E3DEngine
 
 	void SceneRef::SetSelectObject(GameObjectRef ^obj)
 	{
+		if (EngineDelegate::GetInstance().GetIsRun())
+		{
+			return;
+		}
 		if (mCurSelObject != nullptr)
 		{
 			mCurSelObject->GetGameObjectPtr()->Selected(false);
 		}
 		mCurSelObject = obj;
 		mCurSelObject->GetGameObjectPtr()->Selected(true);
+
+		showCameraView();
 		ShowCoord();
 	}
 
@@ -328,18 +335,18 @@ namespace E3DEngine
 		static_cast<BatchRenderer*>(render->Get())->SetDrawModule(eDM_LINES);
 		ADD_IN_SCENE(gameObject);
 
-		//createCoord();
+		createCoord();
 	}
 
 	mat4f trans = mat4f::createTranslation(0, 0, 100);
 
 	void SceneManageRef::Update(float deltaTime)
 	{
-	/*	mat4f rot = mEditorCamera->Transform->Rotation.transform();
+		mat4f rot = mEditorCamera->Transform->Rotation.transform();
 		mat4f world = rot * trans;
 
 		mCoordCamera->Transform->WorldMatrix = world;
-		mCoordCamera->SetViewMatrix(world.inverse());*/
+		mCoordCamera->SetViewMatrix(world.inverse());
 	}
 
 	void SceneManageRef::OnFrameSizeChange()
@@ -379,6 +386,11 @@ namespace E3DEngine
 		return mDirection;
 	}
 
+	System::String ^ SceneManageRef::GetEditorRunPath()
+	{
+		return mEditorPath;
+	}
+
 	void SceneManageRef::createCoord()
 	{
 		if (mCoordCamera == nullptr)
@@ -401,7 +413,7 @@ namespace E3DEngine
 			mLookCoordCamera = (Camera*)lookGameobject->AddComponent(CAMERA_NAME);
 			mLookCoordCamera->OnCreate();
 			mLookCoordCamera->OnCreateComplete();
-			lookGameobject->Transform->SetPosition(0, 0, 150);
+			lookGameobject->Transform->SetPosition(1000, 1000, 150);
 			SetEditorCamera(mLookCoordCamera, false);
 			
 			mLookCoordCamera->SetClearType(eCT_NotClear);
@@ -443,6 +455,58 @@ namespace E3DEngine
 		mObjectCoord->Flag |= DONT_SAVE;
 		mObjectCoord->SetActive(true);
 		ADD_IN_SCENE(mObjectCoord);*/
+	}
+
+	void SceneRef::showCameraView()
+	{
+		if (mCurSelObject->GetGameObjectPtr()->GetComponent(CAMERA_NAME) != nullptr)
+		{
+			Camera *pCamera = static_cast<Camera*>(mCurSelObject->GetGameObjectPtr()->GetComponent(CAMERA_NAME));
+			Render2Texture *rtt = nullptr;
+			if (mCameraView == nullptr)
+			{
+				GameObject* cViewObject = new GameObject();
+				cViewObject->CreateBehaviour();
+				cViewObject->SetLayerMask(LD_LOOK_COORD);
+				cViewObject->SetActive(true);
+				mCameraView = cViewObject->AddComponent<Rectangle>();
+				mCameraView->OnCreate();
+				mCameraView->OnCreateComplete();
+				Camera * pLCamera = SceneManageRef::GetInstance()->GetLookCoordCamera();
+				vec4f &&newPos = pLCamera->GetWorldPoint(1, 0, 0);
+				cViewObject->Transform->SetScale(100, 100, 1);
+				cViewObject->Transform->SetPosition(newPos.x - 50, newPos.y - 50, 0);
+				cViewObject->SetRenderIndex(eRI_TopMost);
+				Renderer * rd = cViewObject->AddComponent<Renderer>();
+				std::string path = get_std_string(SceneManageRef::GetInstance()->GetEditorRunPath());
+				rd->MaterialID = 4;
+				rd->MaterialPath = path + "/../Data/Material/coordinate.material";
+				rd->OnCreate();
+				rd->OnCreateComplete();
+				rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();	
+				ADD_IN_SCENE(cViewObject);
+				pCamera->SetRenderTexture(rtt);
+				cViewObject->Selected(true);
+			}			
+			else
+			{
+				mCameraView->mGameObject->SetActive(true);
+				mCameraView->mGameObject->Selected(true);
+				Renderer * rd = mCameraView->mGameObject->GetComponent<Renderer>();
+				rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();
+				pCamera->SetRenderTexture(rtt);
+			}
+			mScene->pSelectCamera = pCamera;
+		}
+		else
+		{
+			mScene->pSelectCamera = nullptr;
+			if (mCameraView != nullptr)
+			{
+				mCameraView->mGameObject->SetActive(false);
+			}
+		}
+
 	}
 
 }

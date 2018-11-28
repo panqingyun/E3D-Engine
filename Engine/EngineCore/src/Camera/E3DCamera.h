@@ -64,8 +64,7 @@ namespace E3DEngine
 		Ray ScreenPointToRay(vec2f mousePos);	
 		float GetPitch();
 		float GetYaw();
-		float GetRoll();
-		float GetFaceArea();		
+		float GetRoll();	
 
 	public:
 		DECLARE_METHOD(Camera, bool, Perspective);
@@ -110,7 +109,6 @@ namespace E3DEngine
 		float m_pitch;
 		float m_yaw;
 		float m_roll;
-		float m_facearea;
 		float m_aspect;
 		bool  m_bIsShadowCamera;
 		std::vector<float *> m_Plans;

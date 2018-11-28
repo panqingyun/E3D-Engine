@@ -58,6 +58,9 @@ namespace E3DEngine
 		std::string GetScenePath();
 		void SetScenePath(std::string path);
 		void Save();
+#ifdef __E3D_EDITOR__
+		Camera *pSelectCamera;
+#endif
 		
 	protected:
 		virtual void CreateBehaviour() override;

@@ -31,6 +31,9 @@ namespace E3DEngine
 		void ShowCoord();
 		void Loaded();
 		void SetSelectObject(GameObjectRef ^obj);
+
+		void showCameraView();
+
 		GameObjectRef ^GetCurSelObject();
 		void Update(float deltaTime);
 		void AfterUpdate(float deltaTime);
@@ -52,6 +55,7 @@ namespace E3DEngine
 		bool mMouseIsPress;
 		Vector2 ^mLastPos;
 		char mCurKey;
+		Rectangle *mCameraView;
 	};
 
 	public ref class SceneManageRef
@@ -72,6 +76,7 @@ namespace E3DEngine
 		void DestoryScene();
 		void SetMoveDirection(int dir);
 		int GetMoveDirection();
+		String ^GetEditorRunPath();
 	private:
 		void createCoord();
 

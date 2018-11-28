@@ -473,11 +473,4 @@ namespace E3DEngine
 	{
 		return m_roll;
 	}
-
-
-	float Camera::GetFaceArea()
-	{
-		return m_facearea;
-	}
-
 }

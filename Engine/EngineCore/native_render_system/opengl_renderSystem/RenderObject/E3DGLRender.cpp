@@ -276,6 +276,7 @@ namespace E3DEngine
 		glGenBuffers(1, &m_BatchVertexBuffer);
 	}
 
+#ifdef __E3D_EDITOR__
 	void GL_Renderer::drawSelectFrame()
 	{
 		if (m_IsSelected && !pCamera->GetIsShadowCamera())
@@ -297,5 +298,5 @@ namespace E3DEngine
 			pMaterial->mShader = pShader;
 		}
 	}
-
+#endif
 }

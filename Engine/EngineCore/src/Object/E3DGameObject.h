@@ -322,24 +322,9 @@ namespace E3DEngine
 			std::string type_id = typeid(T).name();
 			if (m_listComponents.find(type_id) != m_listComponents.end())
 			{
-				return (T*)m_listComponents[type_id][0];
+				return (T*)m_listComponents[type_id];
 			}
 			return nullptr;
-		}
-		template<typename T> std::vector<T*> * GetComponents()
-		{
-			std::vector<T*> * retVector = nullptr;
-			std::string type_id = typeid(T).name();
-			if (m_listComponents.find(type_id) != m_listComponents.end())
-			{
-				retVector = new std::vector<T*>();
-				retVector->resize(m_listComponents[type_id].size());
-				for (int i = 0; i < retVector->size(); ++i)
-				{
-					(*retVector)[i] = (T*)m_listComponents[type_id][i];
-				}
-			}
-			return retVector;
 		}
 
 	public:

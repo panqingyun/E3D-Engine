@@ -27,7 +27,6 @@ namespace E3DEngine
 			vec3f GetUpVector();
 			vec4f GetWorldPointWithX(float x, float y, float z);
 			vec3f GetRigthVector();
-			float GetFaceArea();
 
 		public:
 			void SetProjectionMatrix(const mat4f& projection);

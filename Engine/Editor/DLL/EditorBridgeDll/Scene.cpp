@@ -173,7 +173,7 @@ namespace E3DEngine
 			else if (SceneManageRef::GetInstance()->GetMoveDirection() == ObjectMoveDirection::VERTICAL)
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
-				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetUpVector() * ( mLastPos->y - yPos) / 5;
+				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + vec3f(0,1,0) * ( mLastPos->y - yPos) / 5;
 				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}

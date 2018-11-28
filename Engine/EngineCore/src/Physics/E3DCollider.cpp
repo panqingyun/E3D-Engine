@@ -5,6 +5,8 @@
 #include "E3DCollider.hpp"
 #include "../Object/E3DRenderObject.hpp"
 #include "../Object/E3DTransform.hpp"
+#include "../Component/E3DComponent.hpp"
+#include "../Source/EngineDelegate.h"
 
 namespace E3DEngine
 {
@@ -85,8 +87,9 @@ namespace E3DEngine
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(RigidBody);
-		mBehaviour->Awake();
 		setBehaviourDefaultValue();
+		NOT_RUN_RETURN
+		mBehaviour->Awake();
 	}
 
 
@@ -107,11 +110,11 @@ namespace E3DEngine
 
 	void RigidBody::Update(float deltaTime)
 	{
+		NOT_RUN_RETURN
 		if (mGameObject->GetCollider() == nullptr)
 		{
 			return;
 		}
-		mBehaviour->Update(deltaTime);
 		if (mMotionState == nullptr)
 		{
 			return;
@@ -120,6 +123,13 @@ namespace E3DEngine
 		{
 			return;
 		}
+		mBehaviour->Update(deltaTime);
+		TransformChange();
+	}
+
+
+	void RigidBody::TransformChange()
+	{
 		mStartTransform.setIdentity();
 		vec3f position = Transform->GetPosition();
 		mStartTransform.setOrigin(btVector3(
@@ -133,7 +143,6 @@ namespace E3DEngine
 
 		mRigidBody->setWorldTransform(mStartTransform);
 	}
-
 
 	void  RigidBody::CreateRigidBody(btCollisionShape *shape)
 	{
@@ -201,8 +210,9 @@ namespace E3DEngine
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(BoxCollider);
+		setBehaviourDefaultValue(); 
+		NOT_RUN_RETURN
 		mBehaviour->Awake();
-		setBehaviourDefaultValue();
 	}
 
 	void MotionState::setWorldTransform(const btTransform &worldTrans)
@@ -228,6 +238,7 @@ namespace E3DEngine
 		m_pShape = createSphereShape(l);
 		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(mGameObject);
+		NOT_RUN_RETURN
 		mBehaviour->Awake();
 	}
 
@@ -245,8 +256,9 @@ namespace E3DEngine
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(SphereCollider);
-		mBehaviour->Awake();
 		setBehaviourDefaultValue();
+		NOT_RUN_RETURN
+		mBehaviour->Awake();
 	}
 
 
@@ -277,6 +289,7 @@ namespace E3DEngine
 		m_pShape = new btBvhTriangleMeshShape(indexVertex, true);
 		m_pShape->setLocalScaling(btVector3(mGameObject->Transform->Scale.x, mGameObject->Transform->Scale.y, mGameObject->Transform->Scale.z));
 		m_pShape->setUserPointer(mGameObject);
+		NOT_RUN_RETURN
 		mBehaviour->Awake();
 	}
 
@@ -295,8 +308,9 @@ namespace E3DEngine
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(MeshCollider);
-		mBehaviour->Awake();
 		setBehaviourDefaultValue();
+		NOT_RUN_RETURN
+		mBehaviour->Awake();
 	}
 
 
@@ -321,8 +335,9 @@ namespace E3DEngine
 	{
 		mBehaviour->SetImage(MonoScriptManager::GetInstance().GetEngineImage());
 		NEW_INSTANCE(CapsuleCollider);
-		mBehaviour->Awake();
 		setBehaviourDefaultValue();
+		NOT_RUN_RETURN
+		mBehaviour->Awake();
 	}
 
 

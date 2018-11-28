@@ -24,6 +24,12 @@ namespace E3DEngine
 		FT_VECTOR2	= 7,
 	};
 
+#define NOT_RUN_RETURN \
+if(!E3DEngine::EngineDelegate::GetInstance().GetIsRun())\
+{\
+	return;\
+}
+
     class GameObject;
 	class CTransform;
 	// 组件类， 目的是方便拓展， 可以挂在GameObject上

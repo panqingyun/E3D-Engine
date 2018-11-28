@@ -58,12 +58,6 @@ DECLARE_CLASS_NAME(PointLight)
 DECLARE_CLASS_NAME(Camera)
 
 
-#define NOT_RUN_RETURN \
-if(!E3DEngine::EngineDelegate::GetInstance().GetIsRun())\
-{\
-	return;\
-}
-
 E3DEngine::Component::Component()
 {
 	mGameObject = nullptr;

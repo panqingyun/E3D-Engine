@@ -90,10 +90,6 @@ void E3DEngine::EngineDelegateRef::MouseDown(int mouseButtonID, float xPos, floa
 	::MouseDown(mouseButtonID, xPos, yPos);
 	if (SceneManageRef::GetInstance()->GetCurScene() != nullptr)
 	{
-		if (mouseButtonID == MouseButton::eLeftButton)
-		{
-			SceneManageRef::GetInstance()->GetCurScene()->PickObject(xPos, yPos);
-		}
 		if (!EngineDelegate::GetInstance().GetIsRun())
 		{
 			SceneManageRef::GetInstance()->GetCurScene()->OnMouseDown(mouseButtonID, xPos, yPos);

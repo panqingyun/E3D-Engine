@@ -47,6 +47,7 @@ namespace E3DEngine
 		virtual void CreateBehaviour() override;
 		virtual void OnCreateComplete() override;
 		virtual void Update(float deltaTime) override;
+		virtual void TransformChange() override;
 	
 #ifndef __IGNORED_INCLUDE__
 

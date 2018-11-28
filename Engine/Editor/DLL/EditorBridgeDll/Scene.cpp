@@ -140,8 +140,11 @@ namespace E3DEngine
 
 	void SceneRef::OnMouseDown(int buttonID, float x, float y)
 	{
-		mLastPos->SetValue(x, y);
-		mMouseIsPress = true;
+		if (buttonID == MouseButton::eLeftButton)
+		{
+			mLastPos->SetValue(x, y);
+			mMouseIsPress = true;
+		}
 	}
 
 
@@ -149,6 +152,10 @@ namespace E3DEngine
 	{
 		mLastPos->SetValue(0, 0);
 		mMouseIsPress = false;
+		if (mouseButtonID == MouseButton::eLeftButton)
+		{
+			//PickObject(xPos, yPos);
+		}
 	}
 
 	void SceneRef::OnMouseMove(float xPos, float yPos)
@@ -158,28 +165,16 @@ namespace E3DEngine
 			if (mCurKey == 'X' || mCurKey == 'x')
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
-				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
-				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
-				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
-				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x + (newPos.x - lastPos.x), oldPos.y, oldPos.z);
+				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetRigthVector() * (xPos- mLastPos->x) / 5;
+
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}
 			else if (mCurKey == 'Y' || mCurKey == 'y')
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
-				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
-				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
-				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
-				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x, oldPos.y + (newPos.y - lastPos.y), oldPos.z);
-				mLastPos->SetValue(xPos, yPos);
-			}
-			else if (mCurKey == 'Z' || mCurKey == 'z')
-			{
-				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
-				vec3f lastPos = pMainCamera->GetWorldPointWithScreenPoint(mLastPos->x, mLastPos->y, 0);
-				vec3f newPos = pMainCamera->GetWorldPointWithScreenPoint(xPos, yPos, 0);
-				vec3f oldPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition();
-				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(oldPos.x, oldPos.y, oldPos.z + (newPos.z - lastPos.z));
+				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetUpVector() * ( mLastPos->y - yPos) / 5;
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}
 		}
@@ -280,11 +275,6 @@ namespace E3DEngine
 		{
 			mCurScene = gcnew SceneRef(scene);
 		}
-		else
-		{
-			mCurScene->SetValue(scene);
-		}
-		mCurScene->Loaded();
 		return mCurScene;
 	}
 

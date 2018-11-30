@@ -23,7 +23,7 @@ void main(void)
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	DestinationColor = color;
-	
+	initFogNeedVar(_pos);
 	float power = _WindDir.w;
 	_WindDir.w = 0.0;
 	vec3 dir =  normalize(_e3d_matModel*_WindDir).xyz;
@@ -53,8 +53,8 @@ void main(void)
 		discard;
 	}
 	else
-	{
-		gl_FragColor = DestinationColor * color;
+	{		
+		gl_FragColor = mixFogColor( DestinationColor * color, vec4(1.0,1.0,1.0,1.0));
 	}
 }
 

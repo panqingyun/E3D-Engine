@@ -26,7 +26,7 @@ vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 			vec3 L = normalize(_e3d_PointLightPos[i] - position);
 			vec3 H = normalize(V + L);
 			vec3 diffuse = vec3((_e3d_PointLightColor[i] * max(dot(N, L), 0.0)).xyz);
-			vec3 specular = vec3((_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuation).xyz);
+			vec3 specular = vec3((_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuation / (_e3d_PointLightPos[i] - position)).xyz);
 			
 			lightColor = lightColor + vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 		}
@@ -45,7 +45,7 @@ vec4 getLightColor(vec3 position, vec3 normal, float ns)
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec3 H = normalize(V + L);
 	vec3 diffuse = vec3((_e3d_WorldSpaceLightColor * max(dot(N, L), 0.0)).xyz);
-	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), ns) * attenuation).xyz);
+	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), ns)).xyz);
 	lightColor = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 #endif
 #ifdef USING_POINT_LIGHT

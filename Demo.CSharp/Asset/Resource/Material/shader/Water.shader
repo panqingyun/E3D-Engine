@@ -100,7 +100,7 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const vec3  ambient = vec3(0.8, 0.8, 0.8);		//环境光颜色
-const float Ns = 10.0;			//高光系数
+const float Ns = 30.0;			//高光系数
 const float attenuation = 10.0;	//光线的衰减系数
 
 const float _BumpDepth = 1.0;
@@ -203,11 +203,12 @@ float getShadowColor(vec4 pos, float bias)
 
 void main(void) 
 { 
-	float yV = mod(v_Coord.y * 10.0 + time * 0.03, 10.0);
-	float xV = mod( 10.0 + v_Coord.x * 10.0 - time * 0.02, 10.0);
+    float scale = 20.0; 
+	float yV = mod(v_Coord.y * scale + time * 0.03, scale);
+	float xV = mod( scale + v_Coord.x * scale - time * 0.02, scale);
 	
-	vec2 coord = vec2(v_Coord.x * 10.0, yV);
-	vec2 coord1 = vec2(v_Coord.y * 10.0, xV);
+	vec2 coord = vec2(v_Coord.x * scale, yV);
+	vec2 coord1 = vec2(v_Coord.y * scale, xV);
 	
 	vec3 bump1 = texture2D( waterNormal, coord).rbg * 2.0 - 1.0;
 	vec3 bump2 = texture2D( waterNormal, coord1).rbg * 2.0 - 1.0;
@@ -218,12 +219,21 @@ void main(void)
 	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
 	
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	vec4 freColor1 = FresnelShading(normalVec) * 0.5;
-	vec4 freColor2 = FresnelShading(vNrm)  * 0.8;
+	vec4 freColor1 = FresnelShading(normalVec);
+	vec4 freColor2 = FresnelShading(vNrm) *0.79;
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
-	
+	float r = pow(freColor2.r, 2.0);
+	float g = pow(freColor2.g, 2.0);
+	float b = pow(freColor2.b, 2.0);
 	float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
-	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor  * sC * vertColor).rgb, 0.6) ;
+	float dist = abs(distance(vec3(eyePosition.x, vPos.y, eyePosition.z), vPos));
+	float maxDist = 600.0;
+	float minDist = 1.0;
+    float clr = (maxDist - dist) / (maxDist - minDist);  
+    clr = clamp( clr , 0.0, 1.0 );  
+	
+    vec4 mColor = mix(  vec4(r, g, b ,1.0), vec4(0.0,0.0,0.0,1.0), clr );  
+	gl_FragColor = vec4((( mColor + (freColor1 + freColor3 )* vertColor) * _lightColor  * sC ).rgb, 0.7) ;
 }
 
 #Framgent_End

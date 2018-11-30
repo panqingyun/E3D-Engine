@@ -23,7 +23,7 @@ void main(void)
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	DestinationColor = color;
-	initFogNeedVar(_pos);
+	initFogNeedVar(_pos.xyz);
 	float power = _WindDir.w;
 	_WindDir.w = 0.0;
 	vec3 dir =  normalize(_e3d_matModel*_WindDir).xyz;

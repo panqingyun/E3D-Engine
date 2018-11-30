@@ -226,7 +226,7 @@ void main(void)
 	float g = pow(freColor2.g, 2.0);
 	float b = pow(freColor2.b, 2.0);
 	float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
-	float dist = abs(distance(vec3(eyePosition.x, vPos.y, eyePosition.z), vPos));
+	float dist = abs(distance(vec3(eyePosition.x, vPos.y, eyePosition.z), vPos.xyz));
 	float maxDist = 600.0;
 	float minDist = 1.0;
     float clr = (maxDist - dist) / (maxDist - minDist);  

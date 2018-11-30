@@ -67,22 +67,22 @@ namespace E3DEngine
 		float GetRoll();	
 
 	public:
-		DECLARE_METHOD(Camera, bool, Perspective);
-		DECLARE_METHOD(Camera, float, Near);
-		DECLARE_METHOD(Camera, float, Far);
-		DECLARE_METHOD(Camera, float, Size);
-		DECLARE_METHOD(Camera, vec3f, Pos);
-		DECLARE_METHOD(Camera, vec3f, Target);
-		DECLARE_METHOD(Camera, float, Fov);
+		DECLARE_PROPERTY(Camera, bool, Perspective);
+		DECLARE_PROPERTY(Camera, float, Near);
+		DECLARE_PROPERTY(Camera, float, Far);
+		DECLARE_PROPERTY(Camera, float, Size);
+		DECLARE_PROPERTY(Camera, vec3f, Pos);
+		DECLARE_PROPERTY(Camera, vec3f, Target);
+		DECLARE_PROPERTY(Camera, float, Fov);
 		virtual void registProperty() override
 		{
-			SAVE_METHOD(Perspective, FT_BOOLEAN);
-			SAVE_METHOD(Near, FT_FLOAT);
-			SAVE_METHOD(Far, FT_FLOAT);
-			SAVE_METHOD(Size, FT_FLOAT);
-			SAVE_METHOD(Pos, FT_VECTOR3);
-			SAVE_METHOD(Target, FT_VECTOR3);
-			SAVE_METHOD(Fov, FT_FLOAT);
+			SAVE_PROPERTY(Perspective, FT_BOOLEAN);
+			SAVE_PROPERTY(Near, FT_FLOAT);
+			SAVE_PROPERTY(Far, FT_FLOAT);
+			SAVE_PROPERTY(Size, FT_FLOAT);
+			SAVE_PROPERTY(Pos, FT_VECTOR3);
+			SAVE_PROPERTY(Target, FT_VECTOR3);
+			SAVE_PROPERTY(Fov, FT_FLOAT);
 		}
 
 		bool boundingBoxFrustum(vec3f position, float size);

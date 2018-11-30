@@ -19,14 +19,14 @@ namespace E3DEngine
 		void createGrid();
 
 	public:
-		DECLARE_METHOD(Terrain, int, Size)
-		DECLARE_METHOD(Terrain, bool, IsEditorGrid)
-		DECLARE_METHOD(Terrain, std::string, HeightMapFile)
+		DECLARE_PROPERTY(Terrain, int, Size)
+		DECLARE_PROPERTY(Terrain, bool, IsEditorGrid)
+		DECLARE_PROPERTY(Terrain, std::string, HeightMapFile)
 		virtual void registProperty() override
 		{
-			SAVE_METHOD(Size, FT_INT);
-			SAVE_METHOD(IsEditorGrid, FT_BOOLEAN);
-			SAVE_METHOD(HeightMapFile, FT_STRING);
+			SAVE_PROPERTY(Size, FT_INT);
+			SAVE_PROPERTY(IsEditorGrid, FT_BOOLEAN);
+			SAVE_PROPERTY(HeightMapFile, FT_STRING);
 		}
 	};
 }

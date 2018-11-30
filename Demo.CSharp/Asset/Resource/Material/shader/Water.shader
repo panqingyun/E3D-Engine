@@ -100,13 +100,13 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const vec3  ambient = vec3(0.8, 0.8, 0.8);		//环境光颜色
-const float Ns = 5.0;			//高光系数
-const float attenuation = 1.0;	//光线的衰减系数
+const float Ns = 10.0;			//高光系数
+const float attenuation = 10.0;	//光线的衰减系数
 
 const float _BumpDepth = 1.0;
 const float _ReflScale = 3.598;
 const float fresnelScale = 0.1;
-const float fresnelPower = 5.0;
+const float fresnelPower = 10.0;
 
 float near_clip = 1.0;
 float ampify = 5.0;
@@ -223,7 +223,7 @@ void main(void)
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.5;	
 	
 	float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
-	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor * vertColor * sC).rgb, 0.6) ;
+	gl_FragColor = vec4(((freColor1  + freColor2 + freColor3) * _lightColor  * sC * vertColor).rgb, 0.6) ;
 }
 
 #Framgent_End

@@ -30,7 +30,7 @@ void main(void)
 	
 	mat4 transMatrix = getTransformMatrix(transformPosition, transformRotate,transformScale);
 	vec4 _position = vec4(position.x, 0.0, position.y, 1.0);
-	DestinationColor = getLightColor(_position.xyz, vec3(0.0,1.0,0.0));
+	DestinationColor = getLightColor(_position.xyz, vec3(0.0,1.0,0.0), 10.0);
     gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel  * transMatrix * _position;//* BillboardMatrix();*  roateMatrix * scaleMat *
 }
 

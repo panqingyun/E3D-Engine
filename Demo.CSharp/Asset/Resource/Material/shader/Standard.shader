@@ -3,8 +3,8 @@ varying vec3 vPosition;
 varying vec3 mCameraPos;
 
 const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
-const float Ns = 1.0;			//高光系数
-const float attenuation = 1.0;	//光线的衰减系数
+const float Ns = 80.0;			//高光系数
+const float attenuation = 20.0;	//光线的衰减系数
 
 void initFogNeedVar(vec3 _pos)
 {
@@ -12,7 +12,7 @@ void initFogNeedVar(vec3 _pos)
 	mCameraPos = _e3d_CameraPos;
 }
 
-vec4 getPointLightColor(vec3 position, vec3 normal)
+vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 {
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
 	
@@ -26,7 +26,7 @@ vec4 getPointLightColor(vec3 position, vec3 normal)
 			vec3 L = normalize(_e3d_PointLightPos[i] - position);
 			vec3 H = normalize(V + L);
 			vec3 diffuse = vec3((_e3d_PointLightColor[i] * max(dot(N, L), 0.0)).xyz);
-			vec3 specular = vec3((_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
+			vec3 specular = vec3((_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuation).xyz);
 			
 			lightColor = lightColor + vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 		}
@@ -35,7 +35,7 @@ vec4 getPointLightColor(vec3 position, vec3 normal)
 	return lightColor;
 }
 
-vec4 getLightColor(vec3 position, vec3 normal)
+vec4 getLightColor(vec3 position, vec3 normal, float ns)
 {
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
 #ifdef USING_DIRECTIONAL_LIGHT
@@ -45,7 +45,7 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec3 H = normalize(V + L);
 	vec3 diffuse = vec3((_e3d_WorldSpaceLightColor * max(dot(N, L), 0.0)).xyz);
-	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
+	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), ns) * attenuation).xyz);
 	lightColor = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 #endif
 #ifdef USING_POINT_LIGHT

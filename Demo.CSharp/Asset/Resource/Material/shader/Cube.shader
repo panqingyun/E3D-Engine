@@ -35,7 +35,7 @@ void main(void)
 	v_Pos = (v_Pos / v_Pos.w + 1.0) * 0.5;
 	lightDir = _e3d_WorldSpaceLightDirection;
 #endif
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
 	normal = _normal.xyz;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }

@@ -19,7 +19,7 @@ void main(void)
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
-	DestinationColor = color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
 	initFogNeedVar(position);
     gl_Position = _e3d_getMVPMatrix() * interpolatedPosition;
 }

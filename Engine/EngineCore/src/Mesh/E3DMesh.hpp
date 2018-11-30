@@ -61,7 +61,7 @@ namespace E3DEngine
 		static object GetFilePath(void *cp);
 		virtual void registProperty() override
 		{
-			SAVE_METHOD(FilePath, FT_STRING)
+			SAVE_PROPERTY(FilePath, FT_STRING)
 		}
 	protected:
 		bool m_bIsSkinMesh;

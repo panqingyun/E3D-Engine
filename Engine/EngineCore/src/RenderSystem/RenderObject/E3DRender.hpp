@@ -37,14 +37,14 @@ namespace E3DEngine
 	{
 		DECLARE_CLASS(Renderer)
 	public:
-		DECLARE_METHOD(Renderer, std::string, MaterialPath)
-		DECLARE_METHOD(Renderer, int, MaterialID)
-		DECLARE_METHOD(Renderer, int, RendererType)
+		DECLARE_PROPERTY(Renderer, std::string, MaterialPath)
+		DECLARE_PROPERTY(Renderer, int, MaterialID)
+		DECLARE_PROPERTY(Renderer, int, RendererType)
 		virtual void registProperty()
 		{
-			SAVE_METHOD(MaterialPath, FT_STRING);
-			SAVE_METHOD(MaterialID, FT_INT);
-			SAVE_METHOD(RendererType, FT_INT);
+			SAVE_PROPERTY(MaterialPath, FT_STRING);
+			SAVE_PROPERTY(MaterialID, FT_INT);
+			SAVE_PROPERTY(RendererType, FT_INT);
 		}
 	public:
 		virtual void OnCreateComplete() override;

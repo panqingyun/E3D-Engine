@@ -28,7 +28,7 @@ void main(void)
 	_WindDir.w = 0.0;
 	vec3 dir =  normalize(_e3d_matModel*_WindDir).xyz;
 	vec3 _vPos = position + dir * (sin(_Time + _e3d_matModel[3][2]) + 1.0) * power * pow(position.z / 100.0, 2.0); //摇动
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
     gl_Position = _e3d_getMVPMatrix() * vec4(_vPos ,1.0);
 }
 

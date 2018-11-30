@@ -47,7 +47,7 @@ if (m_methodMap.find(#var) == m_methodMap.end())\
 }
 
 
-#define DECLARE_METHOD(classType, varType, varName)\
+#define DECLARE_PROPERTY(classType, varType, varName)\
 public:\
 varType varName;\
 static void Set##varName(void * cp, object value)\
@@ -62,7 +62,7 @@ static object Get##varName(void * cp) \
 }
 
 
-#define SAVE_METHOD(var, type)\
+#define SAVE_PROPERTY(var, type)\
 m_setMethodMap.insert(std::pair<std::string, setValue>(#var, Set##var));\
 m_propertyTypeMap.insert(std::pair<std::string, DWORD>(#var, type));\
 m_getMethodMap.insert(std::pair<std::string, getValue>(#var, Get##var));\

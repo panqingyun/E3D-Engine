@@ -56,9 +56,9 @@ namespace E3DEngine
 	public:
 		virtual void registProperty() override
 		{
-			SAVE_METHOD(Mass, FT_FLOAT);
-			SAVE_METHOD(Friction, FT_FLOAT);
-			SAVE_METHOD(Restitution, FT_FLOAT);
+			SAVE_PROPERTY(Mass, FT_FLOAT);
+			SAVE_PROPERTY(Friction, FT_FLOAT);
+			SAVE_PROPERTY(Restitution, FT_FLOAT);
 		}
 
 	protected:

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Scene>
-    <GameObject Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" Color="000000FF">
-        <Transform Posistion="0.000000,60.000000,200.000000" Rotation="-7.600000,-65.399994,0.000000" Scale="1.000000,1.000000,1.000000" />
+    <GameObject Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" Color="00000000">
+        <Transform Posistion="-19.519749,60.999989,218.237137" Rotation="-7.600000,-65.399994,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="AppMain">
             <Field ShowDebug="" ShowNumber="20" />
         </Component>
@@ -227,10 +227,5 @@
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
-    </GameObject>
-    <GameObject Name="" Type="0" LayerMask="" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="1093.110840,950.007629,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="100.000000,100.000000,1.000000" />
-        <Component Active="true" ClassName="class E3DEngine::Rectangle" />
-        <Component Active="true" ClassName="class E3DEngine::Renderer" />
     </GameObject>
 </Scene>

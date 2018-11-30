@@ -474,9 +474,10 @@ namespace E3DEngine
 				mCameraView->OnCreateComplete();
 				Camera * pLCamera = SceneManageRef::GetInstance()->GetLookCoordCamera();
 				vec4f &&newPos = pLCamera->GetWorldPoint(1, 0, 0);
-				cViewObject->Transform->SetScale(100, 100, 1);
-				cViewObject->Transform->SetPosition(newPos.x - 50, newPos.y - 50, 0);
+				cViewObject->Transform->SetScale(102, 76, 1);
+				cViewObject->Transform->SetPosition(newPos.x - 55, newPos.y - 45, 0);
 				cViewObject->SetRenderIndex(eRI_TopMost);
+				cViewObject->Flag |= (DONT_SAVE | HIDE_IN_HIERARCHY);
 				Renderer * rd = cViewObject->AddComponent<Renderer>();
 				std::string path = get_std_string(SceneManageRef::GetInstance()->GetEditorRunPath());
 				rd->MaterialID = 4;

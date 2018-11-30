@@ -64,7 +64,7 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const float fresnelScale = 0.1;
-const float fresnelPower = 5.0;
+const float fresnelPower = 50.0;
 
 vec4 lerp(vec4 a, vec4 b, float s)
 {

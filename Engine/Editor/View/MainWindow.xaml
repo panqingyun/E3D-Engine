@@ -165,7 +165,7 @@
 					<MenuItem Header="关于" Foreground="Black"/>
 				</MenuItem>
 			</Menu>
-			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="9" Margin="195,0,911,0"/>
+			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" HorizontalAlignment="Left" Grid.RowSpan="2" VerticalAlignment="Top" Grid.Column="9"/>
 			<Label Content="FPS:" Grid.Column="9" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Foreground="Yellow"/>
 			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="15" 
 			   Foreground="Yellow" Grid.Row="1" Grid.Column="9" Content="{Binding Path=GameFPS}" Panel.ZIndex="20"/>

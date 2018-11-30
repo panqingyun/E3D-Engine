@@ -46,7 +46,7 @@ vec4 getLightColor(vec3 position, vec3 normal, float ns)
 	vec3 H = normalize(V + L);
 	vec3 diffuse = vec3((_e3d_WorldSpaceLightColor * max(dot(N, L), 0.0)).xyz);
 	vec3 specular = vec3((_e3d_WorldSpaceLightColor * pow(max(dot(N, H), 0.0), ns)).xyz);
-	lightColor = vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
+	lightColor = vec4((diffuse + specular), 1.0);//vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 #endif
 #ifdef USING_POINT_LIGHT
 	lightColor = lightColor + getPointLightColor(position, normal);

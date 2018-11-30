@@ -61,7 +61,7 @@ void main(void)
 	float bias = max(0.004 * (1.0 - dot(normal, lightDir)), 0.0004);
 	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, bias);	
 	
-	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0));
+	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0)) * DestinationColor;
 }
 
 #Framgent_End

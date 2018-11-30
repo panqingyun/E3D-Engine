@@ -18,6 +18,7 @@ varying vec4 vPos;
 varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
+varying vec4 DestinationColor;
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
                        0.0 , 0.0 , 0.5 , 0.0 ,
@@ -34,6 +35,7 @@ void main(void)
 	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
 	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
 	lightDir = _e3d_WorldSpaceLightDirection;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 50.0) * color;
 #endif
 	initFogNeedVar(position);
 	eyePosition = _e3d_CameraPos.xyz;
@@ -62,6 +64,7 @@ varying vec3 lightDir;
 
 uniform float fresnelBias;
 uniform float etaRatio;
+varying vec4 DestinationColor;
 
 const float fresnelScale = 0.1;
 const float fresnelPower = 50.0;

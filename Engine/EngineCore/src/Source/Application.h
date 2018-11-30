@@ -59,7 +59,7 @@ namespace E3DEngine
 		static void KeyDown(char key);
 		static void KeyUp(char key);
 		static double GetTimeSinceStart();
-		static float GetFPS();
+		static int GetFPS(); 
 
 	public:
 		static std::string AppDataPath;

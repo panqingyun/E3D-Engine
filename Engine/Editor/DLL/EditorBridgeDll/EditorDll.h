@@ -53,7 +53,7 @@ namespace E3DEngine
 		void UpdatePhysics();
 		void SetMonoPath(System::String^ env_dllPath, System::String^ assembly_dllPath, System::String^ engine_dllPath);
 		void RegisterThreadFunc(IntPtr fun);
-		float GetFPS();
+		int GetFPS();
 	private:
 		bool mInRun;
 		void *m_pRenderSystem;

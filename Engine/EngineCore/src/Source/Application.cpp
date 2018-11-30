@@ -180,6 +180,10 @@ namespace E3DEngine
 	double Application::m_nRunTimeLong = 0;
 	float Application::m_fDeltaTime = 0;
 
+	static float avgDuration = 0.f;
+	static float alpha = 1.f / 100.f; // 采样数设置为100
+	static int frameCount = -1;
+
 	void Application::CreatScript()
 	{
         mono_add_internal_call("E3DEngine.Application::getAppDataPath", (const void *)Application::getAppDataPath);
@@ -269,7 +273,11 @@ namespace E3DEngine
 		{
 			return;
 		}
-		
+		if (frameCount == -1)
+		{
+			frameCount = 0;
+			avgDuration = 0;
+		}
 		m_pEntryBehaviour->Update(deltaTime);
 	}
 
@@ -419,10 +427,21 @@ namespace E3DEngine
 		return m_nRunTimeLong;
 	}
 
-
-	float Application::GetFPS()
+	int Application::GetFPS()
 	{
-		return 1.0 / m_fDeltaTime;
+		int fps = 0;
+		if (0 == frameCount)
+		{
+			avgDuration = static_cast<float>(m_fDeltaTime);
+			frameCount = 1;
+		}
+		else
+		{
+			avgDuration = avgDuration * (1 - alpha) + m_fDeltaTime * alpha;
+		}
+		 
+		fps = static_cast<int>(1.f / avgDuration);
+		return fps;
 	}
 
 	MouseButtonInfo::MouseButtonInfo(UINT mBtn, int posX, int posY)

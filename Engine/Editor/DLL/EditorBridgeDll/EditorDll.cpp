@@ -161,7 +161,7 @@ void E3DEngine::EngineDelegateRef::RegisterThreadFunc(IntPtr fun)
 	::RegisterThreadOperateFunc((void*)fun.ToInt32());
 }
 
-float E3DEngine::EngineDelegateRef::GetFPS()
+int E3DEngine::EngineDelegateRef::GetFPS()
 {
 	return Application::GetFPS();
 }

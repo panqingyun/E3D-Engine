@@ -121,8 +121,8 @@ namespace E3DEditor.ViewModel
             }
         }
 
-        private float fps = 0;
-        public float GameFPS
+        private int fps = 0;
+        public int GameFPS
         {
             get
             {

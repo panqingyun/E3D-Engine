@@ -166,7 +166,8 @@
 				</MenuItem>
 			</Menu>
 			<Label Content="{Binding Path=WindowTitle}" x:Name="_ShowTitle" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="9" Margin="195,0,911,0"/>
-			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="30,15,0,15" VerticalAlignment="Center" FontSize="15" 
+			<Label Content="FPS:" Grid.Column="9" Grid.Row="1" VerticalAlignment="Center" FontSize="15" Foreground="Yellow"/>
+			<Label x:Name="FPS" Background="Transparent" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="15" 
 			   Foreground="Yellow" Grid.Row="1" Grid.Column="9" Content="{Binding Path=GameFPS}" Panel.ZIndex="20"/>
 			<RadioButton x:Name="horizontal" IsChecked="{Binding IsHorzitalMove,Mode=TwoWay}" Style="{StaticResource RDOButton}"  Grid.Row="1" Grid.Column="1" Margin="0,0,0,7" Height="30" Width="40" ToolTip="{StaticResource horzitalMove}">
 				<Grid>

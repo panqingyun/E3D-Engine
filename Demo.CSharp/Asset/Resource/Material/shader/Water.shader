@@ -222,18 +222,18 @@ void main(void)
 	vec4 freColor1 = FresnelShading(normalVec) * 0.3;
 	vec4 freColor2 = FresnelShading(vNrm);
 	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.3;	
-	float r = pow(freColor2.r, 1.0);
-	float g = pow(freColor2.g, 1.0);
-	float b = pow(freColor2.b, 1.0);
-	float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
+	// float r = pow(freColor2.r, 2.0);
+	// float g = pow(freColor2.g, 2.0);
+	// float b = pow(freColor2.b, 2.0);
+	// float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
 	float dist = abs(distance(vec3(eyePosition.x, vPos.y, eyePosition.z), vPos.xyz));
 	float maxDist = 600.0;
 	float minDist = 1.0;
     float clr = (maxDist - dist) / (maxDist - minDist);  
     clr = clamp( clr , 0.0, 1.0 );  
 	
-    vec4 mColor = mix(  _lightColor * vertColor * 0.5 + freColor1 + freColor3 , vec4(r, g, b, 1.0 ) * 0.7 + freColor1 + freColor3 , 1.0 - clr );  
-	gl_FragColor = vec4((mColor).rgb, 0.9) ;
+    vec4 mColor = mix(  _lightColor * vertColor * 0.4 + freColor1 + freColor3 , freColor2 * 0.6 + freColor1 + freColor3 , 1.0 - clr );  
+	gl_FragColor = vec4((mColor).rgb, 0.7) ;
 }
 
 #Framgent_End

@@ -219,21 +219,22 @@ void main(void)
 	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
 	
 	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	vec4 freColor1 = FresnelShading(normalVec) * 0.3;
+	vec4 freColor1 = FresnelShading(normalVec);
 	vec4 freColor2 = FresnelShading(vNrm);
-	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y)) * 0.3;	
+	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y));	
 	// float r = pow(freColor2.r, 2.0);
 	// float g = pow(freColor2.g, 2.0);
 	// float b = pow(freColor2.b, 2.0);
 	// float sC = 1.0;//getShadowColor(v_InLightPos, 0.0);
-	float dist = abs(distance(vec3(eyePosition.x, vPos.y, eyePosition.z), vPos.xyz));
-	float maxDist = 600.0;
+	float dist = abs(distance(eyePosition, vPos.xyz));
+	float maxDist = 230.0;
 	float minDist = 1.0;
     float clr = (maxDist - dist) / (maxDist - minDist);  
-    clr = clamp( clr , 0.0, 1.0 );  
-	
-    vec4 mColor = mix(  _lightColor * vertColor * 0.4 + freColor1 + freColor3 , freColor2 * 0.6 + freColor1 + freColor3 , 1.0 - clr );  
-	gl_FragColor = vec4((mColor).rgb, 0.7) ;
+    clr = pow(clamp( clr , 0.0, 1.0 ),2.0);    
+    vec4 mColor = freColor2 * 0.4 + freColor1 * 0.3 + freColor3 * 0.3 ;
+	mColor.rgb = mix(vertColor * (freColor1 * 0.5 + freColor3 * 0.5) , pow(mColor.rgb, vec3(1.0 / 1.5)), 1.0 - clr );
+	float alpha = 1.0 - clr + 0.7;
+	gl_FragColor = vec4((mColor).rgb, alpha) ;
 }
 
 #Framgent_End

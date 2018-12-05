@@ -27,11 +27,6 @@ namespace E3DEngine
 		static_cast<GL_Shader*>(mShader)->UseNullProgram();
 	}
 
-	void GL_Material::CreateCubeTexture(std::string dirPath, std::string xPName, std::string xNName, std::string yPName, std::string yNName, std::string zPName, std::string ZNName)
-	{
-
-	}
-
 	void GL_Material::UseMaterial()
 	{
 		UseProgram(); 
@@ -77,16 +72,15 @@ namespace E3DEngine
 		}
 		else
 		{
+			glEnable(GL_ALPHA);
 			glEnable(GL_BLEND);
 			glBlendFunc(srcBlendFactor, dstBlendFactor);
 		}
-		glEnable(GL_ALPHA);
-
-        glEnable(GL_STENCIL_TEST);
-        glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-        
+		        
         if(enableStencilTest)
-        {
+		{
+			glEnable(GL_STENCIL_TEST);
+			glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
             enableStencil();
         }
     }

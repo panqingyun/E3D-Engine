@@ -16,6 +16,12 @@
             <Field CenterPosition="145.000000,60.000000,100.000000" CreateShadow="true" Range="220.000000" TextureSize="4096.000000" />
         </Component>
     </GameObject>
+	 <GameObject Name="PointLight" Type="1" LayerMask="AllLayer" Active="true" Color="FFFFFFFF">
+        <Transform Posistion="101.432678,100.452709,80.291595" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+        <Component Active="true" ClassName="E3DEngine.PointLight">
+            <Field CreateShadow="false" Range="500.000000" TextureSize="0" />
+        </Component>
+    </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
         <Transform Posistion="101.005623,73.597336,192.561401" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">

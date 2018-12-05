@@ -3,8 +3,9 @@ varying vec3 vPosition;
 varying vec3 mCameraPos;
 
 const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//环境光颜色
-const float Ns = 80.0;			//高光系数
-const float attenuation = 20.0;	//光线的衰减系数
+const float Kc = 1.0;           //衰减常数项
+const float Kl = 1.0;           //衰减一次系数
+const float KQ = 1.0;           //衰减二次系数
 
 void initFogNeedVar(vec3 _pos)
 {
@@ -23,10 +24,12 @@ vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 	{
 		if(distance(_e3d_PointLightPos[i] , position) < _e3d_PointLightRange[i])
 		{
+			float d = distance(_e3d_PointLightPos[i] , position);
+			float attenuate = 1.0 /(Kc + Kl*d + KQ * d * d); //衰减因子（由公式计算）
 			vec3 L = normalize(_e3d_PointLightPos[i] - position);
 			vec3 H = normalize(V + L);
 			vec3 diffuse = vec3((_e3d_PointLightColor[i] * max(dot(N, L), 0.0)).xyz);
-			vec3 specular = vec3((_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuation / (_e3d_PointLightPos[i] - position)).xyz);
+			vec3 specular = (_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuate).xyz;
 			
 			lightColor = lightColor + vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 		}
@@ -49,7 +52,7 @@ vec4 getLightColor(vec3 position, vec3 normal, float ns)
 	lightColor = vec4((diffuse + specular), 1.0);//vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
 #endif
 #ifdef USING_POINT_LIGHT
-	lightColor = lightColor + getPointLightColor(position, normal);
+	lightColor = lightColor + getPointLightColor(position, normal,ns);
 #endif
 	return (lightColor + ambient);
 }

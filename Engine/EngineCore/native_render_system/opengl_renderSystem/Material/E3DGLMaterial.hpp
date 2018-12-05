@@ -21,11 +21,7 @@ namespace E3DEngine
 		virtual void UpdateShader(unsigned int vertexType);
 		virtual void SetRenderState() override;
 		void DisableVertexAttrib(unsigned int vertexType);
-	public:
 
-		virtual void CreateCubeTexture( std::string dirPath,std::string xPName,
-									   std::string xNName,
-									   std::string yPName,std::string yNName,std::string zPName,std::string ZNName);
 	protected:
 		void enableStencil()override;
 		virtual void openState();

@@ -56,8 +56,12 @@ namespace E3DEngine
 		DECLARE_CLASS(PointLight)
 	public:
 		PointLight();
-		float Range;
-
+		DECLARE_PROPERTY(PointLight, float, Range);
+		virtual void registProperty()
+		{
+			Light::registProperty();
+			SAVE_PROPERTY(Range, FT_FLOAT);
+		}
 	public:
 		virtual void MakeShadow() override;
 	};

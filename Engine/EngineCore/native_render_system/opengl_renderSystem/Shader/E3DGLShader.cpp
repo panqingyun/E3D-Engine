@@ -14,26 +14,32 @@
 #include <src/RenderSystem/Texture/E3DRender2Texture.h>
 #include <src/RenderSystem/Texture/E3DTexture2D.hpp>
 
+#define NOT_USE_CONTINUE \
+if (uniformKeyValue.second.UniformLocation == -1)\
+{\
+	continue;\
+}
+
 namespace E3DEngine
 {
 	using namespace GLRenderSystem;
 	
 	void GL_Shader::InitShaderVar()
 	{
-		uniformSetFunc["float"] = &Shader::createFloat1Uniform;
-		uniformSetFunc["float[]"] = &Shader::createFloat1ArrayUniform;
-		uniformSetFunc["vec2"] = &Shader::createFloat2Uniform;
-		uniformSetFunc["vec3"] = &Shader::createFloat3Uniform;
-		uniformSetFunc["vec4"] = &Shader::createFloat4Uniform;
-		uniformSetFunc["vec2[]"] = &Shader::createFloat2ArrayUniform;
-		uniformSetFunc["vec3[]"] = &Shader::createFloat3ArrayUniform;
-		uniformSetFunc["vec4[]"] = &Shader::createFloat4ArrayUniform;
-		uniformSetFunc["mat2"] = &Shader::createMatrix2Uniform;
-		uniformSetFunc["mat3"] = &Shader::createMatrix3Uniform;
-		uniformSetFunc["mat4"] = &Shader::createMatrix4Uniform;
-		uniformSetFunc["int"] = &Shader::createInt1Uniform;
-		uniformSetFunc["sampler2D"] = &Shader::createSampler2DUniform;
-		uniformSetFunc["samplerCube"] = &Shader::createSamplerCubeUniform;
+		uniformSetFunc["float"]		= &Shader::createFloat1Uniform;
+		uniformSetFunc["float[]"]	= &Shader::createFloat1ArrayUniform;
+		uniformSetFunc["vec2"]		= &Shader::createFloat2Uniform;
+		uniformSetFunc["vec3"]		= &Shader::createFloat3Uniform;
+		uniformSetFunc["vec4"]		= &Shader::createFloat4Uniform;
+		uniformSetFunc["vec2[]"]	= &Shader::createFloat2ArrayUniform;
+		uniformSetFunc["vec3[]"]	= &Shader::createFloat3ArrayUniform;
+		uniformSetFunc["vec4[]"]	= &Shader::createFloat4ArrayUniform;
+		uniformSetFunc["mat2"]		= &Shader::createMatrix2Uniform;
+		uniformSetFunc["mat3"]		= &Shader::createMatrix3Uniform;
+		uniformSetFunc["mat4"]		= &Shader::createMatrix4Uniform;
+		uniformSetFunc["int"]		= &Shader::createInt1Uniform;
+		uniformSetFunc["sampler2D"]		= &Shader::createSampler2DUniform;
+		uniformSetFunc["samplerCube"]	= &Shader::createSamplerCubeUniform;
 	}
 
 	void GL_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
@@ -44,8 +50,6 @@ namespace E3DEngine
 
 		glAttachShader(ShaderProgram, vertexShaderHandle);
 		glAttachShader(ShaderProgram, fragmentShaderHandle);
-		//bindAttribLoaction(STATIC_VERTEX);
-		//bindAttribLoaction(DYNAMIC_VERTEX);
 		glLinkProgram(ShaderProgram);
 		GLint linkSuccess;
 		glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &linkSuccess);
@@ -125,16 +129,19 @@ namespace E3DEngine
 	{		
 		for (auto & uniformKeyValue : int1UniformList)
 		{
+			NOT_USE_CONTINUE
 			glUniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float1UniformList)
 		{
+			NOT_USE_CONTINUE
 			glUniform1f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float2UniformList)
 		{
+			NOT_USE_CONTINUE
 			glUniform2f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
 		}
 
@@ -176,16 +183,19 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : float3UniformList)
 		{
+			NOT_USE_CONTINUE
 			glUniform3f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3);
 		}
 
 		for (auto & uniformKeyValue : float4UniformList)
 		{
+			NOT_USE_CONTINUE
 			glUniform4f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3, uniformKeyValue.second.Value4);
 		}
 
 		for (auto & uniformKeyValue : matrix4UniformList)
 		{
+			NOT_USE_CONTINUE
 			if (uniformKeyValue.second.Data == nullptr)
 			{
 				continue;
@@ -195,6 +205,7 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : matrix3UniformList)
 		{
+			NOT_USE_CONTINUE
 			if (uniformKeyValue.second.Data == nullptr)
 			{
 				continue;
@@ -204,6 +215,7 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : matrix2UniformList)
 		{
+			NOT_USE_CONTINUE
 			if (uniformKeyValue.second.Data == nullptr)
 			{
 				continue;
@@ -213,6 +225,7 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : sampler2DUniformList)
 		{
+			NOT_USE_CONTINUE
 			if (uniformKeyValue.second.texture == nullptr)
 			{
 				continue;
@@ -224,6 +237,7 @@ namespace E3DEngine
 
 		for (auto & uniformKeyValue : samplerCubeUniformList)
 		{
+			NOT_USE_CONTINUE
 			if (uniformKeyValue.second.texture == nullptr)
 			{
 				continue;
@@ -444,7 +458,6 @@ namespace E3DEngine
 		{
 			dynamicAttributeList.push_back(attri);
 		}
-
 	}
 
 }

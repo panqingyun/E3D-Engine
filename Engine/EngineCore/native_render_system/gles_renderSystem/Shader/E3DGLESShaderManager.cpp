@@ -311,9 +311,16 @@ void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string
 			Light * light = SceneManager::GetCurrentScene()->GetDirectionalLight();
 			if (object_cast<bool>(Light::GetCreateShadow(light)))
 			{
-				lightUniform.append("#define __CREATE_SHADOW__\n").append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
+				lightUniform.append("#define USING_DIRECTIONAL_LIGHT  \n").append("#define __CREATE_SHADOW__\n").append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
 			}
 			fs_content = lightUniform + fs_content;
+		}
+		std::map<UINT, Light*>& pointLights = SceneManager::GetCurrentScene()->GetPointLights();
+		if (pointLights.size() != 0)
+		{
+			std::string lightDefine = "";
+			lightDefine.append("#define USING_POINT_LIGHT  \n");
+			fs_content = lightDefine + fs_content;
 		}
 		appendInclude(fs_content, folder);
 		processUniformVar(shader, fs_content);

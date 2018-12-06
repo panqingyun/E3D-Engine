@@ -26,7 +26,6 @@ namespace E3DEngine
 		virtual void UseShareContext() override;
 		virtual void UseRenderContext() override;
 		virtual void SetCullFaceType(CULL_FACE type) override;
-		virtual void Pick(vec2f pickPos) override;
 	public:
 		virtual void BeginFrame() override;
 		void clearFrameBufferObject();

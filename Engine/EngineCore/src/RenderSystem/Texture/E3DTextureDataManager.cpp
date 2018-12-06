@@ -142,8 +142,3 @@ void E3DEngine::TextureDataManager::Cleanup()
 	}
 	m_mapTextures.clear();
 }
-
-Texture * E3DEngine::TextureDataManager::createCubeTexture(std::string filePath, int selectID)
-{
-	return nullptr;
-}

@@ -21,12 +21,12 @@ namespace E3DEngine
 		// -----------------------------------------------
 		// 渲染调用开始之前，使用材质
 		//-----------------------------------------------
-		virtual void UseMaterial();
+		virtual void UseMaterial() = 0;
 
 		// -----------------------------------------------
 		// 材质失效
 		//-----------------------------------------------
-		virtual void InvalidMaterial();
+		virtual void InvalidMaterial() = 0;
 
 		// -----------------------------------------------
 		// 清理
@@ -45,18 +45,19 @@ namespace E3DEngine
 		// @param 纹理
 		// @param 纹理索引
 		//-----------------------------------------------
-		virtual void SetTexture(Texture * texture, int index = 0);
+		virtual void SetTexture(Texture * texture, int index = 0) = 0;
 
 		// -----------------------------------------------
 		// 启用Shader
 		//-----------------------------------------------
-		virtual void UseProgram() { }
+		virtual void UseProgram() = 0;
 		virtual void SetRenderState(){ }
 		// -----------------------------------------------
 		// 使用ID是0的shader 即不使用任何shader
 		//-----------------------------------------------
-		virtual void UseNullProgram() { }
-		virtual void UpdateShader(unsigned int vertexType) { }
+		virtual void UseNullProgram()						= 0;
+		virtual void UpdateShader(unsigned int vertexType)	= 0;
+
 		virtual void SetEnableDepthWrite(bool bEnable);
 		virtual void SetBlendType(DWORD src, DWORD dst);
 		virtual void SetEnableDepthTest(bool enable);
@@ -75,18 +76,11 @@ namespace E3DEngine
 		//-----------------------------------------------
 		MonoBehaviour * GetBehaviour();
 		void SetColor(Color4 color);
-		int GetTextureCount() { return textureCount; }
+		int GetTextureCount();
 	protected:
-		virtual void createShader(string vsName, string psName, string attrVar, string unifVar) { }
-		virtual void parseShaderConfig(ShaderConfig *cfg);
-		virtual void enableStencil();
-		virtual void beforeUpdate();
-		virtual void afterUpdate();
-		virtual void createTexture2D(TextureData& data);
-		virtual void createCubeTexture(std::vector<std::string> &varValues);
+		void createCubeTexture(std::vector<std::string> &varValues);
 		void initUniformValue(ShaderConfig * sCfg, MaterialConfig * config);
 		void createSampler2D(std::vector<std::string> &varValues, MaterialConfig * config);
-
 		void createRtt(std::vector<std::string>& varValues);
 
 	protected:

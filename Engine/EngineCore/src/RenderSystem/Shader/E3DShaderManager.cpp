@@ -34,18 +34,4 @@ void E3DEngine::ShaderManager::Cleanup()
 	mShadersMap.clear();
 }
 
-E3DEngine::Shader* E3DEngine::ShaderManager::createShader(std::string shaderPath, std::string unifVar)
-{
-	return nullptr;
-}
-
-void E3DEngine::ShaderManager::parseShaderConfig(ShaderConfig *cfg)
-{
-	
-}
-
-void E3DEngine::ShaderManager::initShaderAttributeVar()
-{
-
-}
 

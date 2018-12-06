@@ -11,7 +11,8 @@ namespace E3DEngine
 	class GL_RendererManager : public RendererManager
 	{
 	public:
-		virtual void AddRenderer(int materialID, BatchRenderer * rd);
+		virtual BatchRenderer * CreateRender(Material* material) override;
+		virtual void AddRenderer(int materialID, BatchRenderer * rd) override;
 		virtual BatchRenderer * GenRender() override;
 		virtual void Cleanup() override;
 

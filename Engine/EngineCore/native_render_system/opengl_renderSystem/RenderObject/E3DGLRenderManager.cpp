@@ -10,6 +10,12 @@
 
 namespace E3DEngine
 {
+
+	E3DEngine::BatchRenderer * GL_RendererManager::CreateRender(Material* material)
+	{
+		return nullptr;
+	}
+
 	void GL_RendererManager::AddRenderer(int materialID, BatchRenderer * rd)
 	{
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())
@@ -31,6 +37,7 @@ namespace E3DEngine
 			SAFE_DELETE(render.second);
 		}
 		m_mapVertexBuffers.clear();
+		RendererManager::Cleanup();
 	}
 
 	E3DEngine::BatchRenderer * GL_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)

@@ -54,16 +54,6 @@ namespace E3DEngine
 		}
 	}
 
-	void Material::SetTexture(Texture * texture, int index)
-	{
-		
-	}
-
-	void Material::createTexture2D(TextureData& data)
-	{
-		
-	}
-
 	void Material::SetEnableDepthWrite(bool bEnable)
 	{
 		enablewriteDepth = bEnable;
@@ -82,36 +72,6 @@ namespace E3DEngine
 		mColor.b *= color.b;
 		mColor.a *= color.a;
 	}
-
-	void Material::UseMaterial()
-	{
-		
-	}
-    
-	void Material::InvalidMaterial()
-	{
-		
-	}
-
-    void Material::beforeUpdate()
-    {
-  
-    }
-
-	void Material::afterUpdate()
-	{
-
-	}
-
-	void Material::parseShaderConfig(ShaderConfig *cfg)
-	{
-
-	}
-
-    void Material::enableStencil()
-    {
-        
-    }
 
 	void Material::SetBlendType(DWORD src, DWORD dst)
 	{
@@ -256,6 +216,11 @@ namespace E3DEngine
 			mShader->UpdateSampler2D(uniName, texture, textureCount);
 			textureCount++;
 		}
+	}
+
+	int Material::GetTextureCount()
+	{
+		return textureCount;
 	}
 
 }

@@ -11,10 +11,10 @@ namespace E3DEngine
 	{
 	public:
 		GL_MaterialManager();
-		~GL_MaterialManager() = default;
+		virtual ~GL_MaterialManager() = default;
 
 	protected:
-		virtual Material * createMatrerial();
+		virtual Material * createMatrerial() override;
 	};
 }
 

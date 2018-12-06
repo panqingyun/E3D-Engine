@@ -20,9 +20,8 @@ namespace E3DEngine
 		virtual void Cleanup();
 
 	protected:
-		virtual Shader* createShader(std::string shaderPath, std::string unifVar);
-		virtual void parseShaderConfig(ShaderConfig *cfg);
-		virtual void initShaderAttributeVar();
+		virtual Shader* createShader(std::string shaderPath, std::string unifVar)	= 0;
+		virtual void initShaderAttributeVar()										= 0;
 	protected:
 		std::map<std::string, Shader*> mShadersMap;
 	};

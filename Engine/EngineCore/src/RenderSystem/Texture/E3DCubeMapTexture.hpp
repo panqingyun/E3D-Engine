@@ -18,7 +18,7 @@ namespace E3DEngine
 		void Create(std::string fileName, int selectID);
 	protected:
 		void createTexture(CubeMapTextureConfig *cubeMap);
-		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back);
+		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back) = 0;
 
 	};
 }

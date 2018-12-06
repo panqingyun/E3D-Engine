@@ -10,11 +10,6 @@
 
 namespace E3DEngine
 {
-	BatchRenderer * RendererManager::CreateRender(Material* material)
-	{
-		return nullptr;
-	}
-
 	BatchRenderer * RendererManager::GetRenderer(int materialID, int vertexSize, RENDER_TYPE type, bool isStatic)
 	{
 		GetRenderSystem()->UseShareContext();
@@ -49,28 +44,10 @@ namespace E3DEngine
 		return buffer;
 	}
 
-
-	E3DEngine::BatchRenderer * RendererManager::GenRender()
-	{
-		return nullptr;
-	}
-
-
-	void RendererManager::AddRenderer(int materialID, BatchRenderer * rd)
-	{
-
-	}
-
 	void RendererManager::Cleanup()
 	{
 		m_mapVertexBuffers.clear();
 		m_mapMaterialID2RendererID.clear();
-	}
-
-
-	E3DEngine::BatchRenderer * RendererManager::newRenderer(RENDER_TYPE type, int materialID)
-	{
-		return nullptr;
 	}
 
 }

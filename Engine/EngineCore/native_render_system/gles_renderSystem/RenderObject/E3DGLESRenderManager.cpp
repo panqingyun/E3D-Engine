@@ -10,6 +10,12 @@
 
 namespace E3DEngine
 {
+
+	E3DEngine::BatchRenderer * GLES_RendererManager::CreateRender(Material* material)
+	{
+		return nullptr;
+	}
+
 	void GLES_RendererManager::AddRenderer(int materialID, BatchRenderer * rd)
 	{
 		if (m_mapVertexBuffers.find(materialID) == m_mapVertexBuffers.end())

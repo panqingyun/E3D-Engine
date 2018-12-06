@@ -120,9 +120,9 @@ namespace E3DEngine
 		virtual void Cleanup();
 
 	protected:
-		virtual Render2Texture* createRender2Texture() { return nullptr; }
-		virtual Texture *createTexture2D(TextureData *data) { return nullptr; }
-		virtual Texture *createCubeTexture(std::string filePath, int selectID);
+		virtual Render2Texture* createRender2Texture()							= 0;
+		virtual Texture *createTexture2D(TextureData *data)						= 0;
+		virtual Texture *createCubeTexture(std::string filePath, int selectID)	= 0;
 	protected:
 		std::map<std::string, Texture*> m_mapTextures;
 	};

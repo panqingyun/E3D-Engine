@@ -58,24 +58,6 @@ namespace E3DEngine
 		EndFrame();
 	}
 
-	void RenderSystem::Initilize()
-	{
-	}
-
-	void RenderSystem::BeginFrame()
-	{
-				
-	}
-
-	void RenderSystem::EndFrame()
-	{
-	}
-
-	void RenderSystem::Cleanup()
-	{
-
-	}
-
 	Vector2 RenderSystem::GetFrameSize()
 	{
 		return Vector2(m_frameWidth, m_frameHeight);
@@ -85,28 +67,6 @@ namespace E3DEngine
 	void RenderSystem::CreateShareContext()
 	{
 		m_bIsMutilThreadRender = true;
-	}
-
-	void RenderSystem::UseShareContext()
-	{
-
-	}
-
-
-	void RenderSystem::UseRenderContext()
-	{
-
-	}
-
-
-	void RenderSystem::SetCullFaceType(CULL_FACE type)
-	{
-
-	}
-
-	void RenderSystem::Pick(vec2f pickPos)
-	{
-
 	}
 
 	E3DEngine::RendererManager * RenderSystem::GetRenderManager()
@@ -167,18 +127,4 @@ namespace E3DEngine
 		return m_bIsMutilThreadRender;
 	}
 
-	void RenderSystem::Clear(Color4 color, int clearType)
-	{
-		
-	}
-
-	void RenderSystem::BindDefaultBackbuffer()
-	{
-
-	}
-
-	void E3DEngine::RenderSystem::ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle)
-	{
-
-	}
 }

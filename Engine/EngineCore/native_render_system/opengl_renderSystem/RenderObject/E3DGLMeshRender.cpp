@@ -3,6 +3,19 @@
 namespace E3DEngine
 {
 
+
+	GL_MeshRender::GL_MeshRender()
+	{
+		pRender = new GL_Renderer;
+		pRender->mName = mName;
+	}
+
+
+	GL_MeshRender::~GL_MeshRender()
+	{
+		SAFE_DELETE(pRender);
+	}
+
 	void GL_MeshRender::FillBegin(UINT objId)
 	{
 		pRender->FillBegin(objId);
@@ -65,6 +78,12 @@ namespace E3DEngine
 		pRender->SetDrawModule(module);
 	}
 
+
+	UINT GL_MeshRender::GetDrawModule()
+	{
+		return pRender->GetDrawModule();
+	}
+
 	E3DEngine::CTransform * GL_MeshRender::GetTransform()
 	{
 		return pRender->GetTransform();
@@ -94,6 +113,29 @@ namespace E3DEngine
 		pRender->SetMaterial(material);
 	}
 
+
+	void GL_MeshRender::SetLayerMask(DWORD layer)
+	{
+		pRender->SetLayerMask(layer);
+	}
+
+
+	E3DEngine::Material * GL_MeshRender::GetMaterial()
+	{
+		return pRender->GetMaterial();
+	}
+
+
+	void GL_MeshRender::SetCamera(Camera * camera)
+	{
+		pRender->SetCamera(camera);
+	}
+
+
+	void GL_MeshRender::ClearVertexIndexBuffer()
+	{
+		pRender->ClearVertexIndexBuffer();
+	}
 
 	E3DEngine::Camera * GL_MeshRender::GetCamera()
 	{

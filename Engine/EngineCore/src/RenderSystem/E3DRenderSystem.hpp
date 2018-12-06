@@ -46,33 +46,31 @@ namespace E3DEngine
 	{
 	public:
 		RenderSystem();
-		~RenderSystem() = default;
-
+		virtual ~RenderSystem() = default;
 		void Render();
 		void SetPauseRender(bool isPause);
-	public:
-		virtual void Initilize();
-		virtual std::string GetName();
-
-		virtual void	Cleanup(); 
-		virtual void    Clear(Color4 color, int clearType);
-		virtual void	BindDefaultBackbuffer();
+		std::string GetName();
 		Vector2	GetFrameSize();
-		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle);
-		virtual void	CreateShareContext();
-		virtual void	UseShareContext();
-		virtual void	UseRenderContext();
-		virtual void    SetCullFaceType(CULL_FACE type);
-		virtual void    Pick(vec2f pickPos);
+
+	public:
+		virtual void	Initilize()							= 0;
+		virtual void	Cleanup()							= 0; 
+		virtual void    Clear(Color4 color, int clearType)	= 0;
+		virtual void	BindDefaultBackbuffer()				= 0;
+		virtual void	UseShareContext()					= 0;
+		virtual void	UseRenderContext()					= 0;
+		virtual void	BeginFrame()						= 0;
+		virtual void	EndFrame()							= 0;
+		virtual void    SetCullFaceType(CULL_FACE type)		= 0;
+		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle) = 0;
+
 	public:
 		RendererManager * GetRenderManager();
 		MaterialManager * GetMaterialManager();
 		TextureDataManager *GetTextureDataManager();
 		ShaderManager * GetShaderManager();
+		virtual void	CreateShareContext();
 
-	public:
-		virtual void BeginFrame();
-		virtual void EndFrame();
 
 	public:
 		void	setFrameHeight(float height);

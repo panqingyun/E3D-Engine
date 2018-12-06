@@ -52,9 +52,4 @@ namespace E3DEngine
 		delete back_data;
 	}
 	
-	void CubeMapTexture::createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back)
-	{
-
-	}
-
 }

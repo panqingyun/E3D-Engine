@@ -139,12 +139,6 @@ namespace E3DEngine
 	{
 		glCullFace(type == eCF_BACK ? GL_BACK : GL_FRONT);
 	}
-
-	void GL_RenderSystem::Pick(vec2f pickPos)
-	{
-
-	}
-
 }
 
 void* CreateGLRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)

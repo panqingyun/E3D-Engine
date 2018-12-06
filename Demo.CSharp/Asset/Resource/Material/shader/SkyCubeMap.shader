@@ -13,12 +13,14 @@
 varying vec3 ReflectDir;
 varying vec4 vertColor;
 varying vec3 lightDir;
+varying vec4 lightColor;
 
 varying vec4 vPos;
 varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec4 DestinationColor;
+varying vec2 UV;
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
                        0.0 , 0.0 , 0.5 , 0.0 ,
@@ -35,12 +37,14 @@ void main(void)
 	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
 	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
 	lightDir = _e3d_WorldSpaceLightDirection;
+	lightColor = _e3d_WorldSpaceLightColor;
 	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 50.0) * color;
 #endif
 	initFogNeedVar(position);
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos = _pos; // 顶点位置
 	vNrm = normalize(_normal.xyz); // 顶点法线
+	UV = inputTextureCoordinate;
     gl_Position = _e3d_getMVPMatrix() * vec4(position, 1.0);
 }
 
@@ -54,6 +58,7 @@ precision highp float;
 varying vec3 ReflectDir;
 
 uniform samplerCube skybox;
+uniform sampler2D myTexture0;
 varying vec4 vertColor;
 
 varying vec4 vPos;
@@ -61,11 +66,14 @@ varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec3 lightDir;
+varying vec4 lightColor;
+varying vec2 UV;
 
 uniform float fresnelBias;
 uniform float etaRatio;
 varying vec4 DestinationColor;
 
+const float PI = 3.141592653;
 const float fresnelScale = 0.1;
 const float fresnelPower = 50.0;
 
@@ -74,6 +82,57 @@ vec4 lerp(vec4 a, vec4 b, float s)
 	return vec4(a+(b-a)*s);
 }
 
+
+float GeometrySchlickGGX(float NdotV, float roughness)
+{
+    float r = (roughness + 1.0);
+    float k = (r*r) / 8.0;
+
+    float num   = NdotV;
+    float denom = NdotV * (1.0 - k) + k;
+	
+    return num / denom;
+}
+
+float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
+{
+    float NdotV = max(dot(N, V), 0.0);
+    float NdotL = max(dot(N, L), 0.0);
+    float ggx2  = GeometrySchlickGGX(NdotV, roughness);
+    float ggx1  = GeometrySchlickGGX(NdotL, roughness);
+	
+    return ggx1 * ggx2;
+}
+
+// NDF
+float DistributionGGX(vec3 N, vec3 H, float roughness)
+{
+    float a      = roughness*roughness;
+    float a2     = a*a;
+    float NdotH  = max(dot(N, H), 0.0);
+    float NdotH2 = NdotH*NdotH;
+	
+    float num   = a2;
+    float denom = (NdotH2 * (a2 - 1.0) + 1.0);
+    denom = PI * denom * denom;
+	
+    return num / denom;
+}
+
+
+vec4 getLightColor(vec3 position, vec3 normal)
+{
+	//--- 光照 Blinn Phong 模型
+	vec3 N = normalize(normal);
+	vec3 L = normalize(lightDir);
+	vec3 V = normalize(eyePosition - position);
+	vec3 H = normalize(V + L);
+	vec3 diffuse = vec3((lightColor * max(dot(N, L), 0.0)).xyz) ;
+	
+	vec3 specular = vec3((lightColor * pow(max(dot(N, H), 0.0), fresnelPower)).xyz) * GeometrySmith(N, V, L, 0.0);
+
+	return vec4(diffuse + specular + vec4(0.8,0.8,0.8,1.0), 1.0);
+}
 
 vec4 FresnelShading(void)
 {
@@ -103,7 +162,10 @@ void main(void)
 { 
 	float bias = max(0.008 * (1.0 - dot(vNrm, lightDir)), 0.0008);
 	float shadowColor = getShadowColor(v_Pos, bias);
-	gl_FragColor = FresnelShading() * vec4(vertColor.rgb * shadowColor, vertColor.a);
+	vec4 freColor = FresnelShading();
+	vec4 lcolor = getLightColor(vPos, vNrm);
+	//* texture2D(myTexture0, UV)
+	gl_FragColor = freColor * lcolor * vec4(vertColor.rgb * shadowColor, vertColor.a);
 }
 
 #Framgent_End

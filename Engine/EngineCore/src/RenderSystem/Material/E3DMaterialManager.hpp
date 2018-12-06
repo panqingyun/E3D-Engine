@@ -44,7 +44,7 @@ namespace E3DEngine
 		virtual void Cleanup();
 
 	protected:
-		virtual Material * createMatrerial();
+		virtual Material * createMatrerial() = 0;
 
 	protected:
 		std::map<int, Material*>		 m_mapIDMaterials;

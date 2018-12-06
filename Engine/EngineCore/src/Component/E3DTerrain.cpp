@@ -48,14 +48,19 @@ void E3DEngine::Terrain::createHeightMap()
 			{
 				for (int j = 0; j < mapHeight; j++)
 				{
-					x = (float)i - mapWidth / 2.0f;
-					z = -((float)j - mapHeight / 2.0f);
+					x = i - mapWidth / 2.0f;
+					z = -(j - mapHeight / 2.0f);
 					// [TODO] 
 					char r = mapContent[i * mapWidth + j + 0];
 					char g = mapContent[i * mapWidth + j + 1];
 					char b = mapContent[i * mapWidth + j + 2];
 					y = ((r + g + b) / 3.0) / 10;
-					vecVertex[vertexIndex].SetPosition(x * 5, y, z * 5);
+					// 0 ---- 3
+					// |\     |
+					// |  \   |
+					// |    \ |
+					// 1----- 2
+					vecVertex[vertexIndex].SetPosition(x, y, z);
 					vecVertex[vertexIndex].SetNormal(0, 1, 0);
 					vecVertex[vertexIndex].SetColor(1, 1, 1, 1);
 					vecVertex[vertexIndex].SettextureCoord1((float)i / (mapWidth - 1), (float)j / (mapHeight - 1));

@@ -11,17 +11,14 @@ namespace E3DEngine
 	protected:
 		Render2Texture();
 	public:
-		virtual void CreateRenderTarget(float width, float height);
-		virtual void CreateDepthTarget(float width, float height);
+		virtual void CreateRenderTarget(float width, float height) = 0;
+		virtual void CreateDepthTarget(float width, float height) = 0;
 	public:
 		virtual ~Render2Texture();
 
-		virtual void  Bind();
+		virtual void  Bind() = 0;
 		float GetWidth();
 		float GetHeight();
-
-	public:
-		virtual void Update(float deltaTime);
 
 	protected:
 		Camera				*   m_pCamera; 

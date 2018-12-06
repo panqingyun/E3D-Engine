@@ -18,7 +18,7 @@ vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
 // vec4 GammaCorrection(vec4 fragColor)
 // {
 	// float gamma = 2.2;
-	// return pow(fragColor.rgb, vec3(1.0 / gamma));
+	// return vec4(pow(fragColor.rgb, vec3(1.0 / gamma)),1.0);
 // }
 
 float getShadowColor(vec4 pos, float bias)

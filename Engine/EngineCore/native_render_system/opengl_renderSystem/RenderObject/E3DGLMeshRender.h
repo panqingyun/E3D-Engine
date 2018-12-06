@@ -7,15 +7,8 @@ namespace E3DEngine
 	class GL_MeshRender : public MeshRender
 	{
 	public:
-		GL_MeshRender()
-		{
-			pRender = new GL_Renderer;
-			pRender->mName = mName;
-		}
-		virtual ~GL_MeshRender() override
-		{
-			SAFE_DELETE(pRender);
-		}
+		GL_MeshRender();
+		virtual ~GL_MeshRender() override;
 		
 	public:
 		virtual void FillBegin(UINT objId);
@@ -29,17 +22,17 @@ namespace E3DEngine
 		virtual void SetDrawModule(DWORD module) override;
 
 	public:
-		virtual UINT GetDrawModule() { return pRender->GetDrawModule(); }
+		virtual UINT GetDrawModule();
 		virtual CTransform * GetTransform();
 		virtual void SetTransform(CTransform *_transform);
 		virtual void CreateNewTransform();
 		//virtual void SetRenderIndex(DWORD index) override;
 
 		virtual void SetMaterial(Material *material);
-		virtual void SetLayerMask(DWORD layer) { pRender->SetLayerMask(layer); }
-		virtual Material *GetMaterial() { return pRender->GetMaterial(); }
-		virtual void SetCamera(Camera * camera) { pRender->SetCamera(camera); }
-		virtual void ClearVertexIndexBuffer() { pRender->ClearVertexIndexBuffer(); }
+		virtual void SetLayerMask(DWORD layer);
+		virtual Material *GetMaterial();
+		virtual void SetCamera(Camera * camera);
+		virtual void ClearVertexIndexBuffer();
 		virtual Camera *GetCamera() override;
 	};
 }

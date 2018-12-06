@@ -116,10 +116,4 @@ namespace E3DEngine
 		m_mapConfigMaterial.clear();
 	}
 
-
-	E3DEngine::Material * MaterialManager::createMatrerial()
-	{
-		return nullptr;
-	}
-
 }

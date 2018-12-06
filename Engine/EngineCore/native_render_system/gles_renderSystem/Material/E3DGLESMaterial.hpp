@@ -25,9 +25,9 @@ namespace E3DEngine
 		virtual void UseNullProgram();
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
-
+		virtual void SetTexture(Texture * texture, int index = 0) override { }
 	protected:
-		void enableStencil()override;
+		void enableStencil();
 		virtual void openState();
 		
 	};

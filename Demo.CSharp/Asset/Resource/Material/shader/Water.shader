@@ -17,7 +17,6 @@ varying vec3 eyePosition;
 varying vec2 v_Coord;
 varying float time;
 varying vec4 v_InLightPos;
-varying mat4 rotateMatrix;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
@@ -53,17 +52,18 @@ mat4 getRotateMatrix(vec3 rotate)
 						   sin(rotate.y),0.0, cos(rotate.y),0.0,
 						   0.0,	0.0, 0.0,1.0);
 	
-	mat4 roateMatZ	= mat4(cos(rotate.z) ,sin(rotate.z),0.0, 0.0,
-						   -sin(rotate.z),cos(rotate.z),0.0, 0.0,
-						   0.0,	0.0,1.0, 0.0,
-						   0.0,	0.0,0.0, 1.0);
+	mat4 roateMatZ	= mat4(cos(rotate.z) ,	sin(rotate.z),	0.0, 0.0,
+						   -sin(rotate.z),	cos(rotate.z),	0.0, 0.0,
+						   0.0,						0.0,					1.0, 0.0,
+						   0.0,						0.0,					0.0, 1.0);
 	return roateMatX * roateMatY * roateMatZ;
 }
 
 
+
 void main(void)
 {
-	rotateMatrix = getRotateMatrix(_e3d_Rotation);
+	mat4 rotateMatrix = getRotateMatrix(_e3d_Rotation);
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);	
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos =  _e3d_matModel * vec4(position, 1.0);; // 顶点位置
@@ -107,7 +107,6 @@ varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
 varying float time;
-varying mat4 rotateMatrix;
 
 uniform float fresnelBias;
 uniform float etaRatio;
@@ -118,7 +117,7 @@ const float attenuation = 10.0;	//光线的衰减系数
 
 const float _BumpDepth = 1.0;
 const float _ReflScale = 3.598;
-const float fresnelScale = 0.6;
+const float fresnelScale = 0.7;
 const float fresnelPower = 1.0;
 
 float near_clip = 1.0;
@@ -138,11 +137,11 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition - position);
 	vec3 H = normalize(V + L);
-	vec3 diffuse = vec3((lightColor * max(dot(N, L), 0.0)).xyz);
+	float diffuse = max(dot(N, L), 0.0);
 	
-	vec3 specular = vec3((lightColor * pow(max(dot(N, H), 0.0), Ns)).xyz);
+	float specular = pow(max(dot(N, H), 0.0), Ns);
 
-	return vec4(diffuse + specular + ambient, 1.0);
+	return vec4((lightColor * ( diffuse * 0.4 + specular * 0.3 + ambient * 0.3)).rgb, 1.0);
 }
 
 
@@ -217,11 +216,11 @@ void main(void)
 	vec3 normal =  normalize(vec3(bump1.x, _BumpDepth, bump1.z)); // 扰动法线
 	vec3 normal2 =  normalize(vec3(bump2.x, _BumpDepth, bump2.z)); // 扰动法线
 	
-	vec3 normalVec1 = (rotateMatrix * vec4(normal, 1.0)).xyz; // 旋转法线到xz平面
-	vec3 normalVec2 = (rotateMatrix * vec4(normal2, 1.0)).xyz; // 旋转法线到xz平面
+	vec3 normalVec = vec3(-normal.x, normal.z, normal.y); // 旋转法线到xz平面
+	vec3 normalVec2 = vec3(normal2.x, normal2.z, normal2.y); // 旋转法线到xz平面
 	
-	vec4 _lightColor = getLightColor(vPos.xyz, normalVec1);
-	vec4 freColor1 = FresnelShading(normalVec1);
+	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
+	vec4 freColor1 = FresnelShading(normalVec);
 	vec4 freColor2 = FresnelShading(vNrm);
 	vec4 freColor3 = FresnelShading(normalVec2);	
 	// float r = pow(freColor2.r, 2.0);

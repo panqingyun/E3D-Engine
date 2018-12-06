@@ -104,7 +104,7 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float roughness)
 float DistributionGGX(vec3 N, vec3 H, float roughness)
 {
     float a      = roughness*roughness;
-    float a2     = a*a;
+    float a2     = pow(a, 3.0);
     float NdotH  = max(dot(N, H), 0.0);
     float NdotH2 = NdotH*NdotH;
 	
@@ -112,7 +112,7 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
     float denom = (NdotH2 * (a2 - 1.0) + 1.0);
     denom = PI * denom * denom;
 	
-    return pow(num / denom, 1.0/2.0);
+    return pow(num / denom, 1.0/2.2);
 }
 
 float rand(float x, float y)
@@ -131,9 +131,9 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	float fresnel = fresnelScale + (1- fresnelScale) * pow(1.0 - dot(N, V), fresnelPower);
 	float ambent = textureCube(skybox, N).r;
 	float roughness = pow(clamp(rand(UV.x, UV.y), 0.5,0.6), 2.0) * ambent; // 随机一个粗糙度
-	vec3 specular = DistributionGGX(N,H,roughness)* GeometrySmith(N, V, L, roughness);// vec3((lightColor * pow(max(dot(N, H), 0.0), fresnelPower)).xyz) 
+	vec3 specular = DistributionGGX(N, H,roughness)* GeometrySmith(N, V, L, roughness);// vec3((lightColor * pow(max(dot(N, H), 0.0), fresnelPower)).xyz) 
 
-	return vec4(lightColor *specular + lightColor*  diffuse + lightColor * 0.5, 1.0) * fresnel;
+	return vec4(lightColor *specular + lightColor*  diffuse + lightColor * 0.2, 1.0) * fresnel;
 }
 
 vec4 FresnelShading(void)

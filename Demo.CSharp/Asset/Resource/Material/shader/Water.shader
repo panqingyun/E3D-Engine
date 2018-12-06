@@ -17,6 +17,7 @@ varying vec3 eyePosition;
 varying vec2 v_Coord;
 varying float time;
 varying vec4 v_InLightPos;
+varying mat4 rotateMatrix;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
@@ -39,19 +40,30 @@ const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.0 , 0.5 , 0.0 ,
                        0.5 , 0.5 , 0.5 , 1.0 ) ;
 					   
-mat4 getRotateMatrix()
+
+mat4 getRotateMatrix(vec3 rotate)
 {
-	mat4 rotate;
-	rotate[0] = _e3d_matModel[0];
-	rotate[1] = _e3d_matModel[1];
-	rotate[2] = _e3d_matModel[2];
-	rotate[3] = vec4(0.0,0.0,0.0,1.0);
-	return rotate;
+	mat4 roateMatX	= mat4(1.0, 0.0,0.0,0.0,
+						   0.0, cos(rotate.x),sin(rotate.x),0.0,
+						   0.0, -sin(rotate.x),cos(rotate.x),0.0,
+						   0.0, 0.0,0.0, 1.0);
+	
+	mat4 roateMatY	= mat4(cos(rotate.y),0.0, -sin(rotate.y),0.0,
+						   0.0,	1.0, 0.0,0.0,
+						   sin(rotate.y),0.0, cos(rotate.y),0.0,
+						   0.0,	0.0, 0.0,1.0);
+	
+	mat4 roateMatZ	= mat4(cos(rotate.z) ,sin(rotate.z),0.0, 0.0,
+						   -sin(rotate.z),cos(rotate.z),0.0, 0.0,
+						   0.0,	0.0,1.0, 0.0,
+						   0.0,	0.0,0.0, 1.0);
+	return roateMatX * roateMatY * roateMatZ;
 }
+
 
 void main(void)
 {
-	mat4 rotateMatrix = getRotateMatrix();
+	rotateMatrix = getRotateMatrix(_e3d_Rotation);
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);	
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos =  _e3d_matModel * vec4(position, 1.0);; // 顶点位置
@@ -95,6 +107,7 @@ varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 v_Coord;
 varying float time;
+varying mat4 rotateMatrix;
 
 uniform float fresnelBias;
 uniform float etaRatio;
@@ -106,7 +119,7 @@ const float attenuation = 10.0;	//光线的衰减系数
 const float _BumpDepth = 1.0;
 const float _ReflScale = 3.598;
 const float fresnelScale = 0.6;
-const float fresnelPower = 10.0;
+const float fresnelPower = 1.0;
 
 float near_clip = 1.0;
 float ampify = 5.0;
@@ -138,17 +151,14 @@ vec4 FresnelShading(vec3 normal)
 	vec3 N = normalize(normal);
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition -  vPos.xyz);
-	vec3 H = normalize(V + L);
 	vec3 R = reflect(-V , N); // 反射
 	// 反射因子计算
-	float fresnel = fresnelScale + (1- fresnelScale) * pow(1.0 - dot(H, V), fresnelPower);
+	float fresnel = fresnelScale + (1- fresnelScale) * pow(1.0 - dot(N, V), fresnelPower);
 	// 获得反射环境色
 	vec4 reflecColor = textureCube(skybox, R);
 	reflecColor.a = 1.0;
 	// 颜色合成
-	vec4 cout = lerp(vertColor, reflecColor, fresnel);
-	cout.a = fresnel*0.5+0.5;
-	
+	vec4 cout = lerp(vertColor, reflecColor, fresnel);	
 	return cout;
 }
 
@@ -207,12 +217,13 @@ void main(void)
 	vec3 normal =  normalize(vec3(bump1.x, _BumpDepth, bump1.z)); // 扰动法线
 	vec3 normal2 =  normalize(vec3(bump2.x, _BumpDepth, bump2.z)); // 扰动法线
 	
-	vec3 normalVec = vec3(normal.x, normal.z, -normal.y); // 旋转法线到xz平面
+	vec3 normalVec1 = (rotateMatrix * vec4(normal, 1.0)).xyz; // 旋转法线到xz平面
+	vec3 normalVec2 = (rotateMatrix * vec4(normal2, 1.0)).xyz; // 旋转法线到xz平面
 	
-	vec4 _lightColor = getLightColor(vPos.xyz, normalVec.xyz);
-	vec4 freColor1 = FresnelShading(normalVec);
+	vec4 _lightColor = getLightColor(vPos.xyz, normalVec1);
+	vec4 freColor1 = FresnelShading(normalVec1);
 	vec4 freColor2 = FresnelShading(vNrm);
-	vec4 freColor3 = FresnelShading(vec3(normal2.x, normal2.z, -normal2.y));	
+	vec4 freColor3 = FresnelShading(normalVec2);	
 	// float r = pow(freColor2.r, 2.0);
 	// float g = pow(freColor2.g, 2.0);
 	// float b = pow(freColor2.b, 2.0);

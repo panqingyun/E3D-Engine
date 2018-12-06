@@ -105,7 +105,7 @@ const float attenuation = 10.0;	//光线的衰减系数
 
 const float _BumpDepth = 1.0;
 const float _ReflScale = 3.598;
-const float fresnelScale = 0.1;
+const float fresnelScale = 0.6;
 const float fresnelPower = 10.0;
 
 float near_clip = 1.0;
@@ -127,12 +127,7 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 H = normalize(V + L);
 	vec3 diffuse = vec3((lightColor * max(dot(N, L), 0.0)).xyz);
 	
-	// vec3 R=reflect(L,N);
-	// R=normalize(R);
-	// float specularLight = pow(max(dot(V, R), 0), Ns);
-	// vec3 specular = (attenuation * lightColor * specularLight).xyz;
-	
-	vec3 specular = vec3((lightColor * pow(max(dot(N, H), 0.0), Ns) * attenuation).xyz);
+	vec3 specular = vec3((lightColor * pow(max(dot(N, H), 0.0), Ns)).xyz);
 
 	return vec4(diffuse + specular + ambient, 1.0);
 }
@@ -140,22 +135,18 @@ vec4 getLightColor(vec3 position, vec3 normal)
 
 vec4 FresnelShading(vec3 normal)
 {
-	// 计算入射，反射，折射
-	vec3 N = normalize(normal); // 法线
-	vec3 I = normalize(vPos.xyz-eyePosition); // 入射
-	vec3 R = reflect(I, N); // 反射
-	vec3 T = refract(I, N, etaRatio); // 折射
+	vec3 N = normalize(normal);
+	vec3 L = normalize(lightDir);
+	vec3 V = normalize(eyePosition -  vPos.xyz);
+	vec3 H = normalize(V + L);
+	vec3 R = reflect(-V , N); // 反射
 	// 反射因子计算
-	float fresnel = fresnelBias+fresnelScale*pow(min(0.0, 1.0-dot(I, N)), fresnelPower);
+	float fresnel = fresnelScale + (1- fresnelScale) * pow(1.0 - dot(H, V), fresnelPower);
 	// 获得反射环境色
 	vec4 reflecColor = textureCube(skybox, R);
 	reflecColor.a = 1.0;
-	// 计算折射环境色
-	vec4 refracColor;
-	refracColor.rgb = textureCube(skybox, T).rgb;
-	refracColor.a = 1.0;
 	// 颜色合成
-	vec4 cout = lerp(refracColor, reflecColor, fresnel);
+	vec4 cout = lerp(vertColor, reflecColor, fresnel);
 	cout.a = fresnel*0.5+0.5;
 	
 	return cout;
@@ -232,7 +223,7 @@ void main(void)
     float clr = (maxDist - dist) / (maxDist - minDist);  
     clr = pow(clamp( clr , 0.0, 1.0 ),2.0);    
     vec4 mColor = freColor2 * 0.4 + freColor1 * 0.3 + freColor3 * 0.3 ;
-	mColor.rgb = mix(vertColor * (freColor1 * 0.5 + freColor3 * 0.5) , pow(mColor.rgb, vec3(1.0 / 1.5)), 1.0 - clr );
+	mColor.rgb = mix((freColor1 * 0.5 + freColor3 * 0.5) , pow(mColor.rgb, vec3(1.0 / 1.5)), 1.0 - clr );
 	float alpha = 1.0 - clr + 0.7;
 	gl_FragColor = vec4((mColor).rgb, alpha) ;
 }

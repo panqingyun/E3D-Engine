@@ -185,7 +185,7 @@ namespace E3DEngine
 		if (dlight != nullptr)
 		{
 			Color4 color = dlight->mGameObject->Color;
-			if (!dlight->IsActive)
+			if (!dlight->mGameObject->IsActive)
 			{
 				color.r = 0; color.g = 0; color.b = 0; color.a = 1;
 			}
@@ -220,7 +220,7 @@ namespace E3DEngine
 
 		for (auto & pl : plights)
 		{			
-			if (pl.second->IsActive)
+			if (pl.second->mGameObject->IsActive)
 			{
 				lightPos.emplace_back(pl.second->Transform->Position.x);
 				lightPos.emplace_back(pl.second->Transform->Position.y);

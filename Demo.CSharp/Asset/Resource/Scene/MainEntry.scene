@@ -16,14 +16,14 @@
             <Field CenterPosition="145.000000,60.000000,100.000000" CreateShadow="true" Range="220.000000" TextureSize="4096.000000" />
         </Component>
     </GameObject>
-    <GameObject Name="PointLight" Type="1" LayerMask="AllLayer" Active="true" Color="FAC400FF">
+    <GameObject Name="PointLight" Type="1" LayerMask="AllLayer" Active="false" Color="FAC400FF">
         <Transform Posistion="105.493439,60.452808,137.958862" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.PointLight">
             <Field CreateShadow="false" Range="80.000000" TextureSize="0.000000" />
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="108.485237,34.708305,145.791794" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="116.423637,55.236771,168.164200" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -40,7 +40,7 @@
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FDFEFFFF">
+    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FDF364FF">
         <Transform Posistion="110.395004,32.854729,133.219849" Rotation="-0.596582,-18.581457,91.880898" Scale="3.000000,3.000000,3.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />

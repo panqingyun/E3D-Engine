@@ -126,17 +126,20 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition - position);
 	vec3 H = normalize(V + L);
+	vec3 R = reflect(-V, N); // 反射
 	
 	float diffuse = max(dot(N, L), 0.0) / PI;
-	float ambent = textureCube(skybox, N).r;
-	float roughness = rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
-	
-	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower));
-	float _V = GeometrySmith(N, V, L, roughness) / 4 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
-	float _D = DistributionGGX(N, H,roughness);
-	vec3 specular = _V * _D + _F * 0.5;
+	float ambent = textureCube(skybox, R).r;
+	float roughness =  rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 8.0;
+	ambent = pow(ambent, 3.0);
+	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower))  * 0.5;
+	float _V = GeometrySmith(N, V, L, roughness) / 4.0 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
+	float _D =  DistributionGGX(N, H,roughness);
+	vec3 specular = _V * _D + _F;
+	vec3 ambSpec =  ambent + _F;
 
-	return vec4(lightColor *specular + lightColor*  diffuse + lightColor * 0.2, 1.0);
+	return vec4(lightColor * specular + lightColor * diffuse + ambSpec, 1.0);
 }
 
 vec4 FresnelShading(void)
@@ -144,9 +147,7 @@ vec4 FresnelShading(void)
 	// 计算入射，反射，折射
 	vec3 N = normalize(vNrm); // 法线
 	vec3 I = normalize(vPos.xyz-eyePosition); // 入射
-	//vec3 R = reflect(I, N); // 反射
 	vec3 R = reflect(I, N); // 反射
-	//vec3 T = refract(I, N, etaRatio); // 折射
 	vec3 T = refract(I, N, etaRatio); // 折射
 	// 反射因子计算
 	float fresnel = fresnelBias+ F0 * pow(min(0.0, 1.0-dot(I, N)), fresnelPower);

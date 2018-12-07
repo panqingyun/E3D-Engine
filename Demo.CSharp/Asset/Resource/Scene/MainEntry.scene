@@ -23,7 +23,7 @@
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="28.192766,118.388031,204.102753" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="47.389576,77.948524,250.020660" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -41,7 +41,7 @@
         </Component>
     </GameObject>
     <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FDFACBFF">
-        <Transform Posistion="30.070250,99.654732,129.429932" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
+        <Transform Posistion="104.836227,40.254688,183.165268" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
         </Component>

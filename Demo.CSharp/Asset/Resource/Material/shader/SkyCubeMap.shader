@@ -130,14 +130,15 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	
 	float diffuse = max(dot(N, L), 0.0) / PI;
 	float ambent = textureCube(skybox, R).r;
-	float roughness =  rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
-	ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 8.0;
-	ambent = pow(ambent, 3.0);
+	float roughness = 0.1;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 2.0;
+	ambent = pow(ambent, 4.0);
 	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower))  * 0.5;
 	float _V = GeometrySmith(N, V, L, roughness) / 4.0 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
 	float _D =  DistributionGGX(N, H,roughness);
 	vec3 specular = _V * _D + _F;
-	vec3 ambSpec =  ambent + _F;
+	
+	vec3 ambSpec = ambent * _V * _D + _F;
 
 	return vec4(lightColor * specular + lightColor * diffuse + ambSpec, 1.0);
 }

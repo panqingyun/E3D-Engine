@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-		<Item ID="1" ShaderID="1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="0" TextureClampType="1" TextureFilterType="5"/>
+		<Item ID="1" ShaderID="1" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<Item ID="1" ShaderPath="shader/Cube.shader" UniformVariable="myTexture0=Resource/Material/texture/HFZC_dizhuan01.jpg;"/>

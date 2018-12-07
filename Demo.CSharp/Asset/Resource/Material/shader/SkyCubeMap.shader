@@ -167,11 +167,9 @@ vec4 FresnelShading(void)
 
 void main(void) 
 { 
-	float bias = max(0.008 * (1.0 - dot(vNrm, lightDir)), 0.0008);
-	float shadowColor = getShadowColor(v_Pos, bias);
 	vec4 freColor = FresnelShading();
 	vec4 lcolor = getLightColor(vPos, vNrm);
-	gl_FragColor = lcolor * freColor * vec4(vertColor.rgb * shadowColor, vertColor.a);
+	gl_FragColor = lcolor * freColor * vec4(vertColor.rgb, vertColor.a);
 }
 
 #Framgent_End

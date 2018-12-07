@@ -10,7 +10,7 @@ float unpackDepth(const in vec4 rgbaDepth)
     return depth;
 }
 
-float texture2DCompare(sampler2D depths, vec2 uv, float compare)
+float texture2DCompare(sampler2D depths, vec2 uv, float compare, float bias)
 {
     float depth = unpackDepth(texture2D(depths, uv));
     return step(compare,depth);
@@ -35,10 +35,10 @@ float texture2DShadowLerp(sampler2D depths, vec2 uv, float compare, float bias)
 	vec2 texelSize = vec2(1.0) / vec2(size, size);
     vec2 centroidUV = floor(uv * size + 0.5) / size;
     vec2 f = fract(uv * size + 0.5);
-    float lb = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 0.0), compare);
-    float lt = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 1.0), compare);
-    float rb = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 0.0), compare);
-    float rt = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 1.0), compare);
+    float lb = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 0.0), compare ,bias);
+    float lt = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 1.0), compare ,bias);
+    float rb = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 0.0), compare ,bias);
+    float rt = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 1.0), compare ,bias);
     float a = mix(lb, lt, f.y);
     float b = mix(rb, rt, f.y);
     float c = mix(a, b, f.x);
@@ -65,7 +65,7 @@ float getShadowColor(vec4 pos, float bias)
 	float shadowColor = 1.0;
 #ifndef __GLES__
 #ifdef __CREATE_SHADOW__
-	shadowColor = clamp(PCFLerp(_e3d_lightDepthTex, pos.xy, pos.z, bias) + 0.3, 0.3, 1.0);
+	shadowColor = clamp(PCFLerp(_e3d_lightDepthTex, pos.xy, pos.z + bias , bias) + 0.3, 0.3, 1.0);
 #endif
 #endif
 	return shadowColor;

@@ -70,7 +70,7 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const float PI = 3.141592653;
-const float fresnelScale = 0.3;
+const float F0 = 0.04;
 const float fresnelPower = 2.0;
 
 vec4 lerp(vec4 a, vec4 b, float s)
@@ -112,7 +112,7 @@ float DistributionGGX(vec3 N, vec3 H, float roughness)
     float denom = (NdotH2 * (a2 - 1.0) + 1.0);
     denom = PI * denom * denom;
 	
-    return pow(num / denom, 1.0/2.2);
+    return num / denom;
 }
 
 float rand(float x, float y)
@@ -126,14 +126,17 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 L = normalize(lightDir);
 	vec3 V = normalize(eyePosition - position);
 	vec3 H = normalize(V + L);
-	vec3 _H = normalize(V + N);
-	float diffuse = max(dot(N, L), 0.0);
-	float fresnel = fresnelScale + (1- fresnelScale) * pow(1.0 - dot(N, V), fresnelPower);
+	
+	float diffuse = max(dot(N, L), 0.0) / PI;
 	float ambent = textureCube(skybox, N).r;
-	float roughness = pow(clamp(rand(UV.x, UV.y), 0.5,0.6), 2.0) * ambent; // 随机一个粗糙度
-	vec3 specular = DistributionGGX(N, H,roughness)* GeometrySmith(N, V, L, roughness);// vec3((lightColor * pow(max(dot(N, H), 0.0), fresnelPower)).xyz) 
+	float roughness = rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	
+	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower));
+	float _V = GeometrySmith(N, V, L, roughness) / 4 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
+	float _D = DistributionGGX(N, H,roughness);
+	vec3 specular = _V * _D + _F * 0.5;
 
-	return vec4(lightColor *specular + lightColor*  diffuse + lightColor * 0.2, 1.0) * fresnel;
+	return vec4(lightColor *specular + lightColor*  diffuse + lightColor * 0.2, 1.0);
 }
 
 vec4 FresnelShading(void)
@@ -146,7 +149,7 @@ vec4 FresnelShading(void)
 	//vec3 T = refract(I, N, etaRatio); // 折射
 	vec3 T = refract(I, N, etaRatio); // 折射
 	// 反射因子计算
-	float fresnel = fresnelBias+fresnelScale*pow(min(0.0, 1.0-dot(I, N)), fresnelPower);
+	float fresnel = fresnelBias+ F0 * pow(min(0.0, 1.0-dot(I, N)), fresnelPower);
 	// 获得反射环境色
 	vec4 reflecColor = textureCube(skybox, R);
 	reflecColor.a = 1.0;

@@ -2,6 +2,20 @@
 varying vec3 vPosition;
 varying vec3 mCameraPos;
 
+
+float unpackDepth(const in vec4 rgbaDepth) 
+{
+    const vec4 bitShift = vec4(1.0, 1.0/256.0, 1.0/(256.0*256.0), 1.0/(256.0*256.0*256.0));
+    float depth = dot(rgbaDepth, bitShift);
+    return depth;
+}
+
+float texture2DCompare(sampler2D depths, vec2 uv, float compare)
+{
+    float depth = unpackDepth(texture2D(depths, uv));
+    return step(compare,depth);
+}
+
 vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
 {
 	float dist = abs(distance(mCameraPos, vPosition));
@@ -15,47 +29,43 @@ vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor)
     return mColor;
 }
 
-// vec4 GammaCorrection(vec4 fragColor)
-// {
-	// float gamma = 2.2;
-	// return vec4(pow(fragColor.rgb, vec3(1.0 / gamma)),1.0);
-// }
+float texture2DShadowLerp(sampler2D depths, vec2 uv, float compare, float bias)
+{
+    float size = textureSize(_e3d_lightDepthTex, 0).x;
+	vec2 texelSize = vec2(1.0) / vec2(size, size);
+    vec2 centroidUV = floor(uv * size + 0.5) / size;
+    vec2 f = fract(uv * size + 0.5);
+    float lb = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 0.0), compare);
+    float lt = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 1.0), compare);
+    float rb = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 0.0), compare);
+    float rt = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 1.0), compare);
+    float a = mix(lb, lt, f.y);
+    float b = mix(rb, rt, f.y);
+    float c = mix(a, b, f.x);
+    return c;
+}
+
+float PCFLerp(sampler2D depths, vec2 uv, float compare, float bias) 
+{	
+	vec2 textSize = 1.0/ textureSize(_e3d_lightDepthTex, 0);
+    float result = 0.0;
+    for(int x = -1; x <= 1; x++)
+	{
+        for(int y = -1; y <= 1; y++)
+		{
+            vec2 off = textSize * vec2(x,y);
+            result += texture2DShadowLerp(depths, uv + off, compare, bias);
+        }
+    }
+    return result / 9.0;
+}
 
 float getShadowColor(vec4 pos, float bias)
 {
 	float shadowColor = 1.0;
 #ifndef __GLES__
 #ifdef __CREATE_SHADOW__
-	vec2 textSize = 1.0/ textureSize(_e3d_lightDepthTex, 0);
- 	float depth = texture2D(_e3d_lightDepthTex, pos.xy).r;
-	
-	if(pos.z - bias > depth) // 
-	{
-		vec4 coord1 = vec4(clamp(pos.xy - textSize, 0.0, 1.0),pos.z, pos.w );		
-		vec4 coord2 = vec4(clamp(pos.xy + textSize, 0.0, 1.0),pos.z, pos.w );
-		vec4 coord3 = vec4(clamp(pos.x -  textSize.x, 0.0, 1.0), clamp(pos.y + textSize.y, 0.0, 1.0) ,pos.z, pos.w );
-		vec4 coord4 = vec4(clamp(pos.x +  textSize.x, 0.0, 1.0), clamp(pos.y - textSize.y, 0.0, 1.0) ,pos.z, pos.w );
-		
-		float depth1 =  texture2D(_e3d_lightDepthTex,coord1.xy).r;
-		float depth2 =  texture2D(_e3d_lightDepthTex,coord2.xy).r;
-		float depth3 =  texture2D(_e3d_lightDepthTex,coord3.xy).r;
-		float depth4 =  texture2D(_e3d_lightDepthTex,coord4.xy).r;
-		
-		depth1 = coord1.z - bias > depth1 ?  0.5 : 1.0; 
-		depth2 = coord2.z - bias > depth2 ?  0.5 : 1.0; 
-		depth3 = coord3.z - bias > depth3 ?  0.5 : 1.0; 
-		depth4 = coord4.z - bias > depth4 ?  0.5 : 1.0; 
-		
-		float mulColor = depth1* depth2 * depth3 * depth4;
-		if (mulColor < 1.0)
-		{
-			shadowColor = (depth1+ depth2 + depth3 + depth4 ) / 4.0 * 0.8;
-		}
-		else
-		{
-			shadowColor = 0.5;			
-		}
-	}	
+	shadowColor = clamp(PCFLerp(_e3d_lightDepthTex, pos.xy, pos.z, bias) + 0.3, 0.3, 1.0);
 #endif
 #endif
 	return shadowColor;

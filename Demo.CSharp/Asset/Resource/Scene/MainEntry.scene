@@ -23,7 +23,7 @@
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="47.389576,77.948524,250.020660" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="139.202881,32.594055,142.438354" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -40,7 +40,7 @@
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FDFACBFF">
+    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="DDAD1CFF">
         <Transform Posistion="104.836227,40.254688,183.165268" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
@@ -209,7 +209,7 @@
         </GameObject>
     </GameObject>
     <GameObject Name="zhuzi" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="143.415024,30.553928,137.093323" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
+        <Transform Posistion="143.415024,29.953924,137.093323" Rotation="-90.000000,0.000000,0.000000" Scale="0.040000,0.040000,0.040000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/xt_zhuzi01.fbx" />
         </Component>

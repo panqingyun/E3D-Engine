@@ -19,7 +19,7 @@
 ![](./ScreenShot/Editor2.jpg)
 ![](./ScreenShot/sphere2.png)
 ![](./ScreenShot/Sphere.png)   ![](./ScreenShot/SPhere1.png)
-![](./ScreenShot/tree.png)
+![](./ScreenShot/water.png)
 ## IOS 和 Android尚未完成
 
 ## Mono C#代码调试方法

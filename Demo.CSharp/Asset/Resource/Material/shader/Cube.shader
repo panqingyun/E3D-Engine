@@ -35,7 +35,7 @@ void main(void)
 	v_Pos = (v_Pos / v_Pos.w + 1.0) * 0.5;
 	lightDir = _e3d_WorldSpaceLightDirection;
 #endif
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0,1.0) * color;
 	normal = _normal.xyz;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
@@ -57,8 +57,8 @@ varying vec3 lightDir;
 					   
 void main(void) 
 {
-	float bias = max(0.008 * (1.0 - dot(normal, lightDir)), 0.0008);
-	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, bias);	
+	float bias = max(0.0005 * (1.0 - dot(normal, lightDir)), 0.0009);
+	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, 0.0);	
 	
 	gl_FragColor = DestinationColor * vec4(color.rgb, 1.0);
 }

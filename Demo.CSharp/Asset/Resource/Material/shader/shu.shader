@@ -11,8 +11,13 @@
 #include "Standard.shader"
 varying vec2 v_coord;
 varying vec4 DestinationColor;
+varying vec4 v_Pos;
 vec4 _WindDir = vec4(0.4,0.1,0.3,0.2);
 
+const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
+                       0.0 , 0.5 , 0.0 , 0.0 ,
+                       0.0 , 0.0 , 0.5 , 0.0 ,
+                       0.5 , 0.5 , 0.5 , 1.0 ) ;
 void main(void)
 {
     v_coord = inputTextureCoordinate;
@@ -26,9 +31,13 @@ void main(void)
 	initFogNeedVar(_pos.xyz);
 	float power = _WindDir.w;
 	_WindDir.w = 0.0;
+#ifdef USING_DIRECTIONAL_LIGHT	
+	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
+	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
+#endif
 	vec3 dir =  normalize(_e3d_matModel*_WindDir).xyz;
 	vec3 _vPos = position + dir * (sin(_Time + _e3d_matModel[3][2]) + 1.0) * power * pow(position.z / 100.0, 2.0); //摇动
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 2.0, 0.9) * color;
     gl_Position = _e3d_getMVPMatrix() * vec4(_vPos ,1.0);
 }
 
@@ -43,18 +52,19 @@ precision highp float;
 varying vec2 v_coord;
 uniform sampler2D myTexture0;
 varying vec4 DestinationColor;
+varying vec4 v_Pos;
 
 void main(void) 
 { 
 	vec4 color = texture2D(myTexture0, v_coord);
-	
+	//float shadow = getShadowColor(v_Pos, 0.001);
 	if(color.a < 0.3)
 	{
 		discard;
 	}
 	else
 	{		
-		gl_FragColor = mixFogColor( DestinationColor * color, vec4(1.0,1.0,1.0,1.0));
+		gl_FragColor = mixFogColor( DestinationColor * color , vec4(1.0,1.0,1.0,1.0));
 	}
 }
 

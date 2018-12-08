@@ -16,21 +16,21 @@
             <Field CenterPosition="145.000000,60.000000,100.000000" CreateShadow="true" Range="220.000000" TextureSize="4096.000000" />
         </Component>
     </GameObject>
-    <GameObject Name="PointLight" Type="1" LayerMask="AllLayer" Active="false" Color="FAC400FF">
-        <Transform Posistion="105.493439,60.452808,137.958862" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
+    <GameObject Name="PointLight" Type="1" LayerMask="AllLayer" Active="false" Color="FBFBFBFF">
+        <Transform Posistion="105.762756,68.852768,96.902611" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.PointLight">
             <Field CreateShadow="false" Range="80.000000" TextureSize="0.000000" />
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="80.777618,32.398563,184.833572" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="49.375637,31.298418,148.946503" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
         <Component Active="true" ClassName="E3DEngine.SkyBox" />
     </GameObject>
     <GameObject Name="Box" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="177.552536,35.705521,190.198410" Rotation="-89.999985,-69.125633,0.000240" Scale="2.000000,2.000000,2.000000" />
+        <Transform Posistion="170.578583,31.105251,157.259369" Rotation="-89.999985,-69.125633,0.000240" Scale="2.000000,2.000000,2.000000" />
         <Component Active="true" ClassName="E3DEngine.Box" />
         <Component Active="true" ClassName="E3DEngine.BoxCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
@@ -40,8 +40,8 @@
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="DDAD1CFF">
-        <Transform Posistion="104.836227,40.254688,183.165268" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
+    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FDFDFDFF">
+        <Transform Posistion="104.836227,40.454628,183.165268" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
         </Component>
@@ -51,8 +51,8 @@
         <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="83.956017,30.843464,190.400131" Rotation="-118.383614,-73.949181,154.215256" Scale="1.000000,1.000000,1.000000" />
+    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FEFEFEFF">
+        <Transform Posistion="71.448212,40.243450,166.625824" Rotation="-118.383614,-73.949181,154.215256" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>
@@ -62,8 +62,8 @@
         <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="71.802162,34.800003,141.261871" Rotation="0.000000,188.700089,0.000000" Scale="1.000000,1.000000,1.000000" />
+    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="false" Color="FFFFFFFF">
+        <Transform Posistion="82.000259,31.599894,141.048752" Rotation="0.000000,188.700089,0.000000" Scale="1.000000,1.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>
@@ -75,7 +75,7 @@
         <Component Active="true" ClassName="SelfRotateSphere">
             <Field RotateSpeed="80.000000" />
         </Component>
-        <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
+        <GameObject Name="Sphere" Type="1" LayerMask="0" Active="false" Color="FFFFFFFF">
             <Transform Posistion="3.500000,0.000000,0.000000" Rotation="0.000000,102.900063,0.000000" Scale="0.500000,0.500000,0.500000" />
             <Component Active="true" ClassName="E3DEngine.Renderer">
                 <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
@@ -86,7 +86,7 @@
             <Component Active="true" ClassName="E3DEngine.Sphere" />
             <Component Active="true" ClassName="E3DEngine.SphereCollider" />
         </GameObject>
-        <GameObject Name="particle" Type="2" LayerMask="27" Active="true" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
+        <GameObject Name="particle" Type="2" LayerMask="27" Active="false" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
             <Transform Posistion="0.000000,3.000000,0.000000" Rotation="0.000000,0.000000,0.000000" Scale="0.500000,0.500000,0.500000" />
         </GameObject>
     </GameObject>
@@ -103,7 +103,7 @@
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="fangzi" Type="1" LayerMask="0" Active="true" Color="FDFDFDFF">
+    <GameObject Name="fangzi" Type="1" LayerMask="0" Active="true" Color="FAFAFAFF">
         <Transform Posistion="101.432678,29.452709,105.291595" Rotation="-90.000000,0.000000,0.000000" Scale="0.050000,0.050000,0.050000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/jiebai_fangzi01.fbx" />
@@ -129,7 +129,7 @@
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="Water" Type="1" LayerMask="27" Active="true" Color="A2BCFA89">
+    <GameObject Name="Water" Type="1" LayerMask="27" Active="true" Color="FBFBFBFF">
         <Transform Posistion="120.000000,28.000000,130.000000" Rotation="-90.000000,0.000000,0.000000" Scale="10.000000,10.000000,1.000000" />
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/wls_huaban01.fbx" />

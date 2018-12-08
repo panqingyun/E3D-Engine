@@ -32,9 +32,7 @@ void main(void)
 	vec3 eyeDir = normalize(_pos.xyz - _e3d_CameraPos.xyz);
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	vertColor = color;
-#ifdef USING_DIRECTIONAL_LIGHT
-	v_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
-	v_Pos = biasMatrix* (v_Pos / v_Pos.w );
+#ifdef USING_DIRECTIONAL_LIGHT	
 	lightDir = _e3d_WorldSpaceLightDirection;
 	lightColor = _e3d_WorldSpaceLightColor;
 #endif
@@ -70,7 +68,7 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const float PI = 3.141592653;
-const float F0 = 0.04;
+const float F0 = 0.4;
 const float fresnelPower = 2.0;
 
 vec4 lerp(vec4 a, vec4 b, float s)
@@ -130,17 +128,17 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	
 	float diffuse = max(dot(N, L), 0.0) / PI;
 	float ambent = textureCube(skybox, R).r;
-	float roughness = 0.1;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	float roughness = 0.2;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
 	ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 2.0;
 	ambent = pow(ambent, 4.0);
 	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower))  * 0.5;
 	float _V = GeometrySmith(N, V, L, roughness) / 4.0 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
 	float _D =  DistributionGGX(N, H,roughness);
-	vec3 specular = _V * _D + _F;
+	vec3 specular = _V * _D;
 	
-	vec3 ambSpec = ambent * _V * _D + _F;
+	vec3 ambSpec = ambent * _V * _D;
 
-	return vec4(lightColor * specular + lightColor * diffuse + ambSpec, 1.0);
+	return vec4(lightColor * specular + lightColor * diffuse + ambSpec, 1.0) + vec4(1.0) * _F;
 }
 
 vec4 FresnelShading(void)

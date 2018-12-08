@@ -37,7 +37,7 @@ void main(void)
 #else
 	lightDir = vec4(1.0,1.0,1.0,1.0);
 #endif
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 500.0) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0, 0.8) * color;
 	initFogNeedVar(_pos.xyz);
 	normal = _normal.xyz;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
@@ -60,10 +60,18 @@ varying vec3 lightDir;
 					   
 void main(void) 
 {
-	float bias = max(0.004 * (1.0 - dot(normal, lightDir)), 0.0004);
-	vec4 color = texture2D(myTexture0, v_coord) * getShadowColor(v_Pos, bias);	
+	float shdow = getShadowColor(v_Pos, 0.0);
+	vec4 color = texture2D(myTexture0, v_coord);
+	if(shdow > 0.9)
+	{
+		color = color * DestinationColor;
+	}	
+	else
+	{
+		color = color * shdow;
+	}
 	
-	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0)) * DestinationColor;
+	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0));
 }
 
 #Framgent_End

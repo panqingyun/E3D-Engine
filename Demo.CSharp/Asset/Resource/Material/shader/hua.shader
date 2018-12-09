@@ -37,7 +37,7 @@ void main(void)
 #else
 	lightDir = vec4(1.0,1.0,1.0,1.0);
 #endif
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0, 0.8) * color;
+	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
 	initFogNeedVar(_pos.xyz);
 	normal = _normal.xyz;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);

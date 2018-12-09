@@ -39,7 +39,7 @@ vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 }
 
 // VDF BRDF
-float VDF(vec3 position, vec3 normal, float roughness, float frenal)
+float BRDF(vec3 position, vec3 normal, float roughness, float frenal)
 {
 	const float PI = 3.141592653;
 	vec3 N = normalize(normal);
@@ -71,14 +71,14 @@ vec4 getPBRLight(vec3 position, vec3 normal, float roughness, float frenal)
 	vec3 L = normalize(_e3d_WorldSpaceLightDirection);
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec4 diffuse = _e3d_WorldSpaceLightColor / PI;
-	vec4 specular = _e3d_WorldSpaceLightColor * VDF(position,normal, roughness, frenal);
+	vec4 specular = _e3d_WorldSpaceLightColor * BRDF(position,normal, roughness, frenal);
 	vec4 lightColor = (diffuse + specular) * max(dot(N, L), 0.0);
 	float _F = frenal + (1.0 - frenal)*pow((1.0 - max(dot(N, V), 0.0)), 2.0);
 	
 	return lightColor + ambient * _F;
 }
 
-vec4 getLightColor(vec3 position, vec3 normal, float ns, float frenal)
+vec4 getLightColor(vec3 position, vec3 normal, float ns)
 {
 	const float PI = 3.141592653;
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
@@ -88,7 +88,6 @@ vec4 getLightColor(vec3 position, vec3 normal, float ns, float frenal)
 	vec3 L = normalize(_e3d_WorldSpaceLightDirection);
 	vec3 V = normalize(_e3d_CameraPos - position);
 	vec3 H = normalize(V + L);
-	float F = frenal + (1.0 - frenal)*(1 - max(dot(N, H), 0.0));
 	vec4 diffuse = _e3d_WorldSpaceLightColor / PI;
 	vec4 specular = _e3d_WorldSpaceLightColor * ((ns + 8.0) / (8 * PI)) * pow(max(dot(N, H), 0.0), ns);
 	lightColor = (diffuse + specular) * max(dot(N, L), 0.0);//vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);

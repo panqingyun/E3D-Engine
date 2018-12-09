@@ -4,7 +4,7 @@
 		<Item ID="1" ShaderID="1" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="0" CullFace="0" TextureClampType="1" TextureFilterType="5"/>
 		<Item ID="2" ShaderID="2" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="0" CullFace="0" TextureClampType="1" TextureFilterType="5"/>
 		<Item ID="3" ShaderID="3" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="0" TextureClampType="1" TextureFilterType="5"/>
-		<Item ID="4" ShaderID="4" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="0" CullFace="1" TextureClampType="1" TextureFilterType="5"/>
+		<Item ID="4" ShaderID="4" CullFace="0" EnableDepthTest="0"  TextureClampType="1"/>
 	</MaterialConfig>
 	<ShaderConfig>
 		<Item ID="1" ShaderPath="shader/coordShader.shader"/>

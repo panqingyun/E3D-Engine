@@ -118,6 +118,16 @@ float rand(float x, float y)
 	return fract(cos(x * (12.9898) + y * (4.1414)) * 43758.5453);
 }
 
+vec2 sampling_equirectangular_map(vec3 n) {
+    float u = atan(n.z, n.x);
+    u = (u + PI) / (2.0 * PI);
+
+    float v = asin(n.y);
+    v = (v * 2.0 + PI) / (2.0 * PI);
+
+    return vec2(u, v);
+}
+
 vec4 getLightColor(vec3 position, vec3 normal)
 {
 	vec3 N = normalize(normal);

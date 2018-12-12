@@ -21,47 +21,31 @@ namespace E3DEngine
 		// -----------------------------------------------
 		// 渲染调用开始之前，使用材质
 		//-----------------------------------------------
-		virtual void UseMaterial() = 0;
-
+		virtual void UseMaterial()		= 0;
 		// -----------------------------------------------
 		// 材质失效
 		//-----------------------------------------------
-		virtual void InvalidMaterial() = 0;
-
-		// -----------------------------------------------
-		// 清理
-		//-----------------------------------------------
-		virtual void Destory();
-
-		// -----------------------------------------------
-		// 创建材质
-		// @param 材质配置
-		// @param Shader配置
-		//-----------------------------------------------
-		virtual void CreateMaterial(MaterialConfig * config);
-
+		virtual void InvalidMaterial()	= 0;
 		// -----------------------------------------------
 		// 给材质设置纹理
-		// @param 纹理
-		// @param 纹理索引
+		// @param texture 纹理
+		// @param index 纹理索引
 		//-----------------------------------------------
-		virtual void SetTexture(Texture * texture, int index = 0) = 0;
-
+		virtual void SetTexture(Texture * texture, int index = 0)	= 0;
 		// -----------------------------------------------
 		// 启用Shader
 		//-----------------------------------------------
-		virtual void UseProgram() = 0;
-		virtual void SetRenderState(){ }
+		virtual void UseProgram()									= 0;
 		// -----------------------------------------------
 		// 使用ID是0的shader 即不使用任何shader
 		//-----------------------------------------------
-		virtual void UseNullProgram()						= 0;
-		virtual void UpdateShader(unsigned int vertexType)	= 0;
+		virtual void UseNullProgram()								= 0;
+		// -----------------------------------------------
+		// 更新shader 变量
+		// @ param vertexType 顶点索引类型
+		//-----------------------------------------------
+		virtual void UpdateShader(unsigned int vertexType)			= 0;
 
-		virtual void SetEnableDepthWrite(bool bEnable);
-		virtual void SetBlendType(DWORD src, DWORD dst);
-		virtual void SetEnableDepthTest(bool enable);
-		virtual void SetEnableCullFace(bool enable);
 
 	public:
 		Shader *GetShader();
@@ -70,6 +54,9 @@ namespace E3DEngine
 		// @param shader配置
 		//-----------------------------------------------
 		void CreateShader(ShaderConfig *cfg);
+		// -----------------------------------------------
+		// 获取RenderTexture
+		//-----------------------------------------------
 		Render2Texture *GetRenderTexture();
 		// -----------------------------------------------
 		// 创建Mono对象
@@ -77,6 +64,24 @@ namespace E3DEngine
 		MonoBehaviour * GetBehaviour();
 		void SetColor(Color4 color);
 		int GetTextureCount();
+
+	public:
+
+		// -----------------------------------------------
+		// 清理
+		//-----------------------------------------------
+		virtual void Destory();
+		// -----------------------------------------------
+		// 创建材质
+		// @param 材质配置
+		// @param Shader配置
+		//-----------------------------------------------
+		void CreateMaterial(MaterialConfig * config);
+		void SetRenderState() { }
+		void SetEnableDepthWrite(bool bEnable);
+		void SetBlendType(DWORD src, DWORD dst);
+		void SetEnableDepthTest(bool enable);
+		void SetEnableCullFace(bool enable);
 	protected:
 		void createCubeTexture(std::vector<std::string> &varValues);
 		void initUniformValue(ShaderConfig * sCfg, MaterialConfig * config);
@@ -91,8 +96,9 @@ namespace E3DEngine
 		bool        turnOnBlend;
 		DWORD		srcBlendFactor;
 		DWORD		dstBlendFactor;
-		Render2Texture *Rtt;
 		int			textureCount;
+
+		Render2Texture *Rtt;
 
 	public:
 		Shader			* mShader;		// shader

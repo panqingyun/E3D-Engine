@@ -137,7 +137,6 @@ namespace E3DEngine
 		virtual unsigned int GetUniformLocation(std::string uniformName);
 	public:
 		virtual void	DeleteShader() { }
-		std::map<std::string, std::string> &GetSamplerNameValue();
 		std::string GetUniformType(std::string uniformName);
 
 	public:

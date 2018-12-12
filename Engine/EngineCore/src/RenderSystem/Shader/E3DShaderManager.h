@@ -17,7 +17,7 @@ namespace E3DEngine
 	public: 
 		Shader * GetShader(std::string shaderFullPath);
 		Shader * CreateShader(ShaderConfig * sCfg, std::string materailPath);
-		virtual void Cleanup();
+		void Cleanup();
 
 	protected:
 		virtual Shader* createShader(std::string shaderPath, std::string unifVar)	= 0;

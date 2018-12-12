@@ -87,11 +87,11 @@ namespace E3DEngine
 
 	void ErrorLogger::Log(const char * log)
 	{
-		/*std::string outLog = StringBuilder::Format("[error]%s\n", log);
+		std::string outLog = StringBuilder::Format("[error]%s\n", log);
 		if (Debug::OutputLogFunc != nullptr)
 		{
 			Debug::OutputLogFunc(outLog.c_str());
-		}*/
+		}
 	}
 
 	void InfoLogger::Log(const char * log)

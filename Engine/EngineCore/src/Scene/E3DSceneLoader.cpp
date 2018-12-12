@@ -304,7 +304,6 @@ namespace E3DEngine
 			if (go != nullptr)
 			{
 				go->SetIsStatic(isStatic);
-				setObjectCommonValue(go, item->ToElement(), _type);
 				if (parent == nullptr)
 				{
 					ADD_IN_SCENE(go);
@@ -313,6 +312,7 @@ namespace E3DEngine
 				{
 					parent->AddChild(go);
 				}
+				setObjectCommonValue(go, item->ToElement(), _type);
 				CreateObjects(go, item->ToElement());
 				go->CreateComplete();
 			}

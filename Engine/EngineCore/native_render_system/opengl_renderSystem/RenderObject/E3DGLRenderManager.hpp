@@ -14,7 +14,7 @@ namespace E3DEngine
 		virtual BatchRenderer * CreateRender(Material* material) override;
 		virtual void AddRenderer(int materialID, BatchRenderer * rd) override;
 		virtual BatchRenderer * GenRender() override;
-		virtual void Cleanup() override;
+		virtual void Cleanup() override; 
 
 	protected:
 		virtual BatchRenderer * newRenderer(RENDER_TYPE type, int materialID) override;

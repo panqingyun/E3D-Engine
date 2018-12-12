@@ -31,7 +31,8 @@ uniform sampler2D myTexture0;
 
 void main(void) 
 {
-	gl_FragColor = texture2D(myTexture0, v_coord);
+	vec4 frameColor = texture2D(myTexture0, v_coord);
+	gl_FragColor = frameColor;
 }
 
 #Framgent_End

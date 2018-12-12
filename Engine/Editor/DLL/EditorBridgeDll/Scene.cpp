@@ -352,7 +352,6 @@ namespace E3DEngine
 	void SceneManageRef::OnFrameSizeChange()
 	{
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
-
 		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
 

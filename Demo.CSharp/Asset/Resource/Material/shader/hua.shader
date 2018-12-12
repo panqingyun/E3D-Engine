@@ -57,7 +57,7 @@ varying vec4 DestinationColor;
 varying vec4 v_Pos;
 varying vec3 normal;
 varying vec3 lightDir;
-					   
+
 void main(void) 
 {
 	float shdow = getShadowColor(v_Pos, 0.0);

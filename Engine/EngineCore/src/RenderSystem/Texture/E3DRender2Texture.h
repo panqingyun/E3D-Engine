@@ -11,12 +11,12 @@ namespace E3DEngine
 	protected:
 		Render2Texture();
 	public:
-		virtual void CreateRenderTarget(float width, float height) = 0;
-		virtual void CreateDepthTarget(float width, float height) = 0;
+		virtual void CreateRenderTarget(float width, float height)	= 0;
+		virtual void CreateDepthTarget(float width, float height)	= 0;
+		virtual void  Bind()										= 0;
 	public:
 		virtual ~Render2Texture();
 
-		virtual void  Bind() = 0;
 		float GetWidth();
 		float GetHeight();
 

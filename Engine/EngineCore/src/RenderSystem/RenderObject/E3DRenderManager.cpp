@@ -43,11 +43,4 @@ namespace E3DEngine
 		GetRenderSystem()->UseRenderContext();
 		return buffer;
 	}
-
-	void RendererManager::Cleanup()
-	{
-		m_mapVertexBuffers.clear();
-		m_mapMaterialID2RendererID.clear();
-	}
-
 }

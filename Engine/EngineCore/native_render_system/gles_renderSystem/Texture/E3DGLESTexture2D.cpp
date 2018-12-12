@@ -19,6 +19,7 @@ namespace E3DEngine
 
 	void GLES_Texture2D::Create(TextureData *tData)
 	{
+		Texture2D::Create(tData);
 		DWORD  rgbModule = 0;
 		if (tData->rgbModule == PixelFormat::R8G8B8)
 		{
@@ -106,6 +107,7 @@ namespace E3DEngine
 
 	void GLES_Texture2D::SetTextureData(TextureData *tData)
 	{
+		Texture2D::SetTextureData(tData);
 		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
 		ES2::TexImage2D(GL_TEXTURE_2D, 0, tData->rgbModule, tData->width, tData->height, 0, tData->rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
 		ES2::BindTexture(GL_TEXTURE_2D, 0);

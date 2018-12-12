@@ -13,9 +13,9 @@ namespace E3DEngine
 		virtual BatchRenderer * CreateRender(Material* material)		= 0;
 		virtual BatchRenderer * GenRender()								= 0;
 		virtual void AddRenderer(int materialID, BatchRenderer * rd)	= 0;
-		virtual BatchRenderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false);
-		virtual void Cleanup();
+		virtual void Cleanup()											= 0;
 
+		BatchRenderer * GetRenderer(int materialID, int vertexSize, RENDER_TYPE type = NORMAL, bool isStatic = false);
 	protected:
 		virtual BatchRenderer * newRenderer(RENDER_TYPE type, int materialID) = 0;
 	protected:

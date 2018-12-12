@@ -19,7 +19,6 @@ namespace E3DEngine
 		virtual void UseNullProgram();
 		virtual void InvalidMaterial();
 		virtual void UpdateShader(unsigned int vertexType);
-		virtual void SetRenderState() override;
 		void DisableVertexAttrib(unsigned int vertexType);
 		virtual void SetTexture(Texture * texture, int index = 0) override { }
 	protected:

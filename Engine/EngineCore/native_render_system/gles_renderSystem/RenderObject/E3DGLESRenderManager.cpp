@@ -37,6 +37,7 @@ namespace E3DEngine
 			SAFE_DELETE(render.second);
 		}
 		m_mapVertexBuffers.clear();
+		m_mapMaterialID2RendererID.clear();
 	}
 
 	E3DEngine::BatchRenderer * GLES_RendererManager::newRenderer(RENDER_TYPE type,  int materialID)

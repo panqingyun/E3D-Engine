@@ -941,19 +941,12 @@ namespace E3DEditor.ViewModel
                 RenderDelegate.UpdatePhysics();
             }
         }
-
-        private int i = 0;
+        
         private void engineUpdate(object sender, EventArgs e)
         {
             if (EngineLoaded)
             {
                 RenderDelegate.LogicUpdate();
-                if(i < 30)
-                {
-                    i++;
-                    return;
-                }
-                i = 0;
                 GameFPS = 0;
                 //RenderDelegate.RenderUpdate();
             }

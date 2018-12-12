@@ -58,7 +58,7 @@ namespace E3DEngine
 		void AddChild(unsigned int objID ,CTransform * child);
 		mat4f GetParentMatrix();
 		void Destory();
-
+		void SetStateChanged(bool bChange);
 	protected:
 		void  translation();
 		void  rotate();

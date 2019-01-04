@@ -187,7 +187,7 @@ namespace E3DEngine
 			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
 			vec3f direction = dlight->GetDirection();
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, direction.x, direction.y, direction.z);
-			if (object_cast<bool>(Light::GetCreateShadow(dlight)))
+			if (dlight->CreateShadow)
 			{
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_PROJ_MAT, dlight->GetShadowCamera()->GetProjectionMatrix());
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_VIEW_MAT, dlight->GetShadowCamera()->GetViewMatrix());

@@ -1,9 +1,9 @@
 ﻿#include "E3DGLRender2Texture.h"
 
-void E3DEngine::GL_Render2Texture::CreateRenderTarget(float width, float height)
+void E3DEngine::GL_Render2Texture::CreateRenderTarget(float width, float height, int multiSampleLevel)
 {
 	m_fbo = new FrameBufferObject();
-	m_fbo->Create(width, height, RENDER_TO_TEXTURE);
+	m_fbo->Create(width, height, RENDER_TO_TEXTURE, multiSampleLevel);
 	m_nWidth = width;
 	m_nHeight = height;
 	m_nTextureBuffer = m_fbo->GetTextureBufferID();

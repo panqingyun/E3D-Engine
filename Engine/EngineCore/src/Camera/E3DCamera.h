@@ -20,16 +20,7 @@ namespace E3DEngine
 		DECLARE_CLASS(Camera)
 		friend class Render2Texture;
 	public:
-		Camera() 
-		{
-			Perspective = true;
-			Pos = vec3f(0, 0, 200);
-			Target = vec3f(0, 0, -1);
-			Near = 1;
-			Far = 3000;
-			Fov = 60;
-			CREATE_BEHAVIOUR(Camera);
-		}
+		Camera();
 		~Camera();
 	private:
 		void createCamera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up = vec3f(0.0, -1.0, 0.0), float32 zNear = 5.0f, float32 zFar = 10000.0f, float32 aspect = 9.0f/16.0f);
@@ -38,15 +29,13 @@ namespace E3DEngine
 	public: 
 		virtual void Awake() override;
 		virtual void TransformChange() override;
-
+		virtual void Start() override;
 	public:
 		void Render();
 		void ClearBackGround();
 		void SetClearType(DWORD clearType);
 		void ChangeViewport(float aspect);
 		RenderQueue * GetRenderQueue();
-		int GetDepth();
-		void SetDepth(int depth);
 		void SetRenderTexture(Render2Texture * rtt);
 		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
 		vec3f GetScreenPointWithWorlPoint(const vec3f& worldPoint);
@@ -74,6 +63,9 @@ namespace E3DEngine
 		DECLARE_PROPERTY(Camera, vec3f, Pos);
 		DECLARE_PROPERTY(Camera, vec3f, Target);
 		DECLARE_PROPERTY(Camera, float, Fov);
+		DECLARE_PROPERTY(Camera, std::string, RenderTextureFile);
+		DECLARE_PROPERTY(Camera, int, RenderTextureID);
+		DECLARE_PROPERTY(Camera, int, Depth);
 		virtual void registProperty() override
 		{
 			SAVE_PROPERTY(Perspective, FT_BOOLEAN);
@@ -83,6 +75,9 @@ namespace E3DEngine
 			SAVE_PROPERTY(Pos, FT_VECTOR3);
 			SAVE_PROPERTY(Target, FT_VECTOR3);
 			SAVE_PROPERTY(Fov, FT_FLOAT);
+			SAVE_PROPERTY(RenderTextureFile, FT_STRING);
+			SAVE_PROPERTY(RenderTextureID, FT_INT);
+			SAVE_PROPERTY(Depth, FT_INT);
 		}
 
 		bool boundingBoxFrustum(vec3f position, float size);
@@ -111,12 +106,12 @@ namespace E3DEngine
 		float m_roll;
 		float m_aspect;
 		bool  m_bIsShadowCamera;
+		bool  m_bUseDefaultRtt;
 		std::vector<float *> m_Plans;
 		float *m_Temp;
 		RenderQueue * m_RenderQueue;
-		int m_nDepth;
 		DWORD m_clearType;
-		std::list<Render2Texture *> RTTs;
+		Render2Texture * m_pRTT;
 
 	};
 }

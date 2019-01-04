@@ -21,7 +21,7 @@ namespace E3DEngine
 			SAFE_DELETE(m_BufferPixels);
 		}
 
-		void FrameBufferObject::Create(int width, int height, DWORD targetType)
+		void FrameBufferObject::Create(int width, int height, DWORD targetType, DWORD multiSampleLevel)
 		{
 			m_FrameWidth = width;
 			m_FrameHeight = height;
@@ -38,43 +38,20 @@ namespace E3DEngine
 				RenderBuffer* dt = static_cast<RenderBuffer*>(m_renderTarget);
 				glGenRenderbuffers(1, &dt->m_RenderBuffer);
 				glBindRenderbuffer(GL_RENDERBUFFER, dt->m_RenderBuffer);
-				glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8_OES, width, height);
+				if (multiSampleLevel == 0)
+				{
+					glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8, width, height);
+				}
+				else
+				{
+					glRenderbufferStorageMultisample(GL_RENDERBUFFER, multiSampleLevel, GL_RGBA8, width, height);
+				}
 				glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, dt->m_RenderBuffer);
 			}
 			else
 			{
-				RenderTexture* dt = static_cast<RenderTexture*>(m_renderTarget);
-				glGenTextures(1, &dt->m_TextureBuffer);
-				glBindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
+				genRenderTexture(targetType, multiSampleLevel, width, height);
 
-
-				if (targetType == RENDER_TO_TEXTURE)
-				{
-					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
-				}
-				else if(targetType == RENDER_DEPTH)
-				{
-					glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-					GLfloat borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
-					glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
-					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
-					glDrawBuffer(GL_NONE);
-					glReadBuffer(GL_NONE);
-					GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
-					if (status != GL_FRAMEBUFFER_COMPLETE) 
-					{
-						Debug::Log(ell_Error, "FrameBuffer create failed");
-					}
-				}
 			}
 			m_BufferPixels = (GLbyte*)malloc(width * height * 4);
 			glGetIntegerv(GL_IMPLEMENTATION_COLOR_READ_TYPE, &m_BufferType);
@@ -163,6 +140,51 @@ namespace E3DEngine
 			else if (targetType == RENDER_TO_TEXTURE || targetType == RENDER_DEPTH)
 			{
 				m_renderTarget = new RenderTexture;
+			}
+		}
+
+		void FrameBufferObject::genRenderTexture(DWORD targetType, DWORD multiSampleLevel, int width, int height)
+		{
+			RenderTexture* dt = static_cast<RenderTexture*>(m_renderTarget);
+			glGenTextures(1, &dt->m_TextureBuffer);
+			glBindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
+
+
+			if (targetType == RENDER_TO_TEXTURE)
+			{
+				/*if (multiSampleLevel == 0)
+				{*/
+					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+				//}
+				/*else
+				{
+					glTexImage2DMultisample(GL_TEXTURE_2D_MULTISAMPLE, multiSampleLevel, GL_RGBA, width, height, GL_TRUE);
+					glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D_MULTISAMPLE, dt->m_TextureBuffer, 0);
+				}*/
+
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+			}
+			else if (targetType == RENDER_DEPTH)
+			{
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+				GLfloat borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+				glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+				glDrawBuffer(GL_NONE);
+				glReadBuffer(GL_NONE);
+				GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+				if (status != GL_FRAMEBUFFER_COMPLETE)
+				{
+					Debug::Log(ell_Error, "FrameBuffer create failed");
+				}
 			}
 		}
 

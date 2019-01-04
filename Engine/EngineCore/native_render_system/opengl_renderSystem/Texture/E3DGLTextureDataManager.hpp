@@ -16,7 +16,7 @@ namespace E3DEngine
 	{
 	protected:
 		virtual Render2Texture* createRender2Texture() override;
-		virtual Texture *createTexture2D(TextureData *data) override;
+		virtual Texture *createTexture2D(Texture2dData *data) override;
 		virtual Texture *createCubeTexture(std::string filePath, int selectID) override;
 	};
 }

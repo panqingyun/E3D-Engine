@@ -70,12 +70,13 @@ namespace E3DEngine
 	private:
 		std::vector<Camera*>			m_vecCamera;
 		GameObject		*				rootObject;
-		std::map<DWORD, RenderObject*>	m_mapRenders;
 		std::map<UINT ,Light*>			m_mapLights;
 		DirectionLight *				usedDirectionLight;
 		UINT							m_nObjectID;
 		std::string						m_scenePath;
 		Camera			*				m_pSceneMainCamera;
+
+		std::unordered_map<DWORD, RenderObject*>	m_mapRenders;
 	};
 }
 

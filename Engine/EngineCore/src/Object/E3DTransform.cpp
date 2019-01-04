@@ -6,7 +6,7 @@
 
 namespace E3DEngine
 {
-    void CTransform::SetPosition(vec3f position)
+    void CTransform::SetLocalPosition(vec3f position)
     {
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
@@ -17,7 +17,7 @@ namespace E3DEngine
 		}
     }
 	
-	void CTransform::SetPosition(float x, float y, float z)
+	void CTransform::SetLocalPosition(float x, float y, float z)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		vec3f position(x, y, z);
@@ -29,7 +29,7 @@ namespace E3DEngine
 		}
 	}
 	
-    void CTransform::SetRotation(Quatf rotation)
+    void CTransform::SetLocalRotation(Quatf rotation)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
@@ -41,7 +41,7 @@ namespace E3DEngine
 		}
     }
     
-    void CTransform::SetRotation(float x, float y,float z)
+    void CTransform::SetLocalRotation(float x, float y,float z)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		Quatf rotate = Quatf::fromEulerAngles(x, y, z);
@@ -54,7 +54,7 @@ namespace E3DEngine
 		}
     }
     
-    void CTransform::SetRotation(mat4f rotateMatrix)
+    void CTransform::SetLocalRotation(mat4f rotateMatrix)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		Quatf rotate = Quatf::frommat(rotateMatrix);
@@ -67,7 +67,7 @@ namespace E3DEngine
 		}
     }
     
-	void CTransform::SetRotation(float x, float y, float z, float w)
+	void CTransform::SetLocalRotation(float x, float y, float z, float w)
 	{
 		/*Rotation.v.x = x;
 		Rotation.v.y = y;
@@ -76,7 +76,7 @@ namespace E3DEngine
 		RotationEuler = Rotation.toEulerAngles();*/
 	}
 
-	void CTransform::SetScale(vec3f scale)
+	void CTransform::SetLocalScale(vec3f scale)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
@@ -87,7 +87,7 @@ namespace E3DEngine
 		}
     }
 	
-	void CTransform::SetScale(float x, float y, float z)
+	void CTransform::SetLocalScale(float x, float y, float z)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		m_bStateChange = true;
@@ -271,7 +271,7 @@ namespace E3DEngine
 		}
 	}
 
-	void CTransform::SetRotation(vec3f rotate)
+	void CTransform::SetLocalRotation(vec3f rotate)
 	{
 		NOT_ACTIVE_RETURN(gameObject)
 		Quatf rotateQuat = Quatf::fromEulerAngles(rotate.x, rotate.y, rotate.z);

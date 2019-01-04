@@ -1,6 +1,7 @@
 
 #include "WGLContext.h"
 #include <src/RenderSystem/E3DRenderSystem.hpp>
+#include <src/Source/E3DDebug.h>
 
 BOOL GL_Context::SwapBuffer()
 {
@@ -187,5 +188,7 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
 	glClearDepthf(1);
 	glClear(GL_DEPTH_BUFFER_BIT);
+	const GLubyte* OpenGLVersion = glGetString(GL_VERSION); //返回当前OpenGL实现的版本号
+	E3DEngine::Debug::Log(ell_Info, "OpenGL Version : %s", OpenGLVersion);
 	return TRUE;
 }

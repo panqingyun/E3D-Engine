@@ -37,12 +37,12 @@ namespace E3DEngine
 
 	void CubeMapTexture::createTexture(CubeMapTextureConfig *cubeMap)
 	{
-		TextureData * up_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Top);
-		TextureData * down_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Down);
-		TextureData * left_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Left);
-		TextureData * right_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Right);
-		TextureData * front_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Front);
-		TextureData * back_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Back);
+		Texture2dData * up_data =  GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Top);
+		Texture2dData * down_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Down);
+		Texture2dData * left_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Left);
+		Texture2dData * right_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Right);
+		Texture2dData * front_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Front);
+		Texture2dData * back_data = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(Application::AppDataPath + cubeMap->Back);
 		createCubeMap(up_data, down_data, left_data, right_data, front_data, back_data);
 		delete up_data;
 		delete down_data;

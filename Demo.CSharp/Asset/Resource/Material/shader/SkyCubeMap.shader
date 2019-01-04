@@ -68,7 +68,7 @@ uniform float fresnelBias;
 uniform float etaRatio;
 
 const float PI = 3.141592653;
-const float F0 = 0.4;
+const float F0 = 0.05;
 const float fresnelPower = 2.0;
 
 vec4 lerp(vec4 a, vec4 b, float s)
@@ -137,18 +137,18 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	vec3 R = reflect(-V, N); // 反射
 	
 	float diffuse = max(dot(N, L), 0.0) / PI;
-	float ambent = textureCube(skybox, R).r;
-	float roughness = 0.2;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
-	ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 2.0;
-	ambent = pow(ambent, 4.0);
-	float _F = (F0 + (1.0 - F0) * pow(1.0 - dot(N, V), fresnelPower))  * 0.5;
+	//float ambent = textureCube(skybox, R).r;
+	float roughness = 0.4;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	// ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 2.0;
+	// ambent = pow(ambent, 4.0);
+	float _F = pow(F0 + (1.0 - F0) * (1.0 - dot(N, V)), fresnelPower);
 	float _V = GeometrySmith(N, V, L, roughness) / 4.0 * max(dot(N, L), 0.0) * max(dot(N, V), 0.0);
 	float _D =  DistributionGGX(N, H,roughness);
 	vec3 specular = _V * _D;
-	
-	vec3 ambSpec = ambent * _V * _D;
+	vec4 reflecColor = textureCube(skybox, R);
+	//vec3 ambSpec = ambent * _V * _D;
 
-	return vec4(lightColor * specular + lightColor * diffuse + ambSpec, 1.0) + vec4(1.0) * _F;
+	return vec4(lightColor * specular + lightColor * diffuse, 1.0) * (1.0 - _F) + _F * reflecColor + vec4(0.1) ;
 }
 
 vec4 FresnelShading(void)
@@ -177,7 +177,7 @@ void main(void)
 { 
 	vec4 freColor = FresnelShading();
 	vec4 lcolor = getLightColor(vPos, vNrm);
-	gl_FragColor = lcolor * freColor * vec4(vertColor.rgb, vertColor.a);
+	gl_FragColor = lcolor  * vec4(vertColor.rgb, vertColor.a);
 }
 
 #Framgent_End

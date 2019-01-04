@@ -38,7 +38,7 @@ namespace E3DEngine
 		GameObject *gameObject = new GameObject();
 		gameObject->CreateBehaviour();
 		gameObject->SetLayerMask(-1 & ~LD_SKYBOX & ~LD_OBJECT_COORD & ~LD_COORD & ~LD_NOSHADOW);
-		shadowCamera = (Camera*)gameObject->AddComponent("E3DEngine.Camera");
+		shadowCamera = (Camera*)gameObject->AddComponent(CAMERA_NAME);
 		shadowCamera->Perspective = false;
 		shadowCamera->Pos = Transform->Position + CenterPosition;
 		shadowCamera->Target = CenterPosition;
@@ -49,7 +49,7 @@ namespace E3DEngine
 		//shadowCamera = new E3DEngine::Camera(Transform->Position + CenterPosition, CenterPosition, vec3f(0, 1, 0), -halfSize, halfSize, -halfSize, halfSize, 1, 1000);
 		shadowCamera->OnCreate();
 		shadowCamera->OnCreateComplete();
-		TextureData tData;
+		RenderTextureData tData;
 		tData.width = TextureSize;
 		tData.height = TextureSize;
 		tData.target = RENDER_DEPTH;

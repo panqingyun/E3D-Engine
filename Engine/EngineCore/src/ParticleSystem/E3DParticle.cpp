@@ -44,7 +44,7 @@ namespace E3DEngine
 		m_NotChangeTextureCoord[3].x = 1;
 		m_NotChangeTextureCoord[3].y = 0;
 		
-		Transform->SetPosition(position);
+		Transform->SetLocalPosition(position);
 		vec3f up = vec3f(0, 1, 0);
 		
 
@@ -141,8 +141,8 @@ namespace E3DEngine
 		m_Point[1] = vec3f(-m_fWidth / 2, -m_fHeight / 2, 0);
 		m_Point[2] = vec3f(m_fWidth / 2, -m_fHeight / 2, 0);
 		m_Point[3] = vec3f(m_fWidth / 2, m_fHeight / 2, 0);
-		Transform->SetRotation(vec3f(0,0,0));
-		Transform->SetScale(vec3f(1,1,1));
+		Transform->SetLocalRotation(vec3f(0,0,0));
+		Transform->SetLocalScale(vec3f(1,1,1));
 		m_fSpeed = 0;
 		m_vDirection = vec3f(0, 0, 0);
 		if (m_FrameEffect != nullptr)
@@ -263,7 +263,7 @@ namespace E3DEngine
             float offset = a - m_rotateAngle;
             a = m_rotateAngle + offset*force;
             
-			Transform->SetRotation(0, 0, a);
+			Transform->SetLocalRotation(0, 0, a);
 			SetRotateAngle(a);
 		}
 	}
@@ -534,7 +534,7 @@ namespace E3DEngine
 			p.get_ptr()->SetSize(size);
 			p.get_ptr()->SetMoveSpeed(0);
 			p.get_ptr()->setAlpha(color);
-			p.get_ptr()->Transform->SetPosition(pos);
+			p.get_ptr()->Transform->SetLocalPosition(pos);
 			p.get_ptr()->SetBornEmitterPos(bornEmitterPos);
 			p.get_ptr()->bFristUpdte = true;
 			p.get_ptr()->ResetFrameEffect();

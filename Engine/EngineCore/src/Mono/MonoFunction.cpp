@@ -114,7 +114,7 @@ VOID _4_PARAM_FUNCTION(Transform, setPosition, CS_OBJECT, obj, float, x, float, 
 	{
 		return;
 	}
-	transform->SetPosition(x, y, z);
+	transform->SetLocalPosition(x, y, z);
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getScale, CS_OBJECT, obj, float&, x, float&, y, float&, z)
@@ -138,7 +138,7 @@ VOID _4_PARAM_FUNCTION(Transform, setScale, CS_OBJECT, obj, float, x, float, y, 
 		return;
 	}
 
-	transform->SetScale(x, y, z);
+	transform->SetLocalScale(x, y, z);
 }
 
 VOID _4_PARAM_FUNCTION(Transform, getRotation, CS_OBJECT, obj, float&, x, float&, y, float&, z)
@@ -161,7 +161,7 @@ VOID _4_PARAM_FUNCTION(Transform, setRotation, CS_OBJECT, obj, float, x, float, 
 	{
 		return;
 	}
-	transform->SetRotation(x, y, z);
+	transform->SetLocalRotation(x, y, z);
 }
 
 VOID _1_PARAM_FUNCTION(Debug, log_error, CS_STRING, err)

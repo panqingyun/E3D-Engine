@@ -309,7 +309,7 @@ void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string
 		{
 			std::string lightUniform = "";
 			Light * light = SceneManager::GetCurrentScene()->GetDirectionalLight();
-			if (object_cast<bool>(Light::GetCreateShadow(light)))
+			if (light->CreateShadow)
 			{
 				lightUniform.append("#define USING_DIRECTIONAL_LIGHT  \n").append("#define __CREATE_SHADOW__\n").append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
 			}

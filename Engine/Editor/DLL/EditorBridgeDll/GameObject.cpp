@@ -48,11 +48,11 @@ namespace E3DEngine
 	void GameObjectRef::getChilds()
 	{
 		mChildList->Clear();
-		std::map<UINT, GameObject*> childs = mGameObject->GetChilds();
+		std::list<GameObject*> childs = mGameObject->GetChilds();
 		for (auto child : childs)
 		{
-			GameObjectRef ^ obj = gcnew GameObjectRef(child.second);
-			child.second->TransChangeFun = TransformChange;
+			GameObjectRef ^ obj = gcnew GameObjectRef(child);
+			child->TransChangeFun = TransformChange;
 			mChildList->Add(obj);
 		}
 	}
@@ -60,7 +60,7 @@ namespace E3DEngine
 	void GameObjectRef::getComponents()
 	{
 		mComponentList->Clear();
-		std::map<std::string, Component*> componentMap = mGameObject->GetAllComponents();
+		std::unordered_map<std::string, Component*> componentMap = mGameObject->GetAllComponents();
 		for (auto &component : componentMap)
 		{
 			ComponentRef ^componentRef = gcnew ComponentRef(component.second);

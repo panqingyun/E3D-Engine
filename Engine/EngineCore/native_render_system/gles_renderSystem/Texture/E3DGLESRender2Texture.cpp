@@ -1,6 +1,6 @@
 ﻿#include "E3DGLESRender2Texture.h"
 
-void E3DEngine::GLES_Render2Texture::CreateRenderTarget(float width, float height)
+void E3DEngine::GLES_Render2Texture::CreateRenderTarget(float width, float height, int mutliSapmleLevel)
 {
 	m_fbo = new GLESRenderSystem::FrameBufferObject();
 	m_fbo->Create(width, height, RENDER_TO_TEXTURE);

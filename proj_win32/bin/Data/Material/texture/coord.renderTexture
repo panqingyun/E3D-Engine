@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<RenderTextureConfig>
-		<Item ID="1" Width="512" Height="512" Target="1"/>
-		<Item ID="2" Width="1024" Height="768" Target="1"/>
+		<Item ID="1" Width="512" Height="512" Target="1" Multisample="4"/>
+		<Item ID="2" Width="1024" Height="768" Target="1" Multisample="4"/>
 	</RenderTextureConfig>
 </ConfigSystem>

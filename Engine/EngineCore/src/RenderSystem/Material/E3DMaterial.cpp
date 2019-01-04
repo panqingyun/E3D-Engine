@@ -173,12 +173,13 @@ namespace E3DEngine
 		RenderTextureConfig* rttCfg = rttTabMgr->Select<RenderTextureConfig>(Id);
 		if (rttCfg != nullptr)
 		{
-			TextureData tData;
+			RenderTextureData tData;
 			tData.width = rttCfg->Width;
 			tData.height = rttCfg->Height;
 			tData.fileName = fName;
 			tData.configID = Id;
 			tData.target = rttCfg->Target;
+			tData.multiSampleLevel = rttCfg->Multisample;
 			std::string v1 = varValues[0];
 			Render2Texture *rtt = nullptr;
 			if (GetRenderSystem()->getIsMutilThreadRender())
@@ -207,7 +208,7 @@ namespace E3DEngine
 		}
 		else
 		{
-			TextureData tData;
+			Texture2dData tData;
 			tData.clampType = (CLAMP_TYPE)config->TextureClampType;
 			tData.filterType = (FILTER_TYPE)config->TextureFilterType;
 			tData.fileName = Application::AppDataPath + name;

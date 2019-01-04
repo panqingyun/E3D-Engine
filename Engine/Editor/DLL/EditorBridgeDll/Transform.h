@@ -20,7 +20,7 @@ namespace E3DEngine
 			void set(Vector3^ vec)
 			{
 				mPosition = vec;
-				mTransform->SetPosition(vec->x, vec->y, vec->z);
+				mTransform->SetLocalPosition(vec->x, vec->y, vec->z);
 			}
 		}
 		property Vector3^ Scale
@@ -33,7 +33,7 @@ namespace E3DEngine
 			void set(Vector3^ value)
 			{
 				mScale = value;
-				mTransform->SetScale(value->x, value->y, value->z);
+				mTransform->SetLocalScale(value->x, value->y, value->z);
 			}
 		}
 		property Vector3^ Rotation
@@ -46,7 +46,7 @@ namespace E3DEngine
 			void set(Vector3^ value)
 			{
 				mRotation = value;
-				mTransform->SetRotation(value->x, value->y, value->z);
+				mTransform->SetLocalRotation(value->x, value->y, value->z);
 			}
 		}
 		CTransform *GetTransformPtr();

@@ -2,13 +2,11 @@
 
 #Attribute
 {
-	POSITION:position; 
 	DYNAMICCOLOR:color;
 	TEXTURECOORD:inputTextureCoordinate;
 	TRANSPOSITION:transformPosition;
 	TRANSSCALE:transformScale;
 	TRANSROTATE:transformRotate;
-	NORMAL:attr_normal;
 	TANGENT:tangent;
 }
 

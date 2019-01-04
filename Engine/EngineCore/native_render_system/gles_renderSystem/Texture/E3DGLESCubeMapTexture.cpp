@@ -9,7 +9,7 @@
 
 namespace E3DEngine
 {	
-	void GLES_CubeMapTexture::createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back)
+	void GLES_CubeMapTexture::createCubeMap(Texture2dData *up, Texture2dData *down, Texture2dData *left, Texture2dData *right, Texture2dData *front, Texture2dData *back)
 	{
 		ES2::GenTextures(1, &m_nTextureBuffer);
 		{
@@ -33,7 +33,7 @@ namespace E3DEngine
 	}
 
 
-	void GLES_CubeMapTexture::changeRgbModule(TextureData *data)
+	void GLES_CubeMapTexture::changeRgbModule(Texture2dData *data)
 	{
 		DWORD  rgbModule = 0;
 		if (data->rgbModule == PixelFormat::R8G8B8)

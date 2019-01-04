@@ -216,7 +216,7 @@ namespace E3DEngine
         {
             m_vPointPosition =
             vec3f(Convert::ToFloat(strs[0]), Convert::ToFloat(strs[1]), Convert::ToFloat(strs[2]));
-            m_pParticleGroup->Transform->SetPosition(m_vPointPosition);
+            m_pParticleGroup->Transform->SetLocalPosition(m_vPointPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPointPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPointPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPointPosition.z;
@@ -314,7 +314,7 @@ namespace E3DEngine
         if (pos.size() == 3)
         {
             m_vPosition = vec3f(Convert::ToFloat(pos[0]), Convert::ToFloat(pos[1]), Convert::ToFloat(pos[2]));
-            m_pParticleGroup->Transform->SetPosition(m_vPosition);
+            m_pParticleGroup->Transform->SetLocalPosition(m_vPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPosition.z;
@@ -417,7 +417,7 @@ namespace E3DEngine
         if (pos.size() == 3)
         {
             m_vPosition = vec3f(Convert::ToFloat(pos[0]), Convert::ToFloat(pos[1]), Convert::ToFloat(pos[2]));
-            m_pParticleGroup->Transform->SetPosition(m_vPosition);
+            m_pParticleGroup->Transform->SetLocalPosition(m_vPosition);
             m_EmitterPosition.x == 0 ? m_EmitterPosition.x = m_vPosition.x : m_EmitterPosition.x = m_EmitterPosition.x;
             m_EmitterPosition.y == 0 ? m_EmitterPosition.y = m_vPosition.y : m_EmitterPosition.y = m_EmitterPosition.y;
             m_EmitterPosition.z = m_vPosition.z;

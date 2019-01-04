@@ -18,7 +18,7 @@ E3DEngine::Render2Texture* E3DEngine::GLES_TextureDataManager::createRender2Text
 }
 
 
-E3DEngine::Texture * E3DEngine::GLES_TextureDataManager::createTexture2D(TextureData *data)
+E3DEngine::Texture * E3DEngine::GLES_TextureDataManager::createTexture2D(Texture2dData *data)
 {
 	GLES_Texture2D * texture = new GLES_Texture2D();
 	texture->Create(data);

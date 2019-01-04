@@ -237,9 +237,9 @@ namespace E3DEngine
 			
 				// 骨骼变换
 				Bone* pBone = it->second;
-				pBone->Transform->SetPosition(Translation.x, Translation.y, Translation.z);
-				pBone->Transform->SetRotation(q);
-				pBone->Transform->SetScale(Scaling.x, Scaling.y, Scaling.z);
+				pBone->Transform->SetLocalPosition(Translation.x, Translation.y, Translation.z);
+				pBone->Transform->SetLocalRotation(q);
+				pBone->Transform->SetLocalScale(Scaling.x, Scaling.y, Scaling.z);
 			}
 		}		
 		

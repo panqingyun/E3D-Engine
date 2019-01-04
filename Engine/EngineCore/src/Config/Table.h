@@ -586,12 +586,14 @@ namespace E3DEngine
 		DECLARE_MEMBER(RenderTextureConfig, float, Width);
 		DECLARE_MEMBER(RenderTextureConfig, float, Height);
 		DECLARE_MEMBER(RenderTextureConfig, int, Target);
+		DECLARE_MEMBER(RenderTextureConfig, int, Multisample);
 		virtual void registProperty() override
 		{
 			SAVE_MEMBER(ID, int);
 			SAVE_MEMBER(Width, float);
 			SAVE_MEMBER(Height, float);
 			SAVE_MEMBER(Target, int);
+			SAVE_MEMBER(Multisample, int);
 		}
 	};
 

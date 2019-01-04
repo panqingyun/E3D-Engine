@@ -15,8 +15,8 @@ namespace E3DEngine
 	class GLES_CubeMapTexture : public CubeMapTexture
 	{
 	protected:
-		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back) override;
-		void changeRgbModule(TextureData *data);
+		virtual void createCubeMap(Texture2dData *up, Texture2dData *down, Texture2dData *left, Texture2dData *right, Texture2dData *front, Texture2dData *back) override;
+		void changeRgbModule(Texture2dData *data);
 	protected:
 		GLuint			m_nTextureUniform;
 		GLuint			m_nTextureIndex;

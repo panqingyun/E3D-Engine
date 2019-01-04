@@ -22,7 +22,7 @@ void E3DEngine::SkyBox::Awake()
 
 void E3DEngine::SkyBox::Update(float deltaTime)
 {
-	Transform->SetPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
+	Transform->SetLocalPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
 }
 
  
@@ -87,7 +87,7 @@ void E3DEngine::SkyDome::fillVertex(float R)
 
 void E3DEngine::SkyDome::Update(float deltaTime)
 {
-	Transform->SetPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
+	Transform->SetLocalPosition(SceneManager::GetCurrentScene()->GetMainCamera()->Transform->Position);
 }
 
 

@@ -174,14 +174,14 @@ namespace E3DEngine
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
 				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + pMainCamera->GetRigthVector() * (xPos- mLastPos->x) / 5;
 
-				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetLocalPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}
 			else if (SceneManageRef::GetInstance()->GetMoveDirection() == ObjectMoveDirection::VERTICAL)
 			{
 				Camera * pMainCamera = SceneManageRef::GetInstance()->GetEditorMainCamera();
 				vec3f newPos = mCurSelObject->GetTransform()->GetTransformPtr()->GetPosition() + vec3f(0,1,0) * ( mLastPos->y - yPos) / 5;
-				mCurSelObject->GetTransform()->GetTransformPtr()->SetPosition(newPos);
+				mCurSelObject->GetTransform()->GetTransformPtr()->SetLocalPosition(newPos);
 				mLastPos->SetValue(xPos, yPos);
 			}
 		}
@@ -312,7 +312,7 @@ namespace E3DEngine
 			editorCameraGameObject->Flag |= DONT_SAVE;
 			mEditorCamera->OnCreate();
 			mEditorCamera->OnCreateComplete();
-			editorCameraGameObject->Transform->SetPosition(0, 100, 200);
+			editorCameraGameObject->Transform->SetLocalPosition(0, 100, 200);
 		}
 
 		GameObject *gameObject = new GameObject();
@@ -326,7 +326,7 @@ namespace E3DEngine
 		terrain->Size = 512;
 		terrain->OnCreate();
 		terrain->OnCreateComplete();
-		gameObject->Transform->SetScale(20, 1, 20);
+		gameObject->Transform->SetLocalScale(20, 1, 20);
 		Renderer *render = gameObject->AddComponent<Renderer>();
 		render->MaterialPath = path + "/../Data/Material/Terrain.material";
 		render->MaterialID = 1;
@@ -352,7 +352,7 @@ namespace E3DEngine
 	void SceneManageRef::OnFrameSizeChange()
 	{
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
-		mCoordRt->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
+		mCoordRt->Transform->SetLocalPosition(newPos.x - 15, newPos.y - 15, 0);
 	}
 
 	E3DEngine::Camera * SceneManageRef::GetEditorMainCamera()
@@ -402,7 +402,7 @@ namespace E3DEngine
 			mCoordCamera = (Camera*)coordCamerObject->AddComponent(CAMERA_NAME);
 			mCoordCamera->OnCreate();
 			mCoordCamera->OnCreateComplete();
-			coordCamerObject->Transform->SetPosition(0, 0, 100);
+			coordCamerObject->Transform->SetLocalPosition(0, 0, 100);
 			SetEditorCamera(mCoordCamera, false);
 			GameObject *lookGameobject = new GameObject();
 			lookGameobject->CreateBehaviour();
@@ -412,7 +412,7 @@ namespace E3DEngine
 			mLookCoordCamera = (Camera*)lookGameobject->AddComponent(CAMERA_NAME);
 			mLookCoordCamera->OnCreate();
 			mLookCoordCamera->OnCreateComplete();
-			lookGameobject->Transform->SetPosition(1000, 1000, 150);
+			lookGameobject->Transform->SetLocalPosition(1000, 1000, 150);
 			SetEditorCamera(mLookCoordCamera, false);
 			
 			mLookCoordCamera->SetClearType(eCT_NotClear);
@@ -425,7 +425,7 @@ namespace E3DEngine
 		mCoordRt->OnCreate();
 		mCoordRt->OnCreateComplete();
 		gameObject->SetActive(true);
-		gameObject->Transform->SetScale(50, 50, 1);
+		gameObject->Transform->SetLocalScale(50, 50, 1);
 		Renderer *rd = gameObject->AddComponent<Renderer>();
 		rd->MaterialID = 2;
 		rd->MaterialPath = path +"/../Data/Material/coordinate.material";
@@ -434,7 +434,7 @@ namespace E3DEngine
 		Render2Texture *rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();
 		gameObject->Flag |= DONT_SAVE;
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
-		gameObject->Transform->SetPosition(newPos.x - 15, newPos.y - 15, 0);
+		gameObject->Transform->SetLocalPosition(newPos.x - 15, newPos.y - 15, 0);
 		ADD_IN_SCENE(gameObject);
 		mCoordCamera->SetRenderTexture(rtt);
 		mCoordPrefab = (Prefab*)LoadPrefab(path + "/../Data/Scene/coordinate.prefab");
@@ -473,8 +473,8 @@ namespace E3DEngine
 				mCameraView->OnCreateComplete();
 				Camera * pLCamera = SceneManageRef::GetInstance()->GetLookCoordCamera();
 				vec4f &&newPos = pLCamera->GetWorldPoint(1, 0, 0);
-				cViewObject->Transform->SetScale(102, 76, 1);
-				cViewObject->Transform->SetPosition(newPos.x - 55, newPos.y - 45, 0);
+				cViewObject->Transform->SetLocalScale(102, 76, 1);
+				cViewObject->Transform->SetLocalPosition(newPos.x - 55, newPos.y - 45, 0);
 				cViewObject->SetRenderIndex(eRI_TopMost);
 				cViewObject->Flag |= (DONT_SAVE | HIDE_IN_HIERARCHY);
 				Renderer * rd = cViewObject->AddComponent<Renderer>();

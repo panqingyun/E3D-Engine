@@ -12,24 +12,20 @@ namespace E3DEngine
 {
 	const std::string _Name = "Name";
 	const std::string _FilePath = "FilePath";
-	const std::string _SelectID = "SelectID";
 	const std::string _LayerMask = "LayerMask";
 	const std::string _Active = "Active";
 	const std::string _Position = "Posistion";
 	const std::string _Rotation = "Rotation";
 	const std::string _Scale = "Scale";
 	const std::string _Transform = "Transform";
-	const std::string _Material = "Material";
 	const std::string _Particle = "Particle";
-	const std::string _ClearColor = "ClearColor";
 	const std::string _Color = "Color";
 	const std::string _CreateShadow = "CreateShadow";
 	const std::string _RenderIndex = "RenderIndex";
 	const std::string _Component = "Component";
-	const std::string _Range = "Range";
-	const std::string _InnerID = "ID";
 	const std::string _Static = "IsStatic";
 	const std::string _Size = "Size";
+	const std::string _Tag = "Tag";
 
 	const std::string _Layer_AllLayer = "AllLayer";
 	const std::string _Component_ClassName = "ClassName";
@@ -120,9 +116,9 @@ namespace E3DEngine
 			return;
 		}
 
-		transform->SetPosition(getVector3(*objectElement->Attribute(_Position)));
-		transform->SetRotation(getVector3(*objectElement->Attribute(_Rotation)));
-		transform->SetScale(getVector3(*objectElement->Attribute(_Scale)));
+		transform->SetLocalPosition(getVector3(*objectElement->Attribute(_Position)));
+		transform->SetLocalRotation(getVector3(*objectElement->Attribute(_Rotation)));
+		transform->SetLocalScale(getVector3(*objectElement->Attribute(_Scale)));
 		transform->Update();
 	}
 
@@ -167,7 +163,7 @@ namespace E3DEngine
 			{
 				for (auto &p : go->GetChilds())
 				{
-					p.second->SetLayerMask(go->GetLayerMask());
+					p->SetLayerMask(go->GetLayerMask());
 				}
 			}
 		}
@@ -178,6 +174,11 @@ namespace E3DEngine
 		GameObject * go = new GameObject();
 
 		go->CreateBehaviour();
+		if (objectElement->Attribute(_Tag) != nullptr)
+		{
+			std::string tag = (*objectElement->Attribute(_Tag));
+			go->Tag = tag;
+		}
 		return go;
 	}
 
@@ -389,7 +390,7 @@ namespace E3DEngine
 
 	void saveComponentElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
-		std::map<std::string, Component*> &componentsMap = gameObject->GetAllComponents();
+		std::unordered_map<std::string, Component*> &componentsMap = gameObject->GetAllComponents();
 
 		for (auto componentPair : componentsMap)
 		{
@@ -413,6 +414,10 @@ namespace E3DEngine
 		objectElement->SetAttribute(_TypeName, gameObject->mSceneObjectType);
 		objectElement->SetAttribute(_LayerMask, getLayerMaskElement(gameObject->GetLayerMask()));
 		objectElement->SetAttribute(_Active, Convert::ToString(gameObject->IsActive));
+		if (!gameObject->Tag.empty())
+		{
+			objectElement->SetAttribute(_Tag, object_cast<std::string>(gameObject->Tag));
+		}
 		if (gameObject->mSceneObjectType == TP_Particle)
 		{
 			objectElement->SetAttribute(_FilePath, Convert::ToString(gameObject->mConfigPath));
@@ -422,7 +427,7 @@ namespace E3DEngine
 		saveComponentElement(objectElement, gameObject);
 		for (auto gameObj : gameObject->GetChilds())
 		{
-			GameObject *childObject = gameObj.second;
+			GameObject *childObject = gameObj;
 			if (gameObject->mSceneObjectType == TP_Particle && childObject->mName == _ParticleGroupName)
 			{ // Particle Group 不能保存
 				continue;
@@ -435,7 +440,7 @@ namespace E3DEngine
 
 	E3D_EXPORT_DLL void SavePrefab(Prefab *prefab)
 	{
-		std::map<UINT, GameObject*> &objects = prefab->GetChilds();
+		std::list<GameObject*> &objects = prefab->GetChilds();
 
 		TiXmlDocument *doc = new TiXmlDocument();
 		TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "UTF-8", "yes");
@@ -445,12 +450,12 @@ namespace E3DEngine
 
 		for (auto gameObj : objects)
 		{
-			if (gameObj.second->Flag & DONT_SAVE)
+			if (gameObj->Flag & DONT_SAVE)
 			{
 				continue;
 			}
 			TiXmlElement *childElement = new TiXmlElement(NM_GameObject);
-			GameObject *childObject = gameObj.second;
+			GameObject *childObject = gameObj;
 			saveGameObjectElement(childElement, childObject);
 			rootElement->LinkEndChild(childElement);
 		}
@@ -464,7 +469,7 @@ namespace E3DEngine
 		Scene *pScene = SceneManager::GetInstance().GetCurrentScene();
 
 		// 保存rootObject的子集
-		std::map<UINT, GameObject*> &objects = pScene->GetRootObject()->GetChilds();
+		std::list<GameObject*> &objects = pScene->GetRootObject()->GetChilds();
 
 		TiXmlDocument *doc = new TiXmlDocument();
 		TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "UTF-8", "yes");
@@ -474,12 +479,12 @@ namespace E3DEngine
 
 		for (auto gameObj : objects)
 		{
-			if (gameObj.second->Flag & DONT_SAVE)
+			if (gameObj->Flag & DONT_SAVE)
 			{
 				continue;
 			}
 			TiXmlElement *childElement = new TiXmlElement(NM_GameObject);
-			GameObject *childObject = gameObj.second;
+			GameObject *childObject = gameObj;
 			saveGameObjectElement(childElement, childObject);
 			rootElement->LinkEndChild(childElement);
 		}

@@ -13,20 +13,20 @@ namespace E3DEngine
 		
 	}
 
-	void Texture2D::SetTextureData(TextureData *tData)
+	void Texture2D::SetTextureData(Texture2dData *tData)
 	{
 		if (m_bIsReadWrite)
 		{
-			m_pTextureData = new TextureData;
+			m_pTextureData = new Texture2dData;
 			*m_pTextureData = *tData;
 		}
 	}
 
-	void Texture2D::Create(TextureData *tData)
+	void Texture2D::Create(Texture2dData *tData)
 	{
 		if (m_bIsReadWrite)
 		{
-			m_pTextureData = new TextureData;
+			m_pTextureData = new Texture2dData;
 			*m_pTextureData = *tData;
 		}
 	}
@@ -45,7 +45,7 @@ namespace E3DEngine
 		setBehaviourDefaultValue();
 	}
 
-	E3DEngine::TextureData * Texture2D::GetTextureData()
+	E3DEngine::Texture2dData * Texture2D::GetTextureData()
 	{
 		return m_pTextureData;
 	}

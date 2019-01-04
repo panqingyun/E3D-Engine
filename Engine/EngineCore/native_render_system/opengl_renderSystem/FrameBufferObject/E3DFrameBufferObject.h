@@ -46,7 +46,10 @@ namespace E3DEngine
 			~FrameBufferObject();
 
 		public:
-			void Create(int width, int height, DWORD targetType);
+			void Create(int width, int height, DWORD targetType, DWORD multiSampleLevel = 0);
+
+			void genRenderTexture(DWORD targetType, DWORD multiSampleLevel, int width, int height);
+
 			void Clear();
 			void Bind();
 			void SetClearColor(Color4 clearColor);

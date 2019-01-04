@@ -341,7 +341,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
    mapThreads[PHYSIC_THREAD_ID] = hPhysicsThread;
    mapThreads[LOGIC_THREAD_ID] = GetCurrentThread();
-
+   WS_BORDER
    ::StartAppliaction(startScenePath.c_str());
 
    ShowWindow(hWnd, nCmdShow);

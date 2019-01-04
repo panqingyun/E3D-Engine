@@ -15,6 +15,7 @@
 #include "../RenderSystem/E3DRenderSystem.hpp"
 #include "../Physics/E3DPhysics.h"
 #include "../Source/E3DVertexManager.h"
+#include "../Config/TableRegister.h"
 
 namespace E3DEngine
 {
@@ -33,7 +34,6 @@ namespace E3DEngine
 		m_RenderQueue = new RenderQueue;
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
-		m_nDepth = 0;
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}
@@ -52,17 +52,29 @@ namespace E3DEngine
 		m_RenderQueue = new RenderQueue;
 		m_RenderQueue->SetCamera(this);
 		m_clearType = eCT_Color | eCT_Depth | eCT_Stencil;
-		m_nDepth = 0;
 		m_bIsShadowCamera = false;
 		Transform->SetNeedUpdate(false);
 	}
 
 
+	Camera::Camera()
+	{
+		Perspective = true;
+		Pos = vec3f(0, 0, 200);
+		Target = vec3f(0, 0, -1);
+		Near = 1;
+		Far = 3000;
+		Fov = 60;
+		m_bUseDefaultRtt = true;
+		CREATE_BEHAVIOUR(Camera);
+		m_pRTT = nullptr;
+		Depth = 0;
+	}
+
 	Camera::~Camera()
 	{
 		delete m_RenderQueue;
 	}
-
 
 	void Camera::Awake()
 	{
@@ -81,8 +93,9 @@ namespace E3DEngine
 			mGameObject->SetColor(Color4(0, 0, 0, 0));
 		}
 		m_RenderQueue->CullRenderObjectByLayer(mGameObject->GetLayerMask());
+		SceneManager::GetCurrentScene()->AddCamera(this);
 		SceneManager::GetCurrentScene()->ChangeCameraObject(this);
-		Component::Awake();
+		Component::Awake();		
 	}
 
 
@@ -95,19 +108,49 @@ namespace E3DEngine
 		m_mView = Transform->WorldMatrix.inverse();
 	}
 
+
+	void Camera::Start()
+	{
+		RenderTextureData data;
+		if (RenderTextureFile != "")
+		{
+			TableManager * rttTabMgr = TableRegister::GetTableManager((Application::AppDataPath + RenderTextureFile).c_str());
+			if (rttTabMgr != nullptr)
+			{
+				Debug::Log(ell_Error, "Camera RenderTexture Config is NULL");
+				return;
+			}
+			RenderTextureConfig* rttCfg = rttTabMgr->Select<RenderTextureConfig>(RenderTextureID);
+			data.fileName = RenderTextureFile;
+			data.configID = RenderTextureID;
+			data.target = rttCfg->Target;
+			data.width = rttCfg->Width;
+			data.height = rttCfg->Height;
+			m_pRTT = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&data);
+		}
+		else
+		{
+			// TODO 没有给RTT赋值的话 创建一个新的
+			//data.fileName = CAMERA_NAME;
+			//data.configID = ID;
+			//data.width = 2048;
+			//data.height = 2048;
+			//// 给GameObject指定一个Renderer
+			//Rectangle * target = mGameObject->AddComponent<Rectangle>();
+
+		}
+	}
+
 	void Camera::Render()
 	{
-		if (RTTs.size() == 0)
+		if (m_pRTT == nullptr)
 		{
 			render();
 		}
 		else
 		{
-			for (auto & rtt : RTTs)
-			{
-				rtt->Bind();
-				render();
-			}
+			m_pRTT->Bind();
+			render();
 		}
 	}
 
@@ -124,7 +167,7 @@ namespace E3DEngine
 			GetRenderSystem()->SetCullFaceType(eCF_BACK);
 		}
 		GetRenderSystem()->BindDefaultBackbuffer();
-	}
+	} 
 
 	vec3f Camera::GetWorldPointWithScreenPoint(float x, float y, float z)
 	{
@@ -188,7 +231,7 @@ namespace E3DEngine
 
 	void Camera::ChangeViewport(float aspect)
 	{
-		if (Perspective && RTTs.size() == 0)
+		if (Perspective && m_bUseDefaultRtt)
 		{
 			m_mProjection = mat4f::createPerspective(Fov, aspect, Near, Far);
 			m_mProjectInverse = m_mProjection.inverse();
@@ -200,27 +243,10 @@ namespace E3DEngine
 		return m_RenderQueue;
 	}
 
-	int Camera::GetDepth()
-	{
-		return m_nDepth;
-	}
-
-	void Camera::SetDepth(int depth)
-	{
-		m_nDepth = depth;
-		SceneManager::GetCurrentScene()->SortCamera();
-	}
-
 	void Camera::SetRenderTexture(Render2Texture * rtt)
 	{
-		for (auto & _rtt : RTTs)
-		{
-			if (rtt == _rtt)
-			{
-				return;
-			}
-		}
-		RTTs.push_back(rtt); 
+		m_pRTT = rtt;
+		m_bUseDefaultRtt = false;
 		if (Perspective)
 		{
 			m_mProjection = mat4f::createPerspective(Fov, rtt->GetWidth() / rtt->GetHeight(), Near, Far);
@@ -370,7 +396,7 @@ namespace E3DEngine
 
 	void Camera::ClearRT()
 	{
-		RTTs.clear();
+		m_pRTT = nullptr;
 	}
 
 
@@ -383,11 +409,7 @@ namespace E3DEngine
 
 	E3DEngine::Render2Texture * Camera::GetRenderTexture()
 	{
-		if (RTTs.empty())
-		{
-			return nullptr;
-		}
-		return *RTTs.begin();
+		return m_pRTT;
 	}
 
 

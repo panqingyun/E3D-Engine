@@ -292,7 +292,7 @@ namespace E3DEngine
 	setBehaviourDefaultValue();\
 
 #define CAMERA_NAME "E3DEngine.Camera"
-
+#define MAIN_CAMERA_TAG "MainCamera"
 	class Camera;
 	class CTransform;
 	class Material;
@@ -328,7 +328,7 @@ namespace E3DEngine
 		}
 
 	public:
-		std::map<std::string, Component*> &GetAllComponents();
+		std::unordered_map<std::string, Component*> &GetAllComponents();
 		Component * AddComponent(std::string type_name);
 		Component * AddComponent(Component * component);
 		Component * GetComponent(const char * type_name);
@@ -373,7 +373,7 @@ namespace E3DEngine
 		void SetRenderIndex(DWORD index);
 		RenderObject * GetRenderer();
 		DWORD GetLayerMask();
-		std::map<UINT, GameObject *> &GetChilds();
+		std::list<GameObject *> &GetChilds();
 		
 		static void Destory(GameObject *go);
 		CTransform * GetTransform();
@@ -398,16 +398,17 @@ namespace E3DEngine
 		std::string				VertexBufferName;
 		Color4					Color;
 		unsigned int			mSceneObjectType;
+
 	protected:
 		DWORD						m_layerMask;
 		BatchRenderer *				m_pRenderer;
 		vec3f						size;
 		std::vector<BatchVertex>	m_vecBatchVertex;
 		bool						m_bIsStatic;
-		std::map<std::string, Component*> m_listComponents;
-		Collider	* m_pCollider;
+		Collider	*				m_pCollider;
+		std::unordered_map<std::string, Component*> m_listComponents;
 
-		std::map<UINT, GameObject *> mChildGameObject;
+		std::list<GameObject *> mChildGameObject;
 	};
 
 	

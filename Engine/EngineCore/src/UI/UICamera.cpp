@@ -62,17 +62,17 @@ void E3DEngine::UI::UICamera::SetProjectionMatrix(const mat4f& projection)
 
 void E3DEngine::UI::UICamera::SetPosition(const vec3f& position)
 {
-	m_pCamera->Transform->SetPosition(position);
+	m_pCamera->Transform->SetLocalPosition(position);
 }
 
 void E3DEngine::UI::UICamera::SetQuaternion(Quatf new_quat)
 {
-	m_pCamera->Transform->SetRotation(new_quat);
+	m_pCamera->Transform->SetLocalRotation(new_quat);
 }
 
 void E3DEngine::UI::UICamera::SetRotate(float x, float y, float z)
 {
-	m_pCamera->Transform->SetRotation(x, y, z);
+	m_pCamera->Transform->SetLocalRotation(x, y, z);
 }
 
 bool E3DEngine::UI::UICamera::boundingBoxFrustum(vec3f position, float size)

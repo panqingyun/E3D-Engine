@@ -27,7 +27,7 @@ namespace E3DEngine
 	
 	void Bone::Move(vec3f position)
 	{
-		Transform->SetPosition(position);
+		Transform->SetLocalPosition(position);
 	}
 	
 	void Bone::Update(float deltaTime)

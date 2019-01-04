@@ -14,7 +14,7 @@ namespace E3DEngine
 		glDeleteTextures(1, &m_nTextureBuffer);
 	}
 
-	void GL_Texture2D::Create(TextureData *tData)
+	void GL_Texture2D::Create(Texture2dData *tData)
 	{
 		Texture2D::Create(tData);
 		DWORD  rgbModule = 0;
@@ -50,11 +50,12 @@ namespace E3DEngine
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GL_Texture2D::setTextureParam(TextureData *tData)
+	void GL_Texture2D::setTextureParam(Texture2dData *tData)
 	{
 		unsigned int clampType = 0;
 		unsigned int filterType = 0;
-		switch (tData->clampType)
+		Texture2dData *data = static_cast<Texture2dData*>(tData);
+		switch (data->clampType)
 		{
 		case CLAMP_TYPE::CLAMP_TO_EDGE:
 			clampType = GL_CLAMP_TO_EDGE;
@@ -69,7 +70,7 @@ namespace E3DEngine
 			assert(false);
 		}
 
-		switch (tData->filterType)
+		switch (data->filterType)
 		{
 		case FILTER_TYPE::LINEAR:
 			filterType = GL_LINEAR;
@@ -79,19 +80,19 @@ namespace E3DEngine
 			break;
 		case FILTER_TYPE::LINEAR_MIPMAP_LINEAR:
 			filterType = GL_LINEAR_MIPMAP_LINEAR;
-			tData->useMipMap = true;
+			data->useMipMap = true;
 			break;
 		case  FILTER_TYPE::LINEAR_MIPMAP_NEAREST:
 			filterType = GL_LINEAR_MIPMAP_NEAREST;
-			tData->useMipMap = true;
+			data->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_LINEAR:
 			filterType = GL_NEAREST_MIPMAP_LINEAR;
-			tData->useMipMap = true;
+			data->useMipMap = true;
 			break;
 		case  FILTER_TYPE::NEAREST_MIPMAP_NEAREST:
 			filterType = GL_NEAREST_MIPMAP_NEAREST;
-			tData->useMipMap = true;
+			data->useMipMap = true;
 			break;
 		default:
 			assert(false);
@@ -103,11 +104,11 @@ namespace E3DEngine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
-	void GL_Texture2D::SetTextureData(TextureData *tData)
+	void GL_Texture2D::SetTextureData(Texture2dData *tData)
 	{
 		Texture2D::SetTextureData(tData);
 		glBindTexture(GL_TEXTURE_2D, m_nTextureBuffer);
-		glTexImage2D(GL_TEXTURE_2D, 0, tData->rgbModule, tData->width, tData->height, 0, tData->rgbModule, GL_UNSIGNED_BYTE, tData->imgData);
+		glTexImage2D(GL_TEXTURE_2D, 0, tData->rgbModule, tData->width, tData->height, 0, tData->rgbModule, GL_UNSIGNED_BYTE,tData->imgData);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 

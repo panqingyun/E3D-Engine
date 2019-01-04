@@ -224,11 +224,11 @@ namespace E3DEngine
 			return;
 		}
 		const btVector3 &position = worldTrans.getOrigin();
-		mObject->Transform->SetPosition(position.getX(), position.getY(), position.getZ());
+		mObject->Transform->SetLocalPosition(position.getX(), position.getY(), position.getZ());
 
 		vec3f rotate;
 		worldTrans.getRotation().getEulerZYX(rotate.z, rotate.y, rotate.x);
-		mObject->Transform->SetRotation(rotate.x * 180 / M_PI, rotate.y * 180 / M_PI, rotate.z * 180 / M_PI);
+		mObject->Transform->SetLocalRotation(rotate.x * 180 / M_PI, rotate.y * 180 / M_PI, rotate.z * 180 / M_PI);
 		mWorldTrans = worldTrans;
 	}
 

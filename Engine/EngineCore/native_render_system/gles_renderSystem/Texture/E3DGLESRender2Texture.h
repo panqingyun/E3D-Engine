@@ -15,7 +15,7 @@ namespace E3DEngine
 		{
 		}
 	public:
-		virtual void CreateRenderTarget(float width, float height) override;
+		virtual void CreateRenderTarget(float width, float height, int mutliSapmleLevel) override;
 		virtual void CreateDepthTarget(float width, float height) override;
 	public:
 		~GLES_Render2Texture();

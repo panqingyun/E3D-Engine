@@ -149,9 +149,12 @@ namespace E3DEngine
 		}
 		if (isCanInsert)
 		{
-			if (m_pSceneMainCamera == nullptr && pCamera->GetRenderTexture() == nullptr)
+			if (!pCamera->mGameObject->Tag.empty())
 			{
-				m_pSceneMainCamera = pCamera;
+				if (object_cast<string>(pCamera->mGameObject->Tag) == MAIN_CAMERA_TAG)
+				{
+					m_pSceneMainCamera = pCamera;
+				}
 			}
 			m_vecCamera.emplace_back(pCamera);
 			ChangeCameraObject(pCamera);
@@ -170,7 +173,7 @@ namespace E3DEngine
 		std::sort(m_vecCamera.begin(), m_vecCamera.end(),
 		[](Camera * camera1, Camera * camera2)
 		{
-			return camera1->GetDepth() < camera2->GetDepth();
+			return camera1->Depth < camera2->Depth;
 		});
 	}
 
@@ -369,10 +372,10 @@ namespace E3DEngine
 			return;
 		}
 		rootObject->AddChild(go);
-		if (static_cast<GameObject*>(obj)->GetComponent(CAMERA_NAME) != nullptr)
+		/*if (static_cast<GameObject*>(obj)->GetComponent(CAMERA_NAME) != nullptr)
 		{
 			AddCamera((Camera*)static_cast<GameObject*>(obj)->GetComponent("E3DEngine.Camera"));
-		}
+		}*/
 	}
 
 	void Scene::RemoveObject(Object * node)

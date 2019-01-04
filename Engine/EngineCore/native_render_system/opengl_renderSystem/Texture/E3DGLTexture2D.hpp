@@ -23,11 +23,11 @@ namespace E3DEngine
 		virtual GLuint &GetTextureBuffer();
 
 	public:
-		virtual void Create(TextureData *tData) override;
-		virtual void SetTextureData(TextureData *tData)override;
+		virtual void Create(Texture2dData *tData) override;
+		virtual void SetTextureData(Texture2dData *tData)override;
 
 	private:
-		void setTextureParam(TextureData *tData);
+		void setTextureParam(Texture2dData *tData);
 
 	protected:
 		GLuint			m_nTextureUniform;

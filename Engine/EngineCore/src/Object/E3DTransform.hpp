@@ -31,15 +31,15 @@ namespace E3DEngine
         CTransform();
 		void SetMatrix(mat4f matrix);
         void Update();
-        void SetPosition(vec3f position);
-		void SetPosition(float x, float y, float z);
-        void SetRotation(Quatf rotation);
-        void SetRotation(mat4f rotateMatrix);
-		void SetRotation(float x, float y,float z);
-		void SetRotation(vec3f rotate);
-		void SetRotation(float x, float y, float z, float w);
-		void SetScale(vec3f scale);
-		void SetScale(float x, float y, float z);
+        void SetLocalPosition(vec3f position);
+		void SetLocalPosition(float x, float y, float z);
+        void SetLocalRotation(Quatf rotation);
+        void SetLocalRotation(mat4f rotateMatrix);
+		void SetLocalRotation(float x, float y,float z);
+		void SetLocalRotation(vec3f rotate);
+		void SetLocalRotation(float x, float y, float z, float w);
+		void SetLocalScale(vec3f scale);
+		void SetLocalScale(float x, float y, float z);
         void GenBillBoard(vec3f center, vec3f cameraForward);
 		void RemoveChild(unsigned int objID);
 		void Identity();
@@ -78,7 +78,7 @@ namespace E3DEngine
 		vec3f RotationEuler;
 		bool  IsTransPosFirst;
 		CTransform * Parent;
-		std::map<unsigned int, CTransform*> Childs;
+		std::unordered_map<unsigned int, CTransform*> Childs;
 	private:
 		bool  m_bStateChange;
         bool  m_IsBillBoard;

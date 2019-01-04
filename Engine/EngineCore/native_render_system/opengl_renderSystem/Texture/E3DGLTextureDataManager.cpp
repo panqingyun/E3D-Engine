@@ -16,7 +16,7 @@ E3DEngine::Render2Texture* E3DEngine::GL_TextureDataManager::createRender2Textur
 	return rtt;
 }
 
-E3DEngine::Texture * E3DEngine::GL_TextureDataManager::createTexture2D(TextureData *data)
+E3DEngine::Texture * E3DEngine::GL_TextureDataManager::createTexture2D(Texture2dData *data)
 {
 	GL_Texture2D * texture = new GL_Texture2D();
 	texture->Create(data);

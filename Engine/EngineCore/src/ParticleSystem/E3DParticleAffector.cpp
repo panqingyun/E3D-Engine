@@ -104,7 +104,7 @@ namespace E3DEngine
                 }
                 
 				vec3f newPos = ptr->Transform->Position + ptr->GetMoveDirection() * ptr->GetMoveSpeed() * fElapsedTime;
-				ptr->Transform->SetPosition(newPos);
+				ptr->Transform->SetLocalPosition(newPos);
             }
         }
         else
@@ -131,7 +131,7 @@ namespace E3DEngine
             //                particle->Transform->GenBillBoard(particle->GetReightVector(), m_pParent->pCamera->GetForwardVector());
             //            }
             
-			ptr->Transform->SetPosition(newPos);
+			ptr->Transform->SetLocalPosition(newPos);
         }
     }
     
@@ -227,7 +227,7 @@ namespace E3DEngine
                 newPos.x = d.x * cos(angle) - d.y * sin(angle) + ptr->GetBornEmitterPos().x;
                 newPos.y = d.x * sin(angle) + d.y * cos(angle) + ptr->GetBornEmitterPos().y;
                 newPos.z = 0.0f;
-                ptr->Transform->SetPosition(newPos);
+                ptr->Transform->SetLocalPosition(newPos);
                 ptr->SetRotateAngle(angle);
             }
         }
@@ -242,7 +242,7 @@ namespace E3DEngine
                 newPos.x = d.x * cos(angle) - d.y * sin(angle) + ptr->GetBornEmitterPos().x;
                 newPos.y = d.x * sin(angle) + d.y * cos(angle) + ptr->GetBornEmitterPos().y;
                 newPos.z = 0.0f;
-                ptr->Transform->SetPosition(newPos);
+                ptr->Transform->SetLocalPosition(newPos);
                 ptr->SetRotateAngle(angle);
             }
         }
@@ -313,7 +313,7 @@ namespace E3DEngine
         curPos.z * (m_vAxis.y * m_vAxis.z * (1 - cosf(theta)) - m_vAxis.x * sinf(theta));
         newPos.z = curPos.x * (m_vAxis.x * m_vAxis.z * (1 - cosf(theta) - m_vAxis.y * sinf(theta))) + curPos.y * (m_vAxis.y * m_vAxis.z * (1 -cosf(theta)) + m_vAxis.x * sinf(theta)) +curPos.z * (m_vAxis.z * m_vAxis.z * (1 - cosf(theta)) + cosf(theta));
 		newPos += ptr->GetBornEmitterPos();
-		ptr->Transform->SetPosition(newPos);
+		ptr->Transform->SetLocalPosition(newPos);
 		ptr->SetRotateAngle(theta);
     }
     
@@ -374,7 +374,7 @@ namespace E3DEngine
         //		{
         //			particle->Transform->GenBillBoard(particle->GetReightVector(), m_pParent->pCamera->GetForwardVector());
         //		}
-		ptr->Transform->SetPosition(newPos);
+		ptr->Transform->SetLocalPosition(newPos);
         
     }
     
@@ -536,7 +536,7 @@ namespace E3DEngine
         {
             K = (hasLiveTime - m_fStartTime*totalTime) / ((m_fEndTime - m_fStartTime)*totalTime);
             float scale = K * (m_fEndScale - m_fStartScale) + m_fStartScale;
-			ptr->Transform->SetScale(vec3f(scale, scale, 1));
+			ptr->Transform->SetLocalScale(vec3f(scale, scale, 1));
         }
     }
     
@@ -592,6 +592,6 @@ namespace E3DEngine
         v.y = rotateAngle * m_vAxis.y;
         v.z = rotateAngle * m_vAxis.z;
         
-		ptr->Transform->SetRotation(v.x, v.y, v.z);
+		ptr->Transform->SetLocalRotation(v.x, v.y, v.z);
     }
 }

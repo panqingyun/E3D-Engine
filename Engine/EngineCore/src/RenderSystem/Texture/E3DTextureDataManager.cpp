@@ -34,7 +34,7 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(T
 		Render2Texture * rt = (Render2Texture *)param1;
 		vec2f *size = (vec2f*)param2;
 
-		rt->CreateRenderTarget(size->x, size->y);
+		rt->CreateRenderTarget(size->x, size->y, 0);
 	};
 
 	ThreadTool::GetInstance().AddInvoke(LOGIC_THREAD_ID, RENDER_THREAD_ID, f, rtt, size);
@@ -51,11 +51,12 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSi
 		return (E3DEngine::Render2Texture*)m_mapTextures[texture_key];
 	}
 	Render2Texture *rtt = createRender2Texture();
-	if (tData->target == RENDER_TO_TEXTURE)
+
+	if (static_cast<RenderTextureData*>(tData)->target == RENDER_TO_TEXTURE)
 	{
-		rtt->CreateRenderTarget(tData->width, tData->height);
+		rtt->CreateRenderTarget(tData->width, tData->height, static_cast<RenderTextureData*>(tData)->multiSampleLevel);
 	}
-	else if (tData->target == RENDER_DEPTH)
+	else if (static_cast<RenderTextureData*>(tData)->target == RENDER_DEPTH)
 	{
 		rtt->CreateDepthTarget(tData->width, tData->height);
 	}
@@ -64,12 +65,12 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSi
 	return rtt;
 }
 
-E3DEngine::TextureData * E3DEngine::TextureDataManager::GetTextureDataFromFile(std::string imageName, TextureData * InData)
+E3DEngine::Texture2dData * E3DEngine::TextureDataManager::GetTextureDataFromFile(std::string imageName, Texture2dData * InData)
 {
-	E3DEngine::TextureData * imgData = InData;
+	E3DEngine::Texture2dData * imgData = InData;
 	if (InData == nullptr)
 	{
-		imgData = new E3DEngine::TextureData();
+		imgData = new E3DEngine::Texture2dData();
 	} 
 	int width, height, bpp;
 	char *bits = (char*)stbi_load(imageName.c_str(), &width, &height, &bpp, 0);
@@ -117,8 +118,8 @@ E3DEngine::Texture * E3DEngine::TextureDataManager::GetTexture(TextureType type,
 		switch (type)
 		{
 		case E3DEngine::eTEXTURE_2D:
-			GetTextureDataFromFile(tData->fileName, tData);
-			texture = createTexture2D(tData);
+			GetTextureDataFromFile(tData->fileName, static_cast<Texture2dData*>( tData));
+			texture = createTexture2D(static_cast<Texture2dData*>(tData));
 			break;
 		case E3DEngine::eCUBMAP_TEXTURE:
 			texture = createCubeTexture(tData->fileName, tData->configID);

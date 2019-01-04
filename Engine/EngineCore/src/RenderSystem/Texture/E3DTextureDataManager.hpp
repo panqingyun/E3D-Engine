@@ -51,34 +51,50 @@ namespace E3DEngine
 		RENDER_DEPTH,
 	} RenderTargeType;
 
+	enum MultiSample
+	{
+		MULTISAMPLE_NONE = 0,
+		MULTISAMPLE_X1 = 1,
+		MULTISAMPLE_X2 = 2,
+		MULTISAMPLE_X3 = 3,
+		MULTISAMPLE_X4 = 4
+	};
+
 	struct E3D_EXPORT_DLL TextureData
 	{
-		CLAMP_TYPE clampType;
-		FILTER_TYPE filterType;
 		std::string fileName;
 		std::string uniformName;
 
 		unsigned int rgbModule;
-		void *	imgData;
 		int		width;
 		int		height;
-		bool	useMipMap;
 		int		configID;
-		int		target;
 
 		TextureData()
+		{
+			width = 0;
+			height = 0;
+			rgbModule = 0;
+			configID = 0;
+		}
+
+	};
+
+	struct Texture2dData : public TextureData
+	{
+		CLAMP_TYPE clampType;
+		FILTER_TYPE filterType;
+		void *	imgData;
+		bool	useMipMap;
+		Texture2dData()
 		{
 			clampType = CLAMP_TYPE::CLAMP_TO_EDGE;
 			filterType = FILTER_TYPE::LINEAR;
 			imgData = nullptr;
-			width = 0;
-			height = 0;
-			rgbModule = 0;
 			useMipMap = false;
-			configID = 0;
 		}
 
-		~TextureData()
+		~Texture2dData()
 		{
 			if (imgData != nullptr)
 			{
@@ -86,6 +102,18 @@ namespace E3DEngine
 			}
 		}
 	};
+
+	struct RenderTextureData : public TextureData
+	{
+		int		target;
+		int		multiSampleLevel;
+		RenderTextureData()
+		{
+			multiSampleLevel = 0;
+			target = 0;
+		}
+	};
+
 	class Render2Texture;
 	class Texture;
 	class E3D_EXPORT_DLL TextureDataManager : public IManager
@@ -110,7 +138,7 @@ namespace E3DEngine
 		// @return 图像内部数据RGB
 		// @param 图片名字
 		//-----------------------------------------------
-		virtual TextureData * GetTextureDataFromFile(std::string imageName, TextureData * InData = nullptr);
+		virtual Texture2dData * GetTextureDataFromFile(std::string imageName, Texture2dData * InData = nullptr);
 
 		Texture *GetTexture(TextureType type, TextureData* tData);
 
@@ -121,7 +149,7 @@ namespace E3DEngine
 
 	protected:
 		virtual Render2Texture* createRender2Texture()							= 0;
-		virtual Texture *createTexture2D(TextureData *data)						= 0;
+		virtual Texture *createTexture2D(Texture2dData *data)					= 0;
 		virtual Texture *createCubeTexture(std::string filePath, int selectID)	= 0;
 	protected:
 		std::map<std::string, Texture*> m_mapTextures;

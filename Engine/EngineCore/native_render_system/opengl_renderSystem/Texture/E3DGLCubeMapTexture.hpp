@@ -17,7 +17,7 @@ namespace E3DEngine
 	public:
 		~GL_CubeMapTexture();
 	protected:
-		virtual void createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back) override;
+		virtual void createCubeMap(Texture2dData *up, Texture2dData *down, Texture2dData *left, Texture2dData *right, Texture2dData *front, Texture2dData *back) override;
 		void changeRgbModule(TextureData *data);
 
 	protected:

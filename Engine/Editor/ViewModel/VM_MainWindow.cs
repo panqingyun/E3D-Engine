@@ -377,8 +377,8 @@ namespace E3DEditor.ViewModel
 
             E3DEngine.SceneManageRef.GetInstance().LoadScene(scenePath);
             mainWnd.objectList.ItemsSource = null;
-            loadGameObjectList();
             curScenePath = scenePath;
+            loadGameObjectList();
         }
 
         private void reloadCurSene()

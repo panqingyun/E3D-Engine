@@ -23,14 +23,14 @@ namespace E3DEngine
 		TextureFrameEffect * TextureEffect;
 		
 	public:
-		virtual void SetTextureData(TextureData *tData);
-		virtual void Create(TextureData *tData);
+		virtual void SetTextureData(Texture2dData *tData);
+		virtual void Create(Texture2dData *tData);
 		virtual void CreateBehaviour() override;
-		TextureData *GetTextureData();
+		Texture2dData *GetTextureData();
 		void SetIsReadWrite(bool bReadWrite);
 
 	protected:
-		TextureData	*	m_pTextureData;
+		Texture2dData	*m_pTextureData;
 		bool			m_bIsReadWrite;
 	};
 }

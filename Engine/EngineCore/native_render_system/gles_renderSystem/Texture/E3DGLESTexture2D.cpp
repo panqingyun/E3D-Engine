@@ -17,7 +17,7 @@ namespace E3DEngine
 		}
 	}
 
-	void GLES_Texture2D::Create(TextureData *tData)
+	void GLES_Texture2D::Create(Texture2dData *tData)
 	{
 		Texture2D::Create(tData);
 		DWORD  rgbModule = 0;
@@ -52,7 +52,7 @@ namespace E3DEngine
 		ES2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	void GLES_Texture2D::setTextureParam(TextureData *tData)
+	void GLES_Texture2D::setTextureParam(Texture2dData *tData)
 	{
 		unsigned int clampType = 0;
 		unsigned int filterType = 0;
@@ -105,7 +105,7 @@ namespace E3DEngine
 		ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, clampType);
 	}
 
-	void GLES_Texture2D::SetTextureData(TextureData *tData)
+	void GLES_Texture2D::SetTextureData(Texture2dData *tData)
 	{
 		Texture2D::SetTextureData(tData);
 		ES2::BindTexture(GL_TEXTURE_2D, m_nTextureBuffer);

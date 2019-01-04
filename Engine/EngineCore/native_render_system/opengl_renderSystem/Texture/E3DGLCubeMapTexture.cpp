@@ -15,7 +15,7 @@ namespace E3DEngine
 		glDeleteTextures(1, &m_nTextureBuffer);
 	}
 
-	void GL_CubeMapTexture::createCubeMap(TextureData *up, TextureData *down, TextureData *left, TextureData *right, TextureData *front, TextureData *back)
+	void GL_CubeMapTexture::createCubeMap(Texture2dData *up, Texture2dData *down, Texture2dData *left, Texture2dData *right, Texture2dData *front, Texture2dData *back)
 	{
 		glGenTextures(1, &m_nTextureBuffer);
 		{

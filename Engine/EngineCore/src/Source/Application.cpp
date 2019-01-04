@@ -73,7 +73,7 @@ extern "C"
 			cameraRotateX += rotaX * 0.2f;
 			cameraRotateY += rotaY * 0.2f;
 			cameraRotation = vec3f(-cameraRotateX, -cameraRotateY, 0);
-			mainEditorCamera->Transform->SetRotation(cameraRotation);
+			mainEditorCamera->Transform->SetLocalRotation(cameraRotation);
 		}
 		else if (mouseMButtonDown)
 		{
@@ -83,7 +83,7 @@ extern "C"
 			dir.normalize();
 			vec3f newPos = mainEditorCamera->Transform->Position + dir;
 			lastMousePosition = curMousePosition;
-			mainEditorCamera->Transform->SetPosition(newPos);
+			mainEditorCamera->Transform->SetLocalPosition(newPos);
 		}
 	}
 
@@ -98,37 +98,37 @@ extern "C"
 		{
 			curCameraDir = mainEditorCamera->GetForwardVector();
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir* speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir* speed);
 		}
 		else if (keyCode == KeyS)
 		{
 			curCameraDir = mainEditorCamera->GetForwardVector() * -1;
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyA)
 		{
 			curCameraDir = mainEditorCamera->GetRigthVector() * -1 * speed;
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyD)
 		{
 			curCameraDir = mainEditorCamera->GetRigthVector() * speed;
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyE)
 		{
 			curCameraDir = mainEditorCamera->GetUpVector() * speed;
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir * speed);
 		}
 		else if (keyCode == KeyQ)
 		{
 			curCameraDir = mainEditorCamera->GetUpVector() * -1 * speed;
 			curCameraDir.normalize();
-			mainEditorCamera->Transform->SetPosition(curCameraPos + curCameraDir * speed);
+			mainEditorCamera->Transform->SetLocalPosition(curCameraPos + curCameraDir * speed);
 		}
 	}
 

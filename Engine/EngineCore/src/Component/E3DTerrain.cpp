@@ -29,7 +29,7 @@ void E3DEngine::Terrain::Awake()
 
 void E3DEngine::Terrain::createHeightMap()
 {
-	TextureData * td = GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(HeightMapFile);
+	Texture2dData * td = static_cast<Texture2dData *>(GetRenderSystem()->GetTextureDataManager()->GetTextureDataFromFile(HeightMapFile));
 	mGameObject->VertexBufferName = "Terrain";
 	if (td != nullptr)
 	{

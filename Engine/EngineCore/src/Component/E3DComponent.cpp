@@ -241,27 +241,27 @@ std::string E3DEngine::Component::getEngineFieldValueStr(std::string fieldName)
 	getValue get = (getValue)(m_getMethodMap[fieldName]);
 	object value = get(this);
 	DWORD type = m_propertyTypeMap[fieldName];
-	if (type == FT_BOOLEAN)
+	if ((type & FT_BOOLEAN)== FT_BOOLEAN)
 	{
 		return object_cast<bool>(value) ? "true" : "false";
 	}
-	else if (type == FT_FLOAT)
+	else if ((type & FT_FLOAT) == FT_FLOAT)
 	{
 		return Convert::ToString(object_cast<float>(value));
 	}
-	else if (type == FT_INT)
+	else if ((type & FT_INT)== FT_INT)
 	{
 		return Convert::ToString(object_cast<int>(value));
 	}
-	else if (type == FT_STRING)
+	else if ((type & FT_STRING)== FT_STRING)
 	{
 		return object_cast<std::string>(value);
 	}
-	else if (type == FT_VECTOR3)
+	else if ((type & FT_VECTOR3)== FT_VECTOR3)
 	{
 		return Convert::ToString(object_cast<vec3f>(value));
 	}
-	else if (type == FT_VECTOR2)
+	else if ((type & FT_VECTOR2)== FT_VECTOR2)
 	{
 		return Convert::ToString(object_cast<vec2f>(value));
 	}
@@ -296,27 +296,27 @@ void E3DEngine::Component::setEngineFieldValue(std::string fieldName, std::strin
 {
 	setValue set = (setValue)(m_setMethodMap[fieldName]);
 	DWORD type = m_propertyTypeMap[fieldName];
-	if (type == FT_STRING)
+	if ((type & FT_STRING)== FT_STRING)
 	{
 		set(this, fieldValueStr);
 	}
-	else if (type == FT_INT)
+	else if ((type & FT_INT) == FT_INT)
 	{
 		set(this, Convert::ToInt(fieldValueStr));
 	}
-	else if (type == FT_FLOAT)
+	else if ((type & FT_FLOAT) == FT_FLOAT)
 	{
 		set(this, Convert::ToFloat(fieldValueStr));
 	}
-	else if (type == FT_BOOLEAN)
+	else if ((type &  FT_BOOLEAN) == FT_BOOLEAN)
 	{
 		set(this, Convert::ToBoolean(fieldValueStr));
 	}
-	else if (type == FT_VECTOR3)
+	else if ((type & FT_VECTOR3) == FT_VECTOR3)
 	{
 		set(this, Convert::ToVector3(fieldValueStr));
 	}
-	else if (type == FT_VECTOR2)
+	else if ((type & FT_VECTOR2) == FT_VECTOR2)
 	{
 		set(this, Convert::ToVector2(fieldValueStr));
 	}
@@ -330,21 +330,21 @@ std::string E3DEngine::Component::getMonoFieldValueStr(std::string fieldName)
 		return empty_string;
 	}
 	DWORD type = m_propertyTypeMap[fieldName];
-	if (type == FT_INT) // int
+	if ((type & FT_INT) == FT_INT) // int
 	{
 		int * p = ((int*)&field);
 		return Convert::ToString(*p);
 	}
-	else if (type == FT_BOOLEAN)
+	else if ((type & FT_BOOLEAN) == FT_BOOLEAN)
 	{
 		int * p = ((int*)&field);
 		return (*p) ? "true" : "false";
 	}
-	else if (type == FT_STRING)
+	else if ((type & FT_STRING) == FT_STRING)
 	{
 		return ((const char*)&field);
 	}
-	else if (type == FT_FLOAT) // float
+	else if ((type & FT_FLOAT) == FT_FLOAT) // float
 	{
 		float * p = ((float*)&field);
 		return Convert::ToString(*p);
@@ -356,27 +356,27 @@ void E3DEngine::Component::setMonoFieldVale(std::string fieldName, std::string f
 {
 	DWORD type = m_propertyTypeMap[fieldName];
 
-	if (type == FT_INT) // int
+	if ((type & FT_INT) == FT_INT) // int
 	{
 		int value = Convert::ToInt(fieldValueStr);
 		mBehaviour->SetFieldValue(fieldName.c_str(), &value);
 	}
-	else if (type == FT_BOOLEAN)
+	else if ((type & FT_BOOLEAN) == FT_BOOLEAN)
 	{
 		int  value = Convert::ToBoolean(fieldValueStr) ? 1 : 0;
 		mBehaviour->SetFieldValue(fieldName.c_str(), &value);
 	}
-	else if (type == FT_STRING)
+	else if ((type & FT_STRING) == FT_STRING)
 	{
 		MonoString * value = mono_string_new(MonoScriptManager::GetInstance().GetEngineDomain(), fieldValueStr.c_str());
 		mBehaviour->SetFieldValue(fieldName.c_str(), value);
 	}
-	else if (type == FT_FLOAT) // float
+	else if ((type & FT_FLOAT) == FT_FLOAT) // float
 	{
 		float value = Convert::ToFloat(fieldValueStr);
 		mBehaviour->SetFieldValue(fieldName.c_str(), &value);
 	}
-	else if (type == FT_VECTOR3)
+	else if ((type & FT_VECTOR3) == FT_VECTOR3)
 	{
 		vec3f &&vec3 = Convert::ToVector3(fieldValueStr);
 		MonoObject *vector3 = Convert::ToCSVector3(vec3);

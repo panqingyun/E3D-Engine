@@ -372,22 +372,6 @@ namespace E3DEngine
 		componentElement->LinkEndChild(fieldElement);		
 	}
 
-	void exportOuterComponent(TiXmlElement *objectElement, std::string className, Component *component)
-	{
-		TiXmlElement *componentElement = new TiXmlElement(_Component);
-		componentElement->SetAttribute(_Component_ClassName, className);
-		TiXmlElement *fieldElement = new TiXmlElement(_Component_Field);
-
-		for (auto &field : component->m_propertyTypeMap)
-		{
-			fieldElement->SetAttribute(field.first, component->GetFieldValueStr(field.first));
-		}
-
-		componentElement->LinkEndChild(fieldElement);
-		objectElement->LinkEndChild(componentElement);
-		
-	}
-
 	void saveComponentElement(TiXmlElement *objectElement, GameObject *gameObject)
 	{
 		std::unordered_map<std::string, Component*> &componentsMap = gameObject->GetAllComponents();

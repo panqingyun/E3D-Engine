@@ -22,8 +22,6 @@ namespace E3DEngine
 	{
 	public:
 		LightType   Type;
-		float		Intensity;			// 强度
-
 	public:
 		virtual void setBehaviourDefaultValue() override;
 		virtual void OnCreateComplete() override;
@@ -31,7 +29,9 @@ namespace E3DEngine
 		virtual void MakeShadow() { }
 		Light()
 		{
-			
+			Intensity = 1;
+			CreateShadow = false;
+			LightMapSize = 0;
 		}
 		virtual ~Light()
 		{
@@ -40,11 +40,13 @@ namespace E3DEngine
 		Camera * GetShadowCamera();
 	public:
 		DECLARE_PROPERTY(Light, bool, CreateShadow);
-		DECLARE_PROPERTY(Light, float, TextureSize);
+		DECLARE_PROPERTY(Light, float, LightMapSize);
+		DECLARE_PROPERTY(Light, float, Intensity);
 		virtual void registProperty() override
 		{
 			SAVE_PROPERTY(CreateShadow, FT_BOOLEAN);
-			SAVE_PROPERTY(TextureSize, FT_FLOAT);
+			SAVE_PROPERTY(LightMapSize, FT_FLOAT);
+			SAVE_PROPERTY(Intensity, FT_FLOAT);
 		}
 
 	protected:

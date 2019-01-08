@@ -184,12 +184,12 @@ namespace E3DEngine
 		DirectionLight * dlight = (DirectionLight *)SceneManager::GetCurrentScene()->GetDirectionalLight();
 		if (dlight != nullptr)
 		{
-			Color4 color = dlight->mGameObject->Color;
+			Color4& color = dlight->mGameObject->Color;
 			if (!dlight->mGameObject->IsActive)
 			{
 				color.r = 0; color.g = 0; color.b = 0; color.a = 1;
 			}
-			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r, color.g, color.b, color.a);
+			pMaterial->mShader->UpdateFloatValue(LIGHT_COLOR, color.r * dlight->Intensity, color.g * dlight->Intensity, color.b * dlight->Intensity, color.a * dlight->Intensity);
 			vec3f direction = dlight->GetDirection();
 			pMaterial->mShader->UpdateFloatValue(LIGHT_DIR, direction.x, direction.y, direction.z);
 			if (dlight->CreateShadow)
@@ -225,10 +225,10 @@ namespace E3DEngine
 				lightPos.emplace_back(pl.second->Transform->Position.x);
 				lightPos.emplace_back(pl.second->Transform->Position.y);
 				lightPos.emplace_back(pl.second->Transform->Position.z);
-				lightColor.emplace_back(pl.second->mGameObject->Color.r);
-				lightColor.emplace_back(pl.second->mGameObject->Color.g);
-				lightColor.emplace_back(pl.second->mGameObject->Color.b);
-				lightColor.emplace_back(pl.second->mGameObject->Color.a);
+				lightColor.emplace_back(pl.second->mGameObject->Color.r * pl.second->Intensity);
+				lightColor.emplace_back(pl.second->mGameObject->Color.g * pl.second->Intensity);
+				lightColor.emplace_back(pl.second->mGameObject->Color.b * pl.second->Intensity);
+				lightColor.emplace_back(pl.second->mGameObject->Color.a * pl.second->Intensity);
 				lightRange.emplace_back(static_cast<PointLight*>(pl.second)->Range);
 			}
 			else

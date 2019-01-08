@@ -14,14 +14,16 @@ namespace E3DEngine
 {
 	enum FieldTypeEnum
 	{
-		FT_INT		= 0,
-		FT_FLOAT	= 1,
-		FT_STRING	= 2,
-		FT_BOOLEAN	= 3,
-		FT_OBJECT	= 4,
-		FT_COLOR	= 5,
-		FT_VECTOR3  = 6,
-		FT_VECTOR2	= 7,
+		FT_INT		= 1 << 0,
+		FT_FLOAT	= 1 << 1,
+		FT_STRING	= 1 << 2,
+		FT_BOOLEAN	= 1 << 3,
+		FT_OBJECT	= 1 << 4,
+		FT_COLOR	= 1 << 5,
+		FT_VECTOR3  = 1 << 6,
+		FT_VECTOR2	= 1 << 7,
+
+		FT_READONLY = 1 << 31,
 	};
 
 #define NOT_RUN_RETURN \

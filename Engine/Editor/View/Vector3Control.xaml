@@ -15,9 +15,9 @@
 			<ColumnDefinition Width="20"/>
 			<ColumnDefinition Width="80*"/>
 		</Grid.ColumnDefinitions>
-		<TextBlock Text="x" Margin="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="White"/>
-		<TextBlock Text="y" Margin="2" Grid.Column="2" HorizontalAlignment="Center" Foreground="White"/>
-		<TextBlock Text="z" Margin="2" Grid.Column="4" HorizontalAlignment="Center" Foreground="White"/>
+		<TextBlock Text="x" x:Name="xTitle" Margin="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="White" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseMove="TextBlock_MouseMove" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+		<TextBlock Text="y" x:Name="yTitle" Margin="2" Grid.Column="2" HorizontalAlignment="Center" Foreground="White" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseMove="TextBlock_MouseMove" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+		<TextBlock Text="z" x:Name="zTitle" Margin="2" Grid.Column="4" HorizontalAlignment="Center" Foreground="White" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" MouseMove="TextBlock_MouseMove" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
 		<TextBox Grid.Column="1" x:Name="x" HorizontalAlignment="Stretch" TextInput="_TextInput" PreviewKeyUp="_PreviewKeyUp"/>
 		<TextBox Grid.Column="3" x:Name="y" HorizontalAlignment="Stretch" TextInput="_TextInput" PreviewKeyUp="_PreviewKeyUp"/>
 		<TextBox Grid.Column="5" x:Name="z" HorizontalAlignment="Stretch" TextInput="_TextInput" PreviewKeyUp="_PreviewKeyUp"/>

@@ -128,6 +128,12 @@ struct Color4
 		b = _b;
 		a = _a;
 	}
+
+	Color4 &operator *(float &rhs)
+	{
+		r *= rhs; g *= rhs; b *= rhs; a *= rhs;
+		return *this;
+	}
 };
 
 // 随机值： fLow - fHigh

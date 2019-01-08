@@ -24,6 +24,8 @@ namespace E3DEditor.ViewModel
 
         private object _selectedObject;
         private Grid _panelParent;
+        private bool _mouseDown = false;
+        private double _mousePosX = 0;
 
         public void SelectObjectChange(object selectObjct, Panel parent)
         {
@@ -163,7 +165,7 @@ namespace E3DEditor.ViewModel
             gridAddEnd();
         }
 
-        void gridAddTitle(float left, string title)
+        TextBlock gridAddTitle(float left, string title)
         {
             TextBlock tb = null;
             if (uiElementMap.ContainsKey(title))
@@ -181,6 +183,7 @@ namespace E3DEditor.ViewModel
                 Grid.SetRow(tb, _panelParent.RowDefinitions.Count - 1);
                 _panelParent.Children.Add(tb);
             }
+            return tb;
 
         }
 
@@ -275,13 +278,65 @@ namespace E3DEditor.ViewModel
                 for (int j = 0; j < fieldList.Count; j++)
                 {
                     gridAddRowDef();
-                    gridAddTitle(30, fieldList[j].Name);
-                    if (fieldList[j].Type == ComponentFieldType.FT_FLOAT || fieldList[j].Type == ComponentFieldType.FT_INT)
+                    TextBlock title = gridAddTitle(30, fieldList[j].Name);
+                    if ((fieldList[j].Type & ComponentFieldType.FT_FLOAT) == ComponentFieldType.FT_FLOAT ||
+                        (fieldList[j].Type & ComponentFieldType.FT_INT) == ComponentFieldType.FT_INT)
                     {
                         NumberTextBox tb = createNumberTextBox();
                         tb.Text = fieldList[j].Value;
                         tb.Tag = fieldList[j];
                         tb._KeyUp += comNumTb__KeyUp;
+                        title.Tag = fieldList[j];
+                        float value = Convert.ToSingle(fieldList[j].Value);
+                        title.MouseLeftButtonDown += new MouseButtonEventHandler((object sender, MouseButtonEventArgs e) =>
+                        {
+                            _mouseDown = true;
+                            _mousePosX = e.GetPosition(null).X;
+                            title.CaptureMouse();
+                        });
+                        title.MouseMove += new MouseEventHandler((object sender, MouseEventArgs e) =>
+                        {
+                            if(_mouseDown)
+                            {
+                                double xPos = e.GetPosition(null).X;
+                                ComponentField f = (sender as TextBlock).Tag as ComponentField;
+                                if((f.Type & ComponentFieldType.FT_READONLY) == ComponentFieldType.FT_READONLY)
+                                {
+                                    return;
+                                }
+                                if ((f.Type & ComponentFieldType.FT_FLOAT) == ComponentFieldType.FT_FLOAT)
+                                {
+                                    if(xPos > _mousePosX)
+                                    {
+                                        value += 0.01f;
+                                    }
+                                    else if(xPos < _mousePosX)
+                                    {
+                                        value -= 0.01f;
+                                    }
+                                }
+                                else if((f.Type & ComponentFieldType.FT_INT) == ComponentFieldType.FT_INT)
+                                {
+                                    if (xPos > _mousePosX)
+                                    {
+                                        value += 1;
+                                    }
+                                    else if(xPos < _mousePosX)
+                                    {
+                                        value -= 1;
+                                    }
+                                }
+                                tb.Text = value.ToString();
+                                f.SetValue(tb.Text);
+                                _mousePosX = xPos;
+                            }
+                        });
+                        title.MouseLeftButtonUp += new MouseButtonEventHandler((object sender, MouseButtonEventArgs e) => 
+                        {
+                            _mouseDown = false;
+                            _mousePosX = 0;
+                            title.ReleaseMouseCapture();
+                        });
                     }
                     else if (fieldList[j].Type == ComponentFieldType.FT_OBJECT)
                     {

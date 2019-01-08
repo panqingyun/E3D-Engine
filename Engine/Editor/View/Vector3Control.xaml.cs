@@ -50,7 +50,10 @@ namespace E3DEditor.View
 
         public object SelectObject;
         public PropertyInfo ValueProperty;
-
+        private bool _mouseDown = false;
+        private double _mouseXpos = 0;
+        private int operatTitle;// x = 0, y = 1, z =2
+        private float curValue = 0;
         private E3DEngine.Vector3 _valueVector;
         public E3DEngine.Vector3 ValueObject
         {
@@ -91,6 +94,63 @@ namespace E3DEditor.View
             {
                 ValueProperty.SetValue(SelectObject, vec);
             }
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock txt = sender as TextBlock;
+            if(txt == xTitle)
+            {
+                operatTitle = 0;
+                curValue = vec.x;
+            }
+            else if(txt == yTitle)
+            {
+                operatTitle = 1;
+                curValue = vec.y;
+            }
+            else if(txt == zTitle)
+            {
+                operatTitle = 2;
+                curValue = vec.z;
+            }
+            _mouseDown = true;
+            txt.CaptureMouse();
+            _mouseXpos = e.GetPosition(null).X;
+        }
+
+        private void TextBlock_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(_mouseDown)
+            {
+                double x = e.GetPosition(null).X;
+                curValue += (float)(x - _mouseXpos) / 10.0f;
+                if(operatTitle == 0)
+                {
+                    vec.x = curValue;
+                }
+                else if(operatTitle == 1)
+                {
+                    vec.y = curValue;
+                }
+                else if(operatTitle == 2)
+                {
+                    vec.z = curValue;
+                }
+                EnterKeyDown?.Invoke(this, null);
+                if (SelectObject != null)
+                {
+                    ValueProperty.SetValue(SelectObject, vec);
+                }
+                _mouseXpos = x;
+            }
+        }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock txt = sender as TextBlock;
+            _mouseDown = false;
+            txt.ReleaseMouseCapture();
         }
     }
 }

@@ -43,8 +43,8 @@ namespace E3DEngine
 		virtual void registProperty()
 		{
 			SAVE_PROPERTY(MaterialPath, FT_STRING);
-			SAVE_PROPERTY(MaterialID, FT_INT);
-			SAVE_PROPERTY(RendererType, FT_INT);
+			SAVE_PROPERTY(MaterialID, FT_INT | FT_READONLY);
+			SAVE_PROPERTY(RendererType, FT_INT | FT_READONLY);
 		}
 	public:
 		virtual void OnCreateComplete() override;

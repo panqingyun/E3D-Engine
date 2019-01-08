@@ -8,14 +8,16 @@ namespace E3DEngine
 	public ref class ComponentFieldType
 	{
 	public:
-		static int FT_INT = 0;
-		static int FT_FLOAT = 1;
-		static int FT_STRING = 2;
-		static int FT_BOOLEAN = 3;
-		static int FT_OBJECT = 4;
-		static int FT_COLOR = 5;
-		static int FT_VECTOR3 = 6;
-		static int 	FT_VECTOR2 = 7;
+		static int FT_INT		= 1 << 0;
+		static int FT_FLOAT		= 1 << 1;
+		static int FT_STRING	= 1 << 2;
+		static int FT_BOOLEAN	= 1 << 3;
+		static int FT_OBJECT	= 1 << 4;
+		static int FT_COLOR		= 1 << 5;
+		static int FT_VECTOR3	= 1 << 6;
+		static int 	FT_VECTOR2	= 1 << 7;
+
+		static int FT_READONLY = 1 << 31;
 	};
 
 	ref class ComponentRef;

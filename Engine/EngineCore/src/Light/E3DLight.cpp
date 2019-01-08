@@ -50,8 +50,8 @@ namespace E3DEngine
 		shadowCamera->OnCreate();
 		shadowCamera->OnCreateComplete();
 		RenderTextureData tData;
-		tData.width = TextureSize;
-		tData.height = TextureSize;
+		tData.width = LightMapSize;
+		tData.height = LightMapSize;
 		tData.target = RENDER_DEPTH;
 		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
 		shadowCamera->SetRenderTexture(rtt);

@@ -122,6 +122,10 @@ namespace E3DEditor.View
                 container.BringIntoView();//滚动条滚动到选中的子元素
             }
         }
-        
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            App.vm_MainWindow.MainButtonCommand_Executed("Close");
+        }
     }
 }

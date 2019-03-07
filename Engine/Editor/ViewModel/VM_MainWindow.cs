@@ -120,8 +120,7 @@ namespace E3DEditor.ViewModel
                 OnPropertyChanged("PrograssBarValue");
             }
         }
-
-        private int fps = 0;
+        
         public int GameFPS
         {
             get

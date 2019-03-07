@@ -46,7 +46,6 @@ namespace E3DEngine
 		//-----------------------------------------------
 		virtual void UpdateShader(unsigned int vertexType)			= 0;
 
-
 	public:
 		Shader *GetShader();
 		// -----------------------------------------------
@@ -64,6 +63,7 @@ namespace E3DEngine
 		MonoBehaviour * GetBehaviour();
 		void SetColor(Color4 color);
 		int GetTextureCount();
+		void SaveInFile();
 
 	public:
 

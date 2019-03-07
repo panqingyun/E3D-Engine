@@ -9,7 +9,7 @@
 		xmlns:model="clr-namespace:E3DEditor.Model"
         x:Class="E3DEditor.View.MainWindow"
         mc:Ignorable="d"
-        Title="编辑器" Height="952" Width="2080" WindowStyle="None" Background="Black" WindowState="Maximized">
+        Title="编辑器" Height="800" Width="1280" WindowStyle="SingleBorderWindow" Background="Black" WindowState="Normal" Closed="Window_Closed">
 	<Grid Background="#FF292929" >
 		<Grid.RowDefinitions>
 			<RowDefinition Height="60"/>
@@ -94,14 +94,14 @@
 				<ColumnDefinition Width="60"/>
 				<ColumnDefinition Width="60"/>
 			</Grid.ColumnDefinitions>
-			<Button Grid.Column="10" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" Command="{Binding MainTitleButtonCommand}"
+			<!--<Button Grid.Column="10" x:Name="Min" Margin="0,0,0,10" Style="{StaticResource MenuButton}" Command="{Binding MainTitleButtonCommand}"
 					CommandParameter="Min" ToolTip="{StaticResource MinToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/min.png" Width="20" Height="20"/>
 			</Button>
 			<Button Grid.Column="11" x:Name="Close" Margin="0,0,0,10" Command="{Binding MainTitleButtonCommand}" CommandParameter="Close" Style="{StaticResource MenuButton}" 
 					ToolTip="{StaticResource CloseToolTip}" Grid.RowSpan="2">
 				<Image Source="/Resources/Pic/close.png" Height="20" Width="20" />
-			</Button>
+			</Button>-->
 			<CheckBox x:Name="Pause" Grid.Column="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" IsChecked="{Binding PauseEngine,Mode=TwoWay}"
 					  Background="#5387b9" Content="{StaticResource Pause}" Tag="{StaticResource Countinue}"
 					 Style="{DynamicResource chkBullet}" Height="20" Width="60" Margin="0,10"/>

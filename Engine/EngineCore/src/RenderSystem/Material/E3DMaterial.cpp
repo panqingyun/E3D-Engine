@@ -224,4 +224,8 @@ namespace E3DEngine
 		return textureCount;
 	}
 
+	void Material::SaveInFile()
+	{
+	}
+
 }

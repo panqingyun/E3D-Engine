@@ -9,7 +9,8 @@ namespace E3DEngine
 #define  EventDelegateFunc(classAndFunc) reinterpret_cast<EventFunc>(&classAndFunc)
     namespace Event
     {
-        template<typename ReturnType, typename ...ParamType> class IDelegate : public E3DEngine::IObject      {
+        template<typename ReturnType, typename ...ParamType> class IDelegate : public E3DEngine::IObject      
+		{
         public:
             IDelegate() = default;
             virtual ~IDelegate() = default;

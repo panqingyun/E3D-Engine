@@ -1,3 +1,7 @@
+varying vec4 DestinationColor;
+varying vec2 v_coord;
+varying vec3 cameraRight;
+
 #Vertex_Begin
 
 #Attribute
@@ -11,9 +15,6 @@
 }
 
 #include "Standard.shader"
-varying vec4 DestinationColor;
-varying vec2 v_coord;
-varying vec3 cameraRight;
 uniform float particleSize;
 
 void main(void)
@@ -40,10 +41,6 @@ void main(void)
 precision highp float;
 #endif
 
-varying  vec4 DestinationColor; 
-varying  vec2 v_coord;
-
-varying vec3 cameraRight;
 uniform sampler2D myTexture0;
 void main(void) 
 {

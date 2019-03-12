@@ -22,6 +22,7 @@ namespace E3DEngine
 		void processEngineDefineUniform(GLES_Shader *shader);
 		std::string preProcessShader(GLES_Shader *shader, std::string shaderFileName, std::string &vs_content, std::string &fs_content);
 
+		std::string getCommonString(std::string &str);
 		void appendInclude(std::string &strLine,  std::string folder);
 		void getVertex(GLES_Shader *shader, std::string &str, std::string folder, std::string &vs_content);
 		void getFragment(GLES_Shader *shader, std::string &str, std::string folder, std::string &fs_content);

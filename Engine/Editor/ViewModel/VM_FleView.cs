@@ -111,13 +111,29 @@ namespace E3DEditor.ViewModel
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.SceneIcon, UriKind.Relative));
             }
-            else if (file.Extension == ".particle")
+            else if (fileType == FileType.eParticle)
             {
                 rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.EffectIcon, UriKind.Relative));
             }
             else if(fileType == FileType.eScript)
             {
                 showScript(file, rec);
+            }
+            else if(fileType == FileType.eMaterial)
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.MaterialIcon, UriKind.Relative));
+            }
+            else if (fileType == FileType.eShader)
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.ShaderIcon, UriKind.Relative));
+            }
+            else if (fileType == FileType.ePrefab)
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.FrefabIcon, UriKind.Relative));
+            }
+            else if (fileType == FileType.eModel)
+            {
+                rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.ModelIcon, UriKind.Relative));
             }
         }
         
@@ -126,7 +142,7 @@ namespace E3DEditor.ViewModel
             string text = "";
             FileStream fs = new FileStream(file.FullName, FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs, Encoding.Default);
-
+            rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.CSharpIcon, UriKind.Relative));
             int leftNumber = 0;
             List<string> namespaceList = new List<string>();
 
@@ -218,7 +234,7 @@ namespace E3DEditor.ViewModel
             {
                 return;
             }
-            rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.PlistIcon, UriKind.Relative));
+            rec.FileIcon = new BitmapImage(new Uri(CONST_STRING.MaterialIcon, UriKind.Relative));
             Dictionary<string, AtlasFrame> atlasList = AtlasTools.Instance.GetAtlasFrameList(file.FullName);
             foreach (KeyValuePair<string, AtlasFrame> kv in atlasList)
             {

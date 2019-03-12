@@ -120,13 +120,6 @@ namespace E3DEngine
 	{
 	public:
 		// -----------------------------------------------
-		// 创建纹理缓冲区
-		// @return 纹理缓冲区ID
-		// @param 图片名字
-		//-----------------------------------------------
-		virtual unsigned int GetTextureBuffer(std::string imageName);
-
-		// -----------------------------------------------
 		// 创建RTT
 		//-----------------------------------------------
 		Render2Texture* CreateRender2Texture(TextureData *data);

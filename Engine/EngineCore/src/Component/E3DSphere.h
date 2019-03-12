@@ -1,5 +1,5 @@
 #pragma once
-//********************************** Effect 3D Engine **************************************************//
+//********************************** Effective 3D Engine **************************************************//
 //******************* Copyright (c) 2017-12-7  PanQingyun. All rights reserved. *************************//
 #include "E3DComponent.hpp"
 #include "../Source/E3DVertex.h"

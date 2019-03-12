@@ -1,3 +1,6 @@
+varying vec2 v_coord0;
+varying vec4 DestinationColor;
+varying vec4 v_Pos;
 #Vertex_Begin
 
 #Attribute
@@ -9,11 +12,6 @@
 }
 
 #include "Standard.shader"
-
-varying vec2 v_coord0;
-varying vec4 DestinationColor;
-varying vec4 v_Pos;
-
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
                        0.0 , 0.0 , 0.5 , 0.0 ,
@@ -46,8 +44,6 @@ precision highp float;
 #endif
 
 #include "Fragment.shader"
-varying vec2 v_coord0;
-
 uniform sampler2D _Splat0;
 uniform sampler2D _Splat1;
 uniform sampler2D _Splat2;
@@ -68,9 +64,6 @@ const float _ShininessL0 = 0.2898214;
 const float _ShininessL1 = 0.078125;
 const float _ShininessL2 = 0.078125;
 const float _ShininessL3 = 0.078125;
-
-varying vec4 DestinationColor;
-varying vec4 v_Pos;
 
 void main(void) 
 { 

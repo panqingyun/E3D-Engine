@@ -343,20 +343,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Pic\Icon\Fonts.ico" />
-    <Resource Include="Resources\Pic\Icon\g1.ico" />
-    <Resource Include="Resources\Pic\Icon\g10.ico" />
-    <Resource Include="Resources\Pic\Icon\g11.ico" />
-    <Resource Include="Resources\Pic\Icon\g13.ico" />
-    <Resource Include="Resources\Pic\Icon\g14.ico" />
-    <Resource Include="Resources\Pic\Icon\g15.ico" />
-    <Resource Include="Resources\Pic\Icon\g16.ico" />
-    <Resource Include="Resources\Pic\Icon\g17.ico" />
-    <Resource Include="Resources\Pic\Icon\g2.ico" />
-    <Resource Include="Resources\Pic\Icon\g7.ico" />
-    <Resource Include="Resources\Pic\Icon\g8.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Pic\Icon\g4.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="DLL\ColorPicker\ColorPicker.csproj">
@@ -382,6 +368,25 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pic\Icon\material.ico" />
+    <Resource Include="Resources\Pic\Icon\particle.ico" />
+    <Resource Include="Resources\Pic\Icon\prefab.ico" />
+    <Resource Include="Resources\Pic\Icon\shader.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pic\Icon\csharp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pic\Icon\default.ico" />
+    <Resource Include="Resources\Pic\Icon\tex.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pic\Icon\model.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pic\Icon\folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

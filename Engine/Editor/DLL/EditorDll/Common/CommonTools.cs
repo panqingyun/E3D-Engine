@@ -23,9 +23,13 @@ namespace E3DEditor.Common
             {
                 return FileType.eImage;
             }
-            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".json" || ext == ".shader")
+            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".json" )
             {
                 return FileType.eText;
+            }
+            if (ext == ".fbx" || ext == ".obj" || ext == ".x" || ext == ".3d")
+            {
+                return FileType.eModel;
             }
             if(ext == ".cs")
             {
@@ -46,6 +50,18 @@ namespace E3DEditor.Common
             if (ext == ".mp4")
             {
                 return FileType.eVideo;
+            }
+            if (ext == ".particle")
+            {
+                return FileType.eParticle;
+            }
+            if (ext == ".material")
+            {
+                return FileType.eMaterial;
+            }
+            if (ext == ".shader")
+            {
+                return FileType.eShader;
             }
             return FileType.eUnKnown;
         }

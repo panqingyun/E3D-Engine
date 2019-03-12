@@ -1,13 +1,3 @@
-#Vertex_Begin
-
-#Attribute
-{
-	POSITION:position;
-	COLOR:color;
-	TEXTURECOORD:inputTextureCoordinate;
-	NORMAL:attr_normal;
-}
-
 varying vec3 ReflectDir;
 varying vec4 vertColor;
 
@@ -20,6 +10,15 @@ varying vec4 v_InLightPos;
 
 varying vec3 lightDir;
 varying vec4 lightColor;
+
+#Vertex_Begin
+#Attribute
+{
+	POSITION:position;
+	COLOR:color;
+	TEXTURECOORD:inputTextureCoordinate;
+	NORMAL:attr_normal;
+}
 
 const float _WaveScale = 0.1;
 vec4 _2StreamVelo = vec4(-12.5, 42.7,-15.8,-0.34);
@@ -92,22 +91,9 @@ void main(void)
 #ifdef __GLES__
 precision highp float;
 #endif
-varying vec3 ReflectDir;
 uniform sampler2D waterTex;
 uniform sampler2D waterNormal;
 uniform samplerCube skybox;
-varying vec4 vertColor;
-
-varying vec3 lightDir;
-varying vec4 lightColor;
-varying vec4 v_InLightPos;
-
-varying vec4 vPos;
-varying vec3 vNrm;
-varying vec3 eyePosition;
-varying vec2 v_Coord;
-varying float time;
-
 uniform float fresnelBias;
 uniform float etaRatio;
 

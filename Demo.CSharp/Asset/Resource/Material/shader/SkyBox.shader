@@ -1,3 +1,5 @@
+varying vec3 ReflectDir;
+varying vec4 vertColor;
 #Vertex_Begin
 
 #Attribute
@@ -9,9 +11,6 @@
 }
 
 #include "Standard.shader"
-
-varying vec3 ReflectDir;
-varying vec4 vertColor;
 
 void main(void)
 {
@@ -26,11 +25,7 @@ void main(void)
 #ifdef __GLES__
 precision highp float;
 #endif
-varying vec3 ReflectDir;
-
 uniform samplerCube skybox;
-varying vec4 vertColor;
-
 void main(void) 
 { 
 	vec4 color = textureCube(skybox,ReflectDir) * vertColor;

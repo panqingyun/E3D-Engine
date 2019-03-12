@@ -1,5 +1,7 @@
-#Vertex_Begin
+varying vec4 DestinationColor;
+varying vec2 v_coord;
 
+#Vertex_Begin
 #Attribute
 {
 	POSITION:position;
@@ -9,8 +11,6 @@
 }
 #include "Standard.shader"
 
-varying vec4 DestinationColor;
-varying vec2 v_coord;
 void main(void)
 {	
 	vec4 interpolatedPosition = vec4(position ,1.0);	
@@ -30,9 +30,7 @@ void main(void)
 #ifdef __GLES__
 precision highp float;
 #endif
-varying vec2 v_coord;
 uniform sampler2D myTexture0;
-varying vec4 DestinationColor;
 void main(void) 
 { 
 	gl_FragColor = texture2D(myTexture0, v_coord);	

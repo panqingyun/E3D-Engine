@@ -13,12 +13,6 @@
 #endif
 #include "../../Config/Table.h"
 
-unsigned int E3DEngine::TextureDataManager::GetTextureBuffer(std::string imageName)
-{
-	return 0;
-}
-
-
 E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(TextureData *tData)
 {
 	string texture_key = tData->fileName + Convert::ToString(tData->configID);
@@ -41,7 +35,6 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(T
 	return rtt;
 	
 }
-
 
 E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSingleThread(TextureData *tData)
 {
@@ -107,7 +100,6 @@ E3DEngine::Texture2dData * E3DEngine::TextureDataManager::GetTextureDataFromFile
 	stbi_image_free(bits);
 	return imgData;
 }
-
 
 E3DEngine::Texture * E3DEngine::TextureDataManager::GetTexture(TextureType type, TextureData* tData)
 {

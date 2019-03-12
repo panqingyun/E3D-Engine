@@ -2,16 +2,16 @@
 <Scene>
     <GameObject Name="MainCamera" Type="1" LayerMask="AllLayer" Active="true" Tag="MainCamera" Color="00000000">
         <Transform Posistion="-3.660120,51.999905,239.592010" Rotation="-7.600000,-65.399994,0.000000" Scale="1.000000,1.000000,1.000000" />
-        <Component Active="true" ClassName="AppMain">
-            <Field ShowDebug="" ShowNumber="20" />
-        </Component>
         <Component Active="false" ClassName="SelfRotateSphere">
             <Field RotateSpeed="3.000000" />
         </Component>
-        <Component Active="true" ClassName="CameraController" />
+        <Component Active="true" ClassName="AppMain">
+            <Field ShowDebug="" ShowNumber="20" />
+        </Component>
         <Component Active="true" ClassName="E3DEngine.Camera">
             <Field Depth="0" Far="3000.000000" Fov="60.000000" Near="1.000000" Perspective="true" Pos="0.000000,0.000000,200.000000" RenderTextureFile="" RenderTextureID="0" Size="0.000000" Target="0.000000,0.000000,-1.000000" />
         </Component>
+        <Component Active="true" ClassName="CameraController" />
     </GameObject>
     <GameObject Name="Light" Type="1" LayerMask="AllLayer" Active="true" Color="FCFBFBFF">
         <Transform Posistion="100.000000,100.000000,100.000000" Rotation="0.000000,0.000000,0.000000" Scale="1.000000,1.000000,1.000000" />
@@ -29,7 +29,7 @@
         </Component>
     </GameObject>
     <GameObject Name="SkyBox" Type="1" LayerMask="28" Active="true" Color="FFFFFFFF">
-        <Transform Posistion="120.117554,130.684250,265.530762" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
+        <Transform Posistion="147.800400,47.574970,77.204445" Rotation="0.000000,0.000000,0.000000" Scale="5.000000,5.000000,5.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyBox.material" RendererType="0" />
         </Component>
@@ -37,8 +37,8 @@
     </GameObject>
     <GameObject Name="Box" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
         <Transform Posistion="170.578583,31.105251,157.259369" Rotation="-89.999985,-69.125633,0.000240" Scale="2.000000,2.000000,2.000000" />
-        <Component Active="true" ClassName="E3DEngine.Box" />
         <Component Active="true" ClassName="E3DEngine.BoxCollider" />
+        <Component Active="true" ClassName="E3DEngine.Box" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/CubeMaterial.material" RendererType="0" />
         </Component>
@@ -46,26 +46,26 @@
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
     </GameObject>
-    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
+    <GameObject Name="CubSphere" Type="1" LayerMask="0" Active="false" Color="FFF204FF">
         <Transform Posistion="104.836227,40.454628,183.165268" Rotation="-0.596582,-18.581457,91.880898" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SkyCube.material" RendererType="0" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="10.000000" Restitution="0.100000" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
-    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FEFEFEFF">
+    <GameObject Name="Sphere" Type="1" LayerMask="0" Active="false" Color="FEFEFEFF">
         <Transform Posistion="71.448212,38.343464,166.625793" Rotation="0.000000,-90.500031,0.000000" Scale="10.000000,10.000000,10.000000" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="501.000000" Mass="30.000000" Restitution="0.100000" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
     </GameObject>
     <GameObject Name="Sphere" Type="1" LayerMask="0" Active="true" Color="FFFFFFFF">
@@ -73,10 +73,10 @@
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.Sphere" />
         <Component Active="true" ClassName="E3DEngine.SphereCollider" />
         <Component Active="true" ClassName="SelfRotateSphere">
             <Field RotateSpeed="80.000000" />
@@ -86,10 +86,10 @@
             <Component Active="true" ClassName="E3DEngine.Renderer">
                 <Field MaterialID="1" MaterialPath="Resource/Material/SphereMaterial.material" RendererType="0" />
             </Component>
+            <Component Active="true" ClassName="E3DEngine.Sphere" />
             <Component Active="true" ClassName="E3DEngine.RigidBody">
                 <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
             </Component>
-            <Component Active="true" ClassName="E3DEngine.Sphere" />
             <Component Active="true" ClassName="E3DEngine.SphereCollider" />
         </GameObject>
         <GameObject Name="particle" Type="2" LayerMask="27" Active="true" FilePath="Resource/Particle/ParticleFire.particle" Color="FFFFFFFF">
@@ -101,10 +101,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/FHZC.obj" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="3" MaterialPath="Resource/Material/Mesh.material" RendererType="1" />
         </Component>
@@ -114,10 +114,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/jiebai_fangzi01.fbx" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="9" MaterialPath="Resource/Material/Mesh.material" RendererType="1" />
         </Component>
@@ -127,10 +127,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/LH_changshiqiao01.fbx" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="1000.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="6" MaterialPath="Resource/Material/Mesh.material" RendererType="1" />
         </Component>
@@ -149,10 +149,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/gy_taoshu03.fbx" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="6" MaterialPath="Resource/Material/shu.material" RendererType="1" />
         </Component>
@@ -219,10 +219,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/xt_zhuzi01.fbx" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="5" MaterialPath="Resource/Material/shu.material" RendererType="1" />
         </Component>
@@ -232,10 +232,10 @@
         <Component Active="true" ClassName="E3DEngine.Mesh">
             <Field FilePath="Resource/Mesh/Model/xt_zhuzi02.fbx" />
         </Component>
-        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.RigidBody">
             <Field Friction="500.000000" Mass="0.000000" Restitution="0.100000" />
         </Component>
+        <Component Active="true" ClassName="E3DEngine.MeshCollider" />
         <Component Active="true" ClassName="E3DEngine.Renderer">
             <Field MaterialID="5" MaterialPath="Resource/Material/shu.material" RendererType="1" />
         </Component>

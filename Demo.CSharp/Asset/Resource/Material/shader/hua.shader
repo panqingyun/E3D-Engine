@@ -1,3 +1,9 @@
+varying vec2 v_coord;
+varying vec4 DestinationColor;
+varying vec3 normal;
+varying vec3 lightDir;
+varying vec4 v_Pos;
+
 #Vertex_Begin
 
 #Attribute
@@ -9,12 +15,6 @@
 }
 
 #include "Standard.shader"
-varying vec2 v_coord;
-varying vec4 DestinationColor;
-varying vec3 normal;
-varying vec3 lightDir;
-
-varying vec4 v_Pos;
 
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
@@ -51,12 +51,7 @@ void main(void)
 precision highp float;
 #endif
 #include "Fragment.shader"
-varying vec2 v_coord;
 uniform sampler2D myTexture0;
-varying vec4 DestinationColor;
-varying vec4 v_Pos;
-varying vec3 normal;
-varying vec3 lightDir;
 
 void main(void) 
 {

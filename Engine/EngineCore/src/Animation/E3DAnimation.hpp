@@ -1,4 +1,4 @@
-﻿//********************************** Effect 3D Engine **************************************************//
+﻿//********************************** Effective 3D Engine **************************************************//
 //******************* Copyright (c) 2017-3-27 PanQingyun. All rights reserved. *************************//
 #ifndef FBXSceneAnimator_hpp
 #define FBXSceneAnimator_hpp

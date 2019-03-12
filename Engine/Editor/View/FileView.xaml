@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-		<GroupBox Header="" Foreground="White" Grid.Row="1" x:Name="header" BorderBrush="#FF009FFF" Style="{StaticResource GroupboxWithoutWhiteBorder}">
+        <GroupBox Header="" Foreground="White" Grid.Row="1" x:Name="header" BorderBrush="#FF007ACC" Style="{StaticResource GroupboxWithoutWhiteBorder}">
 			<Grid ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,0,0,0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="120"/>
@@ -16,17 +16,18 @@
 				</Grid.ColumnDefinitions>
 
 				<TreeView x:Name="folderTreeView" FontSize="12" HorizontalAlignment="Stretch" SelectedItemChanged="fileTreeView_SelectedItemChanged"
-						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="Transparent" BorderThickness="0" BorderBrush="#FF009FFF"
+						  VerticalAlignment="Stretch" Margin="0,0,0,0.163" Background="Transparent" BorderThickness="0" BorderBrush="#FF007ACC"
 						  Foreground="White" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.Resources>
 						<HierarchicalDataTemplate DataType="{x:Type model:DirectoryRecord}" ItemsSource="{Binding Directories}" >
 							<StackPanel Orientation="Horizontal">
-								<TextBlock Foreground="#FFE6E6E6" FontSize="13" FontFamily="Consolas" Text="{Binding Info.Name}" Height="20"/>
+                                <Image Width="20" Height="20" Source="/E3DEditor;component/Resources/Pic/Icon/folder.png" />
+                                <TextBlock Foreground="#FFE6E6E6" FontSize="13" FontFamily="Consolas" Text="{Binding Info.Name}" Height="20"/>
 							</StackPanel>
 						</HierarchicalDataTemplate>
 					</TreeView.Resources>
 				</TreeView>
-				<TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick" BorderThickness="0" BorderBrush="#FF009FFF"					 
+                <TreeView x:Name="fileView" Grid.Column="1" Margin="3,0,0,0" MouseDoubleClick="fileView_MouseDoubleClick" BorderThickness="0" BorderBrush="#FF007ACC"					 
 							  Background="Transparent" Foreground="White" AllowDrop="True" ItemContainerStyle="{DynamicResource TreeViewItemStyle}">
 					<TreeView.ContextMenu>
 						<ContextMenu>
@@ -37,7 +38,7 @@
 					<TreeView.ItemTemplate>
 						<HierarchicalDataTemplate ItemsSource="{Binding SubRecords}" >
 							<DockPanel Background="Transparent"  PreviewMouseLeftButtonUp="fileView_PreviewMouseUp">
-								<Image  Width="20" Height="20" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
+								<Image  Width="25" Height="25" Source="{Binding Path=FileIcon}" DockPanel.Dock="Left" HorizontalAlignment="Left" 
 													  Stretch="Uniform"/>
 								<TextBlock VerticalAlignment="Center" PreviewMouseMove="TextBlock_PreviewMouseMove" DockPanel.Dock="Right" 
 										   Text="{Binding Path=ShowText}" Margin="5,0,0,0" Foreground="#FFE6E6E6" FontSize="13" FontFamily="Consolas"></TextBlock>
@@ -46,7 +47,7 @@
 					</TreeView.ItemTemplate>
 				</TreeView>
 
-				<GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Left" Margin="0,-5" Background="#FF009FFF" />
+                <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Left" Margin="0,-5" Background="#FF007ACC" />
 			</Grid>
 		</GroupBox>
 	</Grid>

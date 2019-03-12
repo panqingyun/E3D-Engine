@@ -1,3 +1,6 @@
+varying vec2 v_coord;
+varying vec4 DestinationColor;
+
 #Vertex_Begin
 
 #Attribute
@@ -9,8 +12,6 @@
 }
 
 #include "Standard.shader"
-varying vec2 v_coord;
-varying vec4 DestinationColor;
 
 void main(void)
 {
@@ -34,9 +35,8 @@ void main(void)
 precision highp float;
 #endif
 #include "Fragment.shader"
-varying vec2 v_coord;
 uniform sampler2D myTexture0;
-varying vec4 DestinationColor;
+
 void main(void) 
 { 
 	gl_FragColor = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor, vec4(1.0,1.0,1.0,1.0));	

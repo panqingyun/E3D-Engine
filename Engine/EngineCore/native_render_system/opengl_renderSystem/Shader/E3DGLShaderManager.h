@@ -24,6 +24,7 @@ namespace E3DEngine
 		std::string preProcessShader(GL_Shader *shader, std::string shaderFileName, std::string &vs_content, std::string &fs_content);
 
 		void appendInclude(std::string &strLine,  std::string folder);
+		std::string getCommonString(std::string &str);
 		void getVertex(GL_Shader *shader, std::string &str, std::string folder, std::string &vs_content);
 		void getFragment(GL_Shader *shader, std::string &str, std::string folder, std::string &fs_content);
 		virtual void createAttribute(std::string	typeName, int StartPosition, uint VarType, BOOL Normalized, uint VertexStructSize, uint AttributeSize, uint	BindLocation, std::string attrType, uint type);

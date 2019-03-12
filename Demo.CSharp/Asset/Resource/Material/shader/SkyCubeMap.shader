@@ -1,3 +1,14 @@
+varying vec3 ReflectDir;
+varying vec4 vertColor;
+varying vec3 lightDir;
+varying vec4 lightColor;
+
+varying vec4 vPos;
+varying vec4 v_Pos;
+varying vec3 vNrm;
+varying vec3 eyePosition;
+varying vec2 UV;
+
 #Vertex_Begin
 
 #Attribute
@@ -10,16 +21,6 @@
 
 #include "Standard.shader"
 
-varying vec3 ReflectDir;
-varying vec4 vertColor;
-varying vec3 lightDir;
-varying vec4 lightColor;
-
-varying vec4 vPos;
-varying vec4 v_Pos;
-varying vec3 vNrm;
-varying vec3 eyePosition;
-varying vec2 UV;
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
                        0.0 , 0.0 , 0.5 , 0.0 ,
@@ -51,19 +52,7 @@ void main(void)
 precision highp float;
 #endif
 #include "Fragment.shader"
-varying vec3 ReflectDir;
-
 uniform samplerCube skybox;
-varying vec4 vertColor;
-
-varying vec4 vPos;
-varying vec4 v_Pos;
-varying vec3 vNrm;
-varying vec3 eyePosition;
-varying vec3 lightDir;
-varying vec4 lightColor;
-varying vec2 UV;
-
 uniform float fresnelBias;
 uniform float etaRatio;
 

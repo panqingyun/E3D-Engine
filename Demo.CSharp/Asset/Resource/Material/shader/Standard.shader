@@ -1,11 +1,11 @@
-
+ï»¿
 varying vec3 vPosition;
 varying vec3 mCameraPos;
 
-const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//»·¾³¹âÑÕÉ«
-const float Kc = 1.0;           //Ë¥¼õ³£ÊıÏî
-const float Kl = 1.0;           //Ë¥¼õÒ»´ÎÏµÊı
-const float KQ = 1.0;           //Ë¥¼õ¶ş´ÎÏµÊı
+const vec4  ambient = vec4(0.8, 0.8, 0.8, 1.0);		//ç¯å¢ƒå…‰é¢œè‰²
+const float Kc = 1.0;           //è¡°å‡å¸¸æ•°é¡¹
+const float Kl = 1.0;           //è¡°å‡ä¸€æ¬¡ç³»æ•°
+const float KQ = 1.0;           //è¡°å‡äºŒæ¬¡ç³»æ•°
 
 void initFogNeedVar(vec3 _pos)
 {
@@ -25,7 +25,7 @@ vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 		if(distance(_e3d_PointLightPos[i] , position) < _e3d_PointLightRange[i])
 		{
 			float d = distance(_e3d_PointLightPos[i] , position);
-			float attenuate = 1.0 /(Kc + Kl*d + KQ * d * d); //Ë¥¼õÒò×Ó£¨ÓÉ¹«Ê½¼ÆËã£©
+			float attenuate = 1.0 /(Kc + Kl*d + KQ * d * d); //è¡°å‡å› å­ï¼ˆç”±å…¬å¼è®¡ç®—ï¼‰
 			vec3 L = normalize(_e3d_PointLightPos[i] - position);
 			vec3 H = normalize(V + L);
 			vec3 diffuse = vec3((_e3d_PointLightColor[i] * max(dot(N, L), 0.0)).xyz);
@@ -43,7 +43,7 @@ vec4 getLightColor(vec3 position, vec3 normal, float ns)
 	const float PI = 3.141592653;
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
 #ifdef USING_DIRECTIONAL_LIGHT
-	//--- ¹âÕÕ
+	//--- å…‰ç…§
 	vec3 N = normalize(normal);
 	vec3 L = normalize(_e3d_WorldSpaceLightDirection);
 	vec3 V = normalize(_e3d_CameraPos - position);

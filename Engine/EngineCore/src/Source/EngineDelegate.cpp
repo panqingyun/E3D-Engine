@@ -1,6 +1,5 @@
 ﻿//
 //  EngineDelegate.cpp
-//  Obj
 //
 //  Created by 潘庆云 on 2017/1/17.
 //  Copyright © 2017年 潘庆云. All rights reserved.

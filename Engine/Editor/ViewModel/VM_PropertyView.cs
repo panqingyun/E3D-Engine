@@ -936,17 +936,17 @@ namespace E3DEditor.ViewModel
         private void showTxt(string fName, string propName)
         {
             RowDefinition _row = _panelParent.RowDefinitions[_panelParent.RowDefinitions.Count - 1];
-            _row.Height = new GridLength(820);
 
+            _row.Height = new GridLength(620);
             TextBox _tb = createTextBox(true);
             _tb.FontFamily = new FontFamily("Consolas");
             Grid.SetColumn(_tb, 0);
             Grid.SetColumnSpan(_tb, 2);
             _tb.Margin = new Thickness(0, 2, 0, 0);
+            _tb.TextWrapping = TextWrapping.Wrap;
             _tb.Background = Brushes.Black;
             _tb.Foreground = Brushes.White;
-            _tb.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-            _tb.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+            _tb.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
             _tb.Text = System.IO.File.ReadAllText(Config.GamePath + "\\" + fName);
             uiElementMap[propName] = _tb;
         }

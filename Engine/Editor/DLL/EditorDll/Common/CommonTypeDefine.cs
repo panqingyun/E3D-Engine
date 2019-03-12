@@ -18,6 +18,10 @@ namespace E3DEditor.Common
         eScene,
         eAudio,
         eVideo,
+        eParticle,
+        eMaterial,
+        eShader,
+        eModel
     }
     
     public enum PropertyType

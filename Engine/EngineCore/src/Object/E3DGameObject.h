@@ -1,5 +1,5 @@
 ﻿
-//********************************** Effect 3D Engine **************************************************//
+//********************************** Effective 3D Engine **************************************************//
 //******************* Copyright (c) 2017-3-1  PanQingyun. All rights reserved. *************************//
 
 #ifndef IObject_h
@@ -298,7 +298,6 @@ namespace E3DEngine
 	class Material;
 	class RenderObject;
 	class BatchRenderer;
-	class SkyBox;
 	class Collider;
 	class RigidBody;
 	class E3D_EXPORT_DLL GameObject : public Object

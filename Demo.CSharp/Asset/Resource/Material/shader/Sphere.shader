@@ -1,3 +1,12 @@
+
+varying vec4 DestinationColor;
+varying vec2 v_coord;
+varying vec3 v_Position;
+varying vec3 normal;
+varying vec4 lightColor;
+varying vec3 lightDir;
+varying vec3 cameraPos;
+
 #Vertex_Begin
 
 #Attribute
@@ -8,15 +17,6 @@
 	NORMAL:attr_normal;
 }
 #include "Standard.shader"
-
-varying vec4 DestinationColor;
-varying vec2 v_coord;
-
-varying vec3 v_Position;
-varying vec3 normal;
-varying vec4 lightColor;
-varying vec3 lightDir;
-varying vec3 cameraPos;
 
 void main(void)
 {	
@@ -47,16 +47,8 @@ precision highp float;
 #endif
 
 #include "Fragment.shader"
-varying vec2 v_coord;
+
 uniform sampler2D myTexture0;
-varying vec4 DestinationColor;
-
-varying vec3 v_Position;
-varying vec3 normal;
-varying vec4 lightColor;
-varying vec3 lightDir;
-varying vec3 cameraPos;
-
 
 // VDF BRDF
 float BRDF(vec3 position, vec3 normal, float roughness, float frenal)

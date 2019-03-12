@@ -202,10 +202,22 @@ std::string E3DEngine::GLES_ShaderManager::preProcessShader(GLES_Shader *shader,
 	tmp << infile.rdbuf();
 	std::string &&str = tmp.str();
 
+	std::string &&com_str = getCommonString(str);
 	getVertex(shader, str, folder, vs_content);
+	vs_content = com_str + vs_content;
 	getFragment(shader, str, folder, fs_content);
+	fs_content = com_str + fs_content;
 
 	return shaderContent;
+}
+
+std::string E3DEngine::GLES_ShaderManager::getCommonString(std::string & str)
+{
+	size_t vert_pos = str.find(gVertexBeginStr);
+	size_t frag_pos = str.find(gFragmentBeginStr);
+	size_t end_pos = vert_pos < frag_pos ? vert_pos : frag_pos;
+
+	return str.substr(0, end_pos);
 }
 
 void E3DEngine::GLES_ShaderManager::appendInclude(std::string &strLine, std::string folder)
@@ -277,7 +289,7 @@ void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &
 	size_t pos_end = str.find(gVertexEndStr);
 	if (pos_begin != std::string::npos && pos_end != std::string::npos)
 	{
-		vs_content = str.substr(pos_begin, pos_end);
+		vs_content = str.substr(pos_begin, pos_end - pos_begin);
 		size_t pos = vs_content.find(gAttributeStr);
 		if (pos != std::string::npos)
 		{

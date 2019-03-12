@@ -124,7 +124,7 @@ extern "C"
 		E3DEngine::EngineDelegate::GetInstance().SetIsRun(isRun);
 	}
 
-	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle)
+	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW handle)
 	{
 		GetRenderSystem()->ChangeRenderSurface(handle);
 	}

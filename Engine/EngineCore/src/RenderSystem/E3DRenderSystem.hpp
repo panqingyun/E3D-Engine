@@ -62,7 +62,7 @@ namespace E3DEngine
 		virtual void	BeginFrame()						= 0;
 		virtual void	EndFrame()							= 0;
 		virtual void    SetCullFaceType(CULL_FACE type)		= 0;
-		virtual void    ChangeRenderSurface(NATIVE_WINDOW_TYPE windowHandle) = 0;
+		virtual void    ChangeRenderSurface(NATIVE_WINDOW windowHandle) = 0;
 
 	public:
 		RendererManager * GetRenderManager();

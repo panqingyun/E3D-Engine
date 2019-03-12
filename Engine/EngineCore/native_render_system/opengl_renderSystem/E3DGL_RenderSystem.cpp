@@ -141,7 +141,7 @@ namespace E3DEngine
 	}
 }
 
-void* CreateGLRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height)
+void* CreateGLRenderSystem(NATIVE_WINDOW nativeWindow, int width, int height)
 {
 	E3DEngine::GL_RenderSystem * renderSystem = new E3DEngine::GL_RenderSystem;
 	renderSystem->Initilize();

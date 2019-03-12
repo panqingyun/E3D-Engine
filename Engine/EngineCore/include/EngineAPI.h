@@ -35,11 +35,11 @@
 #endif
 
 #ifdef WIN32 
-typedef HWND NATIVE_WINDOW_TYPE;
+typedef HWND NATIVE_WINDOW;
 #else
-#define NATIVE_WINDOW_TYPE void *
+#define NATIVE_WINDOW void *
 #define EGLNativeDisplayType void *
-#define EGLNativeWindowType NATIVE_WINDOW_TYPE
+#define EGLNativeWindowType NATIVE_WINDOW
 #define EGL_DEFAULT_DISPLAY 0
 #endif
 
@@ -140,7 +140,7 @@ extern "C"
 	/// <summary>
 	/// 更新渲染设备
 	/// </summary>
-	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW_TYPE handle);
+	__api_function_ void ChangeRenderSurface(NATIVE_WINDOW handle);
 	/// <summary>
 	/// 设置Mono环境
 	/// </summary>

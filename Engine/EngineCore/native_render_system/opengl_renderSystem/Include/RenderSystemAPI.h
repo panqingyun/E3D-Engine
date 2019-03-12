@@ -5,4 +5,4 @@
 /// </summary>
 /// <param name = "width"> 渲染视口宽度 </param>
 /// <param name = "height"> 渲染视口高度 </param> 
-void* CreateGLRenderSystem(NATIVE_WINDOW_TYPE nativeWindow, int width, int height);
+void* CreateGLRenderSystem(NATIVE_WINDOW nativeWindow, int width, int height);

@@ -18,7 +18,6 @@
 
 namespace E3DEngine
 {
-	
 	void GL_Renderer::updateArrayBuffer()
 	{
 		if (pMaterial == nullptr)
@@ -98,7 +97,6 @@ namespace E3DEngine
 		glBufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
 
-
 	void GL_Renderer::SetDrawModule(DWORD module)
 	{
 		switch (module)
@@ -143,6 +141,7 @@ namespace E3DEngine
 		{
 			glClearStencil(0);
 			glClear(GL_STENCIL_BUFFER_BIT);
+			glEnable(GL_POLYGON_SMOOTH); 
 		}
 #endif
 		if (pCamera->GetIsShadowCamera())
@@ -155,10 +154,10 @@ namespace E3DEngine
 		glDrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 		afterRender();
 #ifdef __E3D_EDITOR__
+		glDisable(GL_POLYGON_SMOOTH);     //多边形抗锯齿  
 		drawSelectFrame();
 #endif
 	}
-
 
 	void GL_Renderer::ChangeColor(Color4 color)
 	{
@@ -196,7 +195,8 @@ namespace E3DEngine
 			{
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_PROJ_MAT, dlight->GetShadowCamera()->GetProjectionMatrix());
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_VIEW_MAT, dlight->GetShadowCamera()->GetViewMatrix());
-				pMaterial->GetShader()->UpdateSampler2D(LIGHT_DEPTH_TEX, dlight->GetShadowCamera()->GetRenderTexture(),pMaterial->GetTextureCount());
+				pMaterial->GetShader()->UpdateSampler2D(LIGHT_DEPTH_TEX, dlight->GetShadowCamera()->GetTargetTexture(),pMaterial->GetTextureCount());
+				pMaterial->GetShader()->UpdateSampler2D(SHADOW_DEPTH_TEX, dlight->GetShadowCamera()->GetTargetTexture(), pMaterial->GetTextureCount());
 			}
 		}
 
@@ -208,7 +208,6 @@ namespace E3DEngine
 			pMaterial->mShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
 		}
 	}
-
 
 	void GL_Renderer::descPointLight()
 	{
@@ -268,7 +267,6 @@ namespace E3DEngine
 		glDisable(GL_BLEND);
 	}
 
-
 	void GL_Renderer::setVBOs()
 	{
 		glGenBuffers(1, &m_VertexBuffer);
@@ -283,7 +281,7 @@ namespace E3DEngine
 		{
 			vec3f scale = transform->GetScale();
 			Shader *pShader = pMaterial->GetShader();
-			pMaterial->mShader = GL_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame.shader");
+			pMaterial->mShader = GL_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame");
 			updateEngineDefineShaderValue();
 			pMaterial->UseMaterial();
 			updateArrayBuffer();

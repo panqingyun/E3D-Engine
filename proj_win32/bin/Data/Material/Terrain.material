@@ -6,7 +6,7 @@
 	<ShaderConfig>
 		<Item 
 					ID				= "1" 
-					ShaderPath	= "shader/TerrainVS.shader" 
+					ShaderPath	= "shader/TerrainVS" 
 					UniformVariable	= "" 
 		/>
 	</ShaderConfig>

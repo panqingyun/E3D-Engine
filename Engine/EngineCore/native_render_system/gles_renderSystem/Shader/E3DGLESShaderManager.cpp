@@ -4,11 +4,10 @@
 #include "..\..\..\src\Scene\E3DSceneManager.hpp"
 #include <src/Source/Helpers.h>
 
-const std::string gAttributeStr = "#Attribute";
-const std::string gVertexBeginStr = "#Vertex_Begin";
-const std::string gVertexEndStr = "#Vertex_End";
-const std::string gFragmentBeginStr = "#Framgent_Begin";
-const std::string gFragmentEndStr = "#Framgent_End";
+const std::string gAttributeStr		= "#Attribute";
+const std::string gVertexBeginStr	= "#Vertex_Shader";
+const std::string gEndStr			= "#End";
+const std::string gFragmentBeginStr = "#Framgent_Shader";
 
 E3DEngine::GLES_ShaderManager::GLES_ShaderManager()
 {
@@ -286,7 +285,7 @@ void E3DEngine::GLES_ShaderManager::processAttributeVar(GLES_Shader *shader, std
 void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &str, std::string folder, std::string &vs_content)
 {
 	size_t pos_begin = str.find(gVertexBeginStr);
-	size_t pos_end = str.find(gVertexEndStr);
+	size_t pos_end = str.find(gEndStr);
 	if (pos_begin != std::string::npos && pos_end != std::string::npos)
 	{
 		vs_content = str.substr(pos_begin, pos_end - pos_begin);
@@ -312,7 +311,7 @@ void E3DEngine::GLES_ShaderManager::getVertex(GLES_Shader *shader, std::string &
 void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string &str, std::string folder, std::string &fs_content)
 {
 	size_t pos_begin = str.find(gFragmentBeginStr);
-	size_t pos_end = str.find(gFragmentEndStr);
+	size_t pos_end = str.find(gEndStr, pos_begin);
 	if (pos_begin != std::string::npos && pos_end != std::string::npos)
 	{
 		fs_content = "#define __GLES__\n" + str.substr(pos_begin + gFragmentBeginStr.length() + 1, pos_end - pos_begin - 1 - gFragmentBeginStr.length());
@@ -323,7 +322,9 @@ void E3DEngine::GLES_ShaderManager::getFragment(GLES_Shader *shader, std::string
 			Light * light = SceneManager::GetCurrentScene()->GetDirectionalLight();
 			if (light->CreateShadow)
 			{
+
 				lightUniform.append("#define USING_DIRECTIONAL_LIGHT  \n").append("#define __CREATE_SHADOW__\n").append("uniform sampler2D ").append(LIGHT_DEPTH_TEX).append(";\n");
+				lightUniform.append("uniform sampler2DShadow ").append(SHADOW_DEPTH_TEX).append(";\n");
 			}
 			fs_content = lightUniform + fs_content;
 		}

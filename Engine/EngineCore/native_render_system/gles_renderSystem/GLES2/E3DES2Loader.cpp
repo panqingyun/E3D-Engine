@@ -3,7 +3,7 @@
 
 namespace E3DEngine
 {
-	namespace ES2
+	namespace _GL_ES_2
 	{
 #define __String(x) #x
 #ifdef WIN32

@@ -13,7 +13,7 @@
 #endif
 #include "../../Config/Table.h"
 
-E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(TextureData *tData)
+E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureMutilThread(TextureData *tData)
 {
 	string texture_key = tData->fileName + Convert::ToString(tData->configID);
 	if (m_mapTextures.find(texture_key) != m_mapTextures.end())
@@ -36,7 +36,7 @@ E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(T
 	
 }
 
-E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2TextureSingleThread(TextureData *tData)
+E3DEngine::Render2Texture* E3DEngine::TextureDataManager::CreateRender2Texture(TextureData *tData)
 {
 	string texture_key = tData->fileName + Convert::ToString(tData->configID);
 	if (m_mapTextures.find(texture_key) != m_mapTextures.end())

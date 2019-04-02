@@ -80,7 +80,7 @@ namespace E3DEngine
 		for (auto &camera : cameras)
 		{
 			camera->GetRenderQueue()->Clear();
-			camera->ClearRT();
+			camera->ClearTargetTexture();
 		}
 #endif
 	}

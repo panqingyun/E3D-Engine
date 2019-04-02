@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigSystem>
+	<MaterialConfig>
+		<Item ID="1" ShaderID="1" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" CullFace="0" TextureClampType="1" TextureFilterType="5"/>
+	</MaterialConfig>
+	<ShaderConfig>
+		<Item ID="1" ShaderPath="shader/depth" UniformVariable="myTexture0=Resource/coord.renderTexture:1"/>
+	</ShaderConfig>
+</ConfigSystem>

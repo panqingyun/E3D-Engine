@@ -9,6 +9,38 @@ namespace E3DEditor.Common
 {
     public class CommonTools
     {
+        static Dictionary<string, FileType> extMap = new Dictionary<string, FileType>();
+        static CommonTools()
+        {
+            extMap[".jpg"]      = FileType.eImage;
+            extMap[".png"]      = FileType.eImage;
+            extMap[".tga"]      = FileType.eImage;
+            extMap[".bmp"]      = FileType.eImage;
+            extMap[".dds"]      = FileType.eImage;
+            extMap[".txt"]      = FileType.eText;
+            extMap[".plist"]    = FileType.eText;
+            extMap[".xml"]      = FileType.eText;
+            extMap[".js"]       = FileType.eText;
+            extMap[".json"]     = FileType.eText;
+            extMap[".fbx"]      = FileType.eModel;
+            extMap[".obj"]      = FileType.eModel;
+            extMap[".x"]        = FileType.eModel;
+            extMap[".3d"]       = FileType.eModel;
+            extMap[".cs"]       = FileType.eScript;
+            extMap[".prefab"]   = FileType.ePrefab;
+            extMap[".scene"]    = FileType.eScene;
+            extMap[".mp3"]      = FileType.eAudio;
+            extMap[".wav"]      = FileType.eAudio;
+            extMap[".ogg"]      = FileType.eAudio;
+            extMap[".mp4"]      = FileType.eVideo;
+            extMap[".particle"] = FileType.eParticle;
+            extMap[".material"] = FileType.eMaterial;
+            extMap[".glsl"]     = FileType.eShader;
+            extMap[".shader"]   = FileType.eShader;
+            extMap[".hlsl"]     = FileType.eShader;
+            extMap[".cginc"]    = FileType.eShader;
+        }
+
         public static FileType GetFileType(string fileName)
         {
             int fileExtPos = fileName.LastIndexOf('.');
@@ -19,50 +51,11 @@ namespace E3DEditor.Common
 
             string ext = fileName.Substring(fileExtPos);
             ext = ext.ToLower();
-            if (ext == ".jpg" || ext == ".png" || ext == ".tga" || ext == ".bmp" || ext == ".dds")
+            if (extMap.ContainsKey(ext))
             {
-                return FileType.eImage;
+                return extMap[ext];
             }
-            if (ext == ".txt" || ext == ".plist" || ext == ".xml" || ext == ".js" || ext == ".json" )
-            {
-                return FileType.eText;
-            }
-            if (ext == ".fbx" || ext == ".obj" || ext == ".x" || ext == ".3d")
-            {
-                return FileType.eModel;
-            }
-            if(ext == ".cs")
-            {
-                return FileType.eScript;
-            }
-            if (ext == ".prefab")
-            {
-                return FileType.ePrefab;
-            }
-            if (ext == ".scene")
-            {
-                return FileType.eScene;
-            }
-            if (ext == ".mp3" || ext == ".wav" || ext == ".ogg")
-            {
-                return FileType.eAudio;
-            }
-            if (ext == ".mp4")
-            {
-                return FileType.eVideo;
-            }
-            if (ext == ".particle")
-            {
-                return FileType.eParticle;
-            }
-            if (ext == ".material")
-            {
-                return FileType.eMaterial;
-            }
-            if (ext == ".shader")
-            {
-                return FileType.eShader;
-            }
+           
             return FileType.eUnKnown;
         }
     }

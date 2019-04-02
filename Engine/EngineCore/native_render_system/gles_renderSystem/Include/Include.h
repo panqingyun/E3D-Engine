@@ -1,8 +1,8 @@
 #pragma once
 
 #if (defined __IOS__)
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
+#include <OpenGLES/_GL_ES_2/gl.h>
+#include <OpenGLES/_GL_ES_2/glext.h>
 #elif (defined _WIN32)
 #include "EGL/eglplatform.h"
 #include "EGL/egl.h"

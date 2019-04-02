@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -56,13 +56,13 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-    <PropertyGroup>
-      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
       <AdditionalIncludeDirectories>C:\Users\panqingyun\Downloads\assimp-3.3.1\assimp-3.3.1\.;C:\Users\panqingyun\Downloads\assimp-3.3.1\assimp-3.3.1\build;C:\Users\panqingyun\Downloads\assimp-3.3.1\assimp-3.3.1\include;C:\Users\panqingyun\Downloads\assimp-3.3.1\assimp-3.3.1\contrib\zlib;C:\Users\panqingyun\Downloads\assimp-3.3.1\assimp-3.3.1\build\contrib\zlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -167,18 +167,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </ProjectReference>
     <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/code/assimp.vcxproj">
       <Project>33F55762-2C84-3861-96FA-9A65C3B3BDC1</Project>
-    </ProjectReference>
-    <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/tools/assimp_cmd/assimp_cmd.vcxproj">
-      <Project>A77E00E3-3A9D-32A3-8CF0-0A853E16B238</Project>
-    </ProjectReference>
-    <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/tools/assimp_view/assimp_viewer.vcxproj">
-      <Project>C38A9471-0BFD-36AD-9D5F-1DCE73CB2696</Project>
-    </ProjectReference>
-    <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/test/gtest.vcxproj">
-      <Project>5A7B0EF1-EDEF-3FA6-9A28-0933347062F5</Project>
-    </ProjectReference>
-    <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/test/unit.vcxproj">
-      <Project>C140CFA6-D0C9-343B-8467-B1CC5FCD7899</Project>
     </ProjectReference>
     <ProjectReference Include="C:/Users/panqingyun/Downloads/assimp-3.3.1/assimp-3.3.1/build/contrib/zlib/zlibstatic.vcxproj">
       <Project>E80E2591-B281-3E95-BC00-A93F96BDE891</Project>

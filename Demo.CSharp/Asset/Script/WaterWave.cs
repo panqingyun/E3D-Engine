@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 
 public class WaterWave : Component
 {
-    private float totalTime = 0;
-
     private Renderer renderer = null;
 
     void Start()
     {
         renderer = gameObject.Renderer;
+        //renderer.Material.UpdateFloatValue("fFarPlane", 4000);
+        //renderer.Material.UpdateFloatValue("fNearPlane", 1);
+        //renderer.Material.UpdateFloatValue("u_foamAmount", 30);
+        //renderer.Material.UpdateFloatValue("u_specularIntensity", 0.1f);
+        //renderer.Material.UpdateFloatValue("u_specularPower", 1);
+        //renderer.Material.UpdateFloatValue("u_causticIntensity", 1);
+        //renderer.Material.UpdateFloat3Value("u_sunColor", 1, 1, 1);
+        //renderer.Material.UpdateFloat3Value("u_diffuseColor", 0.6f, 0.6f, 0.6f);
+        //renderer.Material.UpdateFloat4Value("u_skyColor", 0.9f, 0.9f, 0.9f, 1);
+        //renderer.Material.UpdateFloatValue("u_waterDepth", 50);
     }
 
     void Update(float dt)
     {
-        totalTime += dt;
-        if(totalTime > 1024)
-        {
-            totalTime = 0;
-        }
-        if(renderer == null)
-        {
-            return;
-        }
-        renderer.Material.UpdateFloatValue("time", totalTime);
+        
     }
 }

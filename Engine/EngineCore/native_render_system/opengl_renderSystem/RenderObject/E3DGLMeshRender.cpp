@@ -2,14 +2,11 @@
 
 namespace E3DEngine
 {
-
-
 	GL_MeshRender::GL_MeshRender()
 	{
 		pRender = new GL_Renderer;
 		pRender->mName = mName;
 	}
-
 
 	GL_MeshRender::~GL_MeshRender()
 	{

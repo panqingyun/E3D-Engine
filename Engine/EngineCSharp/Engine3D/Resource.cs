@@ -14,7 +14,7 @@ namespace E3DEngine
 		{
             createFunDic[typeof(ParticleSystem)] = ParticleSystem.Create;
             createFunDic[typeof(Material)] = Material.Create;
-            createFunDic[typeof(Mesh)] = Mesh.Create;
+          //  createFunDic[typeof(Mesh)] = Mesh.Create;
             // TODO
 
         }

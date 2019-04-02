@@ -1,5 +1,12 @@
 //********************************** Effective 3D Engine **************************************************//
 //******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
+// E3DCamera.h
+// 摄像机
+// 创建： 2017-1-10
+// 
+// 修改：2019-4-2
+//		修改函数名 将RenderTexture改为TargetTexture 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef __E3D_CAMERA_H__
 #define __E3D_CAMERA_H__
 
@@ -22,6 +29,7 @@ namespace E3DEngine
 	public:
 		Camera();
 		~Camera();
+
 	private:
 		void createCamera(const vec3f& position, const vec3f& target, float32 fov, const vec3f& up = vec3f(0.0, -1.0, 0.0), float32 zNear = 5.0f, float32 zFar = 10000.0f, float32 aspect = 9.0f/16.0f);
 		void createCamera(const vec3f& position, const vec3f& target, vec3f up, float32 left, float32 right, float32 bottom, float32 top, float32 zNear, float32 zFar);
@@ -30,13 +38,13 @@ namespace E3DEngine
 		virtual void Awake() override;
 		virtual void TransformChange() override;
 		virtual void Start() override;
+
 	public:
 		void Render();
 		void ClearBackGround();
 		void SetClearType(DWORD clearType);
 		void ChangeViewport(float aspect);
 		RenderQueue * GetRenderQueue();
-		void SetRenderTexture(Render2Texture * rtt);
 		vec3f GetWorldPointWithScreenPoint(float x, float y, float z);
 		vec3f GetScreenPointWithWorlPoint(const vec3f& worldPoint);
 		vec3f GetClipPoint(const vec3f &worldPoint);
@@ -54,6 +62,13 @@ namespace E3DEngine
 		float GetPitch();
 		float GetYaw();
 		float GetRoll();	
+
+		void ClearTargetTexture();
+		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
+		void SetTargetTexture(Render2Texture * rtt);
+		Render2Texture *GetTargetTexture();
+		void SetIsShadowCamera();
+		bool GetIsShadowCamera() { return m_bIsShadowCamera; }
 
 	public:
 		DECLARE_PROPERTY(Camera, bool, Perspective);
@@ -80,13 +95,8 @@ namespace E3DEngine
 			SAVE_PROPERTY(Depth, FT_INT);
 		}
 
-		bool boundingBoxFrustum(vec3f position, float size);
-		void ClearRT();
-		bool Render2CubeMap(CubeMapTexture *cubeMap, int textureWidth = 512, int textureHeight = 512);
-		Render2Texture *GetRenderTexture();
-		void SetIsShadowCamera();
-		bool GetIsShadowCamera() { return m_bIsShadowCamera; }
 	private:
+		bool boundingBoxFrustum(vec3f position, float size);
 		float DistanceBetweenPoints(vec3f p1,vec3f p2);
 		vec3f GetThirdPoint(vec3f p1,vec3f p2,float z3);		
 		//剪裁
@@ -94,7 +104,7 @@ namespace E3DEngine
 		void calculateFrustumPlanes();
 		float * normal(float *plans);
 		void render();
-		//int GetFacePos(vec3f v1,vec3f v2,vec3f v3);
+
 	private:
 		mat4f m_mView;
 		mat4f m_mProjection;		

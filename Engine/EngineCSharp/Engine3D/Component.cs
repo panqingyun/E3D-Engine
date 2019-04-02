@@ -62,31 +62,6 @@ namespace E3DEngine
         {
             get;set;
         }
-
-        private string descPropertyValue
-        {
-            set
-            {
-                string[] properties = value.Split(';');
-                for (int i = 0; i < properties.Length; i++)
-                {
-                    if (properties[i].Trim() == "")
-                    {
-                        continue;
-                    }
-                    string[] propertyNamevalue = properties[i].Split('=');
-                    string propertyName = propertyNamevalue[0].Trim();
-                    string _value = propertyNamevalue[1].Trim();                   
-                    PropertyInfo pfi = this.GetType().GetProperty(propertyName);
-
-                    if (pfi == null)
-                    {
-                        continue;
-                    }
-
-                    pfi.SetValue(this, EConvert.ChangeType(pfi.PropertyType, _value));
-                }
-            }
-        }
+        
     }
 }

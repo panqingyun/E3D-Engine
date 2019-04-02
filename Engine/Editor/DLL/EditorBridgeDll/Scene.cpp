@@ -436,7 +436,7 @@ namespace E3DEngine
 		vec4f newPos = mLookCoordCamera->GetWorldPoint(1, 1, 0);
 		gameObject->Transform->SetLocalPosition(newPos.x - 15, newPos.y - 15, 0);
 		ADD_IN_SCENE(gameObject);
-		mCoordCamera->SetRenderTexture(rtt);
+		mCoordCamera->SetTargetTexture(rtt);
 		mCoordPrefab = (Prefab*)LoadPrefab(path + "/../Data/Scene/coordinate.prefab");
 		mCoordPrefab->Flag |= DONT_SAVE;
 		ADD_IN_SCENE(mCoordPrefab);
@@ -485,7 +485,7 @@ namespace E3DEngine
 				rd->OnCreateComplete();
 				rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();	
 				ADD_IN_SCENE(cViewObject);
-				pCamera->SetRenderTexture(rtt);
+				pCamera->SetTargetTexture(rtt);
 				cViewObject->Selected(true);
 			}			
 			else
@@ -494,7 +494,7 @@ namespace E3DEngine
 				mCameraView->mGameObject->Selected(true);
 				Renderer * rd = mCameraView->mGameObject->GetComponent<Renderer>();
 				rtt = static_cast<BatchRenderer*>(rd->Get())->GetMaterial()->GetRenderTexture();
-				pCamera->SetRenderTexture(rtt);
+				pCamera->SetTargetTexture(rtt);
 			}
 			mScene->pSelectCamera = pCamera;
 		}

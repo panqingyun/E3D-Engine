@@ -22,6 +22,7 @@ namespace E3DEngine
 #define  LIGHT_COLOR "_e3d_WorldSpaceLightColor"
 #define  LIGHT_DIR "_e3d_WorldSpaceLightDirection"
 #define  LIGHT_DEPTH_TEX "_e3d_lightDepthTex"
+#define  SHADOW_DEPTH_TEX "_e3d_shadowDepthTex"
 #define  LIGHT_PROJ_MAT "_e3d_lightMatProj"
 #define  LIGHT_VIEW_MAT "_e3d_lightMatView"
 #define  POINT_LIGHT_POS "_e3d_PointLightPos"
@@ -138,6 +139,7 @@ namespace E3DEngine
 	public:
 		virtual void	DeleteShader() { }
 		std::string GetUniformType(std::string uniformName);
+		void SetFileName(std::string name);
 
 	public:
 		void createInt1Uniform(std::string varName, std::string defValueFormat, int count);
@@ -177,6 +179,7 @@ namespace E3DEngine
 
 		std::map<std::string, std::string> uniformTypeMap;
 		std::map<std::string, unsigned int> uniformLocationMap;
+		std::string mFileName;
 	};
 }
 

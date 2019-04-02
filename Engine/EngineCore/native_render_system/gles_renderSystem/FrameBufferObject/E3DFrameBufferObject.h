@@ -15,7 +15,7 @@ namespace E3DEngine
 		public:
 			virtual ~RenderTarget()
 			{
-				ES2::DeleteRenderbuffers(1, &m_DepthBuffer);
+				_GL_ES_2::DeleteRenderbuffers(1, &m_DepthBuffer);
 			}
 			GLuint	m_DepthBuffer;
 			DWORD Type;
@@ -51,6 +51,8 @@ namespace E3DEngine
 			void Bind();
 			void SetClearColor(Color4 clearColor);
 			void BindRenderBuffer();
+			void BlitFrameBuffer(FrameBufferObject * dest, uint blitBuffer, uint filter = GL_NEAREST);
+
 		public:
 			GLuint GetTextureBufferID();
 			GLuint GetFrameBufferID();
@@ -59,6 +61,9 @@ namespace E3DEngine
 			GLbyte * GetPixels();
 			GLint  GetReadBufferFormat();
 			GLint  GetReadBufferType();
+			int GetFrameBufferHeight();
+			int GetFrameBufferWidth();
+			uint GetTargetType();
 		private:
 			void createTarget(DWORD targetType);
 		private:
@@ -70,6 +75,7 @@ namespace E3DEngine
 			GLint			m_BufferFormat;
 			GLint			m_BufferType;
 			GLbyte		  * m_BufferPixels;
+			uint			m_TargetType;
 		};
 	}
 }

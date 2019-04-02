@@ -74,8 +74,3 @@ void E3DEngine::UI::UICamera::SetRotate(float x, float y, float z)
 {
 	m_pCamera->Transform->SetLocalRotation(x, y, z);
 }
-
-bool E3DEngine::UI::UICamera::boundingBoxFrustum(vec3f position, float size)
-{
-	return m_pCamera->boundingBoxFrustum(position, size);
-}

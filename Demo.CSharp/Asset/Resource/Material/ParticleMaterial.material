@@ -5,7 +5,7 @@
 		<Item ID="2" ShaderID = "2" Color="ffffffff" SrcBlendFactor="4" DstBlendFactor="5" EnableDepthTest="1" EnableWriteDepth="0" CullFace="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID= 1 ShaderPath="shader/Particle.shader" UniformVariable="myTexture0=Resource/Material/texture/particleTexture.png;"/>
-		<Item ID= 2 ShaderPath="shader/ParticleFlower.shader" UniformVariable="myTexture0=Resource/Material/texture/flower.png;"/>
+		<Item ID= 1 ShaderPath="shader/Particle" UniformVariable="myTexture0=Resource/Material/texture/particleTexture.png;"/>
+		<Item ID= 2 ShaderPath="shader/ParticleFlower" UniformVariable="myTexture0=Resource/Material/texture/flower.png;"/>
 	</ShaderConfig>
 </ConfigSystem>

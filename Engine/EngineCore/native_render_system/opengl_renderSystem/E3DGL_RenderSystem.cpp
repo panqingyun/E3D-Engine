@@ -53,14 +53,6 @@ namespace E3DEngine
 		BindDefaultBackbuffer();
 	}
 
-
-	void GL_RenderSystem::clearFrameBufferObject()
-	{
-		glClearColor(0, 0, 0, 0);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-	}
-
 	void GL_RenderSystem::EndFrame()
 	{
 		m_pGL_Context->SwapBuffer();

@@ -24,22 +24,22 @@ namespace E3DEngine
 			return;
 		}
 
-		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		pMaterial->UpdateShader(STATIC_VERTEX);
 		if (!mBatchVertex.empty())
 		{
-			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
-		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		_GL_ES_2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
 	}
 
 	void GLES_Renderer::TransformChange()
 	{
 		if (!mBatchVertex.empty())
 		{
-			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-			ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+			_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 		}
 	}
 
@@ -64,15 +64,15 @@ namespace E3DEngine
 
 	void GLES_Renderer::fillVertexToGPU()
 	{
-		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 		pMaterial->UpdateShader(STATIC_VERTEX);
-		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
+		_GL_ES_2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		_GL_ES_2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLfloat)* Indices.size(), Indices.data(), GL_STATIC_DRAW);
 		if (!mBatchVertex.empty())
 		{
-			ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-			ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
+			_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+			_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), mBatchVertex.data(), GL_STREAM_DRAW);
 			pMaterial->UpdateShader(DYNAMIC_VERTEX);
 		}
 
@@ -88,14 +88,13 @@ namespace E3DEngine
 
 	void GLES_Renderer::ClearVertexIndexBuffer()
 	{
-		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
-		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-		ES2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* m_nIndexSize, nullptr, GL_STATIC_DRAW);
-		ES2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
-		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), nullptr, GL_STATIC_DRAW);
+		_GL_ES_2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+		_GL_ES_2::BufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLuint)* m_nIndexSize, nullptr, GL_STATIC_DRAW);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_BatchVertexBuffer);
+		_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(BatchVertex)* mBatchVertex.size(), nullptr, GL_STREAM_DRAW);
 	}
-
 
 	void GLES_Renderer::SetDrawModule(DWORD module)
 	{
@@ -125,12 +124,12 @@ namespace E3DEngine
 	void GLES_Renderer::ChangeColor(Color4 color)
 	{
 #ifdef __E3D_EDITOR__
-		ES2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
 		for (int i = 0; i < m_vertexCount; i++)
 		{
 			Vertices[i].SetColor(color.r, color.g, color.b, color.a);
 		}
-		ES2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
+		_GL_ES_2::BufferData(GL_ARRAY_BUFFER, sizeof(Vertex)* Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
 #endif
 	}
 
@@ -153,14 +152,14 @@ namespace E3DEngine
 #ifdef __E3D_EDITOR__
 		if (m_IsSelected)
 		{
-			ES2::ClearStencil(0);
-			ES2::Clear(GL_STENCIL_BUFFER_BIT);
+			_GL_ES_2::ClearStencil(0);
+			_GL_ES_2::Clear(GL_STENCIL_BUFFER_BIT);
 		}
 #endif
-		ES2::StencilMask(0xFF);
-		ES2::StencilFunc(GL_ALWAYS, 1, 0xFF);
+		_GL_ES_2::StencilMask(0xFF);
+		_GL_ES_2::StencilFunc(GL_ALWAYS, 1, 0xFF);
 			// 绘制图形
-		ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
+		_GL_ES_2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 		afterRender();
 
 #ifdef __E3D_EDITOR__
@@ -191,7 +190,8 @@ namespace E3DEngine
 			{
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_PROJ_MAT, dlight->GetShadowCamera()->GetProjectionMatrix());
 				pMaterial->GetShader()->UpdateMatrix4Value(LIGHT_VIEW_MAT, dlight->GetShadowCamera()->GetViewMatrix());
-				pMaterial->GetShader()->UpdateSampler2D(LIGHT_DEPTH_TEX, dlight->GetShadowCamera()->GetRenderTexture(), pMaterial->GetTextureCount());
+				pMaterial->GetShader()->UpdateSampler2D(LIGHT_DEPTH_TEX, dlight->GetShadowCamera()->GetTargetTexture(), pMaterial->GetTextureCount());
+				pMaterial->GetShader()->UpdateSampler2D(SHADOW_DEPTH_TEX, dlight->GetShadowCamera()->GetTargetTexture(), pMaterial->GetTextureCount());
 			}
 		}
 
@@ -203,7 +203,6 @@ namespace E3DEngine
 			pMaterial->mShader->UpdateFloatValue(CAMERA_POS, pos.x, pos.y, pos.z);
 		}
 	}
-
 
 	void GLES_Renderer::descPointLight()
 	{
@@ -250,12 +249,11 @@ namespace E3DEngine
 			return;
 		}
 		pMaterial->InvalidMaterial();
-		ES2::BindBuffer(GL_ARRAY_BUFFER, 0);
-		ES2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		ES2::DepthMask(GL_TRUE);
-		ES2::Disable(GL_BLEND);
+		_GL_ES_2::BindBuffer(GL_ARRAY_BUFFER, 0);
+		_GL_ES_2::BindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		_GL_ES_2::DepthMask(GL_TRUE);
+		_GL_ES_2::Disable(GL_BLEND);
 	}
-
 
 	void GLES_Renderer::drawSelectFrame()
 	{
@@ -263,17 +261,17 @@ namespace E3DEngine
 		{
 			vec3f scale = transform->GetScale();
 			Shader *pShader = pMaterial->GetShader();
-			pMaterial->mShader = GLES_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame.shader");
+			pMaterial->mShader = GLES_RenderSystem::GetRenderSystem()->GetShaderManager()->GetShader("../Data/Material/shader/frame");
 			updateEngineDefineShaderValue();
 			pMaterial->UseMaterial();
 			updateArrayBuffer();
-			ES2::Enable(GL_STENCIL_TEST);
-			ES2::StencilMask(0x00);
-			ES2::StencilFunc(GL_NOTEQUAL, 1, 0xFF);
-			ES2::StencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+			_GL_ES_2::Enable(GL_STENCIL_TEST);
+			_GL_ES_2::StencilMask(0x00);
+			_GL_ES_2::StencilFunc(GL_NOTEQUAL, 1, 0xFF);
+			_GL_ES_2::StencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 			//glDepthMask(GL_FALSE);
-			ES2::Enable(GL_DEPTH_TEST);
-			ES2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
+			_GL_ES_2::Enable(GL_DEPTH_TEST);
+			_GL_ES_2::DrawElements(m_nDrawModule, (int)m_nIndexSize, GL_UNSIGNED_INT, nullptr);
 			afterRender();
 			pMaterial->mShader = pShader;
 		}

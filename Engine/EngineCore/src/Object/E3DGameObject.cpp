@@ -1186,6 +1186,20 @@ vvision::vec2f Convert::ToVector2(std::string value)
 	return vec2f(x, y);
 }
 
+vec4f Convert::ToVector4(std::string value)
+{
+	std::vector<std::string> vec = StringBuilder::Split(value, ",");
+	if (vec.empty())
+	{
+		return vec4f(0, 0, 0, 0);
+	}
+	float &&x = Convert::ToFloat(vec[0]);
+	float &&y = Convert::ToFloat(vec[1]);
+	float &&z = Convert::ToFloat(vec[2]);
+	float &&w = Convert::ToFloat(vec[3]);
+	return vec4f(x, y, z, w);
+}
+
 bool Convert::ToBoolean(std::string src)
 {
 	if (src.empty())

@@ -38,8 +38,9 @@ namespace E3DEngine
 		uniformSetFunc["mat3"]		= &Shader::createMatrix3Uniform;
 		uniformSetFunc["mat4"]		= &Shader::createMatrix4Uniform;
 		uniformSetFunc["int"]		= &Shader::createInt1Uniform;
-		uniformSetFunc["sampler2D"]		= &Shader::createSampler2DUniform;
-		uniformSetFunc["samplerCube"]	= &Shader::createSamplerCubeUniform;
+		uniformSetFunc["sampler2D"]			= &Shader::createSampler2DUniform;
+		uniformSetFunc["sampler2DShadow"]	= &Shader::createSampler2DUniform;
+		uniformSetFunc["samplerCube"]		= &Shader::createSamplerCubeUniform;
 	}
 
 	void GL_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)

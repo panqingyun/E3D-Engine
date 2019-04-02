@@ -264,6 +264,7 @@ struct E3D_EXPORT_DLL Convert
 	static vec4f CSVector4ToVec4(MonoObject *vec);
 	static vec3f ToVector3(std::string value);
 	static vec2f ToVector2(std::string value);
+	static vec4f ToVector4(std::string value);
 
 	static bool ToBoolean(std::string src);
 };

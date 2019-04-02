@@ -53,8 +53,8 @@ namespace E3DEngine
 		tData.width = LightMapSize;
 		tData.height = LightMapSize;
 		tData.target = RENDER_DEPTH;
-		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
-		shadowCamera->SetRenderTexture(rtt);
+		Render2Texture *rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
+		shadowCamera->SetTargetTexture(rtt);
 		shadowCamera->SetClearType(eCT_Depth);
 		shadowCamera->SetIsShadowCamera();
 		shadowCamera->mName = "ShadowCamera";

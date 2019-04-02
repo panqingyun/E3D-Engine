@@ -24,7 +24,6 @@ namespace E3DEngine
 		m_pShaderManager = dynamic_cast<ShaderManager*>(new GLES_ShaderManager);
 	}
 
-
 	void GLES_RenderSystem::Cleanup()
 	{
 		m_pMaterialManager->Cleanup();
@@ -33,15 +32,14 @@ namespace E3DEngine
 		//SAFE_DELETE(defaultFrameBuffer);
 	}
 
-
 	void GLES_RenderSystem::BindDefaultBackbuffer()
 	{
 #ifdef __IOS__
 		defaultFrameBuffer->Bind();
         defaultFrameBuffer->BindRenderBuffer();
 #else
-		ES2::BindFramebuffer(GL_FRAMEBUFFER, 0);
-		ES2::Viewport(0, 0, m_frameWidth, m_frameHeight);
+		_GL_ES_2::BindFramebuffer(GL_FRAMEBUFFER, 0);
+		_GL_ES_2::Viewport(0, 0, m_frameWidth, m_frameHeight);
 #endif // __IOS_
 
 	}
@@ -64,14 +62,13 @@ namespace E3DEngine
 				
 	}
 
-
 	void GLES_RenderSystem::clearFrameBufferObject()
 	{
 #ifdef __IOS__
 		defaultFrameBuffer->Clear();
 #else
-		ES2::ClearColor(0, 0, 0, 0);
-		ES2::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		_GL_ES_2::ClearColor(0, 0, 0, 0);
+		_GL_ES_2::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 #endif
 		
 	}
@@ -80,11 +77,11 @@ namespace E3DEngine
 	{
 #ifndef __IOS__
 		m_pEGL_Context->SwapBuffer();
-		ES2::Flush();
+		_GL_ES_2::Flush();
 #endif
 	}
 
-	void GLES_RenderSystem::CreateOpenGLES(EGLNativeDisplayType displayID,EGLNativeWindowType windowHandle)
+	void GLES_RenderSystem::CreateOpenGLES(EGLNativeDisplayType displayID, NATIVE_WINDOW windowHandle)
 	{
 #ifdef __IOS__
         SetupDefaultFrameBuffer();
@@ -93,8 +90,8 @@ namespace E3DEngine
         m_pEGL_Context->InitGLES(displayID, windowHandle);
 		m_pEGL_Context->UseContext();
 #endif
-		ES2::CullFace(GL_BACK);
-		ES2::Enable(GL_STENCIL_TEST);
+		_GL_ES_2::CullFace(GL_BACK);
+		_GL_ES_2::Enable(GL_STENCIL_TEST);
 	}
 
 	GLES_RenderSystem::GLES_RenderSystem()
@@ -107,23 +104,23 @@ namespace E3DEngine
 		UINT type = 0;
 		if (clearType & eCT_Color)
 		{
-			ES2::ClearColor(color.r, color.g, color.b, color.a);
+			_GL_ES_2::ClearColor(color.r, color.g, color.b, color.a);
 			type |= GL_COLOR_BUFFER_BIT;
 		}
 		if (clearType & eCT_Depth)
 		{
-			ES2::ClearDepthf(1);
+			_GL_ES_2::ClearDepthf(1);
 			type |= GL_DEPTH_BUFFER_BIT;
 		}
 		if (type & eCT_Stencil)
 		{
-			ES2::ClearStencil(1);
+			_GL_ES_2::ClearStencil(1);
 			type |= GL_STENCIL_BUFFER_BIT;
 		}
-		ES2::Clear(type);
+		_GL_ES_2::Clear(type);
 	}
 
-	void GLES_RenderSystem::ChangeRenderSurface(EGLNativeWindowType windowHandle)
+	void GLES_RenderSystem::ChangeRenderSurface(NATIVE_WINDOW windowHandle)
 	{
 		m_pEGL_Context->ChangeSurface(windowHandle);
 	}
@@ -138,29 +135,25 @@ namespace E3DEngine
 		//m_pEGL_Context->UseContext();
 	}
 
-
 	void GLES_RenderSystem::UseShareContext()
 	{
 		//m_pEGL_Context->UseShareContext();
 	}
-
 
 	void GLES_RenderSystem::CreateShareContext()
 	{
 		//m_pEGL_Context->CreateShareContext();
 	}
 
-
 	void GLES_RenderSystem::SetCullFaceType(CULL_FACE type)
 	{
-		ES2::CullFace(type == eCF_BACK ? GL_BACK : GL_FRONT);
+		_GL_ES_2::CullFace(type == eCF_BACK ? GL_BACK : GL_FRONT);
 	}
-
 }
 
 __api_function_ void* CreateGLESRenderSystem(NATIVE_WINDOW nativeWindow, int width, int height)
 {
-	E3DEngine::ES2::LoadESLibrary();
+	E3DEngine::_GL_ES_2::LoadESLibrary();
 	E3DEngine::GLES_RenderSystem * renderSystem = new E3DEngine::GLES_RenderSystem;
 	renderSystem->Initilize();
 	renderSystem->setFrameWidth(width);

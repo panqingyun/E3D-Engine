@@ -26,7 +26,7 @@ namespace E3DEngine
 			m_FrameWidth = width;
 			m_FrameHeight = height;
 			createTarget(targetType);
-
+			m_TargetType = targetType;
 			glGenFramebuffers(1, &m_FrameBuffer);
 			glBindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
 			glGenRenderbuffers(1, &m_renderTarget->m_DepthBuffer);
@@ -81,6 +81,23 @@ namespace E3DEngine
 			}
 		}
 
+		void FrameBufferObject::BlitFrameBuffer(FrameBufferObject * dest, uint blitBuffer, uint filter)
+		{
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, m_FrameBuffer);
+			if (dest != nullptr)
+			{
+				glBindFramebuffer(GL_DRAW_FRAMEBUFFER, dest->GetFrameBufferID());
+			}
+			else
+			{
+				glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+			}
+			glBlitFramebuffer(0, 0, m_FrameWidth, m_FrameHeight, 0, 0, dest->GetFrameBufferWidth(), dest->GetFrameBufferHeight(), blitBuffer, filter);
+
+			glBindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+			glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+		}
+
 		void FrameBufferObject::SetClearColor(Color4 clearColor)
 		{
 			m_ClearColor = clearColor;
@@ -131,6 +148,21 @@ namespace E3DEngine
 			return m_BufferType;
 		}
 
+		int FrameBufferObject::GetFrameBufferHeight()
+		{
+			return m_FrameHeight;
+		}
+
+		int FrameBufferObject::GetFrameBufferWidth()
+		{
+			return m_FrameWidth;
+		}
+
+		uint FrameBufferObject::GetTargetType()
+		{
+			return m_TargetType;
+		}
+
 		void FrameBufferObject::createTarget(DWORD targetType)
 		{
 			if (targetType == RENDER_BUFFER)
@@ -178,8 +210,8 @@ namespace E3DEngine
 				GLfloat borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
 				glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 				glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
-				glDrawBuffer(GL_NONE);
-				glReadBuffer(GL_NONE);
+				/*glDrawBuffer(GL_NONE);
+				glReadBuffer(GL_NONE);*/
 				GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 				if (status != GL_FRAMEBUFFER_COMPLETE)
 				{

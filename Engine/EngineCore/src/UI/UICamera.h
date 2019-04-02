@@ -33,10 +33,7 @@ namespace E3DEngine
 			void SetPosition(const vec3f& position);
 			void SetQuaternion(Quatf new_quat);
 			void SetRotate(float x, float y, float z);
-		
-		public:
-			bool boundingBoxFrustum(vec3f position, float size);
-
+	
 		private:
 			Camera * m_pCamera;
 		};

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ConfigSystem>
 	<MaterialConfig>
-      	<Item ID=1 ShaderID ="1" Color="ffffffff" CullFace = "1" TextureFilterType = "5"/>
+      	<Item ID="1" ShaderID ="1" Color="ffffffff" CullFace = "1" TextureFilterType = "5"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/SkyCubeMap.shader" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=1.0;etaRatio=0.5"/>
+		<Item ID="1" ShaderPath="shader/SkyCubeMap" UniformVariable="skybox=Resource/Material/texture/SkyCube.cubemapTexture:1;fresnelBias=1.0;etaRatio=0.5"/>
 	</ShaderConfig>
 </ConfigSystem>

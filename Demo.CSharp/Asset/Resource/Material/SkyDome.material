@@ -4,6 +4,6 @@
       	<Item ID="1" ShaderID="1" Color="ffffffff" EnableDepthTest="0" CullFace="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1"  ShaderPath="shader/SkyDome.shader"  UniformVariable="myTexture0=Resource/Material/texture/sky.png;"/>
+		<Item ID="1"  ShaderPath="shader/SkyDome"  UniformVariable="myTexture0=Resource/Material/texture/sky.png;"/>
 	</ShaderConfig>
 </ConfigSystem>

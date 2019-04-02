@@ -4,6 +4,6 @@
 		<Item ID="1" ShaderID="1" EnableDepthTest="1" CullFace="0"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/BoxVS.shader"/>
+		<Item ID="1" ShaderPath="shader/BoxVS"/>
 	</ShaderConfig>
 </ConfigSystem>

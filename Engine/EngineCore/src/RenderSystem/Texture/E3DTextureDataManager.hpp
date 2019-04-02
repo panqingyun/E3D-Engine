@@ -51,6 +51,12 @@ namespace E3DEngine
 		RENDER_DEPTH,
 	} RenderTargeType;
 
+	enum BlitBuffer
+	{
+		COLOR_BUFFER,
+		DEPTH_BUFFER,
+	};
+
 	enum MultiSample
 	{
 		MULTISAMPLE_NONE = 0,
@@ -122,9 +128,9 @@ namespace E3DEngine
 		// -----------------------------------------------
 		// 创建RTT
 		//-----------------------------------------------
-		Render2Texture* CreateRender2Texture(TextureData *data);
+		Render2Texture* CreateRender2TextureMutilThread(TextureData *data);
 
-		Render2Texture* CreateRender2TextureSingleThread(TextureData *data);
+		Render2Texture* CreateRender2Texture(TextureData *data);
 
 		// -----------------------------------------------
 		// 创建图像数据

@@ -48,44 +48,44 @@ namespace E3DEngine
 	{
 		if (enableDepthTest)
 		{
-			ES2::Enable(GL_DEPTH_TEST);
+			_GL_ES_2::Enable(GL_DEPTH_TEST);
 		}
 		else
 		{
-			ES2::Disable(GL_DEPTH_TEST);
+			_GL_ES_2::Disable(GL_DEPTH_TEST);
 		}
         //深度测试
         if(enablewriteDepth)
 		{
-			ES2::DepthMask(GL_TRUE);
+			_GL_ES_2::DepthMask(GL_TRUE);
         }
         else
 		{
-			ES2::DepthMask(GL_FALSE);
+			_GL_ES_2::DepthMask(GL_FALSE);
         }       
 
         if(enableDoubleSide)
         {
-			ES2::Disable(GL_CULL_FACE);
+			_GL_ES_2::Disable(GL_CULL_FACE);
         }
         else
         {
-			ES2::Enable(GL_CULL_FACE);
+			_GL_ES_2::Enable(GL_CULL_FACE);
         }		
 
 		if (srcBlendFactor == GL_NONE || dstBlendFactor == GL_NONE)
 		{
-			ES2::Disable(GL_BLEND);
+			_GL_ES_2::Disable(GL_BLEND);
 		}
 		else
 		{
-			ES2::Enable(GL_BLEND);
-			ES2::BlendFunc(srcBlendFactor, dstBlendFactor);
+			_GL_ES_2::Enable(GL_BLEND);
+			_GL_ES_2::BlendFunc(srcBlendFactor, dstBlendFactor);
 		}
-		ES2::Enable(GL_ALPHA);
+		_GL_ES_2::Enable(GL_ALPHA);
 
-		ES2::Enable(GL_STENCIL_TEST);
-		ES2::ColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+		_GL_ES_2::Enable(GL_STENCIL_TEST);
+		_GL_ES_2::ColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
         
         if(enableStencilTest)
         {
@@ -95,18 +95,18 @@ namespace E3DEngine
 
     void GLES_Material::enableStencil()
     {
-        ES2::DepthMask(GL_TRUE);//启用写入深度值
-        ES2::ColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-        ES2::StencilFunc(GL_EQUAL, 1, 0xFF);
-        ES2::StencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);
-        ES2::StencilMask(0xFF);
+        _GL_ES_2::DepthMask(GL_TRUE);//启用写入深度值
+        _GL_ES_2::ColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+        _GL_ES_2::StencilFunc(GL_EQUAL, 1, 0xFF);
+        _GL_ES_2::StencilOp(GL_REPLACE, GL_KEEP, GL_KEEP);
+        _GL_ES_2::StencilMask(0xFF);
     }
 
 
 	void GLES_Material::InvalidMaterial()
 	{
 		UseNullProgram();
-		ES2::BindTexture(GL_TEXTURE_2D, 0);
+		_GL_ES_2::BindTexture(GL_TEXTURE_2D, 0);
 	}
 
 

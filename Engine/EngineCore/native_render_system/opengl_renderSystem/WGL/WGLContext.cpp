@@ -181,11 +181,13 @@ BOOL GL_Context::OpenGLInit(HDC pDC)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_POINT_SMOOTH);
 	glEnable(GL_LINE_SMOOTH);
-	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // Make round points, not square points  
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // Antialias the lines  
 	glEnable(GL_MULTISAMPLE);
-	//glEnable(GL_POLYGON_SMOOTH);     //多边形抗锯齿  
-	glHint(GL_POLYGON_SMOOTH, GL_NICEST);
+	glEnable(GL_SAMPLE_ALPHA_TO_COVERAGE);
+	
+	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST); // 点采样
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);  // 线采样  
+	glHint(GL_POLYGON_SMOOTH_HINT, GL_NICEST); // 多边形采样
+	//glPolygonMode(GL_FRONT, GL_LINE);
 	glClearDepthf(1);
 	glClear(GL_DEPTH_BUFFER_BIT);
 	const GLubyte* OpenGLVersion = glGetString(GL_VERSION); //返回当前OpenGL实现的版本号

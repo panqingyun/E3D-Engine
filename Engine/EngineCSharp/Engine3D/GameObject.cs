@@ -51,19 +51,13 @@ namespace E3DEngine
             [MethodImpl(MethodImplOptions.InternalCall)]
             set;
         }
-
-        private Dictionary<string, List<Component>> component_dic = new Dictionary<string, List<Component>>();
-
+        
         public Transform Transform;
        
 
         public void RemoveComponent(Component com)
         {
-            if(component_dic.ContainsKey(com.GetType().FullName))
-            {
-                removeComponent(com);
-                component_dic.Remove(com.GetType().FullName);
-            }
+            removeComponent(com);
         }
 
         public T GetComponent<T>() where T : Component
@@ -79,20 +73,6 @@ namespace E3DEngine
         public Component GetComponent(string typeFullName)
         {
             return getComponent(typeFullName);
-        }
-        
-        public List<Component> GetComponents(Type t)
-        {
-            return GetComponents(t.FullName);
-        }
-
-        public List<Component> GetComponents(string typeFullName)
-        {
-            if (component_dic.ContainsKey(typeFullName))
-            {
-                return component_dic[typeFullName];
-            }
-            return null;
         }
 
         public T AddComponent<T>() where T : Component

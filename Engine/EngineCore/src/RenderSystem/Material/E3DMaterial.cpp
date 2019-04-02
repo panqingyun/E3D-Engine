@@ -18,6 +18,9 @@ namespace E3DEngine
 	const std::string boolType		= "bool";
 	const std::string sampler2DType	  = "sampler2D";
 	const std::string samplerCubeType = "samplerCube";
+	const std::string vec2Type = "vec2";
+	const std::string vec3Type = "vec3";
+	const std::string vec4Type = "vec4";
 
 	Material::Material()
 	{
@@ -129,6 +132,21 @@ namespace E3DEngine
 			{
 				mShader->UpdateFloatValue(varValues[0], Convert::ToFloat(varValues[1]));
 			}
+			else if (uniformType == vec2Type)
+			{
+				vec2f v = Convert::ToVector2(varValues[1]);
+				mShader->UpdateFloatValue(varValues[0], v.x, v.y);
+			}
+			else if (uniformType == vec3Type)
+			{
+				vec3f v = Convert::ToVector3(varValues[1]);
+				mShader->UpdateFloatValue(varValues[0], v.x, v.y, v.z);
+			}
+			else if (uniformType == vec4Type)
+			{
+				vec4f v = Convert::ToVector4(varValues[1]);
+				mShader->UpdateFloatValue(varValues[0], v.x, v.y, v.z, v.w);
+			}
 		}
 	}
 
@@ -184,11 +202,11 @@ namespace E3DEngine
 			Render2Texture *rtt = nullptr;
 			if (GetRenderSystem()->getIsMutilThreadRender())
 			{
-				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureMutilThread(&tData);
 			}
 			else
 			{
-				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2TextureSingleThread(&tData);
+				rtt = GetRenderSystem()->GetTextureDataManager()->CreateRender2Texture(&tData);
 			}
 			mShader->UpdateSampler2D(v1, rtt, textureCount);
 			textureCount++;

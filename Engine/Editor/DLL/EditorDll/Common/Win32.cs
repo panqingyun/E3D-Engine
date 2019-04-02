@@ -86,8 +86,8 @@ namespace E3DEditor.Common
         public const int HWND_NOTOPMOST         = -2;
 
         public const int GWL_STYLE              = -16;
-        public const int WS_BORDER              = (int)0x00800000L;
-        public const int WS_THICKFRAME          = (int)0x00040000L;
+        public const int WS_BORDER              = 0x00800000;
+        public const int WS_THICKFRAME          = 0x00040000;
         public const int SWP_NOMOVE             = 0x0002;
         public const int SWP_NOSIZE             = 0x0001;
         public const int SWP_NOZORDER           = 0x0004;
@@ -174,7 +174,7 @@ namespace E3DEditor.Common
         /// <summary>
         /// 设置为顶层窗体
         /// </summary>
-        /// <param name="hWnd"></param>
+        /// <param name="hWnd">将要设置前台的窗口句柄</param>
         /// <returns></returns>
         [DllImport("User32.dll")]
         public static extern bool SetForegroundWindow(System.IntPtr hWnd);
@@ -190,31 +190,31 @@ namespace E3DEditor.Common
         public static extern IntPtr CreateMutex(IntPtr lpMutexAttributes, bool bInitialOwner, string lpName);
 
         /// <summary>
-        /// 
+        /// 该函数返回调用线程最近的错误代码值，错误代码以单线程为基础来维护的，多线程不重写各自的错误代码值。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>返回值为调用的线程的错误代码值(unsigned long)，函数通过调 SetLastError 函数来设置此值，每个函数资料的返回值部分都注释了函数设置错误代码的情况。</returns>
         [DllImport("Kernel32.dll", EntryPoint = "GetLastError")]
         public static extern uint GetLastError();
 
         /// <summary>
-        /// 
+        /// 改变一个子窗口，弹出式窗口或顶层窗口的尺寸，位置和Z序
         /// </summary>
-        /// <param name="hWnd"></param>
-        /// <param name="hWndInsertAfter"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="cx"></param>
-        /// <param name="cy"></param>
-        /// <param name="wFlags"></param>
+        /// <param name="hWnd">在z序中的位于被置位的窗口前的窗口句柄</param>
+        /// <param name="hWndInsertAfter">用于标识在z-顺序的此 CWnd 对象之前的 CWnd 对象</param>
+        /// <param name="x">以客户坐标指定窗口新位置的左边界</param>
+        /// <param name="y">以客户坐标指定窗口新位置的顶边界</param>
+        /// <param name="cx">以像素指定窗口的新的宽度</param>
+        /// <param name="cy">以像素指定窗口的新的高度</param>
+        /// <param name="wFlags">窗口尺寸和定位的标志</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern IntPtr SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, uint wFlags);
 
         /// <summary>
-        /// 
+        /// 返回指定窗口的边框矩形的尺寸
         /// </summary>
-        /// <param name="hWnd"></param>
-        /// <param name="lpRect"></param>
+        /// <param name="hWnd">窗口句柄</param>
+        /// <param name="lpRect">指向一个RECT结构的指针，该结构接收窗口的左上角和右下角的屏幕坐标</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern bool GetWindowRect(IntPtr hWnd, out WindowRect lpRect);
@@ -227,24 +227,31 @@ namespace E3DEditor.Common
         /// <returns></returns>
         [DllImport("kernel32.dll")]
         public static extern int WinExec(string exeName, int operType);
+
+        /// <summary>
+        /// 设置弹出式窗口，层叠窗口或子窗口的父窗口
+        /// </summary>
+        /// <param name="hWndChild">子窗口句柄</param>
+        /// <param name="hWndNewParent">新的父窗口句柄</param>
+        /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern IntPtr SetParent(IntPtr hWndChild,  IntPtr hWndNewParent);
-        
+
         /// <summary>
-        /// 
+        /// 获取指定窗口的有关信息
         /// </summary>
-        /// <param name="hWnd"></param>
-        /// <param name="nIndex"></param>
+        /// <param name="hWnd">目标窗口句柄</param>
+        /// <param name="nIndex">若指定值大于0，返回窗口内存中指定偏移量的32位值</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern Int32 GetWindowLong(IntPtr hWnd, Int32 nIndex);
 
         /// <summary>
-        /// 
+        /// 改变指定窗口的属性
         /// </summary>
-        /// <param name="hWnd"></param>
-        /// <param name="nIndex"></param>
-        /// <param name="dwNewLong"></param>
+        /// <param name="hWnd">窗口句柄及间接给出的窗口所属的类</param>
+        /// <param name="nIndex">指定将设定的大于等于0的偏移值</param>
+        /// <param name="dwNewLong">指定的替换值</param>
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern Int32 SetWindowLong(IntPtr hWnd, Int32 nIndex, Int32 dwNewLong);

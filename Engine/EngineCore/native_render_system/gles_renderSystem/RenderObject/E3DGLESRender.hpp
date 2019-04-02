@@ -26,12 +26,12 @@ namespace E3DEngine
 		{
 			if (m_VertexBuffer != 0)
 			{
-				ES2::DeleteBuffers(1, &m_VertexBuffer);
+				_GL_ES_2::DeleteBuffers(1, &m_VertexBuffer);
 				m_VertexBuffer = 0;
 			}
 			if (m_IndexBuffer != 0)
 			{
-				ES2::DeleteBuffers(1, &m_IndexBuffer);
+				_GL_ES_2::DeleteBuffers(1, &m_IndexBuffer);
 				m_IndexBuffer = 0;
 			}
 		}
@@ -59,9 +59,9 @@ namespace E3DEngine
 	private:
 		void setVBOs()
 		{
-			ES2::GenBuffers(1, &m_VertexBuffer);
-			ES2::GenBuffers(1, &m_IndexBuffer);
-			ES2::GenBuffers(1, &m_BatchVertexBuffer);
+			_GL_ES_2::GenBuffers(1, &m_VertexBuffer);
+			_GL_ES_2::GenBuffers(1, &m_IndexBuffer);
+			_GL_ES_2::GenBuffers(1, &m_BatchVertexBuffer);
 		}
 	private:
 

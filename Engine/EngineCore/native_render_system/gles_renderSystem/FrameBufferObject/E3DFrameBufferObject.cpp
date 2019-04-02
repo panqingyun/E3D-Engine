@@ -17,7 +17,7 @@ namespace E3DEngine
 		FrameBufferObject::~FrameBufferObject()
 		{
 			SAFE_DELETE(m_renderTarget);
-			ES2::DeleteFramebuffers(1, &m_FrameBuffer);
+			_GL_ES_2::DeleteFramebuffers(1, &m_FrameBuffer);
 			SAFE_DELETE(m_BufferPixels);
 		}
 
@@ -27,44 +27,45 @@ namespace E3DEngine
 			m_FrameHeight = height;
 			createTarget(targetType);
 
-			ES2::GenFramebuffers(1, &m_FrameBuffer);
-			ES2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-			ES2::GenRenderbuffers(1, &m_renderTarget->m_DepthBuffer);
-			ES2::BindRenderbuffer(GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
-			ES2::RenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
-			ES2::FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
+			m_TargetType = targetType;
+			_GL_ES_2::GenFramebuffers(1, &m_FrameBuffer);
+			_GL_ES_2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			_GL_ES_2::GenRenderbuffers(1, &m_renderTarget->m_DepthBuffer);
+			_GL_ES_2::BindRenderbuffer(GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
+			_GL_ES_2::RenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
+			_GL_ES_2::FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_renderTarget->m_DepthBuffer);
 			if (targetType == RENDER_BUFFER)
 			{
 				RenderBuffer* dt = static_cast<RenderBuffer*>(m_renderTarget);
-				ES2::GenRenderbuffers(1, &dt->m_RenderBuffer);
-				ES2::BindRenderbuffer(GL_RENDERBUFFER, dt->m_RenderBuffer);
-				ES2::RenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8_OES, width, height);
-				ES2::FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, dt->m_RenderBuffer);
+				_GL_ES_2::GenRenderbuffers(1, &dt->m_RenderBuffer);
+				_GL_ES_2::BindRenderbuffer(GL_RENDERBUFFER, dt->m_RenderBuffer);
+				_GL_ES_2::RenderbufferStorage(GL_RENDERBUFFER, GL_RGBA8_OES, width, height);
+				_GL_ES_2::FramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, dt->m_RenderBuffer);
 			}
 			else
 			{
 				RenderTexture* dt = static_cast<RenderTexture*>(m_renderTarget);
-				ES2::GenTextures(1, &dt->m_TextureBuffer);
-				ES2::BindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
+				_GL_ES_2::GenTextures(1, &dt->m_TextureBuffer);
+				_GL_ES_2::BindTexture(GL_TEXTURE_2D, dt->m_TextureBuffer);
 
 				if (targetType == RENDER_TO_TEXTURE)
 				{
-					ES2::TexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-					ES2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+					_GL_ES_2::TexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+					_GL_ES_2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 				}
 				else if (targetType == RENDER_DEPTH)
 				{
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-					ES2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-					ES2::TexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, nullptr);
-					ES2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
-					GLenum status = ES2::CheckFramebufferStatus(GL_FRAMEBUFFER);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+					_GL_ES_2::TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+					_GL_ES_2::TexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, nullptr);
+					_GL_ES_2::FramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, dt->m_TextureBuffer, 0);
+					GLenum status = _GL_ES_2::CheckFramebufferStatus(GL_FRAMEBUFFER);
 					if (status != GL_FRAMEBUFFER_COMPLETE)
 					{
 						Debug::Log(ell_Error, "FrameBuffer create failed, %d", status);
@@ -73,30 +74,63 @@ namespace E3DEngine
 				
 			}
 			m_BufferPixels = (GLbyte*)malloc(width * height * 4);
-			ES2::GetIntegerv(GL_IMPLEMENTATION_COLOR_READ_TYPE, &m_BufferType);
-			ES2::GetIntegerv(GL_IMPLEMENTATION_COLOR_READ_FORMAT, &m_BufferFormat);
-			ES2::BindFramebuffer(GL_FRAMEBUFFER, 0);
+			_GL_ES_2::GetIntegerv(GL_IMPLEMENTATION_COLOR_READ_TYPE, &m_BufferType);
+			_GL_ES_2::GetIntegerv(GL_IMPLEMENTATION_COLOR_READ_FORMAT, &m_BufferFormat);
+			_GL_ES_2::BindFramebuffer(GL_FRAMEBUFFER, 0);
 
+		}
+
+		int FrameBufferObject::GetFrameBufferHeight()
+		{
+			return m_FrameHeight;
+		}
+
+		int FrameBufferObject::GetFrameBufferWidth()
+		{
+			return m_FrameWidth;
+		}
+
+		uint FrameBufferObject::GetTargetType()
+		{
+			return m_TargetType;
+		}
+
+		void FrameBufferObject::BlitFrameBuffer(FrameBufferObject * dest, uint blitBuffer, uint filter)
+		{
+			// TODO
+			/*_GL_ES_2::BindFramebuffer(GL_READ_FRAMEBUFFER, m_FrameBuffer);
+			if (dest != nullptr)
+			{
+				_GL_ES_2::BindFramebuffer(GL_DRAW_FRAMEBUFFER, dest->GetFrameBufferID());
+			}
+			else
+			{
+				_GL_ES_2::BindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+			}
+			_GL_ES_2::BlitFramebuffer(0, 0, m_FrameWidth, m_FrameHeight, 0, 0, dest->GetFrameBufferWidth(), dest->GetFrameBufferHeight(), blitBuffer, filter);
+
+			_GL_ES_2::BindFramebuffer(GL_READ_FRAMEBUFFER, 0);
+			_GL_ES_2::BindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);*/
 		}
 
 		void FrameBufferObject::Clear()
 		{
-			ES2::ClearColor(m_ClearColor.r, m_ClearColor.g, m_ClearColor.b, m_ClearColor.a);
-			ES2::ClearStencil(0);
-			ES2::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+			_GL_ES_2::ClearColor(m_ClearColor.r, m_ClearColor.g, m_ClearColor.b, m_ClearColor.a);
+			_GL_ES_2::ClearStencil(0);
+			_GL_ES_2::Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 		}
 
 		void FrameBufferObject::Bind()
 		{
-			ES2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-			ES2::Viewport(0, 0, m_FrameWidth, m_FrameHeight);
+			_GL_ES_2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			_GL_ES_2::Viewport(0, 0, m_FrameWidth, m_FrameHeight);
 		}
 
 		void FrameBufferObject::BindRenderBuffer()
 		{
 			if (m_renderTarget->Type == RENDER_BUFFER)
 			{
-				ES2::BindRenderbuffer(GL_RENDERBUFFER, static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer);
+				_GL_ES_2::BindRenderbuffer(GL_RENDERBUFFER, static_cast<RenderBuffer*>(m_renderTarget)->m_RenderBuffer);
 			}
 		}
 
@@ -135,8 +169,8 @@ namespace E3DEngine
 
 		GLbyte * FrameBufferObject::GetPixels()
 		{
-			ES2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
-			ES2::ReadPixels(0, 0, m_FrameWidth, m_FrameHeight, m_BufferFormat, m_BufferType, m_BufferPixels);
+			_GL_ES_2::BindFramebuffer(GL_FRAMEBUFFER, m_FrameBuffer);
+			_GL_ES_2::ReadPixels(0, 0, m_FrameWidth, m_FrameHeight, m_BufferFormat, m_BufferType, m_BufferPixels);
 			return m_BufferPixels;
 		}
 
@@ -164,7 +198,7 @@ namespace E3DEngine
 
 		RenderTexture::~RenderTexture()
 		{
-			ES2::DeleteTextures(1, &m_TextureBuffer);
+			_GL_ES_2::DeleteTextures(1, &m_TextureBuffer);
 		}
 
 		RenderTexture::RenderTexture()
@@ -183,7 +217,7 @@ namespace E3DEngine
 
 		RenderBuffer::~RenderBuffer()
 		{
-			ES2::DeleteRenderbuffers(1, &m_RenderBuffer);
+			_GL_ES_2::DeleteRenderbuffers(1, &m_RenderBuffer);
 		}
 	}
 }

@@ -18,9 +18,15 @@ namespace E3DEngine
 	public:
 		virtual void CreateRenderTarget(float width, float height, int multiSampleLevel) override;
 		virtual void CreateDepthTarget(float width, float height) override;
+		virtual void Blit(Render2Texture * dest, BlitBuffer bufferType) override;
+
 	public:
 		~GL_Render2Texture();
 		void Bind();
+		FrameBufferObject * GetFBO();
+
+	private:
+		void blitFrameBuffer(FrameBufferObject * fbo, BlitBuffer bufferType);
 
 	protected:
 		FrameBufferObject   *	m_fbo;

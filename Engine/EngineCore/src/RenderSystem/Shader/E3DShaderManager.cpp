@@ -13,7 +13,7 @@ E3DEngine::Shader * E3DEngine::ShaderManager::CreateShader(ShaderConfig * sCfg, 
 	{
 		return mShadersMap[key];
 	}
-	Shader * shader = createShader(materailPath + sCfg->ShaderPath, sCfg->UniformVariable);
+	Shader * shader = createShader(getShaderWithExtName(materailPath + sCfg->ShaderPath), sCfg->UniformVariable);
 	
 	return shader;
 }
@@ -24,7 +24,7 @@ E3DEngine::Shader * E3DEngine::ShaderManager::GetShader(std::string shaderFullPa
 	{
 		return mShadersMap[shaderFullPath];
 	}
-	Shader * shader = createShader(shaderFullPath, "");
+	Shader * shader = createShader(getShaderWithExtName(shaderFullPath), "");
 	mShadersMap[shaderFullPath] = shader;
 	return shader;
 }
@@ -32,6 +32,11 @@ E3DEngine::Shader * E3DEngine::ShaderManager::GetShader(std::string shaderFullPa
 void E3DEngine::ShaderManager::Cleanup()
 {
 	mShadersMap.clear();
+}
+
+std::string E3DEngine::ShaderManager::getShaderWithExtName(std::string & path)
+{
+	return path + ".glsl";
 }
 
 

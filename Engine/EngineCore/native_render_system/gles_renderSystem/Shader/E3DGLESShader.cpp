@@ -31,42 +31,43 @@ namespace E3DEngine
 		uniformSetFunc["mat4"] = &Shader::createMatrix4Uniform;
 		uniformSetFunc["int"] = &Shader::createInt1Uniform;
 		uniformSetFunc["sampler2D"] = &Shader::createSampler2DUniform;
+		uniformSetFunc["sampler2DShadow"] = &Shader::createSampler2DUniform;
 		uniformSetFunc["samplerCube"] = &Shader::createSamplerCubeUniform;
 	}
 
 	void GLES_Shader::LoadShader(const char *vertexShader, const char *fragmentShader)
 	{
-		ShaderProgram = ES2::CreateProgram();
+		ShaderProgram = _GL_ES_2::CreateProgram();
 		GLuint &&vertexShaderHandle = compileShader(vertexShader, GL_VERTEX_SHADER);
 		GLuint &&fragmentShaderHandle = compileShader(fragmentShader, GL_FRAGMENT_SHADER);
 
-		ES2::AttachShader(ShaderProgram, vertexShaderHandle);
-		ES2::AttachShader(ShaderProgram, fragmentShaderHandle);
+		_GL_ES_2::AttachShader(ShaderProgram, vertexShaderHandle);
+		_GL_ES_2::AttachShader(ShaderProgram, fragmentShaderHandle);
 		//bindAttribLoaction(STATIC_VERTEX);
 		//bindAttribLoaction(DYNAMIC_VERTEX);
-		ES2::LinkProgram(ShaderProgram);
+		_GL_ES_2::LinkProgram(ShaderProgram);
 		GLint linkSuccess;
-		ES2::GetProgramiv(ShaderProgram, GL_LINK_STATUS, &linkSuccess);
+		_GL_ES_2::GetProgramiv(ShaderProgram, GL_LINK_STATUS, &linkSuccess);
 		if (linkSuccess != GL_TRUE)
 		{
 			GLint logLength;
-			ES2::GetShaderiv(ShaderProgram, GL_INFO_LOG_LENGTH, &logLength);
+			_GL_ES_2::GetShaderiv(ShaderProgram, GL_INFO_LOG_LENGTH, &logLength);
 			if (logLength > 0)
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
-				ES2::GetShaderInfoLog(ShaderProgram, logLength, &logLength, log);
+				_GL_ES_2::GetShaderInfoLog(ShaderProgram, logLength, &logLength, log);
 				Debug::Log(ell_Error, "Shader: LINK ERROR shader link log: %s" , log);
 			}
-			ES2::DeleteShader(ShaderProgram);
+			_GL_ES_2::DeleteShader(ShaderProgram);
 		}
 		
 		if (vertexShaderHandle != 0)
 		{
-			ES2::DeleteShader(vertexShaderHandle);
+			_GL_ES_2::DeleteShader(vertexShaderHandle);
 		}
 		if (fragmentShaderHandle != 0)
 		{
-			ES2::DeleteShader(fragmentShaderHandle);
+			_GL_ES_2::DeleteShader(fragmentShaderHandle);
 		}
 		loadUniformLocation();
 		loadAttribLocation(STATIC_VERTEX);
@@ -81,23 +82,23 @@ namespace E3DEngine
 			return 0;
 		}
 		int shaderStringLength = (int)strlen(shaderContent);
-		GLuint shaderHandle = ES2::CreateShader(shaderType);
-		ES2::ShaderSource(shaderHandle, 1, &shaderContent, &shaderStringLength);
-		ES2::CompileShader(shaderHandle);
+		GLuint shaderHandle = _GL_ES_2::CreateShader(shaderType);
+		_GL_ES_2::ShaderSource(shaderHandle, 1, &shaderContent, &shaderStringLength);
+		_GL_ES_2::CompileShader(shaderHandle);
 		
 		GLint status;
-		ES2::GetShaderiv(shaderHandle, GL_COMPILE_STATUS, &status);
+		_GL_ES_2::GetShaderiv(shaderHandle, GL_COMPILE_STATUS, &status);
 		if (status != GL_TRUE)
 		{
 			GLint logLength;
-			ES2::GetShaderiv(shaderHandle, GL_INFO_LOG_LENGTH, &logLength);
+			_GL_ES_2::GetShaderiv(shaderHandle, GL_INFO_LOG_LENGTH, &logLength);
 			if (logLength > 0)
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
-				ES2::GetShaderInfoLog(shaderHandle, logLength, &logLength, log);
+				_GL_ES_2::GetShaderInfoLog(shaderHandle, logLength, &logLength, log);
 				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s \n ShaderContent:\n %s", log, shaderContent);
 			}
-			ES2::DeleteShader(shaderHandle);
+			_GL_ES_2::DeleteShader(shaderHandle);
 		}
 
 		return shaderHandle;
@@ -111,29 +112,29 @@ namespace E3DEngine
 
 	void GLES_Shader::UseProgram()
 	{
-		ES2::UseProgram(ShaderProgram);
+		_GL_ES_2::UseProgram(ShaderProgram);
 	}
 
 	void GLES_Shader::UseNullProgram()
 	{
-		ES2::UseProgram(NULL_SHADER);
+		_GL_ES_2::UseProgram(NULL_SHADER);
 	}
 
 	void GLES_Shader::UpdateProgramUniformValue()
 	{		
 		for (auto & uniformKeyValue : int1UniformList)
 		{
-			ES2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
+			_GL_ES_2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float1UniformList)
 		{
-			ES2::Uniform1f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
+			_GL_ES_2::Uniform1f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value);
 		}
 
 		for (auto & uniformKeyValue : float2UniformList)
 		{
-			ES2::Uniform2f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
+			_GL_ES_2::Uniform2f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2);
 		}
 
 		for (auto & uniformKeyValue : float1UniformArrayList)
@@ -142,7 +143,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::Uniform1fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			_GL_ES_2::Uniform1fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float2UniformArrayList)
@@ -151,7 +152,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::Uniform2fv(uniformKeyValue.second.UniformLocation,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
+			_GL_ES_2::Uniform2fv(uniformKeyValue.second.UniformLocation,uniformKeyValue.second.Count,uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformArrayList)
@@ -160,7 +161,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::Uniform3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			_GL_ES_2::Uniform3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float4UniformArrayList)
@@ -169,17 +170,17 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::Uniform4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
+			_GL_ES_2::Uniform4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Value.data());
 		}
 
 		for (auto & uniformKeyValue : float3UniformList)
 		{
-			ES2::Uniform3f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3);
+			_GL_ES_2::Uniform3f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3);
 		}
 
 		for (auto & uniformKeyValue : float4UniformList)
 		{
-			ES2::Uniform4f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3, uniformKeyValue.second.Value4);
+			_GL_ES_2::Uniform4f(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Value1, uniformKeyValue.second.Value2, uniformKeyValue.second.Value3, uniformKeyValue.second.Value4);
 		}
 
 		for (auto & uniformKeyValue : matrix4UniformList)
@@ -188,7 +189,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::UniformMatrix4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			_GL_ES_2::UniformMatrix4fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 
 		for (auto & uniformKeyValue : matrix3UniformList)
@@ -197,7 +198,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::UniformMatrix3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			_GL_ES_2::UniformMatrix3fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 
 		for (auto & uniformKeyValue : matrix2UniformList)
@@ -206,7 +207,7 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::UniformMatrix2fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
+			_GL_ES_2::UniformMatrix2fv(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.Count, uniformKeyValue.second.Transpos, uniformKeyValue.second.Data);
 		}
 
 		for (auto & uniformKeyValue : sampler2DUniformList)
@@ -215,9 +216,9 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::ActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
-			ES2::BindTexture(GL_TEXTURE_2D, uniformKeyValue.second.texture->GetTextureBuffer());
-			ES2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
+			_GL_ES_2::ActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
+			_GL_ES_2::BindTexture(GL_TEXTURE_2D, uniformKeyValue.second.texture->GetTextureBuffer());
+			_GL_ES_2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
 		}
 
 		for (auto & uniformKeyValue : samplerCubeUniformList)
@@ -226,9 +227,9 @@ namespace E3DEngine
 			{
 				continue;
 			}
-			ES2::ActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
-			ES2::BindTexture(GL_TEXTURE_CUBE_MAP, uniformKeyValue.second.texture->GetTextureBuffer());
-			ES2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
+			_GL_ES_2::ActiveTexture(GL_TEXTURE0 + uniformKeyValue.second.TextureIndex);
+			_GL_ES_2::BindTexture(GL_TEXTURE_CUBE_MAP, uniformKeyValue.second.texture->GetTextureBuffer());
+			_GL_ES_2::Uniform1i(uniformKeyValue.second.UniformLocation, uniformKeyValue.second.TextureIndex);
 		}
 	}
 
@@ -246,7 +247,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			ES2::VertexAttribPointer(attrib.AttributeLoaction, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
+			_GL_ES_2::VertexAttribPointer(attrib.AttributeLoaction, attrib.AttributeSize, attrib.VarType, attrib.Normalized, attrib.VertexStructSize, (GLfloat*)nullptr + attrib.StartPosition);
 		}
 
 		EnableVertexAttribArray(vertexType);
@@ -254,7 +255,7 @@ namespace E3DEngine
 
 	void GLES_Shader::DeleteShader()
 	{
-		ES2::DeleteShader(ShaderProgram);
+		_GL_ES_2::DeleteShader(ShaderProgram);
 	}
 
 	void GLES_Shader::EnableVertexAttribArray(UINT vertexType)
@@ -271,7 +272,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			ES2::EnableVertexAttribArray(attrib.AttributeLoaction);
+			_GL_ES_2::EnableVertexAttribArray(attrib.AttributeLoaction);
 		}
 		
 	}
@@ -290,7 +291,7 @@ namespace E3DEngine
 
 		for (auto & attrib : *attrList)
 		{
-			ES2::BindAttribLocation(ShaderProgram, attrib.BindLocation, attrib.VarName.c_str());
+			_GL_ES_2::BindAttribLocation(ShaderProgram, attrib.BindLocation, attrib.VarName.c_str());
 		}
 	}
 
@@ -402,14 +403,14 @@ namespace E3DEngine
 
 	GLint GLES_Shader::LoadSelfDefUniform(std::string name)
 	{
-		GLint location = ES2::GetUniformLocation(ShaderProgram, name.c_str());
+		GLint location = _GL_ES_2::GetUniformLocation(ShaderProgram, name.c_str());
 		uniformLocationMap[name] = location;
 		return location;
 	}
 
 	GLuint GLES_Shader::LoadSelfDefAttribuate(std::string name)
 	{
-		GLuint attr = ES2::GetAttribLocation(ShaderProgram, name.c_str());
+		GLuint attr = _GL_ES_2::GetAttribLocation(ShaderProgram, name.c_str());
 		return attr;
 	}
 

@@ -10,10 +10,13 @@ namespace E3DEngine
 	{
 	protected:
 		Render2Texture();
+
 	public:
 		virtual void CreateRenderTarget(float width, float height, int multiSampleLevel)	= 0;
 		virtual void CreateDepthTarget(float width, float height)	= 0;
-		virtual void  Bind()										= 0;
+		virtual void Bind()											= 0;
+		virtual void Blit(Render2Texture * dest, BlitBuffer bufferType)						= 0;
+
 	public:
 		virtual ~Render2Texture();
 

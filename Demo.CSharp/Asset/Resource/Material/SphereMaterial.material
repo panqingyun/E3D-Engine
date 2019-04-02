@@ -5,7 +5,7 @@
 		<Item ID="2" ShaderID="2" Color="ffffffff" EnableDepthTest="1" CullFace = "1" TextureFilterType = "5"/>
 	</MaterialConfig>
 	<ShaderConfig>
-		<Item ID="1" ShaderPath="shader/Sphere.shader" UniformVariable="myTexture0=Resource/Material/texture/earth.png;"/>
-		<Item ID="2" ShaderPath="shader/Sphere.shader"/>
+		<Item ID="1" ShaderPath="shader/Sphere" UniformVariable="myTexture0=Resource/Material/texture/earth.png;"/>
+		<Item ID="2" ShaderPath="shader/Sphere"/>
 	</ShaderConfig>
 </ConfigSystem>

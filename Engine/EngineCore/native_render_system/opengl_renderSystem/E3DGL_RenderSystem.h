@@ -28,7 +28,6 @@ namespace E3DEngine
 		virtual void SetCullFaceType(CULL_FACE type) override;
 	public:
 		virtual void BeginFrame() override;
-		void clearFrameBufferObject();
 		void EndFrame() override;
 	public:
 		void	SetupDefaultFrameBuffer();

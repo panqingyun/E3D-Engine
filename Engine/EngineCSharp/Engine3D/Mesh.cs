@@ -7,15 +7,7 @@ using System.Threading.Tasks;
 
 namespace E3DEngine
 {
-    public class Mesh : GameObject
+    public class Mesh : Component
     {
-        [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern Mesh create(string path, int configID);
-
-        public static Mesh Create(string path, int configID)
-        {
-            return create(path, configID);
-        }
-
     }
 }

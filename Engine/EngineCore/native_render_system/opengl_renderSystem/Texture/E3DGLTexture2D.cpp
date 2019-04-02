@@ -97,7 +97,7 @@ namespace E3DEngine
 		default:
 			assert(false);
 		}
-
+		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterType);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterType);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, clampType);

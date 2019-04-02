@@ -1,11 +1,10 @@
-/*
- *  CameraEntity.cpp
- *  Virtual Vision
- *
- *  Created by Abdallah Dib Abdallah.dib@virtual-vison.net
- *  Copyright 2011 Virtual Vision. All rights reserved.
- *
- */
+//********************************** Effective 3D Engine **************************************************//
+//******************* Copyright (c) 2017-1-10 PanQingyun. All rights reserved. *************************//
+// E3DCamera.cpp
+// 摄像机
+// 创建 ： 2017-1-10
+// 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "E3DCamera.h"
 #include <cmath>
 #include "../Object/E3DTransform.hpp"
@@ -243,17 +242,6 @@ namespace E3DEngine
 		return m_RenderQueue;
 	}
 
-	void Camera::SetRenderTexture(Render2Texture * rtt)
-	{
-		m_pRTT = rtt;
-		m_bUseDefaultRtt = false;
-		if (Perspective)
-		{
-			m_mProjection = mat4f::createPerspective(Fov, rtt->GetWidth() / rtt->GetHeight(), Near, Far);
-			m_mProjectInverse = m_mProjection.inverse();
-		}
-	}
-
 	const mat4f& Camera::GetViewMatrix()
 	{		
 		return m_mView;
@@ -394,7 +382,7 @@ namespace E3DEngine
 		return true;
 	}
 
-	void Camera::ClearRT()
+	void Camera::ClearTargetTexture()
 	{
 		m_pRTT = nullptr;
 	}
@@ -406,8 +394,18 @@ namespace E3DEngine
 		return false;
 	}
 
+	void Camera::SetTargetTexture(Render2Texture * rtt)
+	{
+		m_pRTT = rtt;
+		m_bUseDefaultRtt = false;
+		if (Perspective)
+		{
+			m_mProjection = mat4f::createPerspective(Fov, rtt->GetWidth() / rtt->GetHeight(), Near, Far);
+			m_mProjectInverse = m_mProjection.inverse();
+		}
+	}
 
-	E3DEngine::Render2Texture * Camera::GetRenderTexture()
+	E3DEngine::Render2Texture * Camera::GetTargetTexture()
 	{
 		return m_pRTT;
 	}

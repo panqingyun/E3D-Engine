@@ -461,7 +461,7 @@ namespace E3DEngine
 #define APIENTRY
 #endif
 
-	namespace ES2
+	namespace _GL_ES_2
 	{
 		typedef void(APIENTRY * PFNGLACTIVETEXTUREPROC) (GLenum texture);
 		typedef void(APIENTRY * PFNGLATTACHSHADERPROC) (GLuint program, GLuint shader);

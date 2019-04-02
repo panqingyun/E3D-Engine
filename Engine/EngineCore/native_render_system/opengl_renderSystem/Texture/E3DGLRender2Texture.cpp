@@ -29,3 +29,33 @@ void E3DEngine::GL_Render2Texture::Bind()
 {
 	m_fbo->Bind();
 }
+
+E3DEngine::FrameBufferObject * E3DEngine::GL_Render2Texture::GetFBO()
+{
+	return m_fbo;
+}
+
+void E3DEngine::GL_Render2Texture::Blit(Render2Texture * dest, BlitBuffer bufferType)
+{
+	if (dest == nullptr)
+	{
+		blitFrameBuffer(nullptr, bufferType);
+	}
+	else
+	{
+		GL_Render2Texture *oglRt = static_cast<GL_Render2Texture*>(dest);
+		blitFrameBuffer(oglRt->GetFBO(), bufferType);
+	}
+}
+
+void E3DEngine::GL_Render2Texture::blitFrameBuffer(E3DEngine::FrameBufferObject * fbo, BlitBuffer bufferType)
+{
+	if (bufferType == DEPTH_BUFFER)
+	{
+		m_fbo->BlitFrameBuffer(fbo, GL_DEPTH_BUFFER_BIT);
+	}
+	else if(bufferType == COLOR_BUFFER)
+	{
+		m_fbo->BlitFrameBuffer(fbo, GL_COLOR_BUFFER_BIT);
+	}
+}

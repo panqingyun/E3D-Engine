@@ -14,10 +14,11 @@ E3DEngine::GLES_ShaderManager::GLES_ShaderManager()
 	initShaderAttributeVar();
 }
 
-E3DEngine::Shader * E3DEngine::GLES_ShaderManager::createShader(std::string shaderPath, std::string unifVar)
+E3DEngine::Shader * E3DEngine::GLES_ShaderManager::createShader(std::string shaderPath)
 {
 	GLES_Shader *shader = new GLES_Shader;
 	shader->InitShaderVar();
+	shader->SetFileName(shaderPath);
 	std::string vertexShaderString;
 	std::string fragmentShaderString;
 	preProcessShader(shader, shaderPath, vertexShaderString, fragmentShaderString);

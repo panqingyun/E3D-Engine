@@ -62,7 +62,7 @@ namespace E3DEngine
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
 				glGetShaderInfoLog(ShaderProgram, logLength, &logLength, log);
-				Debug::Log(ell_Error, "Shader: LINK ERROR shader link log: %s" , log);
+				Debug::Log(ell_Error, "Shader: %s LINK ERROR shader link log\n: %s", mFileName.c_str(), log);
 			}
 			glDeleteShader(ShaderProgram);
 		}
@@ -102,7 +102,7 @@ namespace E3DEngine
 			{
 				GLchar *log = (GLchar *)malloc(logLength);
 				glGetShaderInfoLog(shaderHandle, logLength, &logLength, log);
-				Debug::Log(ell_Error, "Shader: [ERROR] shader compile log: %s \n ShaderContent:\n %s", log, shaderContent);
+				Debug::Log(ell_Error, "Shader %s compile error\n%s\nShaderContent:\n %s", mFileName.c_str(), log, shaderContent);
 			}
 			glDeleteShader(shaderHandle);
 		}

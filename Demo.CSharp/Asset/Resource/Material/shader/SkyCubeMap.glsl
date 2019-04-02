@@ -36,7 +36,6 @@ void main(void)
 	lightDir = _e3d_WorldSpaceLightDirection;
 	lightColor = _e3d_WorldSpaceLightColor;
 #endif
-	initFogNeedVar(position);
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos = _pos; // 顶点位置
 	vNrm = normalize(_normal.xyz); // 顶点法线

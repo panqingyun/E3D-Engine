@@ -21,7 +21,7 @@ namespace E3DEngine
 
 	protected:
 		std::string getShaderWithExtName(std::string &path); // 拼接扩展名
-		virtual Shader* createShader(std::string shaderPath, std::string unifVar)	= 0;
+		virtual Shader* createShader(std::string shaderPath)	= 0;
 		virtual void initShaderAttributeVar()										= 0;
 	protected:
 		std::map<std::string, Shader*> mShadersMap;

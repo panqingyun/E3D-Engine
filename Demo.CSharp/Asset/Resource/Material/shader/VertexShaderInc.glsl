@@ -3,12 +3,6 @@ const float Kc = 1.0;           //衰减常数项
 const float Kl = 1.0;           //衰减一次系数
 const float KQ = 1.0;           //衰减二次系数
 
-void initFogNeedVar(vec3 _pos)
-{
-	vPosition = (_e3d_matModel * vec4(_pos ,1.0)).xyz;
-	mCameraPos = _e3d_CameraPos;
-}
-
 vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
 {
 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);

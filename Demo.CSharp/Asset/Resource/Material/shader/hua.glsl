@@ -16,7 +16,7 @@ varying vec3 vCameraPos;
 	NORMAL:attr_normal;
 }
 
-#include "Standard.glsl"
+#include "VertexShaderInc.glsl"
 
 const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
                        0.0 , 0.5 , 0.0 , 0.0 ,
@@ -53,7 +53,7 @@ void main(void)
 #ifdef __GLES__
 precision highp float;
 #endif
-#include "VertexShaderInc.glsl"
+#include "FragmentShaderInc.glsl"
 uniform sampler2D myTexture0;
 
 void main(void) 
@@ -69,7 +69,7 @@ void main(void)
 		color = color * shdow;
 	}
 	
-	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0),vCameraPos,vPosition);
+	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0), vCameraPos,vPosition);
 }
 
 #End

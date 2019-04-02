@@ -12,7 +12,7 @@ namespace E3DEngine
 		GLES_ShaderManager();
 
 	protected:
-		virtual Shader * createShader(std::string shaderPath, std::string unifVar) override;
+		virtual Shader * createShader(std::string shaderPath) override;
 		virtual void initShaderAttributeVar() override;
 
 	protected:

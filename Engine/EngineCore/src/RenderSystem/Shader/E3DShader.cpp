@@ -326,4 +326,9 @@ namespace E3DEngine
 		}
 		return uniformTypeMap[uniformName];
 	}
+
+	void Shader::SetFileName(std::string name)
+	{
+		mFileName = name;
+	}
 }

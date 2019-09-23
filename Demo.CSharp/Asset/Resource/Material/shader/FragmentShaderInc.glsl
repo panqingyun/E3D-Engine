@@ -3,6 +3,11 @@ const float r2 = 1.0 / 256.0;
 const float r3 = 1.0 / (256.0 * 256.0);
 const float r4 = 1.0 / (256.0 * 256.0 * 256.0);
 
+varying vec3 vlightDir;
+varying vec4 vlightColor;
+varying vec3 vCameraPos;
+varying vec4 vShadow_Pos;
+
 float unpackDepth(const in vec4 rgbaDepth) 
 {
     const vec4 bitShift = vec4(r1, r2, r3, r4);
@@ -16,9 +21,9 @@ float texture2DCompare(sampler2D depths, vec2 uv, float compare, float bias)
     return step(compare,depth);
 }
 
-vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor, vec3 cameraPos,vec3 position)
+vec4 mixFogColor(vec4 _in_fragColor, vec4 _in_FogColor,vec3 position)
 {
-	float dist = abs(distance(cameraPos, position));
+	float dist = abs(distance(vCameraPos, position));
 	float maxDist = 1500.0;
 	float minDist = 1.0;
     float fogFactor = (maxDist - dist) / (maxDist - minDist);  
@@ -60,13 +65,55 @@ float PCFLerp(sampler2D depths, vec2 uv, float compare, float bias)
     return result / 9.0;
 }
 
-float getShadowColor(vec4 pos, float bias)
+float getShadowColor(float bias)
 {
 	float shadowColor = 1.0;
 #ifndef __GLES__
 #ifdef __CREATE_SHADOW__
-	shadowColor = clamp(PCFLerp(_e3d_lightDepthTex, pos.xy, pos.z + bias , bias) + 0.3, 0.3, 1.0);
+	shadowColor = clamp(PCFLerp(_e3d_lightDepthTex, vShadow_Pos.xy, vShadow_Pos.z + bias , bias) + 0.3, 0.3, 1.0);
 #endif
 #endif
 	return shadowColor;
+}
+
+// vec4 getPointLightColor(vec3 position, vec3 normal, float ns)
+// {
+// 	vec4 lightColor = vec4(0.0,0.0,0.0,1.0);
+	
+// #ifdef USING_POINT_LIGHT
+// 	vec3 N = normalize((vec4(normal, 1.0)).xyz);
+// 	vec3 V = normalize(vCameraPos - position);
+// 	for (int i = 0; i < _e3d_PointLightCount; i++)
+// 	{
+// 		if(distance(_e3d_PointLightPos[i] , position) < _e3d_PointLightRange[i])
+// 		{
+// 			float d = distance(_e3d_PointLightPos[i] , position);
+// 			float attenuate = 1.0 /(Kc + Kl*d + KQ * d * d); //衰减因子（由公式计算）
+// 			vec3 L = normalize(_e3d_PointLightPos[i] - position);
+// 			vec3 H = normalize(V + L);
+// 			vec3 diffuse = vec3((_e3d_PointLightColor[i] * max(dot(N, L), 0.0)).xyz);
+// 			vec3 specular = (_e3d_PointLightColor[i] * pow(max(dot(N, H), 0.0), ns) * attenuate).xyz;
+			
+// 			lightColor = lightColor + vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
+// 		}
+// 	}
+// #endif
+// 	return lightColor;
+// }
+
+vec4 getLightColor(vec3 position, vec3 normal, float ns, float shadowFactor)
+{
+    const vec4  ambient = vec4(0.3, 0.3, 0.3, 1.0);		//环境光颜色
+	const float PI = 3.141592653;
+#ifdef USING_DIRECTIONAL_LIGHT
+	//--- 光照
+	vec3 N = normalize(normal);
+	vec3 L = normalize(vlightDir);
+	vec3 V = normalize(vCameraPos - position);
+	vec3 H = normalize(V + L);
+	vec4 diffuse = vlightColor;
+	vec4 specular = vlightColor * ((ns + 8.0) / (8 * PI)) * pow(max(dot(N, H), 0.0), ns);
+	vec4 lightColor = (diffuse + specular) * max(dot(N, L), 0.0);//vec4(clamp((diffuse + specular), 0.0, 1.0), 1.0);
+#endif
+	return vec4((lightColor  * shadowFactor + ambient).rgb, 1.0);
 }

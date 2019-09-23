@@ -8,6 +8,8 @@ varying vec4 v_Pos;
 varying vec3 vNrm;
 varying vec3 eyePosition;
 varying vec2 UV;
+varying vec3 tangs;
+varying vec3 bNormal;
 
 #Vertex_Shader
 #Attribute
@@ -16,14 +18,10 @@ varying vec2 UV;
 	COLOR:color;
 	TEXTURECOORD:inputTextureCoordinate;
 	NORMAL:attr_normal;
+	TANGENT:tangent;
 }
 
 #include "VertexShaderInc.glsl"
-
-const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
-                       0.0 , 0.5 , 0.0 , 0.0 ,
-                       0.0 , 0.0 , 0.5 , 0.0 ,
-                       0.5 , 0.5 , 0.5 , 1.0 ) ;
 
 void main(void)
 {
@@ -35,7 +33,9 @@ void main(void)
 #ifdef USING_DIRECTIONAL_LIGHT	
 	lightDir = _e3d_WorldSpaceLightDirection;
 	lightColor = _e3d_WorldSpaceLightColor;
+	
 #endif
+
 	eyePosition = _e3d_CameraPos.xyz;
 	vPos = _pos; // 顶点位置
 	vNrm = normalize(_normal.xyz); // 顶点法线
@@ -53,6 +53,8 @@ precision highp float;
 #include "FragmentShaderInc.glsl"
 
 uniform samplerCube skybox;
+uniform sampler2D normalMap;
+
 uniform float fresnelBias;
 uniform float etaRatio;
 
@@ -127,7 +129,7 @@ vec4 getLightColor(vec3 position, vec3 normal)
 	
 	float diffuse = max(dot(N, L), 0.0) / PI;
 	//float ambent = textureCube(skybox, R).r;
-	float roughness = 0.4;// rand(UV.x, UV.y) * ambent; // 随机一个粗糙度
+	float roughness = 0.2;//rand(UV.x, UV.y);// * ambent; // 随机一个粗糙度
 	// ambent = clamp((ambent - 0.5 ) * 8.0 , 1.0, 4.0) / 2.0;
 	// ambent = pow(ambent, 4.0);
 	float _F = pow(F0 + (1.0 - F0) * (1.0 - dot(N, V)), fresnelPower);
@@ -164,6 +166,7 @@ vec4 FresnelShading(void)
 
 void main(void) 
 { 
+	vec3 normal = texture2D( normalMap, UV).rbg * 2.0 - 1.0;
 	vec4 freColor = FresnelShading();
 	vec4 lcolor = getLightColor(vPos, vNrm);
 	gl_FragColor = lcolor  * vec4(vertColor.rgb, vertColor.a);

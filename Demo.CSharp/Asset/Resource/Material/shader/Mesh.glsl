@@ -1,8 +1,7 @@
 varying vec2 v_coord0;
 varying vec4 DestinationColor;
-varying vec4 v_Shadow_Pos;
 varying vec3 vPosition;
-varying vec3 vCameraPos;
+varying vec3 _normal;
 
 #Vertex_Shader
 #Attribute
@@ -14,26 +13,20 @@ varying vec3 vCameraPos;
 }
 
 #include "VertexShaderInc.glsl"
-const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
-                       0.0 , 0.5 , 0.0 , 0.0 ,
-                       0.0 , 0.0 , 0.5 , 0.0 ,
-                       0.5 , 0.5 , 0.5 , 1.0 ) ;
-
 void main(void)
 {
     v_coord0 = uv0;
 	vec4 interpolatedPosition = vec4(position ,1.0);	
 	
 	mat4 rotateMatrix = getRotateMatrix();
-	vec4 _normal = vec4(attr_normal.xyz, 1.0);
+	_normal = attr_normal.xyz;
 	
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
 	vPosition = (_e3d_matModel * vec4(position ,1.0)).xyz;
 	vCameraPos = _e3d_CameraPos;
 	DestinationColor = color * 2.0;//getLightColor(_pos.xyz, _normal.xyz, 10.0) * color;
 #ifdef USING_DIRECTIONAL_LIGHT
-	v_Shadow_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
-	v_Shadow_Pos = biasMatrix* (v_Shadow_Pos / v_Shadow_Pos.w );
+	InitLightVar(_pos);
 #endif
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
@@ -90,8 +83,8 @@ void main(void)
 	// vec4 fs = ((f_c * _SpecColor.w) + (_SpecColor * spec)) * 2.0;
 	// vec4 fc = fs + f_c ;
 	
-	float shadowColor = getShadowColor(v_Shadow_Pos, 0.001);	
-	vec4 finalColor = mixFogColor(f_c,vec4(1.0,1.0,1.0,1.0),vCameraPos,vPosition) * shadowColor;
+	float shadowColor = getShadowColor(0.001);	
+	vec4 finalColor = mixFogColor(f_c,vec4(1.0,1.0,1.0,1.0),vPosition) * getLightColor(vPosition, _normal, 10.0, shadowColor);
 	gl_FragColor = vec4(finalColor.rgb, 1.0) * DestinationColor;
 }
 

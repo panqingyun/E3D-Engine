@@ -1,10 +1,7 @@
 varying vec2 v_coord;
 varying vec4 DestinationColor;
 varying vec3 normal;
-varying vec3 lightDir;
-varying vec4 v_Shadow_Pos;
 varying vec3 vPosition;
-varying vec3 vCameraPos;
 
 #Vertex_Shader
 
@@ -18,11 +15,6 @@ varying vec3 vCameraPos;
 
 #include "VertexShaderInc.glsl"
 
-const  mat4 biasMatrix = mat4(0.5 , 0.0 , 0.0 , 0.0 ,
-                       0.0 , 0.5 , 0.0 , 0.0 ,
-                       0.0 , 0.0 , 0.5 , 0.0 ,
-                       0.5 , 0.5 , 0.5 , 1.0 ) ;
-
 void main(void)
 {
     v_coord = inputTextureCoordinate;
@@ -32,16 +24,9 @@ void main(void)
 	vec4 _normal = rotateMatrix * vec4(attr_normal.xyz, 1.0);
 	v_coord = inputTextureCoordinate;
 	vec4 _pos = _e3d_matModel * interpolatedPosition;
-#ifdef USING_DIRECTIONAL_LIGHT
-	v_Shadow_Pos = _e3d_lightMatProj * _e3d_lightMatView * _pos;
-	v_Shadow_Pos = (v_Shadow_Pos / v_Shadow_Pos.w + 1.0) * 0.5;
-	lightDir = _e3d_WorldSpaceLightDirection;
-#else
-	lightDir = vec4(1.0,1.0,1.0,1.0);
-#endif
-	DestinationColor = getLightColor(_pos.xyz, _normal.xyz, 100.0) * color;
+	InitLightVar(_pos);
+	DestinationColor = color;
 	vPosition = (_e3d_matModel * vec4(_pos.xyz ,1.0)).xyz;
-	vCameraPos = _e3d_CameraPos;
 	normal = _normal.xyz;
     gl_Position = _e3d_getMVPMatrix() * vec4(position ,1.0);
 }
@@ -58,18 +43,11 @@ uniform sampler2D myTexture0;
 
 void main(void) 
 {
-	float shdow = getShadowColor(v_Shadow_Pos, 0.0);
-	vec4 color = texture2D(myTexture0, v_coord);
-	if(shdow > 0.9)
-	{
-		color = color * DestinationColor;
-	}	
-	else
-	{
-		color = color * shdow;
-	}
+	float shdow = getShadowColor(0.0);
+	vec4 color = texture2D(myTexture0, v_coord) * getLightColor(vPosition,normal,10.0, shdow);
 	
-	gl_FragColor = mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0), vCameraPos,vPosition);
+	
+	gl_FragColor = color; //mixFogColor(vec4(color.rgb, 1.0), vec4(1.0,1.0,1.0,1.0), vCameraPos,vPosition);
 }
 
 #End

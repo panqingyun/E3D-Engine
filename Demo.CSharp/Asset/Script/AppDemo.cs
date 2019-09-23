@@ -10,7 +10,7 @@ namespace Game
 
     public class App
     {
-        string mainScenePath = "Scene/Scene.scene";
+        string mainScenePath = "Scene/MainEntry.scene";
         
         public static event MouseButtonDelegate MouseDownEvent;
         public static event MouseButtonDelegate MouseMoveEvent;

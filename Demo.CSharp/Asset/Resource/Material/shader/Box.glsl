@@ -42,7 +42,7 @@ uniform sampler2D myTexture0;
 
 void main(void) 
 { 
-	gl_FragColor = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor, vec4(1.0,1.0,1.0,1.0),mCameraPos,vPosition);	
+	gl_FragColor = mixFogColor(texture2D(myTexture0, v_coord) * DestinationColor, vec4(1.0,1.0,1.0,1.0),vPosition);	
 }
 
 #End

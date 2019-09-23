@@ -1,6 +1,8 @@
 varying vec4 DestinationColor;
 varying vec2 v_coord;
 varying vec3 cameraRight;
+varying vec3 vPosition;
+varying vec3 vNormal;
 
 #Vertex_Shader
 #Attribute
@@ -30,7 +32,9 @@ void main(void)
 	
 	mat4 transMatrix = getTransformMatrix(transformPosition, transformRotate,transformScale);
 	vec4 _position = vec4(position.x, 0.0, position.y, 1.0);
-	DestinationColor = getLightColor(_position.xyz, vec3(0.0,1.0,0.0), 10.0);
+	vPosition = _position.xyz;
+	DestinationColor = color;
+	vNormal = attr_normal;
     gl_Position = _e3d_matProj * _e3d_matView * _e3d_matModel  * transMatrix * _position;//* BillboardMatrix();*  roateMatrix * scaleMat *
 }
 
@@ -53,7 +57,7 @@ void main(void)
 	}
 	else
 	{
-		gl_FragColor = color * DestinationColor;
+		gl_FragColor = color;// * getLightColor(vPosition, vNormal, 1.0, 1.0);
 	}
 }
 
